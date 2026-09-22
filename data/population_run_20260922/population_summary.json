@@ -1,0 +1,30 @@
+{
+  "total_materials": 250,
+  "structure_family_counts": {
+    "LayeredOxideStructure": 16,
+    "OlivineStructure": 8,
+    "SpinelStructure": 9,
+    "LGPSTypeStructure": 1,
+    "GarnetStructure": 1,
+    "NASICONStructure": 14,
+    "PerovskiteStructure": 3,
+    "ArgyroditeStructure": 3
+  },
+  "battery_role_counts": {
+    "PositiveElectrode": 86,
+    "NegativeElectrode": 11,
+    "Electrolyte": 7,
+    "Separator": 1
+  },
+  "unclassified_structure_family": 195,
+  "no_battery_role": 145,
+  "candidate_search_summary": {
+    "curated_count": 16,
+    "candidates_found": 248,
+    "candidates_classified": 42,
+    "added_classified": 42,
+    "added_unclassified": 192,
+    "final_total": 250,
+    "cap": 250
+  }
+}

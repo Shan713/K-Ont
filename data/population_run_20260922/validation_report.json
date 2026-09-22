@@ -1,0 +1,13 @@
+{
+  "is_valid": true,
+  "total_triples": 325138,
+  "total_materials": 250,
+  "total_crystals": 250,
+  "total_sites": 4744,
+  "total_bonds": 19942,
+  "total_properties": 2118,
+  "failed_pmg_materials": [],
+  "failed_smact_materials": [],
+  "errors": [],
+  "warnings": []
+}
