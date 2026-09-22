@@ -1,0 +1,22 @@
+# Vendored upstream repos (OnT, CrystaLLM) — cloned locally so we can run/read them, but they're
+# someone else's history and CrystaLLM alone carries ~150MB of benchmark CIFs we don't need to
+# carry in our own git history. Re-clone from the URLs in docs/ if this checkout is missing them.
+/OnT/
+/CrystaLLM/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# OS
+.DS_Store
+
+# Generated data / model artifacts (large, reproducible from scripts — not source)
+/data/battgpt_abox/
+*.jsonl
+!examples/*.jsonl
+export_package/
+*.pt
+*.ckpt
