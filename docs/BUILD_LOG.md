@@ -397,6 +397,68 @@ list of which material ids to fit on, so switching to a real train-only split la
 change, not a redesign — but it *is* currently fit on everything, and that's worth remembering
 before trusting any number this scaler produces as if it came from a proper train/test split.
 
-*(Next entry: the row generator — entities.json + verbalizations -> the actual train.jsonl /
-train_exist.jsonl files OnT reads, in the real {child, parent, negative} / {Concept, role, con}
-format from Step 2, one row per negative.)*
+## Step 10 — Built the row generator: verbalizations → the actual JSONL rows OnT reads
+
+[`abox/rows.py`](../abox/rows.py) turns `entities.json` + the verbalizations into
+`train_abox_type_*.jsonl` (hierarchy rows) and `train_abox_exist_*.jsonl` (relation rows), in the
+real schema from Step 2 — `{child, parent, negative}` with one row per negative, `{Concept, role,
+con}` with no negative field at all.
+
+**A modeling question we had to answer correctly before writing any code, not after**: is
+`hasStructureFamily` (crystal → e.g. "olivine") a *type* fact or a *relation*? Checked
+`battgpt.ttl` directly rather than going with the materials-science instinct to call a material
+"an olivine" the way you'd call it "a substance." Both `hasStructureFamily` and
+`belongsToElectrode` are declared `owl:ObjectProperty` — relations between two individuals (a
+crystal and a canonical family individual; a material and a canonical role individual) — not
+`rdf:type` assertions. So there is genuinely only **one** type/hierarchy fact per entity in this
+whole KG (`material rdf:type Substance`, `crystal rdf:type CrystalStructure`, `element rdf:type
+ChemicalElement`); structure family and battery role are both **exist rows**, same shape as
+`hasStructure`, not type rows. Getting this backwards would have meant asking OnT's hierarchy loss
+to learn something the ontology never actually asserts.
+
+**Hard negatives for `hasStructure`, implemented the way the real code allows, not the way that
+would be simplest to imagine.** `train_exist.jsonl` rows have no negative field (Step 2) — the
+exist loss borrows its negatives from whichever `train.jsonl` *batch* happens to be running
+concurrently at that training step, a loose statistical pairing we can't directly control from the
+data side. The lever that *does* exist: raise how often a genuinely confusable crystal shows up as
+a *negative value* somewhere in `train.jsonl`, so it has more chances to be borrowed. Every
+material now gets one extra type row whose parent is (truthfully) `"substance"` and whose negative
+is a hard-negative crystal — same chemical system if one exists elsewhere in the KG, else same
+space group, else any other crystal — instead of an abstract label like `"crystal structure"`. No
+new loss pathway invented, just a harder value in a slot that already existed. Checked on the
+tracked example: `mp-5670` (LiTi₂O₄)'s hard negative came back as `mp-38280` (LiTiO₂) — same Li-O-Ti
+chemical system, genuinely confusable, exactly the intended case.
+
+**Read the actual output by eye and found a real bug**: the two canonical individuals whose
+readable names carry their own internal casing (`"NASICON"`, `"LGPS-type"`) came out as `"Nasicon
+structure family"` and `"Lgps-type structure family"` — a stray `.capitalize()` call was
+lower-casing everything after the first letter. Fixed by dropping the standalone-capitalized-phrase
+attempt entirely and using the same `"Label: value"` shape as every other sentence in the
+verbalizer (`"Structure family: NASICON"`), which sidesteps the casing question rather than trying
+to get it right through capitalization logic.
+
+**A verification false alarm, also worth logging** (the point of reading output isn't to only
+report the real bugs): a first check for self-referential hard negatives — a material's own
+crystal accidentally picked as its "negative" — using naive string-splitting on the sentence text
+flagged 7 materials as broken. Turned out to be a bug in the *check*, not the generator: several
+formulas contain their own parentheses (`Na3V2(PO4)3`), which broke a `.split("(")` call looking
+for the id in the wrong place. Re-checked directly against `entities.json` (material_project_id
+fields, no string-parsing of rendered sentences) instead: **0/250 real self-references.**
+
+**Row counts** (both variants, since `full` and `no_geometry` only differ in sentence content, not
+row structure): **3,125 type rows**, **402 exist rows** (250 `hasStructure` + 55
+`hasStructureFamily` + 97 `belongsToElectrode`) — comfortably in the doc's own "thousands of
+training rows, not one row per triple" target (§9). Type rows outnumber exist rows roughly 8:1,
+mostly "what kind of thing is this" rows that are individually easy to learn (a crystal is
+obviously not a chemical element) — that skew is exactly the kind of number the design doc's Phase
+5 count-logging step exists to examine before training, not something to silently correct here by
+guessing a better ratio.
+
+**Scope, stated plainly in the output filenames**: these are `train_abox_type_*` /
+`train_abox_exist_*`, not `train.jsonl` — this is the ABox half only. Merging in TBox
+class-hierarchy rows and TBox oversampling (design doc Phases 3–4) needs DeepOnto, the ontology's
+OWL API, and a small extracted schema file, none of which exist in this repo yet.
+
+*(Next entry: TBox prep — extracting a small schema OWL file from `battgpt.ttl` and getting
+DeepOnto running, so the ABox rows above have real TBox class rows to merge with instead of the
+plain-English placeholder class labels used so far.)*
