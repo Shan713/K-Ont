@@ -13,6 +13,9 @@ __pycache__/
 # OS
 .DS_Store
 
+# Claude Code local session state (matches the parent battGPT repo's own .gitignore convention)
+/.claude
+
 # Generated data / model artifacts (large, reproducible from scripts — not source)
 /data/battgpt_abox/
 *.jsonl

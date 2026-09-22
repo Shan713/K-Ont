@@ -67,7 +67,35 @@ EMMO_ANCHOR_CLASSES = {
     EMMO.EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea: "substance",
     EMMO.EMMO_4f40def1_3cd7_4067_9596_541e9a5134cf: "chemical element",
 }
-# Classes declared directly in battgpt.ttl with their own real label -- reused as-is.
+
+
+def camel_case_to_spaced(phrase: str) -> str:
+    """"LayeredOxideStructure" -> "layered oxide structure", "NASICONStructure" -> "NASICON
+    structure" (preserves all-caps acronyms instead of mangling them -- unlike a naive
+    `.capitalize()`, the bug we already hit once in abox/rows.py). Copied verbatim from OnT's own
+    `OnT/ont/data/prepare.py::camel_case_to_spaced` rather than imported: importing anything under
+    `ont.*` triggers `ont/__init__.py`'s eager import chain (ont.model -> ont.hit -> torch +
+    geoopt + sentence_transformers), which this pure-rdflib schema-building script has no other
+    reason to need. Kept identical to the original so it produces the exact same text OnT's own
+    prepare.py would fall back to -- verified against a battgpt-specific set of names, see
+    BUILD_LOG.md Step 12."""
+    import re
+    phrase = phrase.split("#")[-1]
+    segments = re.findall(r"[A-Z]+|[^A-Z]+", phrase)
+    second_phrase = ""
+    numbers_romain = {"II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}
+    for segment in segments:
+        if segment[-1].isupper():
+            if len(segment) == 1:
+                segment = segment.lower()
+            elif len(segments) > 1 and segment not in numbers_romain:
+                segment = segment[:-1] + " " + segment[-1].lower()
+        else:
+            segment = segment + " "
+        second_phrase += segment
+    return second_phrase.strip()
+# Classes declared directly in battgpt.ttl -- reuses the real IRI, our own spaced label (see
+# camel_case_to_spaced below).
 BATTGPT_BARE_CLASSES = ["CrystalStructure", "SpaceGroup", "CrystalSystem"]
 
 STRUCTURE_FAMILY_HIERARCHY = {
@@ -130,18 +158,18 @@ def build_schema() -> rdflib.Graph:
         g.add((iri, RDF.type, OWL.Class))
         g.add((iri, RDFS.label, Literal(lbl, lang="en")))
 
-    # ── Bare battgpt: classes with their own real labels ──
+    # ── Bare battgpt: classes ──
     for name in BATTGPT_BARE_CLASSES:
         uri = _resolve(name)
         g.add((uri, RDF.type, OWL.Class))
-        g.add((uri, RDFS.label, Literal(name, lang="en")))  # battgpt.ttl's own label == class name here
+        g.add((uri, RDFS.label, Literal(camel_case_to_spaced(name), lang="en")))
 
     # ── StructureFamily + BatteryRole hierarchies ──
     for hierarchy in (STRUCTURE_FAMILY_HIERARCHY, BATTERY_ROLE_HIERARCHY):
         for name, parent in hierarchy.items():
             uri = _resolve(name)
             g.add((uri, RDF.type, OWL.Class))
-            g.add((uri, RDFS.label, Literal(name, lang="en")))
+            g.add((uri, RDFS.label, Literal(camel_case_to_spaced(name), lang="en")))
             if parent:
                 g.add((uri, RDFS.subClassOf, _resolve(parent)))
 
@@ -149,7 +177,7 @@ def build_schema() -> rdflib.Graph:
     for prop_name, domain, range_ in EXISTENTIAL_RESTRICTIONS:
         prop_uri = _resolve(prop_name)
         g.add((prop_uri, RDF.type, OWL.ObjectProperty))
-        g.add((prop_uri, RDFS.label, Literal(prop_name, lang="en")))
+        g.add((prop_uri, RDFS.label, Literal(camel_case_to_spaced(prop_name), lang="en")))
         restriction = BNode()
         g.add((restriction, RDF.type, OWL.Restriction))
         g.add((restriction, OWL.onProperty, prop_uri))

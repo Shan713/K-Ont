@@ -513,5 +513,71 @@ ways), and every class/property/axiom count matches what was hand-derived from t
 query beforehand — 23 = 2 EMMO anchors + 3 bare battgpt classes + 4 StructureFamily tiers + 9
 leaves + 5 BatteryRole tiers; 19 `subClassOf` = 16 hierarchy + 3 synthesized existential.
 
-*(Next entry: actually running DeepOnto against this schema — installing it, starting the JVM, and
-seeing what `prepare_ontology_data()` produces for real.)*
+## Step 12 — Got DeepOnto actually running, and read its real output
+
+**The install, honestly.** `deeponto` needed real, heavy dependencies to import at all — not
+optional extras, hard requirements: `torch`, `geoopt` (OnT's own package, for the Poincaré ball —
+turns out importing *anything* under `ont.*` triggers `OnT/ont/__init__.py`'s eager import chain,
+`ont.model` → `ont.hit` → `geoopt` + `sentence_transformers`, even though all we wanted was the
+tiny `ont.data.prepare` submodule), `sentence_transformers`, and a spaCy English model
+(`en_core_web_sm`) that `deeponto`'s own verbalizer loads internally. The spaCy model's
+auto-download printed "✔ Download and installation successful" and then immediately failed to
+load in the same run — checked `pip show en-core-web-sm` directly afterward and it genuinely
+wasn't installed (a real failure, not an in-process caching illusion); fixed by installing the
+exact wheel URL from the log directly. K-Ont's `.venv` went from ~65MB (rdflib + tokenizers) to
+about 2GB. Every one of these is now in `requirements.txt`, one line each, so the exact
+install sequence is reproducible rather than something only this session's history remembers.
+
+**Then it worked, and the JVM genuinely starts** (`8g maximum memory allocated to JVM. JVM
+started successfully.`) — Java 23 on this machine, found automatically, no `JAVA_HOME` needed.
+[`tbox/prepare.py`](../tbox/prepare.py) calls `OnT/ont/data/prepare.py`'s own
+`prepare_ontology_data()` directly, unmodified — every number it produced matched what we'd
+hand-derived from the schema file before running anything: **16 nf1 (hierarchy) + 3 nf3
+(existential) axioms, 23 concepts, 3 roles** — exactly the counts from Step 11.
+
+**First real output was wrong, and reading it caught why.** `concept_names.json` came back as raw
+`"ArgyroditeStructure"`, `"hasStructureFamily"` — un-split CamelCase, not English. Root cause:
+`build_schema.py` had copied `battgpt.ttl`'s own real label convention (verified earlier: the
+ontology genuinely does label its classes with their exact CamelCase name, e.g. `rdfs:label
+"StructureFamily"@en`) — faithful to the source, but DeepOnto's verbalizer uses whatever label it's
+given *verbatim*. OnT's own `prepare.py` ships a `camel_case_to_spaced()` helper for exactly this
+situation, but only invokes it as an all-or-nothing fallback when the *entire* vocabulary is empty
+— providing labels for even a couple of classes (which we needed to, for the two EMMO anchor
+classes whose real labels live in an import we're not pulling in) would have disabled that
+fallback for everything else too. Fixed by computing the spaced label explicitly ourselves for
+every class/property, copying the small helper function in rather than importing it (importing
+from `ont.*` would mean this schema-building script needs the same torch/geoopt install as
+training, for no reason). Re-ran: `"argyrodite structure"`, `"LGPS type structure"`, `"NASICON
+structure"` — acronyms correctly preserved, same pattern already caught once in `abox/rows.py`'s
+`.capitalize()` bug, now fixed at the source before it could repeat.
+
+**Reading the real `train.jsonl` — not just the counts — surfaced two things the design doc never
+mentions, because they only show up once real data exists to look at:**
+
+1. **Every single row (19/19) carries all 10 negatives** `prepare.py` samples, and the loader
+   (Step 2) keeps only the first. Confirms, on genuine TBox output this time rather than just our
+   own ABox rows, that this waste is real and comes from OnT's own reference pipeline, not
+   something specific to our data.
+2. **Sampling negatives doesn't exclude the true answer, and our TBox is small enough that this
+   matters.** `prepare.py` samples 10 negatives from *all* 23 concepts, without removing the one
+   that's actually correct. With only 23 concepts total, that's a real collision risk: **7 of 19
+   rows** (37%) contain the true parent somewhere in their own negative list, and **3 of 19**
+   (16%) have it at *position 0* specifically — the one negative the loader actually uses. Those 3
+   rows currently train on `d(child, parent) < d(child, parent)`, a margin-only constant with no
+   useful gradient. This is a small-ontology effect specifically — the collision odds shrink fast
+   as the concept count grows, so a large TBox wouldn't feel this the way our 23-concept one does.
+
+Neither of these is fixed here — both point at `OnT/ont/data/load.py` (already flagged as
+possibly needing a touch, back in the original design doc's own file list) and are logged as a
+concrete TODO before training, not silently worked around or silently left for someone else to
+rediscover.
+
+`data/battgpt_ont/` (the real generated output — `train.jsonl`, `train_exist.jsonl`,
+`concept_names.json`, `role_names.json`, `val.json`, `role_inverse.json`, all a few KB) is
+committed alongside the schema and the fix, as concrete evidence of what this step actually
+produces, not just a description of it.
+
+*(Pipeline status: extract → verbalize → numeric → rows (ABox) and build_schema → prepare (TBox)
+are all built, run, and verified against real output. What's left before training: merging ABox +
+TBox rows with TBox oversampling (design doc Phase 4b), deciding whether to patch the negative-
+sampling/loader issues just found, and then an actual training run.)*

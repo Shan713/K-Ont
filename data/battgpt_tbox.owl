@@ -4,146 +4,146 @@
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
 >
-  <rdf:Description rdf:nodeID="Nb8d53980621d486598cd6685185e4daa">
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#RockSaltStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">rock salt structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SpaceGroup">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">space group</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#OxideStructureFamily">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">oxide structure family</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#StructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#CrystalSystem">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">crystal system</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="Nd896b79438d047a9acbc4a7aff0d02d9">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
     <owl:onProperty rdf:resource="https://w3id.org/battgpt/kg#hasStructureFamily"/>
     <owl:someValuesFrom rdf:resource="https://w3id.org/battgpt/kg#StructureFamily"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/battgpt/kg#PolyanionStructureFamily">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">PolyanionStructureFamily</rdfs:label>
+    <rdfs:label xml:lang="en">polyanion structure family</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#StructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">substance</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="N3ca3f51fcb4c4f0380c1c5f90b6e4606"/>
-    <rdfs:subClassOf rdf:nodeID="N73ad7e69d30f42a4a7a081382ce3ef59"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#CrystalStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">CrystalStructure</rdfs:label>
-    <rdfs:subClassOf rdf:nodeID="Nb8d53980621d486598cd6685185e4daa"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#CrystalSystem">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">CrystalSystem</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SeparatorRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">SeparatorRole</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#OlivineStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">OlivineStructure</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#PolyanionStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SulfideStructureFamily">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">SulfideStructureFamily</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#StructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#PositiveElectrodeRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">PositiveElectrodeRole</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SpinelStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">SpinelStructure</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#OxideStructureFamily">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">OxideStructureFamily</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#StructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N3ca3f51fcb4c4f0380c1c5f90b6e4606">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="https://w3id.org/battgpt/kg#hasStructure"/>
-    <owl:someValuesFrom rdf:resource="https://w3id.org/battgpt/kg#CrystalStructure"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/battgpt/kg#LGPSTypeStructure">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">LGPSTypeStructure</rdfs:label>
+    <rdfs:label xml:lang="en">LGPS type structure</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#SulfideStructureFamily"/>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/battgpt/kg#LayeredOxideStructure">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">LayeredOxideStructure</rdfs:label>
+    <rdfs:label xml:lang="en">layered oxide structure</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#ElectrolyteRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">ElectrolyteRole</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SpaceGroup">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">SpaceGroup</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#hasStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">hasStructure</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="N73ad7e69d30f42a4a7a081382ce3ef59">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
-    <owl:onProperty rdf:resource="https://w3id.org/battgpt/kg#belongsToElectrode"/>
-    <owl:someValuesFrom rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#RockSaltStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">RockSaltStructure</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#GarnetStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">GarnetStructure</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg/tbox-schema">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
-    <rdfs:comment xml:lang="en">Minimal TBox schema extracted from BattGpt-Ontology/battgpt.ttl for OnT training data prep (K-Ont/tbox/build_schema.py). Deliberately carries no owl:imports -- see that script's docstring for why. Not a substitute for the real ontology; do not use this for anything except generating OnT training rows.</rdfs:comment>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#NegativeElectrodeRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">NegativeElectrodeRole</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#hasStructureFamily">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">hasStructureFamily</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#NASICONStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">NASICONStructure</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#PolyanionStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#belongsToElectrode">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
-    <rdfs:label xml:lang="en">belongsToElectrode</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#PerovskiteStructure">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">PerovskiteStructure</rdfs:label>
-    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#BatteryRole">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">BatteryRole</rdfs:label>
-  </rdf:Description>
-  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#StructureFamily">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">StructureFamily</rdfs:label>
   </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/emmo#EMMO_4f40def1_3cd7_4067_9596_541e9a5134cf">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
     <rdfs:label xml:lang="en">chemical element</rdfs:label>
   </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#StructureFamily">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">structure family</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#GarnetStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">garnet structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SpinelStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">spinel structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#hasStructureFamily">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has structure family</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SeparatorRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">separator role</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#BatteryRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">battery role</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#CrystalStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">crystal structure</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="Nd896b79438d047a9acbc4a7aff0d02d9"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#NegativeElectrodeRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">negative electrode role</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N525ff32a063848cdb2dc1d16ac91d72f">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/battgpt/kg#hasStructure"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/battgpt/kg#CrystalStructure"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#SulfideStructureFamily">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">sulfide structure family</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#StructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/emmo#EMMO_df96cbb6_b5ee_4222_8eab_b3675df24bea">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">substance</rdfs:label>
+    <rdfs:subClassOf rdf:nodeID="N525ff32a063848cdb2dc1d16ac91d72f"/>
+    <rdfs:subClassOf rdf:nodeID="N673e4a88271e463ca0d9a86042b70762"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg/tbox-schema">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Ontology"/>
+    <rdfs:comment xml:lang="en">Minimal TBox schema extracted from BattGpt-Ontology/battgpt.ttl for OnT training data prep (K-Ont/tbox/build_schema.py). Deliberately carries no owl:imports -- see that script's docstring for why. Not a substitute for the real ontology; do not use this for anything except generating OnT training rows.</rdfs:comment>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#NASICONStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">NASICON structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#PolyanionStructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N673e4a88271e463ca0d9a86042b70762">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Restriction"/>
+    <owl:onProperty rdf:resource="https://w3id.org/battgpt/kg#belongsToElectrode"/>
+    <owl:someValuesFrom rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#OlivineStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">olivine structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#PolyanionStructureFamily"/>
+  </rdf:Description>
   <rdf:Description rdf:about="https://w3id.org/battgpt/kg#ArgyroditeStructure">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
-    <rdfs:label xml:lang="en">ArgyroditeStructure</rdfs:label>
+    <rdfs:label xml:lang="en">argyrodite structure</rdfs:label>
     <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#SulfideStructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#PerovskiteStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">perovskite structure</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#OxideStructureFamily"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#ElectrolyteRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">electrolyte role</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#hasStructure">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">has structure</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#PositiveElectrodeRole">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+    <rdfs:label xml:lang="en">positive electrode role</rdfs:label>
+    <rdfs:subClassOf rdf:resource="https://w3id.org/battgpt/kg#BatteryRole"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="https://w3id.org/battgpt/kg#belongsToElectrode">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:label xml:lang="en">belongs to electrode</rdfs:label>
   </rdf:Description>
 </rdf:RDF>

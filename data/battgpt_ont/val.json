@@ -1,0 +1,28 @@
+{
+    "query_sentences": {
+        "nf1": [
+            {
+                "name": "rock salt structure"
+            }
+        ],
+        "nf2": [],
+        "nf3": [
+            {
+                "name": "has structure family some structure family",
+                "role": "has structure family",
+                "con": "structure family"
+            }
+        ],
+        "nf4": []
+    },
+    "answer_ids": {
+        "nf1": [
+            11
+        ],
+        "nf2": [],
+        "nf3": [
+            2
+        ],
+        "nf4": []
+    }
+}

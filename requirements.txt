@@ -9,3 +9,16 @@
 rdflib>=7.0        # parse battery_kg.ttl
 tokenizers>=0.19   # real MiniLM token-length validation (abox/verbalize.py output), no torch needed
 huggingface_hub>=0.24  # downloads the tokenizer.json for the above
+
+# TBox prep (tbox/prepare.py) -- needed to run OnT's own prepare_ontology_data() via DeepOnto.
+# Heavy: pulls in torch + a spaCy English model, ~2GB total. See BUILD_LOG.md Step 12 for the
+# exact install issues hit (a spaCy model auto-download that silently failed to actually install,
+# fixed by installing its wheel URL directly) and why importing anything under OnT's `ont.*`
+# package needs geoopt/sentence_transformers even for TBox-only prep (ont/__init__.py's own eager
+# import chain, not something this repo's code controls).
+deeponto
+geoopt
+sentence-transformers
+# en_core_web_sm (spaCy English model) is also required by deeponto's verbalizer but isn't a pip
+# package name pip can resolve normally -- install with:
+#   .venv/bin/pip install "https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl"
