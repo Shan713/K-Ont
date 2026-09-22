@@ -1,0 +1,15 @@
+{
+  "variant": "no_geometry",
+  "n_abox_type": 3125,
+  "n_tbox_type_raw": 19,
+  "n_tbox_type_fanned": 174,
+  "n_tbox_type_dropped_self_negative": 16,
+  "type_oversample_factor": 18,
+  "n_tbox_type_oversampled": 3132,
+  "n_merged_type": 6257,
+  "n_abox_exist": 402,
+  "n_tbox_exist_raw": 3,
+  "exist_oversample_factor": 134,
+  "n_tbox_exist_oversampled": 402,
+  "n_merged_exist": 804
+}

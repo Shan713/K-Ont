@@ -581,3 +581,65 @@ produces, not just a description of it.
 are all built, run, and verified against real output. What's left before training: merging ABox +
 TBox rows with TBox oversampling (design doc Phase 4b), deciding whether to patch the negative-
 sampling/loader issues just found, and then an actual training run.)*
+
+## Step 13 — Built the merge step, and reading real merged rows caught a worse bug than Step 12's
+
+[`merge_datasets.py`](../merge_datasets.py) combines the ABox rows (Step 10) with the real TBox
+rows (Step 12) into a complete, self-contained directory —
+`data/battgpt_merged_{full,no_geometry}/` — with every file OnT's loader
+(`load_local_dataset`) expects in one place: `train.jsonl`, `train_exist.jsonl`,
+`train_conj.jsonl`, `val.json`, `concept_names.json`, `role_names.json`, `role_inverse.json`.
+
+**Checked, not assumed, that the two sides actually speak the same vocabulary.** ABox type rows
+use plain English like `"crystal structure"` as a parent/negative value — that string is only
+meaningful if it's the *exact* string the real TBox (`concept_names.json`) verbalizes
+`CrystalStructure` as. Ran the check before writing this script, not after: all 6 class labels and
+3 role labels the ABox side uses are an exact match against the real, DeepOnto-generated
+vocabulary — not by luck, but because both sides were written against the same "spaced, lowercase
+English" convention from the start. `merge_datasets.py` re-runs this check on every call, so a
+future change to either side that breaks the match fails loudly instead of silently producing two
+unrelated embeddings for what should be one concept.
+
+**Fixed the loader-truncation waste from Step 12** by fanning the real TBox rows out one-negative-
+per-row here, the same treatment every ABox row already got in Step 10 — 19 raw rows (10 negatives
+each) become up to 190 single-negative rows.
+
+**Reading the fanned-out rows — not just re-deriving numbers from Step 12 — caught a second,
+worse self-negative bug Step 12 missed entirely.** Step 12 only checked whether a row's sampled
+negative equaled its true *parent*. A quick eyeball of three random fanned rows turned up
+`{"child": "olivine structure", "parent": "polyanion structure family", "negative": ["olivine
+structure"]}` — the negative equals the **child**, not the parent. That's a materially worse row
+than the parent-collision case: `d(child, parent) < d(child, parent)` (the parent case) is merely
+unsatisfiable-and-flat, contributing zero gradient once past its constant margin; `d(child, parent)
+< d(child, child) = 0` (the child case) asks the model to make a distance smaller than zero — an
+impossible target that keeps pushing on every step it's sampled, not just a wasted one. Checked how
+common this actually is: **9 of 19 raw TBox rows** contain their own child somewhere in the sampled
+negatives — more common than the parent case's 7/19 — because `prepare.py`'s negative sampling
+draws from the full concept list without excluding *either* endpoint of the axiom, not just the
+parent. `fan_out_and_filter_type_rows()` now drops a row if the negative matches **either**
+endpoint; re-verified directly against the final merged file (not just the intermediate counts):
+**zero** parent-self-negatives and **zero** child-self-negatives survive, in both variants.
+
+**TBox oversampling**, computed from the real post-fix counts, per the design doc's ~1:1 target:
+type rows need an **18x** repeat (174 fanned TBox rows → 3,132, against 3,125 ABox rows); exist
+rows need **134x** (3 TBox facts → 402, against 402 ABox rows). Both logged with an explicit
+warning that they exceed the design doc's own "do not pick 50-100x in isolation" guidance — worth
+saying plainly: this reflects how small our current TBox is (23 concepts, 3 relations) relative to
+how many times each gets asserted across 250 materials, not a decision that a bigger repeat count
+is the right fix. Growing the schema (more object properties in particular — we only ever
+synthesized 3) would bring these ratios down more honestly than repeating the same 3 facts 134
+times each.
+
+**Final merged counts**: `train.jsonl` — 6,257 rows (3,125 ABox + 3,132 oversampled TBox);
+`train_exist.jsonl` — 804 rows (402 + 402). Both variants share identical TBox content and row
+counts, differing only in the ABox sentences' geometry content, exactly as designed.
+
+Neither self-negative fix touches `OnT/ont/data/prepare.py` or `load.py` — both are transformations
+this script applies on the way from the TBox's raw output into the merged file, so the vendored
+OnT code stays completely unmodified while the actual training data it will read is clean.
+
+*(Pipeline status: every stage the original spec called for — extract, verbalize, numeric, ABox
+rows, TBox schema + prep, merge — is now built, run, and verified against real output.
+`data/battgpt_merged_{full,no_geometry}/` is a complete directory `pipeline.fit()` could point at.
+What's left: an actual training run, Phase 5/5b evaluation, export, and CrystaLLM wiring — none
+started yet.)*

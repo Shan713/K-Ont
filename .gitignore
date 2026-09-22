@@ -25,6 +25,14 @@ __pycache__/
 # of what tbox/prepare.py actually produces, not just a description of it (see BUILD_LOG.md
 # Step 12). Re-review this exception if the TBox grows large enough that this stops being true.
 !/data/battgpt_ont/*.jsonl
+# data/battgpt_merged_*/ (merge_datasets.py output) mostly duplicates content already tracked
+# elsewhere: its *.jsonl is large and regenerable (already excluded above), and its copied
+# concept_names.json/role_names.json/role_inverse.json/val.json are byte-identical to the ones
+# already committed under data/battgpt_ont/ -- no reason to track the same bytes twice. Only
+# merge_summary.json (the actual counts this step produced -- oversample factors, dropped-row
+# counts) is genuinely new, so only that is kept.
+/data/battgpt_merged_*/*
+!/data/battgpt_merged_*/merge_summary.json
 export_package/
 *.pt
 *.ckpt
