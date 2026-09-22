@@ -1,0 +1,1808 @@
+{
+  "LiBiO2": {
+    "material_id": "mp-1540429",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNiO2": {
+    "material_id": "mp-2348641",
+    "n_polymorphs": 21,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiMnO2": {
+    "material_id": "mp-754656",
+    "n_polymorphs": 20,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiTiO2": {
+    "material_id": "mp-38280",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCuO2": {
+    "material_id": "mp-9158",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiVO2": {
+    "material_id": "mp-19340",
+    "n_polymorphs": 11,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiTmO2": {
+    "material_id": "mp-1176564",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCoO2": {
+    "material_id": "mp-22526",
+    "n_polymorphs": 7,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiDyO2": {
+    "material_id": "mp-976726",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiAuO2": {
+    "material_id": "mp-996959",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiAgO2": {
+    "material_id": "mp-996962",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiLaO2": {
+    "material_id": "mp-1020057",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.023029582187499287,
+    "structure_family_preview": null
+  },
+  "LiNO2": {
+    "material_id": "mp-1176591",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.11124646149999862,
+    "structure_family_preview": null
+  },
+  "LiHoO2": {
+    "material_id": "mp-12645",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiLuO2": {
+    "material_id": "mp-754605",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCO2": {
+    "material_id": "mp-1190287",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.056639609687501036,
+    "structure_family_preview": null
+  },
+  "LiSbO2": {
+    "material_id": "mp-1198780",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiTlO2": {
+    "material_id": "mp-8179",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.023439265562498868,
+    "structure_family_preview": null
+  },
+  "LiFeO2": {
+    "material_id": "mp-757614",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiInO2": {
+    "material_id": "mp-5488",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNdO2": {
+    "material_id": "mp-1222355",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.008336155312497873,
+    "structure_family_preview": null
+  },
+  "LiAlO2": {
+    "material_id": "mp-8001",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiBO2": {
+    "material_id": "mp-14232",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNbO2": {
+    "material_id": "mp-3924",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiScO2": {
+    "material_id": "mp-5840",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiGaO2": {
+    "material_id": "mp-5854",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiYO2": {
+    "material_id": "mp-7020",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiTbO2": {
+    "material_id": "mp-7137",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiSmO2": {
+    "material_id": "mp-7800",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.008716070781249918,
+    "structure_family_preview": null
+  },
+  "LiYbO2": {
+    "material_id": "mp-8390",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCeO2": {
+    "material_id": "mp-8412",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.038867507656254574,
+    "structure_family_preview": null
+  },
+  "LiPrO2": {
+    "material_id": "mp-10620",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.009265334843748363,
+    "structure_family_preview": null
+  },
+  "LiErO2": {
+    "material_id": "mp-10970",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiRhO2": {
+    "material_id": "mp-14115",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCrO2": {
+    "material_id": "mp-18793",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiMoO2": {
+    "material_id": "mp-19338",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.0325070521874995,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "LiGdO2": {
+    "material_id": "mp-21332",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiRuO2": {
+    "material_id": "mp-28254",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.10001917343750133,
+    "structure_family_preview": null
+  },
+  "LiZnO2": {
+    "material_id": "mp-760408",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.079787155,
+    "structure_family_preview": null
+  },
+  "LiZrO2": {
+    "material_id": "mp-755253",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.05577041781250358,
+    "structure_family_preview": null
+  },
+  "NaNO2": {
+    "material_id": "mp-2964",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.018363367343749992,
+    "structure_family_preview": null
+  },
+  "NaSbO2": {
+    "material_id": "mp-754368",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.0007256063749982999,
+    "structure_family_preview": null
+  },
+  "NaTiO2": {
+    "material_id": "mp-7002",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.008145459961685475,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaEuO2": {
+    "material_id": "mp-1101654",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.06462287499999952,
+    "structure_family_preview": null
+  },
+  "NaCoO2": {
+    "material_id": "mp-18921",
+    "n_polymorphs": 9,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaFeO2": {
+    "material_id": "mp-19359",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaNiO2": {
+    "material_id": "mp-19149",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaMnO2": {
+    "material_id": "mp-18957",
+    "n_polymorphs": 11,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaCuO2": {
+    "material_id": "mp-4541",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaAuO2": {
+    "material_id": "mp-997089",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Ba2NaO": {
+    "material_id": "mp-1019519",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaHoO2": {
+    "material_id": "mp-755617",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaDyO2": {
+    "material_id": "mp-752672",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCeO2": {
+    "material_id": "mp-1101668",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.051445714874276405,
+    "structure_family_preview": null
+  },
+  "NaTlO2": {
+    "material_id": "mp-3056",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaGaO2": {
+    "material_id": "mp-3338",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaAsO2": {
+    "material_id": "mp-3468",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaNbO2": {
+    "material_id": "mp-3744",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaBO2": {
+    "material_id": "mp-3889",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCO2": {
+    "material_id": "mp-4534",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.006963128177084776,
+    "structure_family_preview": null
+  },
+  "NaGdO2": {
+    "material_id": "mp-5088",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaInO2": {
+    "material_id": "mp-5175",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaErO2": {
+    "material_id": "mp-5586",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaTbO2": {
+    "material_id": "mp-6964",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaRuO2": {
+    "material_id": "mp-7240",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.09531349593750083,
+    "structure_family_preview": null
+  },
+  "NaAlO2": {
+    "material_id": "mp-9212",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaScO2": {
+    "material_id": "mp-7914",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaNdO2": {
+    "material_id": "mp-8128",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaPrO2": {
+    "material_id": "mp-8470",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaRhO2": {
+    "material_id": "mp-8830",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaVO2": {
+    "material_id": "mp-19391",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaBiO2": {
+    "material_id": "mp-22984",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaSO2": {
+    "material_id": "mp-27500",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.13768705062499542,
+    "structure_family_preview": null
+  },
+  "NaYO2": {
+    "material_id": "mp-30980",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCrO2": {
+    "material_id": "mp-578604",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "LayeredOxideStructure"
+  },
+  "NaYbO2": {
+    "material_id": "mp-752924",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaBeO2": {
+    "material_id": "mp-753443",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.12291814708333337,
+    "structure_family_preview": null
+  },
+  "NaSmO2": {
+    "material_id": "mp-754027",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaLuO2": {
+    "material_id": "mp-755311",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaAgO2": {
+    "material_id": "mp-754326",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaTmO2": {
+    "material_id": "mp-754796",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCdO2": {
+    "material_id": "mp-754567",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.028956358333334542,
+    "structure_family_preview": null
+  },
+  "NaLaO2": {
+    "material_id": "mp-755586",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaPdO2": {
+    "material_id": "mp-755378",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.07117869637499918,
+    "structure_family_preview": null
+  },
+  "Li(MoO2)2": {
+    "material_id": "mp-2764466",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.0012586058333301509,
+    "structure_family_preview": null
+  },
+  "Li(BiO2)2": {
+    "material_id": "mp-1178110",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.05514339107143229,
+    "structure_family_preview": null
+  },
+  "LiCr2O4": {
+    "material_id": "mp-774032",
+    "n_polymorphs": 10,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.023471186746034434,
+    "structure_family_preview": null
+  },
+  "LiZr2O4": {
+    "material_id": "mp-770731",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.07417819410714621,
+    "structure_family_preview": null
+  },
+  "Li(CoO2)2": {
+    "material_id": "mp-552024",
+    "n_polymorphs": 13,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.03157130339285619,
+    "structure_family_preview": null
+  },
+  "Li(FeO2)2": {
+    "material_id": "mp-25386",
+    "n_polymorphs": 9,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03237830128571595,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "LiMn2O4": {
+    "material_id": "mp-1272804",
+    "n_polymorphs": 6,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "LiTi2O4": {
+    "material_id": "mp-5670",
+    "n_polymorphs": 14,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "Li(NiO2)2": {
+    "material_id": "mp-1314210",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 6.878767857187995e-05,
+    "structure_family_preview": null
+  },
+  "Li(RuO2)2": {
+    "material_id": "mp-1193147",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.06576811553571638,
+    "structure_family_preview": null
+  },
+  "LiV2O4": {
+    "material_id": "mp-19394",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.038990511785717885,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "Li(CuO2)2": {
+    "material_id": "mp-25385",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.04258028742857345,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "LiNb2O4": {
+    "material_id": "mp-758673",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.06002521750000156,
+    "structure_family_preview": null
+  },
+  "Li2SnO4": {
+    "material_id": "mp-1222981",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08331775538095343,
+    "structure_family_preview": null
+  },
+  "Li2SO4": {
+    "material_id": "mp-4556",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Li2UO4": {
+    "material_id": "mp-9607",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Li2TeO4": {
+    "material_id": "mp-13843",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Li2WO4": {
+    "material_id": "mp-19260",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Li2CrO4": {
+    "material_id": "mp-756967",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.020319052380952662,
+    "structure_family_preview": null
+  },
+  "NaMn2O4": {
+    "material_id": "mp-542710",
+    "n_polymorphs": 11,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na(NiO2)2": {
+    "material_id": "mp-1176434",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaV2O4": {
+    "material_id": "mp-783905",
+    "n_polymorphs": 11,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.01738963234525137,
+    "structure_family_preview": null
+  },
+  "Na(BiO2)2": {
+    "material_id": "mp-777268",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.07801133267857097,
+    "structure_family_preview": null
+  },
+  "Na(FeO2)2": {
+    "material_id": "mp-759691",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03037127499999759,
+    "structure_family_preview": null
+  },
+  "NaTi2O4": {
+    "material_id": "mp-29356",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCr2O4": {
+    "material_id": "mp-759090",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.0370300847619065,
+    "structure_family_preview": null
+  },
+  "Na(AuO2)2": {
+    "material_id": "mp-1147644",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08183371107142623,
+    "structure_family_preview": null
+  },
+  "Na(RuO2)2": {
+    "material_id": "mp-1193175",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.01098076232143086,
+    "structure_family_preview": null
+  },
+  "NaNb2O4": {
+    "material_id": "mp-760991",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.018472754683987347,
+    "structure_family_preview": null
+  },
+  "Na(CoO2)2": {
+    "material_id": "mp-22474",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na(RhO2)2": {
+    "material_id": "mp-542675",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na(SnO2)2": {
+    "material_id": "mp-756229",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08821036776785451,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "Na2MoO4": {
+    "material_id": "mp-18852",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "Na2OsO4": {
+    "material_id": "mp-1190635",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2VO4": {
+    "material_id": "mp-1194140",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.11587940214285553,
+    "structure_family_preview": null
+  },
+  "Na2SO4": {
+    "material_id": "mp-4770",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2SeO4": {
+    "material_id": "mp-5141",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2UO4": {
+    "material_id": "mp-554191",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2CrO4": {
+    "material_id": "mp-18779",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2WO4": {
+    "material_id": "mp-18803",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "SpinelStructure"
+  },
+  "Na2FeO4": {
+    "material_id": "mp-19044",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.07074208214285793,
+    "structure_family_preview": null
+  },
+  "Na2TeO4": {
+    "material_id": "mp-27537",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2MnO4": {
+    "material_id": "mp-28186",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.08381894448979654,
+    "structure_family_preview": null
+  },
+  "Na4I2O": {
+    "material_id": "mp-22937",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.07867771142857238,
+    "structure_family_preview": null
+  },
+  "Na4Br2O": {
+    "material_id": "mp-28599",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.1339747485714291,
+    "structure_family_preview": null
+  },
+  "LiSbO3": {
+    "material_id": "mp-4995",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNbO3": {
+    "material_id": "mp-3731",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiTcO3": {
+    "material_id": "mp-862870",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.06527020858333277,
+    "structure_family_preview": null
+  },
+  "LiOsO3": {
+    "material_id": "mp-1078358",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiTaO3": {
+    "material_id": "mp-3666",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiVO3": {
+    "material_id": "mp-19373",
+    "n_polymorphs": 6,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiPaO3": {
+    "material_id": "mp-1185263",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiAcO3": {
+    "material_id": "mp-1185297",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.12925668721428352,
+    "structure_family_preview": null
+  },
+  "LiUO3": {
+    "material_id": "mp-8007",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNO3": {
+    "material_id": "mp-8180",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiReO3": {
+    "material_id": "mp-8189",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.07505348100000564,
+    "structure_family_preview": null
+  },
+  "LiAsO3": {
+    "material_id": "mp-9657",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiIO3": {
+    "material_id": "mp-23384",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiBiO3": {
+    "material_id": "mp-29077",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiFeO3": {
+    "material_id": "mp-752521",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.1473070441000015,
+    "structure_family_preview": null
+  },
+  "LiTeO3": {
+    "material_id": "mp-755231",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.06271661574999232,
+    "structure_family_preview": null
+  },
+  "Li3BrO": {
+    "material_id": "mp-28593",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.1438639799999999,
+    "structure_family_preview": null
+  },
+  "NaNO3": {
+    "material_id": "mp-2767672",
+    "n_polymorphs": 6,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaNbO3": {
+    "material_id": "mp-4514",
+    "n_polymorphs": 15,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaClO3": {
+    "material_id": "mp-2720358",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.02988563774999964,
+    "structure_family_preview": null
+  },
+  "NaPO3": {
+    "material_id": "mp-864891",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaPaO3": {
+    "material_id": "mp-865120",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaReO3": {
+    "material_id": "mp-976923",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.041938695599998965,
+    "structure_family_preview": null
+  },
+  "NaPuO3": {
+    "material_id": "mp-976952",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaRuO3": {
+    "material_id": "mp-977107",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08907671737500067,
+    "structure_family_preview": null
+  },
+  "NaTeO3": {
+    "material_id": "mp-977117",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.13266531606249998,
+    "structure_family_preview": null
+  },
+  "NaTiO3": {
+    "material_id": "mp-977123",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08842447607143011,
+    "structure_family_preview": "PerovskiteStructure"
+  },
+  "NaTcO3": {
+    "material_id": "mp-977176",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaOsO3": {
+    "material_id": "mp-1105218",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaMoO3": {
+    "material_id": "mp-998627",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08824383200000163,
+    "structure_family_preview": null
+  },
+  "NaIrO3": {
+    "material_id": "mp-1079568",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaVO3": {
+    "material_id": "mp-19083",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCO3": {
+    "material_id": "mp-1120755",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaFeO3": {
+    "material_id": "mp-754915",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.05521626299999838,
+    "structure_family_preview": null
+  },
+  "NaBrO3": {
+    "material_id": "mp-23339",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaTaO3": {
+    "material_id": "mp-3858",
+    "n_polymorphs": 6,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "PerovskiteStructure"
+  },
+  "NaSbO3": {
+    "material_id": "mp-4482",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaUO3": {
+    "material_id": "mp-5788",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaAsO3": {
+    "material_id": "mp-17868",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaWO3": {
+    "material_id": "mp-19328",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.05530045630435243,
+    "structure_family_preview": "PerovskiteStructure"
+  },
+  "NaIO3": {
+    "material_id": "mp-22989",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaBiO3": {
+    "material_id": "mp-23054",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaSeO3": {
+    "material_id": "mp-728664",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.07409265074999638,
+    "structure_family_preview": null
+  },
+  "Na3IO": {
+    "material_id": "mp-769398",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.05914405533333067,
+    "structure_family_preview": null
+  },
+  "Na3BrO": {
+    "material_id": "mp-985586",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.08039890399999905,
+    "structure_family_preview": null
+  },
+  "Na3ClO": {
+    "material_id": "mp-28602",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.12063999999999986,
+    "structure_family_preview": null
+  },
+  "LiCoPO4": {
+    "material_id": "mp-758022",
+    "n_polymorphs": 38,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiFePO4": {
+    "material_id": "mp-19017",
+    "n_polymorphs": 41,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "LiNiPO4": {
+    "material_id": "mp-22417",
+    "n_polymorphs": 38,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "LiMnPO4": {
+    "material_id": "mp-18997",
+    "n_polymorphs": 48,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "LiCrPO4": {
+    "material_id": "mp-25447",
+    "n_polymorphs": 18,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.005038788839279107,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "LiCuPO4": {
+    "material_id": "mp-504264",
+    "n_polymorphs": 32,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03889294678571087,
+    "structure_family_preview": null
+  },
+  "LiVPO4": {
+    "material_id": "mp-26127",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "SrLiPO4": {
+    "material_id": "mp-1208633",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.023669295476190122,
+    "structure_family_preview": null
+  },
+  "LiCdPO4": {
+    "material_id": "mp-556786",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.00038240757936858216,
+    "structure_family_preview": null
+  },
+  "LiMgPO4": {
+    "material_id": "mp-9625",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "LiSnPO4": {
+    "material_id": "mp-26299",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.016397842023806675,
+    "structure_family_preview": null
+  },
+  "LiZnPO4": {
+    "material_id": "mp-559934",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaMnPO4": {
+    "material_id": "mp-775855",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "NaCoPO4": {
+    "material_id": "mp-562796",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaNiPO4": {
+    "material_id": "mp-776388",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "NaCdPO4": {
+    "material_id": "mp-6684",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaFePO4": {
+    "material_id": "mp-19226",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "OlivineStructure"
+  },
+  "NaSrPO4": {
+    "material_id": "mp-1210115",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "BaNaPO4": {
+    "material_id": "mp-1227883",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaHgPO4": {
+    "material_id": "mp-8153",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "NaCuPO4": {
+    "material_id": "mp-581303",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.018569355357146655,
+    "structure_family_preview": null
+  },
+  "NaZnPO4": {
+    "material_id": "mp-558237",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Li2Fe3(PO4)3": {
+    "material_id": "mp-771770",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.06634135387499906,
+    "structure_family_preview": null
+  },
+  "Li2Mn3(PO4)3": {
+    "material_id": "mp-778864",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03963854550000878,
+    "structure_family_preview": null
+  },
+  "Li2V3(PO4)3": {
+    "material_id": "mp-772292",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.059564821160257075,
+    "structure_family_preview": null
+  },
+  "Li3Co2(PO4)3": {
+    "material_id": "mp-773159",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.09446371899999662,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3V2(PO4)3": {
+    "material_id": "mp-705293",
+    "n_polymorphs": 6,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.025548431500006963,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3Cr2(PO4)3": {
+    "material_id": "mp-780606",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3Sb2(PO4)3": {
+    "material_id": "mp-761135",
+    "n_polymorphs": 5,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.05670939075000625,
+    "structure_family_preview": null
+  },
+  "Li3Fe2(PO4)3": {
+    "material_id": "mp-19430",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.010260171749999714,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3Ti2(PO4)3": {
+    "material_id": "mp-776625",
+    "n_polymorphs": 8,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.06374680385714449,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3P3(WO6)2": {
+    "material_id": "mp-777465",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03637096287499997,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3Mn2(PO4)3": {
+    "material_id": "mp-26367",
+    "n_polymorphs": 6,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.0234020634999883,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3In2(PO4)3": {
+    "material_id": "mp-6425",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Li3Ni2(PO4)3": {
+    "material_id": "mp-26275",
+    "n_polymorphs": 3,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.061836366458335235,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3Bi2(PO4)3": {
+    "material_id": "mp-25929",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03991689024999712,
+    "structure_family_preview": null
+  },
+  "Li3Mo2(PO4)3": {
+    "material_id": "mp-27003",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li3Sn2(PO4)3": {
+    "material_id": "mp-585408",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.04756222958333023,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Na2Mn3(PO4)3": {
+    "material_id": "mp-1210501",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na2Fe3(PO4)3": {
+    "material_id": "mp-558822",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.009357669208323038,
+    "structure_family_preview": null
+  },
+  "Na3V2(PO4)3": {
+    "material_id": "mp-776557",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Na3Sc2(PO4)3": {
+    "material_id": "mp-16956",
+    "n_polymorphs": 4,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na3Cr2(PO4)3": {
+    "material_id": "mp-1221294",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Na3In2(PO4)3": {
+    "material_id": "mp-17349",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "Na3Fe2(PO4)3": {
+    "material_id": "mp-556984",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.0025712747500001853,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Na3Ti2(PO4)3": {
+    "material_id": "mp-761046",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.057389009243145495,
+    "structure_family_preview": "NASICONStructure"
+  },
+  "Li7Si2(NiO4)3": {
+    "material_id": "mp-1640236",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.060485260000000984,
+    "structure_family_preview": null
+  },
+  "Li7Mn2(CoO4)3": {
+    "material_id": "mp-1174467",
+    "n_polymorphs": 189,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.03260042375000083,
+    "structure_family_preview": null
+  },
+  "Li7Fe3(SiO6)2": {
+    "material_id": "mp-753111",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.07867484885416687,
+    "structure_family_preview": null
+  },
+  "Li7Ti3(SiO6)2": {
+    "material_id": "mp-766202",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.07470352020833282,
+    "structure_family_preview": null
+  },
+  "Li7Mn3(SiO6)2": {
+    "material_id": "mp-767011",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.09563586619792108,
+    "structure_family_preview": null
+  },
+  "Li6PS5I": {
+    "material_id": "mp-950995",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "experimentally verified (ICSD-matched), lowest E_above_hull among those",
+    "energy_above_hull": 0.0021249259615379046,
+    "structure_family_preview": "ArgyroditeStructure"
+  },
+  "Li6PS5Br": {
+    "material_id": "mp-985591",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.05050810173076847,
+    "structure_family_preview": "ArgyroditeStructure"
+  },
+  "Li6PS5Cl": {
+    "material_id": "mp-985592",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "lowest E_above_hull (all entries theoretical-only)",
+    "energy_above_hull": 0.0829463015384615,
+    "structure_family_preview": "ArgyroditeStructure"
+  },
+  "Li6AsS5I": {
+    "material_id": "mp-1222482",
+    "n_polymorphs": 2,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiV(OF)2": {
+    "material_id": "mp-1539853",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiVF6": {
+    "material_id": "mp-2710677",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCu2F7": {
+    "material_id": "mp-2759992",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNi3O4": {
+    "material_id": "mp-2760269",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiMo6Cl13": {
+    "material_id": "mp-2767670",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiBi3(BrO2)2": {
+    "material_id": "mp-768150",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNb(OF)2": {
+    "material_id": "mp-769319",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCr(CO3)2": {
+    "material_id": "mp-770839",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiMnNbO4": {
+    "material_id": "mp-771705",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiTiVO4": {
+    "material_id": "mp-772042",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiAgO": {
+    "material_id": "mp-772290",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiCoSbO4": {
+    "material_id": "mp-773085",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiTe(H3N)4": {
+    "material_id": "mp-773582",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "KLiZnS2": {
+    "material_id": "mp-774907",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiFeSbO4": {
+    "material_id": "mp-774920",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiBi3(IO2)2": {
+    "material_id": "mp-775430",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiFeBO3": {
+    "material_id": "mp-777049",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiVSnO4": {
+    "material_id": "mp-850189",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiAgF6": {
+    "material_id": "mp-859118",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiSc2Ir": {
+    "material_id": "mp-861616",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiLaHg2": {
+    "material_id": "mp-861624",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiZnAg2": {
+    "material_id": "mp-861625",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiMnPd2": {
+    "material_id": "mp-861629",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiMnPt2": {
+    "material_id": "mp-861658",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiNdHg2": {
+    "material_id": "mp-861660",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiRh2Pb": {
+    "material_id": "mp-861663",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiRu2W": {
+    "material_id": "mp-861666",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  },
+  "LiSbRh2": {
+    "material_id": "mp-861667",
+    "n_polymorphs": 1,
+    "polymorph_choice_reason": "on convex hull (is_stable)",
+    "energy_above_hull": 0.0,
+    "structure_family_preview": null
+  }
+}

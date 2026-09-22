@@ -143,4 +143,108 @@ we never force a guess onto ambiguous data. Code:
 [`pipeline/processing/structure_family_mapper.py`](../../pipeline/processing/structure_family_mapper.py)
 (in the main `battGPT` repo, not this one — that's where the ontology-population pipeline lives).
 
-*(Next entry: testing the classifier against real materials, then the actual population run.)*
+## Step 4 — Tested the classifier, found and fixed a real bug, then found a real MP data quirk
+
+**Unit tests first.** Before touching real data we ran 14 synthetic test cases (a `MaterialRecord`
+with a made-up composition + space group, checked against the expected label) through the new
+code. Three failed: the layered-oxide / rock-salt branch. The bug was arithmetic — for one alkali
+atom + one metal atom + two oxygens, the ratio of oxygen to total cations is `2 / (1+1) = 1.0`, and
+the code had `2.0` written instead. Fixed, re-ran, all 14 pass, plus a regression check that the
+original 12 curated formulas still classify exactly as before (unaffected by the new code).
+
+**Then live data, and a second, more interesting problem.** We picked two real battery-relevant
+compounds the classifier had never seen (`LiCoPO4` — textbook olivine; `LiTi2O4` — textbook spinel)
+and fetched them from the live Materials Project API. Both initially came back **unclassified**.
+
+The reason isn't a classifier bug — it's about *which* Materials Project entry we used. A single
+formula like `LiCoPO4` has **20 different entries** in Materials Project, one per DFT-computed
+polymorph (different atomic arrangement, same formula). We were picking the one with the lowest
+computed energy — which turned out to be a low-symmetry, purely computational structure
+(`theoretical=True`, space group `Cc`), not the real, experimentally-known olivine structure.
+
+The fix: Materials Project tags each entry with `theoretical` — `False` means the structure matches
+a real measurement in an experimental database (ICSD), not just a DFT relaxation. Battery cathode
+materials are very often a few meV/atom *above* MP's computed 0-Kelvin energy minimum (that's
+normal — the true lowest-energy arrangement at absolute zero isn't always what forms and stays
+stable at room temperature), so picking "lowest energy" alone can walk right past the real material
+toward a synthetic DFT artifact. We now pick, in order: (1) on the hull (`is_stable=True`), else
+(2) the lowest-energy entry that's experimentally verified (`theoretical=False`), else (3) lowest
+energy overall, else (4) whatever comes back. With that fix, both compounds classify correctly:
+`LiCoPO4` → olivine (Pnma, #62, the real ICSD-matched entry), `LiTi2O4` → spinel (Fd-3m, #227, its
+one stable entry). This refines the original design doc's simpler rule (§10.1: "prefer `isStable`,
+else lowest energy above hull, else first") — same idea, one more tier, empirically motivated.
+
+## Step 5 — Found a much better way to search, then a duplication bug, then ran the population
+
+**First attempt at search, and why we changed it.** The first version searched Materials Project
+by *element set* — "give me every compound containing lithium, cobalt, and oxygen." That pulls
+back the **entire Li-Co-O phase diagram**: LiCoO₂ (the one we want), but also Li₂CoO₃, LiCo₂O₄,
+Co₃O₄, and every other stoichiometry that phase diagram happens to contain. Only about 18% of what
+came back matched any of our 9 structure-family ratios — not because the classifier was wrong, but
+because we were asking a question one level too broad.
+
+**The fix:** Materials Project can also be searched by *shape* — a "1 atom : 1 atom : 2 atoms"
+ratio pattern, independent of which actual elements fill those slots (it calls this an "anonymous
+formula", e.g. `ABC2`). We found the exact pattern string for each of our 9 families by asking MP
+what pattern our own curated examples already use (`LiCoO2` → `ABC2`, `LiMn2O4` → `AB2C4`,
+`LiFePO4` → `ABCD4`, `Na3V2(PO4)3` → `A2B3C3D12`, ...) instead of guessing the notation. Combining
+"this exact ratio" with "must contain lithium/sodium and oxygen" gets almost only compounds that
+are *candidates* for that family in one search — cutting the total number of searches from ~58 to
+13, and roughly doubling the useful fraction of hits. The garnet search stayed low-yield even so
+(194 hits, ~0 real garnets) because a stuffed-garnet ratio without also requiring the specific
+lanthanide+zirconium chemistry pulls in unrelated compounds that just happen to share the ratio —
+the classifier correctly rejects those (no lanthanide, no garnet label), which is working as
+intended, not a search failure.
+
+**A real duplication bug, caught before it reached the KG.** Ten of the newly found formulas
+turned out to already be in our hand-curated set — but the search sometimes picked a *different*
+Materials Project entry for the same formula (e.g. curated `LiMn2O4` is `mp-22584`; the search's
+own polymorph-selection independently landed on `mp-1272804`, a different structure with the same
+formula). Left unfixed, the KG would have had two separate "LiMn2O4" materials under two different
+URIs, silently duplicating a material we'd already verified by hand. Fixed by checking every new
+candidate's formula against the curated set before adding it, and dropping it if already covered —
+we always keep the hand-verified id, never a second one.
+
+**The final population run.** `scripts/populate_kg_ont.py` (in the `battGPT` repo) ties this
+together: run the searches, classify each candidate, always keep the curated 22, add every newly
+*classified* material, then fill up to the cap with the rest (closest-to-stable first), and run
+each through the same five enrichment steps `scripts/build_kg.py` already uses (Pymatgen structure
++ bonding, SMACT chemical sanity check, BattINFO role, structure family, electrochemistry) before
+building, validating, and exporting the graph. Nothing about the existing pipeline changed — this
+script only decides *which* material_ids to feed it.
+
+**Results.** The run ingested all 250 selected materials successfully (0 failures), built
+325,138 RDF triples (that includes the ~61,600-triple EMMO background closure every export
+carries so the file is readable standalone — the material-specific content is ~263,500 triples),
+and **passed the ontology's own validator with 0 errors and 0 warnings**. Output:
+`output/battgpt_kg_ont/` in the `battGPT` repo (not committed there — same as the existing
+`battgpt_kg`/`battgpt_kg_cathodes` outputs, it's regenerable from `scripts/populate_kg_ont.py`
+and would add >100MB to that repo for no reason).
+
+| | Before (curated only) | After this run |
+|---|---|---|
+| Total materials | 22 | **250** |
+| With a `StructureFamily` label | 12 | **55** |
+| With a `belongsToElectrode` battery role | ~10 | **105** |
+
+Structure-family breakdown (55 total — LayeredOxide 16, NASICON 14, Spinel 9, Olivine 8,
+Perovskite 3, Argyrodite 3, Garnet 1, LGPS-type 1): the ratio-pattern searches were most
+productive for the oxide and phosphate families (plenty of real candidates share those ratios),
+thinnest for garnet and LGPS-type (those really are rare, narrow chemistries — 1 example of each
+beyond the curated set is an honest reflection of how few real compounds fit that recipe, not a
+search failure). We verified one heuristically-classified material by hand,
+[`mp-5670`](https://materialsproject.org/materials/mp-5670) (LiTi₂O₄), by reading its actual
+exported RDF: correctly typed `chsub:Substance`, correctly given `NegativeElectrodeRole` (from the
+*existing*, untouched battery-role heuristic — Ti+O anode rule), correctly given
+`SpinelStructureIndividual` with the comment *"O:cation ratio 1.33 matches the spinel AB2O4
+framework (~1.33) and space group #227 (Fd-3m)"* — exactly the reasoning we designed, visible
+directly in the graph for anyone to check.
+
+The other 195 materials carry no structure-family label — real chemistry, real crystal/site/bond
+data, real DFT properties, just typed at the generic `chsub:Substance` level because no rule
+matched their ratio+symmetry combination. That's the honest outcome, not a shortfall to fix: we
+chose not to guess (Step 3's whole point), and 195 "just substances" is exactly what "don't guess"
+looks like at this scale.
+
+*(Next entry: building the actual OnT ABox extraction pipeline — extractor, verbalizer, numeric
+export, row generation — now that we have a KG worth extracting from.)*
