@@ -7,3 +7,5 @@
 #   python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 rdflib>=7.0        # parse battery_kg.ttl
+tokenizers>=0.19   # real MiniLM token-length validation (abox/verbalize.py output), no torch needed
+huggingface_hub>=0.24  # downloads the tokenizer.json for the above

@@ -296,5 +296,54 @@ link resolved correctly, values match what we already hand-verified in the raw R
    guard (e.g. drop-if-out-of-physical-range) before computing a column's mean/std, or six bad
    values will drag the whole column's scale off for every other material too.
 
-*(Next entry: the verbalizer — turning entities.json into the actual V(a) sentences, in both the
-all-literals and geometry-omitted variants we agreed on.)*
+## Step 8 — Built the verbalizer: `entities.json` → V(a) sentences, two variants
+
+[`abox/verbalize.py`](../abox/verbalize.py) turns each material, crystal, and element into a
+labelled-field English sentence, in the two variants we agreed on:
+
+- **`full`** — every field, including 3D geometry (lattice, volume, density, a compact per-element
+  site count like `Sites: 28 (Li:4, P:4, O:16, Fe:4)` instead of listing all 28, mostly-repeated,
+  symbols one by one).
+- **`no_geometry`** — the same sentence with the geometry block removed entirely (not just the
+  numeric side-channel, which doesn't exist yet — the sentence itself never mentions it).
+
+**What stays in *both* variants, and why:** formula, chemical system, structure family, battery
+role, metallic/stable flags, band gap, formation energy, energy above hull, Fermi energy, total
+magnetization, bulk/shear modulus, Poisson ratio, open-circuit voltage, specific capacity, space
+group, crystal system. Space group and crystal system are symmetry *labels*, not coordinates —
+CrystaLLM's own prompt format already accepts a target space group directly
+(`bin/make_prompt_file.py --spacegroup`), so stating it in the sentence isn't handing over anything
+CrystaLLM couldn't already be told. Bond distances are left out of *both* variants outright — some
+crystals carry ~80 bonds (Step 7), and the spec itself says to omit a bond list when it would be
+long rather than force it in.
+
+**The elastic-modulus outlier guard from Step 7 is applied here too, and we watched it work**:
+`mp-5670`'s bulk/shear modulus (the −4729.5 GPa one) are silently absent from its sentence, exactly
+as designed — no "Bulk modulus: -4729.5 GPa" line ever gets written, in either variant.
+
+**Crystals borrow their property-tier facts from the owning material** (band gap, formation
+energy only — a *smaller* set than the material's own sentence, just enough to tell crystals apart
+for the `hasStructure` ranking task without turning V(crystal) into a full restatement of
+V(material), which the original caveat about "the material-to-crystal link being too easy" already
+flagged as a risk to control).
+
+**Another doc-staleness catch**: `ONT_ABOX_EXTENSION.md`'s own element template (§7) includes
+"Atomic number: 3" — checked the ontology directly and `hasAtomicNumber` exists as a predicate
+(inherited from the EMMO chemical-substance import) but the population pipeline never actually
+writes it onto any element individual in the real KG. We verbalize elements from the 6 fields that
+really are there (group, period, electronegativity, valence electrons, atomic mass, covalent
+radius) rather than inventing the seventh.
+
+**Checked against OnT's real token budget, not assumed.** Downloaded the actual
+`sentence-transformers/all-MiniLM-L12-v2` tokenizer and measured every one of the 1,075
+verbalizations produced (250 materials × 2 variants, 250 crystals × 2 variants, 75 elements).
+Zero go over 256 tokens; the longest is a material `full` sentence at 245/256 (a NASICON formula
+with a long chemical system name eating extra tokens for the parentheses). One gotcha worth
+flagging for whoever runs training later: the tokenizer's *own* bundled config truncates at 128 by
+default — OnT only gets the full 256 because `ont/hit.py` explicitly re-wraps it with
+`max_seq_length=256`. Construct the tokenizer some other way (e.g. testing it standalone) and it
+will silently cut sentences off a third of the way through instead.
+
+*(Next entry: the numeric module — the float side-channel `x`, with the outlier guard extended
+from text into scaling, and the property-vs-geometry split carried into which columns exist at
+all.)*
