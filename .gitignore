@@ -20,6 +20,11 @@ __pycache__/
 /data/battgpt_abox/
 *.jsonl
 !examples/*.jsonl
+# data/battgpt_ont/ is the TBox's *.jsonl output (train.jsonl etc.) -- unlike the bulk ABox
+# output above, this is tiny (a few KB, ~19 rows today) and kept as concrete, committed evidence
+# of what tbox/prepare.py actually produces, not just a description of it (see BUILD_LOG.md
+# Step 12). Re-review this exception if the TBox grows large enough that this stops being true.
+!/data/battgpt_ont/*.jsonl
 export_package/
 *.pt
 *.ckpt
