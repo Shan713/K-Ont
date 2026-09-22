@@ -344,6 +344,59 @@ default — OnT only gets the full 256 because `ont/hit.py` explicitly re-wraps 
 `max_seq_length=256`. Construct the tokenizer some other way (e.g. testing it standalone) and it
 will silently cut sentences off a third of the way through instead.
 
-*(Next entry: the numeric module — the float side-channel `x`, with the outlier guard extended
-from text into scaling, and the property-vs-geometry split carried into which columns exist at
-all.)*
+## Step 9 — Built the numeric module: the float side-channel `x`
+
+[`abox/numeric.py`](../abox/numeric.py) builds the real-number vector `x` that gets glued onto
+OnT's text encoding *after* training (`z = concat(v, x)` — not yet; that's the export step, once
+OnT is actually trained). This step only produces `x` itself: raw values, z-scored values, and the
+scaler (mean/std per column) that produced them, in the same `full` / `no_geometry` variants as the
+verbalizer, sharing the same PROPERTY-vs-GEOMETRY split.
+
+**The missing-data rule is measured, not asserted.** The spec (§8.2) says: a column missing on
+over half the population gets *dropped* entirely (not zero-filled — a linear projection can't
+tell "really zero" from "we don't know," so a mostly-missing column filled with 0 would look like
+a real, confident low value to everything downstream); a column missing on under half keeps a
+companion 0/1 "was this real" flag instead. Rather than hand-declare which columns fail that test
+from what we already knew from Step 7's presence scan, the code *measures* each candidate column's
+real missing fraction against the actual 250 materials and decides from that — so this keeps
+working correctly if the underlying data's coverage ever changes, instead of silently going stale.
+
+Measured and dropped: `bulk_modulus` (77% missing), `shear_modulus` (78%), `poisson_ratio` (78%),
+`open_circuit_voltage` (96%), `specific_capacity` (96%). Measured and kept-with-a-mask:
+`is_theoretical` (6% missing — mostly present, gets a companion `is_theoretical_known` column).
+Everything else (band gap, formation energy, energy above hull, Fermi energy, magnetization,
+metallic/stable/gap-direct flags, and — `full` variant only — the full lattice/volume/density/site
+count) is 0% missing across all 250 and kept outright. Final column count: **19 for `full`, 10 for
+`no_geometry`**.
+
+**The two dropped-for-being-96%-missing columns are exactly the two values this project cares
+about most** (open-circuit voltage, specific capacity — real electrode data, not computed DFT
+properties). Applying the spec's own rule honestly means they can't sit in the main, dense `x`
+vector next to columns that are 100% real for every material — but throwing them away entirely
+felt like the wrong call given why we're building this at all. They're written to a **separate**
+file, [`battery_cell_features.json`](../abox/numeric.py) — the same 10 materials that have real
+electrode data (Step 1: only the original cathode test set does; the live Materials Project
+ingestion path this population run used never fetches insertion-electrode data), openly sparse,
+not pretending to be anything else. Whichever future step builds CrystaLLM's export can decide
+whether/how to use it — this module's job was to report what's really there, not make that call.
+
+**Verified by hand, not just by the log lines.** Picked `mp-5670` (the material whose bulk/shear
+modulus we already know are garbage — Step 7) and printed its entire 19-value vector: those two
+columns are simply absent, exactly as designed. Picked one of the 16 materials genuinely missing
+`is_theoretical` (`mp-1143`) and confirmed its `is_theoretical` reads `0.0` *and*
+`is_theoretical_known` reads `0.0` — the mask correctly says "don't trust this one," rather than
+silently agreeing with the 234 materials that really are `0.0` (not theoretical). Recomputed one
+column's mean and standard deviation independently (plain Python, not reusing the module's own
+math) and it matched the scaler's stored values exactly. Checked for `NaN`/`inf` across all 500
+material x variant vectors (250 materials x 2 variants): zero.
+
+**One placeholder, flagged for later, not hidden:** the scaler is fit on all 250 materials, because
+we don't have a train/test split yet — that needs more materials than we're confident classifying
+today, and is a Phase 5 concern (evaluation), not this step's. The `Scaler` class takes an explicit
+list of which material ids to fit on, so switching to a real train-only split later is a one-line
+change, not a redesign — but it *is* currently fit on everything, and that's worth remembering
+before trusting any number this scaler produces as if it came from a proper train/test split.
+
+*(Next entry: the row generator — entities.json + verbalizations -> the actual train.jsonl /
+train_exist.jsonl files OnT reads, in the real {child, parent, negative} / {Concept, role, con}
+format from Step 2, one row per negative.)*
