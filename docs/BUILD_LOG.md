@@ -246,5 +246,55 @@ matched their ratio+symmetry combination. That's the honest outcome, not a short
 chose not to guess (Step 3's whole point), and 195 "just substances" is exactly what "don't guess"
 looks like at this scale.
 
-*(Next entry: building the actual OnT ABox extraction pipeline — extractor, verbalizer, numeric
-export, row generation — now that we have a KG worth extracting from.)*
+## Step 7 — Built the extractor: KG → `entities.json`
+
+[`abox/extract.py`](../abox/extract.py) reads `battery_kg.ttl` once with `rdflib` and writes a
+plain, structured `entities.json`: one section per entity type (materials, crystals, unit cells,
+sites, species, elements, space groups, crystal systems, battery cells), each keyed by the short
+id the KG's own URIs already use (e.g. `material/mp-5670`), with every cross-reference (a
+material's crystal, a site's species, a species' element, ...) resolved to another key in the same
+file — so the next stage never has to touch RDF again, just follow plain dictionary lookups.
+
+**Two deliberate deviations from `ONT_ABOX_EXTENSION.md`'s Phase 1**, both explained inline in the
+script's own docstring, not just here:
+- The spec put this script inside the vendored `OnT/` checkout. We didn't — `OnT/` is a
+  gitignored, third-party clone (Step 1); our own code has no reason to live inside it, where it
+  would never even be committed. It lives in `K-Ont/abox/` instead.
+- The spec worried about streaming a 9.6M-line TTL "block-wise" because that's too big to load
+  directly. Our real KG is 325K triples / 21MB — `rdflib.Graph().parse()` loads the whole thing in
+  about 9 seconds, no streaming needed. (If the KG grows enough that this stops being true, *that*
+  future point is when to revisit it — not now, speculatively.)
+
+**Read the output by eye**, per the spec's own advice, rather than trusting the row counts alone —
+walked one material (`mp-5670`, LiTi₂O₄) all the way down: material → its crystal → its unit cell →
+one of its sites → that site's species → that species' element → the crystal's space group. Every
+link resolved correctly, values match what we already hand-verified in the raw RDF back in Step 6.
+
+**That check caught two real things:**
+
+1. **A labelling bug, same shape as one already known.** Coordination-geometry individuals are
+   named `"TetrahedralGeometryIndividual"` in the ontology itself — same `...Individual` suffix
+   convention as the `StructureFamily`/`BatteryRole` individuals we already had to strip a suffix
+   from. First pass forgot to do it here too. Fixed the same way, all three now read cleanly
+   ("Tetrahedral", "SpinelStructure", "PositiveElectrode") instead of with the suffix attached.
+
+2. **A real, pre-existing data-quality issue in Materials Project itself — not our bug, but worth
+   knowing about before it reaches the numeric channel.** `mp-5670`'s `bulk_modulus` came back as
+   **−4729.5 GPa**. Real bulk moduli are positive and, for even the stiffest known solids (diamond),
+   don't exceed ~450 GPa. We checked the *raw* Materials Project API response directly (not our
+   pipeline's transform of it) — it really does say `{'voigt': -9607, 'reuss': 148, 'vrh': -4729.5}`.
+   This is a known MP phenomenon: for some materials the elastic-tensor fit is numerically
+   ill-conditioned (often high-symmetry or soft-phonon materials), so the Voigt average comes out
+   badly wrong while the Reuss average looks fine, and the VRH value we store is their mean —
+   wrong in, wrong out. We scanned all 250 materials for implausible values across every property:
+   band gap and energy-above-hull (the two properties battery relevance actually turns on) are
+   **completely clean across all 250** — this only affects the elastic-property columns
+   (`bulk_modulus`, `shear_modulus`, `universal_anisotropy`, `poisson_ratio`), and only on
+   **6 of 250 materials** (`mp-5670`, `mp-25385`, `mp-48`, `mp-861667`, `mp-985591`, `mp-985592`).
+   Noted for the numeric-scaling stage (not fixed here — the extractor's job is to report what's
+   really in the KG, not to editorialize it): those four columns need an outlier
+   guard (e.g. drop-if-out-of-physical-range) before computing a column's mean/std, or six bad
+   values will drag the whole column's scale off for every other material too.
+
+*(Next entry: the verbalizer — turning entities.json into the actual V(a) sentences, in both the
+all-literals and geometry-omitted variants we agreed on.)*

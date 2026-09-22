@@ -1,0 +1,9 @@
+# K-Ont's own environment -- separate from battGPT/battinfo/battinfo/.venv (which builds the KG)
+# and from OnT/CrystaLLM's own dependencies (which we don't touch -- see their own requirements
+# when we get to training/generation). This one is for the ABox extraction pipeline that turns
+# the populated KG into OnT training rows.
+#
+# Setup:
+#   python3.11 -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+rdflib>=7.0        # parse battery_kg.ttl
