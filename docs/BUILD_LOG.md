@@ -459,6 +459,59 @@ guessing a better ratio.
 class-hierarchy rows and TBox oversampling (design doc Phases 3–4) needs DeepOnto, the ontology's
 OWL API, and a small extracted schema file, none of which exist in this repo yet.
 
-*(Next entry: TBox prep — extracting a small schema OWL file from `battgpt.ttl` and getting
-DeepOnto running, so the ABox rows above have real TBox class rows to merge with instead of the
-plain-English placeholder class labels used so far.)*
+## Step 11 — Built the tiny TBox schema OWL
+
+[`tbox/build_schema.py`](../tbox/build_schema.py) generates `data/battgpt_tbox.owl`: the small,
+self-contained class/property file OnT's own `prepare_ontology_data()` (in the vendored `OnT/`
+checkout — this step runs OnT's real code, we don't reimplement DeepOnto verbalization ourselves)
+reads via DeepOnto. 23 classes, 3 object properties, 19 `subClassOf` axioms, **zero
+`owl:imports`**, 82 triples total.
+
+**Why zero imports isn't just a size preference — checked what actually happens if you don't
+follow it.** Read the real code (`OnT/ont/data/prepare.py`,
+`ELNormalizedData.create_dataset`): `for ont_in_closure in ont.owl_onto.getImportsClosure():
+axioms.extend(...)`. It walks *every* axiom in the full imports closure, not just the file it's
+handed. One `owl:imports` pointing at even one of `battgpt.ttl`'s own imports (EMMO alone is tens
+of thousands of axioms) means DeepOnto verbalizes and OnT tries to train on all of it. There's no
+partial-import option here — the only way to keep this tiny is to import nothing, exactly the
+design doc's own instruction (pitfall #1), now understood from the code, not just followed on
+faith. `build_schema.py` asserts this at the end of every run (`assert not imports`) rather than
+just hoping it stays true.
+
+**Reused the real IRIs the ABox already types things with**, checked directly with rdflib against
+`battgpt.ttl` (queried the actual `rdfs:subClassOf`/`rdfs:domain`/`rdfs:range`/`rdfs:label` triples
+rather than recalling them from memory) — so a class in this tiny file and an `rdf:type` in the
+KG provably refer to the same concept. Two classes needed a label added here that they don't carry
+in `battgpt.ttl` itself (`ChemicalSubstance`/`ChemicalElement`'s real EMMO labels live in the EMMO
+import we're deliberately not pulling in) — given `"substance"` and `"chemical element"`, matching
+exactly what `verbalize.py` already calls them, so the TBox and ABox sides agree on the words.
+
+**A second thing only the real code, not the design doc, reveals**: `create_dataset` only ever
+processes `SubClassOf` and `EquivalentClasses` axioms. `battgpt.ttl`'s `hasStructure` /
+`hasStructureFamily` / `belongsToElectrode` are plain `rdfs:domain`/`rdfs:range` declarations
+(`ObjectPropertyDomain`/`ObjectPropertyRange` axioms) — a completely different axiom type the code
+never looks at. Left as-is, none of our three relations would produce a single training row,
+silently. Fixed by synthesizing an actual existential-restriction `SubClassOf` axiom for each one
+(`ChemicalSubstance ⊑ ∃hasStructure.CrystalStructure`, etc.) — this is what turns a relation into
+something DeepOnto's verbalizer and OnT's nf3 extraction can actually see.
+
+**One deliberate simplification, caught by reading the extraction code closely enough to see the
+constraint, not by trial and error**: `belongsToElectrode`'s *real* range in `battgpt.ttl` is
+`owl:unionOf(NegativeElectrodeRole, PositiveElectrodeRole)` — a complex class expression.
+`create_dataset`'s nf3 handling explicitly requires the filler to be a plain named class
+(`if parent["class"]["type"] != "IRI": return  # Skip if filler is complex`) — so using the real
+union would parse fine, verbalize fine, and then get **silently dropped** at the last step, the
+exact kind of quiet data loss this whole project has been trying to catch before it happens rather
+than after. Used `battgpt:BatteryRole` (the atomic ancestor both roles belong to) as the filler
+instead — broader than the true range (it also nominally covers Electrolyte/Separator, which
+`belongsToElectrode` can never really point at), but the only way to get any training signal out
+of the relation at all under this real constraint. Written down here and in the script's own
+docstring, not left implicit.
+
+**Verified**: the file round-trips cleanly back through `rdflib.Graph().parse()` (82 triples both
+ways), and every class/property/axiom count matches what was hand-derived from the real ontology
+query beforehand — 23 = 2 EMMO anchors + 3 bare battgpt classes + 4 StructureFamily tiers + 9
+leaves + 5 BatteryRole tiers; 19 `subClassOf` = 16 hierarchy + 3 synthesized existential.
+
+*(Next entry: actually running DeepOnto against this schema — installing it, starting the JVM, and
+seeing what `prepare_ontology_data()` produces for real.)*
