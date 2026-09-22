@@ -643,3 +643,57 @@ rows, TBox schema + prep, merge — is now built, run, and verified against real
 `data/battgpt_merged_{full,no_geometry}/` is a complete directory `pipeline.fit()` could point at.
 What's left: an actual training run, Phase 5/5b evaluation, export, and CrystaLLM wiring — none
 started yet.)*
+
+## Step 14 — Tried an actual training run, found a real device bug, and measured (not guessed) how
+slow CPU really is
+
+**First real attempt found a genuine bug, not a training problem.** Pointed `ont/pipeline.py`'s
+`fit()` at the merged data and it crashed on the very first step: `RuntimeError: Passed CPU tensor
+to MPS op`. Root cause, found by reading the actual code rather than guessing: `fit()` picks the
+model's device with `torch.device("cuda" if torch.cuda.is_available() else "cpu")` — on this Mac
+(no CUDA), that's `"cpu"`. But a few dozen lines later it also sets `use_cpu=False` on
+`SentenceTransformerTrainingArguments`, and *that* flag makes HuggingFace's own Trainer
+independently re-detect the device — which DOES check Apple's `mps` backend, and finds it. Two
+different parts of the same function silently disagreed about which device to use, and the crash
+was that disagreement meeting in the middle. Fixed both to derive from one shared decision (`cuda`
+> `mps` > `cpu`), and added an explicit `device=` override to `fit()` for future debugging —
+exactly the "TOUCH `OnT/ont/pipeline.py` # device" the original spec's own file list anticipated.
+
+**Then MPS itself turned out to be broken for this codebase.** With the device disagreement fixed,
+training correctly started on `mps` — and immediately hit `RuntimeError: MPS backend out of memory
+(MPS allocated: 20.09 GiB...)` on the very first step, for a 33M-parameter model with batch size
+64. That's a wildly disproportionate allocation, most likely from how the hyperbolic
+(Poincaré-ball, `geoopt`) operations or the exist/conj loss's extra forward passes interact with
+Apple's MPS memory allocator — a real rough edge in this reference implementation's MPS support,
+not something worth chasing down today. Fell back to CPU, which is what the rest of this step
+actually measured.
+
+**`OnT/` is gitignored, so a code fix inside it needs a different home to survive a re-clone.**
+Committed the fix locally inside `OnT/`'s own git history (it's a real clone, with its own `.git`,
+separate from `K-Ont`'s), then exported that commit as a plain diff into
+[`patches/ont_pipeline_device_fix.patch`](../patches/ont_pipeline_device_fix.patch) — a file `K-Ont`
+*does* track. [`patches/README.md`](../patches/README.md) says to apply it right after cloning
+`OnT/` fresh, before running anything.
+
+**Measured real CPU training time — and the first estimate given for this (in chat, not logged
+here as fact) was wrong, off by roughly 50–100x.** Reasoning from dataset size and model size alone
+suggested sub-second steps; a real run showed **~85–115 seconds per training step** (four real
+steps timed: 114.7s, 88.8s, 91.0s, 85.1s). With 98 steps for one epoch on this dataset, that's
+**roughly 2.5 hours for a single epoch on CPU alone** — not the "few minutes" first guessed. The
+gap is because a "step" here isn't one forward pass: the hierarchy loss, the existential-role loss,
+and the conjunction loss each run their own encode passes through MiniLM-L12, plus the hyperbolic
+manifold math on top, all on unaccelerated CPU matrix multiplication. Worth stating plainly: this
+correction is exactly why this log tries to measure rather than estimate — the estimate given
+first, before running anything, was confidently wrong.
+
+**Decision: move training to a machine with a working GPU** (an RTX 4060 laptop) rather than
+either waiting out multi-hour CPU epochs or debugging MPS's memory blowup further right now.
+[`docs/GPU_SETUP.md`](GPU_SETUP.md) is the checklist for that move — prerequisites, cloning +
+patching `OnT/`, installing the CUDA build of `torch` before the rest of `requirements.txt` (so pip
+doesn't silently grab a CPU-only build), and — importantly — **copying the already-generated
+`K-Ont/data/` directory over rather than regenerating it** (13MB total, small enough to just
+transfer directly; none of extract/verbalize/numeric/rows/TBox-prep/merge depend on which machine
+runs the *training*, so there's no reason to redo any of it).
+
+*(Next entry: once on the GPU machine — verify CUDA is actually used, then a real training run,
+Phase 5/5b evaluation, export, CrystaLLM wiring.)*
