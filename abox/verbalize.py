@@ -34,9 +34,10 @@ outside (0, 500] GPa and poisson_ratio outside [-1, 0.5] are DROPPED from the se
 flagged) -- writing "Bulk modulus: -4729.5 GPa" into training text would be actively wrong, worse
 than the missing-column problem the original spec worried about.
 
-Crystals carry no properties of their own in this KG (verified in extract.py / Step 7) -- band
-gap, formation energy etc. for V(crystal) are looked up from the crystal's 1:1 owning material
-(same mp- id suffix, verified with 0 mismatches across all 250 in Step 7).
+Crystals carry no properties of their own in this KG (verified in extract.py / Step 7). V(crystal)
+used to borrow band gap / formation energy from its 1:1 owning material, and to open with the
+material's formula + mp-id; both removed in Step 16 because they let hasStructure be solved by
+string matching (see verbalize_crystal's docstring).
 
 Usage:
     .venv/bin/python3 -m abox.verbalize --entities data/battgpt_abox/entities.json --out-dir data/battgpt_abox/
@@ -172,12 +173,25 @@ def verbalize_material(mat: dict, entities: dict, variant: str) -> str:
 
 
 def verbalize_crystal(crystal: dict, entities: dict, variant: str) -> str:
+    """V(crystal) says what the crystal IS structurally -- never which material it belongs to.
+
+    hasStructure(material, crystal) is trained and evaluated as "pick this material's crystal out of
+    all crystals". An earlier version opened with "Crystal: LiTi2O4 (mp-5670)" -- the same formula and
+    mp-id as the material's own first line -- and copied the material's band gap / formation energy
+    verbatim. Measured (BUILD_LOG.md Step 16): the UNTRAINED base model already ranked the true
+    crystal first for 98.8% of materials by plain distance, i.e. the relation was solvable by string
+    overlap before learning anything. Removing the identifier line alone took that to 12% (full) /
+    2% (no_geometry). The copied properties are dropped too: they're material properties, not the
+    crystal's (crystals carry none of their own, Step 7), and a 3-decimal formation energy is a
+    near-unique fingerprint a fine-tuned model could learn to string-match.
+
+    Consequence, accepted on purpose: in no_geometry, a crystal is only its structure family, space
+    group and crystal system, so crystals sharing that symmetry have identical sentences (67 distinct
+    among 250). That's the honest content of a crystal with no geometry; the hasStructure ceiling for
+    it is ranking by symmetry alone (MRR ~0.45, measured), not ~1.0.
+    """
     material = entities["materials"].get(f"material/{crystal['material_project_id']}")
-    formula = material["formula"] if material else crystal["material_project_id"]
-    lines = [
-        f"Crystal: {formula} ({crystal['material_project_id']})",
-        "Type: crystal structure",
-    ]
+    lines = ["Type: crystal structure"]
     if crystal["structure_family"]:
         lines.append(f"Structure family: {STRUCTURE_FAMILY_READABLE[crystal['structure_family']]}")
     sg = entities["space_groups"].get(crystal["space_group"]) if crystal["space_group"] else None
@@ -187,17 +201,10 @@ def verbalize_crystal(crystal: dict, entities: dict, variant: str) -> str:
     if cs:
         lines.append(f"Crystal system: {cs['label']}")
 
-    # Property-tier facts borrowed from the owning material -- crystals carry none of their own
-    # (Step 7). Deliberately a SMALLER set than the material's own sentence (just enough to
-    # distinguish crystals from each other for the hasStructure ranking task -- see BUILD_LOG.md
-    # Step 8 -- not a full restatement of the material).
+    # No property-tier lines borrowed from the owning material any more (see docstring). Volume below
+    # is still read from the material's properties, but it's a real geometric fact of the unit cell,
+    # "full" variant only, like the lattice itself.
     props = material["properties"] if material else {}
-    if "band_gap" in props and props["band_gap"]["value"] is not None:
-        v = props["band_gap"]
-        lines.append(f"Band gap: {v['value']:.2f} {v['unit']}")
-    if "formation_energy_per_atom" in props and props["formation_energy_per_atom"]["value"] is not None:
-        v = props["formation_energy_per_atom"]
-        lines.append(f"Formation energy: {v['value']:.3f} {v['unit']}/atom")
 
     if variant == "full":
         uc = entities["unit_cells"].get(crystal["unit_cell"])

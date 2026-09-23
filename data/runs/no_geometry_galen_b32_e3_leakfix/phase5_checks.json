@@ -1,7 +1,7 @@
 {
- "run": "data/runs/no_geometry_galen_b32_e3",
+ "run": "data/runs/no_geometry_galen_b32_e3_leakfix",
  "variant": "no_geometry",
- "abox_dir": "data/backup_pre_leakfix_20260923/battgpt_abox",
+ "abox_dir": "C:\\Users\\Shantharam P\\Documents\\GitHub\\K-Ont\\data\\battgpt_abox",
  "base_model": "Hui97/OnT-MiniLM-L12-galen",
  "best_lambda": 0.0,
  "ball_radius": 19.596,
@@ -33,14 +33,16 @@
    },
    "crystals": {
     "n": 250,
-    "MRR": 0.998,
-    "H@1": 0.996,
+    "MRR": 0.964,
+    "H@1": 0.928,
     "H@10": 1.0,
     "median_rank": 1.0,
     "true_type": "crystal structure",
     "top1_class_counts": {
-     "crystal structure": 249,
-     "oxide structure family": 1
+     "crystal structure": 232,
+     "olivine structure": 8,
+     "NASICON structure": 6,
+     "perovskite structure": 3
     }
    },
    "elements": {
@@ -63,15 +65,15 @@
    "hard_negative_random_MRR": 0.6792,
    "plain_distance_no_role": {
     "n": 250,
-    "MRR": 0.9678,
-    "H@1": 0.948,
-    "H@10": 1.0,
-    "median_rank": 1.0
+    "MRR": 0.0516,
+    "H@1": 0.004,
+    "H@10": 0.116,
+    "median_rank": 52.5
    },
    "plain_distance_no_role_hard_negative": {
     "n": 113,
-    "MRR": 0.972,
-    "H@1": 0.9469,
+    "MRR": 0.7832,
+    "H@1": 0.6018,
     "H@10": 1.0,
     "median_rank": 1.0
    }
@@ -101,13 +103,13 @@
  },
  "after": {
   "A_class_separation": {
-   "substance_vs_crystal_structure": 15.638,
+   "substance_vs_crystal_structure": 15.05,
    "closest_class_pair": [
     "battery role",
     "positive electrode role",
-    8.269
+    7.992
    ],
-   "median_pairwise": 20.143
+   "median_pairwise": 19.719
   },
   "B_typing": {
    "materials": {
@@ -123,16 +125,16 @@
    },
    "crystals": {
     "n": 250,
-    "MRR": 0.863,
-    "H@1": 0.784,
+    "MRR": 0.922,
+    "H@1": 0.856,
     "H@10": 1.0,
     "median_rank": 1.0,
     "true_type": "crystal structure",
     "top1_class_counts": {
-     "crystal structure": 196,
-     "layered oxide structure": 15,
+     "crystal structure": 214,
+     "layered oxide structure": 16,
      "NASICON structure": 14,
-     "spinel structure": 9
+     "argyrodite structure": 3
     }
    },
    "elements": {
@@ -154,53 +156,53 @@
    "hard_negative_random_MRR": 0.6792,
    "plain_distance_no_role": {
     "n": 250,
-    "MRR": 0.3698,
-    "H@1": 0.228,
-    "H@10": 0.66,
-    "median_rank": 5.0
+    "MRR": 0.1525,
+    "H@1": 0.024,
+    "H@10": 0.476,
+    "median_rank": 12.0
    },
    "plain_distance_no_role_hard_negative": {
     "n": 113,
-    "MRR": 0.9351,
-    "H@1": 0.8761,
+    "MRR": 0.9646,
+    "H@1": 0.9292,
     "H@10": 1.0,
     "median_rank": 1.0
    },
    "via_role_rotation": {
     "n": 250,
-    "MRR": 0.3566,
-    "H@1": 0.232,
-    "H@10": 0.616,
-    "median_rank": 6.0
+    "MRR": 0.1712,
+    "H@1": 0.04,
+    "H@10": 0.584,
+    "median_rank": 9.5
    },
    "via_role_rotation_hard_negative": {
     "n": 113,
-    "MRR": 0.8702,
-    "H@1": 0.7434,
+    "MRR": 0.9395,
+    "H@1": 0.885,
     "H@10": 1.0,
     "median_rank": 1.0
    }
   },
   "D_crowding": {
-   "material_pairwise_median": 7.856,
-   "material_pairwise_p5": 4.445,
-   "within_family_median": 5.049,
+   "material_pairwise_median": 7.893,
+   "material_pairwise_p5": 4.996,
+   "within_family_median": 4.673,
    "within_family_n_pairs": 281,
-   "nearest_neighbour_min": 0.8673,
-   "nearest_neighbour_median": 2.701,
-   "euclid_norm_over_radius_median": 0.4147,
-   "euclid_norm_over_radius_max": 0.4199,
-   "hyperbolic_norm_median": 17.296
+   "nearest_neighbour_min": 0.9057,
+   "nearest_neighbour_median": 2.652,
+   "euclid_norm_over_radius_median": 0.4138,
+   "euclid_norm_over_radius_max": 0.417,
+   "hyperbolic_norm_median": 17.25
   },
   "E_same_chemsys_pairs": {
    "n_pairs": 86,
-   "median_dist": 6.207,
-   "min_dist": 1.4313,
+   "median_dist": 7.679,
+   "min_dist": 3.1839,
    "n_collapsed_lt_1e-3": 0,
    "example": [
     "LiTiO2",
     "LiTi2O4",
-    7.621
+    7.22
    ]
   }
  }

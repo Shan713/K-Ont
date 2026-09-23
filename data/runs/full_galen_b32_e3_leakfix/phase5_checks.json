@@ -1,11 +1,12 @@
 {
- "run": "data/runs/no_geometry_galen_b32_e3",
- "variant": "no_geometry",
- "abox_dir": "data/backup_pre_leakfix_20260923/battgpt_abox",
+ "run": "data/runs/full_galen_b32_e3_leakfix",
+ "variant": "full",
+ "abox_dir": "C:\\Users\\Shantharam P\\Documents\\GitHub\\K-Ont\\data\\battgpt_abox",
  "base_model": "Hui97/OnT-MiniLM-L12-galen",
  "best_lambda": 0.0,
  "ball_radius": 19.596,
- "NOTE": "training-set fit only: no held-out split exists yet; this is not the Phase 5b eval",
+ "split": null,
+ "NOTE": "top-level B/C numbers pool ALL materials; with --split, see <before|after>.split.test for held-out materials (in no training row). Without --split everything here is training fit.",
  "before": {
   "A_class_separation": {
    "substance_vs_crystal_structure": 8.408,
@@ -19,28 +20,29 @@
   "B_typing": {
    "materials": {
     "n": 250,
-    "MRR": 0.2297,
+    "MRR": 0.2307,
     "H@1": 0.0,
     "H@10": 1.0,
     "median_rank": 5.0,
     "true_type": "substance",
     "top1_class_counts": {
-     "crystal structure": 119,
-     "chemical element": 98,
-     "oxide structure family": 16,
-     "electrolyte role": 9
+     "crystal structure": 218,
+     "chemical element": 13,
+     "oxide structure family": 11,
+     "layered oxide structure": 5
     }
    },
    "crystals": {
     "n": 250,
-    "MRR": 0.998,
-    "H@1": 0.996,
+    "MRR": 0.992,
+    "H@1": 0.984,
     "H@10": 1.0,
     "median_rank": 1.0,
     "true_type": "crystal structure",
     "top1_class_counts": {
-     "crystal structure": 249,
-     "oxide structure family": 1
+     "crystal structure": 246,
+     "perovskite structure": 3,
+     "LGPS type structure": 1
     }
    },
    "elements": {
@@ -63,51 +65,51 @@
    "hard_negative_random_MRR": 0.6792,
    "plain_distance_no_role": {
     "n": 250,
-    "MRR": 0.9678,
-    "H@1": 0.948,
-    "H@10": 1.0,
-    "median_rank": 1.0
+    "MRR": 0.2695,
+    "H@1": 0.16,
+    "H@10": 0.5,
+    "median_rank": 10.0
    },
    "plain_distance_no_role_hard_negative": {
     "n": 113,
-    "MRR": 0.972,
-    "H@1": 0.9469,
+    "MRR": 0.8333,
+    "H@1": 0.6903,
     "H@10": 1.0,
     "median_rank": 1.0
    }
   },
   "D_crowding": {
-   "material_pairwise_median": 9.852,
-   "material_pairwise_p5": 6.869,
-   "within_family_median": 8.229,
+   "material_pairwise_median": 9.131,
+   "material_pairwise_p5": 6.476,
+   "within_family_median": 7.579,
    "within_family_n_pairs": 281,
-   "nearest_neighbour_min": 2.0161,
-   "nearest_neighbour_median": 5.246,
-   "euclid_norm_over_radius_median": 0.3591,
-   "euclid_norm_over_radius_max": 0.3714,
-   "hyperbolic_norm_median": 14.732
+   "nearest_neighbour_min": 1.8692,
+   "nearest_neighbour_median": 4.867,
+   "euclid_norm_over_radius_median": 0.3474,
+   "euclid_norm_over_radius_max": 0.3646,
+   "hyperbolic_norm_median": 14.208
   },
   "E_same_chemsys_pairs": {
    "n_pairs": 86,
-   "median_dist": 5.939,
-   "min_dist": 2.0161,
+   "median_dist": 5.52,
+   "min_dist": 1.8692,
    "n_collapsed_lt_1e-3": 0,
    "example": [
     "LiTiO2",
     "LiTi2O4",
-    4.733
+    4.426
    ]
   }
  },
  "after": {
   "A_class_separation": {
-   "substance_vs_crystal_structure": 15.638,
+   "substance_vs_crystal_structure": 15.306,
    "closest_class_pair": [
     "battery role",
     "positive electrode role",
-    8.269
+    8.062
    ],
-   "median_pairwise": 20.143
+   "median_pairwise": 20.053
   },
   "B_typing": {
    "materials": {
@@ -123,14 +125,14 @@
    },
    "crystals": {
     "n": 250,
-    "MRR": 0.863,
+    "MRR": 0.8673,
     "H@1": 0.784,
     "H@10": 1.0,
     "median_rank": 1.0,
     "true_type": "crystal structure",
     "top1_class_counts": {
      "crystal structure": 196,
-     "layered oxide structure": 15,
+     "layered oxide structure": 16,
      "NASICON structure": 14,
      "spinel structure": 9
     }
@@ -154,53 +156,53 @@
    "hard_negative_random_MRR": 0.6792,
    "plain_distance_no_role": {
     "n": 250,
-    "MRR": 0.3698,
-    "H@1": 0.228,
-    "H@10": 0.66,
-    "median_rank": 5.0
+    "MRR": 0.0972,
+    "H@1": 0.024,
+    "H@10": 0.236,
+    "median_rank": 40.0
    },
    "plain_distance_no_role_hard_negative": {
     "n": 113,
-    "MRR": 0.9351,
-    "H@1": 0.8761,
+    "MRR": 0.865,
+    "H@1": 0.7522,
     "H@10": 1.0,
     "median_rank": 1.0
    },
    "via_role_rotation": {
     "n": 250,
-    "MRR": 0.3566,
-    "H@1": 0.232,
-    "H@10": 0.616,
-    "median_rank": 6.0
+    "MRR": 0.062,
+    "H@1": 0.02,
+    "H@10": 0.124,
+    "median_rank": 49.0
    },
    "via_role_rotation_hard_negative": {
     "n": 113,
-    "MRR": 0.8702,
-    "H@1": 0.7434,
+    "MRR": 0.7869,
+    "H@1": 0.6018,
     "H@10": 1.0,
     "median_rank": 1.0
    }
   },
   "D_crowding": {
-   "material_pairwise_median": 7.856,
-   "material_pairwise_p5": 4.445,
-   "within_family_median": 5.049,
+   "material_pairwise_median": 6.063,
+   "material_pairwise_p5": 3.432,
+   "within_family_median": 3.513,
    "within_family_n_pairs": 281,
-   "nearest_neighbour_min": 0.8673,
-   "nearest_neighbour_median": 2.701,
-   "euclid_norm_over_radius_median": 0.4147,
-   "euclid_norm_over_radius_max": 0.4199,
-   "hyperbolic_norm_median": 17.296
+   "nearest_neighbour_min": 0.9521,
+   "nearest_neighbour_median": 2.194,
+   "euclid_norm_over_radius_median": 0.4148,
+   "euclid_norm_over_radius_max": 0.4186,
+   "hyperbolic_norm_median": 17.3
   },
   "E_same_chemsys_pairs": {
    "n_pairs": 86,
-   "median_dist": 6.207,
-   "min_dist": 1.4313,
+   "median_dist": 4.875,
+   "min_dist": 1.5021,
    "n_collapsed_lt_1e-3": 0,
    "example": [
     "LiTiO2",
     "LiTi2O4",
-    7.621
+    6.482
    ]
   }
  }

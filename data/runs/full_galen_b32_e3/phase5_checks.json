@@ -1,6 +1,7 @@
 {
  "run": "data/runs/full_galen_b32_e3",
  "variant": "full",
+ "abox_dir": "data/backup_pre_leakfix_20260923/battgpt_abox",
  "base_model": "Hui97/OnT-MiniLM-L12-galen",
  "best_lambda": 0.0,
  "ball_radius": 19.596,
@@ -21,7 +22,7 @@
     "MRR": 0.2307,
     "H@1": 0.0,
     "H@10": 1.0,
-    "median_rank": 5,
+    "median_rank": 5.0,
     "true_type": "substance",
     "top1_class_counts": {
      "crystal structure": 218,
@@ -35,7 +36,7 @@
     "MRR": 1.0,
     "H@1": 1.0,
     "H@10": 1.0,
-    "median_rank": 1,
+    "median_rank": 1.0,
     "true_type": "crystal structure",
     "top1_class_counts": {
      "crystal structure": 250
@@ -46,7 +47,7 @@
     "MRR": 0.9867,
     "H@1": 0.9733,
     "H@10": 1.0,
-    "median_rank": 1,
+    "median_rank": 1.0,
     "true_type": "chemical element",
     "top1_class_counts": {
      "chemical element": 73,
@@ -55,14 +56,24 @@
    }
   },
   "C_hasStructure": {
+   "random_baseline_MRR": 0.0244,
+   "symmetry_only_oracle_MRR": 0.4468,
+   "hard_negative_n_materials": 113,
+   "hard_negative_random_MRR": 0.6792,
    "plain_distance_no_role": {
     "n": 250,
     "MRR": 0.994,
     "H@1": 0.988,
     "H@10": 1.0,
-    "median_rank": 1
+    "median_rank": 1.0
    },
-   "random_baseline_MRR": 0.0244
+   "plain_distance_no_role_hard_negative": {
+    "n": 113,
+    "MRR": 0.9912,
+    "H@1": 0.9823,
+    "H@10": 1.0,
+    "median_rank": 1.0
+   }
   },
   "D_crowding": {
    "material_pairwise_median": 9.131,
@@ -103,7 +114,7 @@
     "MRR": 1.0,
     "H@1": 1.0,
     "H@10": 1.0,
-    "median_rank": 1,
+    "median_rank": 1.0,
     "true_type": "substance",
     "top1_class_counts": {
      "substance": 250
@@ -114,7 +125,7 @@
     "MRR": 0.8647,
     "H@1": 0.784,
     "H@10": 1.0,
-    "median_rank": 1,
+    "median_rank": 1.0,
     "true_type": "crystal structure",
     "top1_class_counts": {
      "crystal structure": 196,
@@ -128,7 +139,7 @@
     "MRR": 1.0,
     "H@1": 1.0,
     "H@10": 1.0,
-    "median_rank": 1,
+    "median_rank": 1.0,
     "true_type": "chemical element",
     "top1_class_counts": {
      "chemical element": 75
@@ -136,20 +147,37 @@
    }
   },
   "C_hasStructure": {
+   "random_baseline_MRR": 0.0244,
+   "symmetry_only_oracle_MRR": 0.4468,
+   "hard_negative_n_materials": 113,
+   "hard_negative_random_MRR": 0.6792,
    "plain_distance_no_role": {
     "n": 250,
     "MRR": 0.3431,
     "H@1": 0.192,
     "H@10": 0.648,
-    "median_rank": 5
+    "median_rank": 5.0
    },
-   "random_baseline_MRR": 0.0244,
+   "plain_distance_no_role_hard_negative": {
+    "n": 113,
+    "MRR": 0.9189,
+    "H@1": 0.8496,
+    "H@10": 1.0,
+    "median_rank": 1.0
+   },
    "via_role_rotation": {
     "n": 250,
     "MRR": 0.4354,
     "H@1": 0.32,
     "H@10": 0.644,
-    "median_rank": 4
+    "median_rank": 4.0
+   },
+   "via_role_rotation_hard_negative": {
+    "n": 113,
+    "MRR": 0.8599,
+    "H@1": 0.7257,
+    "H@10": 1.0,
+    "median_rank": 1.0
    }
   },
   "D_crowding": {

@@ -39,6 +39,10 @@ def main():
                     help="design spec Phase 5: the pretrained OnT galen model if available")
     ap.add_argument("--select-best-epoch", action="store_true",
                     help="upstream best-val-MRR epoch pick; off by default (val.json = 2 queries)")
+    ap.add_argument("--data-prefix", default="data/battgpt_merged",
+                    help="merged data dir is <prefix>_<variant> (Step 17 split: data/battgpt_merged_split)")
+    ap.add_argument("--in-batch-negs", action="store_true",
+                    help="in-batch contrastive term in the exist loss (Step 17, patches/ont_exist_inbatch_negatives.patch)")
     ap.add_argument("--no-grad-ckpt", action="store_true",
                     help="disable gradient checkpointing (OOMs an 8 GiB GPU on this data, Step 15)")
     a = ap.parse_args()
@@ -49,7 +53,7 @@ def main():
     # fit() reuses output/data if it's already populated, and otherwise runs DeepOnto prep on the
     # TBox alone -- which would silently train on 19 TBox axioms instead of the merged data. So
     # copy the merged files in first, and refuse to overwrite a different dataset already there.
-    src = os.path.join(HERE, "data", f"battgpt_merged_{a.variant}")
+    src = os.path.join(HERE, f"{a.data_prefix}_{a.variant}")
     dst = os.path.join(a.output, "data")
     os.makedirs(dst, exist_ok=True)
     for f in MERGED_FILES:
@@ -89,14 +93,14 @@ def main():
     pipeline.fit(owl_path=os.path.join(HERE, "data", "battgpt_tbox.owl"), output_dir=a.output,
                  num_epochs=a.epochs, batch_size=a.batch_size, device=a.device,
                  gradient_checkpointing=not a.no_grad_ckpt, base_model=a.base_model,
-                 select_best_epoch=a.select_best_epoch)
+                 select_best_epoch=a.select_best_epoch, exist_in_batch_negatives=a.in_batch_negs)
     total = time.time() - t0
 
     s = sorted(step_times)
     summary = {
         "variant": a.variant, "epochs": a.epochs, "batch_size": a.batch_size,
         "gradient_checkpointing": not a.no_grad_ckpt, "base_model": a.base_model,
-        "select_best_epoch": a.select_best_epoch,
+        "select_best_epoch": a.select_best_epoch, "data_dir": src, "exist_in_batch_negatives": a.in_batch_negs,
         "device": torch.cuda.get_device_name(0) if torch.cuda.is_available() and a.device != "cpu" else "cpu",
         "torch": torch.__version__,
         "n_steps": len(step_times), "total_wall_s": round(total, 1),

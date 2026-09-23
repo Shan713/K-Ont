@@ -90,28 +90,40 @@ def _role_individual_sentence(role_key: str) -> str:
     return f"Battery role: {BATTERY_ROLE_READABLE[role_key]}"
 
 
-def _find_hard_negative_crystal(mid: str, mat: dict, entities: dict, rng: random.Random) -> str | None:
+def _find_hard_negative_crystal(mid: str, mat: dict, entities: dict, rng: random.Random,
+                                v_cryst: dict) -> str | None:
     """A crystal, NOT the material's own, to use as a hard negative: same chemical system first
     (near-identical composition -- the hardest real confusion), else same space group (same
     symmetry, different chemistry), else any other crystal at random. Returns a crystal key, or
-    None if this is the only material in the KG (can't happen at 250, but don't assume)."""
+    None if this is the only material in the KG (can't happen at 250, but don't assume).
+
+    A candidate whose SENTENCE is identical to the material's own crystal's sentence is skipped at
+    every tier: since Step 16, V(crystal) no longer names its material, so in no_geometry two crystals
+    with the same symmetry read identically -- and "push away from the exact text you're also being
+    pulled toward" is the same impossible target as Step 13's self-negative rows, not a hard negative.
+    """
     own_crystal = mat["structure"]
+    own_text = v_cryst.get(own_crystal) if own_crystal else None
+
+    def distinct(keys):
+        return [k for k in keys if v_cryst[k] != own_text]
+
     chemsys = mat["chemsys"]
-    same_chemsys = [
+    same_chemsys = distinct([
         m["structure"] for k, m in entities["materials"].items()
         if k != mid and m["chemsys"] == chemsys and m["structure"] and m["structure"] != own_crystal
-    ]
+    ])
     if same_chemsys:
         return rng.choice(same_chemsys)
     own_sg = entities["crystals"][own_crystal]["space_group"] if own_crystal else None
     if own_sg:
-        same_sg = [
+        same_sg = distinct([
             k for k, c in entities["crystals"].items()
             if k != own_crystal and c["space_group"] == own_sg
-        ]
+        ])
         if same_sg:
             return rng.choice(same_sg)
-    others = [k for k in entities["crystals"] if k != own_crystal]
+    others = distinct([k for k in entities["crystals"] if k != own_crystal])
     return rng.choice(others) if others else None
 
 
@@ -120,7 +132,7 @@ def build_type_rows(entities: dict, v_mat: dict, v_cryst: dict, v_elem: dict, rn
     for mid, mat in entities["materials"].items():
         for neg in SIBLING_KIND_LABELS["substance"]:
             rows.append({"child": v_mat[mid], "parent": "substance", "negative": [neg]})
-        hard_neg_crystal = _find_hard_negative_crystal(mid, mat, entities, rng)
+        hard_neg_crystal = _find_hard_negative_crystal(mid, mat, entities, rng, v_cryst)
         if hard_neg_crystal:
             rows.append({"child": v_mat[mid], "parent": "substance", "negative": [v_cryst[hard_neg_crystal]]})
     for cid, cryst in entities["crystals"].items():
@@ -147,20 +159,44 @@ def build_exist_rows(entities: dict, v_mat: dict, v_cryst: dict) -> list[dict]:
     return rows
 
 
+def restrict_to_train(entities: dict, split: dict) -> dict:
+    """entities with materials/crystals cut down to the split's TRAIN side (Step 17). Every row
+    builder -- and the hard-negative picker -- only ever iterates entities["materials"] /
+    entities["crystals"], so this one filter keeps held-out materials and crystals out of every row,
+    including as another material's hard negative. Elements are shared schema entities: untouched."""
+    train_m, train_c = set(split["train_materials"]), set(split["train_crystals"])
+    out = dict(entities)
+    out["materials"] = {k: v for k, v in entities["materials"].items() if k in train_m}
+    out["crystals"] = {k: v for k, v in entities["crystals"].items() if k in train_c}
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--entities", type=Path, default=Path("data/battgpt_abox/entities.json"))
     ap.add_argument("--out-dir", type=Path, default=Path("data/battgpt_abox/"))
+    ap.add_argument("--verbalizations-dir", type=Path, default=None,
+                    help="where verbalizations_*.json live (default: --out-dir)")
+    ap.add_argument("--split", type=Path, default=None,
+                    help="split.json from abox/split.py: generate rows for TRAIN materials only")
     args = ap.parse_args()
+    vdir = args.verbalizations_dir or args.out_dir
+    args.out_dir.mkdir(parents=True, exist_ok=True)
 
     entities = json.loads(args.entities.read_text())
-    v_elem = json.loads((args.out_dir / "verbalizations_elements.json").read_text())
+    split = None
+    if args.split:
+        split = json.loads(args.split.read_text())
+        entities = restrict_to_train(entities, split)
+        logger.info(f"Split {args.split}: generating rows for {len(entities['materials'])} train materials / "
+                    f"{len(entities['crystals'])} train crystals ({len(split['test_materials'])} held out)")
+    v_elem = json.loads((vdir / "verbalizations_elements.json").read_text())
 
     meta = {}
     for variant in ("full", "no_geometry"):
         rng = random.Random(SEED)  # fresh per variant, so both variants pick the same hard negs
-        v_mat = json.loads((args.out_dir / f"verbalizations_materials_{variant}.json").read_text())
-        v_cryst = json.loads((args.out_dir / f"verbalizations_crystals_{variant}.json").read_text())
+        v_mat = json.loads((vdir / f"verbalizations_materials_{variant}.json").read_text())
+        v_cryst = json.loads((vdir / f"verbalizations_crystals_{variant}.json").read_text())
 
         type_rows = build_type_rows(entities, v_mat, v_cryst, v_elem, rng)
         exist_rows = build_exist_rows(entities, v_mat, v_cryst)
@@ -188,6 +224,9 @@ def main():
                    f"{exist_path.name} ({len(exist_rows)} rows)")
         logger.info(f"[{variant}] breakdown: {meta[variant]}")
 
+    if split:
+        meta["split"] = {"file": str(args.split), "n_train_materials": len(split["train_materials"]),
+                         "n_test_materials": len(split["test_materials"])}
     meta["note"] = ("ABox rows only. TBox class-hierarchy rows (needs DeepOnto + the ontology's "
                     "OWL API + a tiny extracted schema OWL file -- Phase 3, not built yet) and "
                     "TBox oversampling (Phase 4) are NOT included -- these files are not yet "

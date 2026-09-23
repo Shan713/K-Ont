@@ -56,6 +56,7 @@ yet); clone it now anyway so it's there when you get to it.
 cd OnT
 git apply ../patches/ont_pipeline_device_fix.patch
 git apply ../patches/ont_gpu_training_fixes.patch
+git apply ../patches/ont_exist_inbatch_negatives.patch
 cd ..
 ```
 

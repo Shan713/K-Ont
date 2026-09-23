@@ -911,3 +911,165 @@ and saved. Before Phase 5b / export: (1) a held-out material split — every che
 fit; (2) fix the `hasStructure` identifier leak in V(crystal); (3) the spec's type-loss ablation
 (hierarchy vs. a plain class margin), not started; (4) a real `val.json` — 2 TBox queries can't
 choose `best_lambda` or an epoch.)*
+
+## Step 16 — Fixed the hasStructure leak in V(crystal) — and the honest number underneath it is bad (2026-09-23)
+
+**Measured which lines were the leak before removing anything.** Step 15 found every crystal sentence
+opening with its material's `LiTi2O4 (mp-5670)`. Reading `abox/verbalize.py` turned up four candidate
+channels, not one: (1) that identifier line; (2) band gap + formation energy copied verbatim from the
+material into the crystal; (3) the material sentence's own `Structure: Crystal structure of LiTi2O4`
+line, pointing at its crystal; (4) in `full`, the material and its crystal carry the *same* `Lattice:` /
+`Volume:` / `Sites:` lines. Removed each in turn and re-measured the untrained galen model's plain-
+distance ranking of each material's crystal among all 250 (random MRR 0.024):
+
+| change (cumulative) | `full` MRR / H@1 | `no_geometry` MRR / H@1 |
+|---|---|---|
+| current | 0.994 / 0.988 | 0.968 / 0.948 |
+| − crystal identifier line | **0.221 / 0.120** | **0.059 / 0.020** |
+| − copied band gap / formation energy | 0.270 / 0.160 | 0.100 / 0.064 |
+| − material's `Structure:` pointer | 0.338 / 0.208 | 0.136 / 0.088 |
+| − geometry from the material (full only) | 0.293 / 0.168 | — |
+
+The identifier line *is* the leak — removing it alone takes H@1 from 99% to 12% / 2%. The other lines
+barely move the untrained model (removing them even nudges MRR *up*, since less text dilutes the
+shared structural lines). Decisions, made on what each line *is*, not only on what it measured:
+- **Removed the identifier line** — pure bookkeeping, not chemistry.
+- **Removed the copied band gap / formation energy** from V(crystal). They're the material's
+  properties, not the crystal's (crystals carry none of their own, Step 7), and a 3-decimal formation
+  energy is a near-unique fingerprint: the untrained model doesn't exploit it, but a fine-tuned one is
+  exactly what could learn to string-match it.
+- **Left the material sentence alone** (byte-identical to before, checked). Its `Structure:` line names
+  only its own formula, which no longer appears on the crystal side, so it's no longer a leak; and
+  keeping V(material) unchanged keeps the exported embeddings meaning the same thing.
+- **Left `full`'s shared lattice line alone.** Materials carrying geometry is what the `full` variant
+  *is*; it moved the untrained number only 0.34 → 0.29. `no_geometry`, which shares no such line, is
+  the control for whether training learns to exploit it.
+
+**Consequence, accepted on purpose:** a `no_geometry` crystal is now only its family, space group and
+crystal system — **67 distinct sentences among 250 crystals**. That's the honest content of a crystal
+with no geometry. The ceiling for ranking by symmetry alone is MRR **0.447** (computed: perfect on
+symmetry, random within same-symmetry groups), not ~1.0.
+
+**Which forced a second fix, in the hard-negative picker.** Step 10's picker falls back to "same space
+group" — with symmetry-only sentences, that can pick a crystal whose sentence is *identical* to the
+material's own crystal's, putting exactly the text the material is pulled toward in as its negative:
+the same impossible target Step 13 removed from the TBox rows. `_find_hard_negative_crystal` now skips
+any candidate whose sentence equals the material's own crystal's, at every tier. Checked on the
+regenerated rows: **0** such rows in either variant.
+
+**Regenerated** verbalize → rows → merge (entities.json unchanged — no KG or DeepOnto re-run; the
+previous outputs are backed up in `data/backup_pre_leakfix_20260923/`, gitignored). Verified against
+the backup: material sentences byte-identical; row counts identical (6,257 type / 804 exist per
+variant); **0/250** crystal sentences naming their material's mp-id or copying band gap / formation
+energy. A leak scan flagged 2 `full` crystals — read them: elemental Si and C, whose "formula" is just
+the element symbol in their own `Sites: 2 (Si:2)` line, the same composition line every `full` crystal
+carries. Structural content, not the identifier; not changed.
+
+**Made the checks fair for duplicate sentences first.** `phase5_checks.py` counted only strictly-
+better scores, so an exact tie (two identical `no_geometry` crystals → identical embeddings) always
+went the true crystal's way. Ties now count as a random tie-break. Also added the references the spec
+asks to beat — the symmetry-only ceiling, and a hard-negative ranking (true crystal vs only the
+crystals of other materials in the same chemical system: 113 materials have one, and random ranking
+inside those small groups already scores MRR **0.679**) — plus an `--abox-dir` option so older runs are
+checked against the sentences they actually trained on, not today's. The tie fix reproduced the older
+runs' numbers exactly (they had no ties).
+
+**Retrained both variants** (Step 15's settings: galen, batch 32, 3 epochs, last epoch; `full` 10.2
+min at 1.06 s/step, `no_geometry` 6.2 min at 0.62 s/step). Training-set fit, all materials:
+
+| hasStructure MRR | untrained, plain | trained, via role | trained, hard-neg (random 0.679) |
+|---|---|---|---|
+| `full`, **leaky** (Step 15) | 0.994 | 0.435 | 0.860 |
+| `full`, **leak fixed** | 0.270 | **0.062** | 0.787 |
+| `no_geometry`, **leaky** | 0.968 | 0.357 | 0.870 |
+| `no_geometry`, **leak fixed** | 0.052 | **0.171** | 0.940 |
+
+Everything else held: materials typed `substance` 100%, crystals 78% (the same own-family pattern as
+Step 15), no collapse, confusable pairs apart, loss curve essentially identical (2.37 → 0.52).
+
+**The leak had been hiding a real failure: training doesn't learn hasStructure.** In `full`, the trained
+role scores MRR 0.062 — barely above random, and *below* what the untrained model gets from plain
+distance (0.270). Found why in the code, not by guessing: `LogicalConstraintLoss.exist_loss` takes its
+negatives by randomly permuting `neg_samples` — the encoded `negative` column of the *concurrent
+type-row batch* (Step 2). Measured what those are on our data: **96.0%** are short class labels
+(`space group` ×773, `crystal system` ×701, `battery role` ×629, ...); only the 250 hard-negative rows
+(4.0%) carry a crystal sentence. So a hasStructure row is almost never asked to prefer its own crystal
+over *another crystal* — the one thing the relation needs — and while the leak was in, it never had to
+be, because the text did it for free. (`no_geometry`'s 0.171 beats `full`'s but is still well under its
+0.447 symmetry ceiling.)
+
+## Step 17 — A held-out split, and in-batch negatives for the exist loss (2026-09-23, in progress)
+
+Both follow from Step 16: there was no way to tell generalization from memorization, and the exist
+loss had no crystal-vs-crystal contrast.
+
+**Held-out split** — [`abox/split.py`](../abox/split.py) → [`data/split.json`](../data/split.json)
+(committed: it defines what "held out" means). 20% of materials, fixed seed, stratified by structure
+family (every family with ≥2 members contributes; garnet and LGPS-type have one member each and stay in
+train — holding out the only example would test a family the ABox never showed the model, a different
+question): **199 train / 51 held-out**. A material and its crystal always land on the same side.
+`abox/rows.py --split` filters `entities` down to the train side *before* any row is built, so one
+filter covers every place a held-out entity could appear — as a child, an exist Concept/con, and as
+another material's hard-negative crystal (the picker only ever looks inside `entities`). Checked on the
+output rather than trusted: **0** held-out material sentences and **0** held-out-only crystal
+sentences in any training row. (In `no_geometry`, 25 held-out crystal *texts* also belong to some train
+crystal — symmetry-only sentences, Step 16's consequence, not an identity leak.) Without `--split`,
+`rows.py` output is byte-identical to before, and so is `merge_datasets.py`'s default output (both
+gained optional directory arguments; checked with `cmp`). Split data: 5,174 type / 631 exist rows,
+TBox oversampling recomputed from the smaller ABox counts (15x / 105x).
+
+**In-batch negatives** — [`patches/ont_exist_inbatch_negatives.patch`](../patches/ont_exist_inbatch_negatives.patch),
+opt-in `exist_in_batch_negatives=` on `fit()` (default off = upstream). Adds one term to the exist loss:
+each exist row *i* whose filler is an instance sentence is contrasted against another row *j* of the
+**same batch and same role** — `material_i` should sit nearer `∃hasStructure.crystal_i` than
+`∃hasStructure.crystal_j`. The rules for *j*, each there for a reason:
+- same role — so ∃r.D_j and ∃r.D_i share the rotation and only the filler differs;
+- never a TBox class-name filler, on either side — `material ⊑ ∃hasStructure.crystal structure` is
+  *true*, so it must never be a negative; TBox rows are left entirely to the upstream loss;
+- never identical filler text — two identical `no_geometry` crystals, or two "Battery role: cathode"
+  rows, would be the impossible target again;
+- only the clustering (contrastive) part of the hierarchy loss, so the centripetal part isn't counted
+  twice.
+
+Unit-tested the selection on a hand-built batch covering every case (duplicate texts, a TBox row, two
+roles) over 2,000 draws: **0** violations. The three patches, applied in order to a fresh upstream
+`82ef384`, reproduce `OnT/` exactly. `train_ont.py` gained `--data-prefix` and `--in-batch-negs`; an
+in-batch run also logs how many exist rows actually received a negative.
+
+**The split baseline** — `full`, split data, *no* in-batch term (galen, batch 32, 3 epochs; 486 steps,
+8.6 min at 1.06 s/step, peak 1.24 GiB; loss 2.33 → 0.76 → 0.56 → 0.53). `phase5_checks.py --split`
+reports each side separately — the first numbers in this log on materials the model never saw:
+
+| `full`, split baseline | train (199) | **held-out (51)** |
+|---|---|---|
+| materials typed `substance` (before → after) | 0% → 100% | **0% → 100%** |
+| crystals typed `crystal structure` (before → after) | 98% → 79% | 98% → 76% |
+| hasStructure among that side's crystals, via role (random) | 0.063 (0.030) | **0.139** (0.089) |
+| same, untrained plain distance | 0.269 | 0.537 |
+| hard-negative, via role (untrained plain) | 0.769 (0.813) | 0.715 (0.910) |
+
+Typing generalizes cleanly to unseen materials. hasStructure does not: on held-out materials the
+trained role (0.139) is barely above random (0.089) and far *below* the untrained model's plain
+distance (0.537). That's the number the in-batch run has to beat.
+
+**Stopped here on request** — the other three split runs (`full` + in-batch, and both `no_geometry`
+runs) were queued and deliberately not trained. They were blocked with a placeholder that makes
+`train_ont.py` refuse to start (it won't overwrite a run folder holding different data); all three
+refused with 0 steps and the GPU went idle, then the placeholders were removed. To run them:
+
+```
+.venv\Scripts\python train_ont.py --variant full --epochs 3 --batch-size 32 --data-prefix data/battgpt_merged_split --in-batch-negs --output data/runs/full_split_inbatch
+.venv\Scripts\python train_ont.py --variant no_geometry --epochs 3 --batch-size 32 --data-prefix data/battgpt_merged_split --output data/runs/no_geometry_split_base
+.venv\Scripts\python train_ont.py --variant no_geometry --epochs 3 --batch-size 32 --data-prefix data/battgpt_merged_split --in-batch-negs --output data/runs/no_geometry_split_inbatch
+.venv\Scripts\python abox/phase5_checks.py --run data/runs/<run> --variant <variant> --split data/split.json
+```
+
+(~9 / 5 / 5.5 min on the RTX 4060.) What to look at: held-out `hasStructure_via_role_among_test_crystals`
+against the baseline's 0.139 and the untrained 0.537; the train.log line `In-batch exist negatives:`
+(`rows_with_negative` should be a large share of `rows_seen` — near 0 would mean the term never fired);
+and that held-out typing stays at 100%.
+
+*(Pipeline status: leak fixed; held-out split in place; hasStructure measured honestly and currently
+not learned, on train and held-out alike. Next: the three runs above. Still open: the type-loss
+ablation, and a real `val.json` — `best_lambda` still comes from 2 TBox queries. The numeric scaler
+(Step 9) should be refit on `split.json`'s train materials before any export.)*

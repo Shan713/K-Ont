@@ -40,6 +40,7 @@ Usage:
 """
 from __future__ import annotations
 
+import argparse
 import json
 import logging
 import random
@@ -124,6 +125,12 @@ def verify_vocabulary(abox_type_rows: list[dict], abox_exist_rows: list[dict],
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--abox-dir", type=Path, default=ABOX_DIR,
+                    help="where train_abox_*.jsonl live (e.g. data/battgpt_abox_split for the Step 17 split)")
+    ap.add_argument("--out-prefix", default="data/battgpt_merged",
+                    help="output dirs are <prefix>_<variant>/")
+    args = ap.parse_args()
     tbox_type_raw = _read_jsonl(TBOX_DIR / "train.jsonl")
     tbox_exist = _read_jsonl(TBOX_DIR / "train_exist.jsonl")
     concept_names = json.loads((TBOX_DIR / "concept_names.json").read_text())
@@ -135,8 +142,8 @@ def main():
 
     for variant in VARIANTS:
         rng = random.Random(SEED)
-        abox_type = _read_jsonl(ABOX_DIR / f"train_abox_type_{variant}.jsonl")
-        abox_exist = _read_jsonl(ABOX_DIR / f"train_abox_exist_{variant}.jsonl")
+        abox_type = _read_jsonl(args.abox_dir / f"train_abox_type_{variant}.jsonl")
+        abox_exist = _read_jsonl(args.abox_dir / f"train_abox_exist_{variant}.jsonl")
 
         verify_vocabulary(abox_type, abox_exist, concept_names, role_names)
 
@@ -155,7 +162,7 @@ def main():
         rng.shuffle(merged_type)
         rng.shuffle(merged_exist)
 
-        out_dir = Path(f"data/battgpt_merged_{variant}")
+        out_dir = Path(f"{args.out_prefix}_{variant}")
         out_dir.mkdir(parents=True, exist_ok=True)
         _write_jsonl(out_dir / "train.jsonl", merged_type)
         _write_jsonl(out_dir / "train_exist.jsonl", merged_exist)

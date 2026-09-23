@@ -18,6 +18,10 @@ __pycache__/
 
 # Generated data / model artifacts (large, reproducible from scripts — not source)
 /data/battgpt_abox/
+/data/battgpt_abox_split/
+# data/backup_*/: local snapshots of generated data taken before a regeneration (e.g. Step 16), kept
+# only so old vs new can be diffed on this machine -- same size/reproducibility reasoning as above.
+/data/backup_*/
 *.jsonl
 !examples/*.jsonl
 # data/battgpt_ont/ is the TBox's *.jsonl output (train.jsonl etc.) -- unlike the bulk ABox

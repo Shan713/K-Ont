@@ -1,0 +1,129 @@
+diff --git a/ont/losses/logical_loss.py b/ont/losses/logical_loss.py
+index ff7e704..3703408 100644
+--- a/ont/losses/logical_loss.py
++++ b/ont/losses/logical_loss.py
+@@ -30,6 +30,7 @@ class LogicalConstraintLoss(nn.Module):
+         balanced: bool = False,
+         balanced_negatives: int = 1,
+         all_concepts: list | None = None,
++        exist_in_batch_negatives: bool = False,
+     ):
+         super().__init__()
+         self.model = model
+@@ -49,6 +50,11 @@ class LogicalConstraintLoss(nn.Module):
+         self.balanced = balanced
+         self.balanced_negatives = balanced_negatives
+         self._all_concepts = all_concepts or []
++        # K-Ont (BUILD_LOG.md Step 17): off by default = upstream behaviour. See _in_batch_negative_index.
++        self.exist_in_batch_negatives = exist_in_batch_negatives
++        self._concept_set = set(self._all_concepts)
++        self._last_exist_rows = None
++        self.in_batch_stats = {"calls": 0, "rows_seen": 0, "rows_with_negative": 0}
+ 
+         self.device = next(self.model.parameters()).device
+ 
+@@ -75,6 +81,7 @@ class LogicalConstraintLoss(nn.Module):
+         concepts = [item["Concept"] for item in batch]
+         roles = [self.role_prompt + item["role"] for item in batch]
+         cons = [item["con"] for item in batch]
++        self._last_exist_rows = (list(roles), list(cons))
+ 
+         return [
+             self.model.hit_model.tokenizer(concepts, return_tensors="pt", padding=True, truncation=True).to(self.device),
+@@ -134,6 +141,15 @@ class LogicalConstraintLoss(nn.Module):
+                 self.hit_loss.from_tensor(sentence_emb, composed_emb, neg_samples_1)["loss"]
+                 + self.hit_loss.from_tensor(composed_emb, sentence_emb, neg_samples_2)["loss"]
+             ) / 2
++            if self.exist_in_batch_negatives:
++                idx = self._in_batch_negative_index()
++                rows = [i for i, j in enumerate(idx) if j >= 0]
++                if rows:
++                    neg = [idx[i] for i in rows]
++                    # clustering (contrastive) part only: C_i should sit nearer its own ∃r.D_i than
++                    # another row's ∃r.D_j; the centripetal part is already applied above.
++                    exist_loss = exist_loss + self.hit_loss.cluster_weight * self.hit_loss.cluster_loss(
++                        sentence_emb[rows], composed_emb[rows], composed_emb[neg])
+         elif self.existence_loss_kind == "pair":
+             exist_loss = self.model.pair_loss_existence(sentence_exists)
+         elif self.existence_loss_kind == "dist":
+@@ -146,6 +162,40 @@ class LogicalConstraintLoss(nn.Module):
+ 
+         return exist_loss
+ 
++    def _in_batch_negative_index(self):
++        """K-Ont (BUILD_LOG.md Step 17): for each exist row i in the current batch, the index j of
++        another row to use as its negative, or -1.
++
++        Why: upstream borrows exist negatives from the concurrent train.jsonl batch's negative column.
++        On our data 96% of those are short class labels ("space group", "chemical element"), so a
++        hasStructure row almost never has to tell crystal A from crystal B (measured, Step 16). This
++        adds the standard in-batch contrast: material_i vs ∃hasStructure.crystal_j of another row.
++
++        A row j qualifies as i's negative only if:
++          * same role (∃r.D_j and ∃r.D_i share the rotation, so only the filler differs);
++          * both fillers are INSTANCE sentences, not TBox class names -- "material ⊑ ∃hasStructure.
++            crystal structure" is TRUE, so a class-name filler must never be used as a negative, and
++            TBox rows are left to the upstream loss untouched;
++          * the filler TEXT differs -- identical text (e.g. no_geometry crystals sharing a symmetry,
++            two materials both "Battery role: cathode") would be the impossible "push away from what
++            you're pulled toward" target Step 13 removed from the type rows.
++        """
++        roles, cons = self._last_exist_rows
++        n = len(cons)
++        idx = []
++        for i in range(n):
++            if cons[i] in self._concept_set:
++                idx.append(-1)
++                continue
++            cand = [j for j in range(n) if j != i and roles[j] == roles[i]
++                    and cons[j] not in self._concept_set and cons[j] != cons[i]]
++            idx.append(random.choice(cand) if cand else -1)
++        st = self.in_batch_stats
++        st["calls"] += 1
++        st["rows_seen"] += n
++        st["rows_with_negative"] += sum(j >= 0 for j in idx)
++        return idx
++
+     def balanced_cluster_loss(self, sentence_features):
+         """Extra subsumption cluster loss with sampled C_neg.
+ 
+diff --git a/ont/pipeline.py b/ont/pipeline.py
+index f0fd8bf..0aa0c68 100644
+--- a/ont/pipeline.py
++++ b/ont/pipeline.py
+@@ -63,6 +63,7 @@ def fit(
+     device: Optional[str] = None,
+     gradient_checkpointing: bool = False,
+     select_best_epoch: bool = True,
++    exist_in_batch_negatives: bool = False,
+ ) -> OntologyTransformer:
+     """End-to-end: OWL → prepare data → train → return model.
+ 
+@@ -116,6 +117,10 @@ def fit(
+         select_best_epoch: Reload the epoch checkpoint with the best val MRR at the end (upstream
+             behaviour). K-Ont note: our val.json holds 2 TBox queries, so "best MRR" across epochs
+             is noise -- pass False to keep the last epoch instead. See BUILD_LOG.md Step 15.
++        exist_in_batch_negatives: Add an in-batch contrastive term to the existential loss (each
++            instance-filler exist row vs. another same-role row's filler). K-Ont note: upstream's
++            borrowed negatives are 96% class labels on our data, so hasStructure never learned to
++            separate crystals. See LogicalConstraintLoss._in_batch_negative_index, BUILD_LOG.md Step 17.
+ 
+     Returns:
+         Trained OntologyTransformer model.
+@@ -198,6 +203,7 @@ def fit(
+         balanced=balanced,
+         balanced_negatives=balanced_negatives,
+         all_concepts=all_concept_names,
++        exist_in_batch_negatives=exist_in_batch_negatives,
+     )
+ 
+     # Step 5: Setup evaluator (may be empty for tiny ontologies)
+@@ -258,6 +264,8 @@ def fit(
+         evaluator=val_evaluator,
+     )
+     trainer.train()
++    if exist_in_batch_negatives:
++        logger.info(f"In-batch exist negatives: {logical_loss.in_batch_stats}")
+ 
+     # Step 8: Determine best lambda from evaluation data
+     best_lambda = 0.0

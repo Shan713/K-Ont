@@ -32,8 +32,8 @@ from ont.model import OntologyTransformer  # noqa: E402
 ABOX = os.path.join(HERE, "data", "battgpt_abox")
 
 
-def load(name):
-    with open(os.path.join(ABOX, name), encoding="utf-8") as f:
+def load(name, abox_dir=ABOX):
+    with open(os.path.join(abox_dir, name), encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -42,15 +42,34 @@ def enc(model, sents):
 
 
 def ranks_of_true(scores, true_idx):
-    """scores: [n, k] higher = better; true_idx: [n]. 1-based rank of the true column per row."""
+    """scores: [n, k] higher = better; true_idx: [n]. 1-based rank of the true column per row.
+
+    Ties count as a random tie-break (expected rank), not in the true column's favour: since Step 16,
+    no_geometry crystals with the same symmetry have identical sentences -> identical embeddings, and
+    a strict ">" count would silently rank the true one first among its exact duplicates."""
     true = scores.gather(1, true_idx.view(-1, 1))
-    return (scores > true).sum(1) + 1
+    ties = (scores == true).sum(1) - 1  # other columns scoring exactly the same
+    return (scores > true).sum(1) + 1 + ties.float() / 2
 
 
 def rank_summary(r):
     r = r.float()
     return {"n": len(r), "MRR": round((1 / r).mean().item(), 4), "H@1": round((r == 1).float().mean().item(), 4),
-            "H@10": round((r <= 10).float().mean().item(), 4), "median_rank": int(r.median().item())}
+            "H@10": round((r <= 10).float().mean().item(), 4), "median_rank": float(r.median().item())}
+
+
+def hard_negative_ranks(scores, true_idx, groups):
+    """Rank of the true crystal among ONLY itself + the crystals of other materials in the same
+    chemical system (the confusable set, Step 10). groups[i] = candidate column indices for row i,
+    true one included; rows with no same-chemsys alternative are skipped."""
+    out = []
+    for i, cand in enumerate(groups):
+        if len(cand) < 2:
+            continue
+        s = scores[i, cand]
+        t = s[cand.index(int(true_idx[i]))]
+        out.append((s > t).sum().item() + 1 + ((s == t).sum().item() - 1) / 2)
+    return torch.tensor(out)
 
 
 def pct(x, q):
@@ -62,9 +81,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
     ap.add_argument("--variant", choices=["full", "no_geometry"], required=True)
+    ap.add_argument("--split", default=None,
+                    help="split.json (abox/split.py): also report typing + hasStructure per side (train / held-out)")
+    ap.add_argument("--abox-dir", default=ABOX,
+                    help="verbalizations the run was TRAINED on (e.g. the pre-Step-16 backup for older runs)")
     a = ap.parse_args()
 
     run_cfg = json.load(open(os.path.join(a.run, "step_times.json")))
+    split = json.load(open(a.split)) if a.split else None
     after = OntologyTransformer.from_pretrained(os.path.join(a.run, "final"))
     after.hit_model.eval()
     lam = after.best_lambda or 0.0
@@ -75,19 +99,21 @@ def main():
     man = after.manifold
     radius = 1 / math.sqrt(float(man.c))
 
-    ents = load("entities.json")
-    vm = load(f"verbalizations_materials_{a.variant}.json")
-    vc = load(f"verbalizations_crystals_{a.variant}.json")
-    ve = load("verbalizations_elements.json")
+    ents = load("entities.json", a.abox_dir)
+    vm = load(f"verbalizations_materials_{a.variant}.json", a.abox_dir)
+    vc = load(f"verbalizations_crystals_{a.variant}.json", a.abox_dir)
+    ve = load("verbalizations_elements.json", a.abox_dir)
     classes = [v for _, v in sorted(json.load(open(os.path.join(a.run, "data", "concept_names.json"))).items(),
                                     key=lambda kv: int(kv[0]))]
     mats = sorted(vm)
     crys = [ents["materials"][m]["structure"] for m in mats]  # crystal key for each material, same order
     crys_all = sorted(vc)
 
-    out = {"run": a.run, "variant": a.variant, "base_model": base, "best_lambda": lam,
+    out = {"run": a.run, "variant": a.variant, "abox_dir": a.abox_dir, "base_model": base, "best_lambda": lam,
            "ball_radius": round(radius, 3),
-           "NOTE": "training-set fit only: no held-out split exists yet; this is not the Phase 5b eval"}
+           "split": a.split,
+           "NOTE": ("top-level B/C numbers pool ALL materials; with --split, see <before|after>.split.test for "
+                    "held-out materials (in no training row). Without --split everything here is training fit.")}
 
     with torch.no_grad():
         for tag, model in (("before", before), ("after", after)):
@@ -124,14 +150,59 @@ def main():
 
             # C. hasStructure ranking over all 250 crystals
             true_idx = torch.tensor([crys_all.index(c) for c in crys], device=M.device)
+            groups = [[crys_all.index(ents["materials"][o]["structure"]) for o in mats
+                       if ents["materials"][o]["chemsys"] == ents["materials"][m]["chemsys"]] for m in mats]
+            n_hn = sum(len(g) >= 2 for g in groups)
+            # references, so a number can be read without context: random ranking, random among the
+            # same-chemsys confusable set, and a perfect ranker that only sees symmetry (family, space
+            # group, crystal system) -- the ceiling for no_geometry crystals since Step 16
+            sig = [(ents["crystals"][c].get("structure_family"), ents["crystals"][c].get("space_group"),
+                    ents["crystals"][c].get("crystal_system")) for c in crys_all]
+            H = lambda n: sum(1 / k for k in range(1, n + 1))
+            hs = {"random_baseline_MRR": round(H(len(crys_all)) / len(crys_all), 4),
+                  "symmetry_only_oracle_MRR": round(sum(H(sig.count(sig[t])) / sig.count(sig[t]) for t in true_idx.tolist()) / len(mats), 4),
+                  "hard_negative_n_materials": n_hn,
+                  "hard_negative_random_MRR": round(sum(H(len(g)) / len(g) for g in groups if len(g) >= 2) / max(n_hn, 1), 4)}
             plain = score(M, X)  # no role at all: is V(m) simply close to V(its crystal)?
-            hs = {"plain_distance_no_role": rank_summary(ranks_of_true(plain, true_idx)),
-                  "random_baseline_MRR": round(sum(1 / k for k in range(1, len(crys_all) + 1)) / len(crys_all), 4)}
+            hs["plain_distance_no_role"] = rank_summary(ranks_of_true(plain, true_idx))
+            hs["plain_distance_no_role_hard_negative"] = rank_summary(hard_negative_ranks(plain, true_idx, groups))
+            sr = None
             if tag == "after":  # the role rotation only exists after training (fit() initializes it fresh)
                 R = torch.tensor(after.encode_existence(["has structure"] * len(crys_all),
                                                         [vc[c] for c in crys_all]), device=M.device)
-                hs["via_role_rotation"] = rank_summary(ranks_of_true(score(M, R), true_idx))
+                sr = score(M, R)
+                hs["via_role_rotation"] = rank_summary(ranks_of_true(sr, true_idx))
+                hs["via_role_rotation_hard_negative"] = rank_summary(hard_negative_ranks(sr, true_idx, groups))
             res["C_hasStructure"] = hs
+
+            # Per-side numbers for a held-out split (Step 17). "test" rows are materials/crystals that
+            # appear in NO training row, so these are the first generalization numbers in this log.
+            if split:
+                cls_idx = {n: classes.index(t) for n, t in (("materials", "substance"), ("crystals", "crystal structure"))}
+                sides = {}
+                for side in ("train", "test"):
+                    mi = [n for n, m in enumerate(mats) if m in split[f"{side}_materials"]]
+                    ci = [crys_all.index(c) for c in split[f"{side}_crystals"]]
+                    d = {"n_materials": len(mi)}
+                    for name, emb, rows_ in (("materials", M, mi), ("crystals", X, ci)):
+                        sc = score(emb[rows_], C)
+                        d[f"typing_{name}_H@1"] = round((sc.argmax(1) == cls_idx[name]).float().mean().item(), 4)
+                    mats_score = {"plain_no_role": plain}
+                    if tag == "after":
+                        mats_score["via_role"] = sr
+                    for k, sc in mats_score.items():
+                        ti = true_idx[mi]
+                        d[f"hasStructure_{k}_all250"] = rank_summary(ranks_of_true(sc[mi], ti))
+                        # candidates = only this side's crystals (for test: 51 crystals never seen in training)
+                        cols = torch.tensor(ci, device=sc.device)
+                        pos = torch.tensor([ci.index(int(t)) for t in ti.tolist()], device=sc.device)
+                        d[f"hasStructure_{k}_among_{side}_crystals"] = rank_summary(ranks_of_true(sc[mi][:, cols], pos))
+                        d[f"hasStructure_{k}_hard_negative"] = rank_summary(
+                            hard_negative_ranks(sc[mi], ti, [groups[n] for n in mi]))
+                    H_ = lambda n: sum(1 / k for k in range(1, n + 1))
+                    d["random_MRR_among_side_crystals"] = round(H_(len(ci)) / len(ci), 4)
+                    sides[side] = d
+                res["split"] = sides
 
             # D. crowding
             fam = defaultdict(list)
