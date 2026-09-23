@@ -1,0 +1,179 @@
+{
+ "run": "data/runs/no_geometry_galen_b32_e3",
+ "variant": "no_geometry",
+ "base_model": "Hui97/OnT-MiniLM-L12-galen",
+ "best_lambda": 0.0,
+ "ball_radius": 19.596,
+ "NOTE": "training-set fit only: no held-out split exists yet; this is not the Phase 5b eval",
+ "before": {
+  "A_class_separation": {
+   "substance_vs_crystal_structure": 8.408,
+   "closest_class_pair": [
+    "crystal structure",
+    "crystal system",
+    4.922
+   ],
+   "median_pairwise": 13.49
+  },
+  "B_typing": {
+   "materials": {
+    "n": 250,
+    "MRR": 0.2297,
+    "H@1": 0.0,
+    "H@10": 1.0,
+    "median_rank": 5,
+    "true_type": "substance",
+    "top1_class_counts": {
+     "crystal structure": 119,
+     "chemical element": 98,
+     "oxide structure family": 16,
+     "electrolyte role": 9
+    }
+   },
+   "crystals": {
+    "n": 250,
+    "MRR": 0.998,
+    "H@1": 0.996,
+    "H@10": 1.0,
+    "median_rank": 1,
+    "true_type": "crystal structure",
+    "top1_class_counts": {
+     "crystal structure": 249,
+     "oxide structure family": 1
+    }
+   },
+   "elements": {
+    "n": 75,
+    "MRR": 0.9867,
+    "H@1": 0.9733,
+    "H@10": 1.0,
+    "median_rank": 1,
+    "true_type": "chemical element",
+    "top1_class_counts": {
+     "chemical element": 73,
+     "oxide structure family": 2
+    }
+   }
+  },
+  "C_hasStructure": {
+   "plain_distance_no_role": {
+    "n": 250,
+    "MRR": 0.9678,
+    "H@1": 0.948,
+    "H@10": 1.0,
+    "median_rank": 1
+   },
+   "random_baseline_MRR": 0.0244
+  },
+  "D_crowding": {
+   "material_pairwise_median": 9.852,
+   "material_pairwise_p5": 6.869,
+   "within_family_median": 8.229,
+   "within_family_n_pairs": 281,
+   "nearest_neighbour_min": 2.0161,
+   "nearest_neighbour_median": 5.246,
+   "euclid_norm_over_radius_median": 0.3591,
+   "euclid_norm_over_radius_max": 0.3714,
+   "hyperbolic_norm_median": 14.732
+  },
+  "E_same_chemsys_pairs": {
+   "n_pairs": 86,
+   "median_dist": 5.939,
+   "min_dist": 2.0161,
+   "n_collapsed_lt_1e-3": 0,
+   "example": [
+    "LiTiO2",
+    "LiTi2O4",
+    4.733
+   ]
+  }
+ },
+ "after": {
+  "A_class_separation": {
+   "substance_vs_crystal_structure": 15.638,
+   "closest_class_pair": [
+    "battery role",
+    "positive electrode role",
+    8.269
+   ],
+   "median_pairwise": 20.143
+  },
+  "B_typing": {
+   "materials": {
+    "n": 250,
+    "MRR": 1.0,
+    "H@1": 1.0,
+    "H@10": 1.0,
+    "median_rank": 1,
+    "true_type": "substance",
+    "top1_class_counts": {
+     "substance": 250
+    }
+   },
+   "crystals": {
+    "n": 250,
+    "MRR": 0.863,
+    "H@1": 0.784,
+    "H@10": 1.0,
+    "median_rank": 1,
+    "true_type": "crystal structure",
+    "top1_class_counts": {
+     "crystal structure": 196,
+     "layered oxide structure": 15,
+     "NASICON structure": 14,
+     "spinel structure": 9
+    }
+   },
+   "elements": {
+    "n": 75,
+    "MRR": 1.0,
+    "H@1": 1.0,
+    "H@10": 1.0,
+    "median_rank": 1,
+    "true_type": "chemical element",
+    "top1_class_counts": {
+     "chemical element": 75
+    }
+   }
+  },
+  "C_hasStructure": {
+   "plain_distance_no_role": {
+    "n": 250,
+    "MRR": 0.3698,
+    "H@1": 0.228,
+    "H@10": 0.66,
+    "median_rank": 5
+   },
+   "random_baseline_MRR": 0.0244,
+   "via_role_rotation": {
+    "n": 250,
+    "MRR": 0.3566,
+    "H@1": 0.232,
+    "H@10": 0.616,
+    "median_rank": 6
+   }
+  },
+  "D_crowding": {
+   "material_pairwise_median": 7.856,
+   "material_pairwise_p5": 4.445,
+   "within_family_median": 5.049,
+   "within_family_n_pairs": 281,
+   "nearest_neighbour_min": 0.8673,
+   "nearest_neighbour_median": 2.701,
+   "euclid_norm_over_radius_median": 0.4147,
+   "euclid_norm_over_radius_max": 0.4199,
+   "hyperbolic_norm_median": 17.296
+  },
+  "E_same_chemsys_pairs": {
+   "n_pairs": 86,
+   "median_dist": 6.207,
+   "min_dist": 1.4313,
+   "n_collapsed_lt_1e-3": 0,
+   "example": [
+    "LiTiO2",
+    "LiTi2O4",
+    7.621
+   ]
+  }
+ }
+}

@@ -1,0 +1,66 @@
+diff --git a/ont/evaluation/ranking.py b/ont/evaluation/ranking.py
+index accb117..fb1b135 100644
+--- a/ont/evaluation/ranking.py
++++ b/ont/evaluation/ranking.py
+@@ -37,7 +37,7 @@ def compute_rank_roc(ranks_dict, num_classes):
+         fprs.append(fp / num_negatives)
+     tprs.append(1)
+     fprs.append(1)
+-    auc = np.trapz(tprs, fprs)
++    auc = np.trapezoid(tprs, fprs)  # K-Ont: np.trapz was removed in NumPy 2.4 (same signature)
+     return auc
+ 
+ 
+diff --git a/ont/pipeline.py b/ont/pipeline.py
+index 6e3c75b..f0fd8bf 100644
+--- a/ont/pipeline.py
++++ b/ont/pipeline.py
+@@ -61,6 +61,8 @@ def fit(
+     max_eval: int = 1000,
+     seed: int = 8888,
+     device: Optional[str] = None,
++    gradient_checkpointing: bool = False,
++    select_best_epoch: bool = True,
+ ) -> OntologyTransformer:
+     """End-to-end: OWL → prepare data → train → return model.
+ 
+@@ -105,6 +107,15 @@ def fit(
+             cuda > mps > cpu. K-Ont note: MPS hit an out-of-memory error on the very first
+             training step in this codebase (tried to allocate 20GB for a 33M-param model) --
+             pass device="cpu" to skip it until that's root-caused. See BUILD_LOG.md.
++        gradient_checkpointing: Recompute encoder activations during backward instead of storing
++            them. K-Ont note: with long (~200-token) ABox sentences, one 64-sentence encode pass
++            holds ~4.5 GiB of activations and each step keeps several alive at once (~14 GiB on an
++            8 GiB RTX 4060 -- the real cause of the MPS "OOM" too). Checkpointing cut one pass to
++            ~0.9 GiB for ~27% more time, with bit-identical embeddings/gradients. See BUILD_LOG.md
++            Step 15.
++        select_best_epoch: Reload the epoch checkpoint with the best val MRR at the end (upstream
++            behaviour). K-Ont note: our val.json holds 2 TBox queries, so "best MRR" across epochs
++            is noise -- pass False to keep the last epoch instead. See BUILD_LOG.md Step 15.
+ 
+     Returns:
+         Trained OntologyTransformer model.
+@@ -219,13 +230,22 @@ def fit(
+         logging_steps=100,
+         metric_for_best_model="MRR" if val_evaluator and not _is_fractional else None,
+         greater_is_better=True if val_evaluator and not _is_fractional else None,
+-        load_best_model_at_end=True if val_evaluator and not _is_fractional else False,
++        load_best_model_at_end=True if val_evaluator and not _is_fractional and select_best_epoch else False,
+         disable_tqdm=False,
+         report_to="none",
+         use_cpu=(device.type == "cpu"),  # force the trainer's own device pick to agree with the
+                                           # model's (see the device-selection comment above)
+         dataloader_pin_memory=False,  # Disable pin_memory to avoid warnings
+     )
++    if gradient_checkpointing:
++        # Enabled on the underlying HF encoder directly, NOT via the Trainer's own
++        # `gradient_checkpointing=True` arg: transformers 5.17's Trainer calls
++        # model.gradient_checkpointing_enable(..., every_n_layers=...) and sentence-transformers
++        # 6.1's wrapper rejects that kwarg (TypeError), so that route crashes before step 1.
++        model.hit_model[0].auto_model.gradient_checkpointing_enable(
++            gradient_checkpointing_kwargs={"use_reentrant": False}
++        )
++        logger.info("Gradient checkpointing enabled on the transformer encoder")
+ 
+     # Step 7: Train
+     logger.info("Starting training...")

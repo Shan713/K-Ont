@@ -27,7 +27,10 @@ checklist depends on it. Note the CUDA version shown; you'll need it in Step 3.
 ## 2. Install prerequisites
 
 - **Python 3.11** specifically (not 3.12/3.13) — matches what this project was built and tested
-  against on the Mac. https://www.python.org/downloads/, check "Add to PATH" during install.
+  against on the Mac. https://www.python.org/downloads/, check "Add to PATH" during install. On the
+  RTX 4060 laptop (which only had 3.13) we used `winget install --id Python.Python.3.11 --exact
+  --scope user`, then built the venv from that exact interpreter
+  (`%LOCALAPPDATA%\Programs\Python\Python311\python.exe -m venv .venv`).
 - **A JDK** (any recent LTS — 17 or 21 is fine; we used 23 on the Mac with no issues) — needed for
   DeepOnto's JVM bridge (JPype). https://adoptium.net/ is a straightforward choice on Windows.
 - **Git** — https://git-scm.com/download/win
@@ -52,8 +55,12 @@ yet); clone it now anyway so it's there when you get to it.
 ```powershell
 cd OnT
 git apply ../patches/ont_pipeline_device_fix.patch
+git apply ../patches/ont_gpu_training_fixes.patch
 cd ..
 ```
+
+The second patch (added on the RTX 4060, `BUILD_LOG.md` Step 15) is what makes training fit on an
+8 GiB GPU at all — without it the first step OOMs — plus a NumPy 2.4 fix for the end-of-epoch eval.
 
 On a CUDA machine the original bug (Apple MPS vs CPU device disagreement) wouldn't actually have
 fired — it's Mac-specific — but the patch also adds a `device=` override to `fit()` that's useful
@@ -73,6 +80,8 @@ python -m venv .venv
 # Go to https://pytorch.org/get-started/locally/ and use the exact command it gives you for
 # your CUDA version from Step 1 (Windows / Pip / Python / CUDA 12.x). It'll look like:
 pip install torch --index-url https://download.pytorch.org/whl/cu121
+# (RTX 4060 laptop, driver CUDA 13.3: we used .../whl/cu130 -> torch 2.14.0+cu130. Check which
+# cuXXX indexes actually carry a cp311 win_amd64 wheel rather than copying the example above.)
 
 # STOP AND VERIFY before installing anything else:
 python -c "import torch; print('CUDA available:', torch.cuda.is_available()); print(torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'no GPU visible')"
@@ -130,26 +139,18 @@ Not needed just to run training.)*
 ## 6. Smoke-test training for real
 
 ```powershell
-mkdir data\battgpt_ont_output\data
-copy data\battgpt_merged_full\* data\battgpt_ont_output\data\
-python -c "
-import sys, time
-sys.path.insert(0, 'OnT')
-from ont.pipeline import fit
-t0 = time.time()
-fit(owl_path='data/battgpt_tbox.owl', output_dir='data/battgpt_ont_output', num_epochs=1, batch_size=64)
-print(f'Total: {time.time()-t0:.1f}s')
-"
+.venv\Scripts\python train_ont.py --variant full --epochs 1 --batch-size 64 --base-model sentence-transformers/all-MiniLM-L12-v2 --output data\runs\smoke
 ```
 
-Watch the very first log line after "Starting training...": it should say `it/s` (iterations per
-second) rather than `s/it` (seconds per iteration) in the progress bar, or at least a much smaller
-`s/it` number than the Mac's measured ~90s/it. If it's still showing something close to 90s/it,
-the GPU likely isn't actually being used for this run — recheck Step 4's verification.
+`train_ont.py` copies the merged data into `<output>\data` (so `fit()` reuses it instead of
+running DeepOnto on the TBox alone), turns on gradient checkpointing, logs the real device and
+checkpointing state at step 1, and times every step with `cuda.synchronize()` into
+`<output>\step_times.json`. *(An earlier version of this step used an inline `python -c` snippet —
+it never configured logging, so `fit()`'s "on device: ..." line was silently dropped.)*
 
-98 steps total for one epoch on this dataset (6,257 rows / batch 64). At even 5s/it that's under
-10 minutes; expect it to land somewhere well under an hour even generously, a large improvement
-over the Mac's ~2.5 hour/epoch estimate.
+**Measured on the RTX 4060 laptop (Step 15):** median **2.54 s/step**, 98 steps in 4 min 8 s, peak
+GPU memory 2.04 GiB, vs ~90 s/step on the Mac's CPU. If a run is anywhere near 90 s/step, the GPU
+isn't being used — recheck Step 4.
 
 ## 7. Known gotchas from setting this up the first time (Mac, but some apply everywhere)
 

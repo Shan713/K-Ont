@@ -697,3 +697,217 @@ runs the *training*, so there's no reason to redo any of it).
 
 *(Next entry: once on the GPU machine — verify CUDA is actually used, then a real training run,
 Phase 5/5b evaluation, export, CrystaLLM wiring.)*
+
+## Step 15 — Moved to the RTX 4060 laptop: ~35x faster than CPU, the "MPS bug" was really activation memory, and the first real training runs (2026-09-22/23)
+
+Working through [`GPU_SETUP.md`](GPU_SETUP.md) in order, checking each step before the next.
+
+**GPU and driver (setup step 1) — fine.** `nvidia-smi` shows the `RTX 4060 Laptop GPU` with 8 GB,
+driver 610.62, CUDA 13.3. That's newer than the `cu121` example the checklist gives, so the torch
+wheel has to come from whatever pytorch.org currently lists for this driver, not from that example.
+
+**Prerequisites (setup step 2) — one mismatch.** Java (Temurin 25) and Git are fine. The only Python
+on this machine is **3.13**, not the 3.11 the checklist asks for, and there's no `py` launcher to
+pick another version. We didn't build the venv on 3.13 and hope `deeponto`/JPype/spaCy wheels
+exist for it — that's the same kind of guess the checklist was written to avoid. Installed 3.11.9
+per-user with `winget install --id Python.Python.3.11` (the official python.org installer), checked
+it actually runs (`3.11.9`, 64-bit), and built the venv from that exact interpreter's path rather than
+whatever `python` on PATH happens to resolve to (still 3.13).
+
+**The data wasn't actually here yet, and checking the files caught it — the folder's existence
+didn't.** `data/` existed, with `battgpt_merged_full/` and `battgpt_merged_no_geometry/` inside it,
+so at a glance the transfer looked done. It wasn't: each merged directory held only
+`merge_summary.json`, and `git ls-files data` showed that **every** file in `data/` was one git
+already tracks. The whole folder was 111 KB, not the ~13 MB the checklist describes. So the folder
+was only what `git clone` brings, and the gitignored training files (`train.jsonl`,
+`train_exist.jsonl`, ...) had never been copied from the Mac. Deliberately **not** regenerated here
+(per setup step 5 — none of that pipeline depends on the training machine); waited for the transfer.
+
+**When the data did arrive (a zip), checked it against what was already here before copying
+anything in.** 13.4 MB, 49 entries — matching the ~13 MB the checklist expects. Some files in the
+zip were also already tracked by git (e.g. `merge_summary.json`), with *different* byte sizes (377
+vs 391). Extracted to a scratch folder and compared every tracked file first: all 14 were identical
+in content — the only difference was Windows line endings git adds on checkout here
+(`core.autocrlf=true`). So only the 28 files git *doesn't* track were copied in (skipping the Mac's
+`.DS_Store`), leaving tracked files alone and `git status` clean. Then re-verified the training
+files themselves, not just the summary: `train.jsonl` 6,257 rows and `train_exist.jsonl` 804 in
+both variants, **exactly** Step 13's counts, and a fresh re-scan of every type row found zero self-
+negatives (Step 13's fix survived the trip).
+
+**Cloned `OnT/` and applied the device patch (setup step 3) — applied cleanly.** The fresh clone is
+at upstream `82ef384` ("Release ontology-transformer 0.1.7"). Before trusting the clean `git apply`,
+checked that the patch was made against the same file, not just one close enough to apply: its
+`index 1e24146..` line matches the blob hash of the freshly cloned `ont/pipeline.py`
+(`git rev-parse HEAD:ont/pipeline.py` → `1e24146`), so the patch's base is identical to upstream
+today. Read the applied diff by eye (the `device=` argument, the cuda > mps > cpu pick, and
+`use_cpu` now following that same pick). Also checked that `Optional` — which the new argument's
+type hint needs — is already imported (`pipeline.py` line 7), and that the patched file still
+parses. `K-Ont`'s own `git status` stays clean, as it should, because `OnT/` is gitignored.
+
+**CUDA torch, then the gate (setup step 4) — passed, and checked it stayed passed.** Checked which
+CUDA builds of torch actually exist for Python 3.11 on Windows rather than copying the checklist's
+`cu121` example (which tops out at torch 2.5.1): `cu130` and `cu132` both carry torch 2.14.0, and
+this driver supports up to CUDA 13.3. Installed `torch 2.14.0+cu130`. `torch.cuda.is_available()`
+→ `True`, device name `NVIDIA GeForce RTX 4060 Laptop GPU`, and — so "available" wasn't taken on
+faith — a real 4096×4096 matmul ran on `cuda:0`. Then `pip install -r requirements.txt`, and
+re-checked afterward: still `2.14.0+cu130`, still `True` (the exact failure the checklist's install
+order exists to prevent — pip swapping in a CPU build — didn't happen). The spaCy model installed
+from its wheel URL and actually loads (`spacy.load` check, not the log line). One thing noted for
+later: this pulled **sentence-transformers 6.1.0 / transformers 5.17.0**, newer than OnT's own last
+compatibility fix ("Sentence Transformers 5+"). That mattered twice below.
+
+### First GPU run: out of memory — and the real reason the Mac's MPS run failed too
+
+Before running anything, read `fit()` again to see how it treats `output_dir/data`: if `train.jsonl`,
+`concept_names.json`, `role_names.json` and `val.json` all exist it reuses them, otherwise it runs
+DeepOnto prep on the TBox alone — which would "train successfully" on 19 TBox axioms instead of our
+merged data. The checklist's inline snippet also never configures logging, so `fit()`'s own
+`"on device: ..."` line is silently dropped. Wrote [`train_ont.py`](../train_ont.py) instead: it
+copies the merged files in (refusing to mix with a different dataset already there), turns logging
+on, calls OnT's own `fit()` unmodified otherwise, and wraps the trainer's `training_step` with a
+wall-clock timer taken after `cuda.synchronize()` (GPU work is asynchronous — without the sync you'd
+time the kernel *launch*, not the work), writing every step's time and peak GPU memory to
+`step_times.json`.
+
+The log confirmed `Reusing existing training data` and `on device: cuda` — then step 1 died:
+`CUDA out of memory ... 14.38 GiB is allocated by PyTorch` on an 8 GiB card. A 33M-parameter model
+at batch 64. That's the same shape as the Mac's MPS failure (20 GiB on step 1, Step 14), on a
+completely different backend — so Step 14's guess that it was an MPS rough edge, or the hyperbolic
+math, was wrong. Something in this codebase asks for that much memory on *any* device.
+
+**Found it by measuring, not guessing.** The traceback put the crash in the very first encode pass of
+the hierarchy loss (`hit_loss.py:46`) — before the exist/conj losses even run, so not "extra forward
+passes" either. A probe with the model built exactly as `fit()` builds it: max sequence length 256
+(correct), SDPA attention (fine), and a real batch pads to **64 × 222 tokens** — our ABox sentences
+are long (median material sentence ~200 tokens; OnT's usual class names are ~5). One 64-sentence
+forward+backward pass alone peaks at **4.36 GiB** of activations in fp32. And one training step keeps
+several of these alive at once until backward: `LogicalConstraintLoss.forward` encodes the negatives,
+then the exist rows' Concept and con, then `hit_loss` encodes child, parent and *the negatives
+again*. Several 4+ GiB passes → the ~14 GiB we saw. Plain transformer activation memory on long
+sentences — nothing exotic.
+
+**Fix: gradient checkpointing** (recompute activations during backward instead of storing them).
+Chosen over the two obvious alternatives on purpose: a smaller batch changes the training itself
+(the exist loss borrows its negatives from the concurrent batch — Step 2), and bf16 is a real risk
+next to Poincaré-ball math near the boundary. Measured on one real batch before patching anything:
+
+| | peak memory | fwd+bwd time |
+|---|---|---|
+| no checkpointing | 4.50 GiB | 0.441 s |
+| gradient checkpointing | **0.89 GiB** | 0.560 s (+27%) |
+
+— with the embeddings and the gradient norm (22.7173…) **identical to every printed digit**, so the
+math is unchanged. Added as an opt-in `gradient_checkpointing=` argument on `fit()`. First attempt
+used the Trainer's own `gradient_checkpointing=True` flag and crashed before step 1 — transformers
+5.17's Trainer passes an `every_n_layers` argument sentence-transformers 6.1's wrapper doesn't accept.
+Enabled it directly on the underlying HF encoder instead (exactly the call the probe measured), and
+had `train_ont.py` read the state back off the live model at step 1 rather than trust the flag:
+`HF gradient checkpointing active: True`, `model device cuda:0`.
+
+**Then the run got through all 98 steps and crashed in the end-of-epoch eval**:
+`module 'numpy' has no attribute 'trapz'` — removed in NumPy 2.4 (we have 2.4.6), renamed
+`np.trapezoid` with the same arguments. One call site (`ont/evaluation/ranking.py:40`); fixed, and
+checked `np.trapezoid` gives the right area on a known curve (0.75) before trusting it. Worth noting
+only because it cost a full epoch: a crash at the very *end* of a run is the expensive kind, and the
+rerun was the only way to test the eval → save path end to end.
+
+### The measured number
+
+Smoke run (`data/runs/smoke_full_minilm_b64_e1/`, checklist settings: `full` variant, 1 epoch,
+batch 64, plain `all-MiniLM-L12-v2`): **median 2.54 s/step** (first 3.20, min 1.85), 98 steps in
+4 min 8 s of training, **peak GPU memory 2.04 GiB**, exit 0, model saved. Against the Mac CPU's
+measured 85–115 s/step, that's **~35–45x faster** — one epoch in ~4 minutes instead of ~2.5 hours.
+Loss 14.56 at step 1 → 1.94 at step 90. Re-running with the same seed reproduced the loss exactly
+(14.5607 at step 1, 1.9437 at step 90), so the timing and loss aren't one-off luck. Step times crept
+up from ~2.2 s to ~2.5 s over the epoch, consistent with a laptop GPU warming up; not investigated
+further.
+
+### The real training runs (design spec Phase 5 settings)
+
+The checklist's smoke settings aren't the plan. `ONT_ABOX_EXTENSION.md` Phase 5 says: base
+`Hui97/OnT-MiniLM-L12-galen` if available, batch 16–32, 1–3 epochs, `existence_loss_kind=hit`
+(already `fit()`'s default). Checked the galen model rather than assuming: it exists on the HF hub,
+uses mean pooling (matching what `HierarchyTransformer.from_pretrained` builds), and its weights load
+with **zero** missing/unexpected keys — worth checking directly, since that loader deliberately
+hides the load report. Its embeddings differ clearly from plain MiniLM's, so the pretrained OnT
+weights are really in play. (`fit()` starts the *role* model fresh either way; only the encoder is
+pretrained.)
+
+**One more thing that only shows up once you read the eval data**: `val.json` holds exactly **2
+queries** (one nf1, one nf3, all TBox — `prepare.py` samples 10% of 19 axioms). With more than one
+epoch, `fit()` reloads whichever epoch scored the best val MRR at the end — on 2 queries, that's a
+coin flip deciding which model you get. Added `select_best_epoch=` to `fit()` (upstream default
+unchanged) and ran with it off: the final model is the last epoch, deterministically. `best_lambda`
+(the centripetal weight used at inference) still comes from those same 2 queries and came out 0.0 —
+treat it as unvalidated.
+
+Two runs, one per variant — **batch 32, 3 epochs, galen base, last epoch kept** (`train_ont.py`):
+
+| | `full` | `no_geometry` |
+|---|---|---|
+| steps | 588 | 588 |
+| median s/step | **1.257** | **0.693** |
+| training time | 12 min 0 s | 6 min 55 s |
+| peak GPU memory | 1.29 GiB | 0.99 GiB |
+| loss, every 100 steps | 2.37 → 0.77 → 0.58 → 0.53 → 0.52 | 2.34 → 0.78 → 0.58 → 0.53 → 0.52 |
+
+Galen starts at loss 7.99 (step 1) against plain MiniLM's 14.56 — the pretrained OnT start really
+does help. `no_geometry` steps are ~45% faster simply because its sentences are shorter.
+
+### Did training do anything sensible? (Phase 5 checks — training-set fit, NOT Phase 5b)
+
+[`abox/phase5_checks.py`](../abox/phase5_checks.py) runs the spec's Phase 5 sanity checks on a
+trained model *and* on the galen model it started from, using OnT's own `score_hierarchy`. **Every
+number below is on materials that were also in training** — there's no held-out split yet (Step 9's
+note) — so this is "did the training move things the right way", not generalization. Output:
+`data/runs/*/phase5_checks.json`. `full` variant, before → after (`no_geometry` is within a couple of
+points on everything):
+
+- **Class names stayed distinct** (spec: `encode("substance") ≠ encode("crystal")`). Substance ↔
+  crystal structure distance 8.4 → 15.2; the closest pair of any two of the 23 classes 4.9 → 8.6.
+- **Materials now type as `substance`: 0% → 100%** (nearest class; before training, 218/250 sat
+  nearest `crystal structure`). Elements 97% → 100%.
+- **Crystals went *down*: 100% → 78.4%** — and reading *which* ones explained it. All 54 misses are
+  crystals with a structure family, and **all 54 land on their own family's class** (a spinel crystal
+  nearest `spinel structure`, etc.), zero on a wrong family. That's the `hasStructureFamily` exist
+  rows pulling crystals toward their family — informative placement, but strictly the ontology says
+  a crystal is `rdf:type CrystalStructure` and only *related to* a family individual (Step 10), so by
+  the ontology's own letter these are typing misses. Logged as-is; not scored as a pass or a failure.
+- **No crowding collapse** (spec pitfall #3). Materials sit at ~0.41 of the ball radius (not piled
+  at the boundary); same-family pairs tightened (median distance 7.6 → 5.0), which is what the
+  hierarchy loss should do, but no two materials collapsed — minimum nearest-neighbour distance 0.92.
+- **Confusable pairs moved *apart***, the spec's `V(LiMgP) ≠ V(LiZnP)` check. Neither of those two
+  formulas is in this KG, so the same-chemical-system pairs stood in (86 pairs; the Step 10 example
+  LiTi₂O₄ / LiTiO₂: 4.4 → 8.6). Median 5.5 → 6.5, none collapsed.
+
+**And a real problem with the `hasStructure` data, found by running the check on the *untrained*
+model first.** Before any training at all, plain distance (no role, no fine-tuning) already matches
+each material to its own crystal among all 250 with **H@1 = 0.988** (random: MRR 0.024). Read the
+sentences to see why: **all 250 crystal sentences start with the same `LiTi2O4 (mp-5670)` identifier
+as their material's sentence**, and repeat the band gap and formation energy too (Step 8's design —
+"just enough to tell crystals apart"). So `hasStructure` can be solved by string overlap before
+learning anything — exactly the "material-to-crystal link being too easy" risk Step 8 flagged,
+now measured. After training it's 0.44 MRR via the learned role (0.34 without it), *below* the
+untrained string-match — the typing losses pull the material and crystal clouds apart toward
+`substance` and `crystal structure`. Neither number means anything about relation learning while the
+leak is there. **This needs fixing before Phase 5b's hasStructure eval is worth running** (drop the
+id/formula from V(crystal), or reword it), but that's a verbalizer change plus regenerating rows — a
+design decision, deliberately not made here.
+
+### What changed in the repo (not yet committed), and where the patch lives now
+
+- [`patches/ont_gpu_training_fixes.patch`](../patches/ont_gpu_training_fixes.patch) — gradient
+  checkpointing, `select_best_epoch`, `np.trapezoid`. It's a diff *on top of* the Step 14 device
+  patch (committed the device fix inside `OnT/`'s own history first, as on the Mac, then diffed).
+  Verified by applying both patches, in order, to a fresh worktree at upstream `82ef384`: the result
+  matches the working files exactly. `patches/README.md` and `GPU_SETUP.md` updated to apply both.
+- `train_ont.py`, `abox/phase5_checks.py`; `GPU_SETUP.md` step 6 now uses `train_ont.py` and records
+  the measured number.
+- `data/runs/<run>/step_times.json` + `phase5_checks.json` only — the models themselves (~0.9 GB per
+  run, in `data/runs/*/final/`) are gitignored like every other generated artifact here.
+
+*(Pipeline status: training works on the GPU, ~35x faster than CPU, and both variants are trained
+and saved. Before Phase 5b / export: (1) a held-out material split — every check above is training
+fit; (2) fix the `hasStructure` identifier leak in V(crystal); (3) the spec's type-loss ablation
+(hierarchy vs. a plain class margin), not started; (4) a real `val.json` — 2 TBox queries can't
+choose `best_lambda` or an epoch.)*

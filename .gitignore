@@ -33,6 +33,13 @@ __pycache__/
 # counts) is genuinely new, so only that is kept.
 /data/battgpt_merged_*/*
 !/data/battgpt_merged_*/merge_summary.json
+# data/runs/<run>/ (train_ont.py output): model weights, checkpoints, a copy of the merged data and
+# a tqdm-heavy log -- large and reproducible from train_ont.py. Only step_times.json (the measured
+# per-step times, peak GPU memory and run config) and phase5_checks.json (abox/phase5_checks.py
+# output) are kept -- the evidence BUILD_LOG.md Step 15 cites.
+/data/runs/*/*
+!/data/runs/*/step_times.json
+!/data/runs/*/phase5_checks.json
 export_package/
 *.pt
 *.ckpt
