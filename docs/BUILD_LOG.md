@@ -998,7 +998,7 @@ over *another crystal* — the one thing the relation needs — and while the le
 be, because the text did it for free. (`no_geometry`'s 0.171 beats `full`'s but is still well under its
 0.447 symmetry ceiling.)
 
-## Step 17 — A held-out split, and in-batch negatives for the exist loss (2026-09-23, in progress)
+## Step 17 — A held-out split, and in-batch negatives: hasStructure is learned, and it generalizes (2026-09-23)
 
 Both follow from Step 16: there was no way to tell generalization from memorization, and the exist
 loss had no crystal-vs-crystal contrast.
@@ -1052,10 +1052,79 @@ Typing generalizes cleanly to unseen materials. hasStructure does not: on held-o
 trained role (0.139) is barely above random (0.089) and far *below* the untrained model's plain
 distance (0.537). That's the number the in-batch run has to beat.
 
-**Stopped here on request** — the other three split runs (`full` + in-batch, and both `no_geometry`
-runs) were queued and deliberately not trained. They were blocked with a placeholder that makes
-`train_ont.py` refuse to start (it won't overwrite a run folder holding different data); all three
-refused with 0 steps and the GPU went idle, then the placeholders were removed. To run them:
+**The other three runs were paused, then run.** They were first held back on request with a placeholder
+that makes `train_ont.py` refuse to start (it won't overwrite a run folder holding different data) —
+all three refused with 0 steps and the GPU went idle — then run later the same day with exactly the
+commands below.
+
+**One crash on the way, caused by a driver update — not the code.** The first `full` in-batch attempt
+died at step 357/486 with `CUDA error: unknown error`, right after cuBLAS logged
+`CUBLAS_STATUS_EXECUTION_FAILED` on an ordinary matmul, inside upstream's plain encode pass
+(`hit_loss.py:46`), not the new in-batch code. No driver-reset event was logged; the laptop had resumed
+from sleep three minutes before the run. Then the actual cause surfaced: the NVIDIA driver had
+**auto-updated mid-session, 610.62 → 617.14** (CUDA 13.3 → 13.4) — replacing the kernel driver kills
+every live CUDA context. Checked before retrying: `torch 2.14.0+cu130` still sees the GPU on the new
+driver, and 200 large matmuls matched an fp64 reference to 0.001. The crashed attempt is kept as
+`data/runs/full_split_inbatch_crashed_step357/`; the rerun reproduced its losses exactly (11.6920 at
+step 1, 1.8305 at step 100, 1.5516 at step 200) and finished cleanly. Worth pausing automatic driver
+updates during long runs. The session now also holds the machine awake while runs are going.
+
+**Did the in-batch term actually fire?** Yes, counted rather than assumed: `rows_with_negative` 6,632 of
+15,522 sampled exist rows (`full`) and 6,547 (`no_geometry`) — ~43% of all exist rows, i.e. ~85% of the
+eligible ABox rows (the other half are TBox rows, excluded on purpose). Slightly fewer in `no_geometry`
+because identical symmetry-only crystal texts are never paired. Step-1 loss went 8.04 → 11.69 with the
+term on — the extra term contributing, not a worse start. Cost: none measurable (1.058 vs 1.064 s/step).
+
+**Results, all four split runs** — held-out = the 51 materials in no training row; "among test
+crystals" ranks each held-out material's crystal among only the 51 held-out crystals:
+
+| held-out (51) | `full` base | `full` **in-batch** | `no_geometry` base | `no_geometry` **in-batch** |
+|---|---|---|---|---|
+| materials typed `substance` | 100% | 100% | 100% | 100% |
+| crystals typed `crystal structure` | 76% | 76% | 76% | 76% |
+| hasStructure via role, among test crystals (MRR) | 0.139 | **1.000** | 0.278 | **0.660** |
+| — plain distance, no role | 0.274 | 1.000 | 0.409 | 0.651 |
+| — hard-negative (random 0.679) | 0.715 | 1.000 | 0.896 | 1.000 |
+| — among all 250 crystals | 0.045 | 1.000 | 0.106 | 0.302 |
+| untrained, plain, among test crystals | 0.537 | 0.537 | 0.174 | 0.174 |
+| *train side*, via role, among train crystals | 0.063 | 1.000 | 0.157 | 0.435 |
+| median s/step · training time | 1.064 · 8.6 min | 1.058 · 8.9 min | 0.608 · 5.2 min | 0.617 · 5.1 min |
+
+Random among 51 test crystals: MRR 0.089. Nothing collapsed in any run (0 confusable pairs within
+1e-3; in-batch runs spread same-family materials further apart — within-family median ~3.6 → ~10.9).
+
+**`full` in-batch scored a perfect 1.000 on unseen materials — too good to accept without checking.**
+Step 16 deliberately left one shared channel in `full`: a material's sentence repeats its crystal's
+exact `Lattice:` / `Volume:` / `Sites:` lines, and in-batch negatives are exactly the pressure that could
+teach string-matching them. Tested on the held-out 51, perturbing sentences at evaluation time only:
+- material's geometry lines **removed**: MRR 1.000 → **0.990** — so it isn't matching the material's
+  lattice string;
+- crystals' **lattice + volume** lines shuffled between crystals: **50/51** picks stay on the true
+  crystal, **0/51** follow the moved numbers — the lattice numbers are ignored;
+- crystals' **`Sites:` composition line** shuffled: only **12/51** stay — that's the signal.
+
+So `full` learned to match a formula to its crystal's unit-cell composition (LiTi₂O₄ ↔ `Li:2, O:8,
+Ti:4` — a ratio mapping, not a string copy), supported by the symmetry both sentences share, and does
+it on materials it never saw. The honest caveat: every one of the 250 formulas in this KG is unique,
+so composition alone identifies the crystal — `full`'s 1.000 shows the relation is now *learned*, but
+it's an easy version of the task. A hard version needs polymorphs (same formula, different crystals),
+which this KG doesn't contain. The baseline model, same probe: 2/51 follow the shuffled block — it
+never learned this link at all.
+
+**`no_geometry` is the informative one** — its crystals carry no composition, only family, space group
+and crystal system (28 distinct texts among the 51 held-out crystals). The best any model can do there
+is rank by symmetry perfectly and guess within same-symmetry groups: computed ceiling MRR **0.724**
+held-out (0.506 train side). In-batch reaches **0.660 held-out — 91% of the achievable maximum** —
+against the baseline's 0.278 (38%). That can't come from composition, because there isn't any: it's
+the relation working as intended on symmetry alone.
+
+**Conclusion.** Step 16's diagnosis was right: with contrast only against class labels, hasStructure
+wasn't learned (held-out 0.139 / 0.278, *below* the untrained model in `full`). Giving the exist loss
+crystal-vs-crystal negatives fixes it — on held-out materials, at no cost to typing (100% / 76%
+unchanged in every run), no collapse, no speed cost. Recommended default for further runs:
+`--in-batch-negs` on.
+
+Commands used (from the repo root, ~9 / 5 / 5.5 min each on the RTX 4060):
 
 ```
 .venv\Scripts\python train_ont.py --variant full --epochs 3 --batch-size 32 --data-prefix data/battgpt_merged_split --in-batch-negs --output data/runs/full_split_inbatch
@@ -1064,12 +1133,69 @@ refused with 0 steps and the GPU went idle, then the placeholders were removed. 
 .venv\Scripts\python abox/phase5_checks.py --run data/runs/<run> --variant <variant> --split data/split.json
 ```
 
-(~9 / 5 / 5.5 min on the RTX 4060.) What to look at: held-out `hasStructure_via_role_among_test_crystals`
-against the baseline's 0.139 and the untrained 0.537; the train.log line `In-batch exist negatives:`
-(`rows_with_negative` should be a large share of `rows_seen` — near 0 would mean the term never fired);
-and that held-out typing stays at 100%.
+*(Pipeline status: leak fixed; held-out split in place; hasStructure learned and generalizing with
+in-batch negatives. Still open: the spec's type-loss ablation; a real `val.json` — `best_lambda`
+still comes from 2 TBox queries; refit the numeric scaler (Step 9) on `split.json`'s train materials
+before export; and polymorphs, if hasStructure is ever to be tested harder than composition matching.
+The 250-material KG was rebuilt on this machine in Step 18.)*
 
-*(Pipeline status: leak fixed; held-out split in place; hasStructure measured honestly and currently
-not learned, on train and held-out alike. Next: the three runs above. Still open: the type-loss
-ablation, and a real `val.json` — `best_lambda` still comes from 2 TBox queries. The numeric scaler
-(Step 9) should be refit on `split.json`'s train materials before any export.)*
+
+## Step 18 — Rebuilt the 250-material KG on this machine: identical material data (2026-09-23)
+
+The KG K-Ont was built from (`battGPT/output/battgpt_kg_ont/battery_kg.ttl`) only ever existed on the
+Mac — `battGPT` never committed it (Step 5), and the `output/battgpt_kg` folder on GitHub is the older
+12-material KG (83,977 triples), not this one. Our own record says which file it was:
+`entities.json`'s `meta.source_ttl` is `../output/battgpt_kg_ont/battery_kg.ttl`, 325,138 triples.
+
+**Picked the right code version first.** `battGPT`'s latest commit (`f8a9958`, 23 Sep) postdates the KG
+(extracted 22 Sep 09:31 UTC) and edits the ontology itself (`battgpt.ttl` +1,169/−540 lines), so it
+would build a genuinely different KG. Checked out `50e635c` (22 Sep 09:18 UTC, "Add space-group/
+stoichiometry heuristic ... candidate search") instead, cloned as a sibling folder. Python 3.12.10
+(matching the Mac's `myenv312`) in `battGPT/.venv` with rdflib 7.6.0, pymatgen 2026.9.24, smact
+4.0.0, mp-api 0.46.5. The MP key went in `battGPT/.env` (gitignored), checked with one live lookup
+(`mp-5670` → LiTi2O4) without printing it.
+
+**Same materials, checked before ingesting.** `populate_kg_ont.py --use-cache` reads the saved candidate
+search (`K-Ont/data/candidate_materials.json`, copied to where the script expects it and hidden from
+battGPT's git via `.git/info/exclude`). Calling the script's own `build_candidate_list` on it: the
+**identical 250 material IDs** as the original KG — none added, none missing. The run: 250/250 ingested,
+validation PASSED, exit 0.
+
+**Compared, not assumed.** Validation report vs the original's: materials 250 = 250, crystals 250 =
+250, sites 4,744 = 4,744, bonds 19,942 = 19,942, property nodes 2,118 = 2,118 — but triples **325,031 vs
+325,138**. Re-extracted the rebuild with `abox/extract.py` and diffed it field by field against the
+`entities.json` K-Ont trained on: **every material, crystal, unit cell, element, species, battery cell
+and every property value is identical** (0 differences in any field). The only difference: three
+space-group individuals present only in the original (`Fd3mIndividual`, `Ia3dIndividual`,
+`PnmaIndividual`), referenced by no crystal. Traced them: they're defined in `f8a9958`'s ontology
+(`hasCharacteristicSpaceGroup` for spinel/garnet/olivine) and absent from `50e635c`'s — so the original
+was exported while that ontology edit was still uncommitted on the Mac, and the 107 missing triples are
+ontology-level definitions carried in the export's ontology closure, not material data. (The original
+`.ttl` isn't on this machine, so a triple-by-triple diff wasn't possible; the entity-level diff is the
+evidence.) The newer pymatgen reproduced every site and all 19,942 bonds.
+
+**Conclusion:** the rebuilt KG carries exactly the material data K-Ont was built and trained on; nothing
+downstream needs regenerating. It lives in `battGPT/output/battgpt_kg_ont/` (uncommitted there, like the
+original).
+
+## Step 19 — Correction: what the no-geometry result actually shows (2026-09-23)
+
+Step 17 called `no_geometry`'s held-out MRR (0.660 of a possible 0.724) "the relation working as intended
+on symmetry alone" and said it "can't come from composition". The second half is true; the first
+overclaims, and a probe shows why. The *material* sentence also states its own space group, crystal
+system and structure family (they come from its crystal) — the same three fields that make up the
+whole `no_geometry` crystal sentence. Removing those lines from the material sentences at test time
+only (held-out 51, among 51 test crystals):
+
+| material sentence at test time | in-batch model | standard model |
+|---|---|---|
+| as trained | 0.651 | 0.272 |
+| without its space-group line | 0.333 | 0.131 |
+| without its structure-family line | 0.524 | 0.268 |
+| without all three symmetry lines | **0.093** (random 0.089) | 0.080 |
+
+So the in-batch model learned to match the symmetry labels that a material and its crystal both state
+— the only information that version shares between the two sentences — just as the `full` model
+matches formula ↔ unit-cell composition (Step 17's probe). Both are genuine learned alignment, and
+both generalize to unseen materials, but neither is the model inferring a structure from chemistry
+alone. The deck's "strongest evidence" slide was reworded to say this.
