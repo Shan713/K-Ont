@@ -10,8 +10,8 @@ generate CIFs under four prompt conditions, the same number of samples each:
 
 Each sample is post-processed as CrystaLLM's own bin/postprocess.py does, parsed with pymatgen and
 compared with the true structure by StructureMatcher (CrystaLLM benchmark tolerances: ltol 0.2,
-stol 0.3, angle_tol 5). Run with the CrystaLLM venv; CrystaLLM code is imported from the teammate's
-copy (FYP_K-OnT/CrystaLLM) with its KG options left at their defaults (off = vanilla model).
+stol 0.3, angle_tol 5). Run with the CrystaLLM venv; the crystallm package is imported from the
+authors' repo cloned at K-Ont/CrystaLLM (gitignored; docs/WORKSTATION_SETUP.md).
 
     .venv-crystallm/Scripts/python.exe abox/phaseC_generate.py --n-materials 100 --samples 10
 """
@@ -28,13 +28,19 @@ import torch
 import torch.nn.functional as F
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CRYSTALLM = os.path.join(os.path.dirname(HERE), "FYP_K-OnT", "CrystaLLM")
+CRYSTALLM = os.path.join(HERE, "CrystaLLM")  # github.com/lantunes/CrystaLLM, sparse clone of crystallm/
 sys.path.insert(0, CRYSTALLM)
 warnings.filterwarnings("ignore")
 
 from pymatgen.analysis.structure_matcher import StructureMatcher  # noqa: E402
 from pymatgen.core import Composition, Structure  # noqa: E402
 from pymatgen.symmetry.groups import SpaceGroup  # noqa: E402
+from pymatgen.core.operations import SymmOp  # noqa: E402
+
+# CrystaLLM's replace_symmetry_operators() calls SymmOp.as_xyz_string(), which current pymatgen
+# renamed to as_xyz_str(); without this alias every generated CIF fails post-processing (0 valid).
+if not hasattr(SymmOp, "as_xyz_string"):
+    SymmOp.as_xyz_string = SymmOp.as_xyz_str
 
 from crystallm import (CIFTokenizer, GPT, GPTConfig, extract_space_group_symbol,  # noqa: E402
                        get_atomic_props_block_for_formula, remove_atom_props_block,
@@ -111,6 +117,7 @@ def main():
     ap.add_argument("--model", default="crystallm_v1_small", help="checkpoint folder under data/crystallm")
     ap.add_argument("--conditions", default="composition,rf_top1,rf_top5,oracle", help="comma-separated subset")
     ap.add_argument("--gen-dir", default="phaseC_gen", help="folder under data/crystallm for the generated CIFs")
+    ap.add_argument("--seed", type=int, default=1337, help="base seed; each material x prompt gets its own fixed seed")
     a = ap.parse_args()
     device = "cuda"
     test = json.load(open(os.path.join(DATA, "phaseC_test_with_pred.json"), encoding="utf-8"))
@@ -134,6 +141,9 @@ def main():
         conds = {c: plan for c, plan in conds.items() if c in keep}
         os.makedirs(os.path.join(DATA, a.gen_dir, t["id"]), exist_ok=True)
         for cond, plan in conds.items():
+            # fixed per material and prompt, so a run is reproducible and independent of which other
+            # prompts or materials are included
+            torch.manual_seed(a.seed + sum(map(ord, t["id"] + cond)))
             valid = match = 0
             cifs = []
             for sg, n in plan:

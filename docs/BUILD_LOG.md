@@ -1481,3 +1481,12 @@ CrystaLLM's vocabulary lacks -- they were silently dropped until mapped to short
 
 **Next:** the large CrystaLLM (2.2 GB, ~10 s/sample on the 4060, ~4.5 h for 55 × 3 prompts × 10)
 moves to a workstation: [`WORKSTATION_SETUP.md`](WORKSTATION_SETUP.md).
+
+**Same day, later: K-Ont only, reproducible.** Phase C no longer imports CrystaLLM from the
+teammate's repo: the authors' `crystallm` package is sparse-cloned into `K-Ont/CrystaLLM`
+(github.com/lantunes/CrystaLLM, commit 8e81a86, gitignored) and used unmodified. It calls
+`SymmOp.as_xyz_string()`, renamed `as_xyz_str()` in current pymatgen -- unpatched, every generated
+CIF fails post-processing (0 valid); `phaseC_generate.py` now adds the alias itself. Sampling was
+unseeded (LiFeSO4F's oracle prompt: 8/10 one run, 2/10 the next); it is now seeded per material and
+prompt (`--seed`, default 1337) and two identical runs gave identical results. The small-model table
+above came from the unseeded run, so its per-material counts are one sample of that noise.

@@ -5,17 +5,20 @@ never saw? The small model ran on the laptop (BUILD_LOG Step 25); the **large** 
 parameters, 2.2 GB) needs ≈10 s per sample on an RTX 4060 laptop, ≈4.5 h for the planned run, so it
 moves here. Nothing in this run needs the Materials Project API key.
 
-## 1. Code (two repos, side by side)
+## 1. Code
 
-`abox/phaseC_generate.py` imports CrystaLLM from the teammate's repo at `../FYP_K-OnT/CrystaLLM`
-(its knowledge-graph options are off by default, so it behaves as the original CrystaLLM):
+K-Ont, plus the `crystallm` package from the CrystaLLM authors' repository (MIT licence), cloned
+into `K-Ont/CrystaLLM` (gitignored). A sparse clone fetches only that package (~300 KB):
 
 ```bash
-mkdir work && cd work
 git clone https://github.com/Shan713/K-Ont.git
-git clone https://github.com/akshayks13/FYP_K-OnT.git
 cd K-Ont
+git clone --depth 1 --filter=blob:none --sparse https://github.com/lantunes/CrystaLLM.git CrystaLLM
+git -C CrystaLLM sparse-checkout set crystallm      # laptop used commit 8e81a86
 ```
+
+The CrystaLLM code is used unmodified; `abox/phaseC_generate.py` adds one compatibility alias
+(current pymatgen renamed `SymmOp.as_xyz_string` to `as_xyz_str`).
 
 ## 2. Python environment (3.11)
 
@@ -71,6 +74,7 @@ python -u abox/phaseC_generate.py --model crystallm_v1_large --n-materials 55 --
 - Prompts: `composition` (plain CrystaLLM), `rf_top5` (our random forest's top 5 space groups,
   2 samples each), `oracle` (the true space group: the ceiling for any hint).
 - Results are rewritten after every material, so an interrupted run keeps what it finished.
+- Sampling is seeded per material and prompt (`--seed`, default 1337), so a rerun gives the same CIFs.
 - Each line printed is one material: matches per prompt out of 10.
 
 ## 5. Send back
