@@ -228,19 +228,19 @@ def main():
     ap.add_argument("--out-dir", type=Path, default=Path("data/battgpt_abox/"))
     args = ap.parse_args()
 
-    entities = json.loads(args.entities.read_text())
+    entities = json.loads(args.entities.read_text(encoding="utf-8"))
     materials = entities["materials"]
     logger.info(f"Loaded {len(materials)} materials from {args.entities}")
 
     for variant, include_geometry in [("full", True), ("no_geometry", False)]:
         result = build_variant(materials, entities, include_geometry)
         out_path = args.out_dir / f"numeric_features_{variant}.json"
-        out_path.write_text(json.dumps(result, indent=2))
+        out_path.write_text(json.dumps(result, indent=2), encoding="utf-8")
         logger.info(f"Wrote {out_path}: {len(result['feature_names'])} columns x {len(materials)} materials\n")
 
     bc_features = build_battery_cell_features(materials, entities)
     bc_path = args.out_dir / "battery_cell_features.json"
-    bc_path.write_text(json.dumps(bc_features, indent=2))
+    bc_path.write_text(json.dumps(bc_features, indent=2), encoding="utf-8")
     logger.info(f"Wrote {bc_path}: {len(bc_features)}/{len(materials)} materials have real electrode data")
 
 

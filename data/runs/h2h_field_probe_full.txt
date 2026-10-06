@@ -1,0 +1,7 @@
+model                 scoring     as is  Sites shuf  Latt+Vol shuf  mat geo removed
+M1 ours               rotation      1.0       0.317            1.0             0.99
+M1 ours               text          1.0       0.306            1.0            0.971
+M2 his                rotation    0.863       0.736          0.905            0.858
+M2 his                text        0.948        0.72          0.915            0.944
+M3 both               rotation      1.0       0.352            1.0             0.98
+M3 both               text          1.0       0.371            1.0             0.99

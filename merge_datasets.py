@@ -57,12 +57,12 @@ VARIANTS = ("full", "no_geometry")
 
 
 def _read_jsonl(path: Path) -> list[dict]:
-    with open(path) as f:
+    with open(path, encoding="utf-8") as f:
         return [json.loads(line) for line in f if line.strip()]
 
 
 def _write_jsonl(path: Path, rows: list[dict]) -> None:
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         for row in rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
@@ -133,8 +133,8 @@ def main():
     args = ap.parse_args()
     tbox_type_raw = _read_jsonl(TBOX_DIR / "train.jsonl")
     tbox_exist = _read_jsonl(TBOX_DIR / "train_exist.jsonl")
-    concept_names = json.loads((TBOX_DIR / "concept_names.json").read_text())
-    role_names = json.loads((TBOX_DIR / "role_names.json").read_text())
+    concept_names = json.loads((TBOX_DIR / "concept_names.json").read_text(encoding="utf-8"))
+    role_names = json.loads((TBOX_DIR / "role_names.json").read_text(encoding="utf-8"))
 
     tbox_type, n_tbox_raw, n_dropped = fan_out_and_filter_type_rows(tbox_type_raw)
     logger.info(f"TBox type rows: {n_tbox_raw} raw (10 negatives each) -> {len(tbox_type)} after "
@@ -182,7 +182,7 @@ def main():
             "exist_oversample_factor": exist_factor, "n_tbox_exist_oversampled": len(tbox_exist_oversampled),
             "n_merged_exist": len(merged_exist),
         }
-        (out_dir / "merge_summary.json").write_text(json.dumps(meta, indent=2))
+        (out_dir / "merge_summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
         logger.info(f"[{variant}] wrote {out_dir}/: {meta}")
         if type_factor > 100 or exist_factor > 100:
             logger.warning(f"[{variant}] oversample factor exceeds the design doc's own "

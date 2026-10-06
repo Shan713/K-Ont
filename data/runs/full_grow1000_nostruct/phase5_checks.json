@@ -1,0 +1,440 @@
+{
+ "run": "data/runs/full_grow1000_nostruct",
+ "variant": "full",
+ "abox_dir": "data/battgpt_abox_grow_1000_nostruct",
+ "base_model": "Hui97/OnT-MiniLM-L12-galen",
+ "best_lambda": 0.0,
+ "ball_radius": 19.596,
+ "split": "data/split_grow_1000.json",
+ "NOTE": "top-level B/C numbers pool ALL materials; with --split, see <before|after>.split.test for held-out materials (in no training row). Without --split everything here is training fit.",
+ "before": {
+  "A_class_separation": {
+   "substance_vs_crystal_structure": 8.408,
+   "closest_class_pair": [
+    "crystal structure",
+    "crystal system",
+    4.922
+   ],
+   "median_pairwise": 13.49
+  },
+  "B_typing": {
+   "materials": {
+    "n": 1000,
+    "MRR": 0.2725,
+    "H@1": 0.001,
+    "H@10": 1.0,
+    "median_rank": 4.0,
+    "true_type": "substance",
+    "top1_class_counts": {
+     "chemical element": 703,
+     "electrolyte role": 146,
+     "battery role": 130,
+     "crystal structure": 8
+    }
+   },
+   "crystals": {
+    "n": 1000,
+    "MRR": 0.9945,
+    "H@1": 0.989,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "true_type": "crystal structure",
+    "top1_class_counts": {
+     "crystal structure": 989,
+     "perovskite structure": 9,
+     "LGPS type structure": 1,
+     "layered oxide structure": 1
+    }
+   },
+   "elements": {
+    "n": 83,
+    "MRR": 0.988,
+    "H@1": 0.9759,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "true_type": "chemical element",
+    "top1_class_counts": {
+     "chemical element": 81,
+     "oxide structure family": 2
+    }
+   }
+  },
+  "C_hasStructure": {
+   "random_baseline_MRR": 0.0075,
+   "symmetry_only_oracle_MRR": 0.2522,
+   "hard_negative_n_materials": 504,
+   "hard_negative_random_MRR": 0.5456,
+   "plain_distance_no_role": {
+    "n": 1000,
+    "MRR": 0.0403,
+    "H@1": 0.015,
+    "H@10": 0.081,
+    "median_rank": 194.0
+   },
+   "plain_distance_no_role_hard_negative": {
+    "n": 504,
+    "MRR": 0.5643,
+    "H@1": 0.3274,
+    "H@10": 0.9524,
+    "median_rank": 2.0
+   }
+  },
+  "split": {
+   "train": {
+    "n_materials": 803,
+    "typing_materials_H@1": 0.0012,
+    "typing_crystals_H@1": 0.99,
+    "hasStructure_plain_no_role_all250": {
+     "n": 803,
+     "MRR": 0.0408,
+     "H@1": 0.0162,
+     "H@10": 0.0822,
+     "median_rank": 194.0
+    },
+    "hasStructure_plain_no_role_among_train_crystals": {
+     "n": 803,
+     "MRR": 0.0476,
+     "H@1": 0.0212,
+     "H@10": 0.0872,
+     "median_rank": 156.0
+    },
+    "hasStructure_plain_no_role_hard_negative": {
+     "n": 406,
+     "MRR": 0.5603,
+     "H@1": 0.3202,
+     "H@10": 0.9483,
+     "median_rank": 2.0
+    },
+    "random_MRR_among_side_crystals": 0.009,
+    "F_polymorphs": {
+     "scored_by": "plain distance",
+     "n_materials": 209,
+     "random_MRR": 0.6762,
+     "as_is": {
+      "n": 209,
+      "MRR": 0.681,
+      "H@1": 0.4163,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     },
+     "structure_lines_removed": {
+      "n": 209,
+      "MRR": 0.681,
+      "H@1": 0.4163,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     }
+    }
+   },
+   "test": {
+    "n_materials": 197,
+    "typing_materials_H@1": 0.0,
+    "typing_crystals_H@1": 0.9848,
+    "hasStructure_plain_no_role_all250": {
+     "n": 197,
+     "MRR": 0.0382,
+     "H@1": 0.0102,
+     "H@10": 0.0761,
+     "median_rank": 196.0
+    },
+    "hasStructure_plain_no_role_among_test_crystals": {
+     "n": 197,
+     "MRR": 0.1117,
+     "H@1": 0.0609,
+     "H@10": 0.1929,
+     "median_rank": 42.0
+    },
+    "hasStructure_plain_no_role_hard_negative": {
+     "n": 98,
+     "MRR": 0.5808,
+     "H@1": 0.3571,
+     "H@10": 0.9694,
+     "median_rank": 2.0
+    },
+    "random_MRR_among_side_crystals": 0.0298,
+    "F_polymorphs": {
+     "scored_by": "plain distance",
+     "n_materials": 42,
+     "random_MRR": 0.6508,
+     "as_is": {
+      "n": 42,
+      "MRR": 0.6627,
+      "H@1": 0.4048,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     },
+     "structure_lines_removed": {
+      "n": 42,
+      "MRR": 0.6627,
+      "H@1": 0.4048,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     }
+    }
+   }
+  },
+  "D_crowding": {
+   "material_pairwise_median": 9.121,
+   "material_pairwise_p5": 5.866,
+   "within_family_median": 6.711,
+   "within_family_n_pairs": 32241,
+   "nearest_neighbour_min": 0.3344,
+   "nearest_neighbour_median": 3.345,
+   "euclid_norm_over_radius_median": 0.3609,
+   "euclid_norm_over_radius_max": 0.3788,
+   "hyperbolic_norm_median": 14.813
+  },
+  "E_same_chemsys_pairs": {
+   "n_pairs": 1095,
+   "median_dist": 4.413,
+   "min_dist": 0.3344,
+   "n_collapsed_lt_1e-3": 0,
+   "example": [
+    "NaGaTe2",
+    "NaGaTe2",
+    2.495
+   ]
+  }
+ },
+ "after": {
+  "A_class_separation": {
+   "substance_vs_crystal_structure": 17.29,
+   "closest_class_pair": [
+    "battery role",
+    "positive electrode role",
+    8.391
+   ],
+   "median_pairwise": 20.516
+  },
+  "B_typing": {
+   "materials": {
+    "n": 1000,
+    "MRR": 1.0,
+    "H@1": 1.0,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "true_type": "substance",
+    "top1_class_counts": {
+     "substance": 1000
+    }
+   },
+   "crystals": {
+    "n": 1000,
+    "MRR": 0.8758,
+    "H@1": 0.782,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "true_type": "crystal structure",
+    "top1_class_counts": {
+     "crystal structure": 782,
+     "layered oxide structure": 88,
+     "structure family": 52,
+     "polyanion structure family": 31
+    }
+   },
+   "elements": {
+    "n": 83,
+    "MRR": 1.0,
+    "H@1": 1.0,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "true_type": "chemical element",
+    "top1_class_counts": {
+     "chemical element": 83
+    }
+   }
+  },
+  "C_hasStructure": {
+   "random_baseline_MRR": 0.0075,
+   "symmetry_only_oracle_MRR": 0.2522,
+   "hard_negative_n_materials": 504,
+   "hard_negative_random_MRR": 0.5456,
+   "plain_distance_no_role": {
+    "n": 1000,
+    "MRR": 0.7326,
+    "H@1": 0.602,
+    "H@10": 0.968,
+    "median_rank": 1.0
+   },
+   "plain_distance_no_role_hard_negative": {
+    "n": 504,
+    "MRR": 0.55,
+    "H@1": 0.3095,
+    "H@10": 0.9524,
+    "median_rank": 2.0
+   },
+   "via_role_rotation": {
+    "n": 1000,
+    "MRR": 0.7586,
+    "H@1": 0.634,
+    "H@10": 0.972,
+    "median_rank": 1.0
+   },
+   "via_role_rotation_hard_negative": {
+    "n": 504,
+    "MRR": 0.5519,
+    "H@1": 0.3115,
+    "H@10": 0.9563,
+    "median_rank": 2.0
+   }
+  },
+  "split": {
+   "train": {
+    "n_materials": 803,
+    "typing_materials_H@1": 1.0,
+    "typing_crystals_H@1": 0.7746,
+    "hasStructure_plain_no_role_all250": {
+     "n": 803,
+     "MRR": 0.7319,
+     "H@1": 0.6002,
+     "H@10": 0.9664,
+     "median_rank": 1.0
+    },
+    "hasStructure_plain_no_role_among_train_crystals": {
+     "n": 803,
+     "MRR": 0.7512,
+     "H@1": 0.6252,
+     "H@10": 0.9751,
+     "median_rank": 1.0
+    },
+    "hasStructure_plain_no_role_hard_negative": {
+     "n": 406,
+     "MRR": 0.5454,
+     "H@1": 0.303,
+     "H@10": 0.9507,
+     "median_rank": 2.0
+    },
+    "hasStructure_via_role_all250": {
+     "n": 803,
+     "MRR": 0.7518,
+     "H@1": 0.6252,
+     "H@10": 0.9701,
+     "median_rank": 1.0
+    },
+    "hasStructure_via_role_among_train_crystals": {
+     "n": 803,
+     "MRR": 0.777,
+     "H@1": 0.6575,
+     "H@10": 0.9838,
+     "median_rank": 1.0
+    },
+    "hasStructure_via_role_hard_negative": {
+     "n": 406,
+     "MRR": 0.5411,
+     "H@1": 0.3005,
+     "H@10": 0.9507,
+     "median_rank": 2.0
+    },
+    "random_MRR_among_side_crystals": 0.009,
+    "F_polymorphs": {
+     "scored_by": "role rotation",
+     "n_materials": 209,
+     "random_MRR": 0.6762,
+     "as_is": {
+      "n": 209,
+      "MRR": 0.6762,
+      "H@1": 0.4115,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     },
+     "structure_lines_removed": {
+      "n": 209,
+      "MRR": 0.6762,
+      "H@1": 0.4115,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     }
+    }
+   },
+   "test": {
+    "n_materials": 197,
+    "typing_materials_H@1": 1.0,
+    "typing_crystals_H@1": 0.8122,
+    "hasStructure_plain_no_role_all250": {
+     "n": 197,
+     "MRR": 0.7354,
+     "H@1": 0.6091,
+     "H@10": 0.9746,
+     "median_rank": 1.0
+    },
+    "hasStructure_plain_no_role_among_test_crystals": {
+     "n": 197,
+     "MRR": 0.8716,
+     "H@1": 0.7817,
+     "H@10": 0.9949,
+     "median_rank": 1.0
+    },
+    "hasStructure_plain_no_role_hard_negative": {
+     "n": 98,
+     "MRR": 0.5692,
+     "H@1": 0.3367,
+     "H@10": 0.9592,
+     "median_rank": 2.0
+    },
+    "hasStructure_via_role_all250": {
+     "n": 197,
+     "MRR": 0.7862,
+     "H@1": 0.6701,
+     "H@10": 0.9797,
+     "median_rank": 1.0
+    },
+    "hasStructure_via_role_among_test_crystals": {
+     "n": 197,
+     "MRR": 0.881,
+     "H@1": 0.797,
+     "H@10": 1.0,
+     "median_rank": 1.0
+    },
+    "hasStructure_via_role_hard_negative": {
+     "n": 98,
+     "MRR": 0.5968,
+     "H@1": 0.3571,
+     "H@10": 0.9796,
+     "median_rank": 2.0
+    },
+    "random_MRR_among_side_crystals": 0.0298,
+    "F_polymorphs": {
+     "scored_by": "role rotation",
+     "n_materials": 42,
+     "random_MRR": 0.6508,
+     "as_is": {
+      "n": 42,
+      "MRR": 0.6508,
+      "H@1": 0.381,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     },
+     "structure_lines_removed": {
+      "n": 42,
+      "MRR": 0.6508,
+      "H@1": 0.381,
+      "H@10": 1.0,
+      "median_rank": 2.0
+     }
+    }
+   }
+  },
+  "D_crowding": {
+   "material_pairwise_median": 18.025,
+   "material_pairwise_p5": 13.135,
+   "within_family_median": 14.92,
+   "within_family_n_pairs": 32241,
+   "nearest_neighbour_min": 0.1255,
+   "nearest_neighbour_median": 3.253,
+   "euclid_norm_over_radius_median": 0.4343,
+   "euclid_norm_over_radius_max": 0.4429,
+   "hyperbolic_norm_median": 18.229
+  },
+  "E_same_chemsys_pairs": {
+   "n_pairs": 1095,
+   "median_dist": 1.232,
+   "min_dist": 0.1255,
+   "n_collapsed_lt_1e-3": 0,
+   "example": [
+    "NaGaTe2",
+    "NaGaTe2",
+    0.833
+   ]
+  }
+ }
+}

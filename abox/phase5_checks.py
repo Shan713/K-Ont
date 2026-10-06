@@ -30,6 +30,9 @@ from ont.hit import HierarchyTransformer  # noqa: E402
 from ont.model import OntologyTransformer  # noqa: E402
 
 ABOX = os.path.join(HERE, "data", "battgpt_abox")
+# every line of a material sentence that restates its crystal (check F strips these)
+STRUCT_LINES = ("Space group:", "Crystal system:", "Structure family:", "Structure:", "Lattice:", "Volume:",
+                "Density:", "Sites:")
 
 
 def load(name, abox_dir=ABOX):
@@ -201,6 +204,30 @@ def main():
                             hard_negative_ranks(sc[mi], ti, [groups[n] for n in mi]))
                     H_ = lambda n: sum(1 / k for k in range(1, n + 1))
                     d["random_MRR_among_side_crystals"] = round(H_(len(ci)) / len(ci), 4)
+                    # F. polymorphs (Step 22): rank the true crystal among ONLY the crystals of materials
+                    # with the same formula. The material sentence repeats its crystal's symmetry and
+                    # geometry lines verbatim, so "as_is" is string matching; "structure_lines_removed"
+                    # drops them from the material sentence (test-time only), leaving properties alone.
+                    poly = [[crys_all.index(ents["materials"][o]["structure"]) for o in mats
+                             if ents["materials"][o]["formula"] == ents["materials"][mats[n]]["formula"]] for n in mi]
+                    keep = [x for x, g in enumerate(poly) if len(g) >= 2]
+                    if keep:
+                        rows_k = [mi[x] for x in keep]
+                        stripped = enc(model, ["\n".join(l for l in vm[mats[n]].split("\n") if not l.startswith(STRUCT_LINES))
+                                               for n in rows_k])
+                        if tag == "after":
+                            target, sr_rows = R, sr[rows_k]
+                        else:
+                            target, sr_rows = X, plain[rows_k]
+                        sc_strip = score(stripped, target)
+                        ti = true_idx[rows_k]
+                        groups_k = [poly[x] for x in keep]
+                        d["F_polymorphs"] = {
+                            "scored_by": "role rotation" if tag == "after" else "plain distance",
+                            "n_materials": len(keep),
+                            "random_MRR": round(sum(H_(len(g)) / len(g) for g in groups_k) / len(keep), 4),
+                            "as_is": rank_summary(hard_negative_ranks(sr_rows, ti, groups_k)),
+                            "structure_lines_removed": rank_summary(hard_negative_ranks(sc_strip, ti, groups_k))}
                     sides[side] = d
                 res["split"] = sides
 

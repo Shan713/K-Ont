@@ -261,13 +261,13 @@ def main():
     ap.add_argument("--out-dir", type=Path, default=Path("data/battgpt_abox/"))
     args = ap.parse_args()
 
-    entities = json.loads(args.entities.read_text())
+    entities = json.loads(args.entities.read_text(encoding="utf-8"))
     logger.info(f"Loaded {args.entities}: {entities['meta']['counts']}")
 
     verbalizations = verbalize_all(entities)
     for key, mapping in verbalizations.items():
         out_path = args.out_dir / f"verbalizations_{key}.json"
-        out_path.write_text(json.dumps(mapping, indent=2, ensure_ascii=False))
+        out_path.write_text(json.dumps(mapping, indent=2, ensure_ascii=False), encoding="utf-8")
         lengths = [len(s) for s in mapping.values()]
         logger.info(f"Wrote {out_path} ({len(mapping)} entries, {min(lengths)}-{max(lengths)} chars)")
 

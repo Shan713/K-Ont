@@ -1,0 +1,4662 @@
+{
+  "n_materials": 250,
+  "n_train_materials": 199,
+  "n_heldout": 51,
+  "counts": {
+    "n_tbox": 1990,
+    "n_tbox_unique_axioms": 10,
+    "n_abox_type": 1990,
+    "n_abox_exist_structure": 486,
+    "n_abox_exist_electrode": 234,
+    "n_train_jsonl": 4700,
+    "n_train_exist": 277,
+    "n_train_materials": 199,
+    "n_concepts": 21,
+    "concept_names": [
+      "Battery Component Role",
+      "Crystal Connectivity Bond Entity",
+      "Electrolyte Role",
+      "Garnet Solid Electrolyte",
+      "Layered Oxide Cathode",
+      "NASICON Structured Conductor",
+      "Negative Electrode Role",
+      "Olivine Phosphate Cathode",
+      "Positive Electrode Role",
+      "Separator Role",
+      "Spinel Oxide Cathode",
+      "Sulfide Solid Electrolyte",
+      "property",
+      "atomic species",
+      "element",
+      "substance",
+      "atomic site",
+      "crystal",
+      "crystal system",
+      "space group",
+      "unit cell"
+    ],
+    "n_heldout": 51
+  },
+  "epochs": 3,
+  "batch_size": 32,
+  "device": "cuda",
+  "train_time_seconds": 220.29309558868408,
+  "before_heldout_type": {
+    "n": 51,
+    "type_accuracy": 0.0,
+    "closer_than_crystal": 1.0,
+    "parent_nearer_origin": 0.0,
+    "rows": [
+      {
+        "mp_id": "mp-1101668",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.861275672912598,
+        "dist_crystal": 12.30892562866211,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-1176434",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 11.11116886138916,
+        "dist_crystal": 12.88235092163086,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-1193175",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.9513578414917,
+        "dist_crystal": 12.608195304870605,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-1210115",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.64362621307373,
+        "dist_crystal": 12.224595069885254,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-1222981",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.805765151977539,
+        "dist_crystal": 12.356705665588379,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-149",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 11.205483436584473,
+        "dist_crystal": 12.665946960449219,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-1539853",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.594958305358887,
+        "dist_crystal": 12.45151424407959,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-19149",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 11.066163063049316,
+        "dist_crystal": 12.660883903503418,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-19260",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.763850212097168,
+        "dist_crystal": 12.314407348632812,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-19338",
+        "nearest_type": "Spinel Oxide Cathode",
+        "dist_true_type": 11.057537078857422,
+        "dist_crystal": 12.688201904296875,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-19394",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.896857261657715,
+        "dist_crystal": 12.563385963439941,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-23054",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.629813194274902,
+        "dist_crystal": 12.102849006652832,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-2767670",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 11.07790756225586,
+        "dist_crystal": 12.379619598388672,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-3666",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.404426574707031,
+        "dist_crystal": 11.726526260375977,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-504264",
+        "nearest_type": "Spinel Oxide Cathode",
+        "dist_true_type": 10.831953048706055,
+        "dist_crystal": 12.45668888092041,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-5175",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.787802696228027,
+        "dist_crystal": 12.009344100952148,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-542675",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.691661834716797,
+        "dist_crystal": 12.744139671325684,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-5488",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.836673736572266,
+        "dist_crystal": 12.169610977172852,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-559934",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.832623481750488,
+        "dist_crystal": 11.94750690460205,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-578604",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.933757781982422,
+        "dist_crystal": 12.49389934539795,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-581303",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.936614990234375,
+        "dist_crystal": 12.597681045532227,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-5840",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.725852966308594,
+        "dist_crystal": 12.059409141540527,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-585408",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.97404956817627,
+        "dist_crystal": 12.470613479614258,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-6396",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.896564483642578,
+        "dist_crystal": 12.676130294799805,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-696128",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.544018745422363,
+        "dist_crystal": 12.037336349487305,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-7020",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.77508544921875,
+        "dist_crystal": 12.273737907409668,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-7137",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.544638633728027,
+        "dist_crystal": 12.158458709716797,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-752672",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.5548095703125,
+        "dist_crystal": 12.199954986572266,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-754326",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.632006645202637,
+        "dist_crystal": 12.199461936950684,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-754567",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.496031761169434,
+        "dist_crystal": 12.099106788635254,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-754605",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.525979042053223,
+        "dist_crystal": 11.930351257324219,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-754796",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.63387680053711,
+        "dist_crystal": 11.832559585571289,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-757614",
+        "nearest_type": "Spinel Oxide Cathode",
+        "dist_true_type": 10.994057655334473,
+        "dist_crystal": 12.61661148071289,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-759691",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.734023094177246,
+        "dist_crystal": 12.567532539367676,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-761135",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.660984992980957,
+        "dist_crystal": 12.146597862243652,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-768150",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 11.025113105773926,
+        "dist_crystal": 12.334358215332031,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-771770",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.846907615661621,
+        "dist_crystal": 12.551911354064941,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-772042",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.599709510803223,
+        "dist_crystal": 12.273300170898438,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-772292",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.861335754394531,
+        "dist_crystal": 12.628793716430664,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-773085",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.80199909210205,
+        "dist_crystal": 12.497300148010254,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-777049",
+        "nearest_type": "Olivine Phosphate Cathode",
+        "dist_true_type": 10.98037052154541,
+        "dist_crystal": 12.593785285949707,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-8179",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.646069526672363,
+        "dist_crystal": 12.130826950073242,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-861624",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.822465896606445,
+        "dist_crystal": 12.239961624145508,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-861666",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.661234855651855,
+        "dist_crystal": 11.97382640838623,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-861667",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.690082550048828,
+        "dist_crystal": 12.0986328125,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-862870",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.547515869140625,
+        "dist_crystal": 12.049840927124023,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-864891",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.925848960876465,
+        "dist_crystal": 12.246663093566895,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-977123",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.853217124938965,
+        "dist_crystal": 11.9013090133667,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-996962",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.615150451660156,
+        "dist_crystal": 12.658724784851074,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-997089",
+        "nearest_type": "Garnet Solid Electrolyte",
+        "dist_true_type": 10.583386421203613,
+        "dist_crystal": 12.487203598022461,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      },
+      {
+        "mp_id": "mp-998627",
+        "nearest_type": "Layered Oxide Cathode",
+        "dist_true_type": 11.15167236328125,
+        "dist_crystal": 12.736893653869629,
+        "sits_under_true_type": false,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": false
+      }
+    ]
+  },
+  "after_heldout_type": {
+    "n": 51,
+    "type_accuracy": 1.0,
+    "closer_than_crystal": 1.0,
+    "parent_nearer_origin": 1.0,
+    "rows": [
+      {
+        "mp_id": "mp-1101668",
+        "nearest_type": "substance",
+        "dist_true_type": 13.018579483032227,
+        "dist_crystal": 19.011493682861328,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1176434",
+        "nearest_type": "substance",
+        "dist_true_type": 12.187809944152832,
+        "dist_crystal": 18.984333038330078,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1193175",
+        "nearest_type": "substance",
+        "dist_true_type": 13.177818298339844,
+        "dist_crystal": 19.400453567504883,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1210115",
+        "nearest_type": "substance",
+        "dist_true_type": 12.889178276062012,
+        "dist_crystal": 18.81230926513672,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1222981",
+        "nearest_type": "substance",
+        "dist_true_type": 12.909210205078125,
+        "dist_crystal": 19.077396392822266,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-149",
+        "nearest_type": "substance",
+        "dist_true_type": 13.238661766052246,
+        "dist_crystal": 18.752233505249023,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1539853",
+        "nearest_type": "substance",
+        "dist_true_type": 11.488621711730957,
+        "dist_crystal": 18.433542251586914,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19149",
+        "nearest_type": "substance",
+        "dist_true_type": 12.999214172363281,
+        "dist_crystal": 18.59156608581543,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19260",
+        "nearest_type": "substance",
+        "dist_true_type": 12.965926170349121,
+        "dist_crystal": 18.905534744262695,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19338",
+        "nearest_type": "substance",
+        "dist_true_type": 12.9972562789917,
+        "dist_crystal": 19.357349395751953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19394",
+        "nearest_type": "substance",
+        "dist_true_type": 12.630736351013184,
+        "dist_crystal": 19.127185821533203,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-23054",
+        "nearest_type": "substance",
+        "dist_true_type": 13.458745956420898,
+        "dist_crystal": 18.90477180480957,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2767670",
+        "nearest_type": "substance",
+        "dist_true_type": 12.978407859802246,
+        "dist_crystal": 18.646743774414062,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3666",
+        "nearest_type": "substance",
+        "dist_true_type": 12.98392391204834,
+        "dist_crystal": 18.58782958984375,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-504264",
+        "nearest_type": "substance",
+        "dist_true_type": 12.789015769958496,
+        "dist_crystal": 18.480396270751953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5175",
+        "nearest_type": "substance",
+        "dist_true_type": 12.902017593383789,
+        "dist_crystal": 18.334287643432617,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-542675",
+        "nearest_type": "substance",
+        "dist_true_type": 13.186996459960938,
+        "dist_crystal": 20.233789443969727,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5488",
+        "nearest_type": "substance",
+        "dist_true_type": 13.1908597946167,
+        "dist_crystal": 18.4291934967041,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-559934",
+        "nearest_type": "substance",
+        "dist_true_type": 12.463878631591797,
+        "dist_crystal": 18.08812141418457,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-578604",
+        "nearest_type": "substance",
+        "dist_true_type": 12.451210975646973,
+        "dist_crystal": 18.403533935546875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-581303",
+        "nearest_type": "substance",
+        "dist_true_type": 13.005043983459473,
+        "dist_crystal": 18.662322998046875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5840",
+        "nearest_type": "substance",
+        "dist_true_type": 13.217612266540527,
+        "dist_crystal": 19.041959762573242,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-585408",
+        "nearest_type": "substance",
+        "dist_true_type": 12.408904075622559,
+        "dist_crystal": 18.796306610107422,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-6396",
+        "nearest_type": "substance",
+        "dist_true_type": 11.35125732421875,
+        "dist_crystal": 18.52208137512207,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-696128",
+        "nearest_type": "substance",
+        "dist_true_type": 11.356526374816895,
+        "dist_crystal": 17.6214599609375,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-7020",
+        "nearest_type": "substance",
+        "dist_true_type": 13.386537551879883,
+        "dist_crystal": 18.535499572753906,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-7137",
+        "nearest_type": "substance",
+        "dist_true_type": 13.450462341308594,
+        "dist_crystal": 19.218799591064453,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-752672",
+        "nearest_type": "substance",
+        "dist_true_type": 13.141729354858398,
+        "dist_crystal": 18.333572387695312,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754326",
+        "nearest_type": "substance",
+        "dist_true_type": 12.834098815917969,
+        "dist_crystal": 18.981698989868164,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754567",
+        "nearest_type": "substance",
+        "dist_true_type": 12.81653118133545,
+        "dist_crystal": 18.598201751708984,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754605",
+        "nearest_type": "substance",
+        "dist_true_type": 12.028539657592773,
+        "dist_crystal": 17.67941665649414,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754796",
+        "nearest_type": "substance",
+        "dist_true_type": 12.839106559753418,
+        "dist_crystal": 17.63921356201172,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-757614",
+        "nearest_type": "substance",
+        "dist_true_type": 12.4287748336792,
+        "dist_crystal": 18.968608856201172,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-759691",
+        "nearest_type": "substance",
+        "dist_true_type": 11.886268615722656,
+        "dist_crystal": 18.729949951171875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-761135",
+        "nearest_type": "substance",
+        "dist_true_type": 11.386212348937988,
+        "dist_crystal": 18.11018943786621,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-768150",
+        "nearest_type": "substance",
+        "dist_true_type": 12.94289779663086,
+        "dist_crystal": 18.775697708129883,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-771770",
+        "nearest_type": "substance",
+        "dist_true_type": 11.884147644042969,
+        "dist_crystal": 18.68401336669922,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-772042",
+        "nearest_type": "substance",
+        "dist_true_type": 12.753466606140137,
+        "dist_crystal": 18.7706356048584,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-772292",
+        "nearest_type": "substance",
+        "dist_true_type": 11.495586395263672,
+        "dist_crystal": 18.705873489379883,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-773085",
+        "nearest_type": "substance",
+        "dist_true_type": 12.490632057189941,
+        "dist_crystal": 19.053924560546875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-777049",
+        "nearest_type": "substance",
+        "dist_true_type": 12.838223457336426,
+        "dist_crystal": 19.280261993408203,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8179",
+        "nearest_type": "substance",
+        "dist_true_type": 12.91956615447998,
+        "dist_crystal": 18.704317092895508,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861624",
+        "nearest_type": "substance",
+        "dist_true_type": 12.359517097473145,
+        "dist_crystal": 18.73200035095215,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861666",
+        "nearest_type": "substance",
+        "dist_true_type": 12.77762508392334,
+        "dist_crystal": 18.245532989501953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861667",
+        "nearest_type": "substance",
+        "dist_true_type": 12.817212104797363,
+        "dist_crystal": 18.932388305664062,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-862870",
+        "nearest_type": "substance",
+        "dist_true_type": 13.470325469970703,
+        "dist_crystal": 19.494529724121094,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-864891",
+        "nearest_type": "substance",
+        "dist_true_type": 13.53863525390625,
+        "dist_crystal": 19.00957679748535,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-977123",
+        "nearest_type": "substance",
+        "dist_true_type": 13.356796264648438,
+        "dist_crystal": 18.12188720703125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-996962",
+        "nearest_type": "substance",
+        "dist_true_type": 12.790609359741211,
+        "dist_crystal": 19.470685958862305,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-997089",
+        "nearest_type": "substance",
+        "dist_true_type": 12.556422233581543,
+        "dist_crystal": 19.61444854736328,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-998627",
+        "nearest_type": "substance",
+        "dist_true_type": 12.897605895996094,
+        "dist_crystal": 19.011152267456055,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      }
+    ]
+  },
+  "after_trainset_type": {
+    "n": 199,
+    "type_accuracy": 1.0,
+    "closer_than_crystal": 1.0,
+    "parent_nearer_origin": 1.0,
+    "rows": [
+      {
+        "mp_id": "mp-1019519",
+        "nearest_type": "substance",
+        "dist_true_type": 13.284431457519531,
+        "dist_crystal": 18.332069396972656,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1020057",
+        "nearest_type": "substance",
+        "dist_true_type": 13.155555725097656,
+        "dist_crystal": 19.20232582092285,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-10620",
+        "nearest_type": "substance",
+        "dist_true_type": 13.166436195373535,
+        "dist_crystal": 18.55047035217285,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1078358",
+        "nearest_type": "substance",
+        "dist_true_type": 13.491423606872559,
+        "dist_crystal": 17.68815040588379,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1079568",
+        "nearest_type": "substance",
+        "dist_true_type": 12.9849853515625,
+        "dist_crystal": 19.40785789489746,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-10970",
+        "nearest_type": "substance",
+        "dist_true_type": 13.23314380645752,
+        "dist_crystal": 18.73927879333496,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1101654",
+        "nearest_type": "substance",
+        "dist_true_type": 12.838518142700195,
+        "dist_crystal": 19.6043643951416,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1105218",
+        "nearest_type": "substance",
+        "dist_true_type": 13.527202606201172,
+        "dist_crystal": 17.910207748413086,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1120755",
+        "nearest_type": "substance",
+        "dist_true_type": 13.0934419631958,
+        "dist_crystal": 19.52418327331543,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1147644",
+        "nearest_type": "substance",
+        "dist_true_type": 12.920714378356934,
+        "dist_crystal": 19.201168060302734,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1176564",
+        "nearest_type": "substance",
+        "dist_true_type": 13.265506744384766,
+        "dist_crystal": 18.451961517333984,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1178110",
+        "nearest_type": "substance",
+        "dist_true_type": 12.996335983276367,
+        "dist_crystal": 19.06903839111328,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1185263",
+        "nearest_type": "substance",
+        "dist_true_type": 13.125125885009766,
+        "dist_crystal": 19.062143325805664,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1190287",
+        "nearest_type": "substance",
+        "dist_true_type": 13.27750015258789,
+        "dist_crystal": 19.718278884887695,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1190635",
+        "nearest_type": "substance",
+        "dist_true_type": 13.26805305480957,
+        "dist_crystal": 17.883045196533203,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1193147",
+        "nearest_type": "substance",
+        "dist_true_type": 12.966233253479004,
+        "dist_crystal": 19.054729461669922,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1198780",
+        "nearest_type": "substance",
+        "dist_true_type": 12.597613334655762,
+        "dist_crystal": 18.88269805908203,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1208633",
+        "nearest_type": "substance",
+        "dist_true_type": 13.293266296386719,
+        "dist_crystal": 18.955795288085938,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1222355",
+        "nearest_type": "substance",
+        "dist_true_type": 13.27913761138916,
+        "dist_crystal": 19.439027786254883,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1222482",
+        "nearest_type": "substance",
+        "dist_true_type": 11.771017074584961,
+        "dist_crystal": 17.689828872680664,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1227883",
+        "nearest_type": "substance",
+        "dist_true_type": 13.168732643127441,
+        "dist_crystal": 19.415132522583008,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-12645",
+        "nearest_type": "substance",
+        "dist_true_type": 13.138204574584961,
+        "dist_crystal": 20.235816955566406,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-13843",
+        "nearest_type": "substance",
+        "dist_true_type": 12.35522174835205,
+        "dist_crystal": 17.920644760131836,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-14115",
+        "nearest_type": "substance",
+        "dist_true_type": 13.02691650390625,
+        "dist_crystal": 19.138660430908203,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-14232",
+        "nearest_type": "substance",
+        "dist_true_type": 12.925719261169434,
+        "dist_crystal": 19.118370056152344,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1540429",
+        "nearest_type": "substance",
+        "dist_true_type": 13.566435813903809,
+        "dist_crystal": 19.000455856323242,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-16956",
+        "nearest_type": "substance",
+        "dist_true_type": 11.435604095458984,
+        "dist_crystal": 17.86197853088379,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-17349",
+        "nearest_type": "substance",
+        "dist_true_type": 11.263370513916016,
+        "dist_crystal": 18.279207229614258,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-17868",
+        "nearest_type": "substance",
+        "dist_true_type": 12.547577857971191,
+        "dist_crystal": 18.15606689453125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18803",
+        "nearest_type": "substance",
+        "dist_true_type": 12.950640678405762,
+        "dist_crystal": 19.003494262695312,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19328",
+        "nearest_type": "substance",
+        "dist_true_type": 13.487539291381836,
+        "dist_crystal": 19.25089454650879,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-21332",
+        "nearest_type": "substance",
+        "dist_true_type": 12.447710990905762,
+        "dist_crystal": 18.92799949645996,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22937",
+        "nearest_type": "substance",
+        "dist_true_type": 11.960007667541504,
+        "dist_crystal": 18.15391731262207,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22984",
+        "nearest_type": "substance",
+        "dist_true_type": 13.363555908203125,
+        "dist_crystal": 19.05217742919922,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22989",
+        "nearest_type": "substance",
+        "dist_true_type": 12.56057071685791,
+        "dist_crystal": 18.40034294128418,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-23339",
+        "nearest_type": "substance",
+        "dist_true_type": 13.504443168640137,
+        "dist_crystal": 18.69231605529785,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-23384",
+        "nearest_type": "substance",
+        "dist_true_type": 12.639595985412598,
+        "dist_crystal": 18.442903518676758,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-25929",
+        "nearest_type": "substance",
+        "dist_true_type": 11.630878448486328,
+        "dist_crystal": 18.05624008178711,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-26299",
+        "nearest_type": "substance",
+        "dist_true_type": 12.559671401977539,
+        "dist_crystal": 18.806324005126953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2720358",
+        "nearest_type": "substance",
+        "dist_true_type": 13.055416107177734,
+        "dist_crystal": 18.04512596130371,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-27537",
+        "nearest_type": "substance",
+        "dist_true_type": 12.759687423706055,
+        "dist_crystal": 18.081100463867188,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2767672",
+        "nearest_type": "substance",
+        "dist_true_type": 12.272636413574219,
+        "dist_crystal": 18.718351364135742,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-29077",
+        "nearest_type": "substance",
+        "dist_true_type": 13.869524002075195,
+        "dist_crystal": 19.092605590820312,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2964",
+        "nearest_type": "substance",
+        "dist_true_type": 12.347548484802246,
+        "dist_crystal": 18.486431121826172,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3056",
+        "nearest_type": "substance",
+        "dist_true_type": 12.753985404968262,
+        "dist_crystal": 18.01163673400879,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-30980",
+        "nearest_type": "substance",
+        "dist_true_type": 13.070075035095215,
+        "dist_crystal": 18.759193420410156,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3338",
+        "nearest_type": "substance",
+        "dist_true_type": 13.101550102233887,
+        "dist_crystal": 19.027812957763672,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3468",
+        "nearest_type": "substance",
+        "dist_true_type": 12.480790138244629,
+        "dist_crystal": 18.2814884185791,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3858",
+        "nearest_type": "substance",
+        "dist_true_type": 13.022111892700195,
+        "dist_crystal": 18.152429580688477,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3889",
+        "nearest_type": "substance",
+        "dist_true_type": 12.462308883666992,
+        "dist_crystal": 19.02734375,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4482",
+        "nearest_type": "substance",
+        "dist_true_type": 13.108620643615723,
+        "dist_crystal": 19.26902198791504,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4534",
+        "nearest_type": "substance",
+        "dist_true_type": 13.076704025268555,
+        "dist_crystal": 19.59684944152832,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4556",
+        "nearest_type": "substance",
+        "dist_true_type": 12.85319709777832,
+        "dist_crystal": 18.771419525146484,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4770",
+        "nearest_type": "substance",
+        "dist_true_type": 12.818835258483887,
+        "dist_crystal": 18.716344833374023,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4995",
+        "nearest_type": "substance",
+        "dist_true_type": 13.056857109069824,
+        "dist_crystal": 19.062841415405273,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5088",
+        "nearest_type": "substance",
+        "dist_true_type": 12.295819282531738,
+        "dist_crystal": 18.761262893676758,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5141",
+        "nearest_type": "substance",
+        "dist_true_type": 12.366575241088867,
+        "dist_crystal": 18.281089782714844,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-554191",
+        "nearest_type": "substance",
+        "dist_true_type": 11.915449142456055,
+        "dist_crystal": 18.041223526000977,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-556786",
+        "nearest_type": "substance",
+        "dist_true_type": 13.105177879333496,
+        "dist_crystal": 18.938915252685547,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-558237",
+        "nearest_type": "substance",
+        "dist_true_type": 12.51179313659668,
+        "dist_crystal": 18.537742614746094,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5586",
+        "nearest_type": "substance",
+        "dist_true_type": 13.308204650878906,
+        "dist_crystal": 18.76555824279785,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5788",
+        "nearest_type": "substance",
+        "dist_true_type": 12.208396911621094,
+        "dist_crystal": 17.818214416503906,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5854",
+        "nearest_type": "substance",
+        "dist_true_type": 13.1455078125,
+        "dist_crystal": 19.241127014160156,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-6425",
+        "nearest_type": "substance",
+        "dist_true_type": 11.752939224243164,
+        "dist_crystal": 18.380107879638672,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-6684",
+        "nearest_type": "substance",
+        "dist_true_type": 13.044123649597168,
+        "dist_crystal": 18.926923751831055,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-6964",
+        "nearest_type": "substance",
+        "dist_true_type": 12.7667818069458,
+        "dist_crystal": 18.283283233642578,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-728664",
+        "nearest_type": "substance",
+        "dist_true_type": 13.203243255615234,
+        "dist_crystal": 18.872671127319336,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-752924",
+        "nearest_type": "substance",
+        "dist_true_type": 12.847136497497559,
+        "dist_crystal": 18.786211013793945,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754027",
+        "nearest_type": "substance",
+        "dist_true_type": 12.912771224975586,
+        "dist_crystal": 18.590328216552734,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754368",
+        "nearest_type": "substance",
+        "dist_true_type": 12.807174682617188,
+        "dist_crystal": 19.2376651763916,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-755231",
+        "nearest_type": "substance",
+        "dist_true_type": 13.03866958618164,
+        "dist_crystal": 18.27397918701172,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-755311",
+        "nearest_type": "substance",
+        "dist_true_type": 12.651338577270508,
+        "dist_crystal": 19.46469497680664,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-755378",
+        "nearest_type": "substance",
+        "dist_true_type": 13.471421241760254,
+        "dist_crystal": 19.187973022460938,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-755586",
+        "nearest_type": "substance",
+        "dist_true_type": 12.162261009216309,
+        "dist_crystal": 18.673486709594727,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-755617",
+        "nearest_type": "substance",
+        "dist_true_type": 12.177882194519043,
+        "dist_crystal": 18.937564849853516,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-756229",
+        "nearest_type": "substance",
+        "dist_true_type": 13.213521957397461,
+        "dist_crystal": 19.50669288635254,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-760408",
+        "nearest_type": "substance",
+        "dist_true_type": 12.745332717895508,
+        "dist_crystal": 18.363338470458984,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-769398",
+        "nearest_type": "substance",
+        "dist_true_type": 12.111857414245605,
+        "dist_crystal": 18.16675567626953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-772290",
+        "nearest_type": "substance",
+        "dist_true_type": 12.684805870056152,
+        "dist_crystal": 19.394824981689453,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-773582",
+        "nearest_type": "substance",
+        "dist_true_type": 12.757940292358398,
+        "dist_crystal": 18.27169418334961,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-774907",
+        "nearest_type": "substance",
+        "dist_true_type": 12.550357818603516,
+        "dist_crystal": 18.26748275756836,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-775430",
+        "nearest_type": "substance",
+        "dist_true_type": 12.701891899108887,
+        "dist_crystal": 18.556716918945312,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-777268",
+        "nearest_type": "substance",
+        "dist_true_type": 12.910016059875488,
+        "dist_crystal": 19.135208129882812,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-777465",
+        "nearest_type": "substance",
+        "dist_true_type": 12.103246688842773,
+        "dist_crystal": 18.37359046936035,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-7800",
+        "nearest_type": "substance",
+        "dist_true_type": 12.690552711486816,
+        "dist_crystal": 18.403579711914062,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-7914",
+        "nearest_type": "substance",
+        "dist_true_type": 12.8243989944458,
+        "dist_crystal": 19.203996658325195,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8001",
+        "nearest_type": "substance",
+        "dist_true_type": 12.986550331115723,
+        "dist_crystal": 19.312469482421875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8007",
+        "nearest_type": "substance",
+        "dist_true_type": 12.889303207397461,
+        "dist_crystal": 18.54387855529785,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8128",
+        "nearest_type": "substance",
+        "dist_true_type": 13.259566307067871,
+        "dist_crystal": 19.144004821777344,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8153",
+        "nearest_type": "substance",
+        "dist_true_type": 12.266036033630371,
+        "dist_crystal": 18.24297523498535,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8180",
+        "nearest_type": "substance",
+        "dist_true_type": 12.97889518737793,
+        "dist_crystal": 18.849287033081055,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8189",
+        "nearest_type": "substance",
+        "dist_true_type": 12.989115715026855,
+        "dist_crystal": 18.92829704284668,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8390",
+        "nearest_type": "substance",
+        "dist_true_type": 12.407094955444336,
+        "dist_crystal": 18.471843719482422,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8412",
+        "nearest_type": "substance",
+        "dist_true_type": 12.623202323913574,
+        "dist_crystal": 18.916440963745117,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8470",
+        "nearest_type": "substance",
+        "dist_true_type": 13.347722053527832,
+        "dist_crystal": 18.438169479370117,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-859118",
+        "nearest_type": "substance",
+        "dist_true_type": 13.352238655090332,
+        "dist_crystal": 19.021915435791016,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861616",
+        "nearest_type": "substance",
+        "dist_true_type": 12.762142181396484,
+        "dist_crystal": 18.396007537841797,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861625",
+        "nearest_type": "substance",
+        "dist_true_type": 12.348296165466309,
+        "dist_crystal": 17.4953670501709,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861629",
+        "nearest_type": "substance",
+        "dist_true_type": 13.255457878112793,
+        "dist_crystal": 19.168102264404297,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861658",
+        "nearest_type": "substance",
+        "dist_true_type": 12.55529499053955,
+        "dist_crystal": 18.497344970703125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861660",
+        "nearest_type": "substance",
+        "dist_true_type": 12.96303653717041,
+        "dist_crystal": 19.154315948486328,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-861663",
+        "nearest_type": "substance",
+        "dist_true_type": 12.534239768981934,
+        "dist_crystal": 18.541406631469727,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-865120",
+        "nearest_type": "substance",
+        "dist_true_type": 13.488114356994629,
+        "dist_crystal": 18.832101821899414,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-8830",
+        "nearest_type": "substance",
+        "dist_true_type": 12.982829093933105,
+        "dist_crystal": 19.170862197875977,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-9212",
+        "nearest_type": "substance",
+        "dist_true_type": 13.071377754211426,
+        "dist_crystal": 18.048254013061523,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-9607",
+        "nearest_type": "substance",
+        "dist_true_type": 11.650897026062012,
+        "dist_crystal": 17.71763801574707,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-9625",
+        "nearest_type": "substance",
+        "dist_true_type": 12.727356910705566,
+        "dist_crystal": 18.680360794067383,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-9657",
+        "nearest_type": "substance",
+        "dist_true_type": 13.65943717956543,
+        "dist_crystal": 19.62255096435547,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-976726",
+        "nearest_type": "substance",
+        "dist_true_type": 13.410540580749512,
+        "dist_crystal": 17.892292022705078,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-976923",
+        "nearest_type": "substance",
+        "dist_true_type": 12.821850776672363,
+        "dist_crystal": 18.69038963317871,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-976952",
+        "nearest_type": "substance",
+        "dist_true_type": 12.811995506286621,
+        "dist_crystal": 18.10337257385254,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-977176",
+        "nearest_type": "substance",
+        "dist_true_type": 13.024807929992676,
+        "dist_crystal": 18.591506958007812,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-985586",
+        "nearest_type": "substance",
+        "dist_true_type": 12.570216178894043,
+        "dist_crystal": 18.436965942382812,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-996959",
+        "nearest_type": "substance",
+        "dist_true_type": 12.396278381347656,
+        "dist_crystal": 18.572874069213867,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1143",
+        "nearest_type": "substance",
+        "dist_true_type": 12.247674942016602,
+        "dist_crystal": 18.536901473999023,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1174467",
+        "nearest_type": "substance",
+        "dist_true_type": 12.711956024169922,
+        "dist_crystal": 18.568830490112305,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1210501",
+        "nearest_type": "substance",
+        "dist_true_type": 11.903651237487793,
+        "dist_crystal": 18.48129653930664,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1221294",
+        "nearest_type": "substance",
+        "dist_true_type": 11.686637878417969,
+        "dist_crystal": 17.987619400024414,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1314210",
+        "nearest_type": "substance",
+        "dist_true_type": 12.363685607910156,
+        "dist_crystal": 19.0076904296875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-1640236",
+        "nearest_type": "substance",
+        "dist_true_type": 12.051312446594238,
+        "dist_crystal": 18.105371475219727,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18779",
+        "nearest_type": "substance",
+        "dist_true_type": 12.43898868560791,
+        "dist_crystal": 18.381479263305664,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18793",
+        "nearest_type": "substance",
+        "dist_true_type": 12.239325523376465,
+        "dist_crystal": 18.258014678955078,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18852",
+        "nearest_type": "substance",
+        "dist_true_type": 11.986549377441406,
+        "dist_crystal": 18.195619583129883,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18921",
+        "nearest_type": "substance",
+        "dist_true_type": 12.505889892578125,
+        "dist_crystal": 19.08325958251953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19044",
+        "nearest_type": "substance",
+        "dist_true_type": 12.274940490722656,
+        "dist_crystal": 18.88231658935547,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19083",
+        "nearest_type": "substance",
+        "dist_true_type": 13.23488712310791,
+        "dist_crystal": 20.58176612854004,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19340",
+        "nearest_type": "substance",
+        "dist_true_type": 12.529325485229492,
+        "dist_crystal": 18.980741500854492,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19359",
+        "nearest_type": "substance",
+        "dist_true_type": 12.68880844116211,
+        "dist_crystal": 19.134960174560547,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19373",
+        "nearest_type": "substance",
+        "dist_true_type": 12.653999328613281,
+        "dist_crystal": 19.050846099853516,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19391",
+        "nearest_type": "substance",
+        "dist_true_type": 13.074125289916992,
+        "dist_crystal": 20.542551040649414,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19430",
+        "nearest_type": "substance",
+        "dist_true_type": 11.670331001281738,
+        "dist_crystal": 18.446115493774414,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22417",
+        "nearest_type": "substance",
+        "dist_true_type": 12.531400680541992,
+        "dist_crystal": 18.514558792114258,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22474",
+        "nearest_type": "substance",
+        "dist_true_type": 13.075902938842773,
+        "dist_crystal": 19.4268798828125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-25385",
+        "nearest_type": "substance",
+        "dist_true_type": 12.519482612609863,
+        "dist_crystal": 19.10693359375,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-25386",
+        "nearest_type": "substance",
+        "dist_true_type": 11.851080894470215,
+        "dist_crystal": 18.503387451171875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-25447",
+        "nearest_type": "substance",
+        "dist_true_type": 12.423297882080078,
+        "dist_crystal": 18.520845413208008,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-26127",
+        "nearest_type": "substance",
+        "dist_true_type": 13.041322708129883,
+        "dist_crystal": 19.320343017578125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-26275",
+        "nearest_type": "substance",
+        "dist_true_type": 12.054052352905273,
+        "dist_crystal": 18.508996963500977,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-26367",
+        "nearest_type": "substance",
+        "dist_true_type": 12.11724853515625,
+        "dist_crystal": 18.360618591308594,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-27003",
+        "nearest_type": "substance",
+        "dist_true_type": 11.73515510559082,
+        "dist_crystal": 18.229265213012695,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2710677",
+        "nearest_type": "substance",
+        "dist_true_type": 12.598843574523926,
+        "dist_crystal": 18.755456924438477,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2759992",
+        "nearest_type": "substance",
+        "dist_true_type": 12.343427658081055,
+        "dist_crystal": 18.593711853027344,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2760269",
+        "nearest_type": "substance",
+        "dist_true_type": 12.039660453796387,
+        "dist_crystal": 17.98476219177246,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-2764466",
+        "nearest_type": "substance",
+        "dist_true_type": 11.984777450561523,
+        "dist_crystal": 18.27460479736328,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-28186",
+        "nearest_type": "substance",
+        "dist_true_type": 12.724830627441406,
+        "dist_crystal": 18.769073486328125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-29356",
+        "nearest_type": "substance",
+        "dist_true_type": 12.910181999206543,
+        "dist_crystal": 17.855749130249023,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3731",
+        "nearest_type": "substance",
+        "dist_true_type": 13.053869247436523,
+        "dist_crystal": 18.913164138793945,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3744",
+        "nearest_type": "substance",
+        "dist_true_type": 12.644131660461426,
+        "dist_crystal": 18.69220542907715,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-38280",
+        "nearest_type": "substance",
+        "dist_true_type": 13.106263160705566,
+        "dist_crystal": 18.249134063720703,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-3924",
+        "nearest_type": "substance",
+        "dist_true_type": 12.752615928649902,
+        "dist_crystal": 18.8575439453125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4514",
+        "nearest_type": "substance",
+        "dist_true_type": 12.76494312286377,
+        "dist_crystal": 18.62112045288086,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-4541",
+        "nearest_type": "substance",
+        "dist_true_type": 12.578356742858887,
+        "dist_crystal": 18.786623001098633,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-48",
+        "nearest_type": "substance",
+        "dist_true_type": 12.905608177185059,
+        "dist_crystal": 19.21565055847168,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-542710",
+        "nearest_type": "substance",
+        "dist_true_type": 12.882065773010254,
+        "dist_crystal": 18.96148681640625,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-552024",
+        "nearest_type": "substance",
+        "dist_true_type": 13.108942985534668,
+        "dist_crystal": 19.25852394104004,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-556984",
+        "nearest_type": "substance",
+        "dist_true_type": 11.536355972290039,
+        "dist_crystal": 18.415332794189453,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-558822",
+        "nearest_type": "substance",
+        "dist_true_type": 11.672323226928711,
+        "dist_crystal": 18.571155548095703,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-562796",
+        "nearest_type": "substance",
+        "dist_true_type": 12.550617218017578,
+        "dist_crystal": 19.129459381103516,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-5670",
+        "nearest_type": "substance",
+        "dist_true_type": 12.642258644104004,
+        "dist_crystal": 18.04821014404297,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-685194",
+        "nearest_type": "substance",
+        "dist_true_type": 12.572790145874023,
+        "dist_crystal": 18.12786102294922,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-7002",
+        "nearest_type": "substance",
+        "dist_true_type": 13.14070987701416,
+        "dist_crystal": 18.023761749267578,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-753111",
+        "nearest_type": "substance",
+        "dist_true_type": 11.926151275634766,
+        "dist_crystal": 18.245752334594727,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754656",
+        "nearest_type": "substance",
+        "dist_true_type": 13.05903434753418,
+        "dist_crystal": 19.157604217529297,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-754915",
+        "nearest_type": "substance",
+        "dist_true_type": 12.718449592590332,
+        "dist_crystal": 19.065465927124023,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-755253",
+        "nearest_type": "substance",
+        "dist_true_type": 12.957165718078613,
+        "dist_crystal": 17.850465774536133,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-756967",
+        "nearest_type": "substance",
+        "dist_true_type": 12.05892276763916,
+        "dist_crystal": 18.05161476135254,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-758022",
+        "nearest_type": "substance",
+        "dist_true_type": 12.665620803833008,
+        "dist_crystal": 19.313892364501953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-758673",
+        "nearest_type": "substance",
+        "dist_true_type": 12.3167142868042,
+        "dist_crystal": 18.3579158782959,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-759090",
+        "nearest_type": "substance",
+        "dist_true_type": 12.242496490478516,
+        "dist_crystal": 18.33936882019043,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-760991",
+        "nearest_type": "substance",
+        "dist_true_type": 12.480181694030762,
+        "dist_crystal": 18.48247718811035,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-761046",
+        "nearest_type": "substance",
+        "dist_true_type": 12.50328254699707,
+        "dist_crystal": 18.486692428588867,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-766202",
+        "nearest_type": "substance",
+        "dist_true_type": 12.721529006958008,
+        "dist_crystal": 18.19771957397461,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-769319",
+        "nearest_type": "substance",
+        "dist_true_type": 12.025873184204102,
+        "dist_crystal": 18.367507934570312,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-770731",
+        "nearest_type": "substance",
+        "dist_true_type": 12.518280029296875,
+        "dist_crystal": 18.078826904296875,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-770839",
+        "nearest_type": "substance",
+        "dist_true_type": 13.028082847595215,
+        "dist_crystal": 18.93207550048828,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-771705",
+        "nearest_type": "substance",
+        "dist_true_type": 12.626397132873535,
+        "dist_crystal": 18.940919876098633,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-773159",
+        "nearest_type": "substance",
+        "dist_true_type": 11.773993492126465,
+        "dist_crystal": 18.704387664794922,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-774032",
+        "nearest_type": "substance",
+        "dist_true_type": 12.186463356018066,
+        "dist_crystal": 18.272756576538086,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-774920",
+        "nearest_type": "substance",
+        "dist_true_type": 12.530739784240723,
+        "dist_crystal": 18.997488021850586,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-775855",
+        "nearest_type": "substance",
+        "dist_true_type": 12.942353248596191,
+        "dist_crystal": 18.934141159057617,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-776388",
+        "nearest_type": "substance",
+        "dist_true_type": 12.838688850402832,
+        "dist_crystal": 18.756078720092773,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-776625",
+        "nearest_type": "substance",
+        "dist_true_type": 12.585084915161133,
+        "dist_crystal": 18.371891021728516,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-778864",
+        "nearest_type": "substance",
+        "dist_true_type": 12.229023933410645,
+        "dist_crystal": 18.508363723754883,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-780606",
+        "nearest_type": "substance",
+        "dist_true_type": 11.69583797454834,
+        "dist_crystal": 17.780574798583984,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-783905",
+        "nearest_type": "substance",
+        "dist_true_type": 12.021586418151855,
+        "dist_crystal": 18.98593521118164,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-850189",
+        "nearest_type": "substance",
+        "dist_true_type": 12.535669326782227,
+        "dist_crystal": 18.825599670410156,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-9158",
+        "nearest_type": "substance",
+        "dist_true_type": 12.347981452941895,
+        "dist_crystal": 18.660537719726562,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-942733",
+        "nearest_type": "substance",
+        "dist_true_type": 11.098248481750488,
+        "dist_crystal": 17.607267379760742,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-950995",
+        "nearest_type": "substance",
+        "dist_true_type": 12.1216402053833,
+        "dist_crystal": 17.79976463317871,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-985591",
+        "nearest_type": "substance",
+        "dist_true_type": 12.016205787658691,
+        "dist_crystal": 17.810245513916016,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-985592",
+        "nearest_type": "substance",
+        "dist_true_type": 12.297513008117676,
+        "dist_crystal": 17.844921112060547,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18957",
+        "nearest_type": "substance",
+        "dist_true_type": 13.215673446655273,
+        "dist_crystal": 19.218387603759766,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-18997",
+        "nearest_type": "substance",
+        "dist_true_type": 12.79284954071045,
+        "dist_crystal": 18.86988067626953,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19017",
+        "nearest_type": "substance",
+        "dist_true_type": 12.793651580810547,
+        "dist_crystal": 19.229351043701172,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-19226",
+        "nearest_type": "substance",
+        "dist_true_type": 12.67318058013916,
+        "dist_crystal": 19.108322143554688,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22526",
+        "nearest_type": "substance",
+        "dist_true_type": 12.58860969543457,
+        "dist_crystal": 19.24180793762207,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-22584",
+        "nearest_type": "substance",
+        "dist_true_type": 12.768388748168945,
+        "dist_crystal": 19.104766845703125,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-25411",
+        "nearest_type": "substance",
+        "dist_true_type": 12.774161338806152,
+        "dist_crystal": 18.477643966674805,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      },
+      {
+        "mp_id": "mp-776557",
+        "nearest_type": "substance",
+        "dist_true_type": 10.920334815979004,
+        "dist_crystal": 18.397180557250977,
+        "sits_under_true_type": true,
+        "closer_than_crystal": true,
+        "parent_nearer_origin": true
+      }
+    ]
+  },
+  "crowding_before": {
+    "n": 199,
+    "n_pairs": 19701,
+    "mean_pairwise_dist": 4.6598734011562835,
+    "min_pairwise_dist": 0.3995232880115509,
+    "p10_pairwise_dist": 3.5924978256225586,
+    "p50_pairwise_dist": 4.794363021850586,
+    "max_pairwise_dist": 6.933266639709473
+  },
+  "crowding_after": {
+    "n": 199,
+    "n_pairs": 19701,
+    "mean_pairwise_dist": 14.901065796342914,
+    "min_pairwise_dist": 3.018909215927124,
+    "p10_pairwise_dist": 12.545763969421387,
+    "p50_pairwise_dist": 15.092875480651855,
+    "max_pairwise_dist": 19.64691162109375
+  },
+  "hasstructure_ranking_heldout": {
+    "n": 51,
+    "mrr": 1.0,
+    "hits@1": 1.0,
+    "hits@3": 1.0,
+    "random_mrr_baseline": 0.08998410676658848,
+    "random_hits@1_baseline": 0.02,
+    "rows": [
+      {
+        "mp_id": "mp-1101668",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1176434",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1193175",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1210115",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1222981",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-149",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1539853",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19149",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19260",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19338",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19394",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-23054",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2767670",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3666",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-504264",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5175",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-542675",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5488",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-559934",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-578604",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-581303",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5840",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-585408",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-6396",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-696128",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-7020",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-7137",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-752672",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754326",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754567",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754605",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754796",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-757614",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-759691",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-761135",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-768150",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-771770",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-772042",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-772292",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-773085",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-777049",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8179",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861624",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861666",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861667",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-862870",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-864891",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-977123",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-996962",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-997089",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-998627",
+        "pool_size": 50,
+        "rank": 1
+      }
+    ]
+  },
+  "hasstructure_ranking_trainset": {
+    "n": 199,
+    "mrr": 1.0,
+    "hits@1": 1.0,
+    "hits@3": 1.0,
+    "random_mrr_baseline": 0.08998410676658847,
+    "random_hits@1_baseline": 0.019999999999999997,
+    "rows": [
+      {
+        "mp_id": "mp-1019519",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1020057",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-10620",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1078358",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1079568",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-10970",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1101654",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1105218",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1120755",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1147644",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1176564",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1178110",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1185263",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1190287",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1190635",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1193147",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1198780",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1208633",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1222355",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1222482",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1227883",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-12645",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-13843",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-14115",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-14232",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1540429",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-16956",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-17349",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-17868",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18803",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19328",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-21332",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22937",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22984",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22989",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-23339",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-23384",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-25929",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-26299",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2720358",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-27537",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2767672",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-29077",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2964",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3056",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-30980",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3338",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3468",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3858",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3889",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4482",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4534",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4556",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4770",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4995",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5088",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5141",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-554191",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-556786",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-558237",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5586",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5788",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5854",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-6425",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-6684",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-6964",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-728664",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-752924",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754027",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754368",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-755231",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-755311",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-755378",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-755586",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-755617",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-756229",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-760408",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-769398",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-772290",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-773582",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-774907",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-775430",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-777268",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-777465",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-7800",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-7914",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8001",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8007",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8128",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8153",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8180",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8189",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8390",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8412",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8470",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-859118",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861616",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861625",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861629",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861658",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861660",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-861663",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-865120",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-8830",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-9212",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-9607",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-9625",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-9657",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-976726",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-976923",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-976952",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-977176",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-985586",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-996959",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1143",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1174467",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1210501",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1221294",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1314210",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-1640236",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18779",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18793",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18852",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18921",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19044",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19083",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19340",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19359",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19373",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19391",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19430",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22417",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22474",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-25385",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-25386",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-25447",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-26127",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-26275",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-26367",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-27003",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2710677",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2759992",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2760269",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-2764466",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-28186",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-29356",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3731",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3744",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-38280",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-3924",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4514",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-4541",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-48",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-542710",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-552024",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-556984",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-558822",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-562796",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-5670",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-685194",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-7002",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-753111",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754656",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-754915",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-755253",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-756967",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-758022",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-758673",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-759090",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-760991",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-761046",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-766202",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-769319",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-770731",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-770839",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-771705",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-773159",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-774032",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-774920",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-775855",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-776388",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-776625",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-778864",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-780606",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-783905",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-850189",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-9158",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-942733",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-950995",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-985591",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-985592",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18957",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-18997",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19017",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-19226",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22526",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-22584",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-25411",
+        "pool_size": 50,
+        "rank": 1
+      },
+      {
+        "mp_id": "mp-776557",
+        "pool_size": 50,
+        "rank": 1
+      }
+    ]
+  },
+  "electrode_role_heldout": {
+    "n": 19,
+    "accuracy": 1.0,
+    "random_baseline": 0.25,
+    "rows": [
+      {
+        "mp_id": "mp-1176434",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-149",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-1539853",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19149",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19338",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19394",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-504264",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-578604",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-581303",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-6396",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-757614",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-759691",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-771770",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-772042",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-772292",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-773085",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-777049",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-977123",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-998627",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      }
+    ]
+  },
+  "electrode_role_trainset": {
+    "n": 78,
+    "accuracy": 1.0,
+    "random_baseline": 0.25,
+    "rows": [
+      {
+        "mp_id": "mp-1174467",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-1210501",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-1221294",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-1314210",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-1640236",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-18779",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-18793",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-18852",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-18921",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19044",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19083",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19340",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19359",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19373",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19391",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19430",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-22417",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-22474",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-25385",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-25386",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-25447",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-26127",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-26275",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-26367",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-27003",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-2710677",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-2759992",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-2760269",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-2764466",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-28186",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-29356",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-3731",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-3744",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-38280",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-3924",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-4514",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-4541",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-48",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-542710",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-552024",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-556984",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-558822",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-562796",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-5670",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-685194",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-7002",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-753111",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-754656",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-754915",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-756967",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-758022",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-758673",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-759090",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-760991",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-761046",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-766202",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-769319",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-770839",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-771705",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-773159",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-774032",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-774920",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-775855",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-776388",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-776625",
+        "true_role": "Negative Electrode Role",
+        "nearest_role": "Negative Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-778864",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-780606",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-783905",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-850189",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-9158",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-18957",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-18997",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19017",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-19226",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-22526",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-22584",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-25411",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      },
+      {
+        "mp_id": "mp-776557",
+        "true_role": "Positive Electrode Role",
+        "nearest_role": "Positive Electrode Role",
+        "correct": true
+      }
+    ]
+  },
+  "pass": true
+}

@@ -1,0 +1,264 @@
+{
+ "n_known": 3558,
+ "n_test": 719,
+ "n_test_cathodes": 174,
+ "chance_space_group_top1_if_uniform": 0.007,
+ "results": {
+  "majority": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.217,
+    "space_group_top1": 0.167,
+    "space_group_top3": 0.26,
+    "space_group_top5": 0.384
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.052,
+    "space_group_top1": 0.029,
+    "space_group_top3": 0.167,
+    "space_group_top5": 0.368
+   }
+  },
+  "stoichiometry prototype": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.48,
+    "space_group_top1": 0.371,
+    "space_group_top3": 0.561,
+    "space_group_top5": 0.659
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.46,
+    "space_group_top1": 0.316,
+    "space_group_top3": 0.517,
+    "space_group_top5": 0.644
+   }
+  },
+  "nearest compositions (k=5)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.442,
+    "space_group_top1": 0.268,
+    "space_group_top3": 0.483,
+    "space_group_top5": 0.554
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.368,
+    "space_group_top1": 0.259,
+    "space_group_top3": 0.489,
+    "space_group_top5": 0.534
+   }
+  },
+  "random forest": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.631,
+    "space_group_top1": 0.503,
+    "space_group_top3": 0.683,
+    "space_group_top5": 0.733
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.592,
+    "space_group_top1": 0.466,
+    "space_group_top3": 0.707,
+    "space_group_top5": 0.776
+   }
+  },
+  "untrained OnT (galen): nearest (k=5)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.46,
+    "space_group_top1": 0.312,
+    "space_group_top3": 0.474,
+    "space_group_top5": 0.541
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.477,
+    "space_group_top1": 0.287,
+    "space_group_top3": 0.477,
+    "space_group_top5": 0.517
+   }
+  },
+  "untrained OnT (galen): linear probe": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.491,
+    "space_group_top1": 0.335,
+    "space_group_top3": 0.506,
+    "space_group_top5": 0.599
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.477,
+    "space_group_top1": 0.305,
+    "space_group_top3": 0.511,
+    "space_group_top5": 0.632
+   }
+  },
+  "random forest + untrained OnT (galen)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.558,
+    "space_group_top1": 0.426,
+    "space_group_top3": 0.616,
+    "space_group_top5": 0.691
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.546,
+    "space_group_top1": 0.414,
+    "space_group_top3": 0.598,
+    "space_group_top5": 0.701
+   }
+  },
+  "OnT full (1k): nearest (k=5)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.328,
+    "space_group_top1": 0.172,
+    "space_group_top3": 0.298,
+    "space_group_top5": 0.387
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.31,
+    "space_group_top1": 0.144,
+    "space_group_top3": 0.293,
+    "space_group_top5": 0.368
+   }
+  },
+  "OnT full (1k): linear probe": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.453,
+    "space_group_top1": 0.305,
+    "space_group_top3": 0.474,
+    "space_group_top5": 0.566
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.391,
+    "space_group_top1": 0.218,
+    "space_group_top3": 0.466,
+    "space_group_top5": 0.58
+   }
+  },
+  "random forest + OnT full (1k)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.519,
+    "space_group_top1": 0.384,
+    "space_group_top3": 0.57,
+    "space_group_top5": 0.652
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.489,
+    "space_group_top1": 0.351,
+    "space_group_top3": 0.552,
+    "space_group_top5": 0.649
+   }
+  },
+  "OnT no_geometry (1k): nearest (k=5)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.453,
+    "space_group_top1": 0.307,
+    "space_group_top3": 0.478,
+    "space_group_top5": 0.545
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.425,
+    "space_group_top1": 0.264,
+    "space_group_top3": 0.471,
+    "space_group_top5": 0.54
+   }
+  },
+  "OnT no_geometry (1k): linear probe": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.517,
+    "space_group_top1": 0.359,
+    "space_group_top3": 0.517,
+    "space_group_top5": 0.591
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.483,
+    "space_group_top1": 0.316,
+    "space_group_top3": 0.5,
+    "space_group_top5": 0.603
+   }
+  },
+  "random forest + OnT no_geometry (1k)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.535,
+    "space_group_top1": 0.413,
+    "space_group_top3": 0.619,
+    "space_group_top5": 0.691
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.471,
+    "space_group_top1": 0.351,
+    "space_group_top3": 0.621,
+    "space_group_top5": 0.718
+   }
+  },
+  "OnT stripped sentences (1k): nearest (k=5)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.332,
+    "space_group_top1": 0.166,
+    "space_group_top3": 0.302,
+    "space_group_top5": 0.399
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.316,
+    "space_group_top1": 0.132,
+    "space_group_top3": 0.299,
+    "space_group_top5": 0.431
+   }
+  },
+  "OnT stripped sentences (1k): linear probe": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.427,
+    "space_group_top1": 0.296,
+    "space_group_top3": 0.478,
+    "space_group_top5": 0.544
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.402,
+    "space_group_top1": 0.253,
+    "space_group_top3": 0.483,
+    "space_group_top5": 0.557
+   }
+  },
+  "random forest + OnT stripped sentences (1k)": {
+   "all": {
+    "n": 719,
+    "crystal_system_top1": 0.51,
+    "space_group_top1": 0.37,
+    "space_group_top3": 0.562,
+    "space_group_top5": 0.661
+   },
+   "cathodes": {
+    "n": 174,
+    "crystal_system_top1": 0.477,
+    "space_group_top1": 0.31,
+    "space_group_top3": 0.563,
+    "space_group_top5": 0.684
+   }
+  }
+ }
+}

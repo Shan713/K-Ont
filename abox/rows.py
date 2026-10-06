@@ -144,11 +144,49 @@ def build_type_rows(entities: dict, v_mat: dict, v_cryst: dict, v_elem: dict, rn
     return rows
 
 
-def build_exist_rows(entities: dict, v_mat: dict, v_cryst: dict) -> list[dict]:
+HAS_STRUCTURE_SOME = "has structure some "
+
+
+def build_hasstructure_isa_rows(entities: dict, v_mat: dict, v_cryst: dict, rng: random.Random) -> list[dict]:
+    """The teammate's (FYP_K-OnT merge_abox.py) way of training hasStructure, ported for the Step 21
+    head-to-head: an IS-A row `material ⊑ "has structure some <its crystal>"` per wrong answer, the
+    wrong answers being other crystals -- one from the same chemical system first, then two others
+    (his `same[:1] + others[:2]`). Unlike his version, a candidate whose sentence is identical to the
+    true crystal's is skipped (Step 16: no_geometry crystals can read identically). Train side only:
+    `entities` is already restricted by --split, so held-out crystals never appear."""
+    rows = []
+    mats = entities["materials"]
+    for mid, mat in mats.items():
+        own = mat["structure"]
+        if not own:
+            continue
+        v_c = v_cryst[own]
+        same = [v_cryst[o["structure"]] for k, o in mats.items()
+                if k != mid and o["structure"] and o["chemsys"] == mat["chemsys"] and v_cryst[o["structure"]] != v_c]
+        others = [v_cryst[o["structure"]] for k, o in mats.items()
+                  if k != mid and o["structure"] and v_cryst[o["structure"]] != v_c]
+        rng.shuffle(same)
+        rng.shuffle(others)
+        negs = []
+        for c in same[:1] + others[:2]:
+            if c not in negs:
+                negs.append(c)
+        for n in negs:
+            rows.append({"child": v_mat[mid], "parent": HAS_STRUCTURE_SOME + v_c,
+                         "negative": [HAS_STRUCTURE_SOME + n]})
+    return rows
+
+
+def build_exist_rows(entities: dict, v_mat: dict, v_cryst: dict, hasstructure: str = "relation") -> list[dict]:
+    """hasstructure: "relation" (ours: Concept = the material sentence), "isa" (the teammate's:
+    Concept = the text concept "has structure some <crystal>", tied to the rotated crystal), or
+    "both" (ours; the is-a rows are added by build_hasstructure_isa_rows)."""
     rows = []
     for mid, mat in entities["materials"].items():
         if mat["structure"]:
-            rows.append({"Concept": v_mat[mid], "role": "has structure", "con": v_cryst[mat["structure"]]})
+            v_c = v_cryst[mat["structure"]]
+            concept = HAS_STRUCTURE_SOME + v_c if hasstructure == "isa" else v_mat[mid]
+            rows.append({"Concept": concept, "role": "has structure", "con": v_c})
         if mat["battery_role"]:
             rows.append({"Concept": v_mat[mid], "role": "belongs to electrode",
                         "con": _role_individual_sentence(mat["battery_role"])})
@@ -179,34 +217,40 @@ def main():
                     help="where verbalizations_*.json live (default: --out-dir)")
     ap.add_argument("--split", type=Path, default=None,
                     help="split.json from abox/split.py: generate rows for TRAIN materials only")
+    ap.add_argument("--hasstructure", choices=["relation", "isa", "both"], default="relation",
+                    help="how hasStructure is trained (Step 21 head-to-head): relation = ours (default), "
+                         "isa = the teammate's is-a rows with crystal negatives, both = ours + his is-a rows")
     args = ap.parse_args()
     vdir = args.verbalizations_dir or args.out_dir
     args.out_dir.mkdir(parents=True, exist_ok=True)
 
-    entities = json.loads(args.entities.read_text())
+    entities = json.loads(args.entities.read_text(encoding="utf-8"))
     split = None
     if args.split:
-        split = json.loads(args.split.read_text())
+        split = json.loads(args.split.read_text(encoding="utf-8"))
         entities = restrict_to_train(entities, split)
         logger.info(f"Split {args.split}: generating rows for {len(entities['materials'])} train materials / "
                     f"{len(entities['crystals'])} train crystals ({len(split['test_materials'])} held out)")
-    v_elem = json.loads((vdir / "verbalizations_elements.json").read_text())
+    v_elem = json.loads((vdir / "verbalizations_elements.json").read_text(encoding="utf-8"))
 
     meta = {}
     for variant in ("full", "no_geometry"):
         rng = random.Random(SEED)  # fresh per variant, so both variants pick the same hard negs
-        v_mat = json.loads((vdir / f"verbalizations_materials_{variant}.json").read_text())
-        v_cryst = json.loads((vdir / f"verbalizations_crystals_{variant}.json").read_text())
+        v_mat = json.loads((vdir / f"verbalizations_materials_{variant}.json").read_text(encoding="utf-8"))
+        v_cryst = json.loads((vdir / f"verbalizations_crystals_{variant}.json").read_text(encoding="utf-8"))
 
         type_rows = build_type_rows(entities, v_mat, v_cryst, v_elem, rng)
-        exist_rows = build_exist_rows(entities, v_mat, v_cryst)
+        if args.hasstructure in ("isa", "both"):
+            # separate RNG, so the default rows (and their hard negatives) stay byte-identical
+            type_rows += build_hasstructure_isa_rows(entities, v_mat, v_cryst, random.Random(SEED + 1))
+        exist_rows = build_exist_rows(entities, v_mat, v_cryst, args.hasstructure)
 
         type_path = args.out_dir / f"train_abox_type_{variant}.jsonl"
-        with open(type_path, "w") as f:
+        with open(type_path, "w", encoding="utf-8") as f:
             for row in type_rows:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
         exist_path = args.out_dir / f"train_abox_exist_{variant}.jsonl"
-        with open(exist_path, "w") as f:
+        with open(exist_path, "w", encoding="utf-8") as f:
             for row in exist_rows:
                 f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
@@ -224,6 +268,7 @@ def main():
                    f"{exist_path.name} ({len(exist_rows)} rows)")
         logger.info(f"[{variant}] breakdown: {meta[variant]}")
 
+    meta["hasstructure"] = args.hasstructure
     if split:
         meta["split"] = {"file": str(args.split), "n_train_materials": len(split["train_materials"]),
                          "n_test_materials": len(split["test_materials"])}
@@ -231,7 +276,7 @@ def main():
                     "OWL API + a tiny extracted schema OWL file -- Phase 3, not built yet) and "
                     "TBox oversampling (Phase 4) are NOT included -- these files are not yet "
                     "'train.jsonl' in the sense the trainer would read directly.")
-    (args.out_dir / "row_generation_summary.json").write_text(json.dumps(meta, indent=2))
+    (args.out_dir / "row_generation_summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     logger.info(f"Wrote row_generation_summary.json")
 
 

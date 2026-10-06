@@ -1,0 +1,215 @@
+{
+ "random_MRR_among_51": 0.0886,
+ "runs": {
+  "untrained galen | full": {
+   "plain": {
+    "MRR": 0.5368,
+    "hard_neg_MRR": 0.9097
+   },
+   "text concept": {
+    "MRR": 0.5883,
+    "hard_neg_MRR": 0.9097
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 0.0,
+   "probe": {
+    "what": "crystal Sites lines shuffled",
+    "plain": 0.2169,
+    "text concept": 0.2044
+   }
+  },
+  "standard OnT | full": {
+   "plain": {
+    "MRR": 0.2738,
+    "hard_neg_MRR": 0.8472
+   },
+   "text concept": {
+    "MRR": 0.2382,
+    "hard_neg_MRR": 0.875
+   },
+   "rotation": {
+    "MRR": 0.1386,
+    "hard_neg_MRR": 0.7153
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "crystal Sites lines shuffled",
+    "plain": 0.254,
+    "text concept": 0.1998,
+    "rotation": 0.1098
+   }
+  },
+  "M1 ours (in-batch) | full": {
+   "plain": {
+    "MRR": 1.0,
+    "hard_neg_MRR": 1.0
+   },
+   "text concept": {
+    "MRR": 1.0,
+    "hard_neg_MRR": 1.0
+   },
+   "rotation": {
+    "MRR": 1.0,
+    "hard_neg_MRR": 1.0
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "crystal Sites lines shuffled",
+    "plain": 0.296,
+    "text concept": 0.3063,
+    "rotation": 0.3168
+   }
+  },
+  "M2 his (is-a rows) | full": {
+   "plain": {
+    "MRR": 0.8546,
+    "hard_neg_MRR": 1.0
+   },
+   "text concept": {
+    "MRR": 0.9477,
+    "hard_neg_MRR": 1.0
+   },
+   "rotation": {
+    "MRR": 0.8627,
+    "hard_neg_MRR": 1.0
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "crystal Sites lines shuffled",
+    "plain": 0.7376,
+    "text concept": 0.7196,
+    "rotation": 0.7359
+   }
+  },
+  "M3 both | full": {
+   "plain": {
+    "MRR": 1.0,
+    "hard_neg_MRR": 1.0
+   },
+   "text concept": {
+    "MRR": 1.0,
+    "hard_neg_MRR": 1.0
+   },
+   "rotation": {
+    "MRR": 1.0,
+    "hard_neg_MRR": 1.0
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "crystal Sites lines shuffled",
+    "plain": 0.3714,
+    "text concept": 0.3712,
+    "rotation": 0.352
+   }
+  },
+  "untrained galen | no_geometry": {
+   "plain": {
+    "MRR": 0.174,
+    "hard_neg_MRR": 0.8472
+   },
+   "text concept": {
+    "MRR": 0.1663,
+    "hard_neg_MRR": 0.8681
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 0.0,
+   "probe": {
+    "what": "material symmetry lines removed",
+    "plain": 0.0894,
+    "text concept": 0.0808
+   }
+  },
+  "standard OnT | no_geometry": {
+   "plain": {
+    "MRR": 0.4007,
+    "hard_neg_MRR": 0.9583
+   },
+   "text concept": {
+    "MRR": 0.3634,
+    "hard_neg_MRR": 0.9792
+   },
+   "rotation": {
+    "MRR": 0.2725,
+    "hard_neg_MRR": 0.8958
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "material symmetry lines removed",
+    "plain": 0.0829,
+    "text concept": 0.0818,
+    "rotation": 0.0798
+   }
+  },
+  "M1 ours (in-batch) | no_geometry": {
+   "plain": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "text concept": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "rotation": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "material symmetry lines removed",
+    "plain": 0.0872,
+    "text concept": 0.0894,
+    "rotation": 0.0933
+   }
+  },
+  "M2 his (is-a rows) | no_geometry": {
+   "plain": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "text concept": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "rotation": {
+    "MRR": 0.6366,
+    "hard_neg_MRR": 1.0
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "material symmetry lines removed",
+    "plain": 0.0845,
+    "text concept": 0.0997,
+    "rotation": 0.0898
+   }
+  },
+  "M3 both | no_geometry": {
+   "plain": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "text concept": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "rotation": {
+    "MRR": 0.6513,
+    "hard_neg_MRR": 1.0
+   },
+   "n_hard_neg_materials": 24,
+   "typing_H@1": 1.0,
+   "probe": {
+    "what": "material symmetry lines removed",
+    "plain": 0.0815,
+    "text concept": 0.0955,
+    "rotation": 0.112
+   }
+  }
+ }
+}

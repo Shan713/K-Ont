@@ -1,0 +1,9 @@
+held-out n = 51 | example crystal sentence: 'Crystal structure of NaCeO2'
+
+UNTRAINED MiniLM
+  hasStructure MRR (pool 50, random 0.090):  as-is 0.895  |  'Structure:' line removed 0.765
+  electrode role acc (n=19, random 0.25):          as-is 0.000  |  'Battery role:' line removed 0.000
+
+his TRAINED model
+  hasStructure MRR (pool 50, random 0.090):  as-is 1.000  |  'Structure:' line removed 1.000
+  electrode role acc (n=19, random 0.25):          as-is 1.000  |  'Battery role:' line removed 0.895

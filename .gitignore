@@ -19,6 +19,7 @@ __pycache__/
 # Generated data / model artifacts (large, reproducible from scripts — not source)
 /data/battgpt_abox/
 /data/battgpt_abox_split/
+/data/battgpt_abox_split_*/
 # data/backup_*/: local snapshots of generated data taken before a regeneration (e.g. Step 16), kept
 # only so old vs new can be diffed on this machine -- same size/reproducibility reasoning as above.
 /data/backup_*/
@@ -47,3 +48,28 @@ __pycache__/
 export_package/
 *.pt
 *.ckpt
+
+# data/fyp_compare/: teammate (FYP_K-OnT) pipeline run on our KG (Step 20). Model weights and
+# regenerable rows ignored; the report and the leak-probe script + output are kept as evidence.
+/data/fyp_compare/*
+!/data/fyp_compare/leak_probe.py
+!/data/fyp_compare/leak_probe.txt
+!/data/fyp_compare/abox/
+/data/fyp_compare/abox/*
+!/data/fyp_compare/abox/phase5b_report.json
+
+# CrystaLLM environment + Phase C (BUILD_LOG Step 25). The venv (~2.5 GB) and the CrystaLLM model
+# archives/checkpoints (285 MB small, 2.2 GB large; Zenodo record 10642388) are downloaded, not
+# committed -- docs/WORKSTATION_SETUP.md says how. Kept: CrystaLLM's held-out test set (1.6 MB),
+# the test compositions with our space-group predictions, and the small-model results + log.
+/.venv-crystallm/
+/data/crystallm/*
+!/data/crystallm/cifs_v1_test.tar.gz
+!/data/crystallm/phaseC_test_with_pred.json
+!/data/crystallm/phaseC_results.json
+!/data/crystallm/phaseC_run.log
+# Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
+# the top-level training logs/status files in data/runs/.
+/data/battgpt_abox_grow_*/
+/data/runs/*.log
+/data/runs/*_status.txt

@@ -1199,3 +1199,285 @@ So the in-batch model learned to match the symmetry labels that a material and i
 matches formula ↔ unit-cell composition (Step 17's probe). Both are genuine learned alignment, and
 both generalize to unseen materials, but neither is the model inferring a structure from chemistry
 alone. The deck's "strongest evidence" slide was reworded to say this.
+
+## Step 20 — Compared with a teammate's parallel implementation, on the same data (2026-09-24)
+
+A teammate built the same extension independently: [akshayks13/FYP_K-OnT](https://github.com/akshayks13/FYP_K-OnT).
+Full comparison, measurements and a scale-up plan: [`COMPARISON_FYP_K-OnT.md`](COMPARISON_FYP_K-OnT.md).
+In short:
+
+- **Same data, verified.** His streaming extractor, pointed at our KG, returned the same 250 materials
+  with zero field mismatches against our `entities.json`, so the pipelines could be compared directly.
+- **His pipeline trained fine on this GPU** (220 s, 3 epochs, unmodified) and reported 100% held-out
+  typing, hasStructure MRR 1.000 and 100% electrode-role accuracy.
+- **Both relation numbers are leaks, measured:** the untrained encoder already scores hasStructure MRR
+  0.895 (his crystal sentence is `"Crystal structure of <formula>"`); with the `Battery role:` line
+  removed, his role accuracy falls to 0.895, exactly the majority-class share (17/19 cathodes).
+  Typing is real in both.
+- **His strengths:** a 5,000-material KG (8.37M triples), a streaming reader that handles it in about a
+  minute, explicit hard-negative is-a rows for hasStructure, and fresh negatives per oversampled copy.
+- **Next:** a same-data head-to-head of the two hasStructure training methods on leak-free sentences,
+  then scale to 1,000 and 5,000 materials with polymorphs (estimates in the comparison doc).
+
+Evidence kept: `data/fyp_compare/abox/phase5b_report.json`, `data/fyp_compare/leak_probe.py` + `.txt`.
+
+## Step 21 — Head-to-head: our in-batch negatives vs the teammate's is-a rows, same data (2026-09-24)
+
+**Setup.** Three ways of training hasStructure, on identical data: our KG, the Step 17 split (199/51),
+and our leak-free sentences. Everything else unchanged (galen base, batch 32, 3 epochs, last epoch).
+- **M1 ours:** relation rows (Concept = material sentence) + in-batch negatives (Step 17 runs, reused).
+- **M2 his:** is-a rows `material ⊑ "has structure some <crystal>"` with explicit crystal wrong answers
+  (one same-chemistry, then two others), relation rows with Concept = that text concept, no in-batch
+  term. Ported into `abox/rows.py --hasstructure isa`, one change from his code: a wrong answer whose
+  text equals the true crystal's is skipped (Step 16).
+- **M3 both:** our relation rows + his is-a rows + in-batch negatives (`--hasstructure both`).
+
+Checked before training: the default `--hasstructure relation` still reproduces the Step 17 rows
+byte for byte; M2 and M3 add 474 (`full`) / 464 (`no_geometry`) is-a rows; no wrong answer equals its
+right one; no held-out-only crystal text anywhere. One side effect: the merge rebalances the ontology
+rows 1:1 against the larger material side (×17 instead of ×15), so M2 and M3 also see ~350 more
+ontology rows than M1. M2 and M3 take ~20% longer (564 steps vs 486).
+
+**Scoring** ([`abox/h2h_eval.py`](../abox/h2h_eval.py) → `data/runs/h2h_results.json`): each
+held-out material ranks the 51 held-out crystals three ways, so no method is favoured by the rule it
+trained for: via the rotation (ours), via the encoded text concept `"has structure some <crystal>"`
+(his), and plain distance. Hard negatives are same-chemistry crystals drawn from all 250 (24
+held-out materials have one). The scorer reproduces the Step 17 numbers exactly.
+
+| held-out MRR (random 0.089) | `full`: rotation / text | `full`: hard-neg | `no_geometry`: rotation / text | `no_geometry`: hard-neg |
+|---|---|---|---|---|
+| untrained galen | — / 0.588 | 0.910 | — / 0.166 | 0.868 |
+| standard OnT | 0.139 / 0.238 | 0.715 | 0.273 / 0.363 | 0.896 |
+| **M1 ours** | **1.000 / 1.000** | 1.000 | **0.651 / 0.651** | 1.000 |
+| **M2 his** | 0.863 / 0.948 | 1.000 | 0.637 / 0.651 | 1.000 |
+| **M3 both** | 1.000 / 1.000 | 1.000 | 0.651 / 0.651 | 1.000 |
+
+Typing is 100% for every trained model. `no_geometry`'s maximum is 0.724 (Step 17).
+
+**What each relies on** (test sentences changed only; `data/runs/h2h_field_probe_full.txt`,
+`abox/h2h_field_probe.py`):
+
+| `full`, rotation / text | as is | crystal Sites shuffled | Lattice + Volume shuffled | material geometry removed |
+|---|---|---|---|---|
+| M1 ours | 1.000 / 1.000 | 0.317 / 0.306 | 1.000 / 1.000 | 0.990 / 0.971 |
+| M2 his | 0.863 / 0.948 | 0.736 / 0.720 | 0.905 / 0.915 | 0.858 / 0.944 |
+| M3 both | 1.000 / 1.000 | 0.352 / 0.371 | 1.000 / 1.000 | 0.980 / 0.990 |
+
+For `no_geometry`, removing the three symmetry lines from the material sentence drops **every** method
+to random (0.08–0.11), as in Step 19.
+
+**Conclusions:**
+- **`no_geometry`: no difference.** All three reach 0.651 of a possible 0.724, and all three match
+  the symmetry labels both sentences state.
+- **`full`: ours ≥ his.** M1 and M3 score 1.000; M2 scores 0.86–0.95. M2 isn't copying lattice
+  strings (shuffling or removing them barely matters); it leans less on unit-cell composition (0.72
+  when shuffled, vs 0.32 for M1) and spreads its matching over several shared fields, a bit less
+  precisely.
+- **Combining adds nothing:** M3 = M1, at ~20% more training time.
+- **Keep M1** (no extra rows, top score). M2 is a valid alternative that needs no change to OnT's loss
+  code, if a patch-free setup ever matters.
+- **Limits:** one seed, 51 test materials. And none of the three shows more than matching information
+  both sentences state, so the next step is still data with polymorphs (see
+  [`COMPARISON_FYP_K-OnT.md`](COMPARISON_FYP_K-OnT.md) §5).
+
+## Step 22 — Grew the KG: 1,000 materials with polymorph groups, on battGPT latest main (2026-10-01)
+
+**Why:** Steps 17–21 all end the same way: hasStructure is only ever solved by matching information
+both sentences state (formula, composition, symmetry labels). With one crystal per formula, that is
+enough. The fix is data where it isn't: several crystals of the **same formula** (polymorphs).
+
+**What changed (battGPT, branch `kont-grow-kg` from latest main `f8a9958`; not committed yet):**
+- `pipeline/ingest/candidate_search.py`: `sweep_broad_pool()` (every Li/Na material on Materials
+  Project with ≤0.15 eV/atom above hull, ≤40 sites, 2–5 elements) and `pick_polymorph_group()` (up to
+  2 extra polymorphs per formula, within 0.05 eV/atom of the hull, most stable first).
+- `scripts/populate_kg_ont.py --grow`: opt-in; the old 250-material path is unchanged without it.
+  Fill order up to `--cap`: curated materials → every candidate the structure-family classifier
+  labels → polymorph groups until 25% of the KG is in a group → the rest by energy above hull.
+  Writes `selected_material_ids.json` (ids, groups, summary) next to the KG.
+- Latest main changes the ontology (Garnet/Perovskite under OxideStructureFamily,
+  `hasCharacteristicSpaceGroup`, BatteryCell `hasRole`), but **our TBox needs no change**: checked
+  with rdflib against `f8a9958`'s `battgpt.ttl`, all 13 structure-family and 5 battery-role parents
+  in `tbox/build_schema.py` match, no subclass is missing, and the 3 relations' domain/range match
+  (belongsToElectrode's range is the documented simplification). `build_schema.py` already had
+  Garnet/Perovskite under OxideStructureFamily.
+
+**Measured:**
+
+| | 250 KG (Step 18) | 1,000 KG (this step) |
+|---|---|---|
+| candidate formulas found | 248 | 9,386 |
+| ingestion | 370 s | 1,386 s (1.39 s/material, 0 failures) |
+| triples | 325k | 1,202,425 |
+| validation | passed | passed, 0 errors, 0 warnings |
+| structure family labelled | — | 436 (564 unlabelled) |
+| battery role | — | 538 (462 none) |
+| K-Ont extraction (`abox/extract.py`) | 9 s | 37 s, peak RAM 1.55 GB |
+
+- **Polymorphs:** 102 formulas appear 2–3 times (251 materials). 96 of the 102 differ in space group,
+  76 in crystal system and 29 in structure family. 16 groups have two members with identical
+  (space group, system, family); only their geometry tells them apart.
+- **Only 362 of 9,386 candidate formulas get a structure-family label.** Every one is included, but at
+  5,000 materials ~90% will have no family. Family typing stops growing with the KG; material
+  typing, hasStructure and the numeric vector do.
+- The 5,000 selection (dry run): 527 polymorph groups, 1,250 materials. The 1,000 selection is nested
+  inside it.
+
+**K-Ont side, done:**
+- **UTF-8 bug on Windows:** `extract.py`, `verbalize.py`, `rows.py`, `numeric.py`, `split.py` and
+  `merge_datasets.py` used the platform default encoding, so on this machine they wrote cp1252
+  (`g/cm³`, `μB`) and would crash on anything outside it. The 250-material files were UTF-8 only
+  because they were built on the Mac. Now explicit `encoding="utf-8"` everywhere; re-extracting the
+  1,000 KG gives a file identical to a converted copy except the timestamp.
+- **`abox/split.py --group-polymorphs`:** a formula is one unit, so each polymorph group sits wholly
+  on one side; stratified by family ("mixed" when polymorphs differ). Off by default, and the
+  250-material `data/split.json` regenerates identically. On the 1,000 KG
+  (`data/split_grow_1000.json`): 803 train / 197 test, 16 of 102 polymorph groups in test, 0 formulas
+  split across sides.
+
+- **Training data for the 1,000 KG** (`data/battgpt_merged_grow_1000_split_{full,no_geometry}/`):
+  803 training materials → 9,248 ABox is-a rows + 1,574 ABox relation rows (803 hasStructure, 351
+  hasStructureFamily, 420 belongsToElectrode) per variant; vocabulary check passed. Only 10 of 1,000
+  materials have real electrode data (battery cells). **The oversampling problem arrived early:**
+  balancing 1:1 now repeats the 174 TBox is-a rows 53× and the 3 TBox relation rows **525×**
+  (merge_datasets.py warns). At 5,000 that would be ~260× / ~2,600×.
+
+**First training on the 1,000 KG** (TBox kept 1:1 as in the 250 runs, so results compare; in-batch
+negatives; 3 epochs, batch 32; `data/runs/{full,no_geometry}_grow1000_inbatch/`):
+
+| | `full` | `no_geometry` |
+|---|---|---|
+| steps / wall time | 1,734 / 38 min | 1,734 / 19 min |
+| median step (KG build sharing the CPU) | 1.27 s | 0.63 s |
+| peak GPU memory | 1.25 GB | 0.93 GB |
+
+Held-out (197 materials, in no training row), untrained → trained; `abox/phase5_checks.py`:
+
+| | `full` | `no_geometry` | random |
+|---|---|---|---|
+| material typed "substance" | 0% → **100%** | 0% → **100%** | — |
+| crystal typed "crystal structure" | 98% → 71% | 93% → 77% | — |
+| hasStructure among the 197 test crystals (MRR) | 0.33 → **0.985** | 0.08 → 0.45 | 0.03 |
+| hasStructure, same chemical system | 0.71 → 0.94 | 0.63 → 0.87 | 0.55 |
+| **polymorphs (42 materials), as is** | 0.79 → **0.976** | 0.71 → **0.984** | 0.651 |
+| **polymorphs, structure lines removed** | 0.66 → **0.651** | 0.63 → **0.647** | **0.651** |
+
+- **New check F** (`phase5_checks.py`): rank each material's crystal among only its same-formula
+  polymorphs. The material sentence restates its crystal's space group, crystal system, lattice,
+  volume and site counts verbatim (e.g. LiVO2 `Fd-3m (#227)` vs `P2/c (#13)`), so "as is" can be
+  solved by string matching; "structure lines removed" drops those lines from the material sentence
+  at test time, leaving properties (band gap, formation energy, magnetization, stability, role).
+- **Result: polymorph identification is exactly random once the shared lines are gone**, in both
+  variants and on training materials too (`full` 0.671 vs 0.676 random). The model matches what both
+  sentences state; it has not learned property → structure. This is the cleanest form yet of
+  Steps 17/19/21's conclusion, and the 250 KG could not show it (no polymorphs).
+- Material typing generalises (100% held-out); no collapse (class median distance 13.5 → 20.8,
+  material nearest-neighbour min 0.37).
+- **Crystal typing regresses** (`full` 99% → 65% over all crystals; 181 now nearest "polyanion
+  structure family"): crystals drift toward their family class. Same direction as the 250 run (78%),
+  stronger here.
+- **Implication:** more materials alone won't produce structure learning. Before training at 5,000,
+  either the material sentence must stop restating its crystal, or training needs a signal that
+  forces property → structure.
+
+**First 5,000 build: invalid, rebuilding.** It ran 13:18–15:46 (ingestion 2 h 4 min, 5,546,356
+triples) but **validation failed**: 52 unit cells without lattice parameters. Cause: a ~7 min DNS
+outage (15:00–15:07, `getaddrinfo failed` for api.materialsproject.org). For every material fetched
+in that window `MPIngester` silently returned a placeholder record (formula = the material id, no
+composition, no structure) and the script kept it. Fix in `populate_kg_ont.py`: a placeholder is
+retried with backoff (30/60/120/240 s), and if any material still fails the script exits before
+building the graph instead of writing fake materials. The 1,000 KG had 0 placeholders. Bad output
+kept as `output/battgpt_kg_grow_5000_INVALID_dns_outage/`; rebuild started 15:49.
+
+**Next:** build 5,000 (extraction should need ~8 GB if linear in triples); rows with a held-out split that keeps each polymorph group on one side; the scale
+fixes from [`COMPARISON_FYP_K-OnT.md`](COMPARISON_FYP_K-OnT.md) §5 Step 3; retrain at 1,000.
+
+**5,000 rebuild (same day):** passed, 0 errors, 0 warnings, 5,602,266 triples, no placeholders, no
+retries needed. `abox/extract.py` on it: 210 s, peak RAM 7.31 GB (`data/battgpt_abox_grow_5000/`).
+527 polymorph groups (1,250 materials; 489 differ in space group, 37 in structure family); all
+1,000 materials of the 1,000 KG are inside it.
+
+## Step 23 — Material sentences that don't restate their crystal: still no structure learning (2026-10-01)
+
+**Why:** Step 22's check F showed polymorph identification is pure matching of the lines the
+material sentence copies from its crystal. Test: train without them.
+
+`abox/strip_material_structure.py` drops every structure line (space group, crystal system,
+structure family, `Structure:`, lattice, volume, density, sites) from the material sentences of the
+1,000 KG (`data/battgpt_abox_grow_1000_nostruct/`); crystal sentences unchanged; same split, rows,
+settings (`data/runs/{full,no_geometry}_grow1000_nostruct/`, 20.5 / ~15 min).
+
+| held-out (197) | `full` crystals | `no_geometry` crystals | random |
+|---|---|---|---|
+| material typing | 100% | 99.5% | — |
+| hasStructure among the 197 test crystals | 0.881 | 0.091 | 0.03 |
+| same chemical system | 0.60 | 0.54 | ~0.55 |
+| **polymorphs (42)** | **0.651** | **0.613** | **0.651** |
+
+- With `full` crystals the model still finds the crystal among all candidates (0.88), but only by
+  composition (formula vs the crystal's `Sites:` counts); among same-chemistry crystals it is at
+  chance. Polymorph scores equal random EXACTLY on test and train: since every member of a group is
+  scored, that means every sibling gets the same ranking -- the material's properties (band gap,
+  formation energy, magnetisation, stability) don't move it at all.
+- **Conclusion:** with this setup OnT does not learn property → structure.
+
+## Step 24 — battGPT pipeline: the 8 ontology terms MP could fill but the pipeline didn't (2026-10-01/06)
+
+Ontology coverage, measured on the 1,000 KG against `battgpt.ttl`'s own 91 terms: 71 used.
+8 more were available from Materials Project but never written. Fixed on battGPT branch
+`kont-grow-kg` (not committed there yet):
+- 5 property classes (`BandGapProperty` … `ShearModulusProperty`): nodes were typed only as
+  `emmo:Property`; now also as their own class (`triple_generator.py`).
+- `hasOxidationState`: live MP structures carry none; pymatgen's `BVAnalyzer` (bond valence, MP's
+  own method) now assigns them; metals/intermetallics stay without (`pymatgen_processor.py`).
+- `hasSmactValidity`: never written, and the old logic defaulted to "valid" whenever oxidation
+  states were missing (= every live material). Now SMACT's own `smact_validity()`; unknown → nothing.
+- `belongsToCrystalSystem`: space group → crystal system link was never asserted.
+- Thin before: voltage/capacity came from a 10-entry cache; now MP's insertion-electrode endpoint is
+  queried live (cache first), with an explicit rule when a material sits in several electrodes.
+
+Rebuilt 1,000 KG (`output/battgpt_kg_grow_1000_v2`): valid, 1,212,386 triples; property classes
+1,000 each (elastic 76); oxidation states on 18,370 / 20,374 sites (90%); SMACT valid 732, not 268;
+voltage/capacity 296 materials (was 10). Now 79 / 91 terms used; the rest: 6 cell-operation terms
+(need lab data, not in MP), 5 abstract parents, 1 schema axiom (`hasCharacteristicSpaceGroup`).
+The 5,000 KG has not been rebuilt with these fixes.
+
+## Step 25 — Towards novel cathode CIFs: Phase A (structure from composition) and Phase C (CrystaLLM) (2026-10-06)
+
+**Goal reframed:** generate CIFs for NEW cathode compositions. A new composition has only its
+formula, elements, guessable oxidation states and intended role -- no structure and none of MP's
+structure-derived properties.
+
+**Phase A** (`abox/phaseA_features.py` with battGPT's venv for pymatgen, `abox/phaseA_eval.py`):
+predict the ground-state space group of 719 held-out formulas of the 5,000 KG (none in any OnT
+training row) from composition only.
+
+| method | SG top 1 | top 5 | cathodes (174), top 5 |
+|---|---|---|---|
+| most common | 0.17 | 0.38 | 0.37 |
+| same stoichiometry pattern | 0.37 | 0.66 | 0.64 |
+| nearest compositions | 0.27 | 0.55 | 0.53 |
+| **random forest, composition features** | **0.50** | **0.73** | **0.78** |
+| best OnT embedding (no_geometry, linear) | 0.36 | 0.59 | 0.60 |
+| random forest + OnT embedding | 0.37–0.43 | 0.65–0.69 | 0.65–0.72 |
+
+OnT embeddings of composition-only sentences add nothing (they make the random forest worse).
+On CrystaLLM's own held-out test set (external; `abox/phaseC_predict_sg.py`) the same random
+forest is much weaker: top-5 0.47 on 55 cathode-like, 0.26 on all 971 Li/Na compositions.
+
+**Phase C** (`abox/phaseC_generate.py`, CrystaLLM small, `.venv-crystallm`): 100 held-out
+compositions (55 cathode-like), 10 CIFs per prompt, StructureMatcher vs the known structure.
+
+| prompt | valid | matches | found / 100 | cathodes found / 55 |
+|---|---|---|---|---|
+| composition | 95% | 2.7% | 5 | 1 |
+| + RF top-1 space group | 83% | 0.8% | 1 | 1 |
+| + RF top-5 | 82% | 0.2% | 1 | 1 |
+| + true space group | 99% | 5.7% | 6 | 1 |
+
+A correct space group helps (Na2LaOs 3→10 of 10; Li2ZnCr 0→10); our predicted ones hurt (wrong for
+the findable materials, biased to 225). The small model finds 1 of 55 cathodes under any prompt.
+Fixed on the way: current pymatgen writes monoclinic groups in full form (`P12_1/c1`) that
+CrystaLLM's vocabulary lacks -- they were silently dropped until mapped to short form.
+
+**Next:** the large CrystaLLM (2.2 GB, ~10 s/sample on the 4060, ~4.5 h for 55 × 3 prompts × 10)
+moves to a workstation: [`WORKSTATION_SETUP.md`](WORKSTATION_SETUP.md).

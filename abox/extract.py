@@ -281,7 +281,7 @@ def main():
 
     entities = extract(args.ttl)
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(entities, indent=2, ensure_ascii=False))
+    args.out.write_text(json.dumps(entities, indent=2, ensure_ascii=False), encoding="utf-8")
     logger.info(f"Wrote {args.out} ({args.out.stat().st_size:,} bytes)")
 
 
