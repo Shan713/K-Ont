@@ -1,0 +1,3879 @@
+{
+ "results": "phaseC_results_sanity_large.json",
+ "gen_dir": "phaseC_gen_sanity_large",
+ "materials": [
+  {
+   "id": "KG_mp-22526",
+   "formula": "LiCoO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.01,
+      "strict": true,
+      "rms": 0.001,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.961,
+      "strict": true,
+      "rms": 0.0274,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.081,
+      "strict": true,
+      "rms": 0.0005,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.118,
+      "strict": true,
+      "rms": 0.0088,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.039,
+      "strict": true,
+      "rms": 0.0142,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.092,
+      "strict": true,
+      "rms": 0.0073,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.119,
+      "strict": true,
+      "rms": 0.0093,
+      "loose": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.986,
+      "strict": true,
+      "rms": 0.0153,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.054,
+      "strict": true,
+      "rms": 0.0005,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.988,
+      "strict": true,
+      "rms": 0.0045,
+      "loose": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.089,
+      "strict": true,
+      "rms": 0.0029,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.076,
+      "strict": true,
+      "rms": 0.0029,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.062,
+      "strict": true,
+      "rms": 0.0049,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.12,
+      "strict": true,
+      "rms": 0.0068,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.1,
+      "strict": true,
+      "rms": 0.0,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.123,
+      "strict": true,
+      "rms": 0.0161,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.068,
+      "strict": true,
+      "rms": 0.0054,
+      "loose": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.085,
+      "strict": true,
+      "rms": 0.0145,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.958,
+      "strict": true,
+      "rms": 0.005,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.055,
+      "strict": true,
+      "rms": 0.0213,
+      "loose": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-22584",
+   "formula": "LiMn2O4",
+   "sg": 227,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 1,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 2,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 3,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 4,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 5,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 6,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 7,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 8,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     },
+     {
+      "k": 9,
+      "composition_ok": false,
+      "sg": 227,
+      "sg_ok": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-25411",
+   "formula": "LiNiO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.947,
+      "strict": true,
+      "rms": 0.0049,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.979,
+      "strict": true,
+      "rms": 0.01,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.971,
+      "strict": true,
+      "rms": 0.009,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": true,
+      "rms": 0.0048,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.03,
+      "strict": true,
+      "rms": 0.0045,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.951,
+      "strict": true,
+      "rms": 0.0026,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.978,
+      "strict": true,
+      "rms": 0.0135,
+      "loose": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.008,
+      "strict": true,
+      "rms": 0.0098,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.989,
+      "strict": true,
+      "rms": 0.0072,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.982,
+      "strict": true,
+      "rms": 0.014,
+      "loose": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.944,
+      "strict": true,
+      "rms": 0.0065,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.058,
+      "strict": true,
+      "rms": 0.0093,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.949,
+      "strict": true,
+      "rms": 0.0065,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.994,
+      "strict": true,
+      "rms": 0.0014,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.015,
+      "strict": true,
+      "rms": 0.0069,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.028,
+      "strict": true,
+      "rms": 0.0043,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.932,
+      "strict": true,
+      "rms": 0.0139,
+      "loose": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.975,
+      "strict": true,
+      "rms": 0.009,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.012,
+      "strict": true,
+      "rms": 0.0068,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.951,
+      "strict": true,
+      "rms": 0.0055,
+      "loose": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-18997",
+   "formula": "LiMnPO4",
+   "sg": 62,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.007,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.007,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.007,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.007,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 14,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.99,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.007,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.055,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.055,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.007,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.935,
+      "strict": true,
+      "rms": 0.0787,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.875,
+      "strict": true,
+      "rms": 0.0592,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.927,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.923,
+      "strict": true,
+      "rms": 0.0364,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.929,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.915,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.944,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.937,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.93,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.933,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-758022",
+   "formula": "LiCoPO4",
+   "sg": 7,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.878,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.899,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 14,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.814,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 19,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.89,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 33,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.04,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.835,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.835,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.899,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.781,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 7,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-5670",
+   "formula": "LiTi2O4",
+   "sg": 227,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.086,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.127,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.099,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.065,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.103,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.115,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.883,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.128,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.111,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 11,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.101,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": []
+   }
+  },
+  {
+   "id": "KG_mp-18988",
+   "formula": "Li2MnO3",
+   "sg": 12,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 36,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.269,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 1,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.088,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 15,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.015,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 15,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.992,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 36,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.263,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 36,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.288,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 15,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.998,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 9,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.995,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 36,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.271,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.019,
+      "strict": true,
+      "rms": 0.0092,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.016,
+      "strict": true,
+      "rms": 0.0124,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.01,
+      "strict": true,
+      "rms": 0.0123,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.019,
+      "strict": true,
+      "rms": 0.0101,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": true,
+      "rms": 0.0131,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.021,
+      "strict": true,
+      "rms": 0.0146,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.998,
+      "strict": true,
+      "rms": 0.0068,
+      "loose": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.021,
+      "strict": true,
+      "rms": 0.0183,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.046,
+      "strict": true,
+      "rms": 0.0133,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.041,
+      "strict": true,
+      "rms": 0.0165,
+      "loose": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-19340",
+   "formula": "LiVO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 141,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.033,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 141,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.038,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 14,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.132,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 36,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.156,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 74,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.053,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 33,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.234,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 33,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.29,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 141,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.01,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 74,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.091,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 141,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.059,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 225,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.555,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.554,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.672,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.847,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.534,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.864,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": false,
+      "sg": 166,
+      "sg_ok": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.87,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.61,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.873,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-18793",
+   "formula": "LiCrO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.225,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.958,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.203,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.98,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.979,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.96,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.029,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 191,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 2.155,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.282,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.036,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.35,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.344,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.346,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.322,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.406,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.325,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.359,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-757614",
+   "formula": "LiFeO2",
+   "sg": 59,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 194,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.116,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 194,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.092,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.0,
+      "strict": true,
+      "rms": 0.0278,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.014,
+      "strict": true,
+      "rms": 0.033,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.991,
+      "strict": true,
+      "rms": 0.0263,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 194,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.098,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 186,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.085,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 186,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.066,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 186,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.072,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 12,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.09,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.018,
+      "strict": true,
+      "rms": 0.0605,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.032,
+      "strict": true,
+      "rms": 0.0232,
+      "loose": true
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.96,
+      "strict": true,
+      "rms": 0.0171,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.036,
+      "strict": true,
+      "rms": 0.0297,
+      "loose": true
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.004,
+      "strict": true,
+      "rms": 0.0207,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.936,
+      "strict": true,
+      "rms": 0.0148,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.955,
+      "strict": true,
+      "rms": 0.0373,
+      "loose": true
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.978,
+      "strict": true,
+      "rms": 0.0191,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.939,
+      "strict": true,
+      "rms": 0.0342,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 59,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.961,
+      "strict": true,
+      "rms": 0.031,
+      "loose": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-754656",
+   "formula": "LiMnO2",
+   "sg": 12,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.939,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.916,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 47,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.237,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.942,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.925,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.929,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.87,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.879,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.94,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.927,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 1,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 2,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 3,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 4,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 5,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 6,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 7,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 8,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 9,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-18921",
+   "formula": "NaCoO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.314,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.204,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.164,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.271,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 156,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.195,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 191,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.298,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.984,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.183,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.262,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.017,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.36,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-19226",
+   "formula": "NaFePO4",
+   "sg": 62,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.996,
+      "strict": true,
+      "rms": 0.1048,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.002,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 140,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.234,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.062,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.99,
+      "strict": true,
+      "rms": 0.092,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 198,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.242,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.16,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.324,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 63,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.982,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.977,
+      "strict": true,
+      "rms": 0.0405,
+      "loose": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.972,
+      "strict": true,
+      "rms": 0.0808,
+      "loose": true
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.004,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.025,
+      "strict": true,
+      "rms": 0.0344,
+      "loose": true
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.999,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.009,
+      "strict": true,
+      "rms": 0.0322,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.019,
+      "strict": true,
+      "rms": 0.058,
+      "loose": true
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.996,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.011,
+      "strict": true,
+      "rms": 0.0601,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.012,
+      "strict": true,
+      "rms": 0.0413,
+      "loose": true
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.979,
+      "strict": true,
+      "rms": 0.0942,
+      "loose": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-578604",
+   "formula": "NaCrO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.122,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.114,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 191,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 3.172,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.06,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 191,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 3.148,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.09,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.096,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": false,
+      "sg": 191,
+      "sg_ok": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.01,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.949,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.355,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.36,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.348,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.36,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.341,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.332,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.34,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.329,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-19359",
+   "formula": "NaFeO2",
+   "sg": 166,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.947,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 47,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.294,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 25,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.218,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.009,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 47,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.173,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 47,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.264,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.868,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.004,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.961,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.976,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.388,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.347,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.321,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.633,
+      "strict": false,
+      "rms": null,
+      "loose": true
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.621,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.36,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.623,
+      "strict": false,
+      "rms": null,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 166,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.623,
+      "strict": false,
+      "rms": null,
+      "loose": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-18957",
+   "formula": "NaMnO2",
+   "sg": 12,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 156,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.109,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.973,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.963,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.014,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.989,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.961,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.98,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.034,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 47,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.207,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.001,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 1,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 2,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 3,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 4,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 5,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 6,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 7,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 8,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     },
+     {
+      "k": 9,
+      "composition_ok": false,
+      "sg": 12,
+      "sg_ok": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-3731",
+   "formula": "LiNbO3",
+   "sg": 161,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 14,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.114,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 14,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.114,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 1,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 2,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 3,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 4,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 5,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 6,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 7,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     },
+     {
+      "k": 9,
+      "composition_ok": false,
+      "sg": 161,
+      "sg_ok": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-18968",
+   "formula": "Li2FeSiO4",
+   "sg": 31,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 33,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.049,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 33,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.073,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 62,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.035,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 4,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.027,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.891,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.949,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.91,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.847,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.951,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.909,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.918,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.876,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.887,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 31,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.872,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-25423",
+   "formula": "LiVPO4F",
+   "sg": 2,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.07,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.07,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.07,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.1,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.926,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.968,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.07,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.062,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 5,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.129,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.994,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.003,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.017,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.998,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.01,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.993,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.01,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.994,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.064,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 2,
+      "sg_ok": true,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.06,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "KG_mp-1153",
+   "formula": "Li2S",
+   "sg": 225,
+   "cathode_like": true,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.314,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 1,
+      "composition_ok": true,
+      "sg": 191,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.823,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 2,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.173,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 3,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.155,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 4,
+      "composition_ok": true,
+      "sg": 187,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.203,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 5,
+      "composition_ok": true,
+      "sg": 191,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 0.86,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 6,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.369,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 7,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.194,
+      "strict": false,
+      "rms": null,
+      "loose": true
+     },
+     {
+      "k": 8,
+      "composition_ok": true,
+      "sg": 164,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.304,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     },
+     {
+      "k": 9,
+      "composition_ok": true,
+      "sg": 123,
+      "sg_ok": false,
+      "atoms_per_fu_ok": true,
+      "volume_ratio_per_atom": 1.135,
+      "strict": false,
+      "rms": null,
+      "loose": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 1,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 2,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 3,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 4,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 5,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 6,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 7,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 8,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     },
+     {
+      "k": 9,
+      "composition_ok": false,
+      "sg": 225,
+      "sg_ok": true
+     }
+    ]
+   }
+  }
+ ],
+ "summary": {
+  "composition | cathode-like": {
+   "materials": 20,
+   "valid_cifs": 179,
+   "right_composition": 0.994,
+   "right_space_group": 0.162,
+   "strict_match": 0.145,
+   "loose_match": 0.151,
+   "materials_with_loose_match": 5,
+   "materials_with_right_space_group": 5,
+   "median_volume_ratio": 1.035
+  },
+  "oracle | cathode-like": {
+   "materials": 20,
+   "valid_cifs": 172,
+   "right_composition": 0.715,
+   "right_space_group": 0.994,
+   "strict_match": 0.291,
+   "loose_match": 0.308,
+   "materials_with_loose_match": 7,
+   "materials_with_right_space_group": 19,
+   "median_volume_ratio": 0.96
+  }
+ }
+}

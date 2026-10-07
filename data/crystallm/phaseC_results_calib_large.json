@@ -1,0 +1,2472 @@
+[
+ {
+  "id": "NOMAD_G6yYZhe7sU1VINJ88KINq_C8GxlI",
+  "cell": "Na2Zr4Fe2",
+  "formula": "NaZr2Fe",
+  "sg": 8,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   187,
+   226
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 4
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_454930",
+  "cell": "Na4Hf4In8",
+  "formula": "NaHfIn2",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   63,
+   227,
+   221,
+   139
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_19466",
+  "cell": "Li4H12C4O12",
+  "formula": "LiH3CO3",
+  "sg": 33,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   14,
+   12,
+   63,
+   1,
+   62
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOMAD_o_rpYM8UvlXjEqrWKUfsnlp3bznH",
+  "cell": "Li2Nb1Cd1",
+  "formula": "Li2NbCd",
+  "sg": 10,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   160,
+   187,
+   217
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_CumN7pzRO914DenJjAIZlAVyAUbd",
+  "cell": "Na3Hf1",
+  "formula": "Na3Hf",
+  "sg": 10,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   194,
+   139,
+   227,
+   225,
+   140
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_eOjyTI8NL-ZemiT-Q1x-imIAW_53",
+  "cell": "Li8Cu10",
+  "formula": "Li4Cu5",
+  "sg": 139,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   166,
+   227,
+   225,
+   194,
+   139
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_k7YslB2q32vc9FHb05QVuFd_2UKZ",
+  "cell": "Na4Sr4Co4Au4",
+  "formula": "NaSrCoAu",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   63,
+   194,
+   227,
+   140
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_1256623",
+  "cell": "Na4Gd4Hg4Te12",
+  "formula": "NaGdHgTe3",
+  "sg": 63,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   166,
+   59,
+   62,
+   129,
+   140
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_Z89dlsGks6r8kydHuyYKYHlkXalV",
+  "cell": "Na2La1Os1",
+  "formula": "Na2LaOs",
+  "sg": 99,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   227,
+   194,
+   69,
+   139
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 4
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_xNMql0BssDZqyfulhMpvRstU2sa6",
+  "cell": "Na8La4Se4",
+  "formula": "Na2LaSe",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   71,
+   63,
+   194,
+   189
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_Wx6uUeQZQTv8bx6G70A0lk_gkDus",
+  "cell": "Na2Ge4Pt2",
+  "formula": "NaGe2Pt",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   217,
+   62,
+   225,
+   44,
+   205
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_93mDPX12X9fQ3asJTbS_ag_ByhMm",
+  "cell": "Li6La2",
+  "formula": "Li3La",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   139,
+   227,
+   220
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_k-0GVyVdA2qz2VVVRjsNSBJ6L8Go",
+  "cell": "Sr4Li4Bi4W4",
+  "formula": "SrLiBiW",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   62,
+   63,
+   216,
+   189
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   }
+  }
+ },
+ {
+  "id": "NOMAD_iuwvrEtNzbeli6IvvZC_1_q9980U",
+  "cell": "Li4V4Ga4Pd4",
+  "formula": "LiVGaPd",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   166,
+   191,
+   200
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_366135",
+  "cell": "Na8Cu4Sb4",
+  "formula": "Na2CuSb",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   63,
+   129,
+   194,
+   225,
+   186
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_h0oB4I8emKnSMFl8RV1Smqax1iPa",
+  "cell": "Na4Ga4Cu4Ru4",
+  "formula": "NaGaCuRu",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   187,
+   200
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_qXrsfWH-atLH-hOdk1rcknYz6RSy",
+  "cell": "Li8Dy4U4",
+  "formula": "Li2DyU",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   187,
+   194,
+   227,
+   139
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_hhgUTLSM39-Iq1Sc03DIyMoi8Ek-",
+  "cell": "Li2Cd2Si4",
+  "formula": "LiCdSi2",
+  "sg": 65,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   62,
+   216,
+   174,
+   137
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_MhJE74Z4qSTyxAvaOHcAL1GBcS6D",
+  "cell": "Na4Re2Mo2",
+  "formula": "Na2ReMo",
+  "sg": 65,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   227,
+   140,
+   194,
+   139
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   }
+  }
+ },
+ {
+  "id": "NOMAD_QYVqO322sez0WOs5jzFtKhAHUZnB",
+  "cell": "Na2Fe2Ag4",
+  "formula": "NaFeAg2",
+  "sg": 12,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   166,
+   187
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_kBysravurUJLkmAXkCRASvvDlM0C",
+  "cell": "Li20Hf4",
+  "formula": "Li5Hf",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   220,
+   194,
+   139,
+   227
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_808967",
+  "cell": "Li4Mn4Pd4Pb4",
+  "formula": "LiMnPdPb",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   139,
+   62,
+   141
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 7
+   }
+  }
+ },
+ {
+  "id": "OQMD_1464017",
+  "cell": "Li1Mg1B4",
+  "formula": "LiMgB4",
+  "sg": 191,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   127,
+   65,
+   74,
+   64,
+   137
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_q38rwqv2O6rw7S8MdPE9_hU2VuEE",
+  "cell": "Na1Ti2Cu1",
+  "formula": "NaTi2Cu",
+  "sg": 10,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   226,
+   194,
+   227
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_JKNdgOapw3QH8pHLk4zsGryrLzY_",
+  "cell": "K2Li2Pt2",
+  "formula": "KLiPt",
+  "sg": 44,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   200,
+   204,
+   194,
+   63
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_4C34G_VYQDyeaHgIj-YgO-JVS_g6",
+  "cell": "Li1V1Re1",
+  "formula": "LiVRe",
+  "sg": 156,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   187,
+   194,
+   191
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_kltu8uoD1ukon1vtRYq6fby9G9MM",
+  "cell": "Na2Ag1Sb1",
+  "formula": "Na2AgSb",
+  "sg": 123,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   194,
+   63,
+   129,
+   186,
+   225
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_1034946",
+  "cell": "Na4Sr4Ir4W4",
+  "formula": "NaSrIrW",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   227,
+   139,
+   200,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_x7K1fKmL6BIcq4rFy30ZqJJk_hSV",
+  "cell": "Na4Zr4Sc4Tc4",
+  "formula": "NaZrScTc",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   200,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "OQMD_1032555",
+  "cell": "Na4Hf4As4Ru4",
+  "formula": "NaHfAsRu",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   63,
+   217,
+   62,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_9Mrs8_N1HTfCXwJ5pLFyg1Rl7j8Y",
+  "cell": "Na2Sr4Ca2",
+  "formula": "NaSr2Ca",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   139,
+   227,
+   226
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_P01ZdIjyXWXxUjQ6gYfg7hN_SY4i",
+  "cell": "Li4Mg2Mn2",
+  "formula": "Li2MgMn",
+  "sg": 119,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   74,
+   194,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_nsow30IU5gbdI5SJziOTewrAq0EC",
+  "cell": "Na2Cr4Cd2",
+  "formula": "NaCr2Cd",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   200,
+   227,
+   187
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_PgoDOf5CxfglcEWNactGUqQ0sBzd",
+  "cell": "Na2Mg2Ir4",
+  "formula": "NaMgIr2",
+  "sg": 139,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   227,
+   194,
+   63,
+   140
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_YgCMo9W4YcVVjnQJXdSWLelYAxBh",
+  "cell": "Na6Tl3Tc3",
+  "formula": "Na2TlTc",
+  "sg": 160,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   69,
+   139,
+   216,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_qB6IebFJhDGdvX9PiKMk3Ha0HGDW",
+  "cell": "Na6Si3Ge3",
+  "formula": "Na2SiGe",
+  "sg": 160,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   129,
+   14,
+   63,
+   72,
+   9
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_acp-jMPOJArWz86sw2Yg0zMmefSD",
+  "cell": "Na2Mg4Cr2",
+  "formula": "NaMg2Cr",
+  "sg": 65,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   139,
+   226,
+   74
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_xTI2joJDaTVPy8SRSMcUEyhPQoI8",
+  "cell": "Na2Nb2Br2",
+  "formula": "NaNbBr",
+  "sg": 107,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   14,
+   36,
+   71,
+   62
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_W2EO3WG_sRkFHihmgvOdNAOjuibk",
+  "cell": "Li1Y1Cd1",
+  "formula": "LiYCd",
+  "sg": 156,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   160,
+   216,
+   186
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_QO7d-1EE_ZdXcxzaViWzfnEHmuqe",
+  "cell": "Li2Cd2Ru4",
+  "formula": "LiCdRu2",
+  "sg": 35,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   221,
+   139,
+   115,
+   216
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_mYUXZww9J9O3ZdbGHM_MqQaFAYJn",
+  "cell": "Na1Ag2Cl1",
+  "formula": "NaAg2Cl",
+  "sg": 99,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   8,
+   62,
+   71,
+   176
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_S49qeP40Fmjwj-4zaAlKiarkfbC-",
+  "cell": "Na2Zn4As2",
+  "formula": "NaZn2As",
+  "sg": 38,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   129,
+   166,
+   174,
+   87,
+   62
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_z9oWuOJ84wR0v1bFmfPj1eOpN0Oj",
+  "cell": "Li2Zn1Cr1",
+  "formula": "Li2ZnCr",
+  "sg": 25,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   166,
+   227,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_Zu7hM0rXiaNjxQAMvx5e6htLRkT-",
+  "cell": "Na4Y4Mn4Cr4",
+  "formula": "NaYMnCr",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   200,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 4
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOMAD_rhw8RJAvrdE63VWbLQByIY14r096",
+  "cell": "Na2Zr2Al4",
+  "formula": "NaZrAl2",
+  "sg": 119,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   160,
+   227,
+   216
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_mXXmZdt6nhjZOt9_CYJj1cea_hrf",
+  "cell": "Sr4Li2Ga2",
+  "formula": "Sr2LiGa",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   187,
+   194,
+   62,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   }
+  }
+ },
+ {
+  "id": "NOMAD_FsJ-LR6jop4qU4wb4CL5lzbxZa28",
+  "cell": "Na4Ca4Mn8",
+  "formula": "NaCaMn2",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   226,
+   194,
+   8
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 6
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_1355992",
+  "cell": "Na4Tb4Fe4Se12",
+  "formula": "NaTbFeSe3",
+  "sg": 62,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   62,
+   5,
+   166,
+   14,
+   71
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 6
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   }
+  }
+ },
+ {
+  "id": "OQMD_834166",
+  "cell": "Na4Cr4Si4",
+  "formula": "NaCrSi",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   129,
+   63,
+   72,
+   216,
+   225
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_879849",
+  "cell": "Li4Mn4Re4",
+  "formula": "LiMnRe",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   187,
+   194,
+   220
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "OQMD_1629264",
+  "cell": "Li2Ti2In1Ga1Pd2",
+  "formula": "Li2Ti2InGaPd2",
+  "sg": 115,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   194,
+   200,
+   8
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_intnaycVqPf7xfOdNQ22zC8dVEhK",
+  "cell": "K2Li1Br1",
+  "formula": "K2LiBr",
+  "sg": 47,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   129,
+   62,
+   225,
+   63,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "MP_mp-754206",
+  "cell": "Li4Bi12Cl8O16",
+  "formula": "LiBi3(ClO2)2",
+  "sg": 63,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   63,
+   129,
+   38,
+   15,
+   12
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_7PVWepHUyek9p2xE0UeyR7AnKD7F",
+  "cell": "Li2Hf1Re1",
+  "formula": "Li2HfRe",
+  "sg": 99,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   187,
+   139,
+   216,
+   191
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 4
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_T-E-Nxf1_WLb2wrmzC9Rii7zNl44",
+  "cell": "Ba2Li2Ti4",
+  "formula": "BaLiTi2",
+  "sg": 65,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   227,
+   139,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_8ZgOwLPMuje8B0WV1puKQxMoT_fD",
+  "cell": "Li2Mg2Nb4",
+  "formula": "LiMgNb2",
+  "sg": 8,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   139,
+   227,
+   187
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_3BUGJhynkDpfpF3IDktlYzBTNIwV",
+  "cell": "Na4Fe2Ag2",
+  "formula": "Na2FeAg",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   194,
+   20
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_lcjvtBzlZsZHy4WRRNgZhOndc-iF",
+  "cell": "Li2Bi4Se2",
+  "formula": "LiBi2Se",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   164,
+   70,
+   129,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_559222",
+  "cell": "K4Rb8Li4",
+  "formula": "KRb2Li",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   200,
+   129,
+   204
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_a0az2DQpZ7EuPdipV6Rd-QjlCTLh",
+  "cell": "Na4Ga2Bi4",
+  "formula": "Na2GaBi2",
+  "sg": 139,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   129,
+   62,
+   123,
+   225,
+   63
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_2dWxJhB6vZGF4_cTe8-X5XjFAjsB",
+  "cell": "Li2Tl4Si2",
+  "formula": "LiTl2Si",
+  "sg": 65,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   12,
+   63,
+   127,
+   62
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 7
+   }
+  }
+ },
+ {
+  "id": "NOMAD_fVxsf_OTx_6LiVC_By-_iz89ILLu",
+  "cell": "Na1Ni2Pd1",
+  "formula": "NaNi2Pd",
+  "sg": 47,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   166,
+   187
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_MYD5l5s0WLXMUsFAvu_Fq8Yn682q",
+  "cell": "Li1Ca2P1",
+  "formula": "LiCa2P",
+  "sg": 10,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   62,
+   194,
+   225,
+   58,
+   174
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_DoJD7STZ7WB30_e4225sldgURREP",
+  "cell": "Li2Mg2Pb2",
+  "formula": "LiMgPb",
+  "sg": 44,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   216,
+   225,
+   187,
+   166,
+   155
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_682855",
+  "cell": "Li4La4O12",
+  "formula": "LiLaO3",
+  "sg": 62,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   148,
+   142,
+   12,
+   14,
+   225
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_394801",
+  "cell": "Li4Mg8Mo4",
+  "formula": "LiMg2Mo",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   220,
+   139,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_1381768",
+  "cell": "Li2Pr2Zn2Se6",
+  "formula": "LiPrZnSe3",
+  "sg": 11,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   141,
+   14,
+   62,
+   166,
+   164
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_BA2waivz5foXMWBUQHiX19tS77UQ",
+  "cell": "Ba4Li2Ni2",
+  "formula": "Ba2LiNi",
+  "sg": 35,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   227,
+   59,
+   200
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   }
+  }
+ },
+ {
+  "id": "NOMAD_WXEJ3JrZGEXH_jx1r_CWYaPJcRSr",
+  "cell": "Li2Ti2Ir2",
+  "formula": "LiTiIr",
+  "sg": 44,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   187,
+   194,
+   220
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_mD5SIJ4NoBD46BEjNkxPvoR0wVkH",
+  "cell": "Ba4Li2Au2",
+  "formula": "Ba2LiAu",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   63,
+   204,
+   200
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "OQMD_1453257",
+  "cell": "Na6Pb6O9",
+  "formula": "Na2Pb2O3",
+  "sg": 166,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   186,
+   15,
+   60,
+   14,
+   12
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_0byPzlGkD50aoLqrKozkZ36zOXiX",
+  "cell": "Li16Cu4Tc4",
+  "formula": "Li4CuTc",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   220,
+   42,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_v2CDhXbf-zJD6fZCKsZvQLh1oAeK",
+  "cell": "Li1Ge1Ir2",
+  "formula": "LiGeIr2",
+  "sg": 25,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   189,
+   194,
+   216,
+   187
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_q6CMs0eWnQ2APbTri1hqYWIUJ6-j",
+  "cell": "Li2Be4Os2",
+  "formula": "LiBe2Os",
+  "sg": 139,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   216,
+   220,
+   227
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_9A1NFlP4Gg6xW2W_0lQwXpQJ8oTu",
+  "cell": "Ba1Li2Te1",
+  "formula": "BaLi2Te",
+  "sg": 99,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   71,
+   8,
+   62,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_gb_8Skz4kTd_TdvXBQODh-_TW7Xl",
+  "cell": "Na4Sc8Nb4",
+  "formula": "NaSc2Nb",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   227,
+   194,
+   226
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_h4rhpTbtNYl4u22-U338dpGIjtPV",
+  "cell": "Na4Al16Se4",
+  "formula": "NaAl4Se",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   8,
+   62,
+   122,
+   129,
+   2
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_6CdIxhJN-9Dcjcv8UEe9FDylbt65",
+  "cell": "K4Na4Nb4Bi4",
+  "formula": "KNaNbBi",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   73,
+   189,
+   14,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 6
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 8
+   }
+  }
+ },
+ {
+  "id": "NOMAD_EjKIU3hZ1r8oQduydDNqFtnDsWzS",
+  "cell": "Na4Pd4Rh16",
+  "formula": "NaPdRh4",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   200,
+   227,
+   44
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_XO_4-V8aZ-bEc0P4nx4mNu2mlKRP",
+  "cell": "Li4Cr8Te4",
+  "formula": "LiCr2Te",
+  "sg": 225,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   194,
+   1,
+   62
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_vDfQ9WL2Y3LbzTbVck9xyBUH_X-Z",
+  "cell": "Li2Ca1In1",
+  "formula": "Li2CaIn",
+  "sg": 6,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   160,
+   42,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_oI4lBzOOVT1LrRE7S9QRDSyvSmWH",
+  "cell": "Li2Be2Ru4",
+  "formula": "LiBeRu2",
+  "sg": 35,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   187,
+   55,
+   216,
+   160
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_NxKX8LoR3j-1_LUwIukf-K7_664z",
+  "cell": "Na2Cu1Ag1",
+  "formula": "Na2CuAg",
+  "sg": 99,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   227,
+   139,
+   194,
+   216
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_XzvaKxhbr1h-udTOum2qcepLKD1T",
+  "cell": "Sr2Li4Cu2",
+  "formula": "SrLi2Cu",
+  "sg": 44,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   216,
+   166,
+   139,
+   194
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_10K14Tj7bbtHCBeQxDSmxuWLcQt3",
+  "cell": "K4Li2Al2",
+  "formula": "K2LiAl",
+  "sg": 44,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   62,
+   216,
+   166
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_r5E02fzvgT8-6S-mSnO3jyKgagBx",
+  "cell": "Na1Os2Pd1",
+  "formula": "NaOs2Pd",
+  "sg": 10,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   227,
+   139,
+   14,
+   63
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_zN-uUjg43AUf09SMcETTLgxJYKFu",
+  "cell": "Li2La1B1",
+  "formula": "Li2LaB",
+  "sg": 123,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   63,
+   212,
+   123,
+   59
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_OwzXjugdEgFi0zDUq43wDJww36ax",
+  "cell": "Na2Sn4Pt2",
+  "formula": "NaSn2Pt",
+  "sg": 44,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   194,
+   217,
+   62,
+   140
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 9
+   }
+  }
+ },
+ {
+  "id": "NOMAD_14uTuqxal1VnZpDrcUt3_O_RSnex",
+  "cell": "Na4Ag2Te2",
+  "formula": "Na2AgTe",
+  "sg": 35,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   14,
+   225,
+   194,
+   142,
+   186
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 1
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_xObd-b6YVO7oGthWAhJJXsjp3cNe",
+  "cell": "Li2Hf4As2",
+  "formula": "LiHf2As",
+  "sg": 139,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   62,
+   216,
+   189,
+   164
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 4
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_Mc6WMmnH44CWpDTqjlJi-wYfXsID",
+  "cell": "Na16Ta4Tl4",
+  "formula": "Na4TaTl",
+  "sg": 216,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   69,
+   139,
+   194,
+   20
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_0O-z2yD5jXfo2hgZBFkJvCaXrn6o",
+  "cell": "Na1Li1Bi2",
+  "formula": "NaLiBi2",
+  "sg": 99,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   123,
+   225,
+   62,
+   12,
+   129
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 6
+   }
+  }
+ },
+ {
+  "id": "NOMAD_9FlcJBPr_bX9zPe-8Z6wm8SXIMyF",
+  "cell": "Li2Cr4Ag2",
+  "formula": "LiCr2Ag",
+  "sg": 71,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   139,
+   216,
+   160,
+   221
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 5
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_69eWs0bxnD_WlZ_LZojX2mjpFaUj",
+  "cell": "Li1Be1Os2",
+  "formula": "LiBeOs2",
+  "sg": 6,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   189,
+   187,
+   194,
+   212
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 3
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ },
+ {
+  "id": "NOMAD_qszv4ZQ1GxRMC79y5Q8U7yFYsHXC",
+  "cell": "Na2Li2Ag4",
+  "formula": "NaLiAg2",
+  "sg": 119,
+  "cathode_like": false,
+  "sg_pred_top5": [
+   225,
+   221,
+   194,
+   216,
+   227
+  ],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 2
+   },
+   "oracle": {
+    "n": 10,
+    "valid": 10,
+    "matches": 10
+   }
+  }
+ }
+]

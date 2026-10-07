@@ -1,0 +1,23 @@
+[23:33:24] overnight queue started; CHGNet threads 14
+[23:33:24] start c1_rescore_large: D:\K-Ont\K-Ont\abox\phaseC_nearmiss.py --results phaseC_results_large.json --gen-dir phaseC_gen_large --out phaseC_nearmiss_large.json --candidates phaseC_test_with_pred.json
+[23:33:24] start g1_calib_small: D:\K-Ont\K-Ont\abox\phaseC_generate.py --model crystallm_v1_small --samples 10 --conditions composition,oracle --gen-dir phaseC_gen_calib_small --out D:\K-Ont\K-Ont\data\crystallm\phaseC_results_calib_small.json --start 55 --n-materials 150
+[23:36:24] cpu job finished (exit 0)
+[23:36:24] start c2_rescore_small_seeded: D:\K-Ont\K-Ont\abox\phaseC_nearmiss.py --results phaseC_results_small_seeded.json --gen-dir phaseC_gen_small_seeded --out phaseC_nearmiss_small_seeded.json --candidates phaseC_test_with_pred.json
+[23:39:24] cpu job finished (exit 0)
+[23:39:24] start c3_chgnet_large: D:\K-Ont\K-Ont\abox\phaseC_chgnet.py --results phaseC_results_large.json --gen-dir phaseC_gen_large --out phaseC_chgnet_large.json --max-per-cond 5 --device cpu --threads 14
+[23:57:24] g1_calib_small finished (exit 0)
+[23:57:24] start g1_calib_small_nearmiss: D:\K-Ont\K-Ont\abox\phaseC_nearmiss.py --results phaseC_results_calib_small.json --gen-dir phaseC_gen_calib_small --out phaseC_nearmiss_calib_small.json --candidates phaseC_test_with_pred.json
+[23:57:24] start g2_sanity_small: D:\K-Ont\K-Ont\abox\phaseC_generate.py --model crystallm_v1_small --samples 10 --conditions composition,oracle --gen-dir phaseC_gen_sanity_small --out D:\K-Ont\K-Ont\data\crystallm\phaseC_results_sanity_small.json --candidates phaseC_sanity_candidates.json --n-materials 100
+[00:05:24] g2_sanity_small finished (exit 0)
+[00:05:24] start g2_sanity_small_nearmiss: D:\K-Ont\K-Ont\abox\phaseC_nearmiss.py --results phaseC_results_sanity_small.json --gen-dir phaseC_gen_sanity_small --out phaseC_nearmiss_sanity_small.json --candidates phaseC_sanity_candidates.json
+[00:05:24] start g3_sanity_large: D:\K-Ont\K-Ont\abox\phaseC_generate.py --model crystallm_v1_large --samples 10 --conditions composition,oracle --gen-dir phaseC_gen_sanity_large --out D:\K-Ont\K-Ont\data\crystallm\phaseC_results_sanity_large.json --candidates phaseC_sanity_candidates.json --n-materials 100
+[00:57:24] cpu job finished (exit 0)
+[00:57:24] start c4_chgnet_small_seeded: D:\K-Ont\K-Ont\abox\phaseC_chgnet.py --results phaseC_results_small_seeded.json --gen-dir phaseC_gen_small_seeded --out phaseC_chgnet_small_seeded.json --max-per-cond 5 --device cpu --threads 14
+[01:21:55] g3_sanity_large finished (exit 0)
+[01:21:55] start g3_sanity_large_nearmiss: D:\K-Ont\K-Ont\abox\phaseC_nearmiss.py --results phaseC_results_sanity_large.json --gen-dir phaseC_gen_sanity_large --out phaseC_nearmiss_sanity_large.json --candidates phaseC_sanity_candidates.json
+[01:21:55] start g4_calib_large: D:\K-Ont\K-Ont\abox\phaseC_generate.py --model crystallm_v1_large --samples 10 --conditions composition,oracle --gen-dir phaseC_gen_calib_large --out D:\K-Ont\K-Ont\data\crystallm\phaseC_results_calib_large.json --start 55 --n-materials 150
+[02:45:25] g4_calib_large finished (exit 0)
+[02:45:25] start g4_calib_large_nearmiss: D:\K-Ont\K-Ont\abox\phaseC_nearmiss.py --results phaseC_results_calib_large.json --gen-dir phaseC_gen_calib_large --out phaseC_nearmiss_calib_large.json --candidates phaseC_test_with_pred.json
+[03:25:55] cpu job finished (exit 0)
+[03:25:55] all jobs finished; writing summary
+[03:25:57] generated CIFs archived: 0.7 MB

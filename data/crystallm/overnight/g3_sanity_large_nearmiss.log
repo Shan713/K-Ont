@@ -1,0 +1,22 @@
+1/20 LiCoO2
+2/20 LiMn2O4
+3/20 LiNiO2
+4/20 LiMnPO4
+5/20 LiCoPO4
+6/20 LiTi2O4
+7/20 Li2MnO3
+8/20 LiVO2
+9/20 LiCrO2
+10/20 LiFeO2
+11/20 LiMnO2
+12/20 NaCoO2
+13/20 NaFePO4
+14/20 NaCrO2
+15/20 NaFeO2
+16/20 NaMnO2
+17/20 LiNbO3
+18/20 Li2FeSiO4
+19/20 LiVPO4F
+20/20 Li2S
+composition | cathode-like {'materials': 20, 'valid_cifs': 179, 'right_composition': 0.994, 'right_space_group': 0.162, 'strict_match': 0.145, 'loose_match': 0.151, 'materials_with_loose_match': 5, 'materials_with_right_space_group': 5, 'median_volume_ratio': 1.035}
+oracle | cathode-like {'materials': 20, 'valid_cifs': 172, 'right_composition': 0.715, 'right_space_group': 0.994, 'strict_match': 0.291, 'loose_match': 0.308, 'materials_with_loose_match': 7, 'materials_with_right_space_group': 19, 'median_volume_ratio': 0.96}

@@ -1,0 +1,4970 @@
+{
+ "results": "phaseC_results_large.json",
+ "gen_dir": "phaseC_gen_large",
+ "settings": {
+  "results": "phaseC_results_large.json",
+  "gen_dir": "phaseC_gen_large",
+  "candidates": "phaseC_test_with_pred.json",
+  "conditions": "composition,oracle",
+  "max_per_cond": 5,
+  "device": "cpu",
+  "threads": 14,
+  "fmax": 0.1,
+  "steps": 300,
+  "hours": 0,
+  "out": "phaseC_chgnet_large.json"
+ },
+ "materials": [
+  {
+   "id": "MP_mp-1175409",
+   "formula": "Li9Co7O16",
+   "sg": 2,
+   "cathode_like": true,
+   "e_true": -6.2345,
+   "conditions": {
+    "composition": [
+     {
+      "k": 1,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 5,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 6,
+      "e": -6.23422,
+      "dE": 0.00028,
+      "steps": 17,
+      "sg_after_relax": 10,
+      "match_after_relax": false
+     },
+     {
+      "k": 7,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.23464,
+      "dE": -0.00014,
+      "steps": 13,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.2345,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-1177503",
+   "formula": "Li4Cr3FeO8",
+   "sg": 12,
+   "cathode_like": true,
+   "e_true": -7.54863,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.54789,
+      "dE": 0.00074,
+      "steps": 22,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -7.54789,
+      "dE": 0.00074,
+      "steps": 22,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.54753,
+      "dE": 0.0011,
+      "steps": 52,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.18996,
+      "dE": 0.35867,
+      "steps": 302,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.54789,
+      "dE": 0.00074,
+      "steps": 22,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.54862,
+      "dE": 1e-05,
+      "steps": 12,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.54803,
+      "dE": 0.0006,
+      "steps": 14,
+      "sg_after_relax": 166,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.54863,
+      "dE": 1e-05,
+      "steps": 12,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.54869,
+      "dE": -6e-05,
+      "steps": 10,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.54848,
+      "dE": 0.00015,
+      "steps": 14,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-1210356",
+   "formula": "Na2PdF6",
+   "sg": 150,
+   "cathode_like": true,
+   "e_true": -4.44059,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -4.44056,
+      "dE": 4e-05,
+      "steps": 15,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -4.43902,
+      "dE": 0.00157,
+      "steps": 13,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -4.43992,
+      "dE": 0.00067,
+      "steps": 13,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -4.44044,
+      "dE": 0.00015,
+      "steps": 19,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -4.44065,
+      "dE": -6e-05,
+      "steps": 18,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -4.43846,
+      "dE": 0.00214,
+      "steps": 49,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -4.43966,
+      "dE": 0.00093,
+      "steps": 18,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -4.43886,
+      "dE": 0.00173,
+      "steps": 26,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -4.44063,
+      "dE": -3e-05,
+      "steps": 34,
+      "sg_after_relax": 150,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -4.40624,
+      "dE": 0.03435,
+      "steps": 72,
+      "sg_after_relax": 150,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-1221226",
+   "formula": "Na4Al3Fe(SiO3)8",
+   "sg": 3,
+   "cathode_like": true,
+   "e_true": -7.71996,
+   "conditions": {
+    "composition": [],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.72,
+      "dE": -4e-05,
+      "steps": 31,
+      "sg_after_relax": 3,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.71996,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 3,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.71996,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 3,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.71996,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 3,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.7201,
+      "dE": -0.00014,
+      "steps": 14,
+      "sg_after_relax": 3,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-1222389",
+   "formula": "LiFeSO4F",
+   "sg": 1,
+   "cathode_like": true,
+   "e_true": -6.69101,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.69101,
+      "dE": 0.0,
+      "steps": 3,
+      "sg_after_relax": 1,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-17288",
+   "formula": "Li2ZnSiO4",
+   "sg": 14,
+   "cathode_like": true,
+   "e_true": -6.41185,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.25441,
+      "dE": 0.15744,
+      "steps": 183,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.30138,
+      "dE": 0.11047,
+      "steps": 255,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.28541,
+      "dE": 0.12645,
+      "steps": 109,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.41128,
+      "dE": 0.00057,
+      "steps": 40,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.31261,
+      "dE": 0.09925,
+      "steps": 302,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.21807,
+      "dE": 0.19379,
+      "steps": 212,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.40761,
+      "dE": 0.00424,
+      "steps": 59,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.39676,
+      "dE": 0.01509,
+      "steps": 62,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.383,
+      "dE": 0.02885,
+      "steps": 92,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.39735,
+      "dE": 0.0145,
+      "steps": 50,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-679669",
+   "formula": "NaZr2SN2Cl",
+   "sg": 14,
+   "cathode_like": true,
+   "e_true": -7.73811,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.73601,
+      "dE": 0.0021,
+      "steps": 76,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.64673,
+      "dE": 0.09139,
+      "steps": 84,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.59384,
+      "dE": 0.14427,
+      "steps": 77,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.60071,
+      "dE": 0.13741,
+      "steps": 81,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.31517,
+      "dE": 0.42295,
+      "steps": 75,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.7389,
+      "dE": -0.00079,
+      "steps": 78,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.73825,
+      "dE": -0.00013,
+      "steps": 125,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.73054,
+      "dE": 0.00757,
+      "steps": 90,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.58151,
+      "dE": 0.1566,
+      "steps": 96,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.66688,
+      "dE": 0.07123,
+      "steps": 186,
+      "sg_after_relax": 14,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-694965",
+   "formula": "Li3(NiO2)8",
+   "sg": 2,
+   "cathode_like": true,
+   "e_true": -5.90717,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.90717,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-752766",
+   "formula": "Li2CrSiO4",
+   "sg": 152,
+   "cathode_like": true,
+   "e_true": -7.45588,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.45483,
+      "dE": 0.00105,
+      "steps": 35,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.45593,
+      "dE": -5e-05,
+      "steps": 33,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.33107,
+      "dE": 0.12482,
+      "steps": 302,
+      "sg_after_relax": 144,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.45472,
+      "dE": 0.00116,
+      "steps": 58,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     },
+     {
+      "k": 5,
+      "e": -7.45552,
+      "dE": 0.00037,
+      "steps": 15,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.45591,
+      "dE": -3e-05,
+      "steps": 14,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.41997,
+      "dE": 0.03591,
+      "steps": 115,
+      "sg_after_relax": 152,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.45541,
+      "dE": 0.00047,
+      "steps": 27,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.45595,
+      "dE": -6e-05,
+      "steps": 15,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.45578,
+      "dE": 0.0001,
+      "steps": 21,
+      "sg_after_relax": 152,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-753685",
+   "formula": "Li2MnO2F",
+   "sg": 164,
+   "cathode_like": true,
+   "e_true": -6.56031,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.5248,
+      "dE": 0.03551,
+      "steps": 5,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.5248,
+      "dE": 0.03551,
+      "steps": 5,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.5248,
+      "dE": 0.03551,
+      "steps": 5,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.5248,
+      "dE": 0.03551,
+      "steps": 5,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.5248,
+      "dE": 0.03551,
+      "steps": 5,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.23778,
+      "dE": 0.32253,
+      "steps": 34,
+      "sg_after_relax": 164,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.55969,
+      "dE": 0.00062,
+      "steps": 12,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.55889,
+      "dE": 0.00142,
+      "steps": 21,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.55922,
+      "dE": 0.00109,
+      "steps": 21,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.55897,
+      "dE": 0.00134,
+      "steps": 17,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-756221",
+   "formula": "K2LiFeO3",
+   "sg": 67,
+   "cathode_like": true,
+   "e_true": -5.64966,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.64914,
+      "dE": 0.00051,
+      "steps": 20,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.64913,
+      "dE": 0.00053,
+      "steps": 23,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.64953,
+      "dE": 0.00012,
+      "steps": 29,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.64927,
+      "dE": 0.00038,
+      "steps": 19,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.64936,
+      "dE": 0.0003,
+      "steps": 25,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.64898,
+      "dE": 0.00068,
+      "steps": 25,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.6497,
+      "dE": -5e-05,
+      "steps": 19,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.64932,
+      "dE": 0.00034,
+      "steps": 26,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.64926,
+      "dE": 0.00039,
+      "steps": 17,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.6493,
+      "dE": 0.00036,
+      "steps": 27,
+      "sg_after_relax": 67,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-756571",
+   "formula": "Li3V4NiO12",
+   "sg": 5,
+   "cathode_like": true,
+   "e_true": -7.63391,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.63391,
+      "dE": 0.0,
+      "steps": 21,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-757609",
+   "formula": "Li2FeCO4",
+   "sg": 14,
+   "cathode_like": true,
+   "e_true": -7.13634,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.13681,
+      "dE": -0.00047,
+      "steps": 25,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.13729,
+      "dE": -0.00095,
+      "steps": 29,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.13738,
+      "dE": -0.00104,
+      "steps": 33,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.13783,
+      "dE": -0.00149,
+      "steps": 38,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.13713,
+      "dE": -0.00079,
+      "steps": 44,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.13679,
+      "dE": -0.00045,
+      "steps": 35,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.13695,
+      "dE": -0.00061,
+      "steps": 30,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.13753,
+      "dE": -0.00119,
+      "steps": 37,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.13645,
+      "dE": -0.00011,
+      "steps": 39,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.13714,
+      "dE": -0.0008,
+      "steps": 37,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-759826",
+   "formula": "Li3Mn(PO4)2",
+   "sg": 11,
+   "cathode_like": true,
+   "e_true": -7.26525,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.26619,
+      "dE": -0.00094,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.26619,
+      "dE": -0.00094,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.26619,
+      "dE": -0.00094,
+      "steps": 5,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.26525,
+      "dE": 0.0,
+      "steps": 6,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-760462",
+   "formula": "Li5Ti(SiO4)2",
+   "sg": 5,
+   "cathode_like": true,
+   "e_true": -7.10932,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.10951,
+      "dE": -0.00019,
+      "steps": 9,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.10944,
+      "dE": -0.00012,
+      "steps": 37,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.10932,
+      "dE": 0.0,
+      "steps": 4,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-765590",
+   "formula": "LiFePO4",
+   "sg": 19,
+   "cathode_like": true,
+   "e_true": -7.48721,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.50635,
+      "dE": -0.01914,
+      "steps": 4,
+      "sg_after_relax": 7,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -7.51037,
+      "dE": -0.02316,
+      "steps": 15,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.51037,
+      "dE": -0.02316,
+      "steps": 15,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.50635,
+      "dE": -0.01914,
+      "steps": 4,
+      "sg_after_relax": 7,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.51037,
+      "dE": -0.02316,
+      "steps": 15,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.48404,
+      "dE": 0.00317,
+      "steps": 63,
+      "sg_after_relax": 19,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.2164,
+      "dE": 0.27081,
+      "steps": 245,
+      "sg_after_relax": 19,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.51035,
+      "dE": -0.02314,
+      "steps": 109,
+      "sg_after_relax": 19,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.48173,
+      "dE": 0.00548,
+      "steps": 282,
+      "sg_after_relax": 19,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -5.33191,
+      "dE": 2.1553,
+      "steps": 302,
+      "sg_after_relax": 19,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-774501",
+   "formula": "Li9(FeO4)2",
+   "sg": 5,
+   "cathode_like": true,
+   "e_true": -5.8099,
+   "conditions": {
+    "composition": [
+     {
+      "k": 7,
+      "e": -5.8105,
+      "dE": -0.0006,
+      "steps": 6,
+      "sg_after_relax": 7,
+      "match_after_relax": false
+     },
+     {
+      "k": 9,
+      "e": -5.8105,
+      "dE": -0.0006,
+      "steps": 6,
+      "sg_after_relax": 7,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.8099,
+      "dE": 0.0,
+      "steps": 15,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.8099,
+      "dE": 0.0,
+      "steps": 15,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.8099,
+      "dE": 0.0,
+      "steps": 15,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.8099,
+      "dE": 0.0,
+      "steps": 15,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.8099,
+      "dE": 0.0,
+      "steps": 15,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-774569",
+   "formula": "Li4Mn2Fe3Te3O16",
+   "sg": 1,
+   "cathode_like": true,
+   "e_true": -6.79904,
+   "conditions": {
+    "composition": [],
+    "oracle": []
+   }
+  },
+  {
+   "id": "MP_mp-776951",
+   "formula": "LiMnF3",
+   "sg": 62,
+   "cathode_like": true,
+   "e_true": -6.35985,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.27254,
+      "dE": 0.08731,
+      "steps": 53,
+      "sg_after_relax": 12,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.36683,
+      "dE": -0.00698,
+      "steps": 15,
+      "sg_after_relax": 2,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.35778,
+      "dE": 0.00208,
+      "steps": 25,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.35728,
+      "dE": 0.00258,
+      "steps": 19,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.35785,
+      "dE": 0.00201,
+      "steps": 22,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.35881,
+      "dE": 0.00105,
+      "steps": 22,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.36118,
+      "dE": -0.00133,
+      "steps": 16,
+      "sg_after_relax": 62,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.3606,
+      "dE": -0.00074,
+      "steps": 21,
+      "sg_after_relax": 62,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.35794,
+      "dE": 0.00192,
+      "steps": 22,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.35735,
+      "dE": 0.0025,
+      "steps": 24,
+      "sg_after_relax": 62,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-867705",
+   "formula": "Na3(CoO2)5",
+   "sg": 8,
+   "cathode_like": true,
+   "e_true": -6.32428,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 6,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 7,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.32428,
+      "dE": 0.0,
+      "steps": 5,
+      "sg_after_relax": 8,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "MP_mp-997554",
+   "formula": "Li4Fe3(CoO4)3",
+   "sg": 2,
+   "cathode_like": true,
+   "e_true": -6.78217,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.78217,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "NOMAD_4nSKlSeUHwngzgv804GWnZECadKJ",
+   "formula": "Na3CrH14(C3O8)2",
+   "sg": 2,
+   "cathode_like": true,
+   "e_true": -6.28131,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.28131,
+      "dE": 0.0,
+      "steps": 78,
+      "sg_after_relax": 2,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "NOMAD_aG3K8fmuPp1E3SR5Qe1drBYM6tZv",
+   "formula": "K4Na4Mo5(WO8)3",
+   "sg": 25,
+   "cathode_like": true,
+   "e_true": -7.65553,
+   "conditions": {
+    "composition": [],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.65553,
+      "dE": 0.0,
+      "steps": 14,
+      "sg_after_relax": 25,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.65553,
+      "dE": 0.0,
+      "steps": 14,
+      "sg_after_relax": 25,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.65553,
+      "dE": 0.0,
+      "steps": 14,
+      "sg_after_relax": 25,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.65553,
+      "dE": 0.0,
+      "steps": 14,
+      "sg_after_relax": 25,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.65553,
+      "dE": 0.0,
+      "steps": 14,
+      "sg_after_relax": 25,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "NOMAD_LiaEpk92CYuUK8tvAFoZ1vu_ahWP",
+   "formula": "NaTi3P3O13",
+   "sg": 11,
+   "cathode_like": true,
+   "e_true": -8.26754,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.26754,
+      "dE": 0.0,
+      "steps": 13,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.26693,
+      "dE": 0.00061,
+      "steps": 17,
+      "sg_after_relax": 11,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "NOMAD_Ml6B1VKAyacawpwhkGQVs3ln3fTH",
+   "formula": "LiMnVO4",
+   "sg": 63,
+   "cathode_like": true,
+   "e_true": -8.05296,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.04539,
+      "dE": 0.00757,
+      "steps": 25,
+      "sg_after_relax": 74,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -7.99388,
+      "dE": 0.05908,
+      "steps": 13,
+      "sg_after_relax": 74,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -8.04549,
+      "dE": 0.00747,
+      "steps": 26,
+      "sg_after_relax": 74,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -8.04742,
+      "dE": 0.00554,
+      "steps": 66,
+      "sg_after_relax": 95,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -8.05245,
+      "dE": 0.00051,
+      "steps": 29,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -8.05238,
+      "dE": 0.00058,
+      "steps": 51,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.05214,
+      "dE": 0.00082,
+      "steps": 28,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.05227,
+      "dE": 0.00069,
+      "steps": 28,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.05279,
+      "dE": 0.00017,
+      "steps": 30,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.05227,
+      "dE": 0.00069,
+      "steps": 32,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "NOMAD_xS9ASEWJ-jMrX37nToDDiXW2HDov",
+   "formula": "NaScF3",
+   "sg": 221,
+   "cathode_like": true,
+   "e_true": -5.33175,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.9959,
+      "dE": -0.66415,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -5.9959,
+      "dE": -0.66415,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -5.33167,
+      "dE": 8e-05,
+      "steps": 2,
+      "sg_after_relax": 221,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.33194,
+      "dE": -0.00019,
+      "steps": 2,
+      "sg_after_relax": 221,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.33194,
+      "dE": -0.00019,
+      "steps": 2,
+      "sg_after_relax": 221,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.99589,
+      "dE": -0.66414,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -5.9959,
+      "dE": -0.66415,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -5.9959,
+      "dE": -0.66415,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -5.9959,
+      "dE": -0.66415,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -5.9959,
+      "dE": -0.66415,
+      "steps": 10,
+      "sg_after_relax": 221,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1067967",
+   "formula": "NaZrNO",
+   "sg": 29,
+   "cathode_like": true,
+   "e_true": -7.65413,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.88308,
+      "dE": -0.22895,
+      "steps": 34,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -7.88357,
+      "dE": -0.22944,
+      "steps": 47,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.88354,
+      "dE": -0.22941,
+      "steps": 52,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.88412,
+      "dE": -0.22999,
+      "steps": 39,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.78626,
+      "dE": -0.13213,
+      "steps": 57,
+      "sg_after_relax": 29,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.73412,
+      "dE": -0.07999,
+      "steps": 46,
+      "sg_after_relax": 29,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -7.65898,
+      "dE": -0.00485,
+      "steps": 49,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.73529,
+      "dE": -0.08116,
+      "steps": 55,
+      "sg_after_relax": 29,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.65421,
+      "dE": -8e-05,
+      "steps": 31,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.42307,
+      "dE": 0.23106,
+      "steps": 96,
+      "sg_after_relax": 29,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1092981",
+   "formula": "NaNbPO",
+   "sg": 26,
+   "cathode_like": true,
+   "e_true": -6.89674,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.78206,
+      "dE": 0.11468,
+      "steps": 22,
+      "sg_after_relax": 51,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.55652,
+      "dE": 0.34021,
+      "steps": 21,
+      "sg_after_relax": 129,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.7817,
+      "dE": 0.11504,
+      "steps": 50,
+      "sg_after_relax": 26,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.55659,
+      "dE": 0.34015,
+      "steps": 21,
+      "sg_after_relax": 129,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.55657,
+      "dE": 0.34017,
+      "steps": 22,
+      "sg_after_relax": 129,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.90443,
+      "dE": -0.0077,
+      "steps": 31,
+      "sg_after_relax": 26,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.90254,
+      "dE": -0.0058,
+      "steps": 32,
+      "sg_after_relax": 26,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.9049,
+      "dE": -0.00816,
+      "steps": 32,
+      "sg_after_relax": 26,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.90508,
+      "dE": -0.00835,
+      "steps": 32,
+      "sg_after_relax": 26,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.89731,
+      "dE": -0.00057,
+      "steps": 25,
+      "sg_after_relax": 26,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1098215",
+   "formula": "NaCrAsO",
+   "sg": 51,
+   "cathode_like": true,
+   "e_true": -6.21149,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.04865,
+      "dE": 0.16284,
+      "steps": 18,
+      "sg_after_relax": 26,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.21498,
+      "dE": -0.00349,
+      "steps": 39,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.47147,
+      "dE": 0.74002,
+      "steps": 17,
+      "sg_after_relax": 129,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -5.46904,
+      "dE": 0.74245,
+      "steps": 7,
+      "sg_after_relax": 129,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.21527,
+      "dE": -0.00379,
+      "steps": 35,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.21305,
+      "dE": -0.00156,
+      "steps": 33,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.21251,
+      "dE": -0.00102,
+      "steps": 20,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.21166,
+      "dE": -0.00017,
+      "steps": 36,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.21063,
+      "dE": 0.00086,
+      "steps": 22,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.21262,
+      "dE": -0.00114,
+      "steps": 21,
+      "sg_after_relax": 51,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1256474",
+   "formula": "NaTbCoS3",
+   "sg": 63,
+   "cathode_like": true,
+   "e_true": -5.71722,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.7179,
+      "dE": -0.00068,
+      "steps": 9,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.7171,
+      "dE": 0.00012,
+      "steps": 7,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.7179,
+      "dE": -0.00068,
+      "steps": 9,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.71751,
+      "dE": -0.0003,
+      "steps": 8,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.71816,
+      "dE": -0.00095,
+      "steps": 9,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.71738,
+      "dE": -0.00016,
+      "steps": 7,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.7177,
+      "dE": -0.00048,
+      "steps": 8,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.71711,
+      "dE": 0.00011,
+      "steps": 7,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.717,
+      "dE": 0.00021,
+      "steps": 7,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.71718,
+      "dE": 4e-05,
+      "steps": 7,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1259245",
+   "formula": "LiCeMnO3",
+   "sg": 63,
+   "cathode_like": true,
+   "e_true": -7.79516,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.82204,
+      "dE": -0.02688,
+      "steps": 68,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.81417,
+      "dE": -0.01901,
+      "steps": 47,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.82257,
+      "dE": -0.0274,
+      "steps": 82,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.81317,
+      "dE": -0.018,
+      "steps": 50,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.82286,
+      "dE": -0.0277,
+      "steps": 69,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.8224,
+      "dE": -0.02724,
+      "steps": 67,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.79433,
+      "dE": 0.00083,
+      "steps": 25,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.79311,
+      "dE": 0.00205,
+      "steps": 15,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.79701,
+      "dE": -0.00185,
+      "steps": 40,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.79298,
+      "dE": 0.00219,
+      "steps": 23,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1356406",
+   "formula": "NaPrCdS3",
+   "sg": 62,
+   "cathode_like": true,
+   "e_true": -4.81631,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -4.78583,
+      "dE": 0.03048,
+      "steps": 15,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -4.81406,
+      "dE": 0.00225,
+      "steps": 44,
+      "sg_after_relax": 62,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -4.79195,
+      "dE": 0.02435,
+      "steps": 39,
+      "sg_after_relax": 62,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -4.81602,
+      "dE": 0.00028,
+      "steps": 13,
+      "sg_after_relax": 62,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -4.78556,
+      "dE": 0.03074,
+      "steps": 15,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -4.74044,
+      "dE": 0.07586,
+      "steps": 92,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -4.74059,
+      "dE": 0.07572,
+      "steps": 94,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -4.71786,
+      "dE": 0.09845,
+      "steps": 66,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -4.62291,
+      "dE": 0.1934,
+      "steps": 55,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -4.79134,
+      "dE": 0.02496,
+      "steps": 27,
+      "sg_after_relax": 62,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1389252",
+   "formula": "LiVCoO4",
+   "sg": 63,
+   "cathode_like": true,
+   "e_true": -7.49886,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.47236,
+      "dE": 0.0265,
+      "steps": 17,
+      "sg_after_relax": 95,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -7.4489,
+      "dE": 0.04996,
+      "steps": 41,
+      "sg_after_relax": 74,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.44884,
+      "dE": 0.05002,
+      "steps": 15,
+      "sg_after_relax": 74,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.47228,
+      "dE": 0.02657,
+      "steps": 31,
+      "sg_after_relax": 95,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.44794,
+      "dE": 0.05091,
+      "steps": 19,
+      "sg_after_relax": 74,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.49899,
+      "dE": -0.00013,
+      "steps": 26,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.49907,
+      "dE": -0.00022,
+      "steps": 39,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.4992,
+      "dE": -0.00034,
+      "steps": 28,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.49864,
+      "dE": 0.00022,
+      "steps": 35,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.49868,
+      "dE": 0.00018,
+      "steps": 24,
+      "sg_after_relax": 63,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1413490",
+   "formula": "LiZnPO4",
+   "sg": 82,
+   "cathode_like": true,
+   "e_true": -6.57465,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.57271,
+      "dE": 0.00194,
+      "steps": 26,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.57443,
+      "dE": 0.00021,
+      "steps": 27,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.57439,
+      "dE": 0.00026,
+      "steps": 37,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.57312,
+      "dE": 0.00152,
+      "steps": 36,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.57459,
+      "dE": 6e-05,
+      "steps": 21,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.57191,
+      "dE": 0.00274,
+      "steps": 36,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.5748,
+      "dE": -0.00015,
+      "steps": 38,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.57152,
+      "dE": 0.00313,
+      "steps": 27,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.57055,
+      "dE": 0.00409,
+      "steps": 17,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.57361,
+      "dE": 0.00104,
+      "steps": 40,
+      "sg_after_relax": 82,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1430740",
+   "formula": "LiTl2MoF6",
+   "sg": 225,
+   "cathode_like": true,
+   "e_true": -5.46694,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.46716,
+      "dE": -0.00023,
+      "steps": 33,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.46665,
+      "dE": 0.00029,
+      "steps": 34,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.46788,
+      "dE": -0.00095,
+      "steps": 29,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.4674,
+      "dE": -0.00046,
+      "steps": 34,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.46798,
+      "dE": -0.00104,
+      "steps": 39,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.46693,
+      "dE": 1e-05,
+      "steps": 33,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.46789,
+      "dE": -0.00095,
+      "steps": 31,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.46671,
+      "dE": 0.00023,
+      "steps": 34,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.46656,
+      "dE": 0.00038,
+      "steps": 34,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.46778,
+      "dE": -0.00084,
+      "steps": 26,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1433256",
+   "formula": "Na2MgOsO6",
+   "sg": 225,
+   "cathode_like": true,
+   "e_true": -6.45486,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.45462,
+      "dE": 0.00024,
+      "steps": 25,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.45478,
+      "dE": 8e-05,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.45446,
+      "dE": 0.00039,
+      "steps": 23,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.45446,
+      "dE": 0.0004,
+      "steps": 22,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.45432,
+      "dE": 0.00054,
+      "steps": 15,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.45486,
+      "dE": 0.0,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.45445,
+      "dE": 0.00041,
+      "steps": 23,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.45493,
+      "dE": -8e-05,
+      "steps": 26,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.45455,
+      "dE": 0.00031,
+      "steps": 15,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.45486,
+      "dE": -0.0,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1433272",
+   "formula": "Na2CdWO6",
+   "sg": 225,
+   "cathode_like": true,
+   "e_true": -6.29277,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.29255,
+      "dE": 0.00023,
+      "steps": 25,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.29279,
+      "dE": -1e-05,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.29241,
+      "dE": 0.00036,
+      "steps": 23,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.29278,
+      "dE": -1e-05,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.29269,
+      "dE": 9e-05,
+      "steps": 15,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.29279,
+      "dE": -1e-05,
+      "steps": 24,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.29249,
+      "dE": 0.00028,
+      "steps": 23,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.29279,
+      "dE": -2e-05,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.29238,
+      "dE": 0.0004,
+      "steps": 21,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.29269,
+      "dE": 8e-05,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1444164",
+   "formula": "Li5CuSO2",
+   "sg": 123,
+   "cathode_like": true,
+   "e_true": -4.71672,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -4.71715,
+      "dE": -0.00042,
+      "steps": 20,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -4.71539,
+      "dE": 0.00133,
+      "steps": 28,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -4.71245,
+      "dE": 0.00427,
+      "steps": 26,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -4.23777,
+      "dE": 0.47895,
+      "steps": 40,
+      "sg_after_relax": 123,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -4.71591,
+      "dE": 0.00081,
+      "steps": 40,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 1,
+      "e": -4.71668,
+      "dE": 4e-05,
+      "steps": 11,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -4.71707,
+      "dE": -0.00035,
+      "steps": 21,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -4.7165,
+      "dE": 0.00022,
+      "steps": 13,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -4.71471,
+      "dE": 0.00201,
+      "steps": 47,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     },
+     {
+      "k": 5,
+      "e": -4.7142,
+      "dE": 0.00252,
+      "steps": 57,
+      "sg_after_relax": 123,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1507002",
+   "formula": "CsK2Na2ReO6",
+   "sg": 12,
+   "cathode_like": true,
+   "e_true": -5.94274,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.94249,
+      "dE": 0.00026,
+      "steps": 41,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.94269,
+      "dE": 5e-05,
+      "steps": 40,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.94206,
+      "dE": 0.00068,
+      "steps": 38,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.94265,
+      "dE": 9e-05,
+      "steps": 37,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.94232,
+      "dE": 0.00042,
+      "steps": 38,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.94236,
+      "dE": 0.00039,
+      "steps": 29,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.94237,
+      "dE": 0.00038,
+      "steps": 28,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.94244,
+      "dE": 0.0003,
+      "steps": 27,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.94303,
+      "dE": -0.00028,
+      "steps": 29,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.94232,
+      "dE": 0.00042,
+      "steps": 27,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1507068",
+   "formula": "KLi4ReO6",
+   "sg": 12,
+   "cathode_like": true,
+   "e_true": -6.38582,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.4083,
+      "dE": -0.02248,
+      "steps": 270,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.4083,
+      "dE": -0.02248,
+      "steps": 270,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.4083,
+      "dE": -0.02248,
+      "steps": 270,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.4083,
+      "dE": -0.02248,
+      "steps": 270,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.4083,
+      "dE": -0.02248,
+      "steps": 270,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.38654,
+      "dE": -0.00072,
+      "steps": 30,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.38568,
+      "dE": 0.00013,
+      "steps": 60,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.38551,
+      "dE": 0.00031,
+      "steps": 42,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.38653,
+      "dE": -0.00071,
+      "steps": 32,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.386,
+      "dE": -0.00018,
+      "steps": 41,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1542289",
+   "formula": "Na2CuTcO6",
+   "sg": 225,
+   "cathode_like": true,
+   "e_true": -6.25332,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.25377,
+      "dE": -0.00045,
+      "steps": 18,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.25343,
+      "dE": -0.00011,
+      "steps": 32,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.25385,
+      "dE": -0.00054,
+      "steps": 17,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.25341,
+      "dE": -9e-05,
+      "steps": 24,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.25357,
+      "dE": -0.00025,
+      "steps": 16,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.25354,
+      "dE": -0.00022,
+      "steps": 37,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.2535,
+      "dE": -0.00019,
+      "steps": 36,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.25345,
+      "dE": -0.00013,
+      "steps": 24,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.25393,
+      "dE": -0.00062,
+      "steps": 17,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.25347,
+      "dE": -0.00015,
+      "steps": 24,
+      "sg_after_relax": 225,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1632281",
+   "formula": "LiNbSeO",
+   "sg": 164,
+   "cathode_like": true,
+   "e_true": -6.84785,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.71714,
+      "dE": 0.13072,
+      "steps": 24,
+      "sg_after_relax": 129,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.84097,
+      "dE": 0.00688,
+      "steps": 19,
+      "sg_after_relax": 186,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.84846,
+      "dE": -0.0006,
+      "steps": 32,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.84172,
+      "dE": 0.00614,
+      "steps": 22,
+      "sg_after_relax": 186,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.84173,
+      "dE": 0.00612,
+      "steps": 22,
+      "sg_after_relax": 186,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.84834,
+      "dE": -0.00049,
+      "steps": 20,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.84842,
+      "dE": -0.00057,
+      "steps": 19,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.84802,
+      "dE": -0.00017,
+      "steps": 31,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.84778,
+      "dE": 8e-05,
+      "steps": 16,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.84841,
+      "dE": -0.00056,
+      "steps": 33,
+      "sg_after_relax": 164,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1695",
+   "formula": "NaTiF4",
+   "sg": 60,
+   "cathode_like": true,
+   "e_true": -6.25516,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.25057,
+      "dE": 0.0046,
+      "steps": 45,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.25091,
+      "dE": 0.00425,
+      "steps": 42,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.25087,
+      "dE": 0.00429,
+      "steps": 45,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.25047,
+      "dE": 0.00469,
+      "steps": 44,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.25138,
+      "dE": 0.00378,
+      "steps": 35,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.25619,
+      "dE": -0.00103,
+      "steps": 35,
+      "sg_after_relax": 60,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.22847,
+      "dE": 0.02669,
+      "steps": 56,
+      "sg_after_relax": 60,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.25509,
+      "dE": 7e-05,
+      "steps": 56,
+      "sg_after_relax": 60,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -6.22821,
+      "dE": 0.02695,
+      "steps": 45,
+      "sg_after_relax": 60,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.229,
+      "dE": 0.02617,
+      "steps": 51,
+      "sg_after_relax": 60,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1707808",
+   "formula": "NaNdCoWO6",
+   "sg": 4,
+   "cathode_like": true,
+   "e_true": -8.0556,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.05554,
+      "dE": 6e-05,
+      "steps": 25,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.05554,
+      "dE": 6e-05,
+      "steps": 25,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.05553,
+      "dE": 7e-05,
+      "steps": 25,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.0556,
+      "dE": 0.0,
+      "steps": 26,
+      "sg_after_relax": 4,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1732096",
+   "formula": "Li5IrO4",
+   "sg": 59,
+   "cathode_like": true,
+   "e_true": -5.4883,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.48765,
+      "dE": 0.00065,
+      "steps": 37,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.48723,
+      "dE": 0.00108,
+      "steps": 32,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.48836,
+      "dE": -6e-05,
+      "steps": 40,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.48721,
+      "dE": 0.00109,
+      "steps": 37,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.48674,
+      "dE": 0.00156,
+      "steps": 71,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.48507,
+      "dE": 0.00323,
+      "steps": 24,
+      "sg_after_relax": 71,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.48627,
+      "dE": 0.00203,
+      "steps": 50,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.4883,
+      "dE": 0.0,
+      "steps": 42,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.48824,
+      "dE": 6e-05,
+      "steps": 43,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.4867,
+      "dE": 0.00161,
+      "steps": 51,
+      "sg_after_relax": 59,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1738954",
+   "formula": "Na6MnO5",
+   "sg": 107,
+   "cathode_like": true,
+   "e_true": -5.1271,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.1269,
+      "dE": 0.0002,
+      "steps": 26,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.12655,
+      "dE": 0.00055,
+      "steps": 22,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.12637,
+      "dE": 0.00073,
+      "steps": 35,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.12694,
+      "dE": 0.00016,
+      "steps": 28,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.12659,
+      "dE": 0.00051,
+      "steps": 31,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.1271,
+      "dE": 0.0,
+      "steps": 25,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.12671,
+      "dE": 0.00039,
+      "steps": 36,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.12667,
+      "dE": 0.00043,
+      "steps": 23,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.12685,
+      "dE": 0.00025,
+      "steps": 27,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.127,
+      "dE": 0.0001,
+      "steps": 29,
+      "sg_after_relax": 107,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1750178",
+   "formula": "Li2TiCdO4",
+   "sg": 31,
+   "cathode_like": true,
+   "e_true": -6.61068,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.60908,
+      "dE": 0.0016,
+      "steps": 43,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.52308,
+      "dE": 0.08759,
+      "steps": 49,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.60937,
+      "dE": 0.0013,
+      "steps": 39,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.61024,
+      "dE": 0.00044,
+      "steps": 26,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.60954,
+      "dE": 0.00114,
+      "steps": 37,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.6099,
+      "dE": 0.00078,
+      "steps": 36,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.61024,
+      "dE": 0.00044,
+      "steps": 26,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.61003,
+      "dE": 0.00065,
+      "steps": 36,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.61071,
+      "dE": -4e-05,
+      "steps": 40,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.6096,
+      "dE": 0.00108,
+      "steps": 39,
+      "sg_after_relax": 31,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1757394",
+   "formula": "Na3Cu2AsO6",
+   "sg": 12,
+   "cathode_like": true,
+   "e_true": -5.43403,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.43419,
+      "dE": -0.00016,
+      "steps": 35,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -5.43493,
+      "dE": -0.0009,
+      "steps": 34,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.43515,
+      "dE": -0.00112,
+      "steps": 36,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.43429,
+      "dE": -0.00026,
+      "steps": 23,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.43444,
+      "dE": -0.0004,
+      "steps": 46,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -5.4099,
+      "dE": 0.02413,
+      "steps": 32,
+      "sg_after_relax": 12,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -5.4349,
+      "dE": -0.00086,
+      "steps": 35,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -5.43347,
+      "dE": 0.00056,
+      "steps": 32,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.43499,
+      "dE": -0.00096,
+      "steps": 35,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -5.43491,
+      "dE": -0.00088,
+      "steps": 35,
+      "sg_after_relax": 12,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_1758049",
+   "formula": "Ba4Na(WO4)3",
+   "sg": 229,
+   "cathode_like": true,
+   "e_true": -8.00932,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.00887,
+      "dE": 0.00045,
+      "steps": 15,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.00901,
+      "dE": 0.00031,
+      "steps": 36,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.00918,
+      "dE": 0.00014,
+      "steps": 15,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.00907,
+      "dE": 0.00025,
+      "steps": 24,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.00918,
+      "dE": 0.00014,
+      "steps": 15,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -8.00926,
+      "dE": 5e-05,
+      "steps": 18,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.00923,
+      "dE": 9e-05,
+      "steps": 25,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.00879,
+      "dE": 0.00053,
+      "steps": 15,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.00919,
+      "dE": 0.00013,
+      "steps": 27,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.00927,
+      "dE": 5e-05,
+      "steps": 16,
+      "sg_after_relax": 229,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_21597",
+   "formula": "NaNd2OsO6",
+   "sg": 14,
+   "cathode_like": true,
+   "e_true": -7.91446,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.9146,
+      "dE": -0.00014,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.91436,
+      "dE": 0.00011,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.91449,
+      "dE": -3e-05,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.91453,
+      "dE": -6e-05,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.85692,
+      "dE": 0.05755,
+      "steps": 82,
+      "sg_after_relax": 4,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.91462,
+      "dE": -0.00015,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.91457,
+      "dE": -0.0001,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.91463,
+      "dE": -0.00017,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.91458,
+      "dE": -0.00012,
+      "steps": 13,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -7.91428,
+      "dE": 0.00018,
+      "steps": 12,
+      "sg_after_relax": 14,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_42049",
+   "formula": "NaCo(CO)4",
+   "sg": 57,
+   "cathode_like": true,
+   "e_true": -7.40865,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.40767,
+      "dE": 0.00098,
+      "steps": 302,
+      "sg_after_relax": 57,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.43921,
+      "dE": -0.03057,
+      "steps": 292,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.40754,
+      "dE": 0.00111,
+      "steps": 130,
+      "sg_after_relax": 57,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -5.06027,
+      "dE": 2.34838,
+      "steps": 302,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -6.80732,
+      "dE": 0.60133,
+      "steps": 302,
+      "sg_after_relax": 6,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.10949,
+      "dE": 0.29916,
+      "steps": 302,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -6.37855,
+      "dE": 1.0301,
+      "steps": 302,
+      "sg_after_relax": 1,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -6.104,
+      "dE": 1.30465,
+      "steps": 302,
+      "sg_after_relax": 6,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -7.02878,
+      "dE": 0.37987,
+      "steps": 302,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -7.02635,
+      "dE": 0.38229,
+      "steps": 302,
+      "sg_after_relax": 57,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_45077",
+   "formula": "NaNbO3",
+   "sg": 29,
+   "cathode_like": true,
+   "e_true": -8.07028,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.94852,
+      "dE": 0.12176,
+      "steps": 176,
+      "sg_after_relax": 26,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -8.07028,
+      "dE": 0.0,
+      "steps": 19,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.05255,
+      "dE": 0.01773,
+      "steps": 26,
+      "sg_after_relax": 63,
+      "match_after_relax": false
+     },
+     {
+      "k": 3,
+      "e": -8.06126,
+      "dE": 0.00902,
+      "steps": 15,
+      "sg_after_relax": 59,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -8.06126,
+      "dE": 0.00902,
+      "steps": 15,
+      "sg_after_relax": 59,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -8.07028,
+      "dE": 0.0,
+      "steps": 19,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -8.07028,
+      "dE": 0.0,
+      "steps": 19,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -8.07028,
+      "dE": 0.0,
+      "steps": 19,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.07028,
+      "dE": 0.0,
+      "steps": 19,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.07028,
+      "dE": 0.0,
+      "steps": 19,
+      "sg_after_relax": 29,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_686068",
+   "formula": "NaY(Pd3O4)2",
+   "sg": 200,
+   "cathode_like": true,
+   "e_true": -6.31176,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.31178,
+      "dE": -3e-05,
+      "steps": 12,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.31176,
+      "dE": -1e-05,
+      "steps": 11,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.31159,
+      "dE": 0.00017,
+      "steps": 10,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.31155,
+      "dE": 0.00021,
+      "steps": 10,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.31163,
+      "dE": 0.00013,
+      "steps": 9,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.31177,
+      "dE": -2e-05,
+      "steps": 10,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.31171,
+      "dE": 5e-05,
+      "steps": 10,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.31177,
+      "dE": -1e-05,
+      "steps": 10,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.31159,
+      "dE": 0.00016,
+      "steps": 18,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.31169,
+      "dE": 7e-05,
+      "steps": 13,
+      "sg_after_relax": 200,
+      "match_after_relax": true
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_694514",
+   "formula": "Li3MnPbO6",
+   "sg": 5,
+   "cathode_like": true,
+   "e_true": -6.16788,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.16744,
+      "dE": 0.00044,
+      "steps": 37,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.16635,
+      "dE": 0.00152,
+      "steps": 32,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.1675,
+      "dE": 0.00038,
+      "steps": 31,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.16691,
+      "dE": 0.00096,
+      "steps": 34,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.16575,
+      "dE": 0.00213,
+      "steps": 41,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -6.16699,
+      "dE": 0.00089,
+      "steps": 30,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -6.16646,
+      "dE": 0.00141,
+      "steps": 32,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -6.16776,
+      "dE": 0.00011,
+      "steps": 39,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -6.16696,
+      "dE": 0.00091,
+      "steps": 32,
+      "sg_after_relax": 5,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -6.16467,
+      "dE": 0.0032,
+      "steps": 30,
+      "sg_after_relax": 5,
+      "match_after_relax": false
+     }
+    ]
+   }
+  },
+  {
+   "id": "OQMD_827321",
+   "formula": "LiWO3",
+   "sg": 167,
+   "cathode_like": true,
+   "e_true": -7.87197,
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.12561,
+      "dE": -0.25364,
+      "steps": 26,
+      "sg_after_relax": 148,
+      "match_after_relax": false
+     },
+     {
+      "k": 1,
+      "e": -8.12334,
+      "dE": -0.25136,
+      "steps": 16,
+      "sg_after_relax": 148,
+      "match_after_relax": false
+     },
+     {
+      "k": 2,
+      "e": -7.87231,
+      "dE": -0.00033,
+      "steps": 47,
+      "sg_after_relax": 167,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -8.12433,
+      "dE": -0.25236,
+      "steps": 32,
+      "sg_after_relax": 148,
+      "match_after_relax": false
+     },
+     {
+      "k": 4,
+      "e": -8.12586,
+      "dE": -0.25389,
+      "steps": 22,
+      "sg_after_relax": 148,
+      "match_after_relax": false
+     }
+    ],
+    "oracle": [
+     {
+      "k": 0,
+      "e": -7.87214,
+      "dE": -0.00016,
+      "steps": 73,
+      "sg_after_relax": 167,
+      "match_after_relax": true
+     },
+     {
+      "k": 1,
+      "e": -7.87194,
+      "dE": 3e-05,
+      "steps": 68,
+      "sg_after_relax": 167,
+      "match_after_relax": true
+     },
+     {
+      "k": 2,
+      "e": -7.87239,
+      "dE": -0.00041,
+      "steps": 46,
+      "sg_after_relax": 167,
+      "match_after_relax": true
+     },
+     {
+      "k": 3,
+      "e": -7.87263,
+      "dE": -0.00066,
+      "steps": 26,
+      "sg_after_relax": 167,
+      "match_after_relax": true
+     },
+     {
+      "k": 4,
+      "e": -8.15205,
+      "dE": -0.28008,
+      "steps": 8,
+      "sg_after_relax": 167,
+      "match_after_relax": false
+     }
+    ]
+   }
+  }
+ ],
+ "summary": {
+  "composition": {
+   "candidates_relaxed": 257,
+   "materials": 52,
+   "median_dE": 0.0001,
+   "within_0.05_eV": 0.887,
+   "within_0.10_eV": 0.918,
+   "materials_best_within_0.05_eV": 51,
+   "materials_best_below_true": 8,
+   "match_after_relax": 171,
+   "materials_match_after_relax": 42
+  },
+  "oracle": {
+   "candidates_relaxed": 270,
+   "materials": 54,
+   "median_dE": 0.0,
+   "within_0.05_eV": 0.941,
+   "within_0.10_eV": 0.956,
+   "materials_best_within_0.05_eV": 53,
+   "materials_best_below_true": 6,
+   "match_after_relax": 227,
+   "materials_match_after_relax": 50
+  }
+ }
+}
