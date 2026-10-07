@@ -1490,3 +1490,20 @@ CIF fails post-processing (0 valid); `phaseC_generate.py` now adds the alias its
 unseeded (LiFeSO4F's oracle prompt: 8/10 one run, 2/10 the next); it is now seeded per material and
 prompt (`--seed`, default 1337) and two identical runs gave identical results. The small-model table
 above came from the unseeded run, so its per-material counts are one sample of that noise.
+
+## Step 26 — Phase C scoring bug: the reference structures were incomplete (2026-10-07)
+
+**Every Phase C match count so far is invalid.** CrystaLLM's test-set CIFs store only the asymmetric
+unit with a placeholder `'x, y, z'` operator; they must go through the same `postprocess()` as
+generated CIFs. Our script read them directly, so references were missing most atoms (Li2ZnSiO4: 8
+sites instead of 32, volume per atom 4x too large) and the matcher compared full generated crystals
+with fragments. Only space-group-1 references survive intact -- which is why LiFeSO4F (P1) was the
+only material ever matched. A second trap on the way: the test CIFs are indented by pymatgen, and
+CrystaLLM's `replace_symmetry_operators()` only recognises the compact layout the model writes, so
+whitespace is collapsed first. `phaseC_generate.load_truth()` now does both; all 100 laptop
+references rebuild to their full cell composition. Generated CIFs were always fine and are kept, so
+re-scoring needs no regeneration (`abox/phaseC_nearmiss.py`, which also reports right composition,
+right space group, loose match and volume ratio). New: a sanity set of 20 well-known materials
+CrystaLLM trained on (`abox/phaseC_make_sanity.py`; LiCoO2 3/3 in a smoke test), CHGNet stability
+scoring against the known structure (`abox/phaseC_chgnet.py`, ~15 s per relaxation on 4 CPU threads)
+and an overnight queue for the workstation (`abox/phaseC_overnight.py`).

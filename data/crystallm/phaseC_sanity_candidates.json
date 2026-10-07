@@ -1,0 +1,202 @@
+[
+ {
+  "id": "KG_mp-22526",
+  "formula": "LiCoO2",
+  "cell": "Li3Co3O6",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 12,
+  "cif": "# generated using pymatgen\ndata_LiCoO2\n_symmetry_space_group_name_H-M   R-3m\n_cell_length_a   2.81125698\n_cell_length_b   2.81125698\n_cell_length_c   13.90945643\n_cell_angle_alpha   90.00000000\n_cell_angle_beta   90.00000000\n_cell_angle_gamma   120.00000000\n_symmetry_Int_Tables_number   166\n_chemical_formula_structural   LiCoO2\n_chemical_formula_sum   'Li3 Co3 O6'\n_cell_volume   95.20108165\n_cell_formula_units_Z   3\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\n  2  '-x, -y, -z'\n  3  '-y, x-y, z'\n  4  'y, -x+y, -z'\n  5  '-x+y, -x, z'\n  6  'x-y, x, -z'\n  7  'y, x, -z'\n  8  '-y, -x, z'\n  9  'x-y, -y, -z'\n  10  '-x+y, y, z'\n  11  '-x, -x+y, -z'\n  12  'x, x-y, z'\n  13  'x+2/3, y+1/3, z+1/3'\n  14  '-x+2/3, -y+1/3, -z+1/3'\n  15  '-y+2/3, x-y+1/3, z+1/3'\n  16  'y+2/3, -x+y+1/3, -z+1/3'\n  17  '-x+y+2/3, -x+1/3, z+1/3'\n  18  'x-y+2/3, x+1/3, -z+1/3'\n  19  'y+2/3, x+1/3, -z+1/3'\n  20  '-y+2/3, -x+1/3, z+1/3'\n  21  'x-y+2/3, -y+1/3, -z+1/3'\n  22  '-x+y+2/3, y+1/3, z+1/3'\n  23  '-x+2/3, -x+y+1/3, -z+1/3'\n  24  'x+2/3, x-y+1/3, z+1/3'\n  25  'x+1/3, y+2/3, z+2/3'\n  26  '-x+1/3, -y+2/3, -z+2/3'\n  27  '-y+1/3, x-y+2/3, z+2/3'\n  28  'y+1/3, -x+y+2/3, -z+2/3'\n  29  '-x+y+1/3, -x+2/3, z+2/3'\n  30  'x-y+1/3, x+2/3, -z+2/3'\n  31  'y+1/3, x+2/3, -z+2/3'\n  32  '-y+1/3, -x+2/3, z+2/3'\n  33  'x-y+1/3, -y+2/3, -z+2/3'\n  34  '-x+y+1/3, y+2/3, z+2/3'\n  35  '-x+1/3, -x+y+2/3, -z+2/3'\n  36  'x+1/3, x-y+2/3, z+2/3'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  3  0.00000000  0.00000000  0.00000000  1.0\n  Co  Co1  3  -0.00000000  -0.00000000  0.50000000  1.0\n  O  O2  6  0.00000000  0.00000000  0.24000680  1.0\n"
+ },
+ {
+  "id": "KG_mp-22584",
+  "formula": "LiMn2O4",
+  "cell": "Li6Mn12O24",
+  "sg": 227,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 42,
+  "cif": "# generated using pymatgen\ndata_LiMn2O4\n_symmetry_space_group_name_H-M   P1\n_cell_length_a   5.70118782\n_cell_length_b   8.06767022\n_cell_length_c   9.87795035\n_cell_angle_alpha   114.09949373\n_cell_angle_beta   106.76964054\n_cell_angle_gamma   90.00002135\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiMn2O4\n_chemical_formula_sum   'Li6 Mn12 O24'\n_cell_volume   393.47630577\n_cell_formula_units_Z   6\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.08323822  0.95802295  0.16684024  1.0\n  Li  Li1  1  0.25003958  0.37445342  0.50018293  1.0\n  Li  Li2  1  0.41715766  0.29060308  0.83357001  1.0\n  Li  Li3  1  0.58335526  0.70911487  0.16676469  1.0\n  Li  Li4  1  0.75056154  0.62548778  0.49989611  1.0\n  Li  Li5  1  0.91714273  0.04131819  0.83347123  1.0\n  Mn  Mn6  1  0.00039185  0.99958913  0.50013453  1.0\n  Mn  Mn7  1  0.00077602  0.49968002  0.00022251  1.0\n  Mn  Mn8  1  0.16707531  0.66622817  0.33349613  1.0\n  Mn  Mn9  1  0.16797705  0.66624466  0.83358751  1.0\n  Mn  Mn10  1  0.33359680  0.33299799  0.16683103  1.0\n  Mn  Mn11  1  0.33430183  0.83272152  0.66698147  1.0\n  Mn  Mn12  1  0.50029665  0.99960030  0.50012492  1.0\n  Mn  Mn13  1  0.50070403  0.99972330  0.00020421  1.0\n  Mn  Mn14  1  0.66698763  0.16655350  0.33349705  1.0\n  Mn  Mn15  1  0.66809993  0.66615172  0.83358383  1.0\n  Mn  Mn16  1  0.83358214  0.33306641  0.16680334  1.0\n  Mn  Mn17  1  0.83417104  0.33282978  0.66685445  1.0\n  O  O18  1  0.00871754  0.27056033  0.01682709  1.0\n  O  O19  1  0.02584613  0.76221785  0.50030835  1.0\n  O  O20  1  0.14258653  0.42877551  0.83357077  1.0\n  O  O21  1  0.15852979  0.42048160  0.31679160  1.0\n  O  O22  1  0.17534743  0.91197518  0.35010492  1.0\n  O  O23  1  0.19251743  0.90360317  0.83355327  1.0\n  O  O24  1  0.30894205  0.57045269  0.16695366  1.0\n  O  O25  1  0.32540385  0.06180908  0.65010675  1.0\n  O  O26  1  0.34299453  0.60372501  0.68359964  1.0\n  O  O27  1  0.35872214  0.09551602  0.16675809  1.0\n  O  O28  1  0.47548904  0.76218014  0.50013846  1.0\n  O  O29  1  0.49291906  0.75395612  0.98347559  1.0\n  O  O30  1  0.50865415  0.24534957  0.01687179  1.0\n  O  O31  1  0.52556405  0.23711750  0.50026589  1.0\n  O  O32  1  0.64264563  0.90368470  0.83363130  1.0\n  O  O33  1  0.65862057  0.39554984  0.31685382  1.0\n  O  O34  1  0.67541170  0.93741069  0.35024778  1.0\n  O  O35  1  0.69255997  0.42879261  0.83354118  1.0\n  O  O36  1  0.80876520  0.09575025  0.16693826  1.0\n  O  O37  1  0.82542226  0.08711994  0.65018107  1.0\n  O  O38  1  0.84299557  0.57868936  0.68355179  1.0\n  O  O39  1  0.85869384  0.57047595  0.16677477  1.0\n  O  O40  1  0.97542250  0.23692762  0.50009031  1.0\n  O  O41  1  0.99298078  0.72871349  0.98362566  1.0\n"
+ },
+ {
+  "id": "KG_mp-25411",
+  "formula": "LiNiO2",
+  "cell": "Li3Ni3O6",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 12,
+  "cif": "# generated using pymatgen\ndata_LiNiO2\n_symmetry_space_group_name_H-M   R-3m\n_cell_length_a   2.85733078\n_cell_length_b   2.85733078\n_cell_length_c   14.06156851\n_cell_angle_alpha   90.00000000\n_cell_angle_beta   90.00000000\n_cell_angle_gamma   120.00000000\n_symmetry_Int_Tables_number   166\n_chemical_formula_structural   LiNiO2\n_chemical_formula_sum   'Li3 Ni3 O6'\n_cell_volume   99.42267350\n_cell_formula_units_Z   3\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\n  2  '-x, -y, -z'\n  3  '-y, x-y, z'\n  4  'y, -x+y, -z'\n  5  '-x+y, -x, z'\n  6  'x-y, x, -z'\n  7  'y, x, -z'\n  8  '-y, -x, z'\n  9  'x-y, -y, -z'\n  10  '-x+y, y, z'\n  11  '-x, -x+y, -z'\n  12  'x, x-y, z'\n  13  'x+2/3, y+1/3, z+1/3'\n  14  '-x+2/3, -y+1/3, -z+1/3'\n  15  '-y+2/3, x-y+1/3, z+1/3'\n  16  'y+2/3, -x+y+1/3, -z+1/3'\n  17  '-x+y+2/3, -x+1/3, z+1/3'\n  18  'x-y+2/3, x+1/3, -z+1/3'\n  19  'y+2/3, x+1/3, -z+1/3'\n  20  '-y+2/3, -x+1/3, z+1/3'\n  21  'x-y+2/3, -y+1/3, -z+1/3'\n  22  '-x+y+2/3, y+1/3, z+1/3'\n  23  '-x+2/3, -x+y+1/3, -z+1/3'\n  24  'x+2/3, x-y+1/3, z+1/3'\n  25  'x+1/3, y+2/3, z+2/3'\n  26  '-x+1/3, -y+2/3, -z+2/3'\n  27  '-y+1/3, x-y+2/3, z+2/3'\n  28  'y+1/3, -x+y+2/3, -z+2/3'\n  29  '-x+y+1/3, -x+2/3, z+2/3'\n  30  'x-y+1/3, x+2/3, -z+2/3'\n  31  'y+1/3, x+2/3, -z+2/3'\n  32  '-y+1/3, -x+2/3, z+2/3'\n  33  'x-y+1/3, -y+2/3, -z+2/3'\n  34  '-x+y+1/3, y+2/3, z+2/3'\n  35  '-x+1/3, -x+y+2/3, -z+2/3'\n  36  'x+1/3, x-y+2/3, z+2/3'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  3  0.00000000  0.00000000  0.00000000  1.0\n  Ni  Ni1  3  -0.00000000  -0.00000000  0.50000000  1.0\n  O  O2  6  0.00000000  0.00000000  0.24098400  1.0\n"
+ },
+ {
+  "id": "KG_mp-18997",
+  "formula": "LiMnPO4",
+  "cell": "Li4Mn4P4O16",
+  "sg": 62,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 28,
+  "cif": "# generated using pymatgen\ndata_LiMnPO4\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   4.79202900\n_cell_length_b   10.59418400\n_cell_length_c   6.17859100\n_cell_angle_alpha   90.00009504\n_cell_angle_beta   90.00006369\n_cell_angle_gamma   90.00004555\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiMnPO4\n_chemical_formula_sum   'Li4 Mn4 P4 O16'\n_cell_volume   313.67246481\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.00000000  0.00000200  0.99999900  1.0\n  Li  Li1  1  0.49999800  0.50000200  0.50000100  1.0\n  Li  Li2  1  0.00000000  0.00000200  0.50000200  1.0\n  Li  Li3  1  0.49999800  0.50000200  0.00000000  1.0\n  Mn  Mn4  1  0.97254900  0.28116300  0.25003000  1.0\n  Mn  Mn5  1  0.52746800  0.78114300  0.25001200  1.0\n  Mn  Mn6  1  0.02742000  0.71882900  0.74997000  1.0\n  Mn  Mn7  1  0.47258000  0.21882400  0.74996300  1.0\n  P  P8  1  0.58955900  0.90790100  0.75000000  1.0\n  P  P9  1  0.91044000  0.40790100  0.74999900  1.0\n  P  P10  1  0.41044300  0.09210200  0.25000400  1.0\n  P  P11  1  0.08955700  0.59210200  0.25000100  1.0\n  O  O12  1  0.26865200  0.90341500  0.75000000  1.0\n  O  O13  1  0.23134700  0.40341700  0.75000100  1.0\n  O  O14  1  0.73134800  0.09658800  0.25000200  1.0\n  O  O15  1  0.76865100  0.59658600  0.25000100  1.0\n  O  O16  1  0.78997500  0.54435000  0.75000100  1.0\n  O  O17  1  0.71002100  0.04435000  0.75000100  1.0\n  O  O18  1  0.21002300  0.45565300  0.25000100  1.0\n  O  O19  1  0.28997700  0.95565300  0.25000100  1.0\n  O  O20  1  0.72252600  0.83891800  0.95054300  1.0\n  O  O21  1  0.77747200  0.33891800  0.54945800  1.0\n  O  O22  1  0.27747500  0.16108600  0.45054500  1.0\n  O  O23  1  0.22252400  0.66108600  0.04945900  1.0\n  O  O24  1  0.27747400  0.16108500  0.04945800  1.0\n  O  O25  1  0.22252400  0.66108500  0.45054400  1.0\n  O  O26  1  0.72252800  0.83891800  0.54945900  1.0\n  O  O27  1  0.77747200  0.33891800  0.95054500  1.0\n"
+ },
+ {
+  "id": "KG_mp-758022",
+  "formula": "LiCoPO4",
+  "cell": "Li4Co4P4O16",
+  "sg": 7,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 28,
+  "cif": "# generated using pymatgen\ndata_LiCoPO4\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.11309400\n_cell_length_b   8.65815080\n_cell_length_c   8.49248664\n_cell_angle_alpha   107.84850075\n_cell_angle_beta   90.00245187\n_cell_angle_gamma   89.99487672\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiCoPO4\n_chemical_formula_sum   'Li4 Co4 P4 O16'\n_cell_volume   357.86692468\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.82376600  0.98595100  0.11037800  1.0\n  Li  Li1  1  0.17627900  0.98591900  0.61035500  1.0\n  Li  Li2  1  0.31756400  0.49557100  0.24594000  1.0\n  Li  Li3  1  0.68243400  0.49557200  0.74592200  1.0\n  Co  Co4  1  0.32043700  0.24777700  0.48441300  1.0\n  Co  Co5  1  0.18037200  0.74163700  0.85099600  1.0\n  Co  Co6  1  0.67950700  0.24777200  0.98438200  1.0\n  Co  Co7  1  0.81965800  0.74166900  0.35098600  1.0\n  P  P8  1  0.31294600  0.86515000  0.23459400  1.0\n  P  P9  1  0.68708100  0.86509400  0.73453200  1.0\n  P  P10  1  0.81128800  0.36900200  0.35798600  1.0\n  P  P11  1  0.18871900  0.36899200  0.85798200  1.0\n  O  O12  1  0.18230400  0.89141500  0.07963600  1.0\n  O  O13  1  0.81770900  0.89137500  0.57964500  1.0\n  O  O14  1  0.32443400  0.34573700  0.01299600  1.0\n  O  O15  1  0.67550500  0.34569800  0.51296100  1.0\n  O  O16  1  0.61219100  0.83927800  0.20594800  1.0\n  O  O17  1  0.38780400  0.83928400  0.70596400  1.0\n  O  O18  1  0.19035300  0.71444500  0.27074600  1.0\n  O  O19  1  0.80967000  0.71444600  0.77072200  1.0\n  O  O20  1  0.75212200  0.21899000  0.20609500  1.0\n  O  O21  1  0.24791100  0.21896700  0.70610000  1.0\n  O  O22  1  0.69500100  0.51894600  0.31772800  1.0\n  O  O23  1  0.30501600  0.51889500  0.81772800  1.0\n  O  O24  1  0.11046400  0.39149400  0.38944000  1.0\n  O  O25  1  0.88948800  0.39148300  0.88940900  1.0\n  O  O26  1  0.25235300  0.01351900  0.38700100  1.0\n  O  O27  1  0.74762300  0.01352200  0.88700700  1.0\n"
+ },
+ {
+  "id": "KG_mp-5670",
+  "formula": "LiTi2O4",
+  "cell": "Li2Ti4O8",
+  "sg": 227,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 14,
+  "cif": "# generated using pymatgen\ndata_LiTi2O4\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.93692474\n_cell_length_b   5.93691552\n_cell_length_c   5.93689500\n_cell_angle_alpha   59.99713731\n_cell_angle_beta   59.99711996\n_cell_angle_gamma   59.99702320\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiTi2O4\n_chemical_formula_sum   'Li2 Ti4 O8'\n_cell_volume   147.95790138\n_cell_formula_units_Z   2\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.12497984  0.12498084  0.12498084  1.0\n  Li  Li1  1  0.87502016  0.87501916  0.87501916  1.0\n  Ti  Ti2  1  0.50000000  0.50000000  0.50000000  1.0\n  Ti  Ti3  1  0.50000000  0.00000000  0.50000000  1.0\n  Ti  Ti4  1  -0.00000000  0.50000000  0.50000000  1.0\n  Ti  Ti5  1  0.50000000  0.50000000  0.00000000  1.0\n  O  O6  1  0.26221616  0.26221316  0.71331573  1.0\n  O  O7  1  0.73776383  0.73776683  0.73776383  1.0\n  O  O8  1  0.73778384  0.73778684  0.28668427  1.0\n  O  O9  1  0.26221616  0.71331673  0.26221416  1.0\n  O  O10  1  0.26223617  0.26223317  0.26223617  1.0\n  O  O11  1  0.28668427  0.73778384  0.73778484  1.0\n  O  O12  1  0.73778384  0.28668327  0.73778584  1.0\n  O  O13  1  0.71331573  0.26221616  0.26221516  1.0\n"
+ },
+ {
+  "id": "KG_mp-18988",
+  "formula": "Li2MnO3",
+  "cell": "Li8Mn4O12",
+  "sg": 12,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 24,
+  "cif": "# generated using pymatgen\ndata_Li2MnO3\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   4.89815900\n_cell_length_b   4.89816076\n_cell_length_c   9.53307551\n_cell_angle_alpha   85.22102937\n_cell_angle_beta   85.22104485\n_cell_angle_gamma   119.92126030\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   Li2MnO3\n_chemical_formula_sum   'Li8 Mn4 O12'\n_cell_volume   195.46738340\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.49979636  0.50002178  0.00004463  1.0\n  Li  Li1  1  0.00010816  0.00014389  0.49991836  1.0\n  Li  Li2  1  0.74999264  0.74998337  0.25000054  1.0\n  Li  Li3  1  0.25001647  0.25000442  0.75000231  1.0\n  Li  Li4  1  0.08874518  0.41125105  0.25000230  1.0\n  Li  Li5  1  0.58874551  0.91125190  0.75000060  1.0\n  Li  Li6  1  0.41126140  0.08873559  0.25000327  1.0\n  Li  Li7  1  0.91126254  0.58873737  0.74999952  1.0\n  Mn  Mn8  1  0.83289082  0.16710566  -0.00000138  1.0\n  Mn  Mn9  1  0.16711068  0.83288587  -0.00000131  1.0\n  Mn  Mn10  1  0.33289456  0.66710373  0.50000608  1.0\n  Mn  Mn11  1  0.66711444  0.33288535  0.50000568  1.0\n  O  O12  1  0.39356550  0.39355426  0.38617247  1.0\n  O  O13  1  0.89359043  0.89358438  0.88616658  1.0\n  O  O14  1  0.10642654  0.10642028  0.11383436  1.0\n  O  O15  1  0.60641032  0.60639838  0.61383552  1.0\n  O  O16  1  0.03661870  0.68039202  0.38769659  1.0\n  O  O17  1  0.53661465  0.18038049  0.88769418  1.0\n  O  O18  1  0.81961335  0.46338152  0.11231063  1.0\n  O  O19  1  0.31961690  0.96338348  0.61230338  1.0\n  O  O20  1  0.46338977  0.81958816  0.11230453  1.0\n  O  O21  1  0.96339604  0.31959725  0.61230064  1.0\n  O  O22  1  0.68041182  0.03660614  0.38769911  1.0\n  O  O23  1  0.18040623  0.53660667  0.88770041  1.0\n"
+ },
+ {
+  "id": "KG_mp-19340",
+  "formula": "LiVO2",
+  "cell": "Li4V4O8",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 16,
+  "cif": "# generated using pymatgen\ndata_LiVO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   4.98028531\n_cell_length_b   5.80043023\n_cell_length_c   5.88008373\n_cell_angle_alpha   119.57844737\n_cell_angle_beta   74.24852010\n_cell_angle_gamma   90.02155467\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiVO2\n_chemical_formula_sum   'Li4 V4 O8'\n_cell_volume   140.35547132\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.49975871  0.75081552  0.00062310  1.0\n  Li  Li1  1  0.50013947  0.25039793  0.00013522  1.0\n  Li  Li2  1  0.99960955  0.49987482  0.00072457  1.0\n  Li  Li3  1  0.00067106  -0.00079553  -0.00032848  1.0\n  V  V4  1  -0.00010978  0.49447168  0.49994080  1.0\n  V  V5  1  0.49990522  0.25549856  0.49994686  1.0\n  V  V6  1  -0.00026464  0.99473168  0.50008685  1.0\n  V  V7  1  0.49987812  0.75537905  0.50007760  1.0\n  O  O8  1  0.24848232  0.62588475  0.26484394  1.0\n  O  O9  1  0.24851231  0.12577065  0.26454739  1.0\n  O  O10  1  0.74860961  0.38887108  0.26459356  1.0\n  O  O11  1  0.74844174  0.88889996  0.26477299  1.0\n  O  O12  1  0.75150021  0.37050322  0.73508357  1.0\n  O  O13  1  0.75168369  0.87039640  0.73501129  1.0\n  O  O14  1  0.25168503  0.11460432  0.73488467  1.0\n  O  O15  1  0.25149637  0.61469591  0.73505707  1.0\n"
+ },
+ {
+  "id": "KG_mp-18793",
+  "formula": "LiCrO2",
+  "cell": "Li1Cr1O2",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 4,
+  "cif": "# generated using pymatgen\ndata_LiCrO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.04101547\n_cell_length_b   5.04101565\n_cell_length_c   5.04101569\n_cell_angle_alpha   33.66229927\n_cell_angle_beta   33.66229528\n_cell_angle_gamma   33.66230395\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiCrO2\n_chemical_formula_sum   'Li1 Cr1 O2'\n_cell_volume   35.06364172\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  -0.00000000  0.00000000  -0.00000000  1.0\n  Cr  Cr1  1  0.50000000  0.50000000  0.50000000  1.0\n  O  O2  1  0.24187645  0.24187645  0.24187645  1.0\n  O  O3  1  0.75812355  0.75812355  0.75812355  1.0\n"
+ },
+ {
+  "id": "KG_mp-757614",
+  "formula": "LiFeO2",
+  "cell": "Li2Fe2O4",
+  "sg": 59,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 8,
+  "cif": "# generated using pymatgen\ndata_LiFeO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   4.08449789\n_cell_length_b   6.00603735\n_cell_length_c   2.93905735\n_cell_angle_alpha   89.99999337\n_cell_angle_beta   90.00005295\n_cell_angle_gamma   89.99986348\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiFeO2\n_chemical_formula_sum   'Li2 Fe2 O4'\n_cell_volume   72.09991708\n_cell_formula_units_Z   2\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.25000100  0.10510471  0.24999984  1.0\n  Li  Li1  1  0.74999900  0.89489734  0.75000015  1.0\n  Fe  Fe2  1  0.24999700  0.64556990  0.25000019  1.0\n  Fe  Fe3  1  0.75000100  0.35443153  0.75000008  1.0\n  O  O4  1  0.25000100  0.39427912  0.75000002  1.0\n  O  O5  1  0.24999900  0.86036334  0.75000028  1.0\n  O  O6  1  0.75000100  0.13963558  0.25000019  1.0\n  O  O7  1  0.75000000  0.60571850  0.25000024  1.0\n"
+ },
+ {
+  "id": "KG_mp-754656",
+  "formula": "LiMnO2",
+  "cell": "Li1Mn1O2",
+  "sg": 12,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 4,
+  "cif": "# generated using pymatgen\ndata_LiMnO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   2.80987449\n_cell_length_b   3.06174241\n_cell_length_c   5.01979363\n_cell_angle_alpha   101.00255363\n_cell_angle_beta   106.25301800\n_cell_angle_gamma   62.68586932\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiMnO2\n_chemical_formula_sum   'Li1 Mn1 O2'\n_cell_volume   36.73853805\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.50000000  0.50000000  0.50000000  1.0\n  Mn  Mn1  1  0.00000000  -0.00000000  -0.00000000  1.0\n  O  O2  1  0.72637146  0.78102046  0.23376538  1.0\n  O  O3  1  0.27362854  0.21897954  0.76623462  1.0\n"
+ },
+ {
+  "id": "KG_mp-18921",
+  "formula": "NaCoO2",
+  "cell": "Na1Co1O2",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 4,
+  "cif": "# generated using pymatgen\ndata_NaCoO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.40883385\n_cell_length_b   5.40883457\n_cell_length_c   5.40883445\n_cell_angle_alpha   30.89529025\n_cell_angle_beta   30.89528206\n_cell_angle_gamma   30.89527814\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   NaCoO2\n_chemical_formula_sum   'Na1 Co1 O2'\n_cell_volume   37.00440948\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Na  Na0  1  0.00000000  0.00000000  -0.00000000  1.0\n  Co  Co1  1  0.50000000  0.50000000  0.50000000  1.0\n  O  O2  1  0.23059294  0.23059294  0.23059294  1.0\n  O  O3  1  0.76940806  0.76940806  0.76940806  1.0\n"
+ },
+ {
+  "id": "KG_mp-19226",
+  "formula": "NaFePO4",
+  "cell": "Na4Fe4P4O16",
+  "sg": 62,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 28,
+  "cif": "# generated using pymatgen\ndata_NaFePO4\n_symmetry_space_group_name_H-M   Pnma\n_cell_length_a   8.93636781\n_cell_length_b   6.81942858\n_cell_length_c   5.00123442\n_cell_angle_alpha   90.00000000\n_cell_angle_beta   90.00000000\n_cell_angle_gamma   90.00000000\n_symmetry_Int_Tables_number   62\n_chemical_formula_structural   NaFePO4\n_chemical_formula_sum   'Na4 Fe4 P4 O16'\n_cell_volume   304.77983692\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\n  2  '-x, -y, -z'\n  3  '-x+1/2, -y, z+1/2'\n  4  'x+1/2, y, -z+1/2'\n  5  'x+1/2, -y+1/2, -z+1/2'\n  6  '-x+1/2, y+1/2, z+1/2'\n  7  '-x, y+1/2, -z'\n  8  'x, -y+1/2, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Na  Na0  4  0.15072827  0.25000000  0.53465947  1.0\n  Fe  Fe1  4  0.00000000  0.00000000  0.00000000  1.0\n  P  P2  4  0.17504606  0.75000000  0.53591193  1.0\n  O  O3  8  0.12021255  0.56705614  0.68350723  1.0\n  O  O4  4  0.11428612  0.75000000  0.24807164  1.0\n  O  O5  4  0.15174609  0.25000000  0.04534137  1.0\n"
+ },
+ {
+  "id": "KG_mp-578604",
+  "formula": "NaCrO2",
+  "cell": "Na1Cr1O2",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 4,
+  "cif": "# generated using pymatgen\ndata_NaCrO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.53058012\n_cell_length_b   5.53057935\n_cell_length_c   5.53058011\n_cell_angle_alpha   31.37470422\n_cell_angle_beta   31.37471575\n_cell_angle_gamma   31.37471275\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   NaCrO2\n_chemical_formula_sum   'Na1 Cr1 O2'\n_cell_volume   40.70107946\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Na  Na0  1  0.50000000  0.50000000  0.50000000  1.0\n  Cr  Cr1  1  -0.00000000  0.00000000  0.00000000  1.0\n  O  O2  1  0.26719628  0.26719628  0.26719628  1.0\n  O  O3  1  0.73280372  0.73280372  0.73280372  1.0\n"
+ },
+ {
+  "id": "KG_mp-19359",
+  "formula": "NaFeO2",
+  "cell": "Na1Fe1O2",
+  "sg": 166,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 4,
+  "cif": "# generated using pymatgen\ndata_NaFeO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.61429207\n_cell_length_b   5.61429233\n_cell_length_c   5.61429099\n_cell_angle_alpha   31.18323422\n_cell_angle_beta   31.18322056\n_cell_angle_gamma   31.18322551\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   NaFeO2\n_chemical_formula_sum   'Na1 Fe1 O2'\n_cell_volume   42.09905783\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Na  Na0  1  0.00000000  -0.00000000  0.00000000  1.0\n  Fe  Fe1  1  0.50000000  0.50000000  0.50000000  1.0\n  O  O2  1  0.76513884  0.76513884  0.76513884  1.0\n  O  O3  1  0.23486116  0.23486116  0.23486116  1.0\n"
+ },
+ {
+  "id": "KG_mp-18957",
+  "formula": "NaMnO2",
+  "cell": "Na1Mn1O2",
+  "sg": 12,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 4,
+  "cif": "# generated using pymatgen\ndata_NaMnO2\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   2.86494068\n_cell_length_b   3.17517304\n_cell_length_c   5.50705057\n_cell_angle_alpha   78.05379200\n_cell_angle_beta   74.91465192\n_cell_angle_gamma   63.18536064\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   NaMnO2\n_chemical_formula_sum   'Na1 Mn1 O2'\n_cell_volume   42.93445886\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Na  Na0  1  0.49999991  0.49999997  0.50000137  1.0\n  Mn  Mn1  1  0.00000363  0.99999503  0.00000039  1.0\n  O  O2  1  0.29452230  0.20360897  0.20715868  1.0\n  O  O3  1  0.70547416  0.79640003  0.79284056  1.0\n"
+ },
+ {
+  "id": "KG_mp-3731",
+  "formula": "LiNbO3",
+  "cell": "Li8Nb8O24",
+  "sg": 161,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 40,
+  "cif": "# generated using pymatgen\ndata_LiNbO3\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.15394329\n_cell_length_b   5.53152931\n_cell_length_c   17.21247029\n_cell_angle_alpha   87.57036457\n_cell_angle_beta   98.63069517\n_cell_angle_gamma   117.77099083\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiNbO3\n_chemical_formula_sum   'Li8 Nb8 O24'\n_cell_volume   429.06236196\n_cell_formula_units_Z   8\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.44015639  0.80784954  0.07357330  1.0\n  Li  Li1  1  0.93930490  0.55733773  0.32341172  1.0\n  Li  Li2  1  0.19250187  0.18436056  0.19890033  1.0\n  Li  Li3  1  0.43942237  0.30738526  0.57340122  1.0\n  Li  Li4  1  0.69229906  0.93311764  0.44859248  1.0\n  Li  Li5  1  0.93903964  0.05720976  0.82336664  1.0\n  Li  Li6  1  0.19178317  0.68415994  0.69890677  1.0\n  Li  Li7  1  0.69235631  0.43324804  0.94856107  1.0\n  Nb  Nb8  1  0.01759992  0.03199841  0.00293925  1.0\n  Nb  Nb9  1  0.51734022  0.78189030  0.25284971  1.0\n  Nb  Nb10  1  0.76758491  0.40691916  0.12784411  1.0\n  Nb  Nb11  1  0.01695320  0.53157592  0.50288201  1.0\n  Nb  Nb12  1  0.26721066  0.15643452  0.37776417  1.0\n  Nb  Nb13  1  0.51691147  0.28207397  0.75291988  1.0\n  Nb  Nb14  1  0.76686327  0.90676937  0.62782866  1.0\n  Nb  Nb15  1  0.26733411  0.65683178  0.87798356  1.0\n  O  O16  1  0.48037091  0.04161310  0.18227583  1.0\n  O  O17  1  0.43715600  0.19528763  0.02879973  1.0\n  O  O18  1  0.91939846  0.12936389  0.09480035  1.0\n  O  O19  1  0.53735598  0.57003303  0.15380811  1.0\n  O  O20  1  0.05523617  0.50415842  0.21973956  1.0\n  O  O21  1  0.98017421  0.79112542  0.43216068  1.0\n  O  O22  1  0.99406373  0.66673591  0.05735688  1.0\n  O  O23  1  0.93692628  0.94454280  0.27879972  1.0\n  O  O24  1  0.41960344  0.87912163  0.34475066  1.0\n  O  O25  1  0.03739578  0.31977229  0.40382280  1.0\n  O  O26  1  0.55506802  0.25396708  0.46964385  1.0\n  O  O27  1  0.47987153  0.54187751  0.68236188  1.0\n  O  O28  1  0.49334684  0.41601062  0.30712847  1.0\n  O  O29  1  0.43661543  0.69483803  0.52885331  1.0\n  O  O30  1  0.91882489  0.62919817  0.59470008  1.0\n  O  O31  1  0.53712172  0.07030317  0.65385902  1.0\n  O  O32  1  0.05475777  0.00423702  0.71969849  1.0\n  O  O33  1  0.98024562  0.29159400  0.93233621  1.0\n  O  O34  1  0.99342878  0.16630172  0.55724624  1.0\n  O  O35  1  0.93631423  0.44506911  0.77893857  1.0\n  O  O36  1  0.41885284  0.37941363  0.84479801  1.0\n  O  O37  1  0.03673271  0.81977456  0.90391911  1.0\n  O  O38  1  0.55509526  0.75461293  0.96979925  1.0\n  O  O39  1  0.49297692  0.91648644  0.80727829  1.0\n"
+ },
+ {
+  "id": "KG_mp-18968",
+  "formula": "Li2FeSiO4",
+  "cell": "Li8Fe4Si4O16",
+  "sg": 31,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 32,
+  "cif": "# generated using pymatgen\ndata_Li2FeSiO4\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   6.26626978\n_cell_length_b   7.20577743\n_cell_length_c   7.20496307\n_cell_angle_alpha   85.85303862\n_cell_angle_beta   89.99991900\n_cell_angle_gamma   89.99988996\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   Li2FeSiO4\n_chemical_formula_sum   'Li8 Fe4 Si4 O16'\n_cell_volume   324.47642639\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.74777072  0.36201904  0.30491715  1.0\n  Li  Li1  1  0.74776305  0.86201366  0.80491028  1.0\n  Li  Li2  1  0.75231825  0.44513138  0.88791602  1.0\n  Li  Li3  1  0.75234143  0.94511204  0.38790418  1.0\n  Li  Li4  1  0.24768188  0.44513146  0.88791706  1.0\n  Li  Li5  1  0.24765116  0.94511334  0.38790132  1.0\n  Li  Li6  1  0.25223108  0.36201931  0.30491709  1.0\n  Li  Li7  1  0.25223817  0.86201582  0.80490978  1.0\n  Fe  Fe8  1  0.49999950  0.62320546  0.55764670  1.0\n  Fe  Fe9  1  0.00000152  0.19251848  0.62657177  1.0\n  Fe  Fe10  1  0.49999922  0.12321405  0.05765620  1.0\n  Fe  Fe11  1  0.00000181  0.69253414  0.12656600  1.0\n  Si  Si12  1  -0.00000109  0.10765848  0.05794912  1.0\n  Si  Si13  1  -0.00000038  0.60766197  0.55793856  1.0\n  Si  Si14  1  0.50000111  0.69200246  0.14239833  1.0\n  Si  Si15  1  0.50000132  0.19201481  0.64238522  1.0\n  O  O16  1  0.00000004  0.44677269  0.72998523  1.0\n  O  O17  1  0.00000068  0.94676890  0.22999646  1.0\n  O  O18  1  0.50000042  0.52000874  0.30327407  1.0\n  O  O19  1  0.50000107  0.02002581  0.80328104  1.0\n  O  O20  1  0.49999975  0.38985474  0.74197923  1.0\n  O  O21  1  0.50000023  0.88983892  0.24198083  1.0\n  O  O22  1  -0.00000073  0.50812134  0.36006161  1.0\n  O  O23  1  -0.00000050  0.00815168  0.86004945  1.0\n  O  O24  1  0.78571569  0.23605855  0.07581591  1.0\n  O  O25  1  0.78573097  0.73607504  0.57580852  1.0\n  O  O26  1  0.28570989  0.67421013  0.01393979  1.0\n  O  O27  1  0.28571050  0.17420260  0.51392972  1.0\n  O  O28  1  0.71429119  0.67421104  0.01393892  1.0\n  O  O29  1  0.71429123  0.17420318  0.51392926  1.0\n  O  O30  1  0.21428293  0.23605788  0.07581724  1.0\n  O  O31  1  0.21426887  0.73607489  0.57580792  1.0\n"
+ },
+ {
+  "id": "KG_mp-25423",
+  "formula": "LiVPO4F",
+  "cell": "Li4V4P4O16F4",
+  "sg": 2,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 32,
+  "cif": "# generated using pymatgen\ndata_LiVPO4F\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   5.39140384\n_cell_length_b   10.26418682\n_cell_length_c   7.42715305\n_cell_angle_alpha   75.93414548\n_cell_angle_beta   73.10761622\n_cell_angle_gamma   100.15932654\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   LiVPO4F\n_chemical_formula_sum   'Li4 V4 P4 O16 F4'\n_cell_volume   367.72441391\n_cell_formula_units_Z   4\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.01919900  0.63494700  0.55263400  1.0\n  Li  Li1  1  0.51920800  0.13499300  0.05261400  1.0\n  Li  Li2  1  0.98079300  0.36505000  0.44736000  1.0\n  Li  Li3  1  0.48079700  0.86500800  0.94737500  1.0\n  V  V4  1  0.49997900  0.50004600  0.50000400  1.0\n  V  V5  1  0.00000300  0.00000100  0.50000600  1.0\n  V  V6  1  0.00006500  0.99997400  0.00007600  1.0\n  V  V7  1  0.49999500  0.49999200  0.00000100  1.0\n  P  P8  1  0.52047000  0.16126000  0.60157800  1.0\n  P  P9  1  0.02043200  0.66120500  0.10163100  1.0\n  P  P10  1  0.47952600  0.83875100  0.39841400  1.0\n  P  P11  1  0.97956200  0.33878200  0.89836300  1.0\n  O  O12  1  0.81190600  0.15337100  0.50302900  1.0\n  O  O13  1  0.31200600  0.65343300  0.00302500  1.0\n  O  O14  1  0.18809200  0.84662200  0.49696300  1.0\n  O  O15  1  0.68798700  0.34656900  0.99696800  1.0\n  O  O16  1  0.43498700  0.68387200  0.40264400  1.0\n  O  O17  1  0.93513200  0.18393900  0.90265900  1.0\n  O  O18  1  0.56500500  0.31613500  0.59734400  1.0\n  O  O19  1  0.06487300  0.81605200  0.09734400  1.0\n  O  O20  1  0.66050000  0.87457400  0.51444600  1.0\n  O  O21  1  0.16047600  0.37448800  0.01443300  1.0\n  O  O22  1  0.33949200  0.12542100  0.48554500  1.0\n  O  O23  1  0.83952300  0.62551400  0.98556000  1.0\n  O  O24  1  0.39951000  0.06516000  0.82334300  1.0\n  O  O25  1  0.89928600  0.56514800  0.32344800  1.0\n  O  O26  1  0.60048900  0.93483500  0.17665800  1.0\n  O  O27  1  0.10070800  0.43485800  0.67654300  1.0\n  F  F28  1  0.13864300  0.06514700  0.19735100  1.0\n  F  F29  1  0.63865300  0.56511400  0.69755200  1.0\n  F  F30  1  0.86136000  0.93485400  0.80265300  1.0\n  F  F31  1  0.36134500  0.43489000  0.30244000  1.0\n"
+ },
+ {
+  "id": "KG_mp-1153",
+  "formula": "Li2S",
+  "cell": "Li2S1",
+  "sg": 225,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "n_atoms": 3,
+  "cif": "# generated using pymatgen\ndata_Li2S\n_symmetry_space_group_name_H-M   'P 1'\n_cell_length_a   4.00953374\n_cell_length_b   4.00953231\n_cell_length_c   4.00953300\n_cell_angle_alpha   59.99998603\n_cell_angle_beta   59.99999785\n_cell_angle_gamma   59.99999628\n_symmetry_Int_Tables_number   1\n_chemical_formula_structural   Li2S\n_chemical_formula_sum   'Li2 S1'\n_cell_volume   45.57916017\n_cell_formula_units_Z   1\nloop_\n _symmetry_equiv_pos_site_id\n _symmetry_equiv_pos_as_xyz\n  1  'x, y, z'\nloop_\n _atom_site_type_symbol\n _atom_site_label\n _atom_site_symmetry_multiplicity\n _atom_site_fract_x\n _atom_site_fract_y\n _atom_site_fract_z\n _atom_site_occupancy\n  Li  Li0  1  0.25000000  0.25000000  0.25000000  1.0\n  Li  Li1  1  0.75000000  0.75000000  0.75000000  1.0\n  S  S2  1  0.00000000  0.00000000  0.00000000  1.0\n"
+ }
+]

@@ -102,6 +102,23 @@ def sample_batch(model, tok, prompt, n, device, max_new_tokens=1000, temperature
     return [tok.decode(row.tolist()).split("\n\n")[0] + "\n" for row in x]
 
 
+def load_truth(t):
+    """The reference structure. CrystaLLM's test-set CIFs are stored like its training data: the
+    asymmetric unit only, with a placeholder 'x, y, z' symmetry operator. They must go through the
+    same postprocess() as generated CIFs, or the reference is missing most of its atoms (Li2ZnSiO4:
+    8 sites instead of 32) and almost nothing can match -- the bug behind the first Phase C runs.
+    (Fixed 2026-10-07; every earlier match count compared against incomplete references.)
+    Sanity-set entries carry a full Materials Project CIF and are used as they are."""
+    if t.get("cif"):
+        return Structure.from_str(t["cif"], fmt="cif")
+    with open(os.path.join(DATA, "test_cifs", t["id"] + ".cif"), encoding="utf-8") as f:
+        # pymatgen-written test CIFs indent their lines ("  1  'x, y, z'"); CrystaLLM's
+        # replace_symmetry_operators() only recognises the compact layout the model itself writes,
+        # so collapse whitespace first (as CrystaLLM's own prompt builder does)
+        text = "\n".join(re.sub(r"[ \t]+", " ", line.strip()) for line in f.read().splitlines())
+    return Structure.from_str(postprocess(text), fmt="cif")
+
+
 def postprocess(cif):
     sg = extract_space_group_symbol(cif)
     if sg is not None and sg != "P 1":
@@ -118,26 +135,29 @@ def main():
     ap.add_argument("--conditions", default="composition,rf_top1,rf_top5,oracle", help="comma-separated subset")
     ap.add_argument("--gen-dir", default="phaseC_gen", help="folder under data/crystallm for the generated CIFs")
     ap.add_argument("--seed", type=int, default=1337, help="base seed; each material x prompt gets its own fixed seed")
+    ap.add_argument("--candidates", default="phaseC_test_with_pred.json",
+                    help="candidate file under data/crystallm; an entry with a 'cif' field is its own reference")
+    ap.add_argument("--start", type=int, default=0, help="skip the first N chosen materials (resume / extend a run)")
     a = ap.parse_args()
     device = "cuda"
-    test = json.load(open(os.path.join(DATA, "phaseC_test_with_pred.json"), encoding="utf-8"))
-    cath = [t for t in test if t["cathode_like"]]
-    rest = [t for t in test if not t["cathode_like"]]
+    test = json.load(open(os.path.join(DATA, a.candidates), encoding="utf-8"))
+    cath = [t for t in test if t.get("cathode_like")]
+    rest = [t for t in test if not t.get("cathode_like")]
     random.Random(0).shuffle(rest)
-    chosen = (cath + rest)[: a.n_materials]
+    chosen = (cath + rest)[a.start: a.n_materials]
     model, tok = load_model(device, a.model), CIFTokenizer()
     keep = a.conditions.split(",")
     matcher = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
     results, t0 = [], time.time()
     for i, t in enumerate(chosen):
-        truth = Structure.from_file(os.path.join(DATA, "test_cifs", t["id"] + ".cif"))
-        top5 = [s for s in (sg_symbol(n) for n in t["sg_pred_top5"]) if s]
+        truth = load_truth(t)
+        top5 = [s for s in (sg_symbol(n) for n in t.get("sg_pred_top5", [])) if s]
         conds = {"composition": [(None, a.samples)],
                  "rf_top1": [(top5[0], a.samples)] if top5 else [],
-                 "rf_top5": [(s, a.samples // len(top5) + (k < a.samples % len(top5))) for k, s in enumerate(top5)],
+                 "rf_top5": [(s, a.samples // len(top5) + (k < a.samples % len(top5))) for k, s in enumerate(top5)] if top5 else [],
                  "oracle": [(sg_symbol(t["sg"]), a.samples)] if sg_symbol(t["sg"]) else []}
         rec = {"id": t["id"], "cell": t["cell"], "formula": t["formula"], "sg": t["sg"],
-               "cathode_like": t["cathode_like"], "sg_pred_top5": t["sg_pred_top5"], "conditions": {}}
+               "cathode_like": t.get("cathode_like", False), "sg_pred_top5": t.get("sg_pred_top5", []), "conditions": {}}
         conds = {c: plan for c, plan in conds.items() if c in keep}
         os.makedirs(os.path.join(DATA, a.gen_dir, t["id"]), exist_ok=True)
         for cond, plan in conds.items():

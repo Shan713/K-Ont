@@ -72,6 +72,14 @@ export_package/
 !/data/crystallm/phaseC_large_run.log
 !/data/crystallm/phaseC_results_small_seeded.json
 !/data/crystallm/phaseC_small_seeded_run.log
+# Phase C overnight queue (abox/phaseC_overnight.py): all result/score JSONs, the sanity set, the
+# driver logs + summary, and one tarball of the generated CIFs (small text, a few MB)
+!/data/crystallm/phaseC_results_*.json
+!/data/crystallm/phaseC_nearmiss_*.json
+!/data/crystallm/phaseC_chgnet_*.json
+!/data/crystallm/phaseC_sanity_candidates.json
+!/data/crystallm/phaseC_generated_cifs.tar.gz
+!/data/crystallm/overnight/
 # Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
 # the top-level training logs/status files in data/runs/.
 /data/battgpt_abox_grow_*/
