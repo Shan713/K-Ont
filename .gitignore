@@ -99,6 +99,14 @@ export_package/
 !/data/crystallm/steer_logs/
 !/data/crystallm/stability_*.json
 !/data/crystallm/stability_*.log
+# KG-driven generation handoff (docs/HANDOFF_KG_STEERING.md): training source, analogues, A/B outputs
+!/data/crystallm/kg_training_source.json.gz
+!/data/crystallm/test_analogues.json
+!/data/crystallm/seeded_*.json
+!/data/crystallm/seeded_*.tar.gz
+!/data/crystallm/dpo_*.jsonl
+!/data/crystallm/dpo_*.json
+!/data/crystallm/novel_best.tar.gz
 # Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
 # the top-level training logs/status files in data/runs/.
 /data/battgpt_abox_grow_*/
