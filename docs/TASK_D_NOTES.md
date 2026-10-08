@@ -160,7 +160,11 @@ Not tested: training, generation, or the Hydra composition of the new configs.
 3. Before any long run: wait until the pilot has finished and pushed (including commit 5f8a424), then do a
    100-step timing run and report seconds per step, GPU memory and the projected time for ~5,000 steps. The full
    run only starts on the user's OK.
-4. The D4 evaluation is fixed below, before training.
+4. The D4 evaluation is fixed below, before training. Confirmed by the user with changes: the margins are
+   accepted as proposed; a co-primary comparison S2 vs S3 was added (verdict strong / partial); a SUN count per
+   set; a fifth set S4 (official base, unconditional); a re-run at 1,000 per set when a lower bound lands within
+   ~3 points of its margin; the `none` control stays at guidance 2.0; E_hull goes through a separate
+   `abox/taskd_hull.py` that imports `stability_hull` (not edited).
 5. Isolation rules stay; the teammate baseline is re-recorded and compared at the end of each work block.
 
 ## D3 plan (nothing run yet)
@@ -182,24 +186,26 @@ Not tested: training, generation, or the Hydra composition of the new configs.
 **Question.** Does conditioning on `battery_role=PositiveElectrode` make the generated structures more often
 cathode-like than unconditional sampling, without losing validity or stability?
 
-**Model.** The trained `battery_role` adapter for all sets below (so "unconditional" = the same network with the
+**Model.** The trained `battery_role` adapter for sets S0-S3 (so "unconditional" = the same network with the
 property left out, i.e. the zero embedding, which by construction is the base model's unconditional score).
-Optional reference set (needs the user's OK): the official `mattergen_base`, unconditional, to show the adapter
-does not degrade the base.
+S4 is the untouched official `mattergen_base`, unconditional (approved), to show the adapter does not degrade
+the base.
 
 **Sets (256 structures each).**
 
-| set | `battery_role` | `diffusion_guidance_factor` |
-|---|---|---|
-| S0 unconditional | not given | 0.0 (not used) |
-| S1 positive | PositiveElectrode | 1.0 |
-| S2 positive (headline) | PositiveElectrode | 2.0 |
-| S3 control | `none` | 2.0 (assumption: same factor as the headline; say if another is wanted) |
+| set | model | `battery_role` | `diffusion_guidance_factor` |
+|---|---|---|---|
+| S0 unconditional | battery_role adapter | not given | 0.0 (not used) |
+| S1 positive | battery_role adapter | PositiveElectrode | 1.0 |
+| S2 positive (headline) | battery_role adapter | PositiveElectrode | 2.0 |
+| S3 control | battery_role adapter | `none` | 2.0 (confirmed by the user) |
+| S4 base reference | official `mattergen_base` | not given | 0.0 (not used) |
 
 All sets: same batch size B and `num_batches = 256 / B`, same `num_atoms_distribution` (the default
 `ALEX_MP_20`, at most 20 atoms), and the same seed (`pytorch_lightning.seed_everything(<seed>)` immediately
-before each set, same seed value for every set) so initial noise and atom counts line up across sets. B is set
-by the timing run (GPU memory). `CrystalGenerator` has no seed argument, hence the explicit seeding.
+before each set, same seed value for every set, S4 included) so initial noise and atom counts line up across
+sets. B is set by the timing run (GPU memory). `CrystalGenerator` has no seed argument, hence the explicit
+seeding.
 
 **Metrics per set** (valid = the denominator for everything except validity itself):
 
@@ -216,30 +222,50 @@ by the timing run (GPU memory). `CrystalGenerator` has no seed argument, hence t
 4. **E_hull** = CHGNet-relaxed energy placed on the MP phase diagram, as in `abox/stability_hull.py` (CHGNet
    energies already include the MP2020 corrections; never apply `MaterialsProject2020Compatibility`). Reported on
    the valid cathode-like structures: share with e_hull <= 0.05 eV/atom and the median. `stability_hull.py` knows
-   only the sets `calib` and `novel`; D4 needs a third set read from the D4 structures, added as a **new** file,
-   not by editing that script. The MP fetch (chemical systems of the D4 structures) happens on the laptop with
-   the MP key; the computation can run anywhere.
+   only the sets `calib` and `novel`. D4 uses a **separate script, `abox/taskd_hull.py`**, which imports
+   `stability_hull` and does not edit it: `fetch(tag)` and `compute(tag, threads)` take any tag and, for a tag
+   other than `calib`, call the module-level `novel_set()`; `taskd_hull.py` replaces `stability_hull.novel_set`
+   with a function that reads the D4 structures and then calls `stability_hull.fetch("d4")` /
+   `stability_hull.compute("d4", threads)` (files `mp_entries_d4.json`, `stability_d4.json`). This depends on
+   that branch of the current file; re-check it if `stability_hull.py` changes. The MP fetch (chemical systems
+   of the D4 structures) runs on the laptop with the MP key; `compute` (CHGNet relax with `fmax=0.1`,
+   `steps=300`, then the phase diagram) can run anywhere. The script is not written yet.
 5. **unique** = fraction of valid structures that are distinct under `StructureMatcher(ltol=0.2, stol=0.3,
    angle_tol=5)` within the set.
 6. **novel** = fraction of valid structures with no `StructureMatcher` match (same tolerances, reduced-composition
    prefilter) among (a) the 5,000 KG structures (`kg_training_source.json.gz`, all splits) and (b) MP. The MP
    part needs MP structures for the generated compositions, fetched on the laptop; (a) is computed here.
+7. **SUN count** per set = structures that are cathode-like **and** valid **and** unique **and** novel (against
+   both the KG's 5,000 and MP) **and** have CHGNet e_hull <= 0.05 eV/atom. "Unique" counts each
+   `StructureMatcher` equivalence class once (one representative per class). Reported as the count and as the
+   share of the 256 generated, each with a bootstrap 95% CI. It needs the MP part of metric 6 and the E_hull of
+   metric 4, so it is completed after the laptop step.
 
 **Statistics.** Bootstrap 95% CIs (10,000 resamples, seeded), resampling structures within each set; ratio
 metrics (shares among valid or among cathode-like) are recomputed on each resample. Differences between sets use
 independent bootstraps of the two sets and the percentile interval of the difference. Report n for every share,
 since the cathode-like subset may be small.
 
-**Main claim and decision rule.** PositiveElectrode (S2) beats unconditional (S0) on the cathode-like share, at
-equal or better validity and E_hull. Proposed pre-registered reading (the margins are my proposal, to be
-confirmed or changed by the user before training):
+**Main claim and decision rule (margins accepted by the user).** PositiveElectrode (S2) beats unconditional (S0)
+on the cathode-like share, at equal or better validity and E_hull, and the effect is label-specific. Two
+co-primary comparisons, both reported:
 
-- (a) the 95% CI of cathode-like share S2 - S0 has a lower bound above 0;
-- (b) validity S2 - S0 has a lower bound >= -0.05 (non-inferiority margin of 5 points);
-- (c) the share with e_hull <= 0.05 among valid cathode-like, S2 - S0, has a lower bound >= -0.10.
+- **First comparison, S2 vs S0.** Passes if all three hold:
+  - (a) the 95% CI of cathode-like share S2 - S0 has a lower bound above 0;
+  - (b) validity S2 - S0 has a lower bound >= -0.05 (5 points);
+  - (c) the share with e_hull <= 0.05 among valid cathode-like, S2 - S0, has a lower bound >= -0.10 (10 points).
+- **Second comparison, S2 vs S3** (`PositiveElectrode` vs `none`, both at guidance 2.0): cathode-like share
+  S2 - S3 has a lower bound above 0. This shows the effect comes from the label, not from guidance alone.
 
-S1 vs S0 (guidance 1.0) is a dose-response check; S3 vs S0 is the control: if `none` gives the same lift, the
-effect is not the label. A pass needs (a), (b), (c) together; anything else is reported as it is.
+**Verdict:** **strong** if both comparisons pass; **partial** if only the first passes; otherwise not supported
+(including the case where only the second passes), and reported as it is.
+
+S1 (guidance 1.0) is a dose-response check, and S4 (official base) is a reference for the adapter's
+unconditional behaviour; neither enters the verdict.
+
+**Re-run rule.** If any lower bound above lands within about 3 points of its margin (that is, within 0.03 on
+either side of 0 for (a) and for the second comparison, of -0.05 for (b), of -0.10 for (c)), the comparison is
+re-run at **1,000 structures per set** (same procedure and seeding, for the sets involved) before concluding.
 
 ## Other notes
 
