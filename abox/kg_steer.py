@@ -12,7 +12,8 @@ KG plausibility score (lower = more plausible; weights fixed a priori, NOT tuned
 
 Evaluation uses the near-miss files (truth known): per material and prompt, the pool is the valid CIFs
 with the right composition; reported: random pick (expected strict-match rate), KG top-1, best of pool,
-and -- on the same 5-candidate pool CHGNet relaxed -- KG top-1 vs CHGNet's lowest-energy pick.
+and -- on the same 5-candidate pool CHGNet relaxed -- KG top-1 vs CHGNet's lowest-energy pick vs the
+combination (relax only the KG-plausible candidates, keep the lowest energy).
 
     python abox/kg_steer.py --runs large,small_seeded,calib_large,calib_small --workers 16
 """
@@ -93,6 +94,7 @@ def main():
     ap.add_argument("--conditions", default="composition,oracle")
     ap.add_argument("--workers", type=int, default=max(1, (os.cpu_count() or 2) - 2))
     ap.add_argument("--out", default="kg_steer_eval.json")
+    ap.add_argument("--save-scores", action="store_true", help="also write kg_scores_<run>.json (score per CIF)")
     a = ap.parse_args()
     report = {"weights": "bond + coord + 3 volume + 5 clash", "runs": {}}
     for run in a.runs.split(","):
@@ -105,6 +107,9 @@ def main():
                     jobs += [os.path.join(DATA, gen_dir, m["id"], f"{cond}_{r['k']}.cif") for r in rows if r.get("composition_ok")]
         with ProcessPoolExecutor(a.workers) as ex:
             scores = dict(ex.map(_score_file, jobs, chunksize=4))
+        if a.save_scores:
+            json.dump({os.path.relpath(k, DATA).replace(os.sep, "/"): v for k, v in scores.items()},
+                      open(os.path.join(DATA, f"kg_scores_{run}.json"), "w"))
         chg = {}
         cpath = os.path.join(DATA, f"phaseC_chgnet_{run}.json")
         if os.path.exists(cpath):
@@ -115,7 +120,7 @@ def main():
         for cond in a.conditions.split(","):
             n = rand = kg1 = best = 0
             plaus_tot = plaus_match = all_tot = all_match = 0
-            c_n = c_kg = c_chg = c_kg_relax = 0
+            c_n = c_kg = c_chg = c_kg_relax = c_comb = c_pool = c_relaxed = 0
             for m in nm["materials"]:
                 rows = [r for r in m["conditions"].get(cond, []) if r.get("composition_ok")]
                 pool = [(scores.get(os.path.join(DATA, gen_dir, m["id"], f"{cond}_{r['k']}.cif"), {}), r) for r in rows]
@@ -140,6 +145,10 @@ def main():
                         c_kg += next(r.get("strict", False) for _, r in cpool if r["k"] == kpick)
                         c_kg_relax += by_k[kpick]["match_after_relax"]
                         c_chg += min(crows, key=lambda r: r["e"])["match_after_relax"]
+                        # combined: relax only the KG-plausible candidates (all, if none pass), keep the lowest energy
+                        keep = [by_k[r["k"]] for sc, r in cpool if sc["plausible"]] or [by_k[r["k"]] for _, r in cpool]
+                        c_comb += min(keep, key=lambda r: r["e"])["match_after_relax"]
+                        c_pool += len(cpool); c_relaxed += len(keep)
             res[cond] = {"materials": n, "random_pick": round(rand / n, 3), "kg_top1": round(kg1 / n, 3),
                          "best_of_pool": round(best / n, 3),
                          "plausible_share": round(plaus_tot / max(all_tot, 1), 3),
@@ -148,7 +157,9 @@ def main():
             if c_n:
                 res[cond].update({"chgnet_pool_materials": c_n, "kg_top1_on_chgnet_pool_after_relax": round(c_kg_relax / c_n, 3),
                                   "chgnet_lowest_energy_after_relax": round(c_chg / c_n, 3),
-                                  "kg_top1_on_chgnet_pool_unrelaxed": round(c_kg / c_n, 3)})
+                                  "kg_top1_on_chgnet_pool_unrelaxed": round(c_kg / c_n, 3),
+                                  "kg_filter_then_chgnet_after_relax": round(c_comb / c_n, 3),
+                                  "relaxations_needed_with_kg_filter": round(c_relaxed / max(c_pool, 1), 3)})
             print(run, cond, res[cond], flush=True)
         report["runs"][run] = res
     json.dump(report, open(os.path.join(DATA, a.out), "w"), indent=1)

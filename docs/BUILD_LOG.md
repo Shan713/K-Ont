@@ -1560,3 +1560,27 @@ structure (bond z, coordination likelihood, volume fit, clashes; weights fixed a
 on the Phase C runs whether the KG's top pick is the right structure more often than a random pick,
 and how it compares with CHGNet's lowest-energy pick. ~5 s per structure (CrystalNN); runs on the
 workstation.
+
+## Step 30 — KG-steering results; steered sampling and ontology requirements (2026-10-08)
+
+Workstation evaluation (`data/crystallm/kg_steer_eval.json`), Phase C generations, truth known:
+
+| | random pick | KG top-1 | match rate, all / KG-plausible | KG-plausible share |
+|---|---|---|---|---|
+| large, composition (55 cathode-like) | 62.9% | **71.2%** | 63.7% / 69.7% | 75% |
+| small, composition | 45.5% | **55.8%** | 47.8% / 63.3% | 57% |
+| large, true SG | 81.6% | 83.3% | 81.6% / 89.4% | 74% |
+| small, true SG | 58.8% | 61.1% | 59.7% / **79.8%** | 56% |
+| large, composition (95 non-cathode) | 46.0% | 41.1% | 46.0% / 63.4% | 18% |
+
+- In the cathode domain the KG's chemistry priors select the right structure 8-10 points more often
+  and raise filter precision by 6-20 points. On the non-cathode (mostly intermetallic) set, the
+  ionic-compound priors mislead the top-1 pick: the steering is domain knowledge, valid where the KG
+  represents the domain.
+- CHGNet's lowest-energy pick is still better on the same 5-candidate pools (75% vs 67%, large).
+  Correction: the KG score is NOT much cheaper (CrystalNN ~5 s/structure vs CHGNet ~8 s).
+- Next (`abox/steer_queue.py`): combined KG-filter -> CHGNet selection; KG-steered sampling
+  (`abox/kg_steer_sample.py`: generate until 5 KG-plausible, max 40, vs the first 5 unsteered); the
+  pilot's novel structures checked for KG plausibility and for keeping the parent's framework
+  (`abox/novel_steer_analysis.py`, StructureMatcher.fit_anonymous vs the parent; 31 of 200 parents
+  carry an ontology structure family), giving a KG-steered shortlist.

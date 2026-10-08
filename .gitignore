@@ -89,6 +89,14 @@ export_package/
 # KG-steered generation (abox/kg_priors.py, abox/kg_steer.py): priors from the KG and the evaluation
 !/data/crystallm/kg_priors.json
 !/data/crystallm/kg_steer_eval.json
+!/data/crystallm/kg_steer_eval.log
+!/data/crystallm/kg_scores_*.json
+!/data/crystallm/kg_steer_sample_*.json
+!/data/crystallm/kg_steer_generated_cifs.tar.gz
+!/data/crystallm/novel_parents.json
+!/data/crystallm/novel_steer_analysis.json
+!/data/crystallm/novel_shortlist.md
+!/data/crystallm/steer_logs/
 # Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
 # the top-level training logs/status files in data/runs/.
 /data/battgpt_abox_grow_*/
