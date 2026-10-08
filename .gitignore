@@ -86,6 +86,9 @@ export_package/
 !/data/crystallm/novel_chgnet_*.json
 !/data/crystallm/novel_logs/
 !/data/crystallm/novel_generated_cifs.tar.gz
+# KG-steered generation (abox/kg_priors.py, abox/kg_steer.py): priors from the KG and the evaluation
+!/data/crystallm/kg_priors.json
+!/data/crystallm/kg_steer_eval.json
 # Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
 # the top-level training logs/status files in data/runs/.
 /data/battgpt_abox_grow_*/

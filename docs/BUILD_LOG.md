@@ -1546,3 +1546,17 @@ median theoretical capacity 115 mAh/g, an upper bound). Each keeps its parent's 
 space group. Workstation queue `abox/novel_queue.py`: large CrystaLLM, 10 samples each for
 composition-only and parent-space-group prompts (the latter a KG analogue), CHGNet relaxation of up to
 5 per prompt (`abox/novel_chgnet.py`), lowest-energy structure kept per composition.
+
+## Step 29 — KG-steered generation: chemistry priors from the KG, plausibility scoring (2026-10-08)
+
+Goal restated: use the KG/ontology to steer CrystaLLM's output quality. Text hints about the structure
+don't beat CrystaLLM's own judgement (Step 27; a KG parent's space group is right for only 10/22 test
+cathodes with a plausible parent, and never where CrystaLLM failed), so the KG supplies what CrystaLLM
+lacks: chemistry statistics. `abox/kg_priors.py` -> `data/crystallm/kg_priors.json` from the 5,000 KG:
+bond-length distributions for 875 element pairs (433,674 CrystalNN bonds; Li-O median 2.10 A, Co-O
+1.95 A), coordination-number frequencies per element (Mn: 6-fold at 706 of 897 sites), per-element
+volumes (cell volume predicted to 6.7% median error). `abox/kg_steer.py` scores a generated
+structure (bond z, coordination likelihood, volume fit, clashes; weights fixed a priori) and evaluates
+on the Phase C runs whether the KG's top pick is the right structure more often than a random pick,
+and how it compares with CHGNet's lowest-energy pick. ~5 s per structure (CrystalNN); runs on the
+workstation.
