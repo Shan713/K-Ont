@@ -1,0 +1,7947 @@
+{
+ "settings": {
+  "candidates": "phaseC_test_with_pred.json",
+  "n_materials": 55,
+  "model": "crystallm_v1_large",
+  "target": 5,
+  "batch": 5,
+  "max_samples": 40,
+  "workers": 6,
+  "seed": 4242,
+  "gen_dir": "kg_steer_gen",
+  "out": "kg_steer_sample_large.json"
+ },
+ "materials": [
+  {
+   "id": "MP_mp-1175409",
+   "formula": "Li9Co7O16",
+   "samples": 10,
+   "valid": 7,
+   "right_composition": 7,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.219,
+     "coord": 1.254,
+     "volume": 0.111,
+     "clash": 0.0,
+     "total": 1.805,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.219,
+     "coord": 1.254,
+     "volume": 0.111,
+     "clash": 0.0,
+     "total": 1.805,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.235,
+     "coord": 1.254,
+     "volume": 0.12,
+     "clash": 0.0,
+     "total": 1.848,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.219,
+     "coord": 1.254,
+     "volume": 0.111,
+     "clash": 0.0,
+     "total": 1.805,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.219,
+     "coord": 1.254,
+     "volume": 0.111,
+     "clash": 0.0,
+     "total": 1.805,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.318,
+     "coord": 1.254,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 1.859,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.219,
+     "coord": 1.254,
+     "volume": 0.111,
+     "clash": 0.0,
+     "total": 1.805,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-1177503",
+   "formula": "Li4Cr3FeO8",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.324,
+     "coord": 1.2,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 1.811,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.324,
+     "coord": 1.2,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 1.811,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.324,
+     "coord": 1.2,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 1.811,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.324,
+     "coord": 1.2,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 1.811,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.324,
+     "coord": 1.2,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 1.811,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": false
+  },
+  {
+   "id": "MP_mp-1210356",
+   "formula": "Na2PdF6",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.591,
+     "coord": 1.047,
+     "volume": 0.09,
+     "clash": 0.0,
+     "total": 1.907,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.375,
+     "coord": 1.047,
+     "volume": 0.129,
+     "clash": 0.0,
+     "total": 1.809,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.353,
+     "coord": 1.047,
+     "volume": 0.145,
+     "clash": 0.0,
+     "total": 1.836,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.569,
+     "coord": 1.047,
+     "volume": 0.132,
+     "clash": 0.0,
+     "total": 2.012,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.769,
+     "coord": 1.047,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.51,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.765,
+     "coord": 1.047,
+     "volume": 0.258,
+     "clash": 0.0,
+     "total": 2.587,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.733,
+     "coord": 1.047,
+     "volume": 0.018,
+     "clash": 0.0,
+     "total": 1.832,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.51,
+     "coord": 1.047,
+     "volume": 0.098,
+     "clash": 0.0,
+     "total": 1.851,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.548,
+     "coord": 1.047,
+     "volume": 0.075,
+     "clash": 0.0,
+     "total": 1.821,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.475,
+     "coord": 1.047,
+     "volume": 0.229,
+     "clash": 0.0,
+     "total": 2.208,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-1221226",
+   "formula": "Na4Al3Fe(SiO3)8",
+   "samples": 40,
+   "valid": 0,
+   "right_composition": 0,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    }
+   ],
+   "unsteered_match": null,
+   "steered_match": null,
+   "kg_top1_match": null,
+   "any_match": false
+  },
+  {
+   "id": "MP_mp-1222389",
+   "formula": "LiFeSO4F",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.969,
+     "coord": 1.164,
+     "volume": 0.103,
+     "clash": 0.0,
+     "total": 2.442,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.969,
+     "coord": 1.164,
+     "volume": 0.103,
+     "clash": 0.0,
+     "total": 2.442,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.663,
+     "coord": 1.156,
+     "volume": 0.013,
+     "clash": 0.0,
+     "total": 1.857,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.969,
+     "coord": 1.164,
+     "volume": 0.103,
+     "clash": 0.0,
+     "total": 2.442,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.969,
+     "coord": 1.164,
+     "volume": 0.103,
+     "clash": 0.0,
+     "total": 2.442,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-17288",
+   "formula": "Li2ZnSiO4",
+   "samples": 40,
+   "valid": 40,
+   "right_composition": 40,
+   "plausible": 4,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.438,
+     "coord": 4.68,
+     "volume": 0.01,
+     "clash": 0.625,
+     "total": 12.274,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.091,
+     "coord": 4.105,
+     "volume": 0.033,
+     "clash": 0.25,
+     "total": 9.544,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.485,
+     "coord": 2.87,
+     "volume": 0.024,
+     "clash": 0.625,
+     "total": 10.553,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.732,
+     "coord": 2.72,
+     "volume": 0.038,
+     "clash": 0.5,
+     "total": 8.066,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.431,
+     "coord": 4.051,
+     "volume": 0.021,
+     "clash": 0.625,
+     "total": 12.669,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.114,
+     "coord": 2.055,
+     "volume": 0.019,
+     "clash": 0.5,
+     "total": 6.726,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.94,
+     "coord": 6.641,
+     "volume": 0.001,
+     "clash": 0.5,
+     "total": 14.085,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.805,
+     "coord": 2.989,
+     "volume": 0.005,
+     "clash": 0.25,
+     "total": 8.06,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.065,
+     "coord": 3.478,
+     "volume": 0.011,
+     "clash": 0.375,
+     "total": 9.449,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.827,
+     "coord": 1.181,
+     "volume": 0.03,
+     "clash": 0.25,
+     "total": 4.349,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.644,
+     "coord": 5.926,
+     "volume": 0.047,
+     "clash": 0.75,
+     "total": 14.46,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.419,
+     "coord": 4.963,
+     "volume": 0.018,
+     "clash": 0.0,
+     "total": 8.435,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.291,
+     "coord": 3.807,
+     "volume": 0.062,
+     "clash": 0.5,
+     "total": 9.785,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.456,
+     "coord": 4.284,
+     "volume": 0.036,
+     "clash": 0.5,
+     "total": 10.347,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.118,
+     "coord": 2.265,
+     "volume": 0.059,
+     "clash": 0.0,
+     "total": 4.561,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.733,
+     "coord": 6.139,
+     "volume": 0.007,
+     "clash": 0.875,
+     "total": 14.268,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.081,
+     "coord": 4.494,
+     "volume": 0.034,
+     "clash": 0.625,
+     "total": 12.802,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.083,
+     "coord": 2.933,
+     "volume": 0.016,
+     "clash": 0.375,
+     "total": 8.94,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.926,
+     "coord": 1.413,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 4.453,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.039,
+     "coord": 0.889,
+     "volume": 0.069,
+     "clash": 0.0,
+     "total": 2.135,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.294,
+     "coord": 0.889,
+     "volume": 0.014,
+     "clash": 0.0,
+     "total": 2.227,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.723,
+     "coord": 5.827,
+     "volume": 0.004,
+     "clash": 0.562,
+     "total": 12.375,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.579,
+     "coord": 4.084,
+     "volume": 0.011,
+     "clash": 0.25,
+     "total": 7.948,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.479,
+     "coord": 4.25,
+     "volume": 0.009,
+     "clash": 0.5,
+     "total": 10.255,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.347,
+     "coord": 1.289,
+     "volume": 0.047,
+     "clash": 0.0,
+     "total": 2.775,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.676,
+     "coord": 0.889,
+     "volume": 0.04,
+     "clash": 0.0,
+     "total": 2.685,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.008,
+     "coord": 3.54,
+     "volume": 0.019,
+     "clash": 0.375,
+     "total": 9.48,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.005,
+     "coord": 5.533,
+     "volume": 0.031,
+     "clash": 0.375,
+     "total": 10.506,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.305,
+     "coord": 0.889,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 3.295,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.456,
+     "coord": 4.486,
+     "volume": 0.022,
+     "clash": 0.75,
+     "total": 13.759,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.351,
+     "coord": 1.331,
+     "volume": 0.009,
+     "clash": 0.0,
+     "total": 3.708,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.15,
+     "coord": 5.629,
+     "volume": 0.044,
+     "clash": 0.5,
+     "total": 12.412,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.484,
+     "coord": 4.577,
+     "volume": 0.032,
+     "clash": 0.5,
+     "total": 11.656,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.125,
+     "coord": 7.273,
+     "volume": 0.02,
+     "clash": 0.875,
+     "total": 16.834,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.663,
+     "coord": 5.987,
+     "volume": 0.231,
+     "clash": 0.875,
+     "total": 15.718,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.878,
+     "coord": 3.467,
+     "volume": 0.023,
+     "clash": 0.25,
+     "total": 8.664,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.493,
+     "coord": 6.372,
+     "volume": 0.013,
+     "clash": 0.75,
+     "total": 15.655,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.337,
+     "coord": 3.113,
+     "volume": 0.019,
+     "clash": 0.5,
+     "total": 9.008,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.495,
+     "coord": 6.272,
+     "volume": 0.065,
+     "clash": 0.75,
+     "total": 15.713,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.568,
+     "coord": 4.284,
+     "volume": 0.017,
+     "clash": 0.5,
+     "total": 10.403,
+     "plausible": false,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.5,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-679669",
+   "formula": "NaZr2SN2Cl",
+   "samples": 40,
+   "valid": 40,
+   "right_composition": 40,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.809,
+     "coord": 3.967,
+     "volume": 0.21,
+     "clash": 0.429,
+     "total": 11.549,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.567,
+     "coord": 4.047,
+     "volume": 0.209,
+     "clash": 0.429,
+     "total": 11.384,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.287,
+     "coord": 4.252,
+     "volume": 0.187,
+     "clash": 0.0,
+     "total": 8.1,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.146,
+     "coord": 3.974,
+     "volume": 0.201,
+     "clash": 0.429,
+     "total": 10.866,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.765,
+     "coord": 3.32,
+     "volume": 0.163,
+     "clash": 0.0,
+     "total": 6.574,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.379,
+     "coord": 3.931,
+     "volume": 0.179,
+     "clash": 0.286,
+     "total": 10.274,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.326,
+     "coord": 3.649,
+     "volume": 0.2,
+     "clash": 0.143,
+     "total": 9.289,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.184,
+     "coord": 2.021,
+     "volume": 0.189,
+     "clash": 0.286,
+     "total": 7.2,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.002,
+     "coord": 5.035,
+     "volume": 0.15,
+     "clash": 0.643,
+     "total": 12.7,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.13,
+     "coord": 3.775,
+     "volume": 0.206,
+     "clash": 0.286,
+     "total": 8.953,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.138,
+     "coord": 4.782,
+     "volume": 0.209,
+     "clash": 0.0,
+     "total": 8.548,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.14,
+     "coord": 5.676,
+     "volume": 0.196,
+     "clash": 0.286,
+     "total": 10.833,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.727,
+     "coord": 5.004,
+     "volume": 0.206,
+     "clash": 0.857,
+     "total": 15.634,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.237,
+     "coord": 1.503,
+     "volume": 0.186,
+     "clash": 0.0,
+     "total": 5.299,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.992,
+     "coord": 2.612,
+     "volume": 0.203,
+     "clash": 0.0,
+     "total": 6.213,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.777,
+     "coord": 1.998,
+     "volume": 0.197,
+     "clash": 0.0,
+     "total": 5.365,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.785,
+     "coord": 3.341,
+     "volume": 0.2,
+     "clash": 0.429,
+     "total": 9.869,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.152,
+     "coord": 5.781,
+     "volume": 0.212,
+     "clash": 0.286,
+     "total": 10.999,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.593,
+     "coord": 4.003,
+     "volume": 0.204,
+     "clash": 0.286,
+     "total": 9.635,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.941,
+     "coord": 2.494,
+     "volume": 0.206,
+     "clash": 0.429,
+     "total": 9.196,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.273,
+     "coord": 4.08,
+     "volume": 0.196,
+     "clash": 0.429,
+     "total": 11.084,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.411,
+     "coord": 4.824,
+     "volume": 0.165,
+     "clash": 0.286,
+     "total": 10.159,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.627,
+     "coord": 1.621,
+     "volume": 0.153,
+     "clash": 0.0,
+     "total": 5.706,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.285,
+     "coord": 3.779,
+     "volume": 0.198,
+     "clash": 0.571,
+     "total": 11.515,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.508,
+     "coord": 2.647,
+     "volume": 0.212,
+     "clash": 0.429,
+     "total": 9.934,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.287,
+     "coord": 4.298,
+     "volume": 0.171,
+     "clash": 0.571,
+     "total": 12.955,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.243,
+     "coord": 5.311,
+     "volume": 0.208,
+     "clash": 0.429,
+     "total": 12.322,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.008,
+     "coord": 3.471,
+     "volume": 0.206,
+     "clash": 0.571,
+     "total": 10.953,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.845,
+     "coord": 5.038,
+     "volume": 0.207,
+     "clash": 0.286,
+     "total": 10.932,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.397,
+     "coord": 4.713,
+     "volume": 0.198,
+     "clash": 0.429,
+     "total": 12.846,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.856,
+     "coord": 4.942,
+     "volume": 0.184,
+     "clash": 0.286,
+     "total": 10.779,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.575,
+     "coord": 4.118,
+     "volume": 0.161,
+     "clash": 0.429,
+     "total": 10.32,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.228,
+     "coord": 3.669,
+     "volume": 0.225,
+     "clash": 0.429,
+     "total": 10.716,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.148,
+     "coord": 1.621,
+     "volume": 0.185,
+     "clash": 0.0,
+     "total": 5.324,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.53,
+     "coord": 4.293,
+     "volume": 0.186,
+     "clash": 0.429,
+     "total": 10.526,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.471,
+     "coord": 4.785,
+     "volume": 0.176,
+     "clash": 0.286,
+     "total": 12.212,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.525,
+     "coord": 5.153,
+     "volume": 0.193,
+     "clash": 0.286,
+     "total": 10.686,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.65,
+     "coord": 5.036,
+     "volume": 0.196,
+     "clash": 0.286,
+     "total": 10.703,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.203,
+     "coord": 2.0,
+     "volume": 0.207,
+     "clash": 0.286,
+     "total": 8.252,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.148,
+     "coord": 4.203,
+     "volume": 0.21,
+     "clash": 0.286,
+     "total": 11.41,
+     "plausible": false,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": null,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-694965",
+   "formula": "Li3(NiO2)8",
+   "samples": 40,
+   "valid": 40,
+   "right_composition": 40,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.857,
+     "coord": 0.838,
+     "volume": 0.227,
+     "clash": 0.0,
+     "total": 2.376,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.792,
+     "coord": 0.897,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 2.415,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.8,
+   "steered_match": null,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-752766",
+   "formula": "Li2CrSiO4",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 6,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.921,
+     "coord": 1.067,
+     "volume": 0.017,
+     "clash": 0.0,
+     "total": 2.041,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.605,
+     "coord": 4.239,
+     "volume": 0.0,
+     "clash": 0.75,
+     "total": 12.594,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.026,
+     "coord": 1.067,
+     "volume": 0.025,
+     "clash": 0.0,
+     "total": 2.167,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.973,
+     "coord": 1.067,
+     "volume": 0.025,
+     "clash": 0.0,
+     "total": 2.116,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.943,
+     "coord": 1.184,
+     "volume": 0.016,
+     "clash": 0.0,
+     "total": 3.175,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.959,
+     "coord": 6.831,
+     "volume": 0.016,
+     "clash": 0.5,
+     "total": 11.338,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.744,
+     "coord": 1.545,
+     "volume": 0.016,
+     "clash": 0.083,
+     "total": 3.755,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.602,
+     "coord": 1.067,
+     "volume": 0.004,
+     "clash": 0.0,
+     "total": 1.682,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.229,
+     "coord": 3.822,
+     "volume": 0.017,
+     "clash": 0.25,
+     "total": 8.353,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.841,
+     "coord": 1.067,
+     "volume": 0.017,
+     "clash": 0.0,
+     "total": 1.961,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.8,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-753685",
+   "formula": "Li2MnO2F",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.214,
+     "coord": 1.637,
+     "volume": 0.142,
+     "clash": 0.0,
+     "total": 2.276,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.749,
+     "coord": 1.637,
+     "volume": 0.112,
+     "clash": 0.0,
+     "total": 2.721,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.749,
+     "coord": 1.637,
+     "volume": 0.112,
+     "clash": 0.0,
+     "total": 2.721,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.749,
+     "coord": 1.637,
+     "volume": 0.112,
+     "clash": 0.0,
+     "total": 2.721,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.749,
+     "coord": 1.637,
+     "volume": 0.112,
+     "clash": 0.0,
+     "total": 2.721,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.2,
+   "steered_match": 0.2,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-756221",
+   "formula": "K2LiFeO3",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.255,
+     "coord": 1.711,
+     "volume": 0.064,
+     "clash": 0.0,
+     "total": 3.157,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.387,
+     "coord": 1.567,
+     "volume": 0.065,
+     "clash": 0.0,
+     "total": 3.15,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.396,
+     "coord": 1.567,
+     "volume": 0.093,
+     "clash": 0.0,
+     "total": 3.241,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.16,
+     "coord": 1.567,
+     "volume": 0.084,
+     "clash": 0.0,
+     "total": 2.979,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.266,
+     "coord": 1.711,
+     "volume": 0.086,
+     "clash": 0.0,
+     "total": 3.235,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-756571",
+   "formula": "Li3V4NiO12",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.535,
+     "coord": 1.35,
+     "volume": 0.196,
+     "clash": 0.0,
+     "total": 3.472,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.562,
+     "coord": 1.35,
+     "volume": 0.196,
+     "clash": 0.0,
+     "total": 3.499,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.562,
+     "coord": 1.35,
+     "volume": 0.196,
+     "clash": 0.0,
+     "total": 3.499,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.562,
+     "coord": 1.35,
+     "volume": 0.196,
+     "clash": 0.0,
+     "total": 3.499,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.562,
+     "coord": 1.35,
+     "volume": 0.196,
+     "clash": 0.0,
+     "total": 3.499,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-757609",
+   "formula": "Li2FeCO4",
+   "samples": 40,
+   "valid": 40,
+   "right_composition": 40,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.309,
+     "coord": 1.094,
+     "volume": 0.23,
+     "clash": 0.0,
+     "total": 3.095,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.831,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.619,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.184,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.971,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.857,
+     "coord": 1.094,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 2.647,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.837,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.625,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.152,
+     "coord": 7.159,
+     "volume": 0.231,
+     "clash": 0.75,
+     "total": 16.753,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.949,
+     "coord": 1.094,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 2.738,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.088,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.875,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.105,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.891,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.775,
+     "coord": 1.094,
+     "volume": 0.227,
+     "clash": 0.0,
+     "total": 2.551,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.908,
+     "coord": 1.094,
+     "volume": 0.243,
+     "clash": 0.0,
+     "total": 2.733,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.146,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.933,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.131,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.917,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.08,
+     "coord": 1.094,
+     "volume": 0.267,
+     "clash": 0.0,
+     "total": 2.974,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.17,
+     "coord": 1.094,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 2.961,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.892,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.68,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.916,
+     "coord": 1.094,
+     "volume": 0.234,
+     "clash": 0.0,
+     "total": 2.711,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.378,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.166,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.875,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.662,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.038,
+     "coord": 1.094,
+     "volume": 0.233,
+     "clash": 0.0,
+     "total": 2.83,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.217,
+     "coord": 1.094,
+     "volume": 0.233,
+     "clash": 0.0,
+     "total": 3.01,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.261,
+     "coord": 1.094,
+     "volume": 0.233,
+     "clash": 0.0,
+     "total": 3.054,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.061,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.849,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.14,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.926,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.051,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.837,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.859,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.647,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.908,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.694,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.211,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.997,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.098,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.886,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.806,
+     "coord": 1.094,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 2.596,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.286,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.074,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.15,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.936,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.361,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.148,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.88,
+     "coord": 1.094,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 3.669,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.116,
+     "coord": 1.094,
+     "volume": 0.227,
+     "clash": 0.0,
+     "total": 2.89,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.95,
+     "coord": 1.094,
+     "volume": 0.243,
+     "clash": 0.0,
+     "total": 2.773,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.092,
+     "coord": 1.094,
+     "volume": 0.23,
+     "clash": 0.0,
+     "total": 2.878,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.98,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.766,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.155,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 2.943,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.34,
+     "coord": 1.094,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.128,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": null,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-759826",
+   "formula": "Li3Mn(PO4)2",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.524,
+     "coord": 0.898,
+     "volume": 0.093,
+     "clash": 0.0,
+     "total": 1.703,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.473,
+     "coord": 0.898,
+     "volume": 0.098,
+     "clash": 0.0,
+     "total": 1.666,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.524,
+     "coord": 0.898,
+     "volume": 0.093,
+     "clash": 0.0,
+     "total": 1.703,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.473,
+     "coord": 0.898,
+     "volume": 0.098,
+     "clash": 0.0,
+     "total": 1.666,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.473,
+     "coord": 0.898,
+     "volume": 0.098,
+     "clash": 0.0,
+     "total": 1.666,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-760462",
+   "formula": "Li5Ti(SiO4)2",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.743,
+     "coord": 1.023,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 1.869,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.745,
+     "coord": 1.023,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 1.871,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.743,
+     "coord": 1.023,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 1.869,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.743,
+     "coord": 1.023,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 1.869,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.743,
+     "coord": 1.023,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 1.869,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-765590",
+   "formula": "LiFePO4",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.972,
+     "coord": 0.96,
+     "volume": 0.01,
+     "clash": 0.0,
+     "total": 1.961,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.587,
+     "coord": 1.548,
+     "volume": 0.141,
+     "clash": 0.0,
+     "total": 2.56,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.587,
+     "coord": 1.548,
+     "volume": 0.141,
+     "clash": 0.0,
+     "total": 2.56,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.485,
+     "coord": 1.168,
+     "volume": 0.132,
+     "clash": 0.0,
+     "total": 2.049,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.064,
+     "coord": 0.96,
+     "volume": 0.01,
+     "clash": 0.0,
+     "total": 2.053,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": false
+  },
+  {
+   "id": "MP_mp-774501",
+   "formula": "Li9(FeO4)2",
+   "samples": 10,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.877,
+     "coord": 1.517,
+     "volume": 0.089,
+     "clash": 0.0,
+     "total": 2.661,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.825,
+     "coord": 1.517,
+     "volume": 0.065,
+     "clash": 0.0,
+     "total": 2.538,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.877,
+     "coord": 1.517,
+     "volume": 0.089,
+     "clash": 0.0,
+     "total": 2.661,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.825,
+     "coord": 1.517,
+     "volume": 0.065,
+     "clash": 0.0,
+     "total": 2.538,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.825,
+     "coord": 1.517,
+     "volume": 0.065,
+     "clash": 0.0,
+     "total": 2.538,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    }
+   ],
+   "unsteered_match": 0.6,
+   "steered_match": 0.6,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-774569",
+   "formula": "Li4Mn2Fe3Te3O16",
+   "samples": 40,
+   "valid": 0,
+   "right_composition": 0,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    }
+   ],
+   "unsteered_match": null,
+   "steered_match": null,
+   "kg_top1_match": null,
+   "any_match": false
+  },
+  {
+   "id": "MP_mp-776951",
+   "formula": "LiMnF3",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.069,
+     "coord": 6.127,
+     "volume": 0.171,
+     "clash": 0.2,
+     "total": 10.708,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.043,
+     "coord": 1.6,
+     "volume": 0.173,
+     "clash": 0.0,
+     "total": 3.162,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.678,
+     "coord": 0.81,
+     "volume": 0.015,
+     "clash": 0.0,
+     "total": 1.533,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.788,
+     "coord": 0.811,
+     "volume": 0.075,
+     "clash": 0.0,
+     "total": 1.824,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.662,
+     "coord": 0.809,
+     "volume": 0.151,
+     "clash": 0.0,
+     "total": 1.923,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.646,
+     "coord": 0.811,
+     "volume": 0.047,
+     "clash": 0.0,
+     "total": 1.599,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.461,
+     "coord": 0.811,
+     "volume": 0.016,
+     "clash": 0.0,
+     "total": 1.32,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.985,
+     "coord": 2.513,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 3.613,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.701,
+     "coord": 4.387,
+     "volume": 0.265,
+     "clash": 0.4,
+     "total": 8.883,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.509,
+     "coord": 4.757,
+     "volume": 0.306,
+     "clash": 0.4,
+     "total": 9.184,
+     "plausible": false,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.2,
+   "steered_match": 0.2,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-867705",
+   "formula": "Na3(CoO2)5",
+   "samples": 10,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.25,
+     "coord": 1.391,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 1.677,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.25,
+     "coord": 1.391,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 1.677,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.25,
+     "coord": 1.391,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 1.677,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.25,
+     "coord": 1.391,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 1.677,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.25,
+     "coord": 1.391,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 1.677,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": false
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "MP_mp-997554",
+   "formula": "Li4Fe3(CoO4)3",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.547,
+     "coord": 1.369,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 2.029,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.547,
+     "coord": 1.369,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 2.029,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.547,
+     "coord": 1.369,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 2.029,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.547,
+     "coord": 1.369,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 2.029,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.547,
+     "coord": 1.369,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 2.029,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "NOMAD_4nSKlSeUHwngzgv804GWnZECadKJ",
+   "formula": "Na3CrH14(C3O8)2",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.276,
+     "coord": 2.907,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 4.207,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.276,
+     "coord": 2.907,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 4.207,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.276,
+     "coord": 2.907,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 4.207,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.276,
+     "coord": 2.907,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 4.207,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.276,
+     "coord": 2.907,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 4.207,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "NOMAD_aG3K8fmuPp1E3SR5Qe1drBYM6tZv",
+   "formula": "K4Na4Mo5(WO8)3",
+   "samples": 40,
+   "valid": 0,
+   "right_composition": 0,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": false
+    }
+   ],
+   "unsteered_match": null,
+   "steered_match": null,
+   "kg_top1_match": null,
+   "any_match": false
+  },
+  {
+   "id": "NOMAD_LiaEpk92CYuUK8tvAFoZ1vu_ahWP",
+   "formula": "NaTi3P3O13",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.609,
+     "coord": 1.383,
+     "volume": 0.056,
+     "clash": 0.0,
+     "total": 2.161,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.649,
+     "coord": 1.383,
+     "volume": 0.056,
+     "clash": 0.0,
+     "total": 2.2,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.609,
+     "coord": 1.383,
+     "volume": 0.056,
+     "clash": 0.0,
+     "total": 2.161,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.609,
+     "coord": 1.383,
+     "volume": 0.056,
+     "clash": 0.0,
+     "total": 2.161,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.609,
+     "coord": 1.383,
+     "volume": 0.056,
+     "clash": 0.0,
+     "total": 2.161,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "NOMAD_Ml6B1VKAyacawpwhkGQVs3ln3fTH",
+   "formula": "LiMnVO4",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.345,
+     "coord": 0.859,
+     "volume": 0.027,
+     "clash": 0.0,
+     "total": 1.287,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.652,
+     "coord": 1.103,
+     "volume": 0.024,
+     "clash": 0.0,
+     "total": 1.825,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.901,
+     "coord": 1.071,
+     "volume": 0.035,
+     "clash": 0.0,
+     "total": 2.077,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.733,
+     "coord": 1.103,
+     "volume": 0.061,
+     "clash": 0.0,
+     "total": 2.018,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.35,
+     "coord": 0.859,
+     "volume": 0.004,
+     "clash": 0.0,
+     "total": 1.221,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.2,
+   "steered_match": 0.2,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "NOMAD_xS9ASEWJ-jMrX37nToDDiXW2HDov",
+   "formula": "NaScF3",
+   "samples": 20,
+   "valid": 20,
+   "right_composition": 20,
+   "plausible": 8,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.991,
+     "coord": 1.987,
+     "volume": 0.01,
+     "clash": 0.0,
+     "total": 4.008,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.103,
+     "coord": 2.473,
+     "volume": 0.018,
+     "clash": 0.0,
+     "total": 8.629,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.121,
+     "coord": 2.473,
+     "volume": 0.026,
+     "clash": 0.0,
+     "total": 8.671,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.025,
+     "coord": 1.987,
+     "volume": 0.033,
+     "clash": 0.0,
+     "total": 4.111,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.042,
+     "coord": 2.473,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 8.541,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.949,
+     "coord": 1.987,
+     "volume": 0.007,
+     "clash": 0.0,
+     "total": 3.957,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.036,
+     "coord": 2.473,
+     "volume": 0.011,
+     "clash": 0.0,
+     "total": 8.543,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.899,
+     "coord": 1.987,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 3.896,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.096,
+     "coord": 1.987,
+     "volume": 0.042,
+     "clash": 0.0,
+     "total": 4.211,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.07,
+     "coord": 2.473,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 8.553,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.004,
+     "coord": 1.987,
+     "volume": 0.03,
+     "clash": 0.0,
+     "total": 4.081,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.081,
+     "coord": 2.473,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 8.578,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.939,
+     "coord": 1.987,
+     "volume": 0.006,
+     "clash": 0.0,
+     "total": 3.944,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.097,
+     "coord": 2.473,
+     "volume": 0.015,
+     "clash": 0.0,
+     "total": 8.616,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.024,
+     "coord": 1.987,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 4.047,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.945,
+     "coord": 1.987,
+     "volume": 0.007,
+     "clash": 0.0,
+     "total": 3.952,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.949,
+     "coord": 1.987,
+     "volume": 0.023,
+     "clash": 0.0,
+     "total": 4.005,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.869,
+     "coord": 1.987,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 3.859,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.811,
+     "coord": 1.987,
+     "volume": 0.005,
+     "clash": 0.0,
+     "total": 3.814,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.089,
+     "coord": 2.473,
+     "volume": 0.012,
+     "clash": 0.0,
+     "total": 8.598,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.6,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1067967",
+   "formula": "NaZrNO",
+   "samples": 15,
+   "valid": 15,
+   "right_composition": 15,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.877,
+     "coord": 2.97,
+     "volume": 0.07,
+     "clash": 0.0,
+     "total": 5.058,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.898,
+     "coord": 2.97,
+     "volume": 0.078,
+     "clash": 0.0,
+     "total": 5.101,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.164,
+     "coord": 2.97,
+     "volume": 0.136,
+     "clash": 0.0,
+     "total": 5.542,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.702,
+     "coord": 3.945,
+     "volume": 0.053,
+     "clash": 0.0,
+     "total": 6.805,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.973,
+     "coord": 2.97,
+     "volume": 0.053,
+     "clash": 0.0,
+     "total": 5.102,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.049,
+     "coord": 2.97,
+     "volume": 0.11,
+     "clash": 0.0,
+     "total": 5.349,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.301,
+     "coord": 2.97,
+     "volume": 0.156,
+     "clash": 0.5,
+     "total": 8.239,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.122,
+     "coord": 2.97,
+     "volume": 0.155,
+     "clash": 0.0,
+     "total": 5.556,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.164,
+     "coord": 2.97,
+     "volume": 0.098,
+     "clash": 0.0,
+     "total": 5.426,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.083,
+     "coord": 2.415,
+     "volume": 0.045,
+     "clash": 0.0,
+     "total": 4.634,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.469,
+     "coord": 2.452,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 4.93,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.166,
+     "coord": 2.97,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 5.55,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.999,
+     "coord": 2.97,
+     "volume": 0.04,
+     "clash": 0.0,
+     "total": 5.088,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.976,
+     "coord": 2.67,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 3.651,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.851,
+     "coord": 2.868,
+     "volume": 0.092,
+     "clash": 0.0,
+     "total": 5.995,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.2,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1092981",
+   "formula": "NaNbPO",
+   "samples": 20,
+   "valid": 20,
+   "right_composition": 20,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.023,
+     "coord": 3.381,
+     "volume": 0.286,
+     "clash": 0.0,
+     "total": 8.261,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.836,
+     "coord": 4.552,
+     "volume": 0.07,
+     "clash": 0.0,
+     "total": 7.599,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.996,
+     "coord": 3.381,
+     "volume": 0.281,
+     "clash": 0.0,
+     "total": 8.221,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.999,
+     "coord": 3.381,
+     "volume": 0.288,
+     "clash": 0.0,
+     "total": 8.245,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.057,
+     "coord": 3.381,
+     "volume": 0.299,
+     "clash": 0.0,
+     "total": 8.334,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.693,
+     "coord": 4.305,
+     "volume": 0.131,
+     "clash": 0.0,
+     "total": 6.392,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.008,
+     "coord": 2.14,
+     "volume": 0.282,
+     "clash": 0.25,
+     "total": 7.245,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.066,
+     "coord": 3.381,
+     "volume": 0.285,
+     "clash": 0.0,
+     "total": 8.302,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.021,
+     "coord": 3.381,
+     "volume": 0.276,
+     "clash": 0.0,
+     "total": 8.229,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.002,
+     "coord": 4.552,
+     "volume": 0.072,
+     "clash": 0.0,
+     "total": 7.769,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.944,
+     "coord": 3.381,
+     "volume": 0.274,
+     "clash": 0.0,
+     "total": 8.146,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.984,
+     "coord": 3.381,
+     "volume": 0.283,
+     "clash": 0.0,
+     "total": 8.214,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.451,
+     "coord": 4.305,
+     "volume": 0.13,
+     "clash": 0.0,
+     "total": 6.145,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.734,
+     "coord": 4.552,
+     "volume": 0.084,
+     "clash": 0.0,
+     "total": 7.538,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.377,
+     "coord": 4.305,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 6.095,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.029,
+     "coord": 3.381,
+     "volume": 0.288,
+     "clash": 0.0,
+     "total": 8.274,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.053,
+     "coord": 3.381,
+     "volume": 0.299,
+     "clash": 0.0,
+     "total": 8.331,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.437,
+     "coord": 4.305,
+     "volume": 0.149,
+     "clash": 0.0,
+     "total": 6.188,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.304,
+     "coord": 4.305,
+     "volume": 0.125,
+     "clash": 0.0,
+     "total": 5.983,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.367,
+     "coord": 4.552,
+     "volume": 0.054,
+     "clash": 0.0,
+     "total": 8.082,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.2,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1098215",
+   "formula": "NaCrAsO",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.619,
+     "coord": 3.978,
+     "volume": 0.01,
+     "clash": 0.0,
+     "total": 5.626,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.873,
+     "coord": 3.978,
+     "volume": 0.027,
+     "clash": 0.0,
+     "total": 5.93,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.783,
+     "coord": 2.374,
+     "volume": 0.053,
+     "clash": 0.0,
+     "total": 4.314,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.056,
+     "coord": 1.431,
+     "volume": 0.0,
+     "clash": 0.0,
+     "total": 3.487,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.253,
+     "coord": 3.978,
+     "volume": 0.018,
+     "clash": 0.0,
+     "total": 6.284,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.877,
+     "coord": 3.978,
+     "volume": 0.015,
+     "clash": 0.0,
+     "total": 5.899,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.903,
+     "coord": 2.277,
+     "volume": 0.014,
+     "clash": 0.0,
+     "total": 5.223,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.98,
+     "coord": 3.978,
+     "volume": 0.063,
+     "clash": 0.0,
+     "total": 6.146,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.677,
+     "coord": 3.453,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 5.134,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.955,
+     "coord": 1.431,
+     "volume": 0.006,
+     "clash": 0.0,
+     "total": 3.404,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.6,
+   "steered_match": 0.8,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1256474",
+   "formula": "NaTbCoS3",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.039,
+     "coord": 1.372,
+     "volume": 0.006,
+     "clash": 0.0,
+     "total": 2.43,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.772,
+     "coord": 1.372,
+     "volume": 0.004,
+     "clash": 0.0,
+     "total": 2.155,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.1,
+     "coord": 1.372,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 2.482,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.163,
+     "coord": 1.372,
+     "volume": 0.002,
+     "clash": 0.0,
+     "total": 2.539,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.801,
+     "coord": 1.372,
+     "volume": 0.005,
+     "clash": 0.0,
+     "total": 2.188,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1259245",
+   "formula": "LiCeMnO3",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.184,
+     "coord": 2.236,
+     "volume": 0.04,
+     "clash": 0.0,
+     "total": 3.54,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.322,
+     "coord": 2.56,
+     "volume": 0.052,
+     "clash": 0.0,
+     "total": 4.037,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.473,
+     "coord": 2.56,
+     "volume": 0.068,
+     "clash": 0.0,
+     "total": 4.236,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.338,
+     "coord": 2.641,
+     "volume": 0.023,
+     "clash": 0.0,
+     "total": 4.049,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.342,
+     "coord": 2.56,
+     "volume": 0.068,
+     "clash": 0.0,
+     "total": 4.107,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1356406",
+   "formula": "NaPrCdS3",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.295,
+     "coord": 1.616,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 3.014,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.861,
+     "coord": 1.234,
+     "volume": 0.029,
+     "clash": 0.0,
+     "total": 3.182,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.981,
+     "coord": 1.616,
+     "volume": 0.021,
+     "clash": 0.0,
+     "total": 3.659,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.997,
+     "coord": 1.616,
+     "volume": 0.027,
+     "clash": 0.0,
+     "total": 3.695,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.016,
+     "coord": 1.501,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 3.526,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.344,
+     "coord": 1.771,
+     "volume": 0.036,
+     "clash": 0.0,
+     "total": 5.222,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.411,
+     "coord": 1.407,
+     "volume": 0.013,
+     "clash": 0.0,
+     "total": 2.858,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.497,
+     "coord": 1.355,
+     "volume": 0.021,
+     "clash": 0.0,
+     "total": 2.915,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.624,
+     "coord": 1.355,
+     "volume": 0.028,
+     "clash": 0.0,
+     "total": 3.064,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.444,
+     "coord": 1.616,
+     "volume": 0.03,
+     "clash": 0.0,
+     "total": 4.149,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.6,
+   "steered_match": 0.6,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1389252",
+   "formula": "LiVCoO4",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 9,
+   "plausible": 9,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.676,
+     "coord": 0.873,
+     "volume": 0.02,
+     "clash": 0.0,
+     "total": 1.608,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.441,
+     "coord": 0.873,
+     "volume": 0.05,
+     "clash": 0.0,
+     "total": 1.463,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.198,
+     "coord": 1.026,
+     "volume": 0.028,
+     "clash": 0.0,
+     "total": 2.307,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.615,
+     "coord": 0.873,
+     "volume": 0.007,
+     "clash": 0.0,
+     "total": 1.509,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.745,
+     "coord": 1.026,
+     "volume": 0.0,
+     "clash": 0.0,
+     "total": 1.772,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.598,
+     "coord": 0.873,
+     "volume": 0.034,
+     "clash": 0.0,
+     "total": 1.573,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.603,
+     "coord": 0.873,
+     "volume": 0.027,
+     "clash": 0.0,
+     "total": 1.557,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.618,
+     "coord": 0.873,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 1.604,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.392,
+     "coord": 1.026,
+     "volume": 0.126,
+     "clash": 0.0,
+     "total": 2.797,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": false
+  },
+  {
+   "id": "OQMD_1413490",
+   "formula": "LiZnPO4",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.505,
+     "coord": 0.988,
+     "volume": 0.025,
+     "clash": 0.0,
+     "total": 1.567,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.914,
+     "coord": 0.988,
+     "volume": 0.037,
+     "clash": 0.0,
+     "total": 2.013,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.801,
+     "coord": 0.988,
+     "volume": 0.019,
+     "clash": 0.0,
+     "total": 1.846,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.107,
+     "coord": 0.988,
+     "volume": 0.065,
+     "clash": 0.0,
+     "total": 2.29,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.865,
+     "coord": 0.988,
+     "volume": 0.009,
+     "clash": 0.0,
+     "total": 1.879,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1430740",
+   "formula": "LiTl2MoF6",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 6,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.623,
+     "coord": 1.668,
+     "volume": 0.199,
+     "clash": 0.0,
+     "total": 2.889,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.755,
+     "coord": 1.668,
+     "volume": 0.23,
+     "clash": 0.0,
+     "total": 3.112,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.71,
+     "coord": 1.668,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.072,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.663,
+     "coord": 1.668,
+     "volume": 0.221,
+     "clash": 0.0,
+     "total": 2.994,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.734,
+     "coord": 1.668,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.094,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.615,
+     "coord": 1.668,
+     "volume": 0.221,
+     "clash": 0.0,
+     "total": 2.946,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.894,
+     "coord": 1.668,
+     "volume": 0.243,
+     "clash": 0.0,
+     "total": 3.292,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.545,
+     "coord": 1.668,
+     "volume": 0.211,
+     "clash": 0.0,
+     "total": 2.847,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.635,
+     "coord": 1.668,
+     "volume": 0.217,
+     "clash": 0.0,
+     "total": 2.954,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.71,
+     "coord": 1.668,
+     "volume": 0.221,
+     "clash": 0.0,
+     "total": 3.042,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1433256",
+   "formula": "Na2MgOsO6",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 9,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.401,
+     "coord": 2.031,
+     "volume": 0.0,
+     "clash": 0.0,
+     "total": 3.433,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.402,
+     "coord": 2.031,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 3.437,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 2.433,
+     "coord": 1.402,
+     "volume": 0.092,
+     "clash": 0.3,
+     "total": 5.612,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.4,
+     "coord": 2.031,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 3.433,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.365,
+     "coord": 2.031,
+     "volume": 0.041,
+     "clash": 0.0,
+     "total": 3.52,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.398,
+     "coord": 2.031,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 3.437,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.396,
+     "coord": 2.031,
+     "volume": 0.004,
+     "clash": 0.0,
+     "total": 3.44,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.396,
+     "coord": 2.031,
+     "volume": 0.004,
+     "clash": 0.0,
+     "total": 3.44,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.401,
+     "coord": 2.031,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 3.435,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.397,
+     "coord": 2.031,
+     "volume": 0.005,
+     "clash": 0.0,
+     "total": 3.444,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.8,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1433272",
+   "formula": "Na2CdWO6",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.744,
+     "coord": 2.091,
+     "volume": 0.006,
+     "clash": 0.0,
+     "total": 3.854,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.756,
+     "coord": 2.091,
+     "volume": 0.011,
+     "clash": 0.0,
+     "total": 3.881,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.755,
+     "coord": 2.091,
+     "volume": 0.02,
+     "clash": 0.0,
+     "total": 3.906,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.751,
+     "coord": 2.091,
+     "volume": 0.022,
+     "clash": 0.0,
+     "total": 3.909,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.757,
+     "coord": 2.091,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 3.856,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1444164",
+   "formula": "Li5CuSO2",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.103,
+     "coord": 4.074,
+     "volume": 0.033,
+     "clash": 0.0,
+     "total": 5.276,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.769,
+     "coord": 4.074,
+     "volume": 0.047,
+     "clash": 0.0,
+     "total": 4.984,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.811,
+     "coord": 4.074,
+     "volume": 0.027,
+     "clash": 0.0,
+     "total": 4.967,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.155,
+     "coord": 4.074,
+     "volume": 0.105,
+     "clash": 0.0,
+     "total": 5.544,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.037,
+     "coord": 4.074,
+     "volume": 0.054,
+     "clash": 0.0,
+     "total": 5.272,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1507002",
+   "formula": "CsK2Na2ReO6",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 10,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.172,
+     "coord": 1.604,
+     "volume": 0.212,
+     "clash": 0.0,
+     "total": 3.411,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.947,
+     "coord": 1.604,
+     "volume": 0.233,
+     "clash": 0.0,
+     "total": 3.251,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.133,
+     "coord": 1.604,
+     "volume": 0.22,
+     "clash": 0.0,
+     "total": 3.397,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.016,
+     "coord": 1.604,
+     "volume": 0.196,
+     "clash": 0.0,
+     "total": 3.209,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.188,
+     "coord": 1.604,
+     "volume": 0.219,
+     "clash": 0.0,
+     "total": 3.45,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.132,
+     "coord": 1.604,
+     "volume": 0.214,
+     "clash": 0.0,
+     "total": 3.379,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.988,
+     "coord": 1.604,
+     "volume": 0.262,
+     "clash": 0.0,
+     "total": 3.379,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.124,
+     "coord": 1.604,
+     "volume": 0.205,
+     "clash": 0.0,
+     "total": 3.344,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.07,
+     "coord": 1.604,
+     "volume": 0.219,
+     "clash": 0.0,
+     "total": 3.331,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.105,
+     "coord": 1.604,
+     "volume": 0.239,
+     "clash": 0.0,
+     "total": 3.426,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1507068",
+   "formula": "KLi4ReO6",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.383,
+     "coord": 1.544,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 3.34,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.383,
+     "coord": 1.544,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 3.34,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.383,
+     "coord": 1.544,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 3.34,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.383,
+     "coord": 1.544,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 3.34,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.383,
+     "coord": 1.544,
+     "volume": 0.138,
+     "clash": 0.0,
+     "total": 3.34,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": false
+  },
+  {
+   "id": "OQMD_1542289",
+   "formula": "Na2CuTcO6",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.133,
+     "coord": 2.196,
+     "volume": 0.031,
+     "clash": 0.0,
+     "total": 3.422,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.134,
+     "coord": 2.196,
+     "volume": 0.037,
+     "clash": 0.0,
+     "total": 3.442,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.136,
+     "coord": 2.196,
+     "volume": 0.048,
+     "clash": 0.0,
+     "total": 3.475,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.128,
+     "coord": 2.196,
+     "volume": 0.048,
+     "clash": 0.0,
+     "total": 3.468,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.138,
+     "coord": 2.196,
+     "volume": 0.042,
+     "clash": 0.0,
+     "total": 3.46,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1632281",
+   "formula": "LiNbSeO",
+   "samples": 25,
+   "valid": 25,
+   "right_composition": 25,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.838,
+     "coord": 2.004,
+     "volume": 0.254,
+     "clash": 0.0,
+     "total": 4.605,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.531,
+     "coord": 1.004,
+     "volume": 0.237,
+     "clash": 0.0,
+     "total": 3.247,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.585,
+     "coord": 1.004,
+     "volume": 0.235,
+     "clash": 0.0,
+     "total": 3.295,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.909,
+     "coord": 2.004,
+     "volume": 0.234,
+     "clash": 0.0,
+     "total": 4.615,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.991,
+     "coord": 2.004,
+     "volume": 0.236,
+     "clash": 0.0,
+     "total": 4.702,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.527,
+     "coord": 1.004,
+     "volume": 0.243,
+     "clash": 0.0,
+     "total": 3.261,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.536,
+     "coord": 1.004,
+     "volume": 0.243,
+     "clash": 0.0,
+     "total": 3.268,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.963,
+     "coord": 1.004,
+     "volume": 0.255,
+     "clash": 0.0,
+     "total": 3.732,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.431,
+     "coord": 1.004,
+     "volume": 0.222,
+     "clash": 0.0,
+     "total": 3.099,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.792,
+     "coord": 2.004,
+     "volume": 0.249,
+     "clash": 0.0,
+     "total": 4.544,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.181,
+     "coord": 1.004,
+     "volume": 0.245,
+     "clash": 0.0,
+     "total": 2.919,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.349,
+     "coord": 1.004,
+     "volume": 0.239,
+     "clash": 0.0,
+     "total": 3.07,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.907,
+     "coord": 2.004,
+     "volume": 0.241,
+     "clash": 0.0,
+     "total": 4.635,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.554,
+     "coord": 1.004,
+     "volume": 0.227,
+     "clash": 0.0,
+     "total": 3.24,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.456,
+     "coord": 1.004,
+     "volume": 0.229,
+     "clash": 0.0,
+     "total": 3.146,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.45,
+     "coord": 1.004,
+     "volume": 0.235,
+     "clash": 0.0,
+     "total": 3.157,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.489,
+     "coord": 3.606,
+     "volume": 0.008,
+     "clash": 0.0,
+     "total": 5.119,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.429,
+     "coord": 1.004,
+     "volume": 0.227,
+     "clash": 0.0,
+     "total": 3.113,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.031,
+     "coord": 3.261,
+     "volume": 0.094,
+     "clash": 0.0,
+     "total": 4.572,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.837,
+     "coord": 3.261,
+     "volume": 0.069,
+     "clash": 0.0,
+     "total": 4.303,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.914,
+     "coord": 2.004,
+     "volume": 0.247,
+     "clash": 0.0,
+     "total": 4.659,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.129,
+     "coord": 1.004,
+     "volume": 0.215,
+     "clash": 0.0,
+     "total": 2.778,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.249,
+     "coord": 1.004,
+     "volume": 0.229,
+     "clash": 0.0,
+     "total": 2.939,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.977,
+     "coord": 3.606,
+     "volume": 0.044,
+     "clash": 0.0,
+     "total": 4.716,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.846,
+     "coord": 1.774,
+     "volume": 0.068,
+     "clash": 0.0,
+     "total": 2.823,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1695",
+   "formula": "NaTiF4",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.641,
+     "coord": 1.2,
+     "volume": 0.041,
+     "clash": 0.0,
+     "total": 1.964,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.54,
+     "coord": 1.2,
+     "volume": 0.025,
+     "clash": 0.0,
+     "total": 1.814,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.617,
+     "coord": 1.2,
+     "volume": 0.038,
+     "clash": 0.0,
+     "total": 1.932,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.692,
+     "coord": 1.2,
+     "volume": 0.054,
+     "clash": 0.0,
+     "total": 2.054,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.56,
+     "coord": 1.2,
+     "volume": 0.037,
+     "clash": 0.0,
+     "total": 1.871,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": 0.0,
+   "kg_top1_match": false,
+   "any_match": false
+  },
+  {
+   "id": "OQMD_1707808",
+   "formula": "NaNdCoWO6",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.818,
+     "coord": 1.435,
+     "volume": 0.095,
+     "clash": 0.0,
+     "total": 2.537,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.818,
+     "coord": 1.435,
+     "volume": 0.095,
+     "clash": 0.0,
+     "total": 2.537,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.818,
+     "coord": 1.435,
+     "volume": 0.095,
+     "clash": 0.0,
+     "total": 2.537,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.818,
+     "coord": 1.435,
+     "volume": 0.095,
+     "clash": 0.0,
+     "total": 2.537,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.818,
+     "coord": 1.435,
+     "volume": 0.095,
+     "clash": 0.0,
+     "total": 2.537,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1732096",
+   "formula": "Li5IrO4",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.923,
+     "coord": 3.084,
+     "volume": 0.062,
+     "clash": 0.0,
+     "total": 4.193,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.172,
+     "coord": 2.705,
+     "volume": 0.013,
+     "clash": 0.0,
+     "total": 3.917,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.784,
+     "coord": 1.411,
+     "volume": 0.099,
+     "clash": 0.0,
+     "total": 2.493,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.15,
+     "coord": 2.705,
+     "volume": 0.05,
+     "clash": 0.0,
+     "total": 4.006,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.712,
+     "coord": 1.411,
+     "volume": 0.084,
+     "clash": 0.0,
+     "total": 2.374,
+     "plausible": true,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.4,
+   "steered_match": 0.4,
+   "kg_top1_match": false,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1738954",
+   "formula": "Na6MnO5",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.495,
+     "coord": 2.78,
+     "volume": 0.201,
+     "clash": 0.0,
+     "total": 3.876,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.491,
+     "coord": 2.78,
+     "volume": 0.203,
+     "clash": 0.0,
+     "total": 3.878,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.495,
+     "coord": 2.78,
+     "volume": 0.211,
+     "clash": 0.0,
+     "total": 3.906,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.617,
+     "coord": 2.78,
+     "volume": 0.204,
+     "clash": 0.0,
+     "total": 4.007,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.544,
+     "coord": 2.78,
+     "volume": 0.207,
+     "clash": 0.0,
+     "total": 3.944,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1750178",
+   "formula": "Li2TiCdO4",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.204,
+     "coord": 1.277,
+     "volume": 0.061,
+     "clash": 0.0,
+     "total": 2.663,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.162,
+     "coord": 1.251,
+     "volume": 0.055,
+     "clash": 0.0,
+     "total": 2.579,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.202,
+     "coord": 1.251,
+     "volume": 0.047,
+     "clash": 0.0,
+     "total": 2.595,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.016,
+     "coord": 1.251,
+     "volume": 0.087,
+     "clash": 0.0,
+     "total": 2.527,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.062,
+     "coord": 1.251,
+     "volume": 0.066,
+     "clash": 0.0,
+     "total": 2.511,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.8,
+   "steered_match": 0.8,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1757394",
+   "formula": "Na3Cu2AsO6",
+   "samples": 40,
+   "valid": 40,
+   "right_composition": 40,
+   "plausible": 3,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.397,
+     "coord": 1.48,
+     "volume": 0.261,
+     "clash": 0.0,
+     "total": 3.659,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.326,
+     "coord": 1.48,
+     "volume": 0.244,
+     "clash": 0.0,
+     "total": 3.536,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.364,
+     "coord": 1.48,
+     "volume": 0.255,
+     "clash": 0.0,
+     "total": 3.608,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.294,
+     "coord": 1.48,
+     "volume": 0.231,
+     "clash": 0.0,
+     "total": 3.468,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.311,
+     "coord": 1.48,
+     "volume": 0.238,
+     "clash": 0.0,
+     "total": 3.504,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.456,
+     "coord": 1.48,
+     "volume": 0.241,
+     "clash": 0.0,
+     "total": 3.657,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.438,
+     "coord": 1.48,
+     "volume": 0.2,
+     "clash": 0.0,
+     "total": 3.516,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.367,
+     "coord": 1.48,
+     "volume": 0.245,
+     "clash": 0.0,
+     "total": 3.582,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.18,
+     "coord": 1.48,
+     "volume": 0.246,
+     "clash": 0.0,
+     "total": 3.398,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.335,
+     "coord": 1.48,
+     "volume": 0.239,
+     "clash": 0.0,
+     "total": 3.531,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.289,
+     "coord": 1.48,
+     "volume": 0.284,
+     "clash": 0.0,
+     "total": 3.622,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.223,
+     "coord": 1.48,
+     "volume": 0.233,
+     "clash": 0.0,
+     "total": 3.401,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.326,
+     "coord": 1.48,
+     "volume": 0.25,
+     "clash": 0.0,
+     "total": 3.557,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.428,
+     "coord": 1.48,
+     "volume": 0.262,
+     "clash": 0.0,
+     "total": 3.693,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.397,
+     "coord": 1.48,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 3.572,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.068,
+     "coord": 1.48,
+     "volume": 0.25,
+     "clash": 0.0,
+     "total": 3.297,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.36,
+     "coord": 1.48,
+     "volume": 0.256,
+     "clash": 0.0,
+     "total": 3.608,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.472,
+     "coord": 1.48,
+     "volume": 0.233,
+     "clash": 0.0,
+     "total": 3.652,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.191,
+     "coord": 1.48,
+     "volume": 0.261,
+     "clash": 0.0,
+     "total": 3.453,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.322,
+     "coord": 1.48,
+     "volume": 0.26,
+     "clash": 0.0,
+     "total": 3.58,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.436,
+     "coord": 1.48,
+     "volume": 0.198,
+     "clash": 0.0,
+     "total": 3.51,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.394,
+     "coord": 1.48,
+     "volume": 0.256,
+     "clash": 0.0,
+     "total": 3.643,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.231,
+     "coord": 1.48,
+     "volume": 0.247,
+     "clash": 0.0,
+     "total": 3.453,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.181,
+     "coord": 1.48,
+     "volume": 0.25,
+     "clash": 0.0,
+     "total": 3.412,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.246,
+     "coord": 1.48,
+     "volume": 0.258,
+     "clash": 0.0,
+     "total": 3.5,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.483,
+     "coord": 1.48,
+     "volume": 0.267,
+     "clash": 0.0,
+     "total": 3.762,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.37,
+     "coord": 1.48,
+     "volume": 0.255,
+     "clash": 0.0,
+     "total": 3.614,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.436,
+     "coord": 1.48,
+     "volume": 0.235,
+     "clash": 0.0,
+     "total": 3.62,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.342,
+     "coord": 1.48,
+     "volume": 0.268,
+     "clash": 0.0,
+     "total": 3.627,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.398,
+     "coord": 1.48,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 3.603,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.248,
+     "coord": 1.48,
+     "volume": 0.232,
+     "clash": 0.0,
+     "total": 3.425,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.407,
+     "coord": 1.48,
+     "volume": 0.227,
+     "clash": 0.0,
+     "total": 3.566,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.353,
+     "coord": 1.48,
+     "volume": 0.242,
+     "clash": 0.0,
+     "total": 3.558,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.221,
+     "coord": 1.48,
+     "volume": 0.264,
+     "clash": 0.0,
+     "total": 3.492,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.398,
+     "coord": 1.48,
+     "volume": 0.248,
+     "clash": 0.0,
+     "total": 3.621,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.459,
+     "coord": 1.48,
+     "volume": 0.21,
+     "clash": 0.0,
+     "total": 3.567,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.201,
+     "coord": 1.48,
+     "volume": 0.249,
+     "clash": 0.0,
+     "total": 3.428,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.491,
+     "coord": 1.48,
+     "volume": 0.25,
+     "clash": 0.0,
+     "total": 3.72,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.482,
+     "coord": 1.48,
+     "volume": 0.26,
+     "clash": 0.0,
+     "total": 3.741,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.271,
+     "coord": 1.48,
+     "volume": 0.245,
+     "clash": 0.0,
+     "total": 3.485,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_1758049",
+   "formula": "Ba4Na(WO4)3",
+   "samples": 40,
+   "valid": 40,
+   "right_composition": 39,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.55,
+     "coord": 1.37,
+     "volume": 0.366,
+     "clash": 0.0,
+     "total": 3.019,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.536,
+     "coord": 1.37,
+     "volume": 0.363,
+     "clash": 0.0,
+     "total": 2.996,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.507,
+     "coord": 1.37,
+     "volume": 0.357,
+     "clash": 0.0,
+     "total": 2.947,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.571,
+     "coord": 1.37,
+     "volume": 0.371,
+     "clash": 0.0,
+     "total": 3.054,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.48,
+     "coord": 1.37,
+     "volume": 0.351,
+     "clash": 0.0,
+     "total": 2.902,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.506,
+     "coord": 1.37,
+     "volume": 0.357,
+     "clash": 0.0,
+     "total": 2.946,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.473,
+     "coord": 1.37,
+     "volume": 0.349,
+     "clash": 0.0,
+     "total": 2.891,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.452,
+     "coord": 1.37,
+     "volume": 0.345,
+     "clash": 0.0,
+     "total": 2.855,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.502,
+     "coord": 1.37,
+     "volume": 0.356,
+     "clash": 0.0,
+     "total": 2.939,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.472,
+     "coord": 1.37,
+     "volume": 0.349,
+     "clash": 0.0,
+     "total": 2.889,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.546,
+     "coord": 1.37,
+     "volume": 0.365,
+     "clash": 0.0,
+     "total": 3.011,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.497,
+     "coord": 1.37,
+     "volume": 0.355,
+     "clash": 0.0,
+     "total": 2.932,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.499,
+     "coord": 1.37,
+     "volume": 0.355,
+     "clash": 0.0,
+     "total": 2.933,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.477,
+     "coord": 1.37,
+     "volume": 0.35,
+     "clash": 0.0,
+     "total": 2.897,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.499,
+     "coord": 1.37,
+     "volume": 0.355,
+     "clash": 0.0,
+     "total": 2.933,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.379,
+     "coord": 1.37,
+     "volume": 0.329,
+     "clash": 0.0,
+     "total": 2.734,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.504,
+     "coord": 1.37,
+     "volume": 0.356,
+     "clash": 0.0,
+     "total": 2.943,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.476,
+     "coord": 1.37,
+     "volume": 0.35,
+     "clash": 0.0,
+     "total": 2.897,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.506,
+     "coord": 1.37,
+     "volume": 0.357,
+     "clash": 0.0,
+     "total": 2.946,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.504,
+     "coord": 1.462,
+     "volume": 0.335,
+     "clash": 0.0,
+     "total": 2.972,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.496,
+     "coord": 1.37,
+     "volume": 0.354,
+     "clash": 0.0,
+     "total": 2.929,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.57,
+     "coord": 1.37,
+     "volume": 0.371,
+     "clash": 0.0,
+     "total": 3.052,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.481,
+     "coord": 1.37,
+     "volume": 0.351,
+     "clash": 0.0,
+     "total": 2.904,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.5,
+     "coord": 1.37,
+     "volume": 0.355,
+     "clash": 0.0,
+     "total": 2.936,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.362,
+     "coord": 1.37,
+     "volume": 0.325,
+     "clash": 0.0,
+     "total": 2.707,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.493,
+     "coord": 1.37,
+     "volume": 0.354,
+     "clash": 0.0,
+     "total": 2.924,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.506,
+     "coord": 1.37,
+     "volume": 0.357,
+     "clash": 0.0,
+     "total": 2.945,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.57,
+     "coord": 1.37,
+     "volume": 0.371,
+     "clash": 0.0,
+     "total": 3.051,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.536,
+     "coord": 1.37,
+     "volume": 0.363,
+     "clash": 0.0,
+     "total": 2.996,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.502,
+     "coord": 1.37,
+     "volume": 0.356,
+     "clash": 0.0,
+     "total": 2.939,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.593,
+     "coord": 1.37,
+     "volume": 0.376,
+     "clash": 0.0,
+     "total": 3.091,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.5,
+     "coord": 1.37,
+     "volume": 0.355,
+     "clash": 0.0,
+     "total": 2.935,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.446,
+     "coord": 1.37,
+     "volume": 0.343,
+     "clash": 0.0,
+     "total": 2.846,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.452,
+     "coord": 1.37,
+     "volume": 0.345,
+     "clash": 0.0,
+     "total": 2.856,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.48,
+     "coord": 1.37,
+     "volume": 0.351,
+     "clash": 0.0,
+     "total": 2.902,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.534,
+     "coord": 1.37,
+     "volume": 0.363,
+     "clash": 0.0,
+     "total": 2.992,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.49,
+     "coord": 1.37,
+     "volume": 0.353,
+     "clash": 0.0,
+     "total": 2.919,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.528,
+     "coord": 1.37,
+     "volume": 0.361,
+     "clash": 0.0,
+     "total": 2.982,
+     "plausible": false,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.444,
+     "coord": 1.37,
+     "volume": 0.343,
+     "clash": 0.0,
+     "total": 2.843,
+     "plausible": false,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": null,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_21597",
+   "formula": "NaNd2OsO6",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.88,
+     "coord": 1.392,
+     "volume": 0.007,
+     "clash": 0.0,
+     "total": 2.292,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.929,
+     "coord": 1.392,
+     "volume": 0.001,
+     "clash": 0.0,
+     "total": 2.325,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.935,
+     "coord": 1.392,
+     "volume": 0.002,
+     "clash": 0.0,
+     "total": 2.334,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.939,
+     "coord": 1.392,
+     "volume": 0.003,
+     "clash": 0.0,
+     "total": 2.341,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.91,
+     "coord": 1.392,
+     "volume": 0.009,
+     "clash": 0.0,
+     "total": 2.329,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_42049",
+   "formula": "NaCo(CO)4",
+   "samples": 40,
+   "valid": 39,
+   "right_composition": 39,
+   "plausible": 0,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.229,
+     "coord": 6.4,
+     "volume": 0.403,
+     "clash": 0.4,
+     "total": 14.837,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.186,
+     "coord": 7.993,
+     "volume": 0.416,
+     "clash": 0.3,
+     "total": 15.928,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.883,
+     "coord": 5.637,
+     "volume": 0.422,
+     "clash": 0.4,
+     "total": 14.785,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.124,
+     "coord": 5.215,
+     "volume": 0.417,
+     "clash": 0.3,
+     "total": 14.089,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.477,
+     "coord": 3.283,
+     "volume": 0.353,
+     "clash": 0.0,
+     "total": 9.817,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.578,
+     "coord": 4.817,
+     "volume": 0.467,
+     "clash": 0.0,
+     "total": 11.798,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.898,
+     "coord": 4.256,
+     "volume": 0.412,
+     "clash": 0.3,
+     "total": 13.89,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 7.03,
+     "coord": 3.054,
+     "volume": 0.482,
+     "clash": 0.3,
+     "total": 13.029,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.225,
+     "coord": 3.331,
+     "volume": 0.07,
+     "clash": 0.3,
+     "total": 9.267,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.761,
+     "coord": 2.288,
+     "volume": 0.43,
+     "clash": 0.0,
+     "total": 9.34,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 7.429,
+     "coord": 3.95,
+     "volume": 0.484,
+     "clash": 0.0,
+     "total": 12.832,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.987,
+     "coord": 3.212,
+     "volume": 0.418,
+     "clash": 0.3,
+     "total": 11.953,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.274,
+     "coord": 2.959,
+     "volume": 0.418,
+     "clash": 0.2,
+     "total": 11.488,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.277,
+     "coord": 4.343,
+     "volume": 0.484,
+     "clash": 0.2,
+     "total": 12.072,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.874,
+     "coord": 4.426,
+     "volume": 0.417,
+     "clash": 0.2,
+     "total": 10.551,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.887,
+     "coord": 7.429,
+     "volume": 0.409,
+     "clash": 0.4,
+     "total": 15.544,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.38,
+     "coord": 5.469,
+     "volume": 0.465,
+     "clash": 0.6,
+     "total": 15.246,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.53,
+     "coord": 5.72,
+     "volume": 0.419,
+     "clash": 0.0,
+     "total": 13.507,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.307,
+     "coord": 5.467,
+     "volume": 0.399,
+     "clash": 0.3,
+     "total": 12.471,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.9,
+     "coord": 2.847,
+     "volume": 0.35,
+     "clash": 0.0,
+     "total": 10.795,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.76,
+     "coord": 5.363,
+     "volume": 0.338,
+     "clash": 0.2,
+     "total": 12.137,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.618,
+     "coord": 5.861,
+     "volume": 0.427,
+     "clash": 0.2,
+     "total": 14.759,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 7.795,
+     "coord": 2.329,
+     "volume": 0.39,
+     "clash": 0.2,
+     "total": 12.294,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.301,
+     "coord": 4.053,
+     "volume": 0.424,
+     "clash": 0.2,
+     "total": 9.627,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.934,
+     "coord": 5.127,
+     "volume": 0.423,
+     "clash": 0.2,
+     "total": 11.332,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 7.469,
+     "coord": 2.717,
+     "volume": 0.409,
+     "clash": 0.3,
+     "total": 12.912,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.624,
+     "coord": 2.161,
+     "volume": 0.462,
+     "clash": 0.0,
+     "total": 9.172,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.806,
+     "coord": 5.0,
+     "volume": 0.382,
+     "clash": 0.5,
+     "total": 15.453,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.708,
+     "coord": 2.847,
+     "volume": 0.416,
+     "clash": 0.3,
+     "total": 11.304,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.074,
+     "coord": 3.011,
+     "volume": 0.4,
+     "clash": 0.2,
+     "total": 11.284,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.731,
+     "coord": 6.015,
+     "volume": 0.453,
+     "clash": 0.2,
+     "total": 15.106,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.682,
+     "coord": 4.879,
+     "volume": 0.418,
+     "clash": 0.5,
+     "total": 13.315,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.108,
+     "coord": 3.9,
+     "volume": 0.341,
+     "clash": 0.5,
+     "total": 13.531,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 6.7,
+     "coord": 2.786,
+     "volume": 0.428,
+     "clash": 0.4,
+     "total": 12.771,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.036,
+     "coord": 5.441,
+     "volume": 0.425,
+     "clash": 0.3,
+     "total": 11.251,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.517,
+     "coord": 4.394,
+     "volume": 0.42,
+     "clash": 0.2,
+     "total": 10.17,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.587,
+     "coord": 3.915,
+     "volume": 0.428,
+     "clash": 0.2,
+     "total": 11.786,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 5.627,
+     "coord": 4.8,
+     "volume": 0.371,
+     "clash": 0.4,
+     "total": 13.541,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 4.902,
+     "coord": 4.613,
+     "volume": 0.064,
+     "clash": 0.1,
+     "total": 10.206,
+     "plausible": false,
+     "strict": false
+    }
+   ],
+   "unsteered_match": 0.0,
+   "steered_match": null,
+   "kg_top1_match": false,
+   "any_match": false
+  },
+  {
+   "id": "OQMD_45077",
+   "formula": "NaNbO3",
+   "samples": 10,
+   "valid": 10,
+   "right_composition": 8,
+   "plausible": 7,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.576,
+     "coord": 1.984,
+     "volume": 0.092,
+     "clash": 0.0,
+     "total": 2.836,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.764,
+     "coord": 1.51,
+     "volume": 0.094,
+     "clash": 0.0,
+     "total": 2.556,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.764,
+     "coord": 1.51,
+     "volume": 0.094,
+     "clash": 0.0,
+     "total": 2.556,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.576,
+     "coord": 1.984,
+     "volume": 0.092,
+     "clash": 0.0,
+     "total": 2.836,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.576,
+     "coord": 1.984,
+     "volume": 0.092,
+     "clash": 0.0,
+     "total": 2.836,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 1.519,
+     "coord": 1.977,
+     "volume": 0.01,
+     "clash": 0.0,
+     "total": 3.526,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 3.088,
+     "coord": 6.462,
+     "volume": 0.026,
+     "clash": 0.65,
+     "total": 12.879,
+     "plausible": false,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.764,
+     "coord": 1.51,
+     "volume": 0.094,
+     "clash": 0.0,
+     "total": 2.556,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.4,
+   "steered_match": 0.4,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_686068",
+   "formula": "NaY(Pd3O4)2",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.509,
+     "coord": 1.709,
+     "volume": 0.016,
+     "clash": 0.0,
+     "total": 2.266,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.48,
+     "coord": 1.709,
+     "volume": 0.018,
+     "clash": 0.0,
+     "total": 2.242,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.524,
+     "coord": 1.709,
+     "volume": 0.015,
+     "clash": 0.0,
+     "total": 2.277,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.468,
+     "coord": 1.709,
+     "volume": 0.018,
+     "clash": 0.0,
+     "total": 2.232,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.422,
+     "coord": 1.709,
+     "volume": 0.021,
+     "clash": 0.0,
+     "total": 2.193,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_694514",
+   "formula": "Li3MnPbO6",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.561,
+     "coord": 1.638,
+     "volume": 0.148,
+     "clash": 0.0,
+     "total": 2.645,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.52,
+     "coord": 1.638,
+     "volume": 0.152,
+     "clash": 0.0,
+     "total": 2.615,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.537,
+     "coord": 1.638,
+     "volume": 0.146,
+     "clash": 0.0,
+     "total": 2.612,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.579,
+     "coord": 1.638,
+     "volume": 0.142,
+     "clash": 0.0,
+     "total": 2.645,
+     "plausible": true,
+     "strict": true
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.537,
+     "coord": 1.638,
+     "volume": 0.118,
+     "clash": 0.0,
+     "total": 2.529,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 1.0,
+   "steered_match": 1.0,
+   "kg_top1_match": true,
+   "any_match": true
+  },
+  {
+   "id": "OQMD_827321",
+   "formula": "LiWO3",
+   "samples": 5,
+   "valid": 5,
+   "right_composition": 5,
+   "plausible": 5,
+   "rows": [
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.499,
+     "coord": 0.889,
+     "volume": 0.137,
+     "clash": 0.0,
+     "total": 1.798,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.871,
+     "coord": 0.889,
+     "volume": 0.096,
+     "clash": 0.0,
+     "total": 2.049,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.626,
+     "coord": 0.889,
+     "volume": 0.159,
+     "clash": 0.0,
+     "total": 1.991,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.379,
+     "coord": 0.889,
+     "volume": 0.144,
+     "clash": 0.0,
+     "total": 1.701,
+     "plausible": true,
+     "strict": false
+    },
+    {
+     "valid": true,
+     "composition_ok": true,
+     "bond": 0.501,
+     "coord": 2.146,
+     "volume": 0.146,
+     "clash": 0.0,
+     "total": 3.087,
+     "plausible": true,
+     "strict": true
+    }
+   ],
+   "unsteered_match": 0.2,
+   "steered_match": 0.2,
+   "kg_top1_match": false,
+   "any_match": true
+  }
+ ],
+ "summary": {
+  "compositions": 55,
+  "reached_target_plausible": 45,
+  "mean_samples": 13.6,
+  "valid_share": 0.821,
+  "unsteered_match_mean": 0.665,
+  "steered_match_mean_same_compositions": 0.679,
+  "unsteered_match_mean_same_compositions": 0.677,
+  "kg_top1_match": 0.673,
+  "any_match": 0.885
+ }
+}

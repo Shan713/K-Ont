@@ -1601,3 +1601,23 @@ cathodes from the KG: all 10 MP-unstable (> 0.03 eV/atom) flagged > 0.03; 21/24 
 93% within 0.05 of MP; MAE 0.022; bias +0.017 (reads slightly less stable); rank correlation 0.39 over
 a narrow 0-0.15 range. Rule for novel candidates: predicted e_above_hull <= 0.05 eV/atom = plausible;
 it separates stable from unstable but cannot finely rank near-stable ones.
+
+## Step 32 — KG-steered sampling does not help; KG selection: small, real but uncertain gain (2026-10-08)
+
+`abox/kg_steer_sample.py` on the laptop (large CrystaLLM, batches of 5 -- batches of 10 ran out of the
+4060's 8 GB on 32-atom cells; 55 cathode-like test compositions, 103 min): generate until 5 candidates
+are KG-plausible (max 40). On the 47 compositions where both sets exist, first-5 unsteered 67.7% vs
+first-5 KG-plausible 67.9% correct (7 differ: 4 better, 3 worse) at 13.6 samples per composition instead
+of 5. 3 compositions never produced the right composition (Na4Al3Fe(SiO3)8, Li4Mn2Fe3Te3O16,
+K4Na4Mo5(WO8)3). Resampling until plausible is dropped as a mechanism: ~75% of candidates pass anyway.
+
+KG top-1 minus random pick, bootstrap 95% CI over compositions:
+
+| sample set | gain | 95% CI |
+|---|---|---|
+| Phase C large (composition) | +8.2 points | [+0.9, +16.6] |
+| Phase C small (composition) | +10.3 | [+1.5, +19.4] |
+| steered-sampling run, large | +1.7 | [-6.1, +9.5] |
+
+The KG's value is in selecting among CrystaLLM's samples, and it is modest: positive in all three
+independent sample sets, clearly above zero in two, uncertain in size at ~52 compositions per run.
