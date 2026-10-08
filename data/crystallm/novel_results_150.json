@@ -1,0 +1,1002 @@
+[
+ {
+  "id": "NOVEL_150",
+  "cell": "Rb8Li4Mo4S16",
+  "formula": "Rb2LiMoS4",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_151",
+  "cell": "Li4Cr6Mo2O16",
+  "formula": "Li2Cr3MoO8",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 5,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_152",
+  "cell": "Li4U4Mo4O24",
+  "formula": "LiUMoO6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_153",
+  "cell": "Na4La4Sc4Mo4O24",
+  "formula": "NaLaScMoO6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_154",
+  "cell": "Na6Pr2Ti4Mo4O24",
+  "formula": "Na3PrTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_155",
+  "cell": "Na6Nd2Ti4Mo4O24",
+  "formula": "Na3NdTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_156",
+  "cell": "Li3Mn2Co1B3O9",
+  "formula": "Li3Mn2Co(BO3)3",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_157",
+  "cell": "Li4V6Mo2O16",
+  "formula": "Li2V3MoO8",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 9,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_158",
+  "cell": "Li4Zn4Mo4O16",
+  "formula": "LiZnMoO4",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_159",
+  "cell": "Na6Sm2Ti4Mo4O24",
+  "formula": "Na3SmTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_160",
+  "cell": "Na3Eu1Ti2Mo2O12",
+  "formula": "Na3EuTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_161",
+  "cell": "Li2Co6Si2P2O16",
+  "formula": "LiCo3SiPO8",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 9,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_162",
+  "cell": "Li3Mn1Co2B3O9",
+  "formula": "Li3MnCo2(BO3)3",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_163",
+  "cell": "Li4Cr2P4H2O16",
+  "formula": "Li2CrP2HO8",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_164",
+  "cell": "Li4Ge4Mo4O20",
+  "formula": "LiGeMoO5",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_165",
+  "cell": "Na6Tb2Ti4Mo4O24",
+  "formula": "Na3TbTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 9,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_166",
+  "cell": "Na6Gd2Ti4Mo4O24",
+  "formula": "Na3GdTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_167",
+  "cell": "Na4Ge4Mo4O20",
+  "formula": "NaGeMoO5",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_168",
+  "cell": "Li10Mo2O10",
+  "formula": "Li5MoO5",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_169",
+  "cell": "Li4Mo2O2F10",
+  "formula": "Li2MoOF5",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_170",
+  "cell": "Na6Dy2Ti4Mo4O24",
+  "formula": "Na3DyTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_171",
+  "cell": "Li4Co4Ge8O24",
+  "formula": "LiCo(GeO3)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_172",
+  "cell": "Na6Er2Ti4Mo4O24",
+  "formula": "Na3ErTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_173",
+  "cell": "Na6Ho2Ti4Mo4O24",
+  "formula": "Na3HoTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_174",
+  "cell": "Na6Tm2Ti4Mo4O24",
+  "formula": "Na3TmTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_175",
+  "cell": "Li2Cr6O4F12",
+  "formula": "LiCr3(OF3)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_176",
+  "cell": "Li1Te3Mo1O12",
+  "formula": "LiTe3MoO12",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_177",
+  "cell": "K4Na2Mo6O18",
+  "formula": "K2Na(MoO3)3",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 7,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 3,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_178",
+  "cell": "Li4Co4Si8O22",
+  "formula": "Li2Co2Si4O11",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_179",
+  "cell": "Li10Cr2Si4O16",
+  "formula": "Li5Cr(SiO4)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_180",
+  "cell": "K2Na2Eu2Mo2O10",
+  "formula": "KNaEuMoO5",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_181",
+  "cell": "Na4Eu4Hf4Mo4O24",
+  "formula": "NaEuHfMoO6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_182",
+  "cell": "Li8Cr6Sb2O16",
+  "formula": "Li4Cr3SbO8",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_183",
+  "cell": "Na6La2Ti4Mo4O24",
+  "formula": "Na3LaTi2(MoO6)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_184",
+  "cell": "Na2La2Mo8O24",
+  "formula": "NaLa(MoO3)4",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_185",
+  "cell": "K8Li12V4O16",
+  "formula": "K2Li3VO4",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_186",
+  "cell": "Na6Fe4Sb2O12",
+  "formula": "Na3Fe2SbO6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_187",
+  "cell": "Na2Fe4H6S4O20",
+  "formula": "NaFe2H3(SO5)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_188",
+  "cell": "Na3Mn3S6",
+  "formula": "NaMnS2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_189",
+  "cell": "Rb4Na8Fe4O10",
+  "formula": "Rb2Na4Fe2O5",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_190",
+  "cell": "Rb2Na14Fe4O12",
+  "formula": "RbNa7(FeO3)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_191",
+  "cell": "Sr2Li2Mn2F12",
+  "formula": "SrLiMnF6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_192",
+  "cell": "Na4Fe2Si8O20",
+  "formula": "Na2Fe(Si2O5)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_193",
+  "cell": "Li2La4Nb2O12",
+  "formula": "LiLa2NbO6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_194",
+  "cell": "Li2V2Ni2F12",
+  "formula": "LiVNiF6",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_195",
+  "cell": "Na4Fe4O6",
+  "formula": "Na2Fe2O3",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_196",
+  "cell": "K4Li4Fe4O8",
+  "formula": "KLiFeO2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_197",
+  "cell": "Na2Nb4P6O26",
+  "formula": "NaNb2P3O13",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_198",
+  "cell": "Li6V2Ni4O12",
+  "formula": "Li3V(NiO3)2",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ },
+ {
+  "id": "NOVEL_199",
+  "cell": "Li2Nb4P6O26",
+  "formula": "LiNb2P3O13",
+  "sg": null,
+  "cathode_like": true,
+  "sg_pred_top5": [],
+  "conditions": {
+   "composition": {
+    "n": 10,
+    "valid": 9,
+    "matches": 0
+   },
+   "parent_sg": {
+    "n": 10,
+    "valid": 10,
+    "matches": 0
+   }
+  }
+ }
+]

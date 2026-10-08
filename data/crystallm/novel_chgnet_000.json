@@ -1,0 +1,3715 @@
+{
+ "results": "novel_results_000.json",
+ "settings": {
+  "results": "novel_results_000.json",
+  "gen_dir": "novel_gen",
+  "conditions": "composition,parent_sg",
+  "max_per_cond": 5,
+  "threads": 7,
+  "fmax": 0.1,
+  "steps": 300,
+  "out": "novel_chgnet_000.json"
+ },
+ "materials": [
+  {
+   "id": "NOVEL_000",
+   "formula": "K2NaMnO3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.64061,
+      "sg_after_relax": 67,
+      "steps": 18
+     },
+     {
+      "k": 1,
+      "e": -5.64068,
+      "sg_after_relax": 67,
+      "steps": 10
+     },
+     {
+      "k": 2,
+      "e": -5.64151,
+      "sg_after_relax": 67,
+      "steps": 42
+     },
+     {
+      "k": 3,
+      "e": -5.64146,
+      "sg_after_relax": 67,
+      "steps": 26
+     },
+     {
+      "k": 4,
+      "e": -5.64202,
+      "sg_after_relax": 67,
+      "steps": 42
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.64054,
+      "sg_after_relax": 67,
+      "steps": 28
+     },
+     {
+      "k": 1,
+      "e": -5.64194,
+      "sg_after_relax": 67,
+      "steps": 38
+     },
+     {
+      "k": 2,
+      "e": -5.64214,
+      "sg_after_relax": 67,
+      "steps": 17
+     },
+     {
+      "k": 3,
+      "e": -5.64152,
+      "sg_after_relax": 67,
+      "steps": 27
+     },
+     {
+      "k": 4,
+      "e": -5.64159,
+      "sg_after_relax": 67,
+      "steps": 25
+     }
+    ]
+   },
+   "best": {
+    "e": -5.64214,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 67
+   }
+  },
+  {
+   "id": "NOVEL_001",
+   "formula": "Li4MnTeO6",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 1,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 2,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 3,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 4,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 1,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 2,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 3,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     },
+     {
+      "k": 4,
+      "e": -6.21762,
+      "sg_after_relax": 5,
+      "steps": 14
+     }
+    ]
+   },
+   "best": {
+    "e": -6.21762,
+    "condition": "composition",
+    "k": 0,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_002",
+   "formula": "Na8MnO6",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -4.90559,
+      "sg_after_relax": 185,
+      "steps": 35
+     },
+     {
+      "k": 1,
+      "e": -4.90566,
+      "sg_after_relax": 185,
+      "steps": 23
+     },
+     {
+      "k": 2,
+      "e": -4.90547,
+      "sg_after_relax": 185,
+      "steps": 26
+     },
+     {
+      "k": 3,
+      "e": -4.90569,
+      "sg_after_relax": 185,
+      "steps": 34
+     },
+     {
+      "k": 4,
+      "e": -4.90586,
+      "sg_after_relax": 185,
+      "steps": 42
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -4.90577,
+      "sg_after_relax": 185,
+      "steps": 32
+     },
+     {
+      "k": 1,
+      "e": -4.90569,
+      "sg_after_relax": 185,
+      "steps": 12
+     },
+     {
+      "k": 2,
+      "e": -4.90577,
+      "sg_after_relax": 185,
+      "steps": 47
+     },
+     {
+      "k": 3,
+      "e": -4.90596,
+      "sg_after_relax": 185,
+      "steps": 13
+     },
+     {
+      "k": 4,
+      "e": -4.90591,
+      "sg_after_relax": 185,
+      "steps": 35
+     }
+    ]
+   },
+   "best": {
+    "e": -4.90596,
+    "condition": "parent_sg",
+    "k": 3,
+    "sg_after_relax": 185
+   }
+  },
+  {
+   "id": "NOVEL_003",
+   "formula": "NaMn(SeO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.19729,
+      "sg_after_relax": 62,
+      "steps": 92
+     },
+     {
+      "k": 2,
+      "e": -6.20585,
+      "sg_after_relax": 62,
+      "steps": 76
+     },
+     {
+      "k": 3,
+      "e": -6.21329,
+      "sg_after_relax": 14,
+      "steps": 145
+     },
+     {
+      "k": 4,
+      "e": -6.19066,
+      "sg_after_relax": 33,
+      "steps": 208
+     },
+     {
+      "k": 5,
+      "e": -6.27051,
+      "sg_after_relax": 14,
+      "steps": 222
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.28754,
+      "sg_after_relax": 62,
+      "steps": 106
+     },
+     {
+      "k": 1,
+      "e": -6.20933,
+      "sg_after_relax": 62,
+      "steps": 84
+     },
+     {
+      "k": 2,
+      "e": -6.32865,
+      "sg_after_relax": 62,
+      "steps": 53
+     },
+     {
+      "k": 3,
+      "e": -6.24576,
+      "sg_after_relax": 62,
+      "steps": 77
+     },
+     {
+      "k": 4,
+      "e": -6.24244,
+      "sg_after_relax": 62,
+      "steps": 37
+     }
+    ]
+   },
+   "best": {
+    "e": -6.32865,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 62
+   }
+  },
+  {
+   "id": "NOVEL_004",
+   "formula": "Rb2NaFe3F12",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.53619,
+      "sg_after_relax": 2,
+      "steps": 119
+     },
+     {
+      "k": 1,
+      "e": -5.59406,
+      "sg_after_relax": 1,
+      "steps": 195
+     },
+     {
+      "k": 2,
+      "e": -5.54711,
+      "sg_after_relax": 2,
+      "steps": 90
+     },
+     {
+      "k": 3,
+      "e": -5.57058,
+      "sg_after_relax": 2,
+      "steps": 103
+     },
+     {
+      "k": 4,
+      "e": -5.60324,
+      "sg_after_relax": 2,
+      "steps": 156
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.58319,
+      "sg_after_relax": 1,
+      "steps": 109
+     },
+     {
+      "k": 1,
+      "e": -5.60949,
+      "sg_after_relax": 2,
+      "steps": 79
+     },
+     {
+      "k": 2,
+      "e": -5.59896,
+      "sg_after_relax": 1,
+      "steps": 97
+     },
+     {
+      "k": 3,
+      "e": -5.59827,
+      "sg_after_relax": 1,
+      "steps": 134
+     },
+     {
+      "k": 4,
+      "e": -5.59042,
+      "sg_after_relax": 2,
+      "steps": 101
+     }
+    ]
+   },
+   "best": {
+    "e": -5.60949,
+    "condition": "parent_sg",
+    "k": 1,
+    "sg_after_relax": 2
+   }
+  },
+  {
+   "id": "NOVEL_005",
+   "formula": "KLiFe2(SiO3)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.51433,
+      "sg_after_relax": 1,
+      "steps": 195
+     },
+     {
+      "k": 1,
+      "e": -7.68163,
+      "sg_after_relax": 4,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -7.64505,
+      "sg_after_relax": 5,
+      "steps": 302
+     },
+     {
+      "k": 3,
+      "e": -7.62672,
+      "sg_after_relax": 5,
+      "steps": 242
+     },
+     {
+      "k": 4,
+      "e": -7.61524,
+      "sg_after_relax": 5,
+      "steps": 302
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.53626,
+      "sg_after_relax": 11,
+      "steps": 136
+     },
+     {
+      "k": 1,
+      "e": -7.60945,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -7.63676,
+      "sg_after_relax": 7,
+      "steps": 302
+     },
+     {
+      "k": 3,
+      "e": -7.33603,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 4,
+      "e": -6.05487,
+      "sg_after_relax": 4,
+      "steps": 302
+     }
+    ]
+   },
+   "best": {
+    "e": -7.68163,
+    "condition": "composition",
+    "k": 1,
+    "sg_after_relax": 4
+   }
+  },
+  {
+   "id": "NOVEL_006",
+   "formula": "Rb2LiFe3F12",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.53454,
+      "sg_after_relax": 2,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -5.71681,
+      "sg_after_relax": 2,
+      "steps": 53
+     },
+     {
+      "k": 2,
+      "e": -5.72197,
+      "sg_after_relax": 2,
+      "steps": 74
+     },
+     {
+      "k": 3,
+      "e": -5.71723,
+      "sg_after_relax": 2,
+      "steps": 56
+     },
+     {
+      "k": 4,
+      "e": -5.72671,
+      "sg_after_relax": 2,
+      "steps": 55
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.64386,
+      "sg_after_relax": 2,
+      "steps": 165
+     },
+     {
+      "k": 1,
+      "e": -5.64615,
+      "sg_after_relax": 2,
+      "steps": 154
+     },
+     {
+      "k": 2,
+      "e": -5.72249,
+      "sg_after_relax": 2,
+      "steps": 76
+     },
+     {
+      "k": 3,
+      "e": -5.6645,
+      "sg_after_relax": 2,
+      "steps": 126
+     },
+     {
+      "k": 4,
+      "e": -5.62768,
+      "sg_after_relax": 2,
+      "steps": 181
+     }
+    ]
+   },
+   "best": {
+    "e": -5.72671,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 2
+   }
+  },
+  {
+   "id": "NOVEL_007",
+   "formula": "NaMnCr2O8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.57397,
+      "sg_after_relax": 12,
+      "steps": 64
+     },
+     {
+      "k": 1,
+      "e": -7.57411,
+      "sg_after_relax": 12,
+      "steps": 85
+     },
+     {
+      "k": 2,
+      "e": -7.51666,
+      "sg_after_relax": 1,
+      "steps": 190
+     },
+     {
+      "k": 3,
+      "e": -7.57262,
+      "sg_after_relax": 12,
+      "steps": 69
+     },
+     {
+      "k": 4,
+      "e": -7.57431,
+      "sg_after_relax": 12,
+      "steps": 65
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.57365,
+      "sg_after_relax": 12,
+      "steps": 81
+     },
+     {
+      "k": 1,
+      "e": -7.57325,
+      "sg_after_relax": 12,
+      "steps": 73
+     },
+     {
+      "k": 2,
+      "e": -7.5737,
+      "sg_after_relax": 12,
+      "steps": 97
+     },
+     {
+      "k": 3,
+      "e": -7.57432,
+      "sg_after_relax": 12,
+      "steps": 72
+     },
+     {
+      "k": 4,
+      "e": -7.57277,
+      "sg_after_relax": 12,
+      "steps": 56
+     }
+    ]
+   },
+   "best": {
+    "e": -7.57432,
+    "condition": "parent_sg",
+    "k": 3,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_008",
+   "formula": "LiFeH2OF4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.52764,
+      "sg_after_relax": 15,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -5.49923,
+      "sg_after_relax": 14,
+      "steps": 243
+     },
+     {
+      "k": 3,
+      "e": -5.54148,
+      "sg_after_relax": 14,
+      "steps": 302
+     },
+     {
+      "k": 6,
+      "e": -5.58323,
+      "sg_after_relax": 4,
+      "steps": 302
+     },
+     {
+      "k": 8,
+      "e": -5.60831,
+      "sg_after_relax": 62,
+      "steps": 124
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.60058,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -5.24104,
+      "sg_after_relax": 62,
+      "steps": 134
+     },
+     {
+      "k": 2,
+      "e": -5.60398,
+      "sg_after_relax": 62,
+      "steps": 120
+     },
+     {
+      "k": 3,
+      "e": -5.00526,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 4,
+      "e": -5.51403,
+      "sg_after_relax": 62,
+      "steps": 198
+     }
+    ]
+   },
+   "best": {
+    "e": -5.60831,
+    "condition": "composition",
+    "k": 8,
+    "sg_after_relax": 62
+   }
+  },
+  {
+   "id": "NOVEL_009",
+   "formula": "NaMn2V3CuO12",
+   "conditions": {
+    "composition": [
+     {
+      "k": 6,
+      "e": -7.77473,
+      "sg_after_relax": 4,
+      "steps": 302
+     },
+     {
+      "k": 8,
+      "e": -7.80496,
+      "sg_after_relax": 5,
+      "steps": 125
+     }
+    ],
+    "parent_sg": []
+   },
+   "best": {
+    "e": -7.80496,
+    "condition": "composition",
+    "k": 8,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_010",
+   "formula": "Li2ScMn(SiO3)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.07646,
+      "sg_after_relax": 5,
+      "steps": 44
+     },
+     {
+      "k": 1,
+      "e": -8.07635,
+      "sg_after_relax": 5,
+      "steps": 46
+     },
+     {
+      "k": 2,
+      "e": -8.07371,
+      "sg_after_relax": 5,
+      "steps": 57
+     },
+     {
+      "k": 3,
+      "e": -8.07393,
+      "sg_after_relax": 5,
+      "steps": 57
+     },
+     {
+      "k": 4,
+      "e": -8.07104,
+      "sg_after_relax": 5,
+      "steps": 64
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -8.07681,
+      "sg_after_relax": 5,
+      "steps": 63
+     },
+     {
+      "k": 1,
+      "e": -8.07729,
+      "sg_after_relax": 5,
+      "steps": 42
+     },
+     {
+      "k": 2,
+      "e": -8.07621,
+      "sg_after_relax": 5,
+      "steps": 16
+     },
+     {
+      "k": 3,
+      "e": -8.07374,
+      "sg_after_relax": 5,
+      "steps": 65
+     },
+     {
+      "k": 4,
+      "e": -8.07379,
+      "sg_after_relax": 5,
+      "steps": 47
+     }
+    ]
+   },
+   "best": {
+    "e": -8.07729,
+    "condition": "parent_sg",
+    "k": 1,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_011",
+   "formula": "NaLiMn2(SiO3)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.91428,
+      "sg_after_relax": 5,
+      "steps": 44
+     },
+     {
+      "k": 1,
+      "e": -7.9149,
+      "sg_after_relax": 5,
+      "steps": 48
+     },
+     {
+      "k": 2,
+      "e": -7.91485,
+      "sg_after_relax": 5,
+      "steps": 37
+     },
+     {
+      "k": 3,
+      "e": -7.91456,
+      "sg_after_relax": 5,
+      "steps": 37
+     },
+     {
+      "k": 4,
+      "e": -7.91463,
+      "sg_after_relax": 5,
+      "steps": 48
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.91523,
+      "sg_after_relax": 5,
+      "steps": 50
+     },
+     {
+      "k": 1,
+      "e": -7.91475,
+      "sg_after_relax": 5,
+      "steps": 48
+     },
+     {
+      "k": 2,
+      "e": -7.91478,
+      "sg_after_relax": 5,
+      "steps": 36
+     },
+     {
+      "k": 3,
+      "e": -7.91414,
+      "sg_after_relax": 5,
+      "steps": 56
+     },
+     {
+      "k": 4,
+      "e": -7.9148,
+      "sg_after_relax": 5,
+      "steps": 37
+     }
+    ]
+   },
+   "best": {
+    "e": -7.91523,
+    "condition": "parent_sg",
+    "k": 0,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_012",
+   "formula": "KNa2MnO3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.59833,
+      "sg_after_relax": 1,
+      "steps": 224
+     },
+     {
+      "k": 1,
+      "e": -5.5596,
+      "sg_after_relax": 14,
+      "steps": 117
+     },
+     {
+      "k": 2,
+      "e": -5.62408,
+      "sg_after_relax": 1,
+      "steps": 173
+     },
+     {
+      "k": 3,
+      "e": -5.62651,
+      "sg_after_relax": 1,
+      "steps": 122
+     },
+     {
+      "k": 6,
+      "e": -5.58286,
+      "sg_after_relax": 1,
+      "steps": 167
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.70891,
+      "sg_after_relax": 62,
+      "steps": 120
+     },
+     {
+      "k": 1,
+      "e": -5.61858,
+      "sg_after_relax": 62,
+      "steps": 138
+     },
+     {
+      "k": 2,
+      "e": -5.61208,
+      "sg_after_relax": 62,
+      "steps": 51
+     },
+     {
+      "k": 4,
+      "e": -5.70656,
+      "sg_after_relax": 62,
+      "steps": 55
+     },
+     {
+      "k": 5,
+      "e": -5.70489,
+      "sg_after_relax": 62,
+      "steps": 58
+     }
+    ]
+   },
+   "best": {
+    "e": -5.70891,
+    "condition": "parent_sg",
+    "k": 0,
+    "sg_after_relax": 62
+   }
+  },
+  {
+   "id": "NOVEL_013",
+   "formula": "Na4MnAl3O8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.64641,
+      "sg_after_relax": 1,
+      "steps": 86
+     },
+     {
+      "k": 1,
+      "e": -5.94885,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -6.7222,
+      "sg_after_relax": 1,
+      "steps": 70
+     },
+     {
+      "k": 3,
+      "e": -6.70888,
+      "sg_after_relax": 1,
+      "steps": 125
+     },
+     {
+      "k": 4,
+      "e": -5.81504,
+      "sg_after_relax": 1,
+      "steps": 302
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.67257,
+      "sg_after_relax": 1,
+      "steps": 57
+     },
+     {
+      "k": 1,
+      "e": -5.72915,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -6.72166,
+      "sg_after_relax": 1,
+      "steps": 48
+     },
+     {
+      "k": 3,
+      "e": -6.66423,
+      "sg_after_relax": 1,
+      "steps": 79
+     },
+     {
+      "k": 4,
+      "e": -5.31628,
+      "sg_after_relax": 1,
+      "steps": 302
+     }
+    ]
+   },
+   "best": {
+    "e": -6.7222,
+    "condition": "composition",
+    "k": 2,
+    "sg_after_relax": 1
+   }
+  },
+  {
+   "id": "NOVEL_014",
+   "formula": "Na3MnS3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -4.74799,
+      "sg_after_relax": 14,
+      "steps": 91
+     },
+     {
+      "k": 1,
+      "e": -4.79033,
+      "sg_after_relax": 14,
+      "steps": 90
+     },
+     {
+      "k": 2,
+      "e": -4.77093,
+      "sg_after_relax": 14,
+      "steps": 97
+     },
+     {
+      "k": 3,
+      "e": -4.71971,
+      "sg_after_relax": 4,
+      "steps": 79
+     },
+     {
+      "k": 4,
+      "e": -4.68055,
+      "sg_after_relax": 14,
+      "steps": 131
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -4.79177,
+      "sg_after_relax": 14,
+      "steps": 70
+     },
+     {
+      "k": 1,
+      "e": -4.77835,
+      "sg_after_relax": 14,
+      "steps": 78
+     },
+     {
+      "k": 2,
+      "e": -4.76503,
+      "sg_after_relax": 14,
+      "steps": 78
+     },
+     {
+      "k": 3,
+      "e": -4.63451,
+      "sg_after_relax": 7,
+      "steps": 71
+     },
+     {
+      "k": 4,
+      "e": -4.7787,
+      "sg_after_relax": 14,
+      "steps": 66
+     }
+    ]
+   },
+   "best": {
+    "e": -4.79177,
+    "condition": "parent_sg",
+    "k": 0,
+    "sg_after_relax": 14
+   }
+  },
+  {
+   "id": "NOVEL_015",
+   "formula": "NaTi3MnO8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.72638,
+      "sg_after_relax": 8,
+      "steps": 24
+     },
+     {
+      "k": 1,
+      "e": -8.72696,
+      "sg_after_relax": 8,
+      "steps": 56
+     },
+     {
+      "k": 2,
+      "e": -8.72707,
+      "sg_after_relax": 8,
+      "steps": 29
+     },
+     {
+      "k": 3,
+      "e": -8.72653,
+      "sg_after_relax": 8,
+      "steps": 35
+     },
+     {
+      "k": 4,
+      "e": -8.72687,
+      "sg_after_relax": 8,
+      "steps": 56
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -8.72639,
+      "sg_after_relax": 8,
+      "steps": 24
+     },
+     {
+      "k": 1,
+      "e": -8.72663,
+      "sg_after_relax": 8,
+      "steps": 24
+     },
+     {
+      "k": 2,
+      "e": -8.72667,
+      "sg_after_relax": 8,
+      "steps": 24
+     },
+     {
+      "k": 3,
+      "e": -8.72603,
+      "sg_after_relax": 8,
+      "steps": 34
+     },
+     {
+      "k": 4,
+      "e": -8.7264,
+      "sg_after_relax": 8,
+      "steps": 24
+     }
+    ]
+   },
+   "best": {
+    "e": -8.72707,
+    "condition": "composition",
+    "k": 2,
+    "sg_after_relax": 8
+   }
+  },
+  {
+   "id": "NOVEL_016",
+   "formula": "LiVFe(PO4)3",
+   "conditions": {
+    "composition": [],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.14636,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -7.0841,
+      "sg_after_relax": 2,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -7.50914,
+      "sg_after_relax": 2,
+      "steps": 259
+     },
+     {
+      "k": 3,
+      "e": -5.65576,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 4,
+      "e": -7.67014,
+      "sg_after_relax": 2,
+      "steps": 302
+     }
+    ]
+   },
+   "best": {
+    "e": -7.67014,
+    "condition": "parent_sg",
+    "k": 4,
+    "sg_after_relax": 2
+   }
+  },
+  {
+   "id": "NOVEL_017",
+   "formula": "K2NaVO3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.8136,
+      "sg_after_relax": 67,
+      "steps": 18
+     },
+     {
+      "k": 1,
+      "e": -5.81557,
+      "sg_after_relax": 67,
+      "steps": 27
+     },
+     {
+      "k": 2,
+      "e": -5.81523,
+      "sg_after_relax": 67,
+      "steps": 40
+     },
+     {
+      "k": 3,
+      "e": -5.81386,
+      "sg_after_relax": 67,
+      "steps": 45
+     },
+     {
+      "k": 4,
+      "e": -5.81598,
+      "sg_after_relax": 67,
+      "steps": 28
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.81575,
+      "sg_after_relax": 67,
+      "steps": 28
+     },
+     {
+      "k": 1,
+      "e": -5.81498,
+      "sg_after_relax": 67,
+      "steps": 19
+     },
+     {
+      "k": 2,
+      "e": -5.81519,
+      "sg_after_relax": 67,
+      "steps": 28
+     },
+     {
+      "k": 3,
+      "e": -5.81487,
+      "sg_after_relax": 67,
+      "steps": 16
+     },
+     {
+      "k": 4,
+      "e": -5.81529,
+      "sg_after_relax": 67,
+      "steps": 27
+     }
+    ]
+   },
+   "best": {
+    "e": -5.81598,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 67
+   }
+  },
+  {
+   "id": "NOVEL_018",
+   "formula": "NaV(SeO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.3634,
+      "sg_after_relax": 14,
+      "steps": 161
+     },
+     {
+      "k": 1,
+      "e": -6.36974,
+      "sg_after_relax": 62,
+      "steps": 121
+     },
+     {
+      "k": 2,
+      "e": -6.4648,
+      "sg_after_relax": 62,
+      "steps": 89
+     },
+     {
+      "k": 3,
+      "e": -6.41818,
+      "sg_after_relax": 62,
+      "steps": 90
+     },
+     {
+      "k": 4,
+      "e": -6.37177,
+      "sg_after_relax": 62,
+      "steps": 187
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.3216,
+      "sg_after_relax": 62,
+      "steps": 205
+     },
+     {
+      "k": 1,
+      "e": -6.43444,
+      "sg_after_relax": 62,
+      "steps": 96
+     },
+     {
+      "k": 2,
+      "e": -6.46692,
+      "sg_after_relax": 62,
+      "steps": 58
+     },
+     {
+      "k": 3,
+      "e": -6.37846,
+      "sg_after_relax": 62,
+      "steps": 114
+     },
+     {
+      "k": 4,
+      "e": -6.40767,
+      "sg_after_relax": 62,
+      "steps": 72
+     }
+    ]
+   },
+   "best": {
+    "e": -6.46692,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 62
+   }
+  },
+  {
+   "id": "NOVEL_019",
+   "formula": "Rb2NaV3F12",
+   "conditions": {
+    "composition": [
+     {
+      "k": 1,
+      "e": -4.81756,
+      "sg_after_relax": 159,
+      "steps": 302
+     },
+     {
+      "k": 2,
+      "e": -6.03365,
+      "sg_after_relax": 159,
+      "steps": 172
+     },
+     {
+      "k": 3,
+      "e": -6.14522,
+      "sg_after_relax": 186,
+      "steps": 152
+     },
+     {
+      "k": 4,
+      "e": -6.15525,
+      "sg_after_relax": 2,
+      "steps": 54
+     },
+     {
+      "k": 5,
+      "e": -6.15454,
+      "sg_after_relax": 2,
+      "steps": 39
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.15653,
+      "sg_after_relax": 2,
+      "steps": 64
+     },
+     {
+      "k": 1,
+      "e": -6.08173,
+      "sg_after_relax": 2,
+      "steps": 109
+     },
+     {
+      "k": 2,
+      "e": -6.15168,
+      "sg_after_relax": 2,
+      "steps": 107
+     },
+     {
+      "k": 3,
+      "e": -6.05105,
+      "sg_after_relax": 2,
+      "steps": 200
+     },
+     {
+      "k": 4,
+      "e": -6.07782,
+      "sg_after_relax": 2,
+      "steps": 87
+     }
+    ]
+   },
+   "best": {
+    "e": -6.15653,
+    "condition": "parent_sg",
+    "k": 0,
+    "sg_after_relax": 2
+   }
+  },
+  {
+   "id": "NOVEL_020",
+   "formula": "KLiV2(SiO3)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.96289,
+      "sg_after_relax": 5,
+      "steps": 109
+     },
+     {
+      "k": 1,
+      "e": -7.89232,
+      "sg_after_relax": 5,
+      "steps": 190
+     },
+     {
+      "k": 2,
+      "e": -7.8881,
+      "sg_after_relax": 5,
+      "steps": 192
+     },
+     {
+      "k": 3,
+      "e": -7.88023,
+      "sg_after_relax": 5,
+      "steps": 302
+     },
+     {
+      "k": 4,
+      "e": -7.69351,
+      "sg_after_relax": 5,
+      "steps": 205
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.83758,
+      "sg_after_relax": 2,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -7.77216,
+      "sg_after_relax": 12,
+      "steps": 116
+     },
+     {
+      "k": 2,
+      "e": -7.73342,
+      "sg_after_relax": 11,
+      "steps": 280
+     },
+     {
+      "k": 3,
+      "e": -7.80959,
+      "sg_after_relax": 2,
+      "steps": 302
+     },
+     {
+      "k": 4,
+      "e": -7.82593,
+      "sg_after_relax": 6,
+      "steps": 302
+     }
+    ]
+   },
+   "best": {
+    "e": -7.96289,
+    "condition": "composition",
+    "k": 0,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_021",
+   "formula": "Rb2LiV3F12",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.08843,
+      "sg_after_relax": 159,
+      "steps": 80
+     },
+     {
+      "k": 4,
+      "e": -6.1749,
+      "sg_after_relax": 2,
+      "steps": 111
+     },
+     {
+      "k": 5,
+      "e": -6.1346,
+      "sg_after_relax": 2,
+      "steps": 188
+     },
+     {
+      "k": 6,
+      "e": -6.12126,
+      "sg_after_relax": 1,
+      "steps": 137
+     },
+     {
+      "k": 7,
+      "e": -6.09816,
+      "sg_after_relax": 2,
+      "steps": 140
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 2,
+      "e": -6.11256,
+      "sg_after_relax": 2,
+      "steps": 220
+     },
+     {
+      "k": 5,
+      "e": -6.09121,
+      "sg_after_relax": 2,
+      "steps": 100
+     },
+     {
+      "k": 6,
+      "e": -6.11634,
+      "sg_after_relax": 2,
+      "steps": 85
+     },
+     {
+      "k": 8,
+      "e": -5.00497,
+      "sg_after_relax": 2,
+      "steps": 302
+     }
+    ]
+   },
+   "best": {
+    "e": -6.1749,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 2
+   }
+  },
+  {
+   "id": "NOVEL_022",
+   "formula": "NaVCr2O8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.72744,
+      "sg_after_relax": 12,
+      "steps": 36
+     },
+     {
+      "k": 1,
+      "e": -7.72979,
+      "sg_after_relax": 12,
+      "steps": 58
+     },
+     {
+      "k": 2,
+      "e": -7.72978,
+      "sg_after_relax": 12,
+      "steps": 60
+     },
+     {
+      "k": 3,
+      "e": -7.72946,
+      "sg_after_relax": 12,
+      "steps": 46
+     },
+     {
+      "k": 4,
+      "e": -7.73064,
+      "sg_after_relax": 12,
+      "steps": 74
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.73037,
+      "sg_after_relax": 12,
+      "steps": 80
+     },
+     {
+      "k": 1,
+      "e": -7.73011,
+      "sg_after_relax": 12,
+      "steps": 55
+     },
+     {
+      "k": 2,
+      "e": -7.73031,
+      "sg_after_relax": 12,
+      "steps": 80
+     },
+     {
+      "k": 3,
+      "e": -7.73007,
+      "sg_after_relax": 12,
+      "steps": 47
+     },
+     {
+      "k": 4,
+      "e": -7.73082,
+      "sg_after_relax": 12,
+      "steps": 50
+     }
+    ]
+   },
+   "best": {
+    "e": -7.73082,
+    "condition": "parent_sg",
+    "k": 4,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_023",
+   "formula": "LiFeP2(HO4)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.01643,
+      "sg_after_relax": 18,
+      "steps": 85
+     },
+     {
+      "k": 1,
+      "e": -7.04419,
+      "sg_after_relax": 4,
+      "steps": 41
+     },
+     {
+      "k": 2,
+      "e": -7.06289,
+      "sg_after_relax": 18,
+      "steps": 155
+     },
+     {
+      "k": 3,
+      "e": -7.02297,
+      "sg_after_relax": 4,
+      "steps": 284
+     },
+     {
+      "k": 4,
+      "e": -7.04176,
+      "sg_after_relax": 4,
+      "steps": 275
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -4.98855,
+      "sg_after_relax": 18,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -7.06437,
+      "sg_after_relax": 18,
+      "steps": 34
+     },
+     {
+      "k": 2,
+      "e": -6.22901,
+      "sg_after_relax": 18,
+      "steps": 117
+     },
+     {
+      "k": 3,
+      "e": -7.0639,
+      "sg_after_relax": 18,
+      "steps": 48
+     },
+     {
+      "k": 4,
+      "e": -7.06419,
+      "sg_after_relax": 18,
+      "steps": 40
+     }
+    ]
+   },
+   "best": {
+    "e": -7.06437,
+    "condition": "parent_sg",
+    "k": 1,
+    "sg_after_relax": 18
+   }
+  },
+  {
+   "id": "NOVEL_024",
+   "formula": "LiVH2OF4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 1,
+      "e": -5.89529,
+      "sg_after_relax": 15,
+      "steps": 109
+     },
+     {
+      "k": 9,
+      "e": -5.86714,
+      "sg_after_relax": 2,
+      "steps": 302
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.85256,
+      "sg_after_relax": 62,
+      "steps": 216
+     },
+     {
+      "k": 1,
+      "e": -5.73963,
+      "sg_after_relax": 62,
+      "steps": 69
+     },
+     {
+      "k": 2,
+      "e": -5.82299,
+      "sg_after_relax": 14,
+      "steps": 302
+     },
+     {
+      "k": 3,
+      "e": -5.84513,
+      "sg_after_relax": 62,
+      "steps": 164
+     },
+     {
+      "k": 4,
+      "e": -5.78879,
+      "sg_after_relax": 14,
+      "steps": 215
+     }
+    ]
+   },
+   "best": {
+    "e": -5.89529,
+    "condition": "composition",
+    "k": 1,
+    "sg_after_relax": 15
+   }
+  },
+  {
+   "id": "NOVEL_025",
+   "formula": "Li2ScV(SiO3)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.14578,
+      "sg_after_relax": 5,
+      "steps": 68
+     },
+     {
+      "k": 1,
+      "e": -8.14559,
+      "sg_after_relax": 5,
+      "steps": 69
+     },
+     {
+      "k": 2,
+      "e": -8.14411,
+      "sg_after_relax": 5,
+      "steps": 54
+     },
+     {
+      "k": 3,
+      "e": -8.14585,
+      "sg_after_relax": 5,
+      "steps": 59
+     },
+     {
+      "k": 4,
+      "e": -8.1453,
+      "sg_after_relax": 5,
+      "steps": 66
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -8.14432,
+      "sg_after_relax": 5,
+      "steps": 66
+     },
+     {
+      "k": 1,
+      "e": -8.14493,
+      "sg_after_relax": 5,
+      "steps": 41
+     },
+     {
+      "k": 2,
+      "e": -8.14536,
+      "sg_after_relax": 5,
+      "steps": 39
+     },
+     {
+      "k": 3,
+      "e": -8.14561,
+      "sg_after_relax": 5,
+      "steps": 68
+     },
+     {
+      "k": 4,
+      "e": -8.14432,
+      "sg_after_relax": 5,
+      "steps": 65
+     }
+    ]
+   },
+   "best": {
+    "e": -8.14585,
+    "condition": "composition",
+    "k": 3,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_026",
+   "formula": "LiFe2BO5",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.66819,
+      "sg_after_relax": 55,
+      "steps": 43
+     },
+     {
+      "k": 1,
+      "e": -7.64275,
+      "sg_after_relax": 55,
+      "steps": 47
+     },
+     {
+      "k": 2,
+      "e": -7.66863,
+      "sg_after_relax": 55,
+      "steps": 57
+     },
+     {
+      "k": 3,
+      "e": -7.64249,
+      "sg_after_relax": 55,
+      "steps": 49
+     },
+     {
+      "k": 4,
+      "e": -7.66858,
+      "sg_after_relax": 55,
+      "steps": 48
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.66861,
+      "sg_after_relax": 55,
+      "steps": 46
+     },
+     {
+      "k": 1,
+      "e": -7.43224,
+      "sg_after_relax": 26,
+      "steps": 240
+     },
+     {
+      "k": 2,
+      "e": -7.66866,
+      "sg_after_relax": 55,
+      "steps": 45
+     },
+     {
+      "k": 3,
+      "e": -7.66864,
+      "sg_after_relax": 55,
+      "steps": 45
+     },
+     {
+      "k": 4,
+      "e": -7.66853,
+      "sg_after_relax": 55,
+      "steps": 44
+     }
+    ]
+   },
+   "best": {
+    "e": -7.66866,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 55
+   }
+  },
+  {
+   "id": "NOVEL_027",
+   "formula": "LiMn2BO5",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.82643,
+      "sg_after_relax": 2,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -8.02186,
+      "sg_after_relax": 55,
+      "steps": 51
+     },
+     {
+      "k": 2,
+      "e": -8.02416,
+      "sg_after_relax": 55,
+      "steps": 41
+     },
+     {
+      "k": 3,
+      "e": -8.02178,
+      "sg_after_relax": 55,
+      "steps": 50
+     },
+     {
+      "k": 4,
+      "e": -8.02314,
+      "sg_after_relax": 55,
+      "steps": 43
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -8.02312,
+      "sg_after_relax": 55,
+      "steps": 49
+     },
+     {
+      "k": 1,
+      "e": -8.02402,
+      "sg_after_relax": 55,
+      "steps": 40
+     },
+     {
+      "k": 2,
+      "e": -8.0223,
+      "sg_after_relax": 55,
+      "steps": 39
+     },
+     {
+      "k": 3,
+      "e": -8.02101,
+      "sg_after_relax": 55,
+      "steps": 31
+     },
+     {
+      "k": 4,
+      "e": -7.94073,
+      "sg_after_relax": 55,
+      "steps": 63
+     }
+    ]
+   },
+   "best": {
+    "e": -8.02416,
+    "condition": "composition",
+    "k": 2,
+    "sg_after_relax": 55
+   }
+  },
+  {
+   "id": "NOVEL_028",
+   "formula": "NaLiV2(SiO3)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.04954,
+      "sg_after_relax": 5,
+      "steps": 21
+     },
+     {
+      "k": 1,
+      "e": -8.04958,
+      "sg_after_relax": 5,
+      "steps": 30
+     },
+     {
+      "k": 2,
+      "e": -8.04936,
+      "sg_after_relax": 5,
+      "steps": 28
+     },
+     {
+      "k": 3,
+      "e": -8.0495,
+      "sg_after_relax": 5,
+      "steps": 30
+     },
+     {
+      "k": 4,
+      "e": -8.04966,
+      "sg_after_relax": 5,
+      "steps": 23
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -8.04953,
+      "sg_after_relax": 5,
+      "steps": 30
+     },
+     {
+      "k": 1,
+      "e": -8.04928,
+      "sg_after_relax": 5,
+      "steps": 23
+     },
+     {
+      "k": 2,
+      "e": -8.04912,
+      "sg_after_relax": 5,
+      "steps": 26
+     },
+     {
+      "k": 3,
+      "e": -8.04957,
+      "sg_after_relax": 5,
+      "steps": 28
+     },
+     {
+      "k": 4,
+      "e": -8.04919,
+      "sg_after_relax": 5,
+      "steps": 28
+     }
+    ]
+   },
+   "best": {
+    "e": -8.04966,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 5
+   }
+  },
+  {
+   "id": "NOVEL_029",
+   "formula": "KNa2VO3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 3,
+      "e": -5.7922,
+      "sg_after_relax": 15,
+      "steps": 60
+     },
+     {
+      "k": 6,
+      "e": -5.80982,
+      "sg_after_relax": 1,
+      "steps": 183
+     },
+     {
+      "k": 7,
+      "e": -5.84245,
+      "sg_after_relax": 62,
+      "steps": 82
+     },
+     {
+      "k": 8,
+      "e": -5.82628,
+      "sg_after_relax": 1,
+      "steps": 200
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.78801,
+      "sg_after_relax": 62,
+      "steps": 295
+     },
+     {
+      "k": 1,
+      "e": -5.78027,
+      "sg_after_relax": 62,
+      "steps": 67
+     },
+     {
+      "k": 2,
+      "e": -5.87336,
+      "sg_after_relax": 62,
+      "steps": 90
+     },
+     {
+      "k": 3,
+      "e": -5.8752,
+      "sg_after_relax": 62,
+      "steps": 55
+     },
+     {
+      "k": 4,
+      "e": -5.7541,
+      "sg_after_relax": 1,
+      "steps": 161
+     }
+    ]
+   },
+   "best": {
+    "e": -5.8752,
+    "condition": "parent_sg",
+    "k": 3,
+    "sg_after_relax": 62
+   }
+  },
+  {
+   "id": "NOVEL_030",
+   "formula": "LiMn(GeO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.11812,
+      "sg_after_relax": 14,
+      "steps": 44
+     },
+     {
+      "k": 1,
+      "e": -7.05983,
+      "sg_after_relax": 14,
+      "steps": 83
+     },
+     {
+      "k": 2,
+      "e": -7.11799,
+      "sg_after_relax": 14,
+      "steps": 71
+     },
+     {
+      "k": 3,
+      "e": -7.06239,
+      "sg_after_relax": 14,
+      "steps": 107
+     },
+     {
+      "k": 4,
+      "e": -7.11745,
+      "sg_after_relax": 14,
+      "steps": 53
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.11529,
+      "sg_after_relax": 14,
+      "steps": 33
+     },
+     {
+      "k": 1,
+      "e": -7.10937,
+      "sg_after_relax": 14,
+      "steps": 61
+     },
+     {
+      "k": 2,
+      "e": -7.11671,
+      "sg_after_relax": 14,
+      "steps": 45
+     },
+     {
+      "k": 3,
+      "e": -7.11822,
+      "sg_after_relax": 14,
+      "steps": 52
+     },
+     {
+      "k": 4,
+      "e": -7.118,
+      "sg_after_relax": 14,
+      "steps": 44
+     }
+    ]
+   },
+   "best": {
+    "e": -7.11822,
+    "condition": "parent_sg",
+    "k": 3,
+    "sg_after_relax": 14
+   }
+  },
+  {
+   "id": "NOVEL_031",
+   "formula": "Na4Al3VO8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.94316,
+      "sg_after_relax": 1,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -6.81231,
+      "sg_after_relax": 1,
+      "steps": 28
+     },
+     {
+      "k": 2,
+      "e": -6.81219,
+      "sg_after_relax": 1,
+      "steps": 10
+     },
+     {
+      "k": 3,
+      "e": -6.81212,
+      "sg_after_relax": 1,
+      "steps": 10
+     },
+     {
+      "k": 4,
+      "e": -6.64555,
+      "sg_after_relax": 1,
+      "steps": 164
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.81212,
+      "sg_after_relax": 1,
+      "steps": 10
+     },
+     {
+      "k": 1,
+      "e": -6.6706,
+      "sg_after_relax": 1,
+      "steps": 135
+     },
+     {
+      "k": 2,
+      "e": -6.81216,
+      "sg_after_relax": 1,
+      "steps": 10
+     },
+     {
+      "k": 3,
+      "e": -6.70295,
+      "sg_after_relax": 1,
+      "steps": 148
+     },
+     {
+      "k": 4,
+      "e": -6.72836,
+      "sg_after_relax": 1,
+      "steps": 242
+     }
+    ]
+   },
+   "best": {
+    "e": -6.81231,
+    "condition": "composition",
+    "k": 1,
+    "sg_after_relax": 1
+   }
+  },
+  {
+   "id": "NOVEL_032",
+   "formula": "Na3VS3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -4.90553,
+      "sg_after_relax": 14,
+      "steps": 91
+     },
+     {
+      "k": 1,
+      "e": -4.90509,
+      "sg_after_relax": 14,
+      "steps": 78
+     },
+     {
+      "k": 2,
+      "e": -4.78326,
+      "sg_after_relax": 14,
+      "steps": 86
+     },
+     {
+      "k": 3,
+      "e": -4.8988,
+      "sg_after_relax": 14,
+      "steps": 73
+     },
+     {
+      "k": 4,
+      "e": -4.85666,
+      "sg_after_relax": 4,
+      "steps": 140
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -4.78838,
+      "sg_after_relax": 14,
+      "steps": 67
+     },
+     {
+      "k": 1,
+      "e": -4.83646,
+      "sg_after_relax": 14,
+      "steps": 59
+     },
+     {
+      "k": 2,
+      "e": -4.85996,
+      "sg_after_relax": 14,
+      "steps": 50
+     },
+     {
+      "k": 3,
+      "e": -4.89326,
+      "sg_after_relax": 14,
+      "steps": 105
+     },
+     {
+      "k": 4,
+      "e": -4.90339,
+      "sg_after_relax": 14,
+      "steps": 73
+     }
+    ]
+   },
+   "best": {
+    "e": -4.90553,
+    "condition": "composition",
+    "k": 0,
+    "sg_after_relax": 14
+   }
+  },
+  {
+   "id": "NOVEL_033",
+   "formula": "NaTiFeS4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.01286,
+      "sg_after_relax": 82,
+      "steps": 51
+     },
+     {
+      "k": 1,
+      "e": -6.01519,
+      "sg_after_relax": 82,
+      "steps": 26
+     },
+     {
+      "k": 2,
+      "e": -6.01571,
+      "sg_after_relax": 82,
+      "steps": 17
+     },
+     {
+      "k": 3,
+      "e": -6.01576,
+      "sg_after_relax": 82,
+      "steps": 39
+     },
+     {
+      "k": 4,
+      "e": -6.01074,
+      "sg_after_relax": 82,
+      "steps": 46
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.10824,
+      "sg_after_relax": 8,
+      "steps": 33
+     },
+     {
+      "k": 1,
+      "e": -6.1032,
+      "sg_after_relax": 8,
+      "steps": 49
+     },
+     {
+      "k": 2,
+      "e": -6.11217,
+      "sg_after_relax": 8,
+      "steps": 47
+     },
+     {
+      "k": 3,
+      "e": -6.045,
+      "sg_after_relax": 8,
+      "steps": 46
+     },
+     {
+      "k": 4,
+      "e": -5.91317,
+      "sg_after_relax": 8,
+      "steps": 59
+     }
+    ]
+   },
+   "best": {
+    "e": -6.11217,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 8
+   }
+  },
+  {
+   "id": "NOVEL_034",
+   "formula": "NaTiMnS4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.20066,
+      "sg_after_relax": 82,
+      "steps": 65
+     },
+     {
+      "k": 1,
+      "e": -6.17421,
+      "sg_after_relax": 4,
+      "steps": 71
+     },
+     {
+      "k": 2,
+      "e": -6.20486,
+      "sg_after_relax": 82,
+      "steps": 36
+     },
+     {
+      "k": 3,
+      "e": -6.21483,
+      "sg_after_relax": 82,
+      "steps": 9
+     },
+     {
+      "k": 4,
+      "e": -6.21448,
+      "sg_after_relax": 82,
+      "steps": 17
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.15352,
+      "sg_after_relax": 8,
+      "steps": 92
+     },
+     {
+      "k": 1,
+      "e": -6.0706,
+      "sg_after_relax": 8,
+      "steps": 62
+     },
+     {
+      "k": 2,
+      "e": -6.22021,
+      "sg_after_relax": 8,
+      "steps": 49
+     },
+     {
+      "k": 3,
+      "e": -5.64298,
+      "sg_after_relax": 8,
+      "steps": 302
+     },
+     {
+      "k": 4,
+      "e": -6.16059,
+      "sg_after_relax": 8,
+      "steps": 82
+     }
+    ]
+   },
+   "best": {
+    "e": -6.22021,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 8
+   }
+  },
+  {
+   "id": "NOVEL_035",
+   "formula": "Li3V(NiO2)4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.58124,
+      "sg_after_relax": 12,
+      "steps": 14
+     },
+     {
+      "k": 1,
+      "e": -6.5813,
+      "sg_after_relax": 12,
+      "steps": 17
+     },
+     {
+      "k": 2,
+      "e": -6.58105,
+      "sg_after_relax": 12,
+      "steps": 27
+     },
+     {
+      "k": 3,
+      "e": -6.58127,
+      "sg_after_relax": 12,
+      "steps": 27
+     },
+     {
+      "k": 4,
+      "e": -6.58174,
+      "sg_after_relax": 12,
+      "steps": 13
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.581,
+      "sg_after_relax": 12,
+      "steps": 15
+     },
+     {
+      "k": 1,
+      "e": -6.58123,
+      "sg_after_relax": 12,
+      "steps": 14
+     },
+     {
+      "k": 2,
+      "e": -6.58112,
+      "sg_after_relax": 12,
+      "steps": 27
+     },
+     {
+      "k": 3,
+      "e": -6.58105,
+      "sg_after_relax": 12,
+      "steps": 26
+     },
+     {
+      "k": 4,
+      "e": -6.58132,
+      "sg_after_relax": 12,
+      "steps": 15
+     }
+    ]
+   },
+   "best": {
+    "e": -6.58174,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_036",
+   "formula": "NaTi3VO8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -8.58171,
+      "sg_after_relax": 8,
+      "steps": 181
+     },
+     {
+      "k": 1,
+      "e": -8.65855,
+      "sg_after_relax": 8,
+      "steps": 168
+     },
+     {
+      "k": 2,
+      "e": -7.6007,
+      "sg_after_relax": 8,
+      "steps": 302
+     },
+     {
+      "k": 3,
+      "e": -8.64582,
+      "sg_after_relax": 8,
+      "steps": 100
+     },
+     {
+      "k": 4,
+      "e": -8.81073,
+      "sg_after_relax": 8,
+      "steps": 24
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -8.71247,
+      "sg_after_relax": 1,
+      "steps": 222
+     },
+     {
+      "k": 1,
+      "e": -8.81071,
+      "sg_after_relax": 8,
+      "steps": 45
+     },
+     {
+      "k": 2,
+      "e": -8.8106,
+      "sg_after_relax": 8,
+      "steps": 14
+     },
+     {
+      "k": 3,
+      "e": -8.62323,
+      "sg_after_relax": 8,
+      "steps": 71
+     },
+     {
+      "k": 4,
+      "e": -8.63135,
+      "sg_after_relax": 8,
+      "steps": 102
+     }
+    ]
+   },
+   "best": {
+    "e": -8.81073,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 8
+   }
+  },
+  {
+   "id": "NOVEL_037",
+   "formula": "Li4V3SbO8",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.17061,
+      "sg_after_relax": 12,
+      "steps": 19
+     },
+     {
+      "k": 1,
+      "e": -7.17049,
+      "sg_after_relax": 12,
+      "steps": 19
+     },
+     {
+      "k": 2,
+      "e": -7.17048,
+      "sg_after_relax": 13,
+      "steps": 28
+     },
+     {
+      "k": 3,
+      "e": -7.16572,
+      "sg_after_relax": 12,
+      "steps": 16
+     },
+     {
+      "k": 4,
+      "e": -7.1706,
+      "sg_after_relax": 12,
+      "steps": 19
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.17025,
+      "sg_after_relax": 12,
+      "steps": 9
+     },
+     {
+      "k": 1,
+      "e": -7.16998,
+      "sg_after_relax": 12,
+      "steps": 17
+     },
+     {
+      "k": 2,
+      "e": -7.16993,
+      "sg_after_relax": 166,
+      "steps": 18
+     },
+     {
+      "k": 3,
+      "e": -7.17067,
+      "sg_after_relax": 12,
+      "steps": 16
+     },
+     {
+      "k": 4,
+      "e": -7.17069,
+      "sg_after_relax": 12,
+      "steps": 19
+     }
+    ]
+   },
+   "best": {
+    "e": -7.17069,
+    "condition": "parent_sg",
+    "k": 4,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_038",
+   "formula": "Li3V(CoO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.79585,
+      "sg_after_relax": 1,
+      "steps": 90
+     },
+     {
+      "k": 1,
+      "e": -6.79038,
+      "sg_after_relax": 2,
+      "steps": 92
+     },
+     {
+      "k": 2,
+      "e": -6.8055,
+      "sg_after_relax": 2,
+      "steps": 186
+     },
+     {
+      "k": 3,
+      "e": -6.86124,
+      "sg_after_relax": 12,
+      "steps": 15
+     },
+     {
+      "k": 4,
+      "e": -6.86102,
+      "sg_after_relax": 12,
+      "steps": 24
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.86087,
+      "sg_after_relax": 12,
+      "steps": 20
+     },
+     {
+      "k": 1,
+      "e": -6.86081,
+      "sg_after_relax": 12,
+      "steps": 19
+     },
+     {
+      "k": 2,
+      "e": -6.86042,
+      "sg_after_relax": 12,
+      "steps": 18
+     },
+     {
+      "k": 3,
+      "e": -6.8615,
+      "sg_after_relax": 12,
+      "steps": 26
+     },
+     {
+      "k": 4,
+      "e": -6.86045,
+      "sg_after_relax": 12,
+      "steps": 17
+     }
+    ]
+   },
+   "best": {
+    "e": -6.8615,
+    "condition": "parent_sg",
+    "k": 3,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_039",
+   "formula": "Li3V(CuO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.19607,
+      "sg_after_relax": 12,
+      "steps": 28
+     },
+     {
+      "k": 1,
+      "e": -6.19749,
+      "sg_after_relax": 12,
+      "steps": 21
+     },
+     {
+      "k": 2,
+      "e": -6.19713,
+      "sg_after_relax": 12,
+      "steps": 23
+     },
+     {
+      "k": 3,
+      "e": -6.19761,
+      "sg_after_relax": 12,
+      "steps": 21
+     },
+     {
+      "k": 4,
+      "e": -6.19745,
+      "sg_after_relax": 12,
+      "steps": 20
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.1975,
+      "sg_after_relax": 12,
+      "steps": 27
+     },
+     {
+      "k": 1,
+      "e": -6.19729,
+      "sg_after_relax": 12,
+      "steps": 25
+     },
+     {
+      "k": 2,
+      "e": -6.19747,
+      "sg_after_relax": 12,
+      "steps": 27
+     },
+     {
+      "k": 3,
+      "e": -6.19644,
+      "sg_after_relax": 12,
+      "steps": 30
+     },
+     {
+      "k": 4,
+      "e": -6.19774,
+      "sg_after_relax": 12,
+      "steps": 20
+     }
+    ]
+   },
+   "best": {
+    "e": -6.19774,
+    "condition": "parent_sg",
+    "k": 4,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_040",
+   "formula": "Cs2LiCoF6",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.02473,
+      "sg_after_relax": 164,
+      "steps": 15
+     },
+     {
+      "k": 1,
+      "e": -5.02464,
+      "sg_after_relax": 164,
+      "steps": 19
+     },
+     {
+      "k": 2,
+      "e": -5.02455,
+      "sg_after_relax": 164,
+      "steps": 15
+     },
+     {
+      "k": 3,
+      "e": -4.94372,
+      "sg_after_relax": 1,
+      "steps": 62
+     },
+     {
+      "k": 4,
+      "e": -5.02491,
+      "sg_after_relax": 164,
+      "steps": 16
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.0251,
+      "sg_after_relax": 164,
+      "steps": 16
+     },
+     {
+      "k": 1,
+      "e": -5.0248,
+      "sg_after_relax": 164,
+      "steps": 19
+     },
+     {
+      "k": 2,
+      "e": -5.02479,
+      "sg_after_relax": 164,
+      "steps": 15
+     },
+     {
+      "k": 3,
+      "e": -5.02462,
+      "sg_after_relax": 164,
+      "steps": 15
+     },
+     {
+      "k": 5,
+      "e": -5.02525,
+      "sg_after_relax": 164,
+      "steps": 16
+     }
+    ]
+   },
+   "best": {
+    "e": -5.02525,
+    "condition": "parent_sg",
+    "k": 5,
+    "sg_after_relax": 164
+   }
+  },
+  {
+   "id": "NOVEL_041",
+   "formula": "Na2Li3CrO4",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.73302,
+      "sg_after_relax": 58,
+      "steps": 64
+     },
+     {
+      "k": 1,
+      "e": -5.73142,
+      "sg_after_relax": 58,
+      "steps": 65
+     },
+     {
+      "k": 2,
+      "e": -5.73312,
+      "sg_after_relax": 58,
+      "steps": 55
+     },
+     {
+      "k": 3,
+      "e": -5.73311,
+      "sg_after_relax": 58,
+      "steps": 39
+     },
+     {
+      "k": 4,
+      "e": -5.57219,
+      "sg_after_relax": 58,
+      "steps": 157
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.49703,
+      "sg_after_relax": 58,
+      "steps": 302
+     },
+     {
+      "k": 1,
+      "e": -5.73275,
+      "sg_after_relax": 58,
+      "steps": 66
+     },
+     {
+      "k": 2,
+      "e": -5.73395,
+      "sg_after_relax": 58,
+      "steps": 52
+     },
+     {
+      "k": 3,
+      "e": -5.73342,
+      "sg_after_relax": 58,
+      "steps": 84
+     },
+     {
+      "k": 4,
+      "e": -5.73288,
+      "sg_after_relax": 58,
+      "steps": 80
+     }
+    ]
+   },
+   "best": {
+    "e": -5.73395,
+    "condition": "parent_sg",
+    "k": 2,
+    "sg_after_relax": 58
+   }
+  },
+  {
+   "id": "NOVEL_042",
+   "formula": "Na3CrO3",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.85815,
+      "sg_after_relax": 2,
+      "steps": 34
+     },
+     {
+      "k": 1,
+      "e": -5.85691,
+      "sg_after_relax": 2,
+      "steps": 83
+     },
+     {
+      "k": 2,
+      "e": -5.85963,
+      "sg_after_relax": 2,
+      "steps": 30
+     },
+     {
+      "k": 3,
+      "e": -5.85949,
+      "sg_after_relax": 2,
+      "steps": 46
+     },
+     {
+      "k": 4,
+      "e": -5.85783,
+      "sg_after_relax": 2,
+      "steps": 25
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.79013,
+      "sg_after_relax": 2,
+      "steps": 89
+     },
+     {
+      "k": 1,
+      "e": -5.85643,
+      "sg_after_relax": 2,
+      "steps": 57
+     },
+     {
+      "k": 2,
+      "e": -5.85804,
+      "sg_after_relax": 2,
+      "steps": 21
+     },
+     {
+      "k": 3,
+      "e": -5.85895,
+      "sg_after_relax": 2,
+      "steps": 42
+     },
+     {
+      "k": 4,
+      "e": -5.85924,
+      "sg_after_relax": 2,
+      "steps": 27
+     }
+    ]
+   },
+   "best": {
+    "e": -5.85963,
+    "condition": "composition",
+    "k": 2,
+    "sg_after_relax": 2
+   }
+  },
+  {
+   "id": "NOVEL_043",
+   "formula": "NaCo(GeO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.61942,
+      "sg_after_relax": 14,
+      "steps": 48
+     },
+     {
+      "k": 1,
+      "e": -6.62032,
+      "sg_after_relax": 15,
+      "steps": 40
+     },
+     {
+      "k": 2,
+      "e": -6.62037,
+      "sg_after_relax": 15,
+      "steps": 30
+     },
+     {
+      "k": 3,
+      "e": -6.62091,
+      "sg_after_relax": 14,
+      "steps": 72
+     },
+     {
+      "k": 4,
+      "e": -6.62031,
+      "sg_after_relax": 15,
+      "steps": 43
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.62023,
+      "sg_after_relax": 15,
+      "steps": 41
+     },
+     {
+      "k": 1,
+      "e": -6.62013,
+      "sg_after_relax": 15,
+      "steps": 29
+     },
+     {
+      "k": 2,
+      "e": -6.62,
+      "sg_after_relax": 15,
+      "steps": 44
+     },
+     {
+      "k": 3,
+      "e": -6.62013,
+      "sg_after_relax": 15,
+      "steps": 48
+     },
+     {
+      "k": 4,
+      "e": -6.62004,
+      "sg_after_relax": 15,
+      "steps": 41
+     }
+    ]
+   },
+   "best": {
+    "e": -6.62091,
+    "condition": "composition",
+    "k": 3,
+    "sg_after_relax": 14
+   }
+  },
+  {
+   "id": "NOVEL_044",
+   "formula": "NaCo(SO4)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.51316,
+      "sg_after_relax": 12,
+      "steps": 57
+     },
+     {
+      "k": 1,
+      "e": -6.51346,
+      "sg_after_relax": 12,
+      "steps": 69
+     },
+     {
+      "k": 2,
+      "e": -6.51322,
+      "sg_after_relax": 12,
+      "steps": 81
+     },
+     {
+      "k": 3,
+      "e": -6.5138,
+      "sg_after_relax": 12,
+      "steps": 84
+     },
+     {
+      "k": 4,
+      "e": -6.51304,
+      "sg_after_relax": 12,
+      "steps": 82
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.51339,
+      "sg_after_relax": 12,
+      "steps": 57
+     },
+     {
+      "k": 1,
+      "e": -6.51375,
+      "sg_after_relax": 12,
+      "steps": 60
+     },
+     {
+      "k": 2,
+      "e": -6.51237,
+      "sg_after_relax": 12,
+      "steps": 47
+     },
+     {
+      "k": 3,
+      "e": -6.51326,
+      "sg_after_relax": 12,
+      "steps": 67
+     },
+     {
+      "k": 4,
+      "e": -6.51323,
+      "sg_after_relax": 12,
+      "steps": 60
+     }
+    ]
+   },
+   "best": {
+    "e": -6.5138,
+    "condition": "composition",
+    "k": 3,
+    "sg_after_relax": 12
+   }
+  },
+  {
+   "id": "NOVEL_045",
+   "formula": "NaCo(SiO3)2",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -7.45555,
+      "sg_after_relax": 15,
+      "steps": 37
+     },
+     {
+      "k": 1,
+      "e": -7.45613,
+      "sg_after_relax": 15,
+      "steps": 28
+     },
+     {
+      "k": 2,
+      "e": -7.45564,
+      "sg_after_relax": 15,
+      "steps": 44
+     },
+     {
+      "k": 3,
+      "e": -7.45558,
+      "sg_after_relax": 15,
+      "steps": 28
+     },
+     {
+      "k": 4,
+      "e": -7.4557,
+      "sg_after_relax": 15,
+      "steps": 36
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -7.45598,
+      "sg_after_relax": 15,
+      "steps": 33
+     },
+     {
+      "k": 1,
+      "e": -7.45595,
+      "sg_after_relax": 15,
+      "steps": 35
+     },
+     {
+      "k": 2,
+      "e": -7.4551,
+      "sg_after_relax": 15,
+      "steps": 20
+     },
+     {
+      "k": 3,
+      "e": -7.45592,
+      "sg_after_relax": 15,
+      "steps": 27
+     },
+     {
+      "k": 4,
+      "e": -7.45582,
+      "sg_after_relax": 15,
+      "steps": 38
+     }
+    ]
+   },
+   "best": {
+    "e": -7.45613,
+    "condition": "composition",
+    "k": 1,
+    "sg_after_relax": 15
+   }
+  },
+  {
+   "id": "NOVEL_046",
+   "formula": "NaMnCoF6",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.89817,
+      "sg_after_relax": 150,
+      "steps": 49
+     },
+     {
+      "k": 1,
+      "e": -5.90102,
+      "sg_after_relax": 150,
+      "steps": 8
+     },
+     {
+      "k": 2,
+      "e": -5.90008,
+      "sg_after_relax": 150,
+      "steps": 15
+     },
+     {
+      "k": 3,
+      "e": -5.89961,
+      "sg_after_relax": 150,
+      "steps": 15
+     },
+     {
+      "k": 4,
+      "e": -5.90032,
+      "sg_after_relax": 150,
+      "steps": 50
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.90006,
+      "sg_after_relax": 150,
+      "steps": 7
+     },
+     {
+      "k": 1,
+      "e": -5.89947,
+      "sg_after_relax": 150,
+      "steps": 7
+     },
+     {
+      "k": 2,
+      "e": -5.89943,
+      "sg_after_relax": 150,
+      "steps": 13
+     },
+     {
+      "k": 3,
+      "e": -5.90391,
+      "sg_after_relax": 150,
+      "steps": 49
+     },
+     {
+      "k": 4,
+      "e": -5.89958,
+      "sg_after_relax": 150,
+      "steps": 7
+     }
+    ]
+   },
+   "best": {
+    "e": -5.90391,
+    "condition": "parent_sg",
+    "k": 3,
+    "sg_after_relax": 150
+   }
+  },
+  {
+   "id": "NOVEL_047",
+   "formula": "NaSrCoF6",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.3974,
+      "sg_after_relax": 19,
+      "steps": 68
+     },
+     {
+      "k": 1,
+      "e": -5.43896,
+      "sg_after_relax": 19,
+      "steps": 73
+     },
+     {
+      "k": 2,
+      "e": -5.43167,
+      "sg_after_relax": 19,
+      "steps": 75
+     },
+     {
+      "k": 3,
+      "e": -5.44233,
+      "sg_after_relax": 19,
+      "steps": 31
+     },
+     {
+      "k": 4,
+      "e": -5.44364,
+      "sg_after_relax": 19,
+      "steps": 80
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.38338,
+      "sg_after_relax": 14,
+      "steps": 54
+     },
+     {
+      "k": 1,
+      "e": -5.39943,
+      "sg_after_relax": 14,
+      "steps": 64
+     },
+     {
+      "k": 2,
+      "e": -5.35409,
+      "sg_after_relax": 14,
+      "steps": 86
+     },
+     {
+      "k": 3,
+      "e": -5.42418,
+      "sg_after_relax": 14,
+      "steps": 76
+     },
+     {
+      "k": 4,
+      "e": -5.43649,
+      "sg_after_relax": 14,
+      "steps": 101
+     }
+    ]
+   },
+   "best": {
+    "e": -5.44364,
+    "condition": "composition",
+    "k": 4,
+    "sg_after_relax": 19
+   }
+  },
+  {
+   "id": "NOVEL_048",
+   "formula": "Rb2LiCrF6",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -5.62014,
+      "sg_after_relax": 225,
+      "steps": 34
+     },
+     {
+      "k": 1,
+      "e": -5.62024,
+      "sg_after_relax": 225,
+      "steps": 32
+     },
+     {
+      "k": 2,
+      "e": -5.6202,
+      "sg_after_relax": 225,
+      "steps": 32
+     },
+     {
+      "k": 3,
+      "e": -5.62,
+      "sg_after_relax": 225,
+      "steps": 32
+     },
+     {
+      "k": 4,
+      "e": -5.62028,
+      "sg_after_relax": 225,
+      "steps": 24
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -5.61977,
+      "sg_after_relax": 225,
+      "steps": 33
+     },
+     {
+      "k": 1,
+      "e": -5.6193,
+      "sg_after_relax": 225,
+      "steps": 33
+     },
+     {
+      "k": 2,
+      "e": -5.61976,
+      "sg_after_relax": 225,
+      "steps": 33
+     },
+     {
+      "k": 3,
+      "e": -5.61961,
+      "sg_after_relax": 225,
+      "steps": 33
+     },
+     {
+      "k": 4,
+      "e": -5.62066,
+      "sg_after_relax": 225,
+      "steps": 25
+     }
+    ]
+   },
+   "best": {
+    "e": -5.62066,
+    "condition": "parent_sg",
+    "k": 4,
+    "sg_after_relax": 225
+   }
+  },
+  {
+   "id": "NOVEL_049",
+   "formula": "Li2CrO2F",
+   "conditions": {
+    "composition": [
+     {
+      "k": 0,
+      "e": -6.7698,
+      "sg_after_relax": 8,
+      "steps": 20
+     },
+     {
+      "k": 1,
+      "e": -6.65722,
+      "sg_after_relax": 129,
+      "steps": 64
+     },
+     {
+      "k": 2,
+      "e": -6.76944,
+      "sg_after_relax": 8,
+      "steps": 14
+     },
+     {
+      "k": 3,
+      "e": -6.76979,
+      "sg_after_relax": 8,
+      "steps": 20
+     },
+     {
+      "k": 4,
+      "e": -6.83825,
+      "sg_after_relax": 164,
+      "steps": 17
+     }
+    ],
+    "parent_sg": [
+     {
+      "k": 0,
+      "e": -6.83917,
+      "sg_after_relax": 164,
+      "steps": 21
+     },
+     {
+      "k": 1,
+      "e": -6.83806,
+      "sg_after_relax": 164,
+      "steps": 13
+     },
+     {
+      "k": 2,
+      "e": -6.83873,
+      "sg_after_relax": 164,
+      "steps": 16
+     },
+     {
+      "k": 3,
+      "e": -6.83912,
+      "sg_after_relax": 164,
+      "steps": 21
+     },
+     {
+      "k": 4,
+      "e": -6.83932,
+      "sg_after_relax": 164,
+      "steps": 27
+     }
+    ]
+   },
+   "best": {
+    "e": -6.83932,
+    "condition": "parent_sg",
+    "k": 4,
+    "sg_after_relax": 164
+   }
+  }
+ ],
+ "summary": {
+  "compositions": 50,
+  "with_relaxed_structure": 50,
+  "lower_energy_prompt (5 meV/atom tie band)": {
+   "composition": 5,
+   "parent_sg": 6,
+   "tie": 37
+  },
+  "median_parent_minus_composition_eV": -0.0001
+ }
+}

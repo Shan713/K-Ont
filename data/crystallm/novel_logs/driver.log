@@ -1,0 +1,15 @@
+[11:51:58] novel queue: 200 compositions, chunks of 50, model crystallm_v1_large
+[11:51:58] start gen_000
+[15:10:01] gen_000 finished (exit 0)
+[15:10:01] start chgnet_000
+[15:10:01] start gen_050
+[17:21:58] gen_050 finished (exit 0)
+[17:21:58] start chgnet_050
+[17:21:58] start gen_100
+[21:04:26] gen_100 finished (exit 0)
+[21:04:26] start chgnet_100
+[21:04:26] start gen_150
+[00:53:12] gen_150 finished (exit 0)
+[00:53:12] start chgnet_150
+[03:59:31] all chunks finished
+[03:59:32] summary + archive written
