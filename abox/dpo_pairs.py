@@ -86,7 +86,7 @@ def stage_generate(a):
 
 
 def _kg(args):
-    path, target, truth_cif = args
+    path, target, truth = args
     import kg_steer
     from pymatgen.analysis.structure_matcher import StructureMatcher
     from pymatgen.core import Structure
@@ -97,7 +97,7 @@ def _kg(args):
     row = {"valid": True, "composition_ok": s.composition.reduced_formula == target}
     if row["composition_ok"]:
         row.update(kg_steer.kg_score(s))
-        row["strict"] = bool(StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5).fit(s, Structure.from_str(truth_cif, fmt="cif")))
+        row["strict"] = bool(StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5).fit(s, Structure.from_dict(truth)))
     return path, row
 
 
@@ -111,11 +111,11 @@ def _init_chgnet(threads):
 
 
 def _relax(args):
-    key, cif_text, is_generated = args
+    key, src, is_generated = args  # generated: raw CIF text; reference: Structure dict
     from pymatgen.core import Structure
     m, opt = _CHG
     try:
-        s = Structure.from_str(gen.postprocess(cif_text) if is_generated else cif_text, fmt="cif")
+        s = Structure.from_str(gen.postprocess(src), fmt="cif") if is_generated else Structure.from_dict(src)
         r = opt.relax(s, fmax=0.1, steps=300, verbose=False)
         return key, float(m.predict_structure(r["final_structure"])["e"])
     except Exception:
@@ -126,17 +126,29 @@ def stage_score(a):
     gen_meta = json.load(open(os.path.join(DATA, f"dpo_generated_{a.split}.json")))
     corpus = {r["id"]: r for r in json.load(gzip.open(os.path.join(DATA, f"kg_corpus_{a.split}.json.gz"), "rt", encoding="utf-8"))}
     from pymatgen.core import Composition
-    jobs = []
+    # The reference is the KG structure rebuilt from its corpus CIF. A few corpus CIFs do not rebuild to
+    # their own formula (symmetry expansion duplicates sites: mp-1296443 Li4Fe3CoO8 -> Li12Fe9Co3O32);
+    # those compositions have no trustworthy reference and are dropped. References travel as dicts.
+    jobs, refs, dropped = [], {}, []
     for m in gen_meta:
         target = Composition(cell_of(corpus[m["id"]]["cif"])).reduced_formula
-        truth_cif = gen.reference_from_text(corpus[m["id"]]["cif"]).to(fmt="cif")
-        jobs += [(os.path.join(GEN_DIR, m["id"], f"s_{k}.cif"), target, truth_cif) for k in range(m["n"])]
+        try:
+            ref = gen.reference_from_text(corpus[m["id"]]["cif"])
+        except Exception:
+            ref = None
+        if ref is None or ref.composition.reduced_formula != target:
+            dropped.append(m["id"])
+            continue
+        refs[m["id"]] = ref.as_dict()
+        jobs += [(os.path.join(GEN_DIR, m["id"], f"s_{k}.cif"), target, refs[m["id"]]) for k in range(m["n"])]
+    gen_meta = [m for m in gen_meta if m["id"] in refs]
+    print(f"{len(dropped)} compositions dropped, reference does not rebuild to its formula: {dropped}", flush=True)
     with ProcessPoolExecutor(a.workers) as ex:
         kg = dict(ex.map(_kg, jobs, chunksize=4))
     print(f"KG-scored {len(kg)} samples", flush=True)
     relax_jobs = []
     for m in gen_meta:
-        relax_jobs.append((f"{m['id']}|truth", gen.reference_from_text(corpus[m["id"]]["cif"]).to(fmt="cif"), False))
+        relax_jobs.append((f"{m['id']}|truth", refs[m["id"]], False))
         for k in range(m["n"]):
             path = os.path.join(GEN_DIR, m["id"], f"s_{k}.cif")
             if kg[path].get("composition_ok"):

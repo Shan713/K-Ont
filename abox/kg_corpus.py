@@ -58,6 +58,13 @@ def convert(item):
         return x["id"], None, f"tokenize: {e.__class__.__name__}"
     if n > block_size:
         return x["id"], None, "too long for the context"
+    # the CIF must rebuild (as a generated one would) to its own cell: for ~1.5% the symmetry expansion
+    # duplicates sites (mp-1296443 Li4Fe3CoO8 -> Li12Fe9Co3O32), which would teach the model wrong CIFs
+    try:
+        if gen.reference_from_text(cif).composition != conv.composition:
+            return x["id"], None, "does not rebuild to its own cell"
+    except Exception as e:
+        return x["id"], None, f"rebuild: {e.__class__.__name__}"
     keep = {k: x[k] for k in ("id", "formula", "split", "space_group", "crystal_system", "structure_family",
                                "battery_role", "e_above_hull", "band_gap")}
     return x["id"], {**keep, "n_atoms": len(conv), "n_tokens": n, "cif": cif}, None
