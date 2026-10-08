@@ -89,6 +89,7 @@ export_package/
 # KG-steered generation (abox/kg_priors.py, abox/kg_steer.py): priors from the KG and the evaluation
 !/data/crystallm/kg_priors.json
 !/data/crystallm/kg_steer_eval.json
+!/data/crystallm/taskD_data_stats.json
 !/data/crystallm/kg_steer_eval.log
 !/data/crystallm/kg_scores_*.json
 !/data/crystallm/kg_steer_sample_*.json

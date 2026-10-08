@@ -1,0 +1,176 @@
+{
+ "cell": "primitive standard (SpacegroupAnalyzer symprec 0.1)",
+ "max_atoms": 20,
+ "never_written": [
+  "test",
+  "excluded"
+ ],
+ "splits": {
+  "excluded": {
+   "battery_role_kept": {
+    "NegativeElectrode": 1,
+    "PositiveElectrode": 20,
+    "none": 52
+   },
+   "dropped": {
+    "gt20_atoms_primitive": 26,
+    "unsupported_element": 6
+   },
+   "family_labelled_total": 5,
+   "kept": 73,
+   "n_atoms_kept": {
+    "2": 2,
+    "3": 2,
+    "4": 30,
+    "6": 1,
+    "7": 1,
+    "8": 5,
+    "9": 3,
+    "10": 3,
+    "12": 2,
+    "14": 9,
+    "16": 6,
+    "18": 2,
+    "20": 7
+   },
+   "role_labelled_total": 38,
+   "structure_family_kept": {
+    "LayeredOxideStructure": 1,
+    "none": 72
+   },
+   "total": 105
+  },
+  "test": {
+   "battery_role_kept": {
+    "NegativeElectrode": 16,
+    "PositiveElectrode": 55,
+    "none": 206
+   },
+   "dropped": {
+    "gt20_atoms_primitive": 198,
+    "unsupported_element": 18
+   },
+   "family_labelled_total": 41,
+   "kept": 277,
+   "n_atoms_kept": {
+    "2": 5,
+    "3": 4,
+    "4": 65,
+    "5": 5,
+    "6": 8,
+    "7": 1,
+    "8": 18,
+    "9": 11,
+    "10": 33,
+    "11": 1,
+    "12": 20,
+    "14": 19,
+    "15": 8,
+    "16": 28,
+    "17": 1,
+    "18": 23,
+    "19": 2,
+    "20": 25
+   },
+   "role_labelled_total": 172,
+   "structure_family_kept": {
+    "GarnetStructure": 3,
+    "LayeredOxideStructure": 6,
+    "SpinelStructure": 1,
+    "none": 267
+   },
+   "total": 493
+  },
+  "train": {
+   "battery_role_kept": {
+    "NegativeElectrode": 98,
+    "PositiveElectrode": 559,
+    "none": 1582
+   },
+   "dropped": {
+    "gt20_atoms_primitive": 1559,
+    "unsupported_element": 107
+   },
+   "family_labelled_total": 365,
+   "kept": 2239,
+   "n_atoms_kept": {
+    "2": 12,
+    "3": 23,
+    "4": 479,
+    "5": 35,
+    "6": 100,
+    "7": 24,
+    "8": 165,
+    "9": 46,
+    "10": 287,
+    "11": 29,
+    "12": 229,
+    "13": 27,
+    "14": 161,
+    "15": 27,
+    "16": 244,
+    "17": 14,
+    "18": 134,
+    "19": 6,
+    "20": 197
+   },
+   "role_labelled_total": 1417,
+   "structure_family_kept": {
+    "ArgyroditeStructure": 4,
+    "GarnetStructure": 34,
+    "LayeredOxideStructure": 102,
+    "PerovskiteStructure": 4,
+    "RockSaltStructure": 1,
+    "SpinelStructure": 8,
+    "none": 2086
+   },
+   "total": 3905
+  },
+  "val": {
+   "battery_role_kept": {
+    "NegativeElectrode": 14,
+    "PositiveElectrode": 62,
+    "none": 228
+   },
+   "dropped": {
+    "gt20_atoms_primitive": 180,
+    "unsupported_element": 13
+   },
+   "family_labelled_total": 34,
+   "kept": 304,
+   "n_atoms_kept": {
+    "2": 4,
+    "3": 3,
+    "4": 77,
+    "5": 5,
+    "6": 12,
+    "7": 6,
+    "8": 14,
+    "9": 2,
+    "10": 37,
+    "11": 7,
+    "12": 33,
+    "13": 3,
+    "14": 18,
+    "15": 7,
+    "16": 28,
+    "17": 1,
+    "18": 16,
+    "19": 1,
+    "20": 30
+   },
+   "role_labelled_total": 168,
+   "structure_family_kept": {
+    "GarnetStructure": 2,
+    "LayeredOxideStructure": 10,
+    "RockSaltStructure": 1,
+    "none": 291
+   },
+   "total": 497
+  }
+ },
+ "written_splits": [
+  "train",
+  "val"
+ ]
+}
