@@ -1507,3 +1507,42 @@ right space group, loose match and volume ratio). New: a sanity set of 20 well-k
 CrystaLLM trained on (`abox/phaseC_make_sanity.py`; LiCoO2 3/3 in a smoke test), CHGNet stability
 scoring against the known structure (`abox/phaseC_chgnet.py`, ~15 s per relaxation on 4 CPU threads)
 and an overnight queue for the workstation (`abox/phaseC_overnight.py`).
+
+## Step 27 — Phase C, corrected: CrystaLLM recovers most unseen cathode structures (2026-10-08)
+
+Workstation overnight queue (`abox/phaseC_overnight.py`, finished 03:26, all jobs exit 0), with the
+Step 26 reference fix. Strict match = CrystaLLM benchmark tolerances; "found" = at least one of 10
+samples matches.
+
+| 55 unseen cathode-like | large: found | large: CIFs matching | small: found | small: CIFs matching |
+|---|---|---|---|---|
+| composition only | **44/55** | 64% | 37/55 | 47% |
+| + RF top-5 space groups | 28/55 | 11% | 20/55 | 8% |
+| + true space group | **50/55** | 81% | 43/55 | 58% |
+
+Calibration on 95 non-cathode Li/Na test compositions: large 87/95 (composition) and 93/95 (true
+space group), small 81/95 and 93/95 -- the pipeline works. CHGNet (5 candidates per prompt, relaxed):
+89-94% of the large model's candidates end within 0.05 eV/atom of the known structure; picking the
+lowest-energy candidate gives the right structure for 39/52 materials (composition) and 47/54 (true
+space group); for 6-8 materials CHGNet finds a candidate below the known structure.
+
+- **Steps 25's Phase C table and "1 of 55" were artefacts of the Step 26 bug.**
+- A correct space group helps (cathodes 64% -> 81% of CIFs; others 46% -> 93%); our random forest's
+  guesses hurt, because CrystaLLM's own space-group choice (70% right on cathodes) beats them (RF top-1
+  ~24%). A KG signal helps only if it identifies the structure better than CrystaLLM already does.
+- The sanity set (training-set materials) scored low (4-13/20) because several references were
+  primitive or non-standard MP cells: 6/7 matched where the cell was the conventional standard cell.
+  It is a flawed check, superseded by the calibration set.
+- Next: a novel-cathode pilot (substitution -> CrystaLLM large -> CHGNet), Step 28.
+
+## Step 28 — Novel-cathode pilot, set up (2026-10-08)
+
+`abox/novel_propose.py` (laptop, needs the MP key): 658 cathode parents from the 5,000 KG (<= 0.05
+eV/atom, conventional cell <= 40 atoms, a redox transition metal, no precious/toxic elements) ->
+1,276 SMACT-valid substitution children (TM swap at the same oxidation state, or Li <-> Na) -> 311
+already in Materials Project -> 965 novel; the 200 with the smallest ionic-radius mismatch (<= 2 per
+parent, 145 parents) in `data/crystallm/novel_candidates.json` (108 Na, 92 Li; median 28 atoms;
+median theoretical capacity 115 mAh/g, an upper bound). Each keeps its parent's conventional cell and
+space group. Workstation queue `abox/novel_queue.py`: large CrystaLLM, 10 samples each for
+composition-only and parent-space-group prompts (the latter a KG analogue), CHGNet relaxation of up to
+5 per prompt (`abox/novel_chgnet.py`), lowest-energy structure kept per composition.

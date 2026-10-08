@@ -150,13 +150,15 @@ def main():
     matcher = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
     results, t0 = [], time.time()
     for i, t in enumerate(chosen):
-        truth = load_truth(t)
+        truth = None if t.get("novel") else load_truth(t)  # novel compositions have no known structure
         top5 = [s for s in (sg_symbol(n) for n in t.get("sg_pred_top5", [])) if s]
         conds = {"composition": [(None, a.samples)],
                  "rf_top1": [(top5[0], a.samples)] if top5 else [],
                  "rf_top5": [(s, a.samples // len(top5) + (k < a.samples % len(top5))) for k, s in enumerate(top5)] if top5 else [],
-                 "oracle": [(sg_symbol(t["sg"]), a.samples)] if sg_symbol(t["sg"]) else []}
-        rec = {"id": t["id"], "cell": t["cell"], "formula": t["formula"], "sg": t["sg"],
+                 "oracle": [(sg_symbol(t["sg"]), a.samples)] if t.get("sg") and sg_symbol(t["sg"]) else [],
+                 # KG analogue: the space group of the known cathode this composition was derived from
+                 "parent_sg": [(sg_symbol(t["parent_sg"]), a.samples)] if t.get("parent_sg") and sg_symbol(t["parent_sg"]) else []}
+        rec = {"id": t["id"], "cell": t["cell"], "formula": t["formula"], "sg": t.get("sg"),
                "cathode_like": t.get("cathode_like", False), "sg_pred_top5": t.get("sg_pred_top5", []), "conditions": {}}
         conds = {c: plan for c, plan in conds.items() if c in keep}
         os.makedirs(os.path.join(DATA, a.gen_dir, t["id"]), exist_ok=True)
@@ -175,13 +177,13 @@ def main():
                 try:
                     s = Structure.from_str(postprocess(raw), fmt="cif")
                     valid += 1
-                    match += bool(matcher.fit(s, truth))
+                    match += bool(truth is not None and matcher.fit(s, truth))
                 except Exception:
                     pass
             rec["conditions"][cond] = {"n": len(cifs), "valid": valid, "matches": match}
         results.append(rec)
         el = time.time() - t0
-        print(f"{i + 1}/{len(chosen)} {t['formula']} sg {t['sg']}: " +
+        print(f"{i + 1}/{len(chosen)} {t['formula']} sg {t.get('sg') or t.get('parent_sg')}: " +
               " | ".join(f"{c} {v['matches']}/{v['n']}" for c, v in rec["conditions"].items()) +
               f"  ({el / 60:.1f} min)", flush=True)
         json.dump(results, open(a.out, "w"), indent=1)

@@ -80,6 +80,12 @@ export_package/
 !/data/crystallm/phaseC_sanity_candidates.json
 !/data/crystallm/phaseC_generated_cifs.tar.gz
 !/data/crystallm/overnight/
+# Novel-cathode pilot (abox/novel_*.py): candidates, results, CHGNet scores, logs, CIF tarball
+!/data/crystallm/novel_candidates.json
+!/data/crystallm/novel_results_*.json
+!/data/crystallm/novel_chgnet_*.json
+!/data/crystallm/novel_logs/
+!/data/crystallm/novel_generated_cifs.tar.gz
 # Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
 # the top-level training logs/status files in data/runs/.
 /data/battgpt_abox_grow_*/
