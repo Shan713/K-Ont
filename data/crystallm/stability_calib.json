@@ -1,0 +1,431 @@
+{
+ "items": [
+  {
+   "id": "mp-769585",
+   "formula": "Li4Mn3Co3(TeO8)2",
+   "mp_e_above_hull": 0.007826314846940186,
+   "e_above_hull_pred": 0.0257,
+   "chgnet_e_per_atom": -6.8754
+  },
+  {
+   "id": "mp-19391",
+   "formula": "NaVO2",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0419,
+   "chgnet_e_per_atom": -7.3793
+  },
+  {
+   "id": "mp-1018791",
+   "formula": "LiY(CuP)2",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0239,
+   "chgnet_e_per_atom": -5.3425
+  },
+  {
+   "id": "mp-762326",
+   "formula": "Li2CuF5",
+   "mp_e_above_hull": 0.005835659791665115,
+   "e_above_hull_pred": 0.0342,
+   "chgnet_e_per_atom": -4.6109
+  },
+  {
+   "id": "mp-26131",
+   "formula": "LiMo(PO3)4",
+   "mp_e_above_hull": 0.013724236805560786,
+   "e_above_hull_pred": 0.0269,
+   "chgnet_e_per_atom": -7.7664
+  },
+  {
+   "id": "mp-675383",
+   "formula": "Li3(Mo3S4)2",
+   "mp_e_above_hull": 0.012455971911756514,
+   "e_above_hull_pred": 0.0703,
+   "chgnet_e_per_atom": -7.1622
+  },
+  {
+   "id": "mp-861268",
+   "formula": "LiLaNb2O7",
+   "mp_e_above_hull": 0.07682651454545741,
+   "e_above_hull_pred": 0.0745,
+   "chgnet_e_per_atom": -8.7917
+  },
+  {
+   "id": "mp-510338",
+   "formula": "Cs2LiVS4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0315,
+   "chgnet_e_per_atom": -5.0936
+  },
+  {
+   "id": "mp-1227892",
+   "formula": "BaNaVS4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0377,
+   "chgnet_e_per_atom": -5.6776
+  },
+  {
+   "id": "mp-18860",
+   "formula": "Li2VSiO5",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0255,
+   "chgnet_e_per_atom": -7.5257
+  },
+  {
+   "id": "mp-1173732",
+   "formula": "Na3SmTi2Nb2O12",
+   "mp_e_above_hull": 0.003120480535715231,
+   "e_above_hull_pred": 0.0138,
+   "chgnet_e_per_atom": -8.3278
+  },
+  {
+   "id": "mp-779318",
+   "formula": "LiCr2P3O13",
+   "mp_e_above_hull": 0.09754043368420096,
+   "e_above_hull_pred": 0.1235,
+   "chgnet_e_per_atom": -7.6017
+  },
+  {
+   "id": "mp-19291",
+   "formula": "NaVPO5",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0175,
+   "chgnet_e_per_atom": -7.6852
+  },
+  {
+   "id": "mp-27007",
+   "formula": "LiFe2P3O10",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0167,
+   "chgnet_e_per_atom": -7.7486
+  },
+  {
+   "id": "mp-757718",
+   "formula": "Li2MnV(PO4)2",
+   "mp_e_above_hull": 0.0033557271428579227,
+   "e_above_hull_pred": 0.0072,
+   "chgnet_e_per_atom": -7.8077
+  },
+  {
+   "id": "mp-757139",
+   "formula": "Li6TiMn3(PO4)6",
+   "mp_e_above_hull": 0.06296479518750164,
+   "e_above_hull_pred": 0.0538,
+   "chgnet_e_per_atom": -7.5967
+  },
+  {
+   "id": "mp-1303832",
+   "formula": "LiV3Zn2O8",
+   "mp_e_above_hull": 0.0018061164285585463,
+   "e_above_hull_pred": 0.0295,
+   "chgnet_e_per_atom": -7.3807
+  },
+  {
+   "id": "mp-30947",
+   "formula": "Na3FeO3",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0171,
+   "chgnet_e_per_atom": -5.5859
+  },
+  {
+   "id": "mp-675779",
+   "formula": "Li2Mo3S4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0912,
+   "chgnet_e_per_atom": -6.9315
+  },
+  {
+   "id": "mp-22200",
+   "formula": "LiMnFeF6",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0084,
+   "chgnet_e_per_atom": -6.3198
+  },
+  {
+   "id": "mp-1224011",
+   "formula": "K2NaNb3O9",
+   "mp_e_above_hull": 0.013819580333336745,
+   "e_above_hull_pred": 0.0233,
+   "chgnet_e_per_atom": -8.0547
+  },
+  {
+   "id": "mp-18779",
+   "formula": "Na2CrO4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0251,
+   "chgnet_e_per_atom": -6.5478
+  },
+  {
+   "id": "mp-757063",
+   "formula": "LiNi2O3",
+   "mp_e_above_hull": 0.0018387068055574218,
+   "e_above_hull_pred": 0.0193,
+   "chgnet_e_per_atom": -6.1042
+  },
+  {
+   "id": "mp-772664",
+   "formula": "Na2CoAsCO7",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0062,
+   "chgnet_e_per_atom": -6.6628
+  },
+  {
+   "id": "mp-1666120",
+   "formula": "LiCrPO4",
+   "mp_e_above_hull": 0.005505532767850596,
+   "e_above_hull_pred": 0.0121,
+   "chgnet_e_per_atom": -7.812
+  },
+  {
+   "id": "mp-1209597",
+   "formula": "Rb2LiMn3F12",
+   "mp_e_above_hull": 0.0007894922222231315,
+   "e_above_hull_pred": 0.0159,
+   "chgnet_e_per_atom": -5.9445
+  },
+  {
+   "id": "mp-996987",
+   "formula": "LiCuO2",
+   "mp_e_above_hull": 0.021594026249999843,
+   "e_above_hull_pred": 0.069,
+   "chgnet_e_per_atom": -5.3576
+  },
+  {
+   "id": "mp-28262",
+   "formula": "Na5MnO4",
+   "mp_e_above_hull": 0.010346431000010092,
+   "e_above_hull_pred": 0.0099,
+   "chgnet_e_per_atom": -5.2305
+  },
+  {
+   "id": "mp-777446",
+   "formula": "Li3Mn2FeO6",
+   "mp_e_above_hull": 0.0538424439583336,
+   "e_above_hull_pred": 0.0527,
+   "chgnet_e_per_atom": -7.2196
+  },
+  {
+   "id": "mp-753589",
+   "formula": "Li2VCrO4",
+   "mp_e_above_hull": 0.004698024374999221,
+   "e_above_hull_pred": 0.0386,
+   "chgnet_e_per_atom": -7.7059
+  },
+  {
+   "id": "mp-31729",
+   "formula": "Li3Cr2(PO4)3",
+   "mp_e_above_hull": 0.014164325499987918,
+   "e_above_hull_pred": 0.0408,
+   "chgnet_e_per_atom": -7.6595
+  },
+  {
+   "id": "mp-1222897",
+   "formula": "Li2Al2CrSbO8",
+   "mp_e_above_hull": 0.004355117857133273,
+   "e_above_hull_pred": 0.0338,
+   "chgnet_e_per_atom": -7.276
+  },
+  {
+   "id": "mp-849778",
+   "formula": "Li6Mn3Nb(PO4)6",
+   "mp_e_above_hull": 0.06499943281250253,
+   "e_above_hull_pred": 0.0578,
+   "chgnet_e_per_atom": -7.6416
+  },
+  {
+   "id": "mp-773363",
+   "formula": "Li4Mn3WO8",
+   "mp_e_above_hull": 0.1129117231250012,
+   "e_above_hull_pred": 0.0722,
+   "chgnet_e_per_atom": -7.6306
+  },
+  {
+   "id": "mp-26091",
+   "formula": "LiVPO5",
+   "mp_e_above_hull": 0.007069967499999663,
+   "e_above_hull_pred": 0.0339,
+   "chgnet_e_per_atom": -7.7759
+  },
+  {
+   "id": "mp-5477",
+   "formula": "Na5NbO5",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0083,
+   "chgnet_e_per_atom": -5.9979
+  },
+  {
+   "id": "mp-720098",
+   "formula": "Na2TiCr(PO4)3",
+   "mp_e_above_hull": 0.0032527747368460425,
+   "e_above_hull_pred": 0.0216,
+   "chgnet_e_per_atom": -7.8266
+  },
+  {
+   "id": "mp-26963",
+   "formula": "LiVPO5",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0318,
+   "chgnet_e_per_atom": -7.778
+  },
+  {
+   "id": "mp-757753",
+   "formula": "Li6VFe3(PO4)6",
+   "mp_e_above_hull": 0.04970579413541909,
+   "e_above_hull_pred": 0.0451,
+   "chgnet_e_per_atom": -7.4486
+  },
+  {
+   "id": "mp-759133",
+   "formula": "Li6VNi3(PO4)6",
+   "mp_e_above_hull": 0.08159326379167098,
+   "e_above_hull_pred": 0.0683,
+   "chgnet_e_per_atom": -7.1244
+  },
+  {
+   "id": "mp-1176614",
+   "formula": "LiMnP",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0579,
+   "chgnet_e_per_atom": -6.0606
+  },
+  {
+   "id": "mp-7936",
+   "formula": "LiNbS2",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0542,
+   "chgnet_e_per_atom": -6.5715
+  },
+  {
+   "id": "mp-1190931",
+   "formula": "NaFe(MoO4)2",
+   "mp_e_above_hull": 0.0038799618749996156,
+   "e_above_hull_pred": 0.0248,
+   "chgnet_e_per_atom": -7.8783
+  },
+  {
+   "id": "mp-770699",
+   "formula": "KLiMnO2",
+   "mp_e_above_hull": 0.02701469550000013,
+   "e_above_hull_pred": 0.0551,
+   "chgnet_e_per_atom": -6.2153
+  },
+  {
+   "id": "mp-686057",
+   "formula": "LiNbO3",
+   "mp_e_above_hull": 0.010854103250004243,
+   "e_above_hull_pred": 0.0183,
+   "chgnet_e_per_atom": -8.2521
+  },
+  {
+   "id": "mp-31126",
+   "formula": "Na3CoO3",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.02,
+   "chgnet_e_per_atom": -5.2573
+  },
+  {
+   "id": "mp-756625",
+   "formula": "Li4Mn3FeO8",
+   "mp_e_above_hull": 0.06887293703124975,
+   "e_above_hull_pred": 0.0642,
+   "chgnet_e_per_atom": -7.2404
+  },
+  {
+   "id": "mp-776870",
+   "formula": "Li2V3SnO8",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0267,
+   "chgnet_e_per_atom": -7.7356
+  },
+  {
+   "id": "mp-1194999",
+   "formula": "NaCo2As3O10",
+   "mp_e_above_hull": 0.007217980820316328,
+   "e_above_hull_pred": 0.014,
+   "chgnet_e_per_atom": -6.6081
+  },
+  {
+   "id": "mp-758022",
+   "formula": "LiCoPO4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0455,
+   "chgnet_e_per_atom": -7.2514
+  },
+  {
+   "id": "mp-759224",
+   "formula": "Li5CuF8",
+   "mp_e_above_hull": 0.017859305476185305,
+   "e_above_hull_pred": 0.0426,
+   "chgnet_e_per_atom": -4.793
+  },
+  {
+   "id": "mp-753779",
+   "formula": "LiMn2(PO4)2",
+   "mp_e_above_hull": 0.007935958653848552,
+   "e_above_hull_pred": 0.0074,
+   "chgnet_e_per_atom": -7.9722
+  },
+  {
+   "id": "mp-545646",
+   "formula": "Na2CoGeO4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0161,
+   "chgnet_e_per_atom": -6.1962
+  },
+  {
+   "id": "mp-1210796",
+   "formula": "Li2MnGeO4",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0132,
+   "chgnet_e_per_atom": -6.9285
+  },
+  {
+   "id": "mp-556792",
+   "formula": "LiCaCrF6",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0198,
+   "chgnet_e_per_atom": -6.2675
+  },
+  {
+   "id": "mp-1539853",
+   "formula": "LiV(OF)2",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0148,
+   "chgnet_e_per_atom": -6.8219
+  },
+  {
+   "id": "mp-504863",
+   "formula": "KNa2FeO3",
+   "mp_e_above_hull": 0.010156126250000952,
+   "e_above_hull_pred": 0.0135,
+   "chgnet_e_per_atom": -5.552
+  },
+  {
+   "id": "mp-1287635",
+   "formula": "NaFe2P2HO8",
+   "mp_e_above_hull": 0.0,
+   "e_above_hull_pred": 0.0165,
+   "chgnet_e_per_atom": -7.4174
+  },
+  {
+   "id": "mp-1173718",
+   "formula": "Na3NdTi2Nb2O12",
+   "mp_e_above_hull": 0.002104431035714782,
+   "e_above_hull_pred": 0.0121,
+   "chgnet_e_per_atom": -8.3258
+  },
+  {
+   "id": "mp-1222736",
+   "formula": "Li5Co(Ni2O5)2",
+   "mp_e_above_hull": 0.0658994944999991,
+   "e_above_hull_pred": 0.0373,
+   "chgnet_e_per_atom": -5.9803
+  }
+ ],
+ "calibration": {
+  "n": 60,
+  "mae": 0.0216,
+  "median_signed_error": 0.0173,
+  "within_0.05": 0.933,
+  "mp_stable_predicted_below_0.05": "21/24"
+ }
+}

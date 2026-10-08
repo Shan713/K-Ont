@@ -1584,3 +1584,20 @@ Workstation evaluation (`data/crystallm/kg_steer_eval.json`), Phase C generation
   pilot's novel structures checked for KG plausibility and for keeping the parent's framework
   (`abox/novel_steer_analysis.py`, StructureMatcher.fit_anonymous vs the parent; 31 of 200 parents
   carry an ontology structure family), giving a KG-steered shortlist.
+
+## Step 31 — Combined selection (laptop s1) and a validated stability screen (2026-10-08)
+
+**Combined KG filter -> CHGNet** (`kg_steer.py --save-scores`, cathode-like, composition prompt; the
+non-cathode re-scoring crashed on laptop memory and is not needed): large 75.0% (= CHGNet alone 75.0%)
+with 10% fewer relaxations; small 59.6% vs CHGNet 57.7% with 22% fewer; true-SG prompt mixed (large 83.3
+vs 87.0, small 72.2 vs 68.5). The KG's clearest value stays selection without a physics model (+8-10
+points over random). Per-CIF scores: `data/crystallm/kg_scores_{large,small_seeded}.json`.
+
+**Stability screen** (`abox/stability_hull.py`): CHGNet-relaxed energy on the Materials Project phase
+diagram (MP's corrected entries for the chemical system). First run was wrong: it applied MP2020
+corrections to CHGNet energies, which already include them (raw CHGNet vs MP corrected: median +0.026
+eV/atom on 12 known cathodes) -- 58/60 landed on the hull. Fixed (raw CHGNet energy). On 60 known
+cathodes from the KG: all 10 MP-unstable (> 0.03 eV/atom) flagged > 0.03; 21/24 MP-stable within 0.05;
+93% within 0.05 of MP; MAE 0.022; bias +0.017 (reads slightly less stable); rank correlation 0.39 over
+a narrow 0-0.15 range. Rule for novel candidates: predicted e_above_hull <= 0.05 eV/atom = plausible;
+it separates stable from unstable but cannot finely rank near-stable ones.
