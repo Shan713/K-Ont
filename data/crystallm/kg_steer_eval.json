@@ -1,0 +1,101 @@
+{
+ "weights": "bond + coord + 3 volume + 5 clash",
+ "runs": {
+  "large": {
+   "composition": {
+    "materials": 52,
+    "random_pick": 0.629,
+    "kg_top1": 0.712,
+    "best_of_pool": 0.846,
+    "plausible_share": 0.747,
+    "match_rate_all": 0.637,
+    "match_rate_kg_plausible": 0.697,
+    "chgnet_pool_materials": 52,
+    "kg_top1_on_chgnet_pool_after_relax": 0.673,
+    "chgnet_lowest_energy_after_relax": 0.75,
+    "kg_top1_on_chgnet_pool_unrelaxed": 0.615
+   },
+   "oracle": {
+    "materials": 54,
+    "random_pick": 0.816,
+    "kg_top1": 0.833,
+    "best_of_pool": 0.926,
+    "plausible_share": 0.738,
+    "match_rate_all": 0.816,
+    "match_rate_kg_plausible": 0.894,
+    "chgnet_pool_materials": 54,
+    "kg_top1_on_chgnet_pool_after_relax": 0.815,
+    "chgnet_lowest_energy_after_relax": 0.87,
+    "kg_top1_on_chgnet_pool_unrelaxed": 0.796
+   }
+  },
+  "small_seeded": {
+   "composition": {
+    "materials": 52,
+    "random_pick": 0.455,
+    "kg_top1": 0.558,
+    "best_of_pool": 0.712,
+    "plausible_share": 0.565,
+    "match_rate_all": 0.478,
+    "match_rate_kg_plausible": 0.633,
+    "chgnet_pool_materials": 52,
+    "kg_top1_on_chgnet_pool_after_relax": 0.558,
+    "chgnet_lowest_energy_after_relax": 0.577,
+    "kg_top1_on_chgnet_pool_unrelaxed": 0.538
+   },
+   "oracle": {
+    "materials": 54,
+    "random_pick": 0.588,
+    "kg_top1": 0.611,
+    "best_of_pool": 0.796,
+    "plausible_share": 0.555,
+    "match_rate_all": 0.597,
+    "match_rate_kg_plausible": 0.798,
+    "chgnet_pool_materials": 54,
+    "kg_top1_on_chgnet_pool_after_relax": 0.593,
+    "chgnet_lowest_energy_after_relax": 0.685,
+    "kg_top1_on_chgnet_pool_unrelaxed": 0.574
+   }
+  },
+  "calib_large": {
+   "composition": {
+    "materials": 95,
+    "random_pick": 0.46,
+    "kg_top1": 0.411,
+    "best_of_pool": 0.916,
+    "plausible_share": 0.181,
+    "match_rate_all": 0.46,
+    "match_rate_kg_plausible": 0.634
+   },
+   "oracle": {
+    "materials": 95,
+    "random_pick": 0.927,
+    "kg_top1": 0.895,
+    "best_of_pool": 0.979,
+    "plausible_share": 0.163,
+    "match_rate_all": 0.927,
+    "match_rate_kg_plausible": 0.948
+   }
+  },
+  "calib_small": {
+   "composition": {
+    "materials": 95,
+    "random_pick": 0.421,
+    "kg_top1": 0.389,
+    "best_of_pool": 0.853,
+    "plausible_share": 0.175,
+    "match_rate_all": 0.421,
+    "match_rate_kg_plausible": 0.614
+   },
+   "oracle": {
+    "materials": 95,
+    "random_pick": 0.912,
+    "kg_top1": 0.863,
+    "best_of_pool": 0.979,
+    "plausible_share": 0.166,
+    "match_rate_all": 0.914,
+    "match_rate_kg_plausible": 0.93
+   }
+  }
+ }
+}
