@@ -2,7 +2,8 @@
 
 Working notes for Task D of `docs/HANDOFF_KG_STEERING.md`. To be folded into BUILD_LOG by the laptop session.
 Status at the time of writing: D0 done, environment isolated and verified, D2 data prepared, `battery_role`
-embedding written and unit-tested. **No training has been run** (waiting for the novel pilot's CHGNet jobs).
+embedding written and unit-tested, official `mattergen_base` downloaded and verified, D4 protocol fixed.
+**No training has been run** (waiting for the novel pilot to finish and push).
 
 ## D0. Model choice (MatterGen), from the official sources
 
@@ -61,15 +62,22 @@ The teammate's `~/mattergen`, its `.venv` and its `outputs/` are read-only for u
 | `outputs/singlerun/2026-09-29/20-25-39` | `mp20_oxi` | `full_finetuning=false` (adapter, base frozen) | 5,800 | 219 MiB, `epoch=189-loss_val=0.36` |
 | `outputs/singlerun/2026-06-19/06-28-11` | `li_cathode_oxi` | `full_finetuning=true` | 600 | 489 MiB, `epoch=174-loss_val=0.35` |
 
-Findings for the 2026-09-29 checkpoint: the `state_dict` has 303 tensors = 285 base GemNet tensors (54.8 M
-parameters, 209 MB) + 16 adapter tensors (`cond_adapt_layers.oxidation_states.*`, 3.15 M parameters) + 2
-property-embedding tensors. It therefore **holds the full base weights**. It loads standalone, offline and on
-CPU (`MatterGenCheckpointInfo(model_path=<run dir>, load_epoch="last")` + `CrystalGenerator.prepare()`),
-giving a `DiffusionLightningModule`; nothing was written into the run folder. `model.parameters()` counts
-48.8 M against 58.0 M in the `state_dict` (difference not explained; probably buffers). The files in
-`~/mattergen/checkpoints/*` are 134-byte Git-LFS stubs (expected), so the 440 MB `mattergen_base` download is
-**not needed** to start from this checkpoint. Not verified: that its frozen base equals the official
-`mattergen_base` weights (it should, the base is frozen, but the official file is not available to compare).
+Findings for the 2026-09-29 checkpoint: the `state_dict` has 303 tensors = 281 base GemNet tensors (53.74 M
+parameters) + 4 `cond_mixin_layers.oxidation_states.*` tensors (4 x 512 x 512 = 1.05 M parameters) + 16 adapter
+tensors (`cond_adapt_layers.oxidation_states.*`, 3.15 M parameters) + 2 property-embedding tensors.
+(An earlier version of this note counted 285 "base" tensors; the 4 extra are the mix-in layers.) It loads
+standalone, offline and on CPU (`MatterGenCheckpointInfo(model_path=<run dir>, load_epoch="last")` +
+`CrystalGenerator.prepare()`); nothing was written into the run folder. `model.parameters()` counts 48.8 M
+against 58.0 M in the `state_dict` (difference not explained). The files in `~/mattergen/checkpoints/*` are
+134-byte Git-LFS stubs (expected).
+
+**Official `mattergen_base` downloaded** (approved) into `~/taskD/checkpoints_hf/checkpoints/mattergen_base/`
+(`config.yaml` 5,485 bytes, `checkpoints/last.ckpt` 461,370,350 bytes; sha256
+`81668ee12afc1ee1b037f362420730de3460bfd2d36e547585fdcb911a3dfdef`, equal to the oid in the Git-LFS pointer).
+It has 281 tensors, 53.74 M parameters, epoch 2109, step 2,504,570. Tensor comparison with the 2026-09-29
+adapter run: 281 of 281 common tensors **bit-identical, max abs difference 0.0** (the adapter's frozen base is
+the official base). The 2026-06-19 full fine-tune: 105 of 281 identical, max abs difference 2.9e-3
+(`fc_atom.weight`), as expected for a trained base.
 
 ## D2. Data (`abox/taskd_prepare_data.py`, stats in `data/crystallm/taskD_data_stats.json`)
 
@@ -141,13 +149,101 @@ through the data module's `filter_sparse_properties`. Unit test (CPU): shape `(n
 different vectors, same role the same vector, unconditional output is zeros, bad labels raise `ValueError`.
 Not tested: training, generation, or the Hydra composition of the new configs.
 
-## Open points before D3 (training)
+## Decisions, round 2 (from the user)
 
-1. Start from the adapter checkpoint as a second property next to `oxidation_states`, or alone? Whether
-   MatterGen can stack a second property adapter on an already-adapted checkpoint (`adapter.model_path` to the
-   run folder) has not been tested. An alternative that avoids stacking: extract the 285 base tensors into a
-   `mattergen_base`-style checkpoint folder and fine-tune from that.
-2. Class balance: 98 negative vs 559 positive vs 1,582 none; consider weighting or oversampling.
-3. Memory: the training must wait for the pilot (GPU and CHGNet memory); WSL sees 31 GB RAM.
-4. The teammate's `generator.py` patch (bypass of the CSP assertions when `target_compositions_dict` is set) is
-   inherited by our copy; it is irrelevant for property-conditioned generation.
+1. Train a `battery_role` adapter from the **official** `mattergen_base` (`adapter.model_path` pointing at
+   `~/taskD/checkpoints_hf/checkpoints/mattergen_base`, `full_finetuning=false`). No stacking on the teammate's
+   oxidation-state adapter. Later experiment, not now: `battery_role` + `oxidation_states` together, both from
+   the base.
+2. No reweighting, no oversampling; the three classes stay as they are (98 negative vs 559 positive vs 1,582
+   none in train). The target class is **PositiveElectrode**.
+3. Before any long run: wait until the pilot has finished and pushed (including commit 5f8a424), then do a
+   100-step timing run and report seconds per step, GPU memory and the projected time for ~5,000 steps. The full
+   run only starts on the user's OK.
+4. The D4 evaluation is fixed below, before training.
+5. Isolation rules stay; the teammate baseline is re-recorded and compared at the end of each work block.
+
+## D3 plan (nothing run yet)
+
+- Command shape (to be confirmed by the timing run; not yet executed, the Hydra composition of the new configs is
+  untested): `~/taskD/.venv/bin/python -I -m mattergen.scripts.finetune adapter.model_path=<official base dir>
+  adapter.full_finetuning=false data_module=kg_battery_role data_module.properties=[battery_role]
+  +lightning_module/diffusion_module/model/property_embeddings@adapter.adapter.property_embeddings_adapt.battery_role=battery_role
+  ~trainer.logger trainer.accumulate_grad_batches=<k> data_module.batch_size.{train,val,test}=<b>`, run from
+  `~/taskD` so the Hydra outputs land there. The base `finetune.yaml` has lr 5e-6, `precision: 32`, DDP strategy,
+  `check_val_every_n_epoch: 5`, a W&B logger (removed with `~trainer.logger`).
+- Steps vs epochs: 2,239 training structures, so an optimizer step with micro-batch `b` and accumulation `k`
+  sees `b*k` structures (proposal for the timing run: b = largest that fits, k so that b*k = 64, i.e. about 35
+  steps per epoch and about 143 epochs for 5,000 steps; to be reported with the timing).
+- Checkpoint used for D4: `last.ckpt` of the agreed run, fixed in advance (not chosen on D4 metrics).
+
+## D4 evaluation protocol (fixed before training)
+
+**Question.** Does conditioning on `battery_role=PositiveElectrode` make the generated structures more often
+cathode-like than unconditional sampling, without losing validity or stability?
+
+**Model.** The trained `battery_role` adapter for all sets below (so "unconditional" = the same network with the
+property left out, i.e. the zero embedding, which by construction is the base model's unconditional score).
+Optional reference set (needs the user's OK): the official `mattergen_base`, unconditional, to show the adapter
+does not degrade the base.
+
+**Sets (256 structures each).**
+
+| set | `battery_role` | `diffusion_guidance_factor` |
+|---|---|---|
+| S0 unconditional | not given | 0.0 (not used) |
+| S1 positive | PositiveElectrode | 1.0 |
+| S2 positive (headline) | PositiveElectrode | 2.0 |
+| S3 control | `none` | 2.0 (assumption: same factor as the headline; say if another is wanted) |
+
+All sets: same batch size B and `num_batches = 256 / B`, same `num_atoms_distribution` (the default
+`ALEX_MP_20`, at most 20 atoms), and the same seed (`pytorch_lightning.seed_everything(<seed>)` immediately
+before each set, same seed value for every set) so initial noise and atom counts line up across sets. B is set
+by the timing run (GPU memory). `CrystalGenerator` has no seed argument, hence the explicit seeding.
+
+**Metrics per set** (valid = the denominator for everything except validity itself):
+
+1. **valid** = `structure_validity` (pairwise-distance cutoff 0.5 A, MatterGen's own) **and** `is_smact_valid`
+   (SMACT, `use_pauling_test=True, include_alloys=True`), both from `mattergen.evaluation.metrics.structure`.
+   Denominator 256.
+2. **cathode-like share** (primary) = valid structures that contain Li or Na **and** at least one redox-active
+   transition metal from `TMS = [Ti, V, Cr, Mn, Fe, Co, Ni, Cu, Nb, Mo]` (the list in `abox/novel_propose.py`).
+   Reported two ways: share among valid, and yield over all 256. Secondary, stricter variant: additionally
+   contains O, S or F (the Phase C "cathode-like" notion).
+3. **KG plausibility** = `abox/kg_steer.kg_score(s)["plausible"]` share and mean score, on the valid cathode-like
+   structures (the KG priors are for ionic Li/Na compounds; trap 6, so the all-valid number is shown only for
+   reference).
+4. **E_hull** = CHGNet-relaxed energy placed on the MP phase diagram, as in `abox/stability_hull.py` (CHGNet
+   energies already include the MP2020 corrections; never apply `MaterialsProject2020Compatibility`). Reported on
+   the valid cathode-like structures: share with e_hull <= 0.05 eV/atom and the median. `stability_hull.py` knows
+   only the sets `calib` and `novel`; D4 needs a third set read from the D4 structures, added as a **new** file,
+   not by editing that script. The MP fetch (chemical systems of the D4 structures) happens on the laptop with
+   the MP key; the computation can run anywhere.
+5. **unique** = fraction of valid structures that are distinct under `StructureMatcher(ltol=0.2, stol=0.3,
+   angle_tol=5)` within the set.
+6. **novel** = fraction of valid structures with no `StructureMatcher` match (same tolerances, reduced-composition
+   prefilter) among (a) the 5,000 KG structures (`kg_training_source.json.gz`, all splits) and (b) MP. The MP
+   part needs MP structures for the generated compositions, fetched on the laptop; (a) is computed here.
+
+**Statistics.** Bootstrap 95% CIs (10,000 resamples, seeded), resampling structures within each set; ratio
+metrics (shares among valid or among cathode-like) are recomputed on each resample. Differences between sets use
+independent bootstraps of the two sets and the percentile interval of the difference. Report n for every share,
+since the cathode-like subset may be small.
+
+**Main claim and decision rule.** PositiveElectrode (S2) beats unconditional (S0) on the cathode-like share, at
+equal or better validity and E_hull. Proposed pre-registered reading (the margins are my proposal, to be
+confirmed or changed by the user before training):
+
+- (a) the 95% CI of cathode-like share S2 - S0 has a lower bound above 0;
+- (b) validity S2 - S0 has a lower bound >= -0.05 (non-inferiority margin of 5 points);
+- (c) the share with e_hull <= 0.05 among valid cathode-like, S2 - S0, has a lower bound >= -0.10.
+
+S1 vs S0 (guidance 1.0) is a dose-response check; S3 vs S0 is the control: if `none` gives the same lift, the
+effect is not the label. A pass needs (a), (b), (c) together; anything else is reported as it is.
+
+## Other notes
+
+- Memory: no training until the pilot's CHGNet jobs are done; WSL sees 31 GB RAM, the card has 12 GB.
+- The teammate's `generator.py` patch (bypass of the CSP assertions when `target_compositions_dict` is set) is
+  inherited by our copy; irrelevant for property-conditioned generation.
+- Not done: Hydra composition of the new configs, the timing run, any training or generation.
