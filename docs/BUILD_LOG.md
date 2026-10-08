@@ -1621,3 +1621,29 @@ KG top-1 minus random pick, bootstrap 95% CI over compositions:
 
 The KG's value is in selecting among CrystaLLM's samples, and it is modest: positive in all three
 independent sample sets, clearly above zero in two, uncertain in size at ~52 compositions per run.
+
+## Step 33 — Task A-test: seeding CrystaLLM with a KG analogue steers its output (2026-10-08)
+
+`abox/seeded_generate.py --set test` (laptop, large model, 82 min): the 22 test cathodes with a
+chemically plausible one-swap KG analogue (`test_analogues.json`); target = the analogue's conventional
+cell with the swap, volume scaled by the KG volume model; 10 samples per level, same seeds.
+
+| | composition | + analogue SG | + analogue lattice | substitution (control) |
+|---|---|---|---|---|
+| valid | 94.1% | 99.5% | 100% | 100% |
+| right composition | 93.2% | 99.1% | 100% | 100% |
+| keeps the analogue's framework | 42.9% | **68.3%** | 67.3% | 100% (by construction) |
+| matches the true structure (per CIF) | 34.6% | **44.5%** | 41.8% | 40.9% |
+| compositions found | 11/22 | 11/22 | 10/22 | 9/22 |
+| KG-plausible | 72% | 72% | 73% | 95% |
+
+Paired per composition, + analogue SG vs composition, bootstrap 95% CI: **framework compliance +26.9
+points [+13.7, +40.8] (12 compositions better, 1 worse)**; validity +5.5 [0.0, +14.1] (3 better, 0
+worse); true-structure share +11.0 [+0.3, +24.7] (6 better, 2 worse). The lattice seed adds nothing
+over the space group. When the analogue's SG is the true one (10/22) the SG seed finds 10/10
+(composition 9/10); when it isn't (12/22), 1/12 (composition 2/12) -- seeding follows the KG
+analogue, right or wrong. Best-energy structures are within a few meV/atom of plain substitution.
+
+First direct evidence for the claim: conditioning on a KG-retrieved analogue makes CrystaLLM comply with
+the ontology requirement (keep the framework) far more often and stay valid, at no loss in finding the
+true structure. Limits: 22 compositions; whether the requirement is *right* depends on the analogue.

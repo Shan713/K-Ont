@@ -1,0 +1,32 @@
+{
+ "block_size": 1024,
+ "input": 4895,
+ "kept": {
+  "train": 3754,
+  "val": 480,
+  "test": 461
+ },
+ "dropped": {
+  "too long for the context": 200
+ },
+ "labels_in_train": {
+  "battery_role": {
+   "null": 2461,
+   "PositiveElectrode": 1055,
+   "NegativeElectrode": 238
+  },
+  "structure_family": {
+   "null": 3448,
+   "ArgyroditeStructure": 5,
+   "NASICONStructure": 110,
+   "GarnetStructure": 42,
+   "LayeredOxideStructure": 114,
+   "PerovskiteStructure": 10,
+   "OlivineStructure": 14,
+   "SpinelStructure": 9,
+   "LGPSTypeStructure": 1,
+   "RockSaltStructure": 1
+  }
+ },
+ "tokens_median": 448
+}

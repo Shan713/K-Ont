@@ -1,0 +1,30 @@
+number of parameters: 201.74M
+CHGNet v0.3.0 initialized with 412,525 parameters
+CHGNet will run on cuda
+CHGNet will run on cpu
+1/22 Li4Cr3FeO8 (analogue sg 12): composition plaus 9/10 strict 0 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 0  (4.8 min)
+2/22 Na2PdF6 (analogue sg 136): composition plaus 5/10 strict 0 | parent_sg plaus 10/10 strict 0 | parent_lattice plaus 10/10 strict 0 | substitution plaus 1/1 strict 0  (7.9 min)
+3/22 LiFeSO4F (analogue sg 15): composition plaus 0/10 strict 0 | parent_sg plaus 4/10 strict 1 | parent_lattice plaus 6/10 strict 0 | substitution plaus 1/1 strict 0  (14.5 min)
+4/22 Li2ZnSiO4 (analogue sg 7): composition plaus 1/10 strict 0 | parent_sg plaus 0/10 strict 0 | parent_lattice plaus 1/10 strict 0 | substitution plaus 1/1 strict 0  (18.3 min)
+5/22 Li2CrSiO4 (analogue sg 31): composition plaus 5/10 strict 0 | parent_sg plaus 10/10 strict 0 | parent_lattice plaus 0/10 strict 0 | substitution plaus 1/1 strict 0  (22.1 min)
+6/22 Li2MnO2F (analogue sg 12): composition plaus 8/10 strict 0 | parent_sg plaus 8/10 strict 0 | parent_lattice plaus 10/10 strict 2 | substitution plaus 1/1 strict 1  (27.7 min)
+7/22 K2LiFeO3 (analogue sg 67): composition plaus 10/10 strict 10 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (29.8 min)
+8/22 Li5Ti(SiO4)2 (analogue sg 5): composition plaus 10/10 strict 10 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (32.9 min)
+9/22 LiFePO4 (analogue sg 62): composition plaus 9/10 strict 0 | parent_sg plaus 10/10 strict 0 | parent_lattice plaus 3/10 strict 0 | substitution plaus 1/1 strict 0  (37.0 min)
+10/22 LiMnF3 (analogue sg 62): composition plaus 5/10 strict 3 | parent_sg plaus 10/10 strict 8 | parent_lattice plaus 7/10 strict 0 | substitution plaus 1/1 strict 0  (40.4 min)
+11/22 Na3(CoO2)5 (analogue sg 2): composition plaus 0/10 strict 0 | parent_sg plaus 4/10 strict 0 | parent_lattice plaus 6/10 strict 0 | substitution plaus 1/1 strict 0  (44.5 min)
+12/22 NaTi3P3O13 (analogue sg 11): composition plaus 10/10 strict 10 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (51.1 min)
+13/22 LiMnVO4 (analogue sg 74): composition plaus 10/10 strict 1 | parent_sg plaus 10/10 strict 0 | parent_lattice plaus 10/10 strict 0 | substitution plaus 1/1 strict 0  (53.7 min)
+14/22 LiVCoO4 (analogue sg 63): composition plaus 8/10 strict 1 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (57.5 min)
+15/22 LiZnPO4 (analogue sg 14): composition plaus 4/10 strict 0 | parent_sg plaus 0/10 strict 0 | parent_lattice plaus 0/10 strict 0 | substitution plaus 1/1 strict 0  (63.2 min)
+16/22 LiTl2MoF6 (analogue sg 225): composition plaus 1/10 strict 10 | parent_sg plaus 2/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (65.6 min)
+17/22 Li5CuSO2 (analogue sg 123): composition plaus 6/10 strict 5 | parent_sg plaus 7/10 strict 8 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (67.4 min)
+18/22 NaTiF4 (analogue sg 14): composition plaus 10/10 strict 0 | parent_sg plaus 5/10 strict 0 | parent_lattice plaus 8/10 strict 0 | substitution plaus 1/1 strict 0  (69.9 min)
+19/22 NaNdCoWO6 (analogue sg 4): composition plaus 10/10 strict 10 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (73.5 min)
+20/22 NaNd2OsO6 (analogue sg 14): composition plaus 10/10 strict 8 | parent_sg plaus 10/10 strict 10 | parent_lattice plaus 10/10 strict 10 | substitution plaus 1/1 strict 1  (75.5 min)
+21/22 NaNbO3 (analogue sg 15): composition plaus 10/10 strict 3 | parent_sg plaus 7/10 strict 0 | parent_lattice plaus 9/10 strict 0 | substitution plaus 1/1 strict 0  (81.4 min)
+22/22 LiWO3 (analogue sg 221): composition plaus 7/10 strict 0 | parent_sg plaus 0/10 strict 0 | parent_lattice plaus 0/10 strict 0 | substitution plaus 0/1 strict 0  (82.4 min)
+composition {'cifs': 220, 'valid': 0.941, 'right_composition': 0.932, 'kg_plausible': 0.722, 'keeps_framework': 0.429, 'compositions_with_relaxed': 22, 'best_keeps_framework_after_relax': 0.591, 'strict_per_cif': 0.346, 'compositions_found': 11, 'best_energy_pick_correct_after_relax': 11, 'median_best_E_minus_substitution_eV': -0.0014, 'compositions_lower_than_substitution': 3}
+parent_sg {'cifs': 220, 'valid': 0.995, 'right_composition': 0.991, 'kg_plausible': 0.72, 'keeps_framework': 0.683, 'compositions_with_relaxed': 22, 'best_keeps_framework_after_relax': 0.818, 'strict_per_cif': 0.445, 'compositions_found': 11, 'best_energy_pick_correct_after_relax': 11, 'median_best_E_minus_substitution_eV': -0.0013, 'compositions_lower_than_substitution': 3}
+parent_lattice {'cifs': 220, 'valid': 1.0, 'right_composition': 1.0, 'kg_plausible': 0.727, 'keeps_framework': 0.673, 'compositions_with_relaxed': 22, 'best_keeps_framework_after_relax': 0.818, 'strict_per_cif': 0.418, 'compositions_found': 10, 'best_energy_pick_correct_after_relax': 10, 'median_best_E_minus_substitution_eV': -0.0004, 'compositions_lower_than_substitution': 2}
+substitution {'cifs': 22, 'valid': 1.0, 'right_composition': 1.0, 'kg_plausible': 0.955, 'keeps_framework': 1.0, 'compositions_with_relaxed': 22, 'best_keeps_framework_after_relax': 1.0, 'strict_per_cif': 0.409, 'compositions_found': 9, 'best_energy_pick_correct_after_relax': 9}

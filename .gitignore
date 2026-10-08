@@ -108,6 +108,11 @@ export_package/
 !/data/crystallm/dpo_*.jsonl
 !/data/crystallm/dpo_*.json
 !/data/crystallm/novel_best.tar.gz
+!/data/crystallm/kg_corpus_stats.json
+!/data/crystallm/dpo_generated_*.json
+!/data/crystallm/dpo_scored_*.json
+!/data/crystallm/dpo_stats_*.json
+!/data/crystallm/laptop_logs/
 # Grown-KG extractions (26-111 MB, regenerable with abox/extract.py from battGPT's grown KGs) and
 # the top-level training logs/status files in data/runs/.
 /data/battgpt_abox_grow_*/

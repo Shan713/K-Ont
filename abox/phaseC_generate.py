@@ -112,10 +112,15 @@ def load_truth(t):
     if t.get("cif"):
         return Structure.from_str(t["cif"], fmt="cif")
     with open(os.path.join(DATA, "test_cifs", t["id"] + ".cif"), encoding="utf-8") as f:
-        # pymatgen-written test CIFs indent their lines ("  1  'x, y, z'"); CrystaLLM's
-        # replace_symmetry_operators() only recognises the compact layout the model itself writes,
-        # so collapse whitespace first (as CrystaLLM's own prompt builder does)
-        text = "\n".join(re.sub(r"[ \t]+", " ", line.strip()) for line in f.read().splitlines())
+        return reference_from_text(f.read())
+
+
+def reference_from_text(text):
+    """A CrystaLLM-format CIF (asymmetric unit + placeholder operator, pymatgen-indented: CrystaLLM's
+    test set and our kg_corpus) as a full Structure. CrystaLLM's replace_symmetry_operators() only
+    recognises the compact layout the model itself writes, so whitespace is collapsed first (as
+    CrystaLLM's own prompt builder does), then the same postprocess() as generated CIFs."""
+    text = "\n".join(re.sub(r"[ \t]+", " ", line.strip()) for line in text.splitlines())
     return Structure.from_str(postprocess(text), fmt="cif")
 
 
