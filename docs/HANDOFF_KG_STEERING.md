@@ -24,6 +24,11 @@ It is assembled from three levers, each a different way the KG drives generation
 - **B. KG as reward** -- KG plausibility + ontology compliance + CHGNet stability as a reward; CrystaLLM is
   preference-fine-tuned (DPO) so its *raw* samples move towards them. (Task B: data prep now, training later.)
 - **C. Ontology-constrained decoding** -- later.
+- **D. KG-conditioned diffusion** -- a diffusion generator built for conditioning (MatterGen-style
+  adapters), conditioned on KG/ontology labels and the OnT embedding. (Task D below; the longest job.)
+
+**Who runs what (decided 2026-10-08):** the **workstation** runs Task D (setup now, training once the GPU
+is free) and later A-novel; the **laptop** runs A-test (22 test cathodes) and B data prep.
 
 The judging metric is **compliance with KG/ontology conditions** (plus validity, plausibility, stability),
 not only exact recovery of a known structure: CrystaLLM already recovers most known structures alone.
@@ -157,7 +162,41 @@ supervised fine-tuning on the chosen samples only (separates "more battery data"
 **Acceptance for now**: B1 corpus + stats, B2 pair files + stats (how many pairs, reward distribution), B3
 written. Commit and push; report the numbers.
 
-## 7. Pending from today
+## 7. Task D: KG-conditioned diffusion (workstation; start now)
+
+Goal: a diffusion model that generates crystals **conditioned on KG/ontology attributes** -- the most
+direct form of the project's claim. Steps, each to be reported before the next:
+
+**D0. Choose and verify the model (no installs yet).** Candidate: MatterGen (Microsoft; property-conditioned
+diffusion with fine-tuning adapters). Check, from the official repository: licence, released checkpoints,
+how to fine-tune on a new conditioning property (categorical and continuous), GPU memory and time for
+fine-tuning, the data format it expects, Python/CUDA requirements. If MatterGen is unsuitable, compare
+alternatives briefly (e.g. DiffCSP/DiffCSP++, CrystalFormer) and recommend one. Write the findings into
+BUILD_LOG Step 34 and stop for the user's go-ahead before installing (installs and checkpoint downloads
+need the user's OK: name, source and size).
+
+**D1. Environment** in its own venv (e.g. `.venv-diffusion`), never touching `.venv-crystallm`.
+
+**D2. Data** from `data/crystallm/kg_training_source.json.gz` (`train` / `val` / `test` splits as given;
+never train on `test` or `excluded`): conventional standard cells, <= 40 atoms. Conditioning labels per
+material:
+- `battery_role` (categorical: PositiveElectrode / NegativeElectrode / none) -- 1,795 labelled;
+- `structure_family` (categorical, 9 ontology families + none) -- only 445 labelled: report class counts;
+- `chemical_system` (as the model supports it);
+- optionally the OnT embedding of the material's composition-only sentence as a continuous vector
+  (the K-Ont model under `data/runs/`; discuss with the user before adding -- it is the novel part but
+  also the riskiest).
+
+**D3. Fine-tune** the pretrained model with adapters on these labels (start with `battery_role` alone, a
+short run to check it learns; then add family).
+
+**D4. Evaluate** conditioned vs unconditioned sampling, the same compositions/chemical systems: validity,
+**compliance** (requested role/family satisfied -- family via `StructureMatcher.fit_anonymous` against KG
+members of that family, role via battGPT's rules or a classifier trained on the KG labels), KG plausibility
+(`kg_steer.kg_score`), CHGNet stability, novelty vs the training set; bootstrap CIs. Compare with CrystaLLM
+(composition prompt, and the Task A seeded levels) on the same targets.
+
+## 8. Pending from today
 
 The novel pilot (`novel_queue.py`) and its follow-up `novel_steer_analysis.py` (s3) run on the workstation.
 When `novel_steer_analysis.json`, `novel_shortlist.md` and a `novel_best.tar.gz` are pushed, the laptop
