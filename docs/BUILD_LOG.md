@@ -1647,3 +1647,37 @@ analogue, right or wrong. Best-energy structures are within a few meV/atom of pl
 First direct evidence for the claim: conditioning on a KG-retrieved analogue makes CrystaLLM comply with
 the ontology requirement (keep the framework) far more often and stay valid, at no loss in finding the
 true structure. Limits: 22 compositions; whether the requirement is *right* depends on the analogue.
+
+## Step 34 — Task B2: KG-reward preference pairs for DPO (2026-10-09)
+
+`abox/dpo_pairs.py` (laptop, small model, 8 samples per composition; reward fixed beforehand: invalid
+or wrong composition -100, else -kg_total - 10 max(0, dE vs the KG structure)).
+
+| | train | val |
+|---|---|---|
+| compositions / samples | 595 / 4,760 | 150 / 1,200 |
+| valid / right composition | 96.7% / 93.7% | 97.3% / 95.1% |
+| KG-plausible (of right composition) | 58.2% | 59.3% |
+| matches the KG structure | 46.5% | 44.4% |
+| median dE | +0.0019 eV/atom | +0.0014 |
+| **pairs** (skipped: rewards within 0.5) | **512** (83) | **122** (28) |
+| rejected because: KG-implausible / wrong comp / invalid / worse dE-KG | 297 / 73 / 61 / 81 | 75 / 16 / 9 / 22 |
+| chosen: KG-plausible / matches truth | 76.4% / 53.1% | 73.0% / 51.6% |
+
+The pairs mostly teach "avoid KG-implausible structures" (58% of pairs), then validity and composition.
+The chosen samples match the true structure more often than samples in general (53% vs 47%), so the KG
+reward is aligned with correctness, not only with itself. Because 41% of true-structure samples fail
+the KG plausibility check (strict priors), B3 must use the strict match as a held-out check against
+reward hacking.
+
+**Fix during the run.** 5 of 600 train compositions crashed scoring: their corpus CIF does not rebuild
+to its own cell (symmetry expansion duplicates sites, e.g. mp-1296443 Li4Fe3CoO8 -> Li12Fe9Co3O32).
+Scoring now drops such compositions; `kg_corpus.py` now rejects them. The rebuilt corpus: 3,688 / 476 /
+456 (75 dropped as "does not rebuild", 200 as too long). B3 trains only on the rebuilt corpus and
+drops any pair whose id is no longer in it.
+
+**B3 protocol (not run).** Start from CrystaLLM small; optional SFT on the rebuilt KG corpus train split;
+then DPO (beta 0.1, lr 1e-6, 1-2 epochs over 512 pairs; val pairs for early stopping on the DPO loss).
+Evaluate on 100 held-out KG test compositions, 8 samples each, base vs SFT vs SFT+DPO, same seeds:
+valid, right composition, KG-plausible, strict match to the KG structure, CHGNet dE; paired bootstrap
+over compositions. Success = KG-plausible up with strict match and validity not down.

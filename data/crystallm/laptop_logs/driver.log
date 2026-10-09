@@ -1,0 +1,14 @@
+[18:56:23] start b1_corpus: kg_corpus.py --workers 6
+[18:56:23] start a_test: seeded_generate.py --set test --model crystallm_v1_large --batch 5 --workers 6 --threads 6
+[18:57:15] b1_corpus finished (exit 0)
+[20:19:14] a_test finished (exit 0)
+[20:19:14] start b2_gen_train: dpo_pairs.py --stage generate --split train --n 600
+[23:19:10] b2_gen_train finished (exit 0)
+[23:19:10] start b2_score_train
+[23:19:10] start b2_gen_val: dpo_pairs.py --stage generate --split val --n 150
+[23:21:22] restart b2_score_train manually (patched reference handling)
+[23:46:04] b2_gen_val finished (exit 0)
+[23:46:04] start b2_score_val
+[23:46:04] b2_score_train finished (exit 1)
+[01:49:14] b2_score_val finished (exit 0)
+[01:49:14] done

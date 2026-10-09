@@ -1,0 +1,53 @@
+5 compositions dropped, reference does not rebuild to its formula: ['mp-1296443', 'mp-773163', 'mp-756196', 'mp-19230', 'mp-771712']
+KG-scored 4760 samples
+relaxed 200/5055  (27.3 min)
+relaxed 400/5055  (59.8 min)
+relaxed 600/5055  (89.6 min)
+relaxed 800/5055  (119.2 min)
+relaxed 1000/5055  (146.1 min)
+relaxed 1200/5055  (166.4 min)
+relaxed 1400/5055  (181.9 min)
+relaxed 1600/5055  (191.8 min)
+relaxed 1800/5055  (207.8 min)
+relaxed 2000/5055  (216.9 min)
+relaxed 2200/5055  (226.7 min)
+relaxed 2400/5055  (237.9 min)
+relaxed 2600/5055  (255.8 min)
+relaxed 2800/5055  (266.9 min)
+relaxed 3000/5055  (278.2 min)
+relaxed 3200/5055  (291.2 min)
+relaxed 3400/5055  (300.7 min)
+relaxed 3600/5055  (311.1 min)
+relaxed 3800/5055  (323.6 min)
+relaxed 4000/5055  (339.3 min)
+relaxed 4200/5055  (350.1 min)
+relaxed 4400/5055  (361.4 min)
+relaxed 4600/5055  (373.0 min)
+relaxed 4800/5055  (385.4 min)
+relaxed 5000/5055  (397.7 min)
+CHGNet v0.3.0 initialized with 412,525 parameters
+CHGNet will run on cuda
+CHGNet will run on cpu
+CHGNet v0.3.0 initialized with 412,525 parameters
+CHGNet will run on cuda
+CHGNet will run on cpu
+CHGNet v0.3.0 initialized with 412,525 parameters
+CHGNet will run on cuda
+CHGNet will run on cpu
+scored 595 compositions
+{
+ "compositions": 595,
+ "samples": 4760,
+ "pairs": 512,
+ "skipped": {
+  "rewards too close": 83
+ },
+ "valid": 0.967,
+ "right_composition": 0.937,
+ "kg_plausible": 0.582,
+ "strict_match": 0.465,
+ "median_dE": 0.0019,
+ "reward_median_valid": -3.308,
+ "reward_invalid_share": 0.063,
+ "reward": "invalid/wrong composition -100; else -kg_total - 10 max(0, dE)"
+}

@@ -1,0 +1,53 @@
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\process.py", line 261, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\process.py", line 210, in _process_chunk
+    return [fn(*args) for args in chunk]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\process.py", line 210, in <listcomp>
+    return [fn(*args) for args in chunk]
+            ^^^^^^^^^
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\abox\dpo_pairs.py", line 100, in _kg
+    row["strict"] = bool(StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5).fit(s, Structure.from_str(truth_cif, fmt="cif")))
+                                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\.venv-crystallm\Lib\site-packages\pymatgen\core\structure.py", line 3085, in from_str
+    struct = dispatch_read_str(handler, input_string, primitive=primitive, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\.venv-crystallm\Lib\site-packages\pymatgen\io\registry.py", line 484, in dispatch_read_str
+    return handler.read_str(input_string, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\.venv-crystallm\Lib\site-packages\pymatgen\io\cif.py", line 1817, in _cif_read_str
+    return parser.parse_structures(primitive=primitive)[0]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\.venv-crystallm\Lib\site-packages\pymatgen\io\cif.py", line 1362, in parse_structures
+    raise ValueError("Invalid CIF file with no structures!")
+ValueError: Invalid CIF file with no structures!
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\abox\dpo_pairs.py", line 224, in <module>
+    main()
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\abox\dpo_pairs.py", line 220, in main
+    {"generate": stage_generate, "score": stage_score, "pairs": stage_pairs}[a.stage](a)
+  File "C:\Users\Shantharam P\Documents\GitHub\K-Ont\abox\dpo_pairs.py", line 135, in stage_score
+    kg = dict(ex.map(_kg, jobs, chunksize=4))
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\process.py", line 620, in _chain_from_iterable_of_lists
+    for element in iterable:
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Shantharam P\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+ValueError: Invalid CIF file with no structures!

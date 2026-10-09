@@ -1,0 +1,1202 @@
+[
+ {
+  "id": "mp-757232",
+  "formula": "Li3Mn2CuO6",
+  "prompt": "data_Li6Mn4Cu2O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-22526",
+  "formula": "LiCoO2",
+  "prompt": "data_Li3Co3O6\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-1177831",
+  "formula": "Li2V2(PO4)3",
+  "prompt": "data_Li4V4P6O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "NASICONStructure"
+ },
+ {
+  "id": "mp-1220741",
+  "formula": "NaLaTa2O7",
+  "prompt": "data_Na2La2Ta4O14\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": "GarnetStructure"
+ },
+ {
+  "id": "mp-756875",
+  "formula": "Li4NbCu3O8",
+  "prompt": "data_Li8Nb2Cu6O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-2232918",
+  "formula": "Na4MgTi3O8",
+  "prompt": "data_Na8Mg2Ti6O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-26305",
+  "formula": "Li2Cr3(P2O7)2",
+  "prompt": "data_Li2Cr3P4O14\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "NASICONStructure"
+ },
+ {
+  "id": "mp-1235143",
+  "formula": "Sr4LiSm2Ta2O12",
+  "prompt": "data_Sr4Li1Sm2Ta2O12\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": "GarnetStructure"
+ },
+ {
+  "id": "mp-1520338",
+  "formula": "NaCeNb2O6",
+  "prompt": "data_Na4Ce4Nb8O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "GarnetStructure"
+ },
+ {
+  "id": "mp-763910",
+  "formula": "Li4MnFe3O8",
+  "prompt": "data_Li8Mn2Fe6O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-758511",
+  "formula": "Li2V2(PO4)3",
+  "prompt": "data_Li4V4P6O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "NASICONStructure"
+ },
+ {
+  "id": "mp-774337",
+  "formula": "Li3Ti2FeO6",
+  "prompt": "data_Li6Ti4Fe2O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-755201",
+  "formula": "Li3Fe(CuO3)2",
+  "prompt": "data_Li6Fe2Cu4O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-766487",
+  "formula": "LiCrCO3F2",
+  "prompt": "data_Li4Cr4C4O12F8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "PerovskiteStructure"
+ },
+ {
+  "id": "mp-754431",
+  "formula": "Li3Cr(NiO3)2",
+  "prompt": "data_Li6Cr2Ni4O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": "LayeredOxideStructure"
+ },
+ {
+  "id": "mp-942704",
+  "formula": "LiCoHSO5",
+  "prompt": "data_Li4Co4H4S4O20\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1238817",
+  "formula": "Li(CrS2)2",
+  "prompt": "data_Li1Cr2S4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-8864",
+  "formula": "Li(Co3P2)2",
+  "prompt": "data_Li1Co6P4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-581678",
+  "formula": "LiEu2Si3",
+  "prompt": "data_Li4Eu8Si12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1177344",
+  "formula": "Li4VFe3O8",
+  "prompt": "data_Li8V2Fe6O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1222462",
+  "formula": "Li4CoTeO6",
+  "prompt": "data_Li8Co2Te2O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1078237",
+  "formula": "NaNiF3",
+  "prompt": "data_Na4Ni4F12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-774432",
+  "formula": "K2Li3NiO4",
+  "prompt": "data_K8Li12Ni4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1238786",
+  "formula": "Li(CrS2)2",
+  "prompt": "data_Li4Cr8S16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-505307",
+  "formula": "Na2Si4NiO10",
+  "prompt": "data_Na4Si8Ni2O20\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-19294",
+  "formula": "LiFeP2O7",
+  "prompt": "data_Li2Fe2P4O14\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-7936",
+  "formula": "LiNbS2",
+  "prompt": "data_Li2Nb2S4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-558383",
+  "formula": "Na2CrF4",
+  "prompt": "data_Na4Cr2F8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-769611",
+  "formula": "Li4V3CrO8",
+  "prompt": "data_Li8V6Cr2O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-772830",
+  "formula": "Li4V2SiGeO10",
+  "prompt": "data_Li4V2Si1Ge1O10\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-4226",
+  "formula": "LiCrS2",
+  "prompt": "data_Li1Cr1S2\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-725430",
+  "formula": "Li2Ti4Ni(PO5)4",
+  "prompt": "data_Li2Ti4Ni1P4O20\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1210977",
+  "formula": "LiMn2TeO6",
+  "prompt": "data_Li2Mn4Te2O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-39712",
+  "formula": "NaCaTaTiO6",
+  "prompt": "data_Na2Ca2Ta2Ti2O12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-771032",
+  "formula": "Na2CuAsCO7",
+  "prompt": "data_Na4Cu2As2C2O14\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-9753",
+  "formula": "Na2NbF6",
+  "prompt": "data_Na4Nb2F12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-18182",
+  "formula": "CsNa3TiO4",
+  "prompt": "data_Cs4Na12Ti4O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-6090",
+  "formula": "Na2Cu(CO3)2",
+  "prompt": "data_Na4Cu2C4O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1210923",
+  "formula": "Li2FeGeO4",
+  "prompt": "data_Li4Fe2Ge2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1210849",
+  "formula": "Li2Fe(WO4)2",
+  "prompt": "data_Li2Fe1W2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-556802",
+  "formula": "NaSrFeF6",
+  "prompt": "data_Na4Sr4Fe4F24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-17876",
+  "formula": "NaMnAsO4",
+  "prompt": "data_Na4Mn4As4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-505066",
+  "formula": "NaFeF3",
+  "prompt": "data_Na4Fe4F12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1222352",
+  "formula": "LiTiRhO4",
+  "prompt": "data_Li4Ti4Rh4O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1518553",
+  "formula": "NaEuHfNbO6",
+  "prompt": "data_Na4Eu4Hf4Nb4O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-755249",
+  "formula": "Li2NiSnO4",
+  "prompt": "data_Li2Ni1Sn1O4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-765497",
+  "formula": "LiVF4",
+  "prompt": "data_Li4V4F16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-27569",
+  "formula": "Na14Mn2O9",
+  "prompt": "data_Na14Mn2O9\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-865838",
+  "formula": "LiSiRu2",
+  "prompt": "data_Li4Si4Ru8\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-753737",
+  "formula": "Li3CuS2",
+  "prompt": "data_Li12Cu4S8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1220980",
+  "formula": "NaNd(MoO4)2",
+  "prompt": "data_Na2Nd2Mo4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-8351",
+  "formula": "NaAlSiO4",
+  "prompt": "data_Na4Al4Si4O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1221293",
+  "formula": "Na2Ti12O25",
+  "prompt": "data_Na2Ti12O25\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1220905",
+  "formula": "NaTmTi2O6",
+  "prompt": "data_Na2Tm2Ti4O12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1195646",
+  "formula": "NaVH2(OF2)2",
+  "prompt": "data_Na4V4H8O8F16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-560157",
+  "formula": "LiMgVO4",
+  "prompt": "data_Li4Mg4V4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-9107",
+  "formula": "NaZrCuS3",
+  "prompt": "data_Na4Zr4Cu4S12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1227892",
+  "formula": "BaNaVS4",
+  "prompt": "data_Ba4Na4V4S16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-781948",
+  "formula": "Na2Ti2O5",
+  "prompt": "data_Na8Ti8O20\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-557656",
+  "formula": "RbNaSi2O5",
+  "prompt": "data_Rb4Na4Si8O20\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-759726",
+  "formula": "Li2MnSiO4",
+  "prompt": "data_Li8Mn4Si4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-755530",
+  "formula": "Na3CuO2",
+  "prompt": "data_Na12Cu4O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-542710",
+  "formula": "NaMn2O4",
+  "prompt": "data_Na4Mn8O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1209999",
+  "formula": "NaMnFeF6",
+  "prompt": "data_Na3Mn3Fe3F18\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-753051",
+  "formula": "LiCrPHO5",
+  "prompt": "data_Li2Cr2P2H2O10\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-3744",
+  "formula": "NaNbO2",
+  "prompt": "data_Na2Nb2O4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-561480",
+  "formula": "NaNiF3",
+  "prompt": "data_Na4Ni4F12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-561353",
+  "formula": "NaZr2MnF11",
+  "prompt": "data_Na2Zr4Mn2F22\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-764033",
+  "formula": "NaMn2O4",
+  "prompt": "data_Na4Mn8O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-973019",
+  "formula": "LiSm(CuP)2",
+  "prompt": "data_Li1Sm1Cu2P2\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-557923",
+  "formula": "Na2MoSeO6",
+  "prompt": "data_Na8Mo4Se4O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-7500",
+  "formula": "Na4SiO4",
+  "prompt": "data_Na8Si2O8\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-754352",
+  "formula": "Na3CuO2",
+  "prompt": "data_Na12Cu4O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1173701",
+  "formula": "Na3TmTi2Nb2O12",
+  "prompt": "data_Na6Tm2Ti4Nb4O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-545359",
+  "formula": "KNa2CuO2",
+  "prompt": "data_K2Na4Cu2O4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-753408",
+  "formula": "KLiCoO2",
+  "prompt": "data_K4Li4Co4O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-764341",
+  "formula": "Li3FeSiO5",
+  "prompt": "data_Li12Fe4Si4O20\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-770632",
+  "formula": "Li3CrO4",
+  "prompt": "data_Li6Cr2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-18873",
+  "formula": "Rb2NaMnO4",
+  "prompt": "data_Rb4Na2Mn2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-775271",
+  "formula": "Li2Cr3WO8",
+  "prompt": "data_Li4Cr6W2O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-26181",
+  "formula": "LiFeP2O7",
+  "prompt": "data_Li2Fe2P4O14\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-17259",
+  "formula": "NaSrCrF6",
+  "prompt": "data_Na4Sr4Cr4F24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-752635",
+  "formula": "Li(CoO2)3",
+  "prompt": "data_Li2Co6O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-557293",
+  "formula": "Li2CdSiO4",
+  "prompt": "data_Li8Cd4Si4O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-18851",
+  "formula": "NaCr(WO4)2",
+  "prompt": "data_Na2Cr2W4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-559938",
+  "formula": "LiV3(TeO6)2",
+  "prompt": "data_Li2V6Te4O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1177695",
+  "formula": "Li3CuS2",
+  "prompt": "data_Li12Cu4S8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1002571",
+  "formula": "NaMn2O4",
+  "prompt": "data_Na1Mn2O4\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-561778",
+  "formula": "CsLiCrO4",
+  "prompt": "data_Cs4Li4Cr4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-18878",
+  "formula": "LiFeAs2O7",
+  "prompt": "data_Li2Fe2As4O14\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1312304",
+  "formula": "Li5Ni3(SnO5)2",
+  "prompt": "data_Li5Ni3Sn2O10\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-6332",
+  "formula": "Li2TiSiO5",
+  "prompt": "data_Li4Ti2Si2O10\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1222742",
+  "formula": "Li2MgSiO4",
+  "prompt": "data_Li8Mg4Si4O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-753779",
+  "formula": "LiMn2(PO4)2",
+  "prompt": "data_Li2Mn4P4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-558765",
+  "formula": "Li2Ni(WO4)2",
+  "prompt": "data_Li2Ni1W2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-26563",
+  "formula": "LiFeP2O7",
+  "prompt": "data_Li2Fe2P4O14\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-560039",
+  "formula": "NaY(SiO3)2",
+  "prompt": "data_Na4Y4Si8O24\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1104533",
+  "formula": "NaPrTiO4",
+  "prompt": "data_Na2Pr2Ti2O8\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-831245",
+  "formula": "Li2MnSiO4",
+  "prompt": "data_Li4Mn2Si2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-14629",
+  "formula": "Li2EuSiO4",
+  "prompt": "data_Li6Eu3Si3O12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1222684",
+  "formula": "Li2Mg3Si2",
+  "prompt": "data_Li6Mg9Si6\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1105401",
+  "formula": "NaYMnWO6",
+  "prompt": "data_Na2Y2Mn2W2O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1175314",
+  "formula": "Li7Mn5O12",
+  "prompt": "data_Li7Mn5O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1177331",
+  "formula": "Li4MnCrO6",
+  "prompt": "data_Li8Mn2Cr2O12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-6481",
+  "formula": "Na2ZnSi3O8",
+  "prompt": "data_Na4Zn2Si6O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1078217",
+  "formula": "NaFeF3",
+  "prompt": "data_Na4Fe4F12\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-754895",
+  "formula": "LiVF4",
+  "prompt": "data_Li2V2F8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1221068",
+  "formula": "NaErTi2O6",
+  "prompt": "data_Na2Er2Ti4O12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-778364",
+  "formula": "Na6Ti2O7",
+  "prompt": "data_Na12Ti4O14\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-754807",
+  "formula": "LiFeSbO4",
+  "prompt": "data_Li4Fe4Sb4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-774920",
+  "formula": "LiFeSbO4",
+  "prompt": "data_Li4Fe4Sb4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-757010",
+  "formula": "Li3Fe(NiO2)4",
+  "prompt": "data_Li6Fe2Ni8O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-559240",
+  "formula": "Li2MnSiO4",
+  "prompt": "data_Li4Mn2Si2O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-556209",
+  "formula": "RbLiMoO4",
+  "prompt": "data_Rb4Li4Mo4O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-753969",
+  "formula": "LiVF4",
+  "prompt": "data_Li4V4F16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-11189",
+  "formula": "Li2MgSiO4",
+  "prompt": "data_Li8Mg4Si4O16\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-755401",
+  "formula": "Na3CuO2",
+  "prompt": "data_Na12Cu4O8\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-765844",
+  "formula": "Na5(NiO2)8",
+  "prompt": "data_Na5Ni8O16\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-8973",
+  "formula": "NaSi2N3",
+  "prompt": "data_Na4Si8N12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-7074",
+  "formula": "NaSc(SiO3)2",
+  "prompt": "data_Na4Sc4Si8O24\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1189952",
+  "formula": "Na2NiH4(SeO5)2",
+  "prompt": "data_Na2Ni1H4Se2O10\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-1220924",
+  "formula": "NaPrTi2O6",
+  "prompt": "data_Na2Pr2Ti4O12\n",
+  "n": 8,
+  "battery_role": "NegativeElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-19043",
+  "formula": "LiV(SiO3)2",
+  "prompt": "data_Li4V4Si8O24\n",
+  "n": 8,
+  "battery_role": "PositiveElectrode",
+  "structure_family": null
+ },
+ {
+  "id": "mp-24747",
+  "formula": "Na3H6Rh",
+  "prompt": "data_Na12H24Rh4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-862554",
+  "formula": "LiEr2Ir",
+  "prompt": "data_Li4Er8Ir4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1211005",
+  "formula": "LiTb(WO4)2",
+  "prompt": "data_Li2Tb2W4O16\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-33554",
+  "formula": "Na3GdCl6",
+  "prompt": "data_Na9Gd3Cl18\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1194373",
+  "formula": "Na3In(PO4)2",
+  "prompt": "data_Na6In2P4O16\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-30760",
+  "formula": "Li3Pb",
+  "prompt": "data_Li12Pb4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-11947",
+  "formula": "LiAlAg2",
+  "prompt": "data_Li4Al4Ag8\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-867926",
+  "formula": "LiInPd2",
+  "prompt": "data_Li4In4Pd8\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-865500",
+  "formula": "Na2Hf2O5",
+  "prompt": "data_Na2Hf2O5\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-28569",
+  "formula": "NaInBr4",
+  "prompt": "data_Na4In4Br16\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-504790",
+  "formula": "LiYSn",
+  "prompt": "data_Li8Y8Sn8\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-862618",
+  "formula": "LiErHg2",
+  "prompt": "data_Li4Er4Hg8\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-975275",
+  "formula": "RbNa2Sb",
+  "prompt": "data_Rb4Na8Sb4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1079276",
+  "formula": "LiAsSe2",
+  "prompt": "data_Li2As2Se4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-7661",
+  "formula": "Li2RhF6",
+  "prompt": "data_Li4Rh2F12\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-7080",
+  "formula": "Li5(NiN)3",
+  "prompt": "data_Li5Ni3N3\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1228433",
+  "formula": "Ba2Na(SnAs)6",
+  "prompt": "data_Ba4Na2Sn12As12\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-867244",
+  "formula": "LiGdAu2",
+  "prompt": "data_Li4Gd4Au8\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1210180",
+  "formula": "Na5IO6",
+  "prompt": "data_Na10I2O12\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1094673",
+  "formula": "LiMg",
+  "prompt": "data_Li1Mg1\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1205868",
+  "formula": "Cs2NaSmF6",
+  "prompt": "data_Cs8Na4Sm4F24\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1210155",
+  "formula": "NaAlBr4",
+  "prompt": "data_Na4Al4Br16\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-1185394",
+  "formula": "LiGd2Ga",
+  "prompt": "data_Li4Gd8Ga4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-770997",
+  "formula": "Li2HfO3",
+  "prompt": "data_Li4Hf2O6\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-8132",
+  "formula": "Li(TiSe2)3",
+  "prompt": "data_Li1Ti3Se6\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-3726",
+  "formula": "Li2GaPt",
+  "prompt": "data_Li8Ga4Pt4\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ },
+ {
+  "id": "mp-8086",
+  "formula": "Na2Zn2O3",
+  "prompt": "data_Na4Zn4O6\n",
+  "n": 8,
+  "battery_role": null,
+  "structure_family": null
+ }
+]

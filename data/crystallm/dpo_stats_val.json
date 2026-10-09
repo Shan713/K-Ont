@@ -1,0 +1,16 @@
+{
+ "compositions": 150,
+ "samples": 1200,
+ "pairs": 122,
+ "skipped": {
+  "rewards too close": 28
+ },
+ "valid": 0.973,
+ "right_composition": 0.951,
+ "kg_plausible": 0.593,
+ "strict_match": 0.444,
+ "median_dE": 0.0014,
+ "reward_median_valid": -3.462,
+ "reward_invalid_share": 0.049,
+ "reward": "invalid/wrong composition -100; else -kg_total - 10 max(0, dE)"
+}
