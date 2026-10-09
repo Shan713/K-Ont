@@ -201,3 +201,14 @@ members of that family, role via battGPT's rules or a classifier trained on the 
 The novel pilot (`novel_queue.py`) and its follow-up `novel_steer_analysis.py` (s3) run on the workstation.
 When `novel_steer_analysis.json`, `novel_shortlist.md` and a `novel_best.tar.gz` are pushed, the laptop
 runs the MP stability screen on the shortlist (needs the MP key).
+
+## 9. Schedule from 2026-10-09 (Task D paused)
+
+Workstation, one queue: `.venv-crystallm/Scripts/python.exe -u abox/run_workstation_b3.py --workers 12 --chgnet-workers 4`
+1. corpus rebuild (`kg_corpus.py`, CrystaLLM layout; Step 35)
+2. pilot s3 `novel_steer_analysis.py` (CPU, in parallel) -> commit `novel_steer_analysis.json`,
+   `novel_shortlist.md`, `novel_best.tar.gz` and push as soon as it finishes (the laptop's MP stability
+   fetch waits for it)
+3. B3: SFT -> DPO -> eval (crystallm targets, then kg targets) -> `b3_report_{crystallm,kg}.json`
+Then the laptop runs `stability_hull.py fetch --set novel` (MP key) and pushes `mp_entries_novel.json`;
+the workstation runs `stability_hull.py compute --set novel`.

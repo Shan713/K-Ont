@@ -1681,3 +1681,27 @@ then DPO (beta 0.1, lr 1e-6, 1-2 epochs over 512 pairs; val pairs for early stop
 Evaluate on 100 held-out KG test compositions, 8 samples each, base vs SFT vs SFT+DPO, same seeds:
 valid, right composition, KG-plausible, strict match to the KG structure, CHGNet dE; paired bootstrap
 over compositions. Success = KG-plausible up with strict match and validity not down.
+
+## Step 35 — Task D paused; B3 scripts; KG corpus put in CrystaLLM's layout (2026-10-09)
+
+Task D (MatterGen) is paused by decision; its notes stay in `docs/TASK_D_NOTES.md` and `~/taskD`.
+
+**Corpus layout bug (found while smoke-testing B3).** B1 wrote pymatgen's CIF layout: a `# generated
+using pymatgen` header (tokenizes to `<unk>`), indented loop keys and `1.0` occupancies, none of which
+CrystaLLM ever saw or writes. Base CrystaLLM-small loss on these CIFs: **4.7**; after
+`kg_corpus.layout()` (no comments, no indentation, single spaces, occupancy `1`): **0.24**. Fine-tuning
+on the old layout would mostly have taught the layout. Rebuilt corpus: 3,738 / 481 / 463. B2 is not
+affected (prompts are the `data_` line only; references are parsed through the same normaliser).
+
+**Contamination.** Base loss 0.24 means the KG CIFs (from MP) are largely in CrystaLLM's training data.
+So B3's primary evaluation is CrystaLLM's own held-out test set (100 Li/Na compositions,
+`--targets crystallm`); the KG test split (`--targets kg`) is secondary.
+
+**`abox/kg_dpo.py`** (stages sft, dpo, eval, report; smoke-tested end to end on the laptop):
+SFT lr 3e-5, up to 3 epochs, early stop on val loss; DPO beta 0.1, lr 1e-6, 2 epochs, batch 4 pairs,
+policy and reference without dropout (CrystaLLM's attention applies dropout even in eval mode -- with
+it the start loss was 0.77, without it exactly ln 2); eval 8 samples x 100 compositions per model, same
+seeds; report = paired bootstrap vs base and vs SFT. Acceptance (fixed now): KG-plausible share up
+(CI low > 0) with strict-match share and validity not down (CI low > -5 points).
+**`abox/run_workstation_b3.py`**: corpus rebuild -> (pilot s3 in parallel) -> SFT -> DPO -> eval both
+target sets -> reports.

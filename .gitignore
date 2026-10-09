@@ -118,3 +118,8 @@ export_package/
 /data/battgpt_abox_grow_*/
 /data/runs/*.log
 /data/runs/*_status.txt
+!/data/crystallm/b3_eval_*.json
+!/data/crystallm/b3_report_*.json
+!/data/crystallm/sft_train_log.json
+!/data/crystallm/crystallm_kg_dpo_train_log.json
+!/data/crystallm/ws_logs/

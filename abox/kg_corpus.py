@@ -15,6 +15,7 @@ Output: data/crystallm/kg_corpus_{train,val,test}.json.gz and kg_corpus_stats.js
 import argparse
 import gzip
 import json
+import re
 import os
 import sys
 import warnings
@@ -28,6 +29,22 @@ warnings.filterwarnings("ignore")
 import phaseC_generate as gen  # noqa: E402  (imports crystallm + the pymatgen alias)
 
 DATA = gen.DATA
+
+
+def layout(cif):
+    """The CIF layout CrystaLLM was trained on and writes itself: no pymatgen comment header (it tokenizes
+    to <unk>), no indentation, single spaces, occupancy 1 not 1.0. With pymatgen's layout the base model's
+    loss on KG CIFs is 4.7 instead of ~1.2, and fine-tuning would mostly learn the layout."""
+    out = []
+    for line in cif.splitlines():
+        line = re.sub(r"[ \t]+", " ", line.strip())
+        if not line or line.startswith("#"):
+            continue
+        f = line.split(" ")
+        if len(f) == 7 and f[-1] == "1.0" and f[2].isdigit():  # atom-site row: symbol label mult x y z occ
+            line = " ".join(f[:-1] + ["1"])
+        out.append(line)
+    return "\n".join(out) + "\n"
 
 
 def convert(item):
@@ -50,6 +67,7 @@ def convert(item):
         cif = semisymmetrize_cif(cif)
         cif = add_atomic_props_block(cif, False)
         cif = round_numbers(cif, decimal_places=4)
+        cif = layout(cif)
     except Exception as e:
         return x["id"], None, f"preprocess: {e.__class__.__name__}"
     try:
