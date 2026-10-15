@@ -1705,3 +1705,49 @@ seeds; report = paired bootstrap vs base and vs SFT. Acceptance (fixed now): KG-
 (CI low > 0) with strict-match share and validity not down (CI low > -5 points).
 **`abox/run_workstation_b3.py`**: corpus rebuild -> (pilot s3 in parallel) -> SFT -> DPO -> eval both
 target sets -> reports.
+
+## Step 36 — K-Ont v2 on the 5,000 KG: every pass criterion met (2026-10-15)
+
+**Why.** The 1,000 run (Step 22, re-checked with new checks G/H/I) learned the ontology (TBox axioms MRR
+0.28 -> 0.97) and material typing (100%), but its family and role "predictions" were copied from the
+`Structure family:` / `Battery role:` lines inside the sentence being classified: with the line hidden,
+role 85% vs 84% always-cathode (1 of 15 anodes), family 44% vs 47% always-NASICON. Crystal typing fell to
+71% held-out (35% of all crystals nearest a family class).
+
+**Changes (all opt-in flags; old runs regenerate unchanged).**
+- `verbalize.py --no-labels`: no family/role lines in material or crystal sentences.
+- `rows.py --crystal-family-negatives`: the 4 family-tier classes as wrong answers for "crystal structure".
+- `rows.py --label-individual-repeat 20`: the 13 canonical family/role individuals typed under their class
+  (as battgpt.ttl asserts, e.g. PositiveElectrodeRoleIndividual a PositiveElectrodeRole).
+- `merge_datasets.py --tbox-type-share 0.15 --tbox-exist-share 0.05`: TBox repeated 63x / 101x instead of
+  1:1 (~360x at this size).
+- `phase5_checks.py`: G belongsToElectrode, H hasStructureFamily (as is / label lines removed, majority
+  and balanced baselines), I hierarchy (TBox axioms + label individuals); chunked distances for 5,000.
+- Data: 5,000 KG, `split_grow_5000.json` (--group-polymorphs): 3,982 train / 1,018 held-out, 109 of 527
+  polymorph groups held out. 62,355 ABox type rows + 10,962 TBox; 5,740 + 303 exist rows.
+
+**Run** `data/runs/full_grow5000_v2` (full, galen, in-batch negatives, batch 32, 3 epochs): 6,876 steps,
+2 h 20 min, 1.15 s/step, peak GPU 1.23 GB (RTX 4060 laptop).
+
+| held-out (1,018 materials) | untrained | 1,000 run | **5,000 v2** | criterion |
+|---|---|---|---|---|
+| material typing | 0% | 100% | **100%** | >= 95% ✓ |
+| crystal typing | 100% | 71% | **99.7%** (all 5,000: 4,984 right, 16 at "layered oxide structure") | >= 95% ✓ |
+| ontology axioms, parent first (MRR) | 0.28 | 0.97 | **0.97** (15/16 at rank 1) | >= 0.9 ✓ |
+| family/role individuals typed | 0.96 | 0.92 | **1.00** | |
+| **role, no label line** (n=396) | 67% | 85% (maj 84%) | **100%** (maj 84%; anodes 64/64) | > majority ✓ |
+| **family, no label line** (n=86) | 30% | 44% (maj 47%) | **98.8%** (maj 47%; balanced 0.997 vs 0.11) | > majority ✓ |
+| hasStructure among held-out crystals | 0.17 | 0.985 | **0.982** (random 0.007; same-chemistry 0.966) | |
+| polymorphs, structure lines removed | 0.66 | 0.65 | 0.67 (random 0.67) | not a criterion |
+| crowding: nearest-neighbour min / median pairwise | 1.22 / 9.1 | | 0.58 / 19.2 | no collapse ✓ |
+
+Binomial 95% lower bounds: role 396/396 -> 99.1%; family 85/86 -> 93.7%; both far above majority.
+
+**What this does and does not mean.** No label text reaches the model (0 sentences contain either line;
+the label strings appear only as the 13 individuals' own type rows). The family and role it predicts for
+unseen materials therefore come from the formula, properties and space group in the sentence. But the KG's
+labels are themselves rules over exactly those inputs (battinfo_mapper: alkali + transition metal +
+O/P/S/F -> cathode, Ti+O or Si -> anode; structure_family_mapper: curated list, else atom ratio AND space
+group), so ~100% means K-Ont reproduces the KG's labelling rules from chemistry -- it learned the
+ontology-grounded concepts of this KG, not lab-verified electrochemistry. Polymorphs remain
+indistinguishable from properties alone, as expected (Step 22/23).
