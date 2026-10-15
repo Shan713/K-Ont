@@ -1815,3 +1815,28 @@ most compliance at a large cost in composition (-11 vs v2).
 not), and composition-only retrieval is right for under half the targets, so gains and losses cancel.
 The lever is retrieval: K-Ont embeddings to pick the analogue, measured first by how often the chosen
 analogue's space group / framework is the true one.
+
+## Step 39 — Retrieval check: can K-Ont pick a better analogue? No (2026-10-15)
+
+`abox/kg_retrieval.py`, no generation. For each KG-test material, candidates = KG train materials with
+the same anonymous formula and a different formula (median 39-56 candidates). Pick by: today's
+composition rule; K-Ont cosine of the structure-free material vectors (`material_cond_tan`, no structure
+lines, so nothing leaks); the same with the untrained encoder; composition first with K-Ont breaking
+ties. Scored: pick has the true space group / same framework (fit_anonymous). Paired bootstrap 95% CI.
+
+| % right (SG / framework) | composition | K-Ont | plain encoder | comp + K-Ont ties | random | any candidate |
+|---|---|---|---|---|---|---|
+| 79 targets unseen by K-Ont | **57.0 / 54.4** | 46.8 / 45.6 | 43.0 / 40.5 | 54.4 / 55.7 | 25.3 / 21.6 | 79.7 / 73.4 |
+| 356 targets K-Ont trained on | **54.2 / 52.2** | 45.8 / 44.1 | 50.0 / 47.8 | 54.8 / 52.5 | 26.8 / 24.0 | 86.0 / 77.0 |
+
+K-Ont alone vs composition (unseen): SG -10.1 [-19.0, -1.3], framework -8.9 [-19.0, 0.0] -> worse.
+K-Ont tie-break: SG -2.5 [-10.1, +3.8], framework +1.3 [-5.1, +7.6] -> no difference (it changes the
+pick on 35/79 targets, 4 wins / 3 losses on framework). K-Ont beats the plain encoder on unseen
+targets (+3.8 SG / +5.1 framework), so training adds something, but not enough to beat the
+element-by-element chemistry rule.
+**Why**: the structure-free material vector carries formula, chemistry and properties, which say little
+about which polymorph a composition takes beyond what element substitution already captures. The
+ceiling (any candidate right 73-80%) leaves room, but K-Ont's material vectors don't find it.
+**Conclusion**: retrieval is not the lever either. Across Steps 37-39 K-Ont's embeddings add no
+significant gain to structure generation; K-Ont's value stays where Steps 34-36 measured it (typing,
+roles, families, TBox) and in representation (heart check).
