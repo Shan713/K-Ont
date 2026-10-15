@@ -171,6 +171,87 @@ def sample(model, tok, prompt, vec, n, dev, max_new=1000, temperature=0.8, top_k
     return [tok.decode(r.tolist()).split("\n\n")[0] + "\n" for r in x]
 
 
+def _cached_run(gpt, h, cache, start):
+    """One forward over new positions h (embeddings, no positions yet) reusing per-layer keys/values.
+    Same arithmetic as CrystaLLM's Block/CausalSelfAttention, including its attention dropout, which it
+    applies even in eval mode (dropout_p=config.dropout) -- kept so sampling matches gen.sample_batch."""
+    g = gpt.transformer
+    h = h + g.wpe(torch.arange(start, start + h.size(1), device=h.device))[None]
+    h = g.drop(h)
+    for li, blk in enumerate(g.h):
+        at = blk.attn
+        B, T, C = h.shape
+        q, k, v = at.c_attn(blk.ln_1(h)).split(at.n_embd, dim=2)
+        q, k, v = (z.view(B, T, at.n_head, C // at.n_head).transpose(1, 2) for z in (q, k, v))
+        if cache[li] is not None:
+            k, v = torch.cat([cache[li][0], k], 2), torch.cat([cache[li][1], v], 2)
+        cache[li] = (k, v)
+        y = F.scaled_dot_product_attention(q, k, v, dropout_p=at.dropout, is_causal=T > 1)
+        h = h + at.resid_dropout(at.c_proj(y.transpose(1, 2).contiguous().view(B, T, C)))
+        h = h + blk.mlp(blk.ln_2(h))
+    return gpt.lm_head(g.ln_f(h[:, -1]))
+
+
+@torch.no_grad()
+def sample_cached(gpt, tok, prompt, n, dev, prefix=None, max_new=1000, temperature=0.8, top_k=10):
+    """sample() / gen.sample_batch with a key-value cache: identical sampling (temperature, top-k, stop at a
+    blank line), each new token costs one position instead of the whole sequence. prefix: [k, n_embd]
+    soft-prompt embeddings (None for the base model)."""
+    ids = torch.tensor(tok.encode(tok.tokenize_cif(prompt)), dtype=torch.long, device=dev)
+    wte = gpt.transformer.wte
+    h = wte(ids)[None].repeat(n, 1, 1)
+    if prefix is not None:
+        h = torch.cat([prefix[None].repeat(n, 1, 1), h], 1)
+    out = ids[None].repeat(n, 1)
+    nl = tok.token_to_id["\n"]
+    done = torch.zeros(n, dtype=torch.bool, device=dev)
+    prev = torch.full((n,), -1, device=dev)
+    cache, pos = [None] * len(gpt.transformer.h), 0
+    with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+        for _ in range(max_new):
+            if pos + h.size(1) > gpt.config.block_size:
+                break
+            logits = _cached_run(gpt, h, cache, pos).float() / temperature
+            pos += h.size(1)
+            kth, _ = torch.topk(logits, top_k)
+            logits[logits < kth[:, [-1]]] = -float("inf")
+            nxt = torch.multinomial(F.softmax(logits, -1), 1).squeeze(1)
+            nxt = torch.where(done, torch.full_like(nxt, nl), nxt)
+            out = torch.cat([out, nxt[:, None]], 1)
+            done |= (prev == nl) & (nxt == nl)
+            prev = nxt
+            if done.all():
+                break
+            h = wte(nxt)[:, None]
+    return [tok.decode(r.tolist()).split("\n\n")[0] + "\n" for r in out]
+
+
+def stage_check_cache(a):
+    """The cached forward must give the same next-token logits as the full forward (dropout off)."""
+    tok, dev = gen.CIFTokenizer(), "cuda"
+    vecs = vectors(a.export)
+    m = Conditioned(gen.load_model(dev, "crystallm_v1_small"), next(iter(vecs.values())).shape[0], a.prefix_len).to(dev)
+    m.load_state_dict(torch.load(os.path.join(DATA, "kgcond_kg.pt"), map_location=dev))
+    m.eval()
+    for blk in m.gpt.transformer.h:
+        blk.attn.dropout = 0.0
+    r = corpus("test")[0]
+    seq = torch.tensor(encode(tok, r["cif"])[:200], device=dev)[None]
+    v = vecs[r["id"]][None].to(dev)
+    with torch.no_grad():
+        full = m(v, seq)[0].float()
+        pre = m.proj(v).view(1, m.k, -1)
+        cache = [None] * len(m.gpt.transformer.h)
+        wte = m.gpt.transformer.wte
+        step = [_cached_run(m.gpt, torch.cat([pre, wte(seq[:, :1])], 1), cache, 0).float()]
+        for t in range(1, seq.size(1)):
+            step.append(_cached_run(m.gpt, wte(seq[:, t:t + 1]), cache, m.k + t).float())
+        step = torch.cat(step)
+    diff = (full - step).abs().max().item()
+    agree = (full.argmax(-1) == step.argmax(-1)).float().mean().item()
+    print(f"cached vs full forward over 200 tokens: max |logit diff| {diff:.2e}, same top token {agree:.3f}")
+
+
 def eval_targets(a):
     kont_test = {m.split("/")[-1] for m in json.load(open(os.path.join(HERE, "data", "split_grow_5000.json")))["test_materials"]}
     rows = [r for r in corpus("test") if r["id"] in kont_test]
@@ -205,11 +286,14 @@ def stage_eval(a):
             cifs = []
             while len(cifs) < a.samples:
                 n = min(a.batch_gen, a.samples - len(cifs))
+                # one sampler (key-value cached) for every arm
                 if arm == "base":
-                    cifs += gen.sample_batch(m, tok, prompt, n, dev)
+                    cifs += sample_cached(m, tok, prompt, n, dev)
                 else:
                     v = vecs[shuffled[t["id"]]] if arm == "kg_shuffled" else (vecs[t["id"]] if arm == "kg" else torch.zeros(dim))
-                    cifs += sample(m, tok, prompt, v, n, dev)
+                    with torch.no_grad():
+                        pre = m.proj(v[None].to(dev)).view(m.k, -1)
+                    cifs += sample_cached(m.gpt, tok, prompt, n, dev, prefix=pre)
             for k, s in enumerate(cifs):
                 open(os.path.join(gdir, t["id"], f"s_{k}.cif"), "w").write(s)
             if (i + 1) % 20 == 0:
@@ -262,7 +346,7 @@ def stage_report(a):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--stage", required=True, choices=["train", "eval", "report"])
+    ap.add_argument("--stage", required=True, choices=["train", "eval", "report", "check_cache"])
     ap.add_argument("--arm", default="kg", choices=["kg", "const"])
     ap.add_argument("--arms", default="base,const,kg,kg_shuffled")
     ap.add_argument("--export", default="grow5000_v2")
@@ -276,7 +360,7 @@ def main():
     ap.add_argument("--workers", type=int, default=6)
     ap.add_argument("--seed", type=int, default=41)
     a = ap.parse_args()
-    {"train": stage_train, "eval": stage_eval, "report": stage_report}[a.stage](a)
+    {"train": stage_train, "eval": stage_eval, "report": stage_report, "check_cache": stage_check_cache}[a.stage](a)
 
 
 if __name__ == "__main__":

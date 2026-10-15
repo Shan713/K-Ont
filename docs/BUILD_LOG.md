@@ -1751,3 +1751,38 @@ O/P/S/F -> cathode, Ti+O or Si -> anode; structure_family_mapper: curated list, 
 group), so ~100% means K-Ont reproduces the KG's labelling rules from chemistry -- it learned the
 ontology-grounded concepts of this KG, not lab-verified electrochemistry. Polymorphs remain
 indistinguishable from properties alone, as expected (Step 22/23).
+
+## Step 37 — K-Ont vectors exported and connected to CrystaLLM: no real gain yet (2026-10-15)
+
+**Export** (`abox/export_embeddings.py` -> `data/kont_export/grow5000_v2/`, npz not in git): the 5,000 v2
+model encodes 5,000 materials, 5,000 crystals, 85 elements and 23 classes (384-d, Poincaré ball + logmap0
+tangent copy). The generation vector `material_cond` is the material sentence WITHOUT its structure lines
+(formula, chemistry, flags, properties only), so it cannot hand the generator its answer.
+
+**Conditioning** (`abox/kg_condition.py`): CrystaLLM small + a 4-token soft prefix proj(K-Ont vector),
+fine-tuned with the projection on the KG corpus (3,733 train / 481 val CIFs, 3 epochs, lr 3e-5 / 1e-3).
+Control: identical fine-tune with a constant prefix (no K-Ont information). Best val loss: **K-Ont 0.253
+vs constant 0.269** -- the vector does help the model fit CIFs. Generation uses a key-value-cached
+sampler for all arms (checked: max logit difference 2e-5 vs the full forward, same top token 100%; ~9x
+faster). Test: the 85 KG-test materials also held out from K-Ont, composition prompt, 16 samples each.
+
+| (85 unseen, 16 each) | base | fine-tune, no K-Ont | **fine-tune + K-Ont** | K-Ont, shuffled vectors |
+|---|---|---|---|---|
+| valid | 98.8% | 99.3% | 99.4% | 99.2% |
+| right composition | 96.1% | 93.9% | 92.8% | 92.6% |
+| **matches the true structure** | 39.3% | 41.9% | **42.5%** | 41.2% |
+| materials with >= 1 match | 63.5% | 61.2% | 61.2% | 61.2% |
+| KG-plausible | 47.9% | 48.5% | 49.3% | 48.9% |
+
+Paired bootstrap, true-structure share: K-Ont vs no-K-Ont **+0.6 [-0.8, +2.0]** (fails the pre-set rule:
+CI low > 0); K-Ont vs shuffled **+1.3 [+0.2, +2.6]** (the vector's content matters, slightly); K-Ont vs
+base +3.2 [-0.7, +7.3]. Composition share falls with any fine-tuning (-3.3 vs base).
+
+**Reading.** Plugging the vector in works mechanically and the model uses it (lower val loss, beats
+shuffled), but it adds almost nothing to *reproducing a known structure from its formula*: here the
+formula already carries most of what the vector holds (the KG's family/role labels are rules over the
+formula), and the test asks for one specific known structure. The place a KG vector can add information
+the prompt does not have is *steering* -- asking for a requirement (family, role) and measuring
+compliance, which is what worked in Task A (+27 points framework compliance from a KG analogue). Next:
+condition on the target concept (e.g. the olivine / cathode concept vectors) and measure whether the
+generated structures follow it.

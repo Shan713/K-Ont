@@ -1,0 +1,32 @@
+{
+ "run": "data/runs/full_grow5000_v2",
+ "abox_dir": "data/battgpt_abox_grow_5000_v2",
+ "variant": "full",
+ "dim": 384,
+ "curvature": 0.0026041900273412466,
+ "material_cond_stripped_lines": [
+  "Space group:",
+  "Crystal system:",
+  "Structure family:",
+  "Structure:",
+  "Lattice:",
+  "Volume:",
+  "Density:",
+  "Sites:"
+ ],
+ "counts": {
+  "material_cond": 5000,
+  "material_full": 5000,
+  "crystal": 5000,
+  "element": 85,
+  "concept": 23
+ },
+ "example_cond_sentence": "Material: LiC6 (mp-1001581)\nType: substance\nFormula: LiC6\nChemical system: C-Li\nMetallic: true\nStable: false\nBand gap: 0.00 eV\nFormation energy: -0.035 eV/atom\nEnergy above hull: 0.000 eV/atom\nFermi energy: 5.32 eV\nTotal magnetization: 0.00 µB\nBulk modulus: 150.2 GPa\nShear modulus: 115.7 GPa\nPoisson ratio: 0.194",
+ "tangent_norm_median": {
+  "material_cond": 9.390120506286621,
+  "material_full": 9.420501708984375,
+  "crystal": 9.495986938476562,
+  "element": 9.24803638458252,
+  "concept": 7.569335460662842
+ }
+}
