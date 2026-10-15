@@ -35,6 +35,21 @@ STRUCT_LINES = ("Space group:", "Crystal system:", "Structure family:", "Structu
                 "Density:", "Sites:")
 
 
+LABEL_LINES = ("Structure family:", "Battery role:")  # Step 36: the targets of hasStructureFamily / belongsToElectrode
+ROLE_SENT = {"PositiveElectrode": "Battery role: positive electrode (cathode)",
+             "NegativeElectrode": "Battery role: negative electrode (anode)"}  # belongsToElectrode's range
+FAMILY_READABLE = {"LayeredOxideStructure": "layered oxide", "SpinelStructure": "spinel", "RockSaltStructure": "rock salt",
+                   "OlivineStructure": "olivine", "NASICONStructure": "NASICON", "GarnetStructure": "garnet",
+                   "PerovskiteStructure": "perovskite", "LGPSTypeStructure": "LGPS-type", "ArgyroditeStructure": "argyrodite"}
+FAMILY_CLASS = {"layered oxide": "layered oxide structure", "spinel": "spinel structure", "rock salt": "rock salt structure",
+                "olivine": "olivine structure", "NASICON": "NASICON structure", "garnet": "garnet structure",
+                "perovskite": "perovskite structure", "LGPS-type": "LGPS type structure", "argyrodite": "argyrodite structure"}
+
+
+def strip_lines(sentence, prefixes):
+    return "\n".join(l for l in sentence.split("\n") if not l.startswith(prefixes))
+
+
 def load(name, abox_dir=ABOX):
     with open(os.path.join(abox_dir, name), encoding="utf-8") as f:
         return json.load(f)
@@ -118,12 +133,16 @@ def main():
            "NOTE": ("top-level B/C numbers pool ALL materials; with --split, see <before|after>.split.test for "
                     "held-out materials (in no training row). Without --split everything here is training fit.")}
 
+    def pdist(x, y, chunk=128):
+        """man.dist for every pair, in row chunks: broadcasting [n, m, 384] at once needs ~38 GB at 5,000"""
+        return torch.cat([man.dist(x[i:i + chunk].unsqueeze(1), y.unsqueeze(0)) for i in range(0, len(x), chunk)])
+
     with torch.no_grad():
         for tag, model in (("before", before), ("after", after)):
             res = {}
             C = enc(model, classes)
             # A. class separation
-            dC = man.dist(C.unsqueeze(1), C.unsqueeze(0))
+            dC = pdist(C, C)
             off = dC + torch.eye(len(classes), device=dC.device) * 1e9
             i, j = divmod(int(off.argmin()), len(classes))
             res["A_class_separation"] = {
@@ -134,7 +153,7 @@ def main():
 
             # B. typing: nearest class by OnT's own hierarchy score (distance + lambda * norm gap)
             def score(child, parents):
-                return -(man.dist(child.unsqueeze(1), parents.unsqueeze(0))
+                return -(pdist(child, parents)
                          + lam * (man.dist0(parents).unsqueeze(0) - man.dist0(child).unsqueeze(1)))
             M = enc(model, [vm[m] for m in mats])
             X = enc(model, [vc[c] for c in crys_all])
@@ -231,17 +250,96 @@ def main():
                     sides[side] = d
                 res["split"] = sides
 
-            # D. crowding
+            # G/H. Step 36: the two ontology relations whose targets are concept individuals --
+            # belongsToElectrode (material -> role) and hasStructureFamily (crystal -> family) -- ranked
+            # among all candidate individuals, per split side, "as_is" and with the label lines removed
+            # from the child sentence (a model trained with them in the text may just copy them).
+            # Baselines: majority class (accuracy) and 1/k (balanced accuracy = mean per-class recall).
+            def label_task(role, cand, items, sent_of, true_of, train_items):
+                keys = sorted({true_of(i) for i in train_items + items if true_of(i)} & set(cand))
+                if not keys:
+                    return None
+                T = enc(model, [cand[k] for k in keys])
+                if tag == "after":
+                    T = torch.tensor(after.encode_existence([role] * len(keys), [cand[k] for k in keys]), device=T.device)
+                out_ = {}
+                maj = max(keys, key=lambda k: sum(true_of(i) == k for i in train_items))
+                for side_name, its in (("train", train_items), ("test", items)):
+                    its = [i for i in its if true_of(i) in keys]
+                    if not its:
+                        continue
+                    t = torch.tensor([keys.index(true_of(i)) for i in its], device=T.device)
+                    row = {"n": len(its), "majority_class": maj,
+                           "majority_baseline_acc": round(sum(true_of(i) == maj for i in its) / len(its), 4),
+                           "chance_balanced_acc": round(1 / len(keys), 4)}
+                    for how, sents in (("as_is", [sent_of(i) for i in its]),
+                                       ("labels_removed", [strip_lines(sent_of(i), LABEL_LINES) for i in its])):
+                        sc = score(enc(model, sents), T)
+                        pred = sc.argmax(1)
+                        recalls = {keys[k]: round(((pred == k) & (t == k)).sum().item() / max((t == k).sum().item(), 1), 4)
+                                   for k in range(len(keys)) if (t == k).any()}
+                        row[how] = {"acc": round((pred == t).float().mean().item(), 4),
+                                    "balanced_acc": round(sum(recalls.values()) / len(recalls), 4),
+                                    "recall_per_class": recalls, "MRR": rank_summary(ranks_of_true(sc, t))["MRR"]}
+                    out_[side_name] = row
+                return out_
+
+            tr_m = [m for m in mats if not split or m in split["train_materials"]]
+            te_m = [m for m in mats if split and m in split["test_materials"]]
+            res["G_belongsToElectrode"] = label_task(
+                "belongs to electrode", ROLE_SENT, te_m, lambda m: vm[m],
+                lambda m: ents["materials"][m].get("battery_role"), tr_m)
+            fam_sent = {k: f"Structure family: {v}" for k, v in FAMILY_READABLE.items()}
+            tr_c = [c for c in crys_all if not split or c in split["train_crystals"]]
+            te_c = [c for c in crys_all if split and c in split["test_crystals"]]
+            res["H_hasStructureFamily"] = label_task(
+                "has structure family", fam_sent, te_c, lambda c: vc[c],
+                lambda c: ents["crystals"][c].get("structure_family"), tr_c)
+
+            # I. Step 36: is the ontology itself still encoded? Every TBox subsumption axiom (child ⊑ parent,
+            # from DeepOnto's train.jsonl): rank the parent among all class names; and the canonical
+            # family / role individuals typed under their class.
+            tbox = []
+            with open(os.path.join(HERE, "data", "battgpt_ont", "train.jsonl"), encoding="utf-8") as f:
+                for line in f:
+                    r_ = json.loads(line)
+                    # atomic axioms only (DeepOnto also writes "C ⊑ r some D" restrictions)
+                    if r_["parent"] in classes and (r_["child"], r_["parent"]) not in tbox:
+                        tbox.append((r_["child"], r_["parent"]))
+            indiv = [(f"Structure family: {k}", v) for k, v in FAMILY_CLASS.items()] + \
+                    [(ROLE_SENT["PositiveElectrode"], "positive electrode role"), (ROLE_SENT["NegativeElectrode"], "negative electrode role"),
+                     ("Battery role: electrolyte", "electrolyte role"), ("Battery role: separator", "separator role")]
+            hier = {}
+            for name, pairs_ in (("tbox_axioms", tbox), ("label_individuals", indiv)):
+                sc = score(enc(model, [c for c, _ in pairs_]), C)
+                for n, (c, _) in enumerate(pairs_):  # a class may not answer with itself
+                    if c in classes:
+                        sc[n, classes.index(c)] = -1e9
+                t = torch.tensor([classes.index(p) for _, p in pairs_], device=sc.device)
+                hier[name] = {**rank_summary(ranks_of_true(sc, t)),
+                              "random_MRR": round(sum(1 / k for k in range(1, len(classes))) / (len(classes) - 1), 4),
+                              "wrong_top1": [[c[:40], p, classes[int(sc[n].argmax())]] for n, (c, p) in enumerate(pairs_)
+                                             if classes[int(sc[n].argmax())] != p][:10]}
+            res["I_hierarchy"] = hier
+
+            # D. crowding (on at most 1,500 materials: all pairs of 5,000 is 12.5 M distances)
             fam = defaultdict(list)
             for n, m in enumerate(mats):
                 f = ents["crystals"][ents["materials"][m]["structure"]].get("structure_family")
                 if f and f != "None":
                     fam[f].append(n)
-            dM = man.dist(M.unsqueeze(1), M.unsqueeze(0))
+            mats_d = mats
+            if len(mats) > 1500:  # fixed random subset; family index lists remapped onto it
+                import random as _r
+                sub = sorted(_r.Random(0).sample(range(len(mats)), 1500))
+                pos_ = {n: x for x, n in enumerate(sub)}
+                fam = {f: [pos_[n] for n in idx if n in pos_] for f, idx in fam.items()}
+                M, mats_d = M[sub], [mats[n] for n in sub]
+            dM = pdist(M, M)
             triu = torch.triu(torch.ones_like(dM, dtype=bool), 1)
             allpairs = dM[triu].tolist()
             within = [dM[p, q].item() for idx in fam.values() for x, p in enumerate(idx) for q in idx[x + 1:]]
-            nn = (dM + torch.eye(len(mats), device=dM.device) * 1e9).min(1).values.tolist()
+            nn = (dM + torch.eye(len(mats_d), device=dM.device) * 1e9).min(1).values.tolist()
             eu = (M.norm(dim=1) / radius).tolist()
             res["D_crowding"] = {
                 "material_pairwise_median": round(pct(allpairs, .5), 3), "material_pairwise_p5": round(pct(allpairs, .05), 3),
@@ -252,16 +350,16 @@ def main():
 
             # E. confusable (same chemical system) pairs
             by_sys = defaultdict(list)
-            for n, m in enumerate(mats):
+            for n, m in enumerate(mats_d):
                 by_sys[ents["materials"][m]["chemsys"]].append(n)
             pairs = [(p, q) for idx in by_sys.values() for x, p in enumerate(idx) for q in idx[x + 1:]]
             pd = [dM[p, q].item() for p, q in pairs]
-            ex = next(((p, q) for p, q in pairs if {ents["materials"][mats[p]]["formula"], ents["materials"][mats[q]]["formula"]}
+            ex = next(((p, q) for p, q in pairs if {ents["materials"][mats_d[p]]["formula"], ents["materials"][mats_d[q]]["formula"]}
                        == {"LiTi2O4", "LiTiO2"}), pairs[0] if pairs else None)
             res["E_same_chemsys_pairs"] = {
                 "n_pairs": len(pairs), "median_dist": round(pct(pd, .5), 3) if pd else None,
                 "min_dist": round(min(pd), 4) if pd else None, "n_collapsed_lt_1e-3": sum(d < 1e-3 for d in pd),
-                "example": [ents["materials"][mats[ex[0]]]["formula"], ents["materials"][mats[ex[1]]]["formula"],
+                "example": [ents["materials"][mats_d[ex[0]]]["formula"], ents["materials"][mats_d[ex[1]]]["formula"],
                             round(dM[ex[0], ex[1]].item(), 3)] if ex else None}
             out[tag] = res
 

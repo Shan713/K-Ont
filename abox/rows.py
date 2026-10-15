@@ -73,6 +73,38 @@ SIBLING_KIND_LABELS = {
 }
 
 
+# Step 36: crystal-typing drift. At 1,000 materials 35% of crystals ended nearest a structure-family
+# CLASS ("polyanion structure family" 181/1000). A crystal is never an instance of a family class
+# (the ontology links it to a family INDIVIDUAL by hasStructureFamily), so the family tier is a true
+# negative for "crystal structure" -- and an explicit one, since nothing else pushed crystals off it.
+CRYSTAL_FAMILY_NEGATIVES = ["structure family", "oxide structure family", "polyanion structure family",
+                            "sulfide structure family"]
+
+# Step 36: the canonical family / role individuals ARE typed in the ontology (e.g.
+# PositiveElectrodeRoleIndividual rdf:type PositiveElectrodeRole, battgpt.ttl); these type rows tie the
+# relation targets ("Battery role: positive electrode (cathode)") to their TBox class.
+FAMILY_CLASS = {"LayeredOxideStructure": "layered oxide structure", "SpinelStructure": "spinel structure",
+                "RockSaltStructure": "rock salt structure", "OlivineStructure": "olivine structure",
+                "NASICONStructure": "NASICON structure", "GarnetStructure": "garnet structure",
+                "PerovskiteStructure": "perovskite structure", "LGPSTypeStructure": "LGPS type structure",
+                "ArgyroditeStructure": "argyrodite structure"}
+ROLE_CLASS = {"PositiveElectrode": "positive electrode role", "NegativeElectrode": "negative electrode role",
+              "Electrolyte": "electrolyte role", "Separator": "separator role"}
+
+
+def build_label_individual_rows(repeat: int) -> list[dict]:
+    """individual ⊑ its class, negatives = every sibling class (other families / other roles) plus the
+    other tier's root; repeated `repeat` times (13 individuals would otherwise vanish among ~10^4 rows)."""
+    rows = []
+    for key, cls in FAMILY_CLASS.items():
+        for neg in [c for c in FAMILY_CLASS.values() if c != cls] + ["battery role", "crystal structure"]:
+            rows.append({"child": _family_individual_sentence(key), "parent": cls, "negative": [neg]})
+    for key, cls in ROLE_CLASS.items():
+        for neg in [c for c in ROLE_CLASS.values() if c != cls] + ["structure family", "substance"]:
+            rows.append({"child": _role_individual_sentence(key), "parent": cls, "negative": [neg]})
+    return rows * repeat
+
+
 def _family_individual_sentence(family_key: str) -> str:
     """Short V(.) for one of the 9 canonical StructureFamily individuals -- shared across every
     crystal that hasStructureFamily it, computed once, same string every time (there's exactly
@@ -127,7 +159,8 @@ def _find_hard_negative_crystal(mid: str, mat: dict, entities: dict, rng: random
     return rng.choice(others) if others else None
 
 
-def build_type_rows(entities: dict, v_mat: dict, v_cryst: dict, v_elem: dict, rng: random.Random) -> list[dict]:
+def build_type_rows(entities: dict, v_mat: dict, v_cryst: dict, v_elem: dict, rng: random.Random,
+                    crystal_family_negatives: bool = False) -> list[dict]:
     rows = []
     for mid, mat in entities["materials"].items():
         for neg in SIBLING_KIND_LABELS["substance"]:
@@ -136,7 +169,7 @@ def build_type_rows(entities: dict, v_mat: dict, v_cryst: dict, v_elem: dict, rn
         if hard_neg_crystal:
             rows.append({"child": v_mat[mid], "parent": "substance", "negative": [v_cryst[hard_neg_crystal]]})
     for cid, cryst in entities["crystals"].items():
-        for neg in SIBLING_KIND_LABELS["crystal structure"]:
+        for neg in SIBLING_KIND_LABELS["crystal structure"] + (CRYSTAL_FAMILY_NEGATIVES if crystal_family_negatives else []):
             rows.append({"child": v_cryst[cid], "parent": "crystal structure", "negative": [neg]})
     for eid, el in entities["elements"].items():
         for neg in SIBLING_KIND_LABELS["chemical element"]:
@@ -220,6 +253,10 @@ def main():
     ap.add_argument("--hasstructure", choices=["relation", "isa", "both"], default="relation",
                     help="how hasStructure is trained (Step 21 head-to-head): relation = ours (default), "
                          "isa = the teammate's is-a rows with crystal negatives, both = ours + his is-a rows")
+    ap.add_argument("--crystal-family-negatives", action="store_true",
+                    help="Step 36: also push crystals away from the structure-family class tier")
+    ap.add_argument("--label-individual-repeat", type=int, default=0,
+                    help="Step 36: add family/role individual ⊑ class rows, repeated this many times (0 = off)")
     args = ap.parse_args()
     vdir = args.verbalizations_dir or args.out_dir
     args.out_dir.mkdir(parents=True, exist_ok=True)
@@ -239,7 +276,8 @@ def main():
         v_mat = json.loads((vdir / f"verbalizations_materials_{variant}.json").read_text(encoding="utf-8"))
         v_cryst = json.loads((vdir / f"verbalizations_crystals_{variant}.json").read_text(encoding="utf-8"))
 
-        type_rows = build_type_rows(entities, v_mat, v_cryst, v_elem, rng)
+        type_rows = build_type_rows(entities, v_mat, v_cryst, v_elem, rng, args.crystal_family_negatives)
+        type_rows += build_label_individual_rows(args.label_individual_repeat)
         if args.hasstructure in ("isa", "both"):
             # separate RNG, so the default rows (and their hard negatives) stay byte-identical
             type_rows += build_hasstructure_isa_rows(entities, v_mat, v_cryst, random.Random(SEED + 1))
@@ -269,6 +307,8 @@ def main():
         logger.info(f"[{variant}] breakdown: {meta[variant]}")
 
     meta["hasstructure"] = args.hasstructure
+    meta["crystal_family_negatives"] = args.crystal_family_negatives
+    meta["label_individual_repeat"] = args.label_individual_repeat
     if split:
         meta["split"] = {"file": str(args.split), "n_train_materials": len(split["train_materials"]),
                          "n_test_materials": len(split["test_materials"])}

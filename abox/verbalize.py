@@ -94,7 +94,7 @@ def _site_element_counts(uc: dict, entities: dict) -> str:
     return ", ".join(f"{sym}:{n}" for sym, n in counts.items())
 
 
-def verbalize_material(mat: dict, entities: dict, variant: str) -> str:
+def verbalize_material(mat: dict, entities: dict, variant: str, labels: bool = True) -> str:
     lines = [
         f"Material: {mat['formula']} ({mat['material_project_id']})",
         "Type: substance",
@@ -103,9 +103,12 @@ def verbalize_material(mat: dict, entities: dict, variant: str) -> str:
     ]
     crystal = entities["crystals"].get(mat["structure"]) if mat["structure"] else None
 
-    if crystal and crystal["structure_family"]:
+    # labels=False (Step 36): the material's structure family and battery role are the TARGETS of the
+    # hasStructureFamily / belongsToElectrode relations; stating them in the sentence lets the relation
+    # be solved by copying the line, so a leak-free model must infer them from chemistry and properties
+    if labels and crystal and crystal["structure_family"]:
         lines.append(f"Structure family: {STRUCTURE_FAMILY_READABLE[crystal['structure_family']]}")
-    if mat["battery_role"]:
+    if labels and mat["battery_role"]:
         lines.append(f"Battery role: {BATTERY_ROLE_READABLE[mat['battery_role']]}")
     if mat["is_metal"] is not None:
         lines.append(f"Metallic: {str(bool(mat['is_metal'])).lower()}")
@@ -172,7 +175,7 @@ def verbalize_material(mat: dict, entities: dict, variant: str) -> str:
     return "\n".join(lines)
 
 
-def verbalize_crystal(crystal: dict, entities: dict, variant: str) -> str:
+def verbalize_crystal(crystal: dict, entities: dict, variant: str, labels: bool = True) -> str:
     """V(crystal) says what the crystal IS structurally -- never which material it belongs to.
 
     hasStructure(material, crystal) is trained and evaluated as "pick this material's crystal out of
@@ -192,7 +195,7 @@ def verbalize_crystal(crystal: dict, entities: dict, variant: str) -> str:
     """
     material = entities["materials"].get(f"material/{crystal['material_project_id']}")
     lines = ["Type: crystal structure"]
-    if crystal["structure_family"]:
+    if labels and crystal["structure_family"]:
         lines.append(f"Structure family: {STRUCTURE_FAMILY_READABLE[crystal['structure_family']]}")
     sg = entities["space_groups"].get(crystal["space_group"]) if crystal["space_group"] else None
     if sg:
@@ -241,16 +244,16 @@ def verbalize_element(el: dict) -> str:
     return "\n".join(lines)
 
 
-def verbalize_all(entities: dict) -> dict:
+def verbalize_all(entities: dict, labels: bool = True) -> dict:
     result = {
         "elements": {k: verbalize_element(v) for k, v in entities["elements"].items()},
     }
     for variant in ("full", "no_geometry"):
         result[f"materials_{variant}"] = {
-            k: verbalize_material(v, entities, variant) for k, v in entities["materials"].items()
+            k: verbalize_material(v, entities, variant, labels) for k, v in entities["materials"].items()
         }
         result[f"crystals_{variant}"] = {
-            k: verbalize_crystal(v, entities, variant) for k, v in entities["crystals"].items()
+            k: verbalize_crystal(v, entities, variant, labels) for k, v in entities["crystals"].items()
         }
     return result
 
@@ -259,12 +262,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--entities", type=Path, default=Path("data/battgpt_abox/entities.json"))
     ap.add_argument("--out-dir", type=Path, default=Path("data/battgpt_abox/"))
+    ap.add_argument("--no-labels", action="store_true",
+                    help="leave out the 'Structure family:' and 'Battery role:' lines (Step 36: they are relation targets)")
     args = ap.parse_args()
+    args.out_dir.mkdir(parents=True, exist_ok=True)
 
     entities = json.loads(args.entities.read_text(encoding="utf-8"))
     logger.info(f"Loaded {args.entities}: {entities['meta']['counts']}")
 
-    verbalizations = verbalize_all(entities)
+    verbalizations = verbalize_all(entities, labels=not args.no_labels)
     for key, mapping in verbalizations.items():
         out_path = args.out_dir / f"verbalizations_{key}.json"
         out_path.write_text(json.dumps(mapping, indent=2, ensure_ascii=False), encoding="utf-8")

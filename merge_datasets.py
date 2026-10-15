@@ -130,6 +130,11 @@ def main():
                     help="where train_abox_*.jsonl live (e.g. data/battgpt_abox_split for the Step 17 split)")
     ap.add_argument("--out-prefix", default="data/battgpt_merged",
                     help="output dirs are <prefix>_<variant>/")
+    ap.add_argument("--tbox-type-share", type=float, default=None,
+                    help="Step 36: TBox share of the merged type rows (e.g. 0.15) instead of the 1:1 default, "
+                         "which at 1,000 materials repeated 174 TBox rows 53x and at 5,000 would repeat them ~260x")
+    ap.add_argument("--tbox-exist-share", type=float, default=None,
+                    help="Step 36: same for the exist rows (3 TBox rows; 1:1 meant 525x at 1,000)")
     args = ap.parse_args()
     tbox_type_raw = _read_jsonl(TBOX_DIR / "train.jsonl")
     tbox_exist = _read_jsonl(TBOX_DIR / "train_exist.jsonl")
@@ -151,8 +156,14 @@ def main():
         # SAME channel. Computed from real counts, applied as stated -- but logged with a clear
         # flag when the resulting factor is unusually high, since that says more about our
         # schema's small size (23 classes, 3 relations) than about the right oversampling policy.
-        type_factor = max(1, round(len(abox_type) / len(tbox_type)))
-        exist_factor = max(1, round(len(abox_exist) / len(tbox_exist))) if tbox_exist else 1
+        def factor(n_abox, n_tbox, share):
+            if not n_tbox:
+                return 1
+            if share is None:  # original policy: ~1:1
+                return max(1, round(n_abox / n_tbox))
+            return max(1, round(share / (1 - share) * n_abox / n_tbox))
+        type_factor = factor(len(abox_type), len(tbox_type), args.tbox_type_share)
+        exist_factor = factor(len(abox_exist), len(tbox_exist), args.tbox_exist_share)
 
         tbox_type_oversampled = tbox_type * type_factor
         tbox_exist_oversampled = tbox_exist * exist_factor
@@ -181,6 +192,7 @@ def main():
             "n_abox_exist": len(abox_exist), "n_tbox_exist_raw": len(tbox_exist),
             "exist_oversample_factor": exist_factor, "n_tbox_exist_oversampled": len(tbox_exist_oversampled),
             "n_merged_exist": len(merged_exist),
+            "tbox_type_share": args.tbox_type_share, "tbox_exist_share": args.tbox_exist_share,
         }
         (out_dir / "merge_summary.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
         logger.info(f"[{variant}] wrote {out_dir}/: {meta}")
