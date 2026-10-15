@@ -1,0 +1,81 @@
+labels_pct,model,comparison,auc_diff_pts,wins,losses,p
+100,GradBoost,Raw + K-Ont vs Raw table,0.5,5,5,0.5566
+100,GradBoost,Raw + K-Ont vs Raw + OnT,-0.5,4,6,0.6719
+100,GradBoost,Raw + K-Ont vs Raw + plain encoder,-0.7,2,8,0.2324
+100,GradBoost,Raw + OnT vs Raw table,1.1,7,2,0.0547
+100,SVM,Raw + K-Ont vs Raw table,-0.9,2,8,0.1055
+100,SVM,Raw + K-Ont vs Raw + OnT,0.1,6,3,0.7109
+100,SVM,Raw + K-Ont vs Raw + plain encoder,-0.4,3,6,0.4258
+100,SVM,Raw + OnT vs Raw table,-0.9,2,8,0.0645
+100,MLP,Raw + K-Ont vs Raw table,-0.4,3,7,0.4922
+100,MLP,Raw + K-Ont vs Raw + OnT,0.2,5,5,1.0
+100,MLP,Raw + K-Ont vs Raw + plain encoder,-0.4,4,6,0.2324
+100,MLP,Raw + OnT vs Raw table,-0.5,3,7,0.375
+100,LogReg,Raw + K-Ont vs Raw table,-1.2,2,7,0.2031
+100,LogReg,Raw + K-Ont vs Raw + OnT,-0.3,4,5,0.7109
+100,LogReg,Raw + K-Ont vs Raw + plain encoder,-0.5,5,5,0.5566
+100,LogReg,Raw + OnT vs Raw table,-0.9,3,6,0.1289
+100,RandomForest,Raw + K-Ont vs Raw table,-0.9,2,7,0.0391
+100,RandomForest,Raw + K-Ont vs Raw + OnT,0.5,6,4,0.3223
+100,RandomForest,Raw + K-Ont vs Raw + plain encoder,-1.1,2,8,0.0195
+100,RandomForest,Raw + OnT vs Raw table,-1.3,2,8,0.0273
+20,SVM,Raw + K-Ont vs Raw table,-2.0,7,23,0.0017
+20,SVM,Raw + K-Ont vs Raw + OnT,-0.0,16,14,0.9426
+20,SVM,Raw + K-Ont vs Raw + plain encoder,-1.2,9,21,0.0098
+20,SVM,Raw + OnT vs Raw table,-1.9,8,22,0.0039
+20,MLP,Raw + K-Ont vs Raw table,-1.6,10,19,0.0207
+20,MLP,Raw + K-Ont vs Raw + OnT,-0.5,14,16,0.459
+20,MLP,Raw + K-Ont vs Raw + plain encoder,-0.2,15,15,0.5857
+20,MLP,Raw + OnT vs Raw table,-1.1,10,20,0.0449
+20,GradBoost,Raw + K-Ont vs Raw table,-0.7,11,19,0.5158
+20,GradBoost,Raw + K-Ont vs Raw + OnT,0.2,16,14,0.6658
+20,GradBoost,Raw + K-Ont vs Raw + plain encoder,1.5,21,9,0.0612
+20,GradBoost,Raw + OnT vs Raw table,-0.8,13,17,0.428
+20,LogReg,Raw + K-Ont vs Raw table,-3.6,5,25,0.0
+20,LogReg,Raw + K-Ont vs Raw + OnT,-1.3,14,16,0.0878
+20,LogReg,Raw + K-Ont vs Raw + plain encoder,-1.2,8,21,0.0245
+20,LogReg,Raw + OnT vs Raw table,-2.3,3,27,0.0001
+20,RandomForest,Raw + K-Ont vs Raw table,-1.3,9,21,0.0036
+20,RandomForest,Raw + K-Ont vs Raw + OnT,-0.3,11,19,0.3235
+20,RandomForest,Raw + K-Ont vs Raw + plain encoder,-0.6,10,20,0.1347
+20,RandomForest,Raw + OnT vs Raw table,-1.0,10,19,0.0836
+50,MLP,Raw + K-Ont vs Raw table,-0.7,14,16,0.195
+50,MLP,Raw + K-Ont vs Raw + OnT,-0.5,12,18,0.1064
+50,MLP,Raw + K-Ont vs Raw + plain encoder,-0.7,11,19,0.0822
+50,MLP,Raw + OnT vs Raw table,-0.2,15,15,0.6884
+50,GradBoost,Raw + K-Ont vs Raw table,-1.0,8,22,0.0175
+50,GradBoost,Raw + K-Ont vs Raw + OnT,-1.5,12,18,0.0164
+50,GradBoost,Raw + K-Ont vs Raw + plain encoder,0.1,14,16,0.821
+50,GradBoost,Raw + OnT vs Raw table,0.5,17,13,0.2369
+50,LogReg,Raw + K-Ont vs Raw table,-1.7,6,24,0.0
+50,LogReg,Raw + K-Ont vs Raw + OnT,-0.5,9,21,0.1588
+50,LogReg,Raw + K-Ont vs Raw + plain encoder,0.1,15,15,0.7813
+50,LogReg,Raw + OnT vs Raw table,-1.3,6,23,0.0004
+50,RandomForest,Raw + K-Ont vs Raw table,-1.1,10,19,0.0033
+50,RandomForest,Raw + K-Ont vs Raw + OnT,0.3,17,13,0.3285
+50,RandomForest,Raw + K-Ont vs Raw + plain encoder,-0.8,8,22,0.0113
+50,RandomForest,Raw + OnT vs Raw table,-1.4,10,20,0.0152
+50,SVM,Raw + K-Ont vs Raw table,-1.5,10,19,0.0081
+50,SVM,Raw + K-Ont vs Raw + OnT,-0.2,12,18,0.36
+50,SVM,Raw + K-Ont vs Raw + plain encoder,-1.0,9,21,0.006
+50,SVM,Raw + OnT vs Raw table,-1.2,10,20,0.0117
+10,LogReg,Raw + K-Ont vs Raw table,-3.9,5,25,0.0
+10,LogReg,Raw + K-Ont vs Raw + OnT,-1.6,10,20,0.0407
+10,LogReg,Raw + K-Ont vs Raw + plain encoder,-0.9,12,18,0.2022
+10,LogReg,Raw + OnT vs Raw table,-2.3,9,21,0.0023
+10,RandomForest,Raw + K-Ont vs Raw table,-1.0,10,20,0.0405
+10,RandomForest,Raw + K-Ont vs Raw + OnT,-0.1,16,14,0.9354
+10,RandomForest,Raw + K-Ont vs Raw + plain encoder,0.2,19,11,0.5425
+10,RandomForest,Raw + OnT vs Raw table,-0.9,12,17,0.2563
+10,GradBoost,Raw + K-Ont vs Raw table,0.0,0,0,1.0
+10,GradBoost,Raw + K-Ont vs Raw + OnT,0.0,0,0,1.0
+10,GradBoost,Raw + K-Ont vs Raw + plain encoder,0.0,0,0,1.0
+10,GradBoost,Raw + OnT vs Raw table,0.0,0,0,1.0
+10,SVM,Raw + K-Ont vs Raw table,-8.1,12,18,0.241
+10,SVM,Raw + K-Ont vs Raw + OnT,-4.7,12,18,0.1746
+10,SVM,Raw + K-Ont vs Raw + plain encoder,-5.2,14,16,0.3707
+10,SVM,Raw + OnT vs Raw table,-3.5,13,17,0.6884
+10,MLP,Raw + K-Ont vs Raw table,-7.1,9,21,0.0136
+10,MLP,Raw + K-Ont vs Raw + OnT,-3.4,12,17,0.2098
+10,MLP,Raw + K-Ont vs Raw + plain encoder,-0.9,16,14,0.9754
+10,MLP,Raw + OnT vs Raw table,-3.7,9,21,0.0277

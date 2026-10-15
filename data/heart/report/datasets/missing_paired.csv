@@ -1,0 +1,41 @@
+scenario,model,comparison,auc_diff_pts,wins,losses,p
+hide cp+thal+ca,RandomForest,Raw + K-Ont vs Raw table,3.4,8,1,0.0117
+hide cp+thal+ca,RandomForest,Raw + K-Ont vs Raw + OnT,1.4,9,1,0.0137
+hide cp+thal+ca,RandomForest,Raw + K-Ont vs Raw + plain encoder,-0.8,2,8,0.084
+hide cp+thal+ca,RandomForest,Raw + OnT vs Raw table,2.0,7,3,0.1602
+hide cp+thal+ca,GradBoost,Raw + K-Ont vs Raw table,5.5,10,0,0.002
+hide cp+thal+ca,GradBoost,Raw + K-Ont vs Raw + OnT,0.8,7,3,0.2754
+hide cp+thal+ca,GradBoost,Raw + K-Ont vs Raw + plain encoder,-0.9,5,5,0.4316
+hide cp+thal+ca,GradBoost,Raw + OnT vs Raw table,4.7,7,2,0.0273
+hide cp+thal+ca,LogReg,Raw + K-Ont vs Raw table,3.6,8,2,0.0098
+hide cp+thal+ca,LogReg,Raw + K-Ont vs Raw + OnT,0.4,7,3,0.5566
+hide cp+thal+ca,LogReg,Raw + K-Ont vs Raw + plain encoder,-0.5,4,6,0.5566
+hide cp+thal+ca,LogReg,Raw + OnT vs Raw table,3.2,9,1,0.0059
+hide cp+thal+ca,SVM,Raw + K-Ont vs Raw table,4.4,9,1,0.0039
+hide cp+thal+ca,SVM,Raw + K-Ont vs Raw + OnT,0.9,6,3,0.082
+hide cp+thal+ca,SVM,Raw + K-Ont vs Raw + plain encoder,-0.4,3,7,0.6094
+hide cp+thal+ca,SVM,Raw + OnT vs Raw table,3.5,9,1,0.0098
+hide cp+thal+ca,MLP,Raw + K-Ont vs Raw table,4.6,10,0,0.002
+hide cp+thal+ca,MLP,Raw + K-Ont vs Raw + OnT,0.4,4,6,0.5566
+hide cp+thal+ca,MLP,Raw + K-Ont vs Raw + plain encoder,-0.3,4,6,0.375
+hide cp+thal+ca,MLP,Raw + OnT vs Raw table,4.2,9,1,0.0039
+hide cp+thal,GradBoost,Raw + K-Ont vs Raw table,1.0,6,4,0.2754
+hide cp+thal,GradBoost,Raw + K-Ont vs Raw + OnT,-1.7,3,7,0.1055
+hide cp+thal,GradBoost,Raw + K-Ont vs Raw + plain encoder,-1.7,2,8,0.1055
+hide cp+thal,GradBoost,Raw + OnT vs Raw table,2.7,7,3,0.0488
+hide cp+thal,LogReg,Raw + K-Ont vs Raw table,0.9,6,4,0.2754
+hide cp+thal,LogReg,Raw + K-Ont vs Raw + OnT,-0.3,5,5,0.8457
+hide cp+thal,LogReg,Raw + K-Ont vs Raw + plain encoder,-0.6,5,5,0.4922
+hide cp+thal,LogReg,Raw + OnT vs Raw table,1.2,7,3,0.1309
+hide cp+thal,RandomForest,Raw + K-Ont vs Raw table,1.3,7,3,0.2324
+hide cp+thal,RandomForest,Raw + K-Ont vs Raw + OnT,0.4,7,3,0.3223
+hide cp+thal,RandomForest,Raw + K-Ont vs Raw + plain encoder,-0.4,4,5,0.3594
+hide cp+thal,RandomForest,Raw + OnT vs Raw table,0.9,6,4,0.4922
+hide cp+thal,SVM,Raw + K-Ont vs Raw table,1.8,6,4,0.084
+hide cp+thal,SVM,Raw + K-Ont vs Raw + OnT,0.3,7,3,0.375
+hide cp+thal,SVM,Raw + K-Ont vs Raw + plain encoder,-0.1,4,6,0.6426
+hide cp+thal,SVM,Raw + OnT vs Raw table,1.5,7,3,0.084
+hide cp+thal,MLP,Raw + K-Ont vs Raw table,2.0,7,3,0.1602
+hide cp+thal,MLP,Raw + K-Ont vs Raw + OnT,-0.5,4,6,0.3223
+hide cp+thal,MLP,Raw + K-Ont vs Raw + plain encoder,0.2,6,4,0.625
+hide cp+thal,MLP,Raw + OnT vs Raw table,2.5,7,3,0.0645

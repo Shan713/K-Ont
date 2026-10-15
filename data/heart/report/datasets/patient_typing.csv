@@ -1,0 +1,4 @@
+model,nearest_class,patients
+OnT,disease status,294
+OnT,heart disease,9
+K-Ont,patient,303

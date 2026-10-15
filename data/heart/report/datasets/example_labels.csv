@@ -1,0 +1,3 @@
+patient,diagnosis,seen_in_training
+patient_001,No heart disease,Yes
+patient_002,Heart disease,Yes

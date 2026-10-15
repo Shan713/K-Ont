@@ -1,0 +1,29 @@
+patient,line,text
+patient_001,0,Type: patient
+patient_001,1,Gender: male
+patient_001,2,Chest pain: typical angina
+patient_001,3,Resting ECG: left ventricular hypertrophy
+patient_001,4,ST slope: downsloping
+patient_001,5,Thallium scan: fixed defect
+patient_001,6,Age: 63
+patient_001,7,Resting blood pressure: 145 mm Hg
+patient_001,8,Serum cholesterol: 233 mg/dl
+patient_001,9,Fasting blood sugar over 120 mg/dl: true
+patient_001,10,Maximum heart rate: 150
+patient_001,11,Exercise-induced angina: false
+patient_001,12,ST depression by exercise: 2.3
+patient_001,13,Major vessels coloured by fluoroscopy: 0
+patient_002,0,Type: patient
+patient_002,1,Gender: male
+patient_002,2,Chest pain: asymptomatic
+patient_002,3,Resting ECG: left ventricular hypertrophy
+patient_002,4,ST slope: flat
+patient_002,5,Thallium scan: normal
+patient_002,6,Age: 67
+patient_002,7,Resting blood pressure: 160 mm Hg
+patient_002,8,Serum cholesterol: 286 mg/dl
+patient_002,9,Fasting blood sugar over 120 mg/dl: false
+patient_002,10,Maximum heart rate: 108
+patient_002,11,Exercise-induced angina: true
+patient_002,12,ST depression by exercise: 1.5
+patient_002,13,Major vessels coloured by fluoroscopy: 3

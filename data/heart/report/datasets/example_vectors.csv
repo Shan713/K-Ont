@@ -1,0 +1,97 @@
+patient,representation,dim,value
+patient_001,K-Ont (whole patient),0,0.14000000059604645
+patient_001,K-Ont (whole patient),1,-0.421999990940094
+patient_001,K-Ont (whole patient),2,-0.7009999752044678
+patient_001,K-Ont (whole patient),3,-0.4020000100135803
+patient_001,K-Ont (whole patient),4,-0.27399998903274536
+patient_001,K-Ont (whole patient),5,0.10899999737739563
+patient_001,K-Ont (whole patient),6,0.2329999953508377
+patient_001,K-Ont (whole patient),7,0.41100001335144043
+patient_001,K-Ont (whole patient),8,-0.824999988079071
+patient_001,K-Ont (whole patient),9,0.16500000655651093
+patient_001,K-Ont (whole patient),10,-0.06599999964237213
+patient_001,K-Ont (whole patient),11,-0.17599999904632568
+patient_001,K-Ont (whole patient),12,0.36800000071525574
+patient_001,K-Ont (whole patient),13,0.010999999940395355
+patient_001,K-Ont (whole patient),14,-1.3009999990463257
+patient_001,K-Ont (whole patient),15,0.007000000216066837
+patient_001,K-Ont (whole patient),16,0.25699999928474426
+patient_001,K-Ont (whole patient),17,-0.5350000262260437
+patient_001,K-Ont (whole patient),18,-0.029999999329447746
+patient_001,K-Ont (whole patient),19,0.26600000262260437
+patient_001,K-Ont (whole patient),20,-0.47099998593330383
+patient_001,K-Ont (whole patient),21,0.017000000923871994
+patient_001,K-Ont (whole patient),22,-0.5820000171661377
+patient_001,K-Ont (whole patient),23,-0.4699999988079071
+patient_001,OnT (first concept: gender),0,-0.3199999928474426
+patient_001,OnT (first concept: gender),1,0.2770000100135803
+patient_001,OnT (first concept: gender),2,-0.4259999990463257
+patient_001,OnT (first concept: gender),3,-0.5199999809265137
+patient_001,OnT (first concept: gender),4,0.020999999716877937
+patient_001,OnT (first concept: gender),5,-0.18400000035762787
+patient_001,OnT (first concept: gender),6,0.4819999933242798
+patient_001,OnT (first concept: gender),7,0.0020000000949949026
+patient_001,OnT (first concept: gender),8,-0.1550000011920929
+patient_001,OnT (first concept: gender),9,0.11999999731779099
+patient_001,OnT (first concept: gender),10,0.25099998712539673
+patient_001,OnT (first concept: gender),11,-0.6169999837875366
+patient_001,OnT (first concept: gender),12,0.14300000667572021
+patient_001,OnT (first concept: gender),13,-0.32600000500679016
+patient_001,OnT (first concept: gender),14,-0.3310000002384186
+patient_001,OnT (first concept: gender),15,0.10999999940395355
+patient_001,OnT (first concept: gender),16,0.0689999982714653
+patient_001,OnT (first concept: gender),17,-0.36000001430511475
+patient_001,OnT (first concept: gender),18,0.41999998688697815
+patient_001,OnT (first concept: gender),19,0.37700000405311584
+patient_001,OnT (first concept: gender),20,-0.3230000138282776
+patient_001,OnT (first concept: gender),21,-0.23100000619888306
+patient_001,OnT (first concept: gender),22,0.06199999898672104
+patient_001,OnT (first concept: gender),23,-0.41200000047683716
+patient_002,K-Ont (whole patient),0,0.2160000056028366
+patient_002,K-Ont (whole patient),1,-0.27000001072883606
+patient_002,K-Ont (whole patient),2,-0.656000018119812
+patient_002,K-Ont (whole patient),3,-0.34200000762939453
+patient_002,K-Ont (whole patient),4,-0.35499998927116394
+patient_002,K-Ont (whole patient),5,0.1459999978542328
+patient_002,K-Ont (whole patient),6,0.22499999403953552
+patient_002,K-Ont (whole patient),7,0.453000009059906
+patient_002,K-Ont (whole patient),8,-0.8960000276565552
+patient_002,K-Ont (whole patient),9,0.04600000008940697
+patient_002,K-Ont (whole patient),10,-0.04600000008940697
+patient_002,K-Ont (whole patient),11,-0.07900000363588333
+patient_002,K-Ont (whole patient),12,0.31700000166893005
+patient_002,K-Ont (whole patient),13,-0.07500000298023224
+patient_002,K-Ont (whole patient),14,-1.2740000486373901
+patient_002,K-Ont (whole patient),15,0.02800000086426735
+patient_002,K-Ont (whole patient),16,0.2879999876022339
+patient_002,K-Ont (whole patient),17,-0.6430000066757202
+patient_002,K-Ont (whole patient),18,0.09399999678134918
+patient_002,K-Ont (whole patient),19,0.33799999952316284
+patient_002,K-Ont (whole patient),20,-0.4560000002384186
+patient_002,K-Ont (whole patient),21,-0.08900000154972076
+patient_002,K-Ont (whole patient),22,-0.21899999678134918
+patient_002,K-Ont (whole patient),23,-0.5680000185966492
+patient_002,OnT (first concept: gender),0,-0.3199999928474426
+patient_002,OnT (first concept: gender),1,0.2770000100135803
+patient_002,OnT (first concept: gender),2,-0.4259999990463257
+patient_002,OnT (first concept: gender),3,-0.5199999809265137
+patient_002,OnT (first concept: gender),4,0.020999999716877937
+patient_002,OnT (first concept: gender),5,-0.18400000035762787
+patient_002,OnT (first concept: gender),6,0.4819999933242798
+patient_002,OnT (first concept: gender),7,0.0020000000949949026
+patient_002,OnT (first concept: gender),8,-0.1550000011920929
+patient_002,OnT (first concept: gender),9,0.11999999731779099
+patient_002,OnT (first concept: gender),10,0.25099998712539673
+patient_002,OnT (first concept: gender),11,-0.6169999837875366
+patient_002,OnT (first concept: gender),12,0.14300000667572021
+patient_002,OnT (first concept: gender),13,-0.32600000500679016
+patient_002,OnT (first concept: gender),14,-0.3310000002384186
+patient_002,OnT (first concept: gender),15,0.10999999940395355
+patient_002,OnT (first concept: gender),16,0.0689999982714653
+patient_002,OnT (first concept: gender),17,-0.36000001430511475
+patient_002,OnT (first concept: gender),18,0.41999998688697815
+patient_002,OnT (first concept: gender),19,0.37700000405311584
+patient_002,OnT (first concept: gender),20,-0.3230000138282776
+patient_002,OnT (first concept: gender),21,-0.23100000619888306
+patient_002,OnT (first concept: gender),22,0.06199999898672104
+patient_002,OnT (first concept: gender),23,-0.41200000047683716

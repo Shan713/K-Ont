@@ -1,0 +1,21 @@
+patient,representation,rank,neighbour,diagnosis,summary
+patient_001,OnT (5 concepts),1,patient_184,No heart disease,male · typical angina · left ventricular hypertrophy · downsloping · reseversable defect
+patient_001,OnT (5 concepts),2,patient_189,Heart disease,male · atypical angina · left ventricular hypertrophy · upsloping · reseversable defect
+patient_001,OnT (5 concepts),3,patient_289,No heart disease,male · atypical angina · left ventricular hypertrophy · upsloping · reseversable defect
+patient_001,OnT (5 concepts),4,patient_113,No heart disease,male · typical angina · left ventricular hypertrophy · flat · fixed defect
+patient_001,OnT (5 concepts),5,patient_060,No heart disease,male · typical angina · left ventricular hypertrophy · upsloping · normal
+patient_001,K-Ont,1,patient_184,No heart disease,male · typical angina · left ventricular hypertrophy · downsloping · reseversable defect
+patient_001,K-Ont,2,patient_050,No heart disease,male · non anginal pain · left ventricular hypertrophy · downsloping · normal
+patient_001,K-Ont,3,patient_059,No heart disease,male · non anginal pain · left ventricular hypertrophy · downsloping · normal
+patient_001,K-Ont,4,patient_293,Heart disease,male · asymptomatic · normal · downsloping · fixed defect
+patient_001,K-Ont,5,patient_155,Heart disease,male · asymptomatic · left ventricular hypertrophy · downsloping · normal
+patient_002,OnT (5 concepts),1,patient_265,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,OnT (5 concepts),2,patient_248,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,OnT (5 concepts),3,patient_091,No heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,OnT (5 concepts),4,patient_236,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,OnT (5 concepts),5,patient_112,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,K-Ont,1,patient_196,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,K-Ont,2,patient_265,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,K-Ont,3,patient_248,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,K-Ont,4,patient_236,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal
+patient_002,K-Ont,5,patient_112,Heart disease,male · asymptomatic · left ventricular hypertrophy · flat · normal

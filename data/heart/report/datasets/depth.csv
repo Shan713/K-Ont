@@ -1,0 +1,33 @@
+concept,hierarchy_level,ont_distance_from_centre,kont_distance_from_centre
+abstract,1,12.081,12.956
+agent,2,11.86,13.838
+asymptomatic,3,13.951,15.847
+atypical angina,3,14.467,16.196
+chest pain,2,14.616,14.787
+disease status,0,12.013,14.856
+downsloping,3,13.434,15.851
+entity,0,10.522,11.366
+female,3,12.244,15.596
+fixed defect,3,12.847,15.627
+flat,3,13.026,15.589
+gender,2,11.691,15.391
+heart disease,1,13.842,15.794
+heart rate,2,13.627,13.517
+left ventricular hypertrophy,3,15.042,15.931
+male,3,12.341,15.704
+no heart disease,1,13.916,15.762
+non anginal pain,3,14.272,15.756
+normal,3,11.624,15.406
+object,1,10.441,12.942
+patient,4,12.595,13.519
+person,3,10.805,14.089
+physical object,2,10.919,13.884
+quality,1,11.396,12.727
+reseversable defect,3,12.638,15.787
+resting electrocardiographic results,2,14.493,14.158
+slope peak exercise ST segment,2,15.075,14.827
+social object,2,11.558,14.328
+typical angina,3,13.629,15.864
+upsloping,3,13.358,15.624
+wave abnormality,3,13.416,16.047
+"(patients, median)",5,14.933,15.988

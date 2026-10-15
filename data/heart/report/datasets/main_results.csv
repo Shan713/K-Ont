@@ -1,0 +1,106 @@
+model,features,metric,mean_pct,sd_pct
+LogReg,Raw table,ACC,84.8,4.8
+LogReg,Raw table,AUC,91.0,3.8
+LogReg,Raw table,F1,82.9,5.3
+LogReg,Raw + OnT,ACC,83.9,4.7
+LogReg,Raw + OnT,AUC,90.1,3.8
+LogReg,Raw + OnT,F1,82.1,5.6
+LogReg,Raw + K-Ont,ACC,83.2,4.8
+LogReg,Raw + K-Ont,AUC,89.7,4.7
+LogReg,Raw + K-Ont,F1,81.3,5.3
+LogReg,Raw + plain encoder,ACC,83.9,5.1
+LogReg,Raw + plain encoder,AUC,90.2,4.7
+LogReg,Raw + plain encoder,F1,82.1,5.7
+LogReg,OnT only,ACC,78.2,5.9
+LogReg,OnT only,AUC,86.6,4.2
+LogReg,OnT only,F1,76.8,6.0
+LogReg,K-Ont only,ACC,81.9,3.5
+LogReg,K-Ont only,AUC,88.7,3.8
+LogReg,K-Ont only,F1,80.3,3.9
+LogReg,Plain encoder only,ACC,83.0,6.0
+LogReg,Plain encoder only,AUC,89.3,3.9
+LogReg,Plain encoder only,F1,81.4,6.3
+RandomForest,Raw table,ACC,82.0,4.2
+RandomForest,Raw table,AUC,90.2,3.7
+RandomForest,Raw table,F1,80.2,4.5
+RandomForest,Raw + OnT,ACC,81.7,5.5
+RandomForest,Raw + OnT,AUC,89.2,4.2
+RandomForest,Raw + OnT,F1,79.9,5.3
+RandomForest,Raw + K-Ont,ACC,83.0,4.3
+RandomForest,Raw + K-Ont,AUC,89.6,3.7
+RandomForest,Raw + K-Ont,F1,81.2,4.4
+RandomForest,Raw + plain encoder,ACC,83.7,5.0
+RandomForest,Raw + plain encoder,AUC,90.6,3.9
+RandomForest,Raw + plain encoder,F1,82.1,5.2
+RandomForest,OnT only,ACC,78.1,6.1
+RandomForest,OnT only,AUC,84.8,4.4
+RandomForest,OnT only,F1,76.1,6.4
+RandomForest,K-Ont only,ACC,78.4,5.8
+RandomForest,K-Ont only,AUC,87.7,3.5
+RandomForest,K-Ont only,F1,76.4,5.6
+RandomForest,Plain encoder only,ACC,80.7,5.9
+RandomForest,Plain encoder only,AUC,87.8,4.6
+RandomForest,Plain encoder only,F1,79.1,6.0
+SVM,Raw table,ACC,82.5,4.6
+SVM,Raw table,AUC,90.2,3.7
+SVM,Raw table,F1,81.1,5.3
+SVM,Raw + OnT,ACC,80.0,4.6
+SVM,Raw + OnT,AUC,88.3,4.1
+SVM,Raw + OnT,F1,77.9,5.1
+SVM,Raw + K-Ont,ACC,81.4,4.8
+SVM,Raw + K-Ont,AUC,89.4,3.9
+SVM,Raw + K-Ont,F1,79.7,5.1
+SVM,Raw + plain encoder,ACC,82.4,3.7
+SVM,Raw + plain encoder,AUC,89.7,4.3
+SVM,Raw + plain encoder,F1,80.8,3.8
+SVM,OnT only,ACC,76.4,5.0
+SVM,OnT only,AUC,84.9,4.4
+SVM,OnT only,F1,73.8,5.6
+SVM,K-Ont only,ACC,78.2,6.1
+SVM,K-Ont only,AUC,87.4,4.5
+SVM,K-Ont only,F1,76.1,6.3
+SVM,Plain encoder only,ACC,80.2,6.1
+SVM,Plain encoder only,AUC,87.5,5.1
+SVM,Plain encoder only,F1,78.4,6.2
+GradBoost,Raw table,ACC,81.4,3.4
+GradBoost,Raw table,AUC,87.7,3.1
+GradBoost,Raw table,F1,79.2,4.2
+GradBoost,Raw + OnT,ACC,80.2,3.8
+GradBoost,Raw + OnT,AUC,88.8,3.9
+GradBoost,Raw + OnT,F1,78.1,3.8
+GradBoost,Raw + K-Ont,ACC,79.9,5.1
+GradBoost,Raw + K-Ont,AUC,88.2,3.8
+GradBoost,Raw + K-Ont,F1,77.7,5.7
+GradBoost,Raw + plain encoder,ACC,82.0,4.4
+GradBoost,Raw + plain encoder,AUC,88.9,4.5
+GradBoost,Raw + plain encoder,F1,80.3,4.6
+GradBoost,OnT only,ACC,77.4,6.0
+GradBoost,OnT only,AUC,84.9,4.1
+GradBoost,OnT only,F1,75.6,5.9
+GradBoost,K-Ont only,ACC,78.7,4.6
+GradBoost,K-Ont only,AUC,85.9,4.1
+GradBoost,K-Ont only,F1,76.3,4.6
+GradBoost,Plain encoder only,ACC,79.6,7.0
+GradBoost,Plain encoder only,AUC,86.9,5.6
+GradBoost,Plain encoder only,F1,77.7,7.2
+MLP,Raw table,ACC,84.0,4.8
+MLP,Raw table,AUC,91.0,3.6
+MLP,Raw table,F1,81.9,5.5
+MLP,Raw + OnT,ACC,82.7,4.9
+MLP,Raw + OnT,AUC,90.2,4.1
+MLP,Raw + OnT,F1,80.8,5.3
+MLP,Raw + K-Ont,ACC,83.4,4.1
+MLP,Raw + K-Ont,AUC,90.8,3.7
+MLP,Raw + K-Ont,F1,81.5,4.6
+MLP,Raw + plain encoder,ACC,84.3,4.0
+MLP,Raw + plain encoder,AUC,91.0,3.9
+MLP,Raw + plain encoder,F1,82.6,4.5
+MLP,OnT only,ACC,78.9,4.4
+MLP,OnT only,AUC,85.9,4.4
+MLP,OnT only,F1,76.8,4.8
+MLP,K-Ont only,ACC,81.0,3.5
+MLP,K-Ont only,AUC,88.6,3.5
+MLP,K-Ont only,F1,79.1,4.0
+MLP,Plain encoder only,ACC,82.9,4.8
+MLP,Plain encoder only,AUC,89.3,4.3
+MLP,Plain encoder only,F1,81.3,5.0

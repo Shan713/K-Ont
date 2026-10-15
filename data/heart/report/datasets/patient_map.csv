@@ -1,0 +1,910 @@
+patient,diagnosis,seen_in_training,representation,x,y
+patient_001,No heart disease,Yes,OnT (5 concepts),20.357999801635742,-108.2760009765625
+patient_002,Heart disease,Yes,OnT (5 concepts),-99.1760025024414,-146.59800720214844
+patient_003,Heart disease,Yes,OnT (5 concepts),-140.22000122070312,-78.7239990234375
+patient_004,No heart disease,Yes,OnT (5 concepts),82.6259994506836,11.1899995803833
+patient_005,No heart disease,Yes,OnT (5 concepts),87.35700225830078,-110.20500183105469
+patient_006,No heart disease,No,OnT (5 concepts),109.53399658203125,122.76200103759766
+patient_007,Heart disease,No,OnT (5 concepts),80.64900207519531,-204.0189971923828
+patient_008,No heart disease,Yes,OnT (5 concepts),36.869998931884766,115.12999725341797
+patient_009,Heart disease,No,OnT (5 concepts),-148.5,-38.433998107910156
+patient_010,Heart disease,Yes,OnT (5 concepts),-22.993999481201172,-187.76499938964844
+patient_011,No heart disease,Yes,OnT (5 concepts),-72.28299713134766,129.65899658203125
+patient_012,No heart disease,Yes,OnT (5 concepts),-34.827999114990234,-107.24500274658203
+patient_013,Heart disease,Yes,OnT (5 concepts),-52.95100021362305,-36.457000732421875
+patient_014,No heart disease,Yes,OnT (5 concepts),69.06400299072266,179.46800231933594
+patient_015,No heart disease,No,OnT (5 concepts),65.75700378417969,58.36399841308594
+patient_016,No heart disease,Yes,OnT (5 concepts),118.52899932861328,9.123000144958496
+patient_017,Heart disease,Yes,OnT (5 concepts),62.362998962402344,194.42999267578125
+patient_018,No heart disease,Yes,OnT (5 concepts),29.02400016784668,137.23599243164062
+patient_019,No heart disease,Yes,OnT (5 concepts),137.08999633789062,35.29899978637695
+patient_020,No heart disease,Yes,OnT (5 concepts),125.9489974975586,152.6230010986328
+patient_021,No heart disease,Yes,OnT (5 concepts),-56.67300033569336,-85.66300201416016
+patient_022,No heart disease,Yes,OnT (5 concepts),84.98400115966797,-95.96600341796875
+patient_023,Heart disease,Yes,OnT (5 concepts),-44.1870002746582,-95.13500213623047
+patient_024,Heart disease,Yes,OnT (5 concepts),75.15699768066406,-48.93600082397461
+patient_025,Heart disease,Yes,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_026,No heart disease,Yes,OnT (5 concepts),13.020000457763672,17.599000930786133
+patient_027,No heart disease,Yes,OnT (5 concepts),139.78700256347656,18.73699951171875
+patient_028,No heart disease,Yes,OnT (5 concepts),158.96400451660156,137.6280059814453
+patient_029,No heart disease,Yes,OnT (5 concepts),29.02400016784668,137.23599243164062
+patient_030,Heart disease,No,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_031,No heart disease,Yes,OnT (5 concepts),156.18499755859375,121.91000366210938
+patient_032,Heart disease,Yes,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_033,Heart disease,Yes,OnT (5 concepts),114.44999694824219,28.131000518798828
+patient_034,No heart disease,Yes,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_035,No heart disease,Yes,OnT (5 concepts),114.44999694824219,28.131000518798828
+patient_036,No heart disease,Yes,OnT (5 concepts),40.9739990234375,132.593994140625
+patient_037,Heart disease,Yes,OnT (5 concepts),-159.90499877929688,-70.83599853515625
+patient_038,Heart disease,No,OnT (5 concepts),-159.66000366210938,-96.39199829101562
+patient_039,Heart disease,Yes,OnT (5 concepts),-94.70600128173828,138.8350067138672
+patient_040,No heart disease,Yes,OnT (5 concepts),-4.571000099182129,16.895000457763672
+patient_041,Heart disease,Yes,OnT (5 concepts),-185.74099731445312,-52.63100051879883
+patient_042,No heart disease,Yes,OnT (5 concepts),62.51599884033203,165.99400329589844
+patient_043,No heart disease,No,OnT (5 concepts),124.4540023803711,116.28700256347656
+patient_044,No heart disease,Yes,OnT (5 concepts),114.44999694824219,28.131000518798828
+patient_045,Heart disease,Yes,OnT (5 concepts),88.38300323486328,-172.49600219726562
+patient_046,Heart disease,No,OnT (5 concepts),-77.2249984741211,-9.496999740600586
+patient_047,No heart disease,Yes,OnT (5 concepts),95.73600006103516,30.055999755859375
+patient_048,Heart disease,No,OnT (5 concepts),-162.5850067138672,-50.0369987487793
+patient_049,No heart disease,Yes,OnT (5 concepts),139.80299377441406,-78.66300201416016
+patient_050,No heart disease,Yes,OnT (5 concepts),145.80599975585938,-50.20000076293945
+patient_051,No heart disease,Yes,OnT (5 concepts),138.12100219726562,108.85600280761719
+patient_052,No heart disease,Yes,OnT (5 concepts),-2.246000051498413,163.9499969482422
+patient_053,Heart disease,Yes,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_054,No heart disease,Yes,OnT (5 concepts),68.62100219726562,-112.34100341796875
+patient_055,Heart disease,Yes,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_056,Heart disease,Yes,OnT (5 concepts),-148.5,-38.433998107910156
+patient_057,Heart disease,No,OnT (5 concepts),-41.584999084472656,38.560001373291016
+patient_058,Heart disease,Yes,OnT (5 concepts),4.078000068664551,-184.7729949951172
+patient_059,No heart disease,No,OnT (5 concepts),135.61700439453125,-45.92499923706055
+patient_060,No heart disease,Yes,OnT (5 concepts),68.38099670410156,-91.75
+patient_061,Heart disease,No,OnT (5 concepts),-128.58099365234375,101.5530014038086
+patient_062,No heart disease,Yes,OnT (5 concepts),155.00399780273438,-61.99399948120117
+patient_063,Heart disease,Yes,OnT (5 concepts),-159.90499877929688,-70.83599853515625
+patient_064,No heart disease,No,OnT (5 concepts),130.25399780273438,49.823001861572266
+patient_065,Heart disease,No,OnT (5 concepts),-107.10099792480469,109.2040023803711
+patient_066,Heart disease,Yes,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_067,Heart disease,No,OnT (5 concepts),-23.099000930786133,-45.757999420166016
+patient_068,No heart disease,Yes,OnT (5 concepts),75.15699768066406,-48.93600082397461
+patient_069,Heart disease,Yes,OnT (5 concepts),-15.251999855041504,-198.31500244140625
+patient_070,Heart disease,Yes,OnT (5 concepts),2.0889999866485596,28.52199935913086
+patient_071,No heart disease,Yes,OnT (5 concepts),153.37399291992188,33.86399841308594
+patient_072,Heart disease,Yes,OnT (5 concepts),-92.5,121.91500091552734
+patient_073,Heart disease,Yes,OnT (5 concepts),-107.10099792480469,109.2040023803711
+patient_074,Heart disease,Yes,OnT (5 concepts),25.645000457763672,-190.29600524902344
+patient_075,Heart disease,Yes,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_076,No heart disease,No,OnT (5 concepts),139.80299377441406,-78.66300201416016
+patient_077,Heart disease,Yes,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_078,No heart disease,Yes,OnT (5 concepts),139.80299377441406,-78.66300201416016
+patient_079,No heart disease,Yes,OnT (5 concepts),-44.1870002746582,-95.13500213623047
+patient_080,Heart disease,Yes,OnT (5 concepts),4.078000068664551,-184.7729949951172
+patient_081,No heart disease,Yes,OnT (5 concepts),-97.0719985961914,-122.46099853515625
+patient_082,No heart disease,Yes,OnT (5 concepts),-75.3280029296875,-129.33700561523438
+patient_083,No heart disease,No,OnT (5 concepts),118.15799713134766,-55.0629997253418
+patient_084,Heart disease,Yes,OnT (5 concepts),-70.5459976196289,-18.77199935913086
+patient_085,No heart disease,Yes,OnT (5 concepts),99.0989990234375,134.35499572753906
+patient_086,No heart disease,Yes,OnT (5 concepts),117.77899932861328,-71.71099853515625
+patient_087,No heart disease,Yes,OnT (5 concepts),117.77899932861328,-71.71099853515625
+patient_088,No heart disease,Yes,OnT (5 concepts),154.6840057373047,-86.66500091552734
+patient_089,No heart disease,Yes,OnT (5 concepts),88.70800018310547,-187.49899291992188
+patient_090,No heart disease,No,OnT (5 concepts),142.26300048828125,-96.51200103759766
+patient_091,No heart disease,Yes,OnT (5 concepts),-97.0719985961914,-122.46099853515625
+patient_092,Heart disease,Yes,OnT (5 concepts),-26.92300033569336,-208.50399780273438
+patient_093,No heart disease,Yes,OnT (5 concepts),-41.584999084472656,38.560001373291016
+patient_094,No heart disease,Yes,OnT (5 concepts),6.785999774932861,3.7760000228881836
+patient_095,No heart disease,Yes,OnT (5 concepts),127.13999938964844,-91.19499969482422
+patient_096,Heart disease,Yes,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_097,Heart disease,Yes,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_098,Heart disease,Yes,OnT (5 concepts),-185.93899536132812,-69.7750015258789
+patient_099,No heart disease,Yes,OnT (5 concepts),116.88300323486328,138.73899841308594
+patient_100,No heart disease,No,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_101,No heart disease,Yes,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_102,No heart disease,No,OnT (5 concepts),55.27199935913086,-96.88500213623047
+patient_103,No heart disease,Yes,OnT (5 concepts),88.38300323486328,-172.49600219726562
+patient_104,No heart disease,Yes,OnT (5 concepts),127.13999938964844,-91.19499969482422
+patient_105,Heart disease,No,OnT (5 concepts),-41.584999084472656,38.560001373291016
+patient_106,No heart disease,Yes,OnT (5 concepts),56.198001861572266,179.46099853515625
+patient_107,Heart disease,Yes,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_108,Heart disease,Yes,OnT (5 concepts),-80.54299926757812,-23.999000549316406
+patient_109,Heart disease,Yes,OnT (5 concepts),-94.70600128173828,138.8350067138672
+patient_110,Heart disease,Yes,OnT (5 concepts),-107.10099792480469,109.2040023803711
+patient_111,Heart disease,Yes,OnT (5 concepts),-185.93899536132812,-69.7750015258789
+patient_112,Heart disease,No,OnT (5 concepts),-109.39099884033203,-135.08399963378906
+patient_113,No heart disease,No,OnT (5 concepts),-74.45500183105469,-66.85099792480469
+patient_114,Heart disease,Yes,OnT (5 concepts),-185.93899536132812,-69.7750015258789
+patient_115,Heart disease,No,OnT (5 concepts),-38.124000549316406,22.45599937438965
+patient_116,No heart disease,Yes,OnT (5 concepts),-38.42900085449219,89.7249984741211
+patient_117,No heart disease,Yes,OnT (5 concepts),106.69100189208984,-62.43299865722656
+patient_118,No heart disease,Yes,OnT (5 concepts),36.869998931884766,115.12999725341797
+patient_119,Heart disease,No,OnT (5 concepts),4.078000068664551,-184.7729949951172
+patient_120,Heart disease,Yes,OnT (5 concepts),-162.5850067138672,-50.0369987487793
+patient_121,Heart disease,Yes,OnT (5 concepts),16.22800064086914,-173.94500732421875
+patient_122,Heart disease,Yes,OnT (5 concepts),-185.74099731445312,-52.63100051879883
+patient_123,No heart disease,Yes,OnT (5 concepts),-4.571000099182129,16.895000457763672
+patient_124,Heart disease,Yes,OnT (5 concepts),-27.534000396728516,194.26400756835938
+patient_125,Heart disease,No,OnT (5 concepts),-46.56100082397461,-78.60900115966797
+patient_126,No heart disease,No,OnT (5 concepts),-26.187999725341797,-98.04299926757812
+patient_127,Heart disease,Yes,OnT (5 concepts),-32.755001068115234,-199.02999877929688
+patient_128,Heart disease,Yes,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_129,No heart disease,Yes,OnT (5 concepts),116.88300323486328,138.73899841308594
+patient_130,No heart disease,Yes,OnT (5 concepts),36.869998931884766,115.12999725341797
+patient_131,No heart disease,Yes,OnT (5 concepts),-63.89899826049805,-8.288000106811523
+patient_132,No heart disease,Yes,OnT (5 concepts),65.75700378417969,58.36399841308594
+patient_133,No heart disease,Yes,OnT (5 concepts),68.62100219726562,-112.34100341796875
+patient_134,No heart disease,Yes,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_135,No heart disease,Yes,OnT (5 concepts),13.020000457763672,17.599000930786133
+patient_136,No heart disease,Yes,OnT (5 concepts),-26.187999725341797,-98.04299926757812
+patient_137,Heart disease,No,OnT (5 concepts),-27.534000396728516,194.26400756835938
+patient_138,Heart disease,Yes,OnT (5 concepts),-97.01300048828125,-49.26499938964844
+patient_139,Heart disease,Yes,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_140,No heart disease,Yes,OnT (5 concepts),-23.099000930786133,-45.757999420166016
+patient_141,No heart disease,Yes,OnT (5 concepts),99.0989990234375,134.35499572753906
+patient_142,Heart disease,Yes,OnT (5 concepts),-85.89099884033203,-57.2599983215332
+patient_143,No heart disease,Yes,OnT (5 concepts),112.41699981689453,156.23300170898438
+patient_144,Heart disease,Yes,OnT (5 concepts),-41.584999084472656,38.560001373291016
+patient_145,No heart disease,Yes,OnT (5 concepts),-58.91999816894531,-22.152999877929688
+patient_146,Heart disease,Yes,OnT (5 concepts),118.52899932861328,9.123000144958496
+patient_147,Heart disease,Yes,OnT (5 concepts),-159.90499877929688,-70.83599853515625
+patient_148,No heart disease,Yes,OnT (5 concepts),101.3759994506836,12.378999710083008
+patient_149,No heart disease,Yes,OnT (5 concepts),68.62100219726562,-112.34100341796875
+patient_150,No heart disease,Yes,OnT (5 concepts),139.78700256347656,18.73699951171875
+patient_151,No heart disease,Yes,OnT (5 concepts),-57.1349983215332,66.5780029296875
+patient_152,No heart disease,No,OnT (5 concepts),-68.83599853515625,-141.8179931640625
+patient_153,No heart disease,Yes,OnT (5 concepts),-49.409000396728516,-11.151000022888184
+patient_154,Heart disease,Yes,OnT (5 concepts),-162.5850067138672,-50.0369987487793
+patient_155,Heart disease,Yes,OnT (5 concepts),66.42400360107422,-202.11599731445312
+patient_156,Heart disease,Yes,OnT (5 concepts),-97.0719985961914,-122.46099853515625
+patient_157,Heart disease,Yes,OnT (5 concepts),-4.441999912261963,199.41000366210938
+patient_158,Heart disease,Yes,OnT (5 concepts),-7.269999980926514,-172.13099670410156
+patient_159,Heart disease,Yes,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_160,No heart disease,No,OnT (5 concepts),65.75700378417969,58.36399841308594
+patient_161,No heart disease,Yes,OnT (5 concepts),69.06400299072266,179.46800231933594
+patient_162,Heart disease,Yes,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_163,No heart disease,No,OnT (5 concepts),6.785999774932861,3.7760000228881836
+patient_164,No heart disease,No,OnT (5 concepts),-75.3280029296875,-129.33700561523438
+patient_165,No heart disease,Yes,OnT (5 concepts),114.44999694824219,28.131000518798828
+patient_166,No heart disease,Yes,OnT (5 concepts),10.038999557495117,175.46200561523438
+patient_167,No heart disease,Yes,OnT (5 concepts),114.44999694824219,28.131000518798828
+patient_168,No heart disease,No,OnT (5 concepts),84.89199829101562,-123.96700286865234
+patient_169,Heart disease,Yes,OnT (5 concepts),-7.269999980926514,-172.13099670410156
+patient_170,No heart disease,Yes,OnT (5 concepts),-0.16899999976158142,57.279998779296875
+patient_171,Heart disease,Yes,OnT (5 concepts),-51.86199951171875,29.805999755859375
+patient_172,No heart disease,Yes,OnT (5 concepts),-7.269999980926514,-172.13099670410156
+patient_173,Heart disease,Yes,OnT (5 concepts),-126.54399871826172,41.17100143432617
+patient_174,No heart disease,No,OnT (5 concepts),-85.86000061035156,-137.58099365234375
+patient_175,Heart disease,Yes,OnT (5 concepts),-152.50900268554688,-109.25700378417969
+patient_176,Heart disease,Yes,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_177,No heart disease,Yes,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_178,Heart disease,Yes,OnT (5 concepts),-164.8179931640625,-107.50199890136719
+patient_179,No heart disease,Yes,OnT (5 concepts),114.44999694824219,28.131000518798828
+patient_180,No heart disease,Yes,OnT (5 concepts),129.05499267578125,-61.3849983215332
+patient_181,Heart disease,No,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_182,Heart disease,Yes,OnT (5 concepts),-185.74099731445312,-52.63100051879883
+patient_183,No heart disease,Yes,OnT (5 concepts),55.27199935913086,-96.88500213623047
+patient_184,No heart disease,No,OnT (5 concepts),15.38700008392334,-116.4800033569336
+patient_185,Heart disease,Yes,OnT (5 concepts),88.70800018310547,-187.49899291992188
+patient_186,No heart disease,Yes,OnT (5 concepts),137.55999755859375,125.9749984741211
+patient_187,No heart disease,Yes,OnT (5 concepts),49.856998443603516,61.29499816894531
+patient_188,Heart disease,Yes,OnT (5 concepts),-38.42900085449219,89.7249984741211
+patient_189,Heart disease,Yes,OnT (5 concepts),18.5310001373291,-133.65499877929688
+patient_190,Heart disease,Yes,OnT (5 concepts),-69.1500015258789,-31.52400016784668
+patient_191,No heart disease,No,OnT (5 concepts),95.73600006103516,30.055999755859375
+patient_192,Heart disease,No,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_193,Heart disease,Yes,OnT (5 concepts),-159.90499877929688,-70.83599853515625
+patient_194,Heart disease,Yes,OnT (5 concepts),-126.54399871826172,41.17100143432617
+patient_195,No heart disease,No,OnT (5 concepts),-6.493000030517578,-48.904998779296875
+patient_196,Heart disease,Yes,OnT (5 concepts),-109.39099884033203,-135.08399963378906
+patient_197,No heart disease,Yes,OnT (5 concepts),-46.56100082397461,-78.60900115966797
+patient_198,No heart disease,Yes,OnT (5 concepts),-81.06900024414062,-149.30799865722656
+patient_199,No heart disease,Yes,OnT (5 concepts),123.76499938964844,102.11399841308594
+patient_200,Heart disease,No,OnT (5 concepts),68.38099670410156,-91.75
+patient_201,No heart disease,No,OnT (5 concepts),88.38300323486328,-172.49600219726562
+patient_202,No heart disease,Yes,OnT (5 concepts),36.869998931884766,115.12999725341797
+patient_203,No heart disease,Yes,OnT (5 concepts),65.75700378417969,58.36399841308594
+patient_204,No heart disease,Yes,OnT (5 concepts),76.73699951171875,68.81500244140625
+patient_205,No heart disease,Yes,OnT (5 concepts),-17.48699951171875,167.38499450683594
+patient_206,Heart disease,Yes,OnT (5 concepts),-159.90499877929688,-70.83599853515625
+patient_207,Heart disease,Yes,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_208,Heart disease,No,OnT (5 concepts),-142.24400329589844,-58.643001556396484
+patient_209,No heart disease,Yes,OnT (5 concepts),116.88300323486328,138.73899841308594
+patient_210,Heart disease,No,OnT (5 concepts),-126.54399871826172,41.17100143432617
+patient_211,No heart disease,Yes,OnT (5 concepts),137.08999633789062,35.29899978637695
+patient_212,Heart disease,Yes,OnT (5 concepts),-49.14799880981445,73.77300262451172
+patient_213,No heart disease,No,OnT (5 concepts),-23.099000930786133,-45.757999420166016
+patient_214,Heart disease,Yes,OnT (5 concepts),-130.5189971923828,113.93499755859375
+patient_215,Heart disease,Yes,OnT (5 concepts),19.833999633789062,127.3499984741211
+patient_216,No heart disease,Yes,OnT (5 concepts),-85.89099884033203,-57.2599983215332
+patient_217,No heart disease,Yes,OnT (5 concepts),137.55999755859375,125.9749984741211
+patient_218,No heart disease,Yes,OnT (5 concepts),-81.06900024414062,-149.30799865722656
+patient_219,No heart disease,Yes,OnT (5 concepts),-126.54399871826172,41.17100143432617
+patient_220,No heart disease,No,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_221,No heart disease,Yes,OnT (5 concepts),139.80299377441406,-78.66300201416016
+patient_222,No heart disease,No,OnT (5 concepts),139.80299377441406,-78.66300201416016
+patient_223,No heart disease,Yes,OnT (5 concepts),154.38999938964844,18.395000457763672
+patient_224,Heart disease,No,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_225,Heart disease,Yes,OnT (5 concepts),-134.33200073242188,55.81399917602539
+patient_226,No heart disease,Yes,OnT (5 concepts),124.4540023803711,116.28700256347656
+patient_227,No heart disease,Yes,OnT (5 concepts),19.833999633789062,127.3499984741211
+patient_228,No heart disease,No,OnT (5 concepts),137.08999633789062,35.29899978637695
+patient_229,Heart disease,Yes,OnT (5 concepts),-109.39099884033203,-135.08399963378906
+patient_230,Heart disease,Yes,OnT (5 concepts),66.11900329589844,-179.10299682617188
+patient_231,No heart disease,Yes,OnT (5 concepts),-6.493000030517578,-48.904998779296875
+patient_232,Heart disease,Yes,OnT (5 concepts),-149.71800231933594,39.97200012207031
+patient_233,Heart disease,Yes,OnT (5 concepts),117.77899932861328,-71.71099853515625
+patient_234,No heart disease,Yes,OnT (5 concepts),96.86699676513672,-117.697998046875
+patient_235,No heart disease,Yes,OnT (5 concepts),153.37399291992188,33.86399841308594
+patient_236,Heart disease,Yes,OnT (5 concepts),-97.0719985961914,-122.46099853515625
+patient_237,Heart disease,Yes,OnT (5 concepts),-15.251999855041504,-198.31500244140625
+patient_238,Heart disease,Yes,OnT (5 concepts),4.078000068664551,-184.7729949951172
+patient_239,No heart disease,Yes,OnT (5 concepts),1.4199999570846558,65.73200225830078
+patient_240,No heart disease,No,OnT (5 concepts),99.0989990234375,134.35499572753906
+patient_241,No heart disease,Yes,OnT (5 concepts),100.74700164794922,150.01199340820312
+patient_242,No heart disease,No,OnT (5 concepts),138.12100219726562,108.85600280761719
+patient_243,No heart disease,Yes,OnT (5 concepts),31.79400062561035,101.47799682617188
+patient_244,Heart disease,Yes,OnT (5 concepts),-11.965999603271484,64.46299743652344
+patient_245,No heart disease,Yes,OnT (5 concepts),146.1699981689453,48.92399978637695
+patient_246,Heart disease,Yes,OnT (5 concepts),-113.01300048828125,57.25899887084961
+patient_247,Heart disease,Yes,OnT (5 concepts),10.038999557495117,175.46200561523438
+patient_248,Heart disease,Yes,OnT (5 concepts),-97.0719985961914,-122.46099853515625
+patient_249,Heart disease,No,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_250,No heart disease,Yes,OnT (5 concepts),65.05500030517578,-126.93199920654297
+patient_251,No heart disease,No,OnT (5 concepts),-72.28299713134766,129.65899658203125
+patient_252,Heart disease,Yes,OnT (5 concepts),-92.5,121.91500091552734
+patient_253,No heart disease,No,OnT (5 concepts),-107.10099792480469,109.2040023803711
+patient_254,No heart disease,Yes,OnT (5 concepts),139.80299377441406,-78.66300201416016
+patient_255,No heart disease,Yes,OnT (5 concepts),-113.01300048828125,57.25899887084961
+patient_256,No heart disease,Yes,OnT (5 concepts),21.55900001525879,5.331999778747559
+patient_257,No heart disease,Yes,OnT (5 concepts),22.006000518798828,110.67900085449219
+patient_258,No heart disease,Yes,OnT (5 concepts),16.12700080871582,-12.692999839782715
+patient_259,No heart disease,Yes,OnT (5 concepts),54.24700164794922,-116.60900115966797
+patient_260,Heart disease,Yes,OnT (5 concepts),56.198001861572266,179.46099853515625
+patient_261,No heart disease,Yes,OnT (5 concepts),26.152000427246094,19.05900001525879
+patient_262,Heart disease,Yes,OnT (5 concepts),84.89199829101562,-123.96700286865234
+patient_263,No heart disease,No,OnT (5 concepts),155.51499938964844,110.08200073242188
+patient_264,No heart disease,Yes,OnT (5 concepts),95.73600006103516,30.055999755859375
+patient_265,Heart disease,No,OnT (5 concepts),-109.39099884033203,-135.08399963378906
+patient_266,Heart disease,Yes,OnT (5 concepts),-70.64700317382812,116.48799896240234
+patient_267,Heart disease,Yes,OnT (5 concepts),-113.01300048828125,57.25899887084961
+patient_268,Heart disease,Yes,OnT (5 concepts),-25.118999481201172,35.59400177001953
+patient_269,Heart disease,No,OnT (5 concepts),8.788000106811523,191.80599975585938
+patient_270,No heart disease,Yes,OnT (5 concepts),101.3759994506836,12.378999710083008
+patient_271,Heart disease,Yes,OnT (5 concepts),4.078000068664551,-184.7729949951172
+patient_272,No heart disease,Yes,OnT (5 concepts),19.770999908447266,-200.09300231933594
+patient_273,Heart disease,Yes,OnT (5 concepts),-111.41600036621094,129.02000427246094
+patient_274,No heart disease,Yes,OnT (5 concepts),-134.33200073242188,55.81399917602539
+patient_275,Heart disease,Yes,OnT (5 concepts),97.62699890136719,113.49299621582031
+patient_276,No heart disease,Yes,OnT (5 concepts),-85.89099884033203,-57.2599983215332
+patient_277,No heart disease,Yes,OnT (5 concepts),-6.493000030517578,-48.904998779296875
+patient_278,No heart disease,Yes,OnT (5 concepts),21.55900001525879,5.331999778747559
+patient_279,Heart disease,No,OnT (5 concepts),68.62100219726562,-112.34100341796875
+patient_280,No heart disease,Yes,OnT (5 concepts),-126.54399871826172,41.17100143432617
+patient_281,Heart disease,Yes,OnT (5 concepts),-107.10099792480469,109.2040023803711
+patient_282,No heart disease,Yes,OnT (5 concepts),118.52899932861328,9.123000144958496
+patient_283,Heart disease,Yes,OnT (5 concepts),-147.80299377441406,109.70800018310547
+patient_284,No heart disease,Yes,OnT (5 concepts),116.88300323486328,138.73899841308594
+patient_285,Heart disease,Yes,OnT (5 concepts),-7.004000186920166,181.7310028076172
+patient_286,Heart disease,No,OnT (5 concepts),-49.21799850463867,188.61199951171875
+patient_287,Heart disease,Yes,OnT (5 concepts),-177.88800048828125,-96.81999969482422
+patient_288,No heart disease,No,OnT (5 concepts),-53.61899948120117,86.86100006103516
+patient_289,No heart disease,No,OnT (5 concepts),26.905000686645508,-130.8249969482422
+patient_290,No heart disease,Yes,OnT (5 concepts),141.97900390625,152.5449981689453
+patient_291,Heart disease,Yes,OnT (5 concepts),-58.91999816894531,-22.152999877929688
+patient_292,No heart disease,Yes,OnT (5 concepts),137.55999755859375,125.9749984741211
+patient_293,Heart disease,Yes,OnT (5 concepts),-38.15299987792969,182.97900390625
+patient_294,Heart disease,No,OnT (5 concepts),6.3480000495910645,-165.59300231933594
+patient_295,Heart disease,Yes,OnT (5 concepts),-134.33200073242188,55.81399917602539
+patient_296,No heart disease,Yes,OnT (5 concepts),116.88300323486328,138.73899841308594
+patient_297,Heart disease,Yes,OnT (5 concepts),-147.1320037841797,-98.23600006103516
+patient_298,Heart disease,Yes,OnT (5 concepts),-135.2259979248047,125.72599792480469
+patient_299,Heart disease,Yes,OnT (5 concepts),-61.05099868774414,76.52100372314453
+patient_300,Heart disease,Yes,OnT (5 concepts),-95.68800354003906,96.20999908447266
+patient_301,Heart disease,Yes,OnT (5 concepts),-87.69999694824219,108.12899780273438
+patient_302,Heart disease,Yes,OnT (5 concepts),-28.95599937438965,-86.11299896240234
+patient_303,No heart disease,Yes,OnT (5 concepts),107.87200164794922,45.38100051879883
+patient_001,No heart disease,Yes,K-Ont,5.146999835968018,7.558000087738037
+patient_002,Heart disease,Yes,K-Ont,18.208999633789062,-0.38199999928474426
+patient_003,Heart disease,Yes,K-Ont,13.315999984741211,1.2200000286102295
+patient_004,No heart disease,Yes,K-Ont,4.418000221252441,8.406000137329102
+patient_005,No heart disease,Yes,K-Ont,-25.482999801635742,1.7020000219345093
+patient_006,No heart disease,No,K-Ont,-26.35300064086914,-7.432000160217285
+patient_007,Heart disease,No,K-Ont,4.7179999351501465,6.35099983215332
+patient_008,No heart disease,Yes,K-Ont,-28.641000747680664,-2.002000093460083
+patient_009,Heart disease,No,K-Ont,12.706000328063965,0.6790000200271606
+patient_010,Heart disease,Yes,K-Ont,6.171999931335449,6.670000076293945
+patient_011,No heart disease,Yes,K-Ont,19.816999435424805,10.52299976348877
+patient_012,No heart disease,Yes,K-Ont,23.368999481201172,2.256999969482422
+patient_013,Heart disease,Yes,K-Ont,20.729999542236328,-1.2350000143051147
+patient_014,No heart disease,Yes,K-Ont,-17.381999969482422,-13.093999862670898
+patient_015,No heart disease,No,K-Ont,-17.861000061035156,-11.800000190734863
+patient_016,No heart disease,Yes,K-Ont,-29.07900047302246,-8.281000137329102
+patient_017,Heart disease,Yes,K-Ont,5.633999824523926,8.616999626159668
+patient_018,No heart disease,Yes,K-Ont,-26.917999267578125,-10.031999588012695
+patient_019,No heart disease,Yes,K-Ont,-30.812999725341797,-2.9739999771118164
+patient_020,No heart disease,Yes,K-Ont,-26.56599998474121,-7.139999866485596
+patient_021,No heart disease,Yes,K-Ont,21.591999053955078,-0.39399999380111694
+patient_022,No heart disease,Yes,K-Ont,-24.77199935913086,1.5219999551773071
+patient_023,Heart disease,Yes,K-Ont,22.89299964904785,0.6179999709129333
+patient_024,Heart disease,Yes,K-Ont,-17.01099967956543,-8.281000137329102
+patient_025,Heart disease,Yes,K-Ont,13.159000396728516,0.7070000171661377
+patient_026,No heart disease,Yes,K-Ont,22.975000381469727,6.111999988555908
+patient_027,No heart disease,Yes,K-Ont,-30.825000762939453,-2.6570000648498535
+patient_028,No heart disease,Yes,K-Ont,4.127999782562256,8.57800006866455
+patient_029,No heart disease,Yes,K-Ont,-26.92799949645996,-10.053000450134277
+patient_030,Heart disease,No,K-Ont,11.529999732971191,1.1490000486373901
+patient_031,No heart disease,Yes,K-Ont,-31.34000015258789,-1.1759999990463257
+patient_032,Heart disease,Yes,K-Ont,-15.53499984741211,-10.916000366210938
+patient_033,Heart disease,Yes,K-Ont,-29.95199966430664,-7.593999862670898
+patient_034,No heart disease,Yes,K-Ont,17.339000701904297,12.043999671936035
+patient_035,No heart disease,Yes,K-Ont,-29.861000061035156,-8.149999618530273
+patient_036,No heart disease,Yes,K-Ont,-26.93400001525879,-10.017000198364258
+patient_037,Heart disease,Yes,K-Ont,12.003000259399414,1.0379999876022339
+patient_038,Heart disease,No,K-Ont,16.187999725341797,-0.24300000071525574
+patient_039,Heart disease,Yes,K-Ont,16.506000518798828,11.309000015258789
+patient_040,No heart disease,Yes,K-Ont,21.084999084472656,7.0320000648498535
+patient_041,Heart disease,Yes,K-Ont,14.748000144958496,3.627000093460083
+patient_042,No heart disease,Yes,K-Ont,-17.908000946044922,-12.845000267028809
+patient_043,No heart disease,No,K-Ont,-30.854999542236328,-0.21699999272823334
+patient_044,No heart disease,Yes,K-Ont,-29.756999969482422,-8.255999565124512
+patient_045,Heart disease,Yes,K-Ont,-24.06599998474121,-0.2709999978542328
+patient_046,Heart disease,No,K-Ont,11.425000190734863,3.7190001010894775
+patient_047,No heart disease,Yes,K-Ont,-28.882999420166016,-8.100000381469727
+patient_048,Heart disease,No,K-Ont,12.041999816894531,0.44200000166893005
+patient_049,No heart disease,Yes,K-Ont,-23.61400032043457,2.010999917984009
+patient_050,No heart disease,Yes,K-Ont,4.335000038146973,7.394000053405762
+patient_051,No heart disease,Yes,K-Ont,-30.47599983215332,0.07800000160932541
+patient_052,No heart disease,Yes,K-Ont,-15.303000450134277,-11.706999778747559
+patient_053,Heart disease,Yes,K-Ont,-19.365999221801758,-3.7269999980926514
+patient_054,No heart disease,Yes,K-Ont,-18.746000289916992,-1.3660000562667847
+patient_055,Heart disease,Yes,K-Ont,-15.763999938964844,-11.09000015258789
+patient_056,Heart disease,Yes,K-Ont,12.756999969482422,1.5920000076293945
+patient_057,Heart disease,No,K-Ont,16.156999588012695,9.142999649047852
+patient_058,Heart disease,Yes,K-Ont,-16.368000030517578,-7.396999835968018
+patient_059,No heart disease,No,K-Ont,4.326000213623047,7.383999824523926
+patient_060,No heart disease,Yes,K-Ont,-19.792999267578125,-1.1640000343322754
+patient_061,Heart disease,No,K-Ont,13.982000350952148,10.769000053405762
+patient_062,No heart disease,Yes,K-Ont,4.077000141143799,7.084000110626221
+patient_063,Heart disease,Yes,K-Ont,12.6850004196167,1.0410000085830688
+patient_064,No heart disease,No,K-Ont,-30.940000534057617,-3.0439999103546143
+patient_065,Heart disease,No,K-Ont,16.996000289916992,11.47700023651123
+patient_066,Heart disease,Yes,K-Ont,13.32800006866455,0.9700000286102295
+patient_067,Heart disease,No,K-Ont,20.988000869750977,0.24799999594688416
+patient_068,No heart disease,Yes,K-Ont,-17.04599952697754,-8.28499984741211
+patient_069,Heart disease,Yes,K-Ont,6.179999828338623,6.705999851226807
+patient_070,Heart disease,Yes,K-Ont,21.158000946044922,7.0
+patient_071,No heart disease,Yes,K-Ont,-31.156999588012695,-3.1449999809265137
+patient_072,Heart disease,Yes,K-Ont,16.291000366210938,12.666000366210938
+patient_073,Heart disease,Yes,K-Ont,16.009000778198242,11.746000289916992
+patient_074,Heart disease,Yes,K-Ont,-17.533000946044922,-5.501999855041504
+patient_075,Heart disease,Yes,K-Ont,-19.316999435424805,-3.8410000801086426
+patient_076,No heart disease,No,K-Ont,-23.15999984741211,1.7410000562667847
+patient_077,Heart disease,Yes,K-Ont,13.128999710083008,0.7310000061988831
+patient_078,No heart disease,Yes,K-Ont,-23.804000854492188,1.4320000410079956
+patient_079,No heart disease,Yes,K-Ont,22.89699935913086,0.6179999709129333
+patient_080,Heart disease,Yes,K-Ont,-16.027999877929688,-7.410999774932861
+patient_081,No heart disease,Yes,K-Ont,18.638999938964844,0.2409999966621399
+patient_082,No heart disease,Yes,K-Ont,19.549999237060547,2.7960000038146973
+patient_083,No heart disease,No,K-Ont,-20.704999923706055,-2.111999988555908
+patient_084,Heart disease,Yes,K-Ont,11.64900016784668,4.2220001220703125
+patient_085,No heart disease,Yes,K-Ont,-26.15999984741211,-7.428999900817871
+patient_086,No heart disease,Yes,K-Ont,-20.714000701904297,-2.111999988555908
+patient_087,No heart disease,Yes,K-Ont,-20.808000564575195,-2.115999937057495
+patient_088,No heart disease,Yes,K-Ont,-23.22800064086914,1.3140000104904175
+patient_089,No heart disease,Yes,K-Ont,-24.04199981689453,-0.2540000081062317
+patient_090,No heart disease,No,K-Ont,-23.468000411987305,1.2020000219345093
+patient_091,No heart disease,Yes,K-Ont,18.115999221801758,0.23800000548362732
+patient_092,Heart disease,Yes,K-Ont,5.9029998779296875,6.011000156402588
+patient_093,No heart disease,Yes,K-Ont,16.135000228881836,9.192999839782715
+patient_094,No heart disease,Yes,K-Ont,22.97100067138672,6.061999797821045
+patient_095,No heart disease,Yes,K-Ont,-23.389999389648438,1.6180000305175781
+patient_096,Heart disease,Yes,K-Ont,-16.322999954223633,-11.298999786376953
+patient_097,Heart disease,Yes,K-Ont,12.298999786376953,1.5080000162124634
+patient_098,Heart disease,Yes,K-Ont,14.704000473022461,3.5369999408721924
+patient_099,No heart disease,Yes,K-Ont,-26.398000717163086,-7.577000141143799
+patient_100,No heart disease,No,K-Ont,-19.35300064086914,-3.628000020980835
+patient_101,No heart disease,Yes,K-Ont,-19.584999084472656,-3.7320001125335693
+patient_102,No heart disease,No,K-Ont,-19.639999389648438,-1.4329999685287476
+patient_103,No heart disease,Yes,K-Ont,-24.10099983215332,-0.2619999945163727
+patient_104,No heart disease,Yes,K-Ont,-23.79800033569336,1.847000002861023
+patient_105,Heart disease,No,K-Ont,16.121000289916992,9.128999710083008
+patient_106,No heart disease,Yes,K-Ont,-17.384000778198242,-13.092000007629395
+patient_107,Heart disease,Yes,K-Ont,-16.20800018310547,-11.642999649047852
+patient_108,Heart disease,Yes,K-Ont,11.418000221252441,3.8949999809265137
+patient_109,Heart disease,Yes,K-Ont,16.01099967956543,11.809000015258789
+patient_110,Heart disease,Yes,K-Ont,17.424999237060547,11.850000381469727
+patient_111,Heart disease,Yes,K-Ont,14.600000381469727,3.6640000343322754
+patient_112,Heart disease,No,K-Ont,18.614999771118164,-0.375
+patient_113,No heart disease,No,K-Ont,20.93000030517578,-1.1440000534057617
+patient_114,Heart disease,Yes,K-Ont,14.694000244140625,3.6459999084472656
+patient_115,Heart disease,No,K-Ont,14.755000114440918,9.543000221252441
+patient_116,No heart disease,Yes,K-Ont,18.37299919128418,7.465000152587891
+patient_117,No heart disease,Yes,K-Ont,-20.85099983215332,-1.9769999980926514
+patient_118,No heart disease,Yes,K-Ont,-28.58799934387207,-1.9019999504089355
+patient_119,Heart disease,No,K-Ont,-15.46399974822998,-7.840000152587891
+patient_120,Heart disease,Yes,K-Ont,12.906999588012695,0.23800000548362732
+patient_121,Heart disease,Yes,K-Ont,-15.652000427246094,-7.809999942779541
+patient_122,Heart disease,Yes,K-Ont,14.713000297546387,3.5829999446868896
+patient_123,No heart disease,Yes,K-Ont,21.148000717163086,7.008999824523926
+patient_124,Heart disease,Yes,K-Ont,6.306000232696533,8.057999610900879
+patient_125,Heart disease,No,K-Ont,21.608999252319336,-0.4180000126361847
+patient_126,No heart disease,No,K-Ont,23.368999481201172,2.26200008392334
+patient_127,Heart disease,Yes,K-Ont,5.921000003814697,5.974999904632568
+patient_128,Heart disease,Yes,K-Ont,16.69499969482422,12.015999794006348
+patient_129,No heart disease,Yes,K-Ont,-26.047000885009766,-7.164000034332275
+patient_130,No heart disease,Yes,K-Ont,-28.68899917602539,-1.9850000143051147
+patient_131,No heart disease,Yes,K-Ont,11.366999626159668,3.9719998836517334
+patient_132,No heart disease,Yes,K-Ont,-17.895999908447266,-11.798999786376953
+patient_133,No heart disease,Yes,K-Ont,-18.54199981689453,-1.2719999551773071
+patient_134,No heart disease,Yes,K-Ont,-19.242000579833984,-3.566999912261963
+patient_135,No heart disease,Yes,K-Ont,23.01799964904785,6.007999897003174
+patient_136,No heart disease,Yes,K-Ont,23.37700080871582,2.2660000324249268
+patient_137,Heart disease,No,K-Ont,6.327000141143799,8.055999755859375
+patient_138,Heart disease,Yes,K-Ont,10.130000114440918,2.8570001125335693
+patient_139,Heart disease,Yes,K-Ont,17.344999313354492,12.487000465393066
+patient_140,No heart disease,Yes,K-Ont,21.014999389648438,0.2370000034570694
+patient_141,No heart disease,Yes,K-Ont,-26.496999740600586,-6.691999912261963
+patient_142,Heart disease,Yes,K-Ont,10.435999870300293,3.572000026702881
+patient_143,No heart disease,Yes,K-Ont,-26.61199951171875,-6.960000038146973
+patient_144,Heart disease,Yes,K-Ont,16.084999084472656,9.008999824523926
+patient_145,No heart disease,Yes,K-Ont,11.534000396728516,3.9839999675750732
+patient_146,Heart disease,Yes,K-Ont,-29.32200050354004,-7.531000137329102
+patient_147,Heart disease,Yes,K-Ont,12.84000015258789,1.7669999599456787
+patient_148,No heart disease,Yes,K-Ont,-28.945999145507812,-7.702000141143799
+patient_149,No heart disease,Yes,K-Ont,-18.711000442504883,-1.468000054359436
+patient_150,No heart disease,Yes,K-Ont,-31.3799991607666,-2.7200000286102295
+patient_151,No heart disease,Yes,K-Ont,16.957000732421875,8.746000289916992
+patient_152,No heart disease,No,K-Ont,19.540000915527344,2.8299999237060547
+patient_153,No heart disease,Yes,K-Ont,13.329999923706055,4.291999816894531
+patient_154,Heart disease,Yes,K-Ont,12.755000114440918,1.4270000457763672
+patient_155,Heart disease,Yes,K-Ont,4.947000026702881,6.836999893188477
+patient_156,Heart disease,Yes,K-Ont,17.983999252319336,-0.4790000021457672
+patient_157,Heart disease,Yes,K-Ont,-16.21299934387207,-11.08899974822998
+patient_158,Heart disease,Yes,K-Ont,-16.177000045776367,-7.73199987411499
+patient_159,Heart disease,Yes,K-Ont,12.585000038146973,0.3160000145435333
+patient_160,No heart disease,No,K-Ont,-17.913999557495117,-11.75100040435791
+patient_161,No heart disease,Yes,K-Ont,-17.43899917602539,-13.060999870300293
+patient_162,Heart disease,Yes,K-Ont,-18.957000732421875,-3.7039999961853027
+patient_163,No heart disease,No,K-Ont,23.114999771118164,6.031000137329102
+patient_164,No heart disease,No,K-Ont,19.58099937438965,2.816999912261963
+patient_165,No heart disease,Yes,K-Ont,-29.69300079345703,-8.569000244140625
+patient_166,No heart disease,Yes,K-Ont,-16.408000946044922,-11.585000038146973
+patient_167,No heart disease,Yes,K-Ont,-29.31800079345703,-8.406000137329102
+patient_168,No heart disease,No,K-Ont,-25.43400001525879,1.7339999675750732
+patient_169,Heart disease,Yes,K-Ont,-16.16200065612793,-7.158999919891357
+patient_170,No heart disease,Yes,K-Ont,23.860000610351562,4.252999782562256
+patient_171,Heart disease,Yes,K-Ont,15.967000007629395,9.211999893188477
+patient_172,No heart disease,Yes,K-Ont,-16.240999221801758,-7.4679999351501465
+patient_173,Heart disease,Yes,K-Ont,24.02199935913086,7.775000095367432
+patient_174,No heart disease,No,K-Ont,19.507999420166016,2.825000047683716
+patient_175,Heart disease,Yes,K-Ont,16.18000030517578,-0.2639999985694885
+patient_176,Heart disease,Yes,K-Ont,16.392000198364258,11.454000473022461
+patient_177,No heart disease,Yes,K-Ont,-16.058000564575195,-11.005000114440918
+patient_178,Heart disease,Yes,K-Ont,16.202999114990234,-0.24400000274181366
+patient_179,No heart disease,Yes,K-Ont,-29.034000396728516,-8.708999633789062
+patient_180,No heart disease,Yes,K-Ont,-21.02400016784668,-1.843999981880188
+patient_181,Heart disease,No,K-Ont,11.829999923706055,0.703000009059906
+patient_182,Heart disease,Yes,K-Ont,14.697999954223633,3.556999921798706
+patient_183,No heart disease,Yes,K-Ont,-19.708999633789062,-1.2330000400543213
+patient_184,No heart disease,No,K-Ont,5.7179999351501465,7.355999946594238
+patient_185,Heart disease,Yes,K-Ont,-24.033000946044922,-0.3050000071525574
+patient_186,No heart disease,Yes,K-Ont,-30.738000869750977,-0.3869999945163727
+patient_187,No heart disease,Yes,K-Ont,5.761000156402588,8.430000305175781
+patient_188,Heart disease,Yes,K-Ont,18.363000869750977,7.486999988555908
+patient_189,Heart disease,Yes,K-Ont,-17.534000396728516,-7.8420000076293945
+patient_190,Heart disease,Yes,K-Ont,11.50100040435791,3.805000066757202
+patient_191,No heart disease,No,K-Ont,-29.097000122070312,-7.420000076293945
+patient_192,Heart disease,No,K-Ont,16.7189998626709,12.41100025177002
+patient_193,Heart disease,Yes,K-Ont,13.520000457763672,1.49399995803833
+patient_194,Heart disease,Yes,K-Ont,24.586999893188477,7.814000129699707
+patient_195,No heart disease,No,K-Ont,21.61400032043457,2.5799999237060547
+patient_196,Heart disease,Yes,K-Ont,18.159000396728516,-0.2939999997615814
+patient_197,No heart disease,Yes,K-Ont,21.583999633789062,-0.42500001192092896
+patient_198,No heart disease,Yes,K-Ont,19.538000106811523,2.7699999809265137
+patient_199,No heart disease,Yes,K-Ont,-30.70400047302246,-0.07599999755620956
+patient_200,Heart disease,No,K-Ont,-19.63599967956543,-1.534999966621399
+patient_201,No heart disease,No,K-Ont,-24.048999786376953,-0.29600000381469727
+patient_202,No heart disease,Yes,K-Ont,-28.7189998626709,-2.0739998817443848
+patient_203,No heart disease,Yes,K-Ont,-17.73699951171875,-11.781999588012695
+patient_204,No heart disease,Yes,K-Ont,-18.847000122070312,-11.708000183105469
+patient_205,No heart disease,Yes,K-Ont,-16.072999954223633,-11.979999542236328
+patient_206,Heart disease,Yes,K-Ont,11.998000144958496,1.6139999628067017
+patient_207,Heart disease,Yes,K-Ont,12.449999809265137,1.2109999656677246
+patient_208,Heart disease,No,K-Ont,12.152000427246094,0.7070000171661377
+patient_209,No heart disease,Yes,K-Ont,-26.35099983215332,-6.744999885559082
+patient_210,Heart disease,No,K-Ont,24.17799949645996,7.8480000495910645
+patient_211,No heart disease,Yes,K-Ont,-30.672000885009766,-2.7660000324249268
+patient_212,Heart disease,Yes,K-Ont,16.95800018310547,8.776000022888184
+patient_213,No heart disease,No,K-Ont,20.990999221801758,0.289000004529953
+patient_214,Heart disease,Yes,K-Ont,13.993000030517578,10.781999588012695
+patient_215,Heart disease,Yes,K-Ont,-26.91200065612793,-10.045000076293945
+patient_216,No heart disease,Yes,K-Ont,10.409000396728516,3.5369999408721924
+patient_217,No heart disease,Yes,K-Ont,-30.3799991607666,-0.22100000083446503
+patient_218,No heart disease,Yes,K-Ont,19.615999221801758,2.805999994277954
+patient_219,No heart disease,Yes,K-Ont,24.542999267578125,7.854000091552734
+patient_220,No heart disease,No,K-Ont,-19.249000549316406,-3.559000015258789
+patient_221,No heart disease,Yes,K-Ont,-23.708999633789062,1.562000036239624
+patient_222,No heart disease,No,K-Ont,-23.36199951171875,1.3480000495910645
+patient_223,No heart disease,Yes,K-Ont,-30.673999786376953,-2.7219998836517334
+patient_224,Heart disease,No,K-Ont,16.775999069213867,12.166000366210938
+patient_225,Heart disease,Yes,K-Ont,24.54599952697754,7.761000156402588
+patient_226,No heart disease,Yes,K-Ont,-30.309999465942383,-0.18299999833106995
+patient_227,No heart disease,Yes,K-Ont,-26.908000946044922,-10.050999641418457
+patient_228,No heart disease,No,K-Ont,-31.295000076293945,-2.5799999237060547
+patient_229,Heart disease,Yes,K-Ont,18.496999740600586,0.1889999955892563
+patient_230,Heart disease,Yes,K-Ont,-18.93199920654297,-3.8380000591278076
+patient_231,No heart disease,Yes,K-Ont,21.611000061035156,2.569999933242798
+patient_232,Heart disease,Yes,K-Ont,23.865999221801758,8.680999755859375
+patient_233,Heart disease,Yes,K-Ont,-20.871999740600586,-2.005000114440918
+patient_234,No heart disease,Yes,K-Ont,-25.52899932861328,1.7389999628067017
+patient_235,No heart disease,Yes,K-Ont,-31.02199935913086,-2.5450000762939453
+patient_236,Heart disease,Yes,K-Ont,18.391000747680664,0.0689999982714653
+patient_237,Heart disease,Yes,K-Ont,6.175000190734863,6.676000118255615
+patient_238,Heart disease,Yes,K-Ont,-16.224000930786133,-7.610000133514404
+patient_239,No heart disease,Yes,K-Ont,23.86400032043457,4.263000011444092
+patient_240,No heart disease,No,K-Ont,-25.93000030517578,-7.084000110626221
+patient_241,No heart disease,Yes,K-Ont,-25.766000747680664,-6.769999980926514
+patient_242,No heart disease,No,K-Ont,-30.325000762939453,-0.11299999803304672
+patient_243,No heart disease,Yes,K-Ont,-28.697999954223633,-1.9759999513626099
+patient_244,Heart disease,Yes,K-Ont,20.812999725341797,7.035999774932861
+patient_245,No heart disease,Yes,K-Ont,-31.33300018310547,-2.8570001125335693
+patient_246,Heart disease,Yes,K-Ont,21.0310001373291,9.765000343322754
+patient_247,Heart disease,Yes,K-Ont,-15.701000213623047,-11.654000282287598
+patient_248,Heart disease,Yes,K-Ont,18.450000762939453,-0.008999999612569809
+patient_249,Heart disease,No,K-Ont,-15.635000228881836,-11.642000198364258
+patient_250,No heart disease,Yes,K-Ont,-18.791000366210938,-1.2940000295639038
+patient_251,No heart disease,No,K-Ont,19.799999237060547,10.52400016784668
+patient_252,Heart disease,Yes,K-Ont,17.017000198364258,11.428999900817871
+patient_253,No heart disease,No,K-Ont,15.824999809265137,12.196000099182129
+patient_254,No heart disease,Yes,K-Ont,-23.56800079345703,1.25
+patient_255,No heart disease,Yes,K-Ont,21.051000595092773,9.732999801635742
+patient_256,No heart disease,Yes,K-Ont,23.027000427246094,5.934000015258789
+patient_257,No heart disease,Yes,K-Ont,-28.5939998626709,-2.0
+patient_258,No heart disease,Yes,K-Ont,23.94499969482422,5.857999801635742
+patient_259,No heart disease,Yes,K-Ont,-18.410999298095703,-1.1160000562667847
+patient_260,Heart disease,Yes,K-Ont,-17.32200050354004,-13.095999717712402
+patient_261,No heart disease,Yes,K-Ont,23.05900001525879,6.13700008392334
+patient_262,Heart disease,Yes,K-Ont,-25.389999389648438,1.6970000267028809
+patient_263,No heart disease,No,K-Ont,-31.22599983215332,-1.2599999904632568
+patient_264,No heart disease,Yes,K-Ont,-29.46500015258789,-7.7789998054504395
+patient_265,Heart disease,No,K-Ont,18.246999740600586,-0.07900000363588333
+patient_266,Heart disease,Yes,K-Ont,19.819000244140625,10.50100040435791
+patient_267,Heart disease,Yes,K-Ont,21.10700035095215,9.666999816894531
+patient_268,Heart disease,Yes,K-Ont,19.694000244140625,7.7729997634887695
+patient_269,Heart disease,No,K-Ont,-16.007999420166016,-12.211999893188477
+patient_270,No heart disease,Yes,K-Ont,-28.92799949645996,-7.73199987411499
+patient_271,Heart disease,Yes,K-Ont,-15.90999984741211,-8.02299976348877
+patient_272,No heart disease,Yes,K-Ont,-17.516000747680664,-5.538000106811523
+patient_273,Heart disease,Yes,K-Ont,16.367000579833984,12.170999526977539
+patient_274,No heart disease,Yes,K-Ont,24.183000564575195,7.9720001220703125
+patient_275,Heart disease,Yes,K-Ont,-27.386999130249023,-7.73199987411499
+patient_276,No heart disease,Yes,K-Ont,10.416000366210938,3.5959999561309814
+patient_277,No heart disease,Yes,K-Ont,21.618000030517578,2.5869998931884766
+patient_278,No heart disease,Yes,K-Ont,23.06999969482422,5.870999813079834
+patient_279,Heart disease,No,K-Ont,-18.68199920654297,-1.319000005722046
+patient_280,No heart disease,Yes,K-Ont,24.128999710083008,8.017999649047852
+patient_281,Heart disease,Yes,K-Ont,16.711999893188477,11.607999801635742
+patient_282,No heart disease,Yes,K-Ont,-29.427000045776367,-7.678999900817871
+patient_283,Heart disease,Yes,K-Ont,13.440999984741211,10.718000411987305
+patient_284,No heart disease,Yes,K-Ont,-25.85099983215332,-6.440000057220459
+patient_285,Heart disease,Yes,K-Ont,-16.065000534057617,-11.659000396728516
+patient_286,Heart disease,No,K-Ont,6.672999858856201,8.038000106811523
+patient_287,Heart disease,Yes,K-Ont,18.256999969482422,2.9189999103546143
+patient_288,No heart disease,No,K-Ont,17.381999969482422,8.204999923706055
+patient_289,No heart disease,No,K-Ont,-17.523000717163086,-7.809999942779541
+patient_290,No heart disease,Yes,K-Ont,4.570000171661377,8.67199993133545
+patient_291,Heart disease,Yes,K-Ont,11.496999740600586,3.999000072479248
+patient_292,No heart disease,Yes,K-Ont,-30.5310001373291,-0.30300000309944153
+patient_293,Heart disease,Yes,K-Ont,6.192999839782715,8.13599967956543
+patient_294,Heart disease,No,K-Ont,-15.8149995803833,-8.005999565124512
+patient_295,Heart disease,Yes,K-Ont,24.113000869750977,7.747000217437744
+patient_296,No heart disease,Yes,K-Ont,-25.80299949645996,-6.973999977111816
+patient_297,Heart disease,Yes,K-Ont,16.160999298095703,-0.23999999463558197
+patient_298,Heart disease,Yes,K-Ont,13.986000061035156,10.77400016784668
+patient_299,Heart disease,Yes,K-Ont,16.965999603271484,8.765999794006348
+patient_300,Heart disease,Yes,K-Ont,16.027999877929688,12.439000129699707
+patient_301,Heart disease,Yes,K-Ont,16.301000595092773,11.484000205993652
+patient_302,Heart disease,Yes,K-Ont,23.37299919128418,2.2939999103546143
+patient_303,No heart disease,Yes,K-Ont,-28.81999969482422,-8.359000205993652
+patient_001,No heart disease,Yes,Untrained encoder,19.1299991607666,2.7899999618530273
+patient_002,Heart disease,Yes,Untrained encoder,25.957000732421875,0.859000027179718
+patient_003,Heart disease,Yes,Untrained encoder,28.899999618530273,2.2750000953674316
+patient_004,No heart disease,Yes,Untrained encoder,17.233999252319336,1.4930000305175781
+patient_005,No heart disease,Yes,Untrained encoder,-29.341999053955078,4.019999980926514
+patient_006,No heart disease,No,Untrained encoder,-21.75200080871582,-0.9010000228881836
+patient_007,Heart disease,No,Untrained encoder,21.799999237060547,4.388000011444092
+patient_008,No heart disease,Yes,Untrained encoder,-29.47599983215332,-4.376999855041504
+patient_009,Heart disease,No,Untrained encoder,29.639999389648438,1.809000015258789
+patient_010,Heart disease,Yes,Untrained encoder,21.451000213623047,2.9619998931884766
+patient_011,No heart disease,Yes,Untrained encoder,14.145000457763672,-2.927999973297119
+patient_012,No heart disease,Yes,Untrained encoder,25.34000015258789,8.723999977111816
+patient_013,Heart disease,Yes,Untrained encoder,28.152999877929688,-4.0960001945495605
+patient_014,No heart disease,Yes,Untrained encoder,-20.408000946044922,-2.2709999084472656
+patient_015,No heart disease,No,Untrained encoder,-19.895999908447266,-5.679999828338623
+patient_016,No heart disease,Yes,Untrained encoder,-21.812999725341797,-6.922999858856201
+patient_017,Heart disease,Yes,Untrained encoder,17.628999710083008,2.2149999141693115
+patient_018,No heart disease,Yes,Untrained encoder,-18.5,-0.722000002861023
+patient_019,No heart disease,Yes,Untrained encoder,-27.408000946044922,-5.933000087738037
+patient_020,No heart disease,Yes,Untrained encoder,-21.687000274658203,-1.1829999685287476
+patient_021,No heart disease,Yes,Untrained encoder,21.708999633789062,-4.591000080108643
+patient_022,No heart disease,Yes,Untrained encoder,-29.25200080871582,2.7760000228881836
+patient_023,Heart disease,Yes,Untrained encoder,24.94300079345703,-2.4830000400543213
+patient_024,Heart disease,Yes,Untrained encoder,-26.398000717163086,10.564000129699707
+patient_025,Heart disease,Yes,Untrained encoder,29.700000762939453,1.309000015258789
+patient_026,No heart disease,Yes,Untrained encoder,10.427000045776367,-7.353000164031982
+patient_027,No heart disease,Yes,Untrained encoder,-27.222000122070312,-5.877999782562256
+patient_028,No heart disease,Yes,Untrained encoder,16.347999572753906,2.0759999752044678
+patient_029,No heart disease,Yes,Untrained encoder,-18.46299934387207,-0.7490000128746033
+patient_030,Heart disease,No,Untrained encoder,30.423999786376953,-0.029999999329447746
+patient_031,No heart disease,Yes,Untrained encoder,-25.875,-2.4790000915527344
+patient_032,Heart disease,Yes,Untrained encoder,-16.128000259399414,-3.7149999141693115
+patient_033,Heart disease,Yes,Untrained encoder,-23.152000427246094,-6.479000091552734
+patient_034,No heart disease,Yes,Untrained encoder,14.633999824523926,-3.2809998989105225
+patient_035,No heart disease,Yes,Untrained encoder,-22.791000366210938,-5.853000164031982
+patient_036,No heart disease,Yes,Untrained encoder,-18.809999465942383,-0.5289999842643738
+patient_037,Heart disease,Yes,Untrained encoder,30.33300018310547,0.41200000047683716
+patient_038,Heart disease,No,Untrained encoder,28.590999603271484,0.3619999885559082
+patient_039,Heart disease,Yes,Untrained encoder,16.583999633789062,-3.3510000705718994
+patient_040,No heart disease,Yes,Untrained encoder,13.147000312805176,-7.300000190734863
+patient_041,Heart disease,Yes,Untrained encoder,27.500999450683594,6.4019999504089355
+patient_042,No heart disease,Yes,Untrained encoder,-21.104999542236328,-3.053999900817871
+patient_043,No heart disease,No,Untrained encoder,-27.275999069213867,-2.5280001163482666
+patient_044,No heart disease,Yes,Untrained encoder,-22.350000381469727,-6.03000020980835
+patient_045,Heart disease,Yes,Untrained encoder,-28.89299964904785,5.573999881744385
+patient_046,Heart disease,No,Untrained encoder,28.64299964904785,-3.1050000190734863
+patient_047,No heart disease,Yes,Untrained encoder,-21.924999237060547,-6.940000057220459
+patient_048,Heart disease,No,Untrained encoder,30.882999420166016,0.8939999938011169
+patient_049,No heart disease,Yes,Untrained encoder,-30.90999984741211,5.498000144958496
+patient_050,No heart disease,Yes,Untrained encoder,20.142000198364258,3.947000026702881
+patient_051,No heart disease,Yes,Untrained encoder,-27.378000259399414,-1.8980000019073486
+patient_052,No heart disease,Yes,Untrained encoder,-16.959999084472656,-2.2230000495910645
+patient_053,Heart disease,Yes,Untrained encoder,-24.555999755859375,8.607000350952148
+patient_054,No heart disease,Yes,Untrained encoder,-23.785999298095703,6.658999919891357
+patient_055,Heart disease,Yes,Untrained encoder,-16.827999114990234,-3.6040000915527344
+patient_056,Heart disease,Yes,Untrained encoder,29.09600067138672,0.3019999861717224
+patient_057,Heart disease,No,Untrained encoder,15.51099967956543,-6.791999816894531
+patient_058,Heart disease,Yes,Untrained encoder,-23.871999740600586,10.932999610900879
+patient_059,No heart disease,No,Untrained encoder,20.148000717163086,3.9179999828338623
+patient_060,No heart disease,Yes,Untrained encoder,-23.22599983215332,4.23799991607666
+patient_061,Heart disease,No,Untrained encoder,10.246000289916992,-3.2829999923706055
+patient_062,No heart disease,Yes,Untrained encoder,21.201000213623047,4.7789998054504395
+patient_063,Heart disease,Yes,Untrained encoder,29.667999267578125,0.824999988079071
+patient_064,No heart disease,No,Untrained encoder,-26.507999420166016,-6.218999862670898
+patient_065,Heart disease,No,Untrained encoder,15.557999610900879,-4.172999858856201
+patient_066,Heart disease,Yes,Untrained encoder,29.150999069213867,1.6349999904632568
+patient_067,Heart disease,No,Untrained encoder,27.099000930786133,-3.072000026702881
+patient_068,No heart disease,Yes,Untrained encoder,-26.386999130249023,10.583999633789062
+patient_069,Heart disease,Yes,Untrained encoder,21.33099937438965,2.933000087738037
+patient_070,Heart disease,Yes,Untrained encoder,13.170000076293945,-7.2870001792907715
+patient_071,No heart disease,Yes,Untrained encoder,-26.976999282836914,-5.800000190734863
+patient_072,Heart disease,Yes,Untrained encoder,14.77299976348877,-4.208000183105469
+patient_073,Heart disease,Yes,Untrained encoder,16.6560001373291,-3.921999931335449
+patient_074,Heart disease,Yes,Untrained encoder,-23.43199920654297,10.232000350952148
+patient_075,Heart disease,Yes,Untrained encoder,-24.573999404907227,8.666000366210938
+patient_076,No heart disease,No,Untrained encoder,-30.5310001373291,6.170000076293945
+patient_077,Heart disease,Yes,Untrained encoder,29.128999710083008,1.2389999628067017
+patient_078,No heart disease,Yes,Untrained encoder,-30.652000427246094,5.706999778747559
+patient_079,No heart disease,Yes,Untrained encoder,24.96299934387207,-2.4739999771118164
+patient_080,Heart disease,Yes,Untrained encoder,-23.35300064086914,10.901000022888184
+patient_081,No heart disease,Yes,Untrained encoder,26.465999603271484,-0.37700000405311584
+patient_082,No heart disease,Yes,Untrained encoder,27.150999069213867,8.069999694824219
+patient_083,No heart disease,No,Untrained encoder,-26.990999221801758,9.244999885559082
+patient_084,Heart disease,Yes,Untrained encoder,28.33300018310547,-3.8559999465942383
+patient_085,No heart disease,Yes,Untrained encoder,-21.81100082397461,-0.9049999713897705
+patient_086,No heart disease,Yes,Untrained encoder,-26.9950008392334,9.071000099182129
+patient_087,No heart disease,Yes,Untrained encoder,-27.014999389648438,9.258000373840332
+patient_088,No heart disease,Yes,Untrained encoder,-30.64900016784668,6.86899995803833
+patient_089,No heart disease,Yes,Untrained encoder,-28.753999710083008,5.888999938964844
+patient_090,No heart disease,No,Untrained encoder,-30.1560001373291,6.540999889373779
+patient_091,No heart disease,Yes,Untrained encoder,26.792999267578125,-0.23199999332427979
+patient_092,Heart disease,Yes,Untrained encoder,22.054000854492188,4.131999969482422
+patient_093,No heart disease,Yes,Untrained encoder,15.34000015258789,-6.945000171661377
+patient_094,No heart disease,Yes,Untrained encoder,10.581000328063965,-7.086999893188477
+patient_095,No heart disease,Yes,Untrained encoder,-30.819000244140625,6.429999828338623
+patient_096,Heart disease,Yes,Untrained encoder,-17.270999908447266,-3.2070000171661377
+patient_097,Heart disease,Yes,Untrained encoder,29.354999542236328,0.515999972820282
+patient_098,Heart disease,Yes,Untrained encoder,27.729999542236328,6.271999835968018
+patient_099,No heart disease,Yes,Untrained encoder,-21.47800064086914,-0.5210000276565552
+patient_100,No heart disease,No,Untrained encoder,-24.71299934387207,9.15999984741211
+patient_101,No heart disease,Yes,Untrained encoder,-24.94499969482422,9.260000228881836
+patient_102,No heart disease,No,Untrained encoder,-23.423999786376953,4.960999965667725
+patient_103,No heart disease,Yes,Untrained encoder,-28.917999267578125,5.422999858856201
+patient_104,No heart disease,Yes,Untrained encoder,-31.016000747680664,5.572999954223633
+patient_105,Heart disease,No,Untrained encoder,15.142000198364258,-6.960000038146973
+patient_106,No heart disease,Yes,Untrained encoder,-20.264999389648438,-2.177999973297119
+patient_107,Heart disease,Yes,Untrained encoder,-17.226999282836914,-3.3550000190734863
+patient_108,Heart disease,Yes,Untrained encoder,28.81599998474121,-3.2060000896453857
+patient_109,Heart disease,Yes,Untrained encoder,16.12299919128418,-3.4230000972747803
+patient_110,Heart disease,Yes,Untrained encoder,14.522000312805176,-3.130000114440918
+patient_111,Heart disease,Yes,Untrained encoder,27.674999237060547,6.557000160217285
+patient_112,Heart disease,No,Untrained encoder,25.284000396728516,0.453000009059906
+patient_113,No heart disease,No,Untrained encoder,22.801000595092773,-3.953000068664551
+patient_114,Heart disease,Yes,Untrained encoder,28.22599983215332,6.803999900817871
+patient_115,Heart disease,No,Untrained encoder,11.836000442504883,-8.387999534606934
+patient_116,No heart disease,Yes,Untrained encoder,18.02199935913086,-5.914000034332275
+patient_117,No heart disease,Yes,Untrained encoder,-27.322999954223633,9.010000228881836
+patient_118,No heart disease,Yes,Untrained encoder,-29.433000564575195,-3.9149999618530273
+patient_119,Heart disease,No,Untrained encoder,-22.020000457763672,10.442999839782715
+patient_120,Heart disease,Yes,Untrained encoder,29.57900047302246,1.9500000476837158
+patient_121,Heart disease,Yes,Untrained encoder,-22.277000427246094,10.531999588012695
+patient_122,Heart disease,Yes,Untrained encoder,27.738000869750977,6.333000183105469
+patient_123,No heart disease,Yes,Untrained encoder,13.199000358581543,-7.295000076293945
+patient_124,Heart disease,Yes,Untrained encoder,18.506000518798828,1.0260000228881836
+patient_125,Heart disease,No,Untrained encoder,21.570999145507812,-4.677000045776367
+patient_126,No heart disease,No,Untrained encoder,25.413999557495117,8.718000411987305
+patient_127,Heart disease,Yes,Untrained encoder,22.14699935913086,4.113999843597412
+patient_128,Heart disease,Yes,Untrained encoder,15.937000274658203,-2.9830000400543213
+patient_129,No heart disease,Yes,Untrained encoder,-22.632999420166016,-1.3530000448226929
+patient_130,No heart disease,Yes,Untrained encoder,-29.195999145507812,-4.2129998207092285
+patient_131,No heart disease,Yes,Untrained encoder,29.052000045776367,-3.11299991607666
+patient_132,No heart disease,Yes,Untrained encoder,-19.509000778198242,-5.640999794006348
+patient_133,No heart disease,Yes,Untrained encoder,-23.482999801635742,6.51200008392334
+patient_134,No heart disease,Yes,Untrained encoder,-24.465999603271484,9.395999908447266
+patient_135,No heart disease,Yes,Untrained encoder,10.505999565124512,-7.039999961853027
+patient_136,No heart disease,Yes,Untrained encoder,25.368000030517578,8.734000205993652
+patient_137,Heart disease,No,Untrained encoder,18.466999053955078,1.0019999742507935
+patient_138,Heart disease,Yes,Untrained encoder,24.163000106811523,-3.190000057220459
+patient_139,Heart disease,Yes,Untrained encoder,15.383999824523926,-1.9179999828338623
+patient_140,No heart disease,Yes,Untrained encoder,27.195999145507812,-3.191999912261963
+patient_141,No heart disease,Yes,Untrained encoder,-22.01799964904785,-1.652999997138977
+patient_142,Heart disease,Yes,Untrained encoder,23.459999084472656,-3.5980000495910645
+patient_143,No heart disease,Yes,Untrained encoder,-22.753999710083008,-0.8399999737739563
+patient_144,Heart disease,Yes,Untrained encoder,15.125,-6.589000225067139
+patient_145,No heart disease,Yes,Untrained encoder,28.895999908447266,-3.361999988555908
+patient_146,Heart disease,Yes,Untrained encoder,-22.516000747680664,-7.206999778747559
+patient_147,Heart disease,Yes,Untrained encoder,28.05299949645996,1.6670000553131104
+patient_148,No heart disease,Yes,Untrained encoder,-22.447999954223633,-6.675000190734863
+patient_149,No heart disease,Yes,Untrained encoder,-23.823999404907227,6.757999897003174
+patient_150,No heart disease,Yes,Untrained encoder,-26.658000946044922,-5.2779998779296875
+patient_151,No heart disease,Yes,Untrained encoder,18.040000915527344,-7.048999786376953
+patient_152,No heart disease,No,Untrained encoder,26.908000946044922,7.795000076293945
+patient_153,No heart disease,Yes,Untrained encoder,25.427000045776367,6.2870001792907715
+patient_154,Heart disease,Yes,Untrained encoder,29.246999740600586,0.921999990940094
+patient_155,Heart disease,Yes,Untrained encoder,20.672000885009766,3.3440001010894775
+patient_156,Heart disease,Yes,Untrained encoder,26.51799964904785,0.5509999990463257
+patient_157,Heart disease,Yes,Untrained encoder,-17.750999450683594,-3.1110000610351562
+patient_158,Heart disease,Yes,Untrained encoder,-23.277000427246094,10.395000457763672
+patient_159,Heart disease,Yes,Untrained encoder,30.040000915527344,1.5080000162124634
+patient_160,No heart disease,No,Untrained encoder,-19.702999114990234,-5.743000030517578
+patient_161,No heart disease,Yes,Untrained encoder,-20.58300018310547,-2.2160000801086426
+patient_162,Heart disease,Yes,Untrained encoder,-24.079999923706055,8.954000473022461
+patient_163,No heart disease,No,Untrained encoder,10.456999778747559,-7.455999851226807
+patient_164,No heart disease,No,Untrained encoder,26.631999969482422,7.751999855041504
+patient_165,No heart disease,Yes,Untrained encoder,-22.215999603271484,-5.552000045776367
+patient_166,No heart disease,Yes,Untrained encoder,-17.718000411987305,-3.6059999465942383
+patient_167,No heart disease,Yes,Untrained encoder,-21.81399917602539,-6.123000144958496
+patient_168,No heart disease,No,Untrained encoder,-29.344999313354492,3.255000114440918
+patient_169,Heart disease,Yes,Untrained encoder,-23.531999588012695,11.428999900817871
+patient_170,No heart disease,Yes,Untrained encoder,10.86400032043457,-5.781000137329102
+patient_171,Heart disease,Yes,Untrained encoder,15.5600004196167,-6.97599983215332
+patient_172,No heart disease,Yes,Untrained encoder,-22.975000381469727,11.187000274658203
+patient_173,Heart disease,Yes,Untrained encoder,9.720999717712402,-4.940999984741211
+patient_174,No heart disease,No,Untrained encoder,26.75200080871582,7.585000038146973
+patient_175,Heart disease,Yes,Untrained encoder,30.253000259399414,2.240000009536743
+patient_176,Heart disease,Yes,Untrained encoder,16.211999893188477,-3.924999952316284
+patient_177,No heart disease,Yes,Untrained encoder,-16.510000228881836,-3.1010000705718994
+patient_178,Heart disease,Yes,Untrained encoder,28.378999710083008,0.7059999704360962
+patient_179,No heart disease,Yes,Untrained encoder,-21.2189998626709,-5.986999988555908
+patient_180,No heart disease,Yes,Untrained encoder,-27.66900062561035,9.045999526977539
+patient_181,Heart disease,No,Untrained encoder,30.9689998626709,1.0540000200271606
+patient_182,Heart disease,Yes,Untrained encoder,28.143999099731445,6.363999843597412
+patient_183,No heart disease,Yes,Untrained encoder,-23.288000106811523,4.455999851226807
+patient_184,No heart disease,No,Untrained encoder,19.277999877929688,2.825000047683716
+patient_185,Heart disease,Yes,Untrained encoder,-28.834999084472656,5.684000015258789
+patient_186,No heart disease,Yes,Untrained encoder,-27.351999282836914,-2.763000011444092
+patient_187,No heart disease,Yes,Untrained encoder,17.48699951171875,1.378000020980835
+patient_188,Heart disease,Yes,Untrained encoder,17.961000442504883,-5.913000106811523
+patient_189,Heart disease,Yes,Untrained encoder,-22.57900047302246,7.669000148773193
+patient_190,Heart disease,Yes,Untrained encoder,28.506000518798828,-3.3949999809265137
+patient_191,No heart disease,No,Untrained encoder,-22.767000198364258,-6.622000217437744
+patient_192,Heart disease,No,Untrained encoder,15.47599983215332,-2.8489999771118164
+patient_193,Heart disease,Yes,Untrained encoder,28.207000732421875,2.3350000381469727
+patient_194,Heart disease,Yes,Untrained encoder,8.637999534606934,-4.515999794006348
+patient_195,No heart disease,No,Untrained encoder,24.892000198364258,6.938000202178955
+patient_196,Heart disease,Yes,Untrained encoder,26.18199920654297,0.8270000219345093
+patient_197,No heart disease,Yes,Untrained encoder,21.591999053955078,-4.664000034332275
+patient_198,No heart disease,Yes,Untrained encoder,26.892000198364258,7.815000057220459
+patient_199,No heart disease,Yes,Untrained encoder,-27.656999588012695,-2.377000093460083
+patient_200,Heart disease,No,Untrained encoder,-23.434999465942383,4.956999778747559
+patient_201,No heart disease,No,Untrained encoder,-28.836999893188477,5.651000022888184
+patient_202,No heart disease,Yes,Untrained encoder,-29.062999725341797,-4.553999900817871
+patient_203,No heart disease,Yes,Untrained encoder,-19.56100082397461,-5.610000133514404
+patient_204,No heart disease,Yes,Untrained encoder,-28.382999420166016,-6.150000095367432
+patient_205,No heart disease,Yes,Untrained encoder,-17.701000213623047,-2.4230000972747803
+patient_206,Heart disease,Yes,Untrained encoder,29.42300033569336,-0.06599999964237213
+patient_207,Heart disease,Yes,Untrained encoder,28.95800018310547,1.0089999437332153
+patient_208,Heart disease,No,Untrained encoder,30.316999435424805,0.7149999737739563
+patient_209,No heart disease,Yes,Untrained encoder,-22.48900032043457,-1.1150000095367432
+patient_210,Heart disease,No,Untrained encoder,9.663999557495117,-4.541999816894531
+patient_211,No heart disease,Yes,Untrained encoder,-27.065000534057617,-6.173999786376953
+patient_212,Heart disease,Yes,Untrained encoder,18.031999588012695,-6.900000095367432
+patient_213,No heart disease,No,Untrained encoder,27.124000549316406,-3.1080000400543213
+patient_214,Heart disease,Yes,Untrained encoder,8.788000106811523,-3.7960000038146973
+patient_215,Heart disease,Yes,Untrained encoder,-18.322999954223633,-0.8420000076293945
+patient_216,No heart disease,Yes,Untrained encoder,23.26300048828125,-3.697000026702881
+patient_217,No heart disease,Yes,Untrained encoder,-28.066999435424805,-2.638000011444092
+patient_218,No heart disease,Yes,Untrained encoder,26.788999557495117,7.978000164031982
+patient_219,No heart disease,Yes,Untrained encoder,9.128999710083008,-4.855000019073486
+patient_220,No heart disease,No,Untrained encoder,-24.733999252319336,9.38599967956543
+patient_221,No heart disease,Yes,Untrained encoder,-31.035999298095703,6.355999946594238
+patient_222,No heart disease,No,Untrained encoder,-30.59000015258789,6.507999897003174
+patient_223,No heart disease,Yes,Untrained encoder,-27.0,-6.165999889373779
+patient_224,Heart disease,No,Untrained encoder,15.654999732971191,-2.9189999103546143
+patient_225,Heart disease,Yes,Untrained encoder,8.913000106811523,-4.410999774932861
+patient_226,No heart disease,Yes,Untrained encoder,-27.422000885009766,-2.5199999809265137
+patient_227,No heart disease,Yes,Untrained encoder,-18.450000762939453,-0.7599999904632568
+patient_228,No heart disease,No,Untrained encoder,-26.597999572753906,-5.264999866485596
+patient_229,Heart disease,Yes,Untrained encoder,25.915000915527344,-0.13500000536441803
+patient_230,Heart disease,Yes,Untrained encoder,-23.884000778198242,8.956000328063965
+patient_231,No heart disease,Yes,Untrained encoder,24.898000717163086,6.964000225067139
+patient_232,Heart disease,Yes,Untrained encoder,9.767000198364258,-2.553999900817871
+patient_233,Heart disease,Yes,Untrained encoder,-27.226999282836914,9.20199966430664
+patient_234,No heart disease,Yes,Untrained encoder,-29.371999740600586,3.7090001106262207
+patient_235,No heart disease,Yes,Untrained encoder,-26.959999084472656,-5.184999942779541
+patient_236,Heart disease,Yes,Untrained encoder,26.444000244140625,0.05900000035762787
+patient_237,Heart disease,Yes,Untrained encoder,21.35099983215332,2.9820001125335693
+patient_238,Heart disease,Yes,Untrained encoder,-23.639999389648438,10.838000297546387
+patient_239,No heart disease,Yes,Untrained encoder,10.829999923706055,-5.795000076293945
+patient_240,No heart disease,No,Untrained encoder,-22.30900001525879,-1.5199999809265137
+patient_241,No heart disease,Yes,Untrained encoder,-22.45800018310547,-1.9240000247955322
+patient_242,No heart disease,No,Untrained encoder,-28.10300064086914,-2.4820001125335693
+patient_243,No heart disease,Yes,Untrained encoder,-29.191999435424805,-4.214000225067139
+patient_244,Heart disease,Yes,Untrained encoder,18.08099937438965,-7.811999797821045
+patient_245,No heart disease,Yes,Untrained encoder,-26.450000762939453,-6.184000015258789
+patient_246,Heart disease,Yes,Untrained encoder,13.312000274658203,-3.812000036239624
+patient_247,Heart disease,Yes,Untrained encoder,-17.062999725341797,-2.617000102996826
+patient_248,Heart disease,Yes,Untrained encoder,25.92799949645996,0.28600001335144043
+patient_249,Heart disease,No,Untrained encoder,-17.17099952697754,-4.0929999351501465
+patient_250,No heart disease,Yes,Untrained encoder,-23.78499984741211,6.166999816894531
+patient_251,No heart disease,No,Untrained encoder,14.670999526977539,-2.6740000247955322
+patient_252,Heart disease,Yes,Untrained encoder,15.253999710083008,-3.811000108718872
+patient_253,No heart disease,No,Untrained encoder,16.617000579833984,-2.5969998836517334
+patient_254,No heart disease,Yes,Untrained encoder,-30.266000747680664,6.4770002365112305
+patient_255,No heart disease,Yes,Untrained encoder,13.406999588012695,-3.684999942779541
+patient_256,No heart disease,Yes,Untrained encoder,10.315999984741211,-7.127999782562256
+patient_257,No heart disease,Yes,Untrained encoder,-29.83300018310547,-4.254000186920166
+patient_258,No heart disease,Yes,Untrained encoder,9.368000030517578,-7.6579999923706055
+patient_259,No heart disease,Yes,Untrained encoder,-23.67799949645996,6.551000118255615
+patient_260,Heart disease,Yes,Untrained encoder,-19.968000411987305,-2.3010001182556152
+patient_261,No heart disease,Yes,Untrained encoder,10.805000305175781,-7.423999786376953
+patient_262,Heart disease,Yes,Untrained encoder,-29.351999282836914,3.450000047683716
+patient_263,No heart disease,No,Untrained encoder,-26.13599967956543,-2.496999979019165
+patient_264,No heart disease,Yes,Untrained encoder,-22.684999465942383,-6.318999767303467
+patient_265,Heart disease,No,Untrained encoder,26.23699951171875,0.32199999690055847
+patient_266,Heart disease,Yes,Untrained encoder,14.496000289916992,-2.5769999027252197
+patient_267,Heart disease,Yes,Untrained encoder,12.99899959564209,-4.131999969482422
+patient_268,Heart disease,Yes,Untrained encoder,15.04699993133545,-7.184999942779541
+patient_269,Heart disease,No,Untrained encoder,-17.80299949645996,-2.4649999141693115
+patient_270,No heart disease,Yes,Untrained encoder,-23.00200080871582,-6.952000141143799
+patient_271,Heart disease,Yes,Untrained encoder,-22.57200050354004,10.0649995803833
+patient_272,No heart disease,Yes,Untrained encoder,-24.014999389648438,10.631999969482422
+patient_273,Heart disease,Yes,Untrained encoder,16.288000106811523,-3.259999990463257
+patient_274,No heart disease,Yes,Untrained encoder,9.484000205993652,-5.063000202178955
+patient_275,Heart disease,Yes,Untrained encoder,-24.24799919128418,-2.0280001163482666
+patient_276,No heart disease,Yes,Untrained encoder,23.327999114990234,-3.6679999828338623
+patient_277,No heart disease,Yes,Untrained encoder,24.70400047302246,6.966000080108643
+patient_278,No heart disease,Yes,Untrained encoder,10.083000183105469,-7.118000030517578
+patient_279,Heart disease,No,Untrained encoder,-23.299999237060547,6.797999858856201
+patient_280,No heart disease,Yes,Untrained encoder,9.77400016784668,-4.723999977111816
+patient_281,Heart disease,Yes,Untrained encoder,15.697999954223633,-3.505000114440918
+patient_282,No heart disease,Yes,Untrained encoder,-22.48699951171875,-7.046999931335449
+patient_283,Heart disease,Yes,Untrained encoder,9.954999923706055,-2.1510000228881836
+patient_284,No heart disease,Yes,Untrained encoder,-22.701000213623047,-1.9390000104904175
+patient_285,Heart disease,Yes,Untrained encoder,-16.983999252319336,-2.8550000190734863
+patient_286,Heart disease,No,Untrained encoder,19.28700065612793,1.0829999446868896
+patient_287,Heart disease,Yes,Untrained encoder,28.458999633789062,6.927999973297119
+patient_288,No heart disease,No,Untrained encoder,17.750999450683594,-5.961999893188477
+patient_289,No heart disease,No,Untrained encoder,-22.56999969482422,7.855999946594238
+patient_290,No heart disease,Yes,Untrained encoder,17.222000122070312,2.125999927520752
+patient_291,Heart disease,Yes,Untrained encoder,29.035999298095703,-3.443000078201294
+patient_292,No heart disease,Yes,Untrained encoder,-27.885000228881836,-2.6480000019073486
+patient_293,Heart disease,Yes,Untrained encoder,18.150999069213867,1.027999997138977
+patient_294,Heart disease,No,Untrained encoder,-22.584999084472656,10.192999839782715
+patient_295,Heart disease,Yes,Untrained encoder,9.640000343322754,-4.895999908447266
+patient_296,No heart disease,Yes,Untrained encoder,-22.378999710083008,-1.878999948501587
+patient_297,Heart disease,Yes,Untrained encoder,27.992000579833984,1.152999997138977
+patient_298,Heart disease,Yes,Untrained encoder,10.307000160217285,-3.240000009536743
+patient_299,Heart disease,Yes,Untrained encoder,17.97100067138672,-6.889999866485596
+patient_300,Heart disease,Yes,Untrained encoder,14.857999801635742,-4.169000148773193
+patient_301,Heart disease,Yes,Untrained encoder,16.16900062561035,-3.8440001010894775
+patient_302,Heart disease,Yes,Untrained encoder,25.225000381469727,8.79699993133545
+patient_303,No heart disease,Yes,Untrained encoder,-21.43600082397461,-6.247000217437744

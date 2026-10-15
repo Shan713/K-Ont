@@ -1,0 +1,19 @@
+check,representation,value,chance
+"Unseen patients typed as ""patient""",OnT,0.0,
+Relation: has gender,OnT,100.0,50.0
+Relation: has chest pain,OnT,9.8,25.0
+Relation: has resting electrocardiographic result,OnT,41.0,33.3
+Relation: has slope peak exercise ST segment,OnT,50.8,33.3
+Relation: has thallium scan result,OnT,54.1,33.3
+"Unseen patients typed as ""patient""",K-Ont,100.0,
+Relation: has gender,K-Ont,68.8,50.0
+Relation: has chest pain,K-Ont,45.9,25.0
+Relation: has resting electrocardiographic result,K-Ont,41.0,33.3
+Relation: has slope peak exercise ST segment,K-Ont,91.8,33.3
+Relation: has thallium scan result,K-Ont,54.1,33.3
+Same diagnosis among 10 nearest patients,OnT (5 concepts),73.5,54.1
+Same diagnosis among 10 nearest patients,K-Ont,73.6,54.1
+Same diagnosis among 10 nearest patients,Untrained encoder,72.2,54.1
+Distinct patient points (of 303),OnT (5 concepts),76,
+Distinct patient points (of 303),K-Ont,303,
+Distinct patient points (of 303),Untrained encoder,303,

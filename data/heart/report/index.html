@@ -1,0 +1,435 @@
+<style>
+/* Layout: one reading column (max 70rem) of short chapters, each a heading, a plain-language note and its chart. */
+#dash-root { --dash-gutter: clamp(16px, 4vw, 40px); }
+.hr { max-width: 70rem; margin-inline: auto; display: grid; gap: var(--cds-gap-xl); font-family: var(--font-anthropic-sans); color: var(--color-fg); }
+.hr h1 { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); margin: 0; text-wrap: balance; }
+.hr h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+.hr h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0; }
+.hr p { margin: 0; max-width: 68ch; line-height: 1.55; }
+.hr .muted { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+.hr .lede { font-size: var(--cds-font-size-body); color: var(--color-fg-muted); max-width: 72ch; }
+.hr section { display: grid; gap: var(--cds-gap-md); }
+.hr .grid { display: grid; gap: var(--cds-gap-md); grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+.hr .card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; min-width: 0; }
+.hr .tiles { display: grid; gap: var(--cds-gap-md); grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.hr .tile .big { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); font-variant-numeric: tabular-nums; }
+.hr .chart { position: relative; min-height: 220px; }
+.hr .chart svg { display: block; overflow: visible; }
+.hr .tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; z-index: 2; }
+.hr .tip .t { color: var(--cds-text-secondary); }
+.hr .legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-sm) var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+.hr .legend span { display: inline-flex; align-items: center; gap: .4em; }
+.hr .sw { width: .7rem; height: .7rem; border-radius: 50%; display: inline-block; }
+.hr .sw.ring { background: transparent !important; border: 2px solid currentColor; }
+.hr table { border-collapse: collapse; width: 100%; font-size: var(--cds-font-size-caption); font-variant-numeric: tabular-nums; }
+.hr th, .hr td { text-align: left; padding: .35rem .5rem; border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+.hr th { color: var(--color-fg-muted); font-weight: var(--cds-font-weight-medium); }
+.hr td.num, .hr th.num { text-align: right; }
+.hr .scroll { overflow-x: auto; }
+.hr .pill { display: inline-block; padding: .05rem .5rem; border-radius: 999px; border: 1px solid var(--color-border-line); font-size: var(--cds-font-size-caption); margin: .1rem .2rem .1rem 0; }
+.hr .patient { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: var(--cds-font-size-caption); line-height: 1.6; white-space: pre-wrap; margin: 0; }
+.hr .seg { display: inline-flex; border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); overflow: hidden; flex-wrap: wrap; }
+.hr .seg button { font: inherit; font-size: var(--cds-font-size-caption); padding: .3rem .7rem; background: transparent; color: var(--color-fg); border: 0; border-right: 1px solid var(--color-border-line); cursor: pointer; }
+.hr .seg button:last-child { border-right: 0; }
+.hr .seg button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); }
+.hr .seg button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+.hr .good { color: var(--color-ok); }
+.hr .bad { color: var(--color-bad); }
+.hr ul { margin: 0; padding-left: 1.2rem; display: grid; gap: .35rem; max-width: 72ch; line-height: 1.5; }
+.hr .cols { display: grid; gap: var(--cds-gap-md); grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+[data-dash-source-state=empty] { color: transparent; }
+[data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+</style>
+
+<div class="hr">
+  <header style="display:grid; gap: var(--cds-gap-sm)">
+    <h1 id="top">K-Ont vs OnT on heart disease</h1>
+    <p class="lede">Does embedding a knowledge graph with K-Ont help a heart-disease classifier more than standard OnT? 303 patients (UCI Cleveland), the heart ontology and its knowledge graph, 5 classifiers, 10 cross-validation folds. The diagnosis is never shown to OnT or K-Ont.</p>
+  </header>
+
+  <section id="headline" class="tiles">
+    <div class="card tile">
+      <span class="muted">K-Ont vs OnT as a patient representation (AUC, mean over 5 models)</span>
+      <span class="big" data-source="hl_kont_vs_ont" data-field="value">—</span>
+      <span class="muted"><span data-source="hl_kont_vs_ont" data-field="sig">—</span> of 5 models significantly better (p &lt; 0.05)</span>
+    </div>
+    <div class="card tile">
+      <span class="muted">Adding K-Ont to the full table (AUC change, mean over 5 models)</span>
+      <span class="big" data-source="hl_full" data-field="value">—</span>
+      <span class="muted">Raw + K-Ont vs raw table, all labels</span>
+    </div>
+    <div class="card tile">
+      <span class="muted">With 10% of the labels (AUC change, mean over 5 models)</span>
+      <span class="big" data-source="hl_few" data-field="value">—</span>
+      <span class="muted">Raw + K-Ont vs raw table</span>
+    </div>
+    <div class="card tile">
+      <span class="muted">Three columns missing from the table (AUC change, mean over 5 models)</span>
+      <span class="big" data-source="hl_missing" data-field="value">—</span>
+      <span class="muted">Raw + K-Ont vs the reduced table; chest pain, thallium and vessels hidden</span>
+    </div>
+  </section>
+
+  <section id="setup">
+    <h2>What was compared</h2>
+    <div class="cols">
+      <div class="card">
+        <h3>Standard OnT</h3>
+        <p>Trained on the heart ontology's 32 classes only, with OnT's own data preparation. It has no place for individual patients, so a patient is represented by the OnT vectors of its five categorical values (gender, chest pain type, resting ECG, ST slope, thallium scan).</p>
+      </div>
+      <div class="card">
+        <h3>K-Ont</h3>
+        <p>OnT extended to the knowledge graph: the ontology plus the training patients as individuals. Each patient is one short sentence of all 13 facts, typed under "patient" and linked by the five relations to its value concepts. Retrained inside every fold on that fold's training patients; test patients are only encoded.</p>
+      </div>
+      <div class="card">
+        <h3>Controls and models</h3>
+        <p>The raw 13-column table alone; the plain, untrained encoder reading the same patient sentence; logistic regression, random forest, SVM, gradient boosting and a small neural network (MLP). Embeddings are reduced to 16 numbers per patient (PCA) before the classifiers see them. The diagnosis link is removed from everything the encoders see.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="example">
+    <h2>One patient, two ways</h2>
+    <p class="muted">Pick a patient. OnT sees five separate concepts; K-Ont turns the whole record into one vector and finds the patient's nearest neighbours by it.</p>
+    <div class="seg" id="ex-pick" role="group" aria-label="Example patient"></div>
+    <div class="cols">
+      <div class="card" data-source="example_patients example_labels">
+        <h3 id="ex-title">Patient</h3>
+        <span class="muted" id="ex-meta"></span>
+        <pre class="patient" id="ex-text"></pre>
+      </div>
+      <div class="card" data-source="example_vectors">
+        <h3>What each model hands the classifier</h3>
+        <p class="muted">First 24 of 384 numbers, coloured by sign and size. OnT: the vector of the first concept only (it has five, one per category). K-Ont: one vector for the whole patient.</p>
+        <div class="chart" id="ex-vec" style="min-height:120px"></div>
+        <div id="ex-concepts"></div>
+      </div>
+    </div>
+    <div class="card" data-source="example_neighbours">
+      <h3>Nearest patients</h3>
+      <p class="muted">The five closest patients by each representation, with their categorical values. Diagnoses are shown here for reading only; the encoders never saw them.</p>
+      <div class="cols" id="ex-nb"></div>
+    </div>
+  </section>
+
+  <section id="place">
+    <h2>Where each model puts patients</h2>
+    <div class="grid">
+      <div class="card" data-source="patient_typing">
+        <h3>Which ontology class is nearest each patient?</h3>
+        <p class="muted">All 303 patients; for K-Ont, the 61 of fold 0's test set were never trained on. The right answer is "patient".</p>
+        <div class="chart" id="typing" style="min-height:150px"></div>
+      </div>
+      <div class="card" data-source="depth">
+        <h3>Distance from the centre of the ball</h3>
+        <p class="muted">In a hyperbolic embedding, general classes sit near the centre and specific ones further out. Each dot is a class, by its level in the ontology; the last row is the patients.</p>
+        <div class="chart" id="depth" style="min-height:240px"></div>
+        <div class="legend" id="depth-legend"></div>
+      </div>
+    </div>
+    <div class="card" data-source="patient_map">
+      <h3>Map of all 303 patients</h3>
+      <p class="muted">Each representation squeezed to two dimensions (t-SNE). Colour is the diagnosis, for reading only. Hollow circles: fold 0's test patients, which K-Ont never trained on. OnT gives many patients the exact same point.</p>
+      <div class="legend" id="map-legend"></div>
+      <div class="grid" id="maps"></div>
+    </div>
+    <div class="card" data-source="checks">
+      <h3>Checks on the representations</h3>
+      <p class="muted">Relation rows: rotate each value concept by the relation and see if the patient's own value is nearest (fold 0 test patients). k-NN row: how often a patient's 10 nearest neighbours share its diagnosis.</p>
+      <div class="scroll"><table id="checks-table" data-source="checks" data-row-key="check,representation">
+        <thead><tr><th data-field="check">Check</th><th data-field="representation">Representation</th><th class="num" data-field="value">Result</th><th class="num" data-field="chance">Chance</th></tr></thead>
+        <tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="full">
+    <h2>Test 1: prediction with the full table and all labels</h2>
+    <p class="muted">ROC-AUC, mean of 10 folds. Left: the raw table with and without each embedding. Right: each embedding on its own.</p>
+    <div class="legend" id="full-legend"></div>
+    <div class="grid">
+      <div class="card" data-source="main_results"><h3>Raw table + embedding</h3><div class="chart" id="full-raw"></div></div>
+      <div class="card" data-source="main_results"><h3>Embedding on its own</h3><div class="chart" id="full-emb"></div></div>
+    </div>
+    <div class="card">
+      <h3>Paired differences in AUC, fold by fold</h3>
+      <p class="muted">Positive = the first set is better. Wins / losses over 10 folds; p from a Wilcoxon signed-rank test.</p>
+      <div class="scroll"><table id="paired-table" data-source="main_paired" data-row-key="model,comparison,metric">
+        <thead><tr><th data-field="model">Model</th><th data-field="comparison">Comparison</th><th class="num" data-field="diff_pts">AUC change (pts)</th><th class="num" data-field="wins">Wins</th><th class="num" data-field="losses">Losses</th><th class="num" data-field="p">p</th></tr></thead>
+        <tbody></tbody></table></div>
+    </div>
+  </section>
+
+  <section id="few">
+    <h2>Test 2: few labelled patients</h2>
+    <p class="muted">The classifiers learn from 10, 20, 50 or 100% of the training patients' labels (3 random subsets per fold). The embeddings come from all training patients without labels, which is fair because no encoder ever sees a diagnosis.</p>
+    <p class="muted">Gradient boosting cannot split on 24 patients (its minimum leaf size is 20), so at 10% it predicts one value for everyone with every feature set.</p>
+    <div class="seg" id="few-pick" role="group" aria-label="Model"></div>
+    <div class="grid">
+      <div class="card" data-source="fewlabels"><h3>AUC by share of labels</h3><div class="legend" id="few-legend"></div><div class="chart" id="few-chart" style="min-height:260px"></div></div>
+      <div class="card"><h3>Raw + K-Ont vs the others, by share of labels</h3>
+        <div class="scroll"><table id="few-table" data-source="fewlabels_paired" data-row-key="labels_pct,model,comparison">
+          <thead><tr><th data-field="labels_pct" class="num">Labels %</th><th data-field="model">Model</th><th data-field="comparison">Comparison</th><th class="num" data-field="auc_diff_pts">AUC change (pts)</th><th class="num" data-field="wins">Wins</th><th class="num" data-field="losses">Losses</th><th class="num" data-field="p">p</th></tr></thead>
+          <tbody></tbody></table></div></div>
+    </div>
+  </section>
+
+  <section id="missing">
+    <h2>Test 3: columns missing from the table</h2>
+    <p class="muted">Chest pain type and thallium scan (and, in the second case, the number of major vessels) are removed from the table, while the knowledge graph embedding still holds them. Can it carry the information back? OnT's concept vectors include chest pain and thallium but not vessels; K-Ont's patient sentence includes all three.</p>
+    <div class="grid" id="missing-charts"></div>
+    <div class="card"><h3>Raw + K-Ont vs the others, with columns hidden</h3>
+      <div class="scroll"><table id="missing-table" data-source="missing_paired" data-row-key="scenario,model,comparison">
+        <thead><tr><th data-field="scenario">Hidden</th><th data-field="model">Model</th><th data-field="comparison">Comparison</th><th class="num" data-field="auc_diff_pts">AUC change (pts)</th><th class="num" data-field="wins">Wins</th><th class="num" data-field="losses">Losses</th><th class="num" data-field="p">p</th></tr></thead>
+        <tbody></tbody></table></div></div>
+  </section>
+
+  <section id="reading">
+    <h2>How to read this</h2>
+    <div class="card">
+      <ul id="reading-list">
+        <li>K-Ont is a better representation of patients than standard OnT: it places every patient, including unseen ones, under the ontology's "patient" class, keeps every patient distinct, and its vectors predict the diagnosis better than OnT's on their own.</li>
+        <li>When the classifier already has the complete table and enough labels, no embedding adds anything: the table holds all the information the knowledge graph has, and this ontology states no medical knowledge (risk factors, causes) beyond the columns.</li>
+        <li>K-Ont's own training is not what makes the difference here: the plain encoder reading the same sentence scores about the same. The gain over OnT comes from embedding the whole patient rather than separate concepts.</li>
+        <li>With few labels the embeddings hurt rather than help: 16 extra numbers per patient on 24 to 48 labelled patients let the classifiers overfit. Pretrained vectors help with few labels only when they carry information the few labels cannot provide, and here they repeat the table.</li>
+        <li>When columns are missing from the table, the knowledge-graph embedding brings their information back: with chest pain, thallium and vessels hidden, adding K-Ont lifts every model significantly. It edges OnT because OnT can only hold categorical concepts, not the number of vessels. The plain encoder reading the same sentence does as well, so the benefit comes from embedding each patient's facts, which needs individual embedding as K-Ont does, not from K-Ont's extra training.</li>
+        <li>So a knowledge-graph embedding pays off where the graph holds something the classifier's own input does not. For a stronger case: a graph with real domain knowledge (risk factors, drugs, conditions, links between patients), and a K-Ont training signal tied to it.</li>
+      </ul>
+    </div>
+    <p class="muted">Code: K-Ont repository, heart/kont_heart.py and heart/report_data.py. Folds: stratified 5-fold, repeated twice, identical for every model and feature set.</p>
+  </section>
+</div>
+
+<script>
+(() => {
+  const FEATS = ["Raw table", "Raw + OnT", "Raw + K-Ont", "Raw + plain encoder"];
+  const EMBS = ["OnT only", "K-Ont only", "Plain encoder only"];
+  const MODELS = ["LogReg", "RandomForest", "SVM", "GradBoost", "MLP"];
+  const color = (f) => ({ "Raw table": "var(--cds-chart-muted)", "Raw + OnT": dash.colors[1], "OnT only": dash.colors[1],
+    "OnT (5 concepts)": dash.colors[1], "OnT": dash.colors[1], "Raw + K-Ont": dash.colors[0], "K-Ont only": dash.colors[0],
+    "K-Ont": dash.colors[0], "Raw + plain encoder": dash.colors[2], "Plain encoder only": dash.colors[2],
+    "Untrained encoder": dash.colors[2] })[f] || "var(--cds-chart-muted)";
+  const DIAG = { "No heart disease": dash.colors[4], "Heart disease": dash.colors[5] };
+  const signed = (v) => (v > 0 ? "+" : v < 0 ? "−" : "±") + Math.abs(v).toFixed(1);
+  window.hrState = window.hrState || { patient: "patient_001", model: "All models" };
+
+  const mean = (a) => a.reduce((s, x) => s + x, 0) / a.length;
+  dash.calc("hl_kont_vs_ont", { inputs: ["main_paired"], title: "K-Ont vs OnT alone",
+    description: "Mean AUC change of K-Ont only over OnT only across the 5 models, and how many are significant.",
+    fn: (main_paired) => { const r = main_paired.filter(d => d.comparison === "K-Ont only vs OnT only" && d.metric === "AUC");
+      const m = r.reduce((s, d) => s + Number(d.diff_pts), 0) / r.length;
+      return [{ value: (m > 0 ? "+" : "") + m.toFixed(1) + " pts", sig: r.filter(d => Number(d.p) < 0.05 && Number(d.diff_pts) > 0).length }]; } });
+  dash.calc("hl_full", { inputs: ["main_paired"], title: "Raw + K-Ont vs raw",
+    description: "Mean AUC change from adding K-Ont to the full table, across the 5 models.",
+    fn: (main_paired) => { const r = main_paired.filter(d => d.comparison === "Raw + K-Ont vs Raw table" && d.metric === "AUC");
+      const m = r.reduce((s, d) => s + Number(d.diff_pts), 0) / r.length; return [{ value: (m > 0 ? "+" : "") + m.toFixed(1) + " pts" }]; } });
+  dash.calc("hl_few", { inputs: ["fewlabels_paired"], title: "Raw + K-Ont vs raw, 10% labels",
+    description: "Mean AUC change from adding K-Ont when classifiers see 10% of the labels, across the 5 models.",
+    fn: (fewlabels_paired) => { const r = fewlabels_paired.filter(d => d.comparison === "Raw + K-Ont vs Raw table" && Number(d.labels_pct) === 10);
+      const m = r.reduce((s, d) => s + Number(d.auc_diff_pts), 0) / r.length; return [{ value: (m > 0 ? "+" : "") + m.toFixed(1) + " pts" }]; } });
+  dash.calc("hl_missing", { inputs: ["missing_paired"], title: "Raw + K-Ont vs raw, columns hidden",
+    description: "Mean AUC change from adding K-Ont when chest pain, thallium and vessels are hidden from the table, across the 5 models.",
+    fn: (missing_paired) => { const r = missing_paired.filter(d => d.comparison === "Raw + K-Ont vs Raw table" && d.scenario === "hide cp+thal+ca");
+      const m = r.reduce((s, d) => s + Number(d.auc_diff_pts), 0) / r.length; return [{ value: (m > 0 ? "+" : "") + m.toFixed(1) + " pts" }]; } });
+  dash.calc("few_avg", { inputs: ["fewlabels"], title: "AUC by labels, all models",
+    description: "Mean AUC over the 5 models for each share of labels and feature set.",
+    fn: (fewlabels) => { const g = {}; fewlabels.forEach(d => { const k = d.labels_pct + "|" + d.features; (g[k] = g[k] || []).push(Number(d.auc_pct)); });
+      return Object.entries(g).map(([k, v]) => { const [p, f] = k.split("|"); return { labels_pct: Number(p), features: f, auc_pct: Math.round(v.reduce((s, x) => s + x, 0) / v.length * 10) / 10 }; }); } });
+
+  // ---------- helpers
+  function tipper(box) { let t = box.querySelector(".tip"); if (!t) { t = document.createElement("div"); t.className = "tip"; t.hidden = true; box.appendChild(t); } return t; }
+  function showTip(box, tip, ev, lines) {
+    tip.replaceChildren(); lines.forEach((l, i) => { const d = document.createElement("div"); if (i === 0) d.className = "t"; d.textContent = l; tip.appendChild(d); });
+    tip.hidden = false; const r = box.getBoundingClientRect(); let x = ev.clientX - r.left + 12, y = ev.clientY - r.top + 12;
+    x = Math.min(x, r.width - tip.offsetWidth - 4); tip.style.left = Math.max(0, x) + "px"; tip.style.top = y + "px"; }
+  function legend(el, items, ring) { el.replaceChildren(); items.forEach(([name, c]) => { const s = document.createElement("span"); const w = document.createElement("i"); w.className = "sw"; w.style.background = c; s.append(w, document.createTextNode(name)); el.appendChild(s); });
+    if (ring) { const s = document.createElement("span"); const w = document.createElement("i"); w.className = "sw ring"; w.style.color = "var(--color-fg-muted)"; s.append(w, document.createTextNode(ring)); el.appendChild(s); } }
+  function failed(el, st) { el.replaceChildren(); if (st === "error" || st === "connect") { const d = document.createElement("div"); d.style.cssText = "display:flex;align-items:center;justify-content:center;gap:.4rem;min-height:inherit;color:var(--color-fg-muted);font-size:var(--cds-font-size-caption)"; const dot = document.createElement("i"); dot.style.cssText = "width:.375rem;height:.375rem;border-radius:50%;background:var(--color-bad)"; d.append(dot, document.createTextNode("Failed to load")); el.appendChild(d); } }
+  function textWidth(svg, txt) { const t = svg.append("text").attr("font-size", "var(--cds-font-size-caption)").text(txt); const w = t.node().getComputedTextLength(); t.remove(); return w; }
+  function axisStyle(g) { g.attr("font-size", null).attr("font-family", null); g.selectAll("text").attr("fill", "var(--color-fg-muted)").style("font-size", "var(--cds-font-size-caption)"); g.selectAll("line,path").attr("stroke", "var(--cds-chart-axis)"); }
+
+  // dot plot: rows = categories (models), one dot per series
+  function dotplot(el, rows, cats, series, valueKey, xLabel) {
+    el.replaceChildren(); const W = el.clientWidth || 320; const svg = d3.select(el).append("svg").attr("width", "100%");
+    const left = Math.max(...cats.map(c => textWidth(svg, c))) + 12, right = 16, rowH = 30, top = 8, bottom = 34;
+    const H = top + bottom + rowH * cats.length; svg.attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+    const vals = rows.map(r => Number(r[valueKey])); const lo = Math.floor(Math.min(...vals) - 1), hi = Math.ceil(Math.max(...vals) + 1);
+    const x = d3.scaleLinear([lo, hi], [left, W - right]); const y = d3.scaleBand(cats, [top, top + rowH * cats.length]).padding(0.3);
+    svg.append("g").selectAll("line").data(x.ticks(5)).join("line").attr("x1", d => x(d)).attr("x2", d => x(d)).attr("y1", top).attr("y2", H - bottom).attr("stroke", "var(--cds-chart-grid)");
+    const ax = svg.append("g").attr("transform", `translate(0,${H - bottom})`).call(d3.axisBottom(x).ticks(5).tickSizeOuter(0)); axisStyle(ax);
+    svg.append("text").attr("x", W - right).attr("y", H - 4).attr("text-anchor", "end").attr("fill", "var(--color-fg-muted)").style("font-size", "var(--cds-font-size-caption)").text(xLabel);
+    const ay = svg.append("g").attr("transform", `translate(${left - 6},0)`).call(d3.axisLeft(y).tickSize(0)); axisStyle(ay); ay.select("path").remove();
+    cats.forEach(c => { const rs = rows.filter(r => r.model === c); const xs = rs.map(r => x(Number(r[valueKey])));
+      if (xs.length) svg.append("line").attr("x1", Math.min(...xs)).attr("x2", Math.max(...xs)).attr("y1", y(c) + y.bandwidth() / 2).attr("y2", y(c) + y.bandwidth() / 2).attr("stroke", "var(--cds-chart-grid)").attr("stroke-width", 2); });
+    const box = el; const tip = tipper(box);
+    svg.append("g").selectAll("circle").data(rows.filter(r => series.includes(r.features))).join("circle")
+      .attr("cx", r => x(Number(r[valueKey]))).attr("cy", r => y(r.model) + y.bandwidth() / 2 + (series.indexOf(r.features) - (series.length - 1) / 2) * 3)
+      .attr("r", 5.5).attr("fill", r => color(r.features)).attr("stroke", "var(--color-panel)").attr("stroke-width", 2)
+      .on("mousemove", (ev, r) => showTip(box, tip, ev, [r.model, `${r.features}: ${Number(r[valueKey]).toFixed(1)}`]))
+      .on("mouseleave", () => { tip.hidden = true; });
+  }
+
+  function table(el, rows, cols, fmt) {
+    const tb = el.querySelector("tbody"); tb.replaceChildren();
+    const keys = (el.getAttribute("data-row-key") || "").split(",").filter(Boolean);
+    rows.forEach(r => { const tr = document.createElement("tr"); if (keys.length) tr.setAttribute("data-key", keys.map(k => keys.length > 1 ? encodeURIComponent(r[k]) : r[k]).join(",")); cols.forEach(c => { const td = document.createElement("td"); if (c.num) td.className = "num"; const v = r[c.key];
+      td.textContent = fmt && fmt[c.key] ? fmt[c.key](v, r) : v; if (c.cls) { const k = c.cls(v, r); if (k) td.classList.add(k); } tr.appendChild(td); }); tb.appendChild(tr); });
+  }
+  const sigCls = (v, r) => Number(r.p) < 0.05 ? (Number(r.diff_pts ?? r.auc_diff_pts) > 0 ? "good" : "bad") : null;
+  const pFmt = (v) => Number(v) < 0.001 ? "<0.001" : Number(v).toFixed(3);
+
+  function segButtons(el, opts, key, redraw) {
+    if (el.childElementCount !== opts.length) { el.replaceChildren(); opts.forEach(o => { const b = document.createElement("button"); b.type = "button"; b.textContent = o; b.addEventListener("click", () => { window.hrState[key] = o; redraw(); }); el.appendChild(b); }); }
+    [...el.children].forEach(b => b.setAttribute("aria-pressed", String(b.textContent === window.hrState[key])));
+  }
+
+  function draw() {
+    // ---------- example patient
+    const ex = dash.data("example_patients"), exl = dash.data("example_labels"), exv = dash.data("example_vectors"), exn = dash.data("example_neighbours");
+    if (ex.status === "ok" && exl.status === "ok") {
+      const pats = [...new Set(exl.data.map(d => d.patient))];
+      segButtons(document.getElementById("ex-pick"), pats, "patient", draw);
+      const p = window.hrState.patient, lab = exl.data.find(d => d.patient === p);
+      document.getElementById("ex-title").textContent = p.replace("_", " ");
+      document.getElementById("ex-meta").textContent = `Diagnosis (not shown to the encoders): ${lab.diagnosis.toLowerCase()} · seen in K-Ont training (fold 0): ${lab.seen_in_training.toLowerCase()}`;
+      document.getElementById("ex-text").textContent = ex.data.filter(d => d.patient === p).sort((a, b) => a.line - b.line).map(d => d.text).join("\n");
+      const conc = ex.data.filter(d => d.patient === p && /^(Gender|Chest pain|Resting ECG|ST slope|Thallium scan):/.test(d.text)).map(d => d.text.split(": ")[1]);
+      const cbox = document.getElementById("ex-concepts"); cbox.replaceChildren(); const h = document.createElement("div"); h.className = "muted"; h.textContent = "OnT's five concepts for this patient:"; cbox.appendChild(h);
+      conc.forEach(c => { const s = document.createElement("span"); s.className = "pill"; s.textContent = c; cbox.appendChild(s); });
+    } else { ["ex-text"].forEach(id => document.getElementById(id).textContent = "—"); }
+    if (exv.status === "ok") {
+      const el = document.getElementById("ex-vec"); el.replaceChildren(); const p = window.hrState.patient;
+      const reps = ["OnT (first concept: gender)", "K-Ont (whole patient)"]; const W = el.clientWidth || 320;
+      const svg = d3.select(el).append("svg").attr("width", "100%"); const left = Math.max(...reps.map(r => textWidth(svg, r))) + 10;
+      const H = 2 * 34 + 10; svg.attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const rows = exv.data.filter(d => d.patient === p); const m = Math.max(...rows.map(d => Math.abs(Number(d.value))));
+      const pos = d3.interpolateRgb(getComputedStyle(el).getPropertyValue("--color-panel").trim() || "#fff", "#1f6fb2"), neg = d3.interpolateRgb(getComputedStyle(el).getPropertyValue("--color-panel").trim() || "#fff", "#c2561a");
+      const cw = (W - left) / 24; const tip = tipper(el);
+      reps.forEach((r, i) => { svg.append("text").attr("x", 0).attr("y", 8 + i * 34 + 17).attr("dominant-baseline", "middle").attr("fill", "var(--color-fg-muted)").style("font-size", "var(--cds-font-size-caption)").text(r);
+        svg.append("g").selectAll("rect").data(rows.filter(d => d.representation === r)).join("rect")
+          .attr("x", d => left + Number(d.dim) * cw + 1).attr("y", 8 + i * 34).attr("width", Math.max(1, cw - 2)).attr("height", 26).attr("rx", 3)
+          .attr("fill", d => { const v = Number(d.value) / m; return v >= 0 ? pos(Math.min(1, v * 1.2)) : neg(Math.min(1, -v * 1.2)); })
+          .attr("stroke", "var(--color-border-line)")
+          .on("mousemove", (ev, d) => showTip(el, tip, ev, [`${r} · number ${Number(d.dim) + 1}`, Number(d.value).toFixed(3)])).on("mouseleave", () => { tip.hidden = true; }); });
+    }
+    if (exn.status === "ok") {
+      const box = document.getElementById("ex-nb"); box.replaceChildren(); const p = window.hrState.patient;
+      ["OnT (5 concepts)", "K-Ont"].forEach(rep => { const c = document.createElement("div"); c.style.minWidth = "0";
+        const h = document.createElement("h3"); h.textContent = rep === "K-Ont" ? "By K-Ont" : "By OnT (5 concepts)"; c.appendChild(h);
+        const rows = exn.data.filter(d => d.patient === p && d.representation === rep).sort((a, b) => a.rank - b.rank);
+        const same = rows.filter(d => d.diagnosis === (dash.data("example_labels").data.find(x => x.patient === p) || {}).diagnosis).length;
+        const note = document.createElement("div"); note.className = "muted"; note.textContent = `${same} of ${rows.length} share this patient's diagnosis`; c.appendChild(note);
+        const wrap = document.createElement("div"); wrap.className = "scroll"; const t = document.createElement("table");
+        t.innerHTML = "<thead><tr><th>#</th><th>Patient</th><th>Diagnosis</th><th>Values</th></tr></thead><tbody></tbody>";
+        rows.forEach(d => { const tr = document.createElement("tr"); [d.rank, d.neighbour.replace("_", " "), d.diagnosis, d.summary].forEach(v => { const td = document.createElement("td"); td.textContent = v; tr.appendChild(td); }); t.querySelector("tbody").appendChild(tr); });
+        wrap.appendChild(t); c.appendChild(wrap); box.appendChild(c); });
+    }
+
+    // ---------- typing bars
+    const ty = dash.data("patient_typing"), tyEl = document.getElementById("typing");
+    if (ty.status === "ok") {
+      tyEl.replaceChildren(); const W = tyEl.clientWidth || 320; const svg = d3.select(tyEl).append("svg").attr("width", "100%");
+      const rows = ty.data.map(d => ({ ...d, patients: Number(d.patients) })); const models = ["OnT", "K-Ont"];
+      const left = Math.max(...models.map(m => textWidth(svg, m))) + 12, H = 2 * 46 + 30; svg.attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const x = d3.scaleLinear([0, 303], [left, W - 8]); const tip = tipper(tyEl);
+      models.forEach((m, i) => { let acc = 0; const y0 = 8 + i * 46;
+        svg.append("text").attr("x", 0).attr("y", y0 + 11).attr("dominant-baseline", "middle").attr("fill", "var(--color-fg)").style("font-size", "var(--cds-font-size-caption)").text(m);
+        rows.filter(d => d.model === m).forEach(d => { const w = x(acc + d.patients) - x(acc);
+          svg.append("rect").attr("x", x(acc) + 1).attr("y", y0).attr("width", Math.max(1, w - 2)).attr("height", 22).attr("rx", 4)
+            .attr("fill", d.nearest_class === "patient" ? dash.colors[0] : "var(--cds-chart-status-critical)")
+            .on("mousemove", (ev) => showTip(tyEl, tip, ev, [m, `${d.nearest_class}: ${d.patients} patients`])).on("mouseleave", () => { tip.hidden = true; });
+          if (w > 70) svg.append("text").attr("x", x(acc) + 6).attr("y", y0 + 34).attr("fill", "var(--color-fg-muted)").style("font-size", "var(--cds-font-size-caption)").text(`${d.nearest_class} (${d.patients})`);
+          acc += d.patients; }); });
+    } else failed(tyEl, ty.status);
+
+    // ---------- depth dot plot
+    const dp = dash.data("depth"), dEl = document.getElementById("depth");
+    if (dp.status === "ok") {
+      dEl.replaceChildren(); const W = dEl.clientWidth || 320; const svg = d3.select(dEl).append("svg").attr("width", "100%");
+      const rows = dp.data.map(d => ({ ...d, lv: Number(d.hierarchy_level), o: Number(d.ont_distance_from_centre), k: Number(d.kont_distance_from_centre) }));
+      const levels = [...new Set(rows.map(d => d.lv))].sort((a, b) => a - b); const lab = (l) => l === Math.max(...levels) ? "patients" : `level ${l}`;
+      const left = Math.max(...levels.map(l => textWidth(svg, lab(l)))) + 12, rowH = 30, H = 10 + rowH * levels.length + 32; svg.attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const all = rows.flatMap(d => [d.o, d.k]); const x = d3.scaleLinear([Math.floor(Math.min(...all)) - 0.5, Math.ceil(Math.max(...all)) + 0.5], [left, W - 10]);
+      const y = d3.scaleBand(levels, [10, 10 + rowH * levels.length]).padding(0.2);
+      const ax = svg.append("g").attr("transform", `translate(0,${10 + rowH * levels.length})`).call(d3.axisBottom(x).ticks(5)); axisStyle(ax);
+      levels.forEach(l => svg.append("text").attr("x", 0).attr("y", y(l) + y.bandwidth() / 2).attr("dominant-baseline", "middle").attr("fill", "var(--color-fg-muted)").style("font-size", "var(--cds-font-size-caption)").text(lab(l)));
+      const tip = tipper(dEl);
+      [["o", "OnT", -5], ["k", "K-Ont", 5]].forEach(([key, name, off]) => svg.append("g").selectAll("circle").data(rows).join("circle")
+        .attr("cx", d => x(d[key])).attr("cy", d => y(d.lv) + y.bandwidth() / 2 + off).attr("r", 4.5).attr("fill", color(name)).attr("stroke", "var(--color-panel)").attr("stroke-width", 1.5)
+        .on("mousemove", (ev, d) => showTip(dEl, tip, ev, [d.concept, `${name}: ${d[key].toFixed(2)}`])).on("mouseleave", () => { tip.hidden = true; }));
+      legend(document.getElementById("depth-legend"), [["OnT", color("OnT")], ["K-Ont", color("K-Ont")]]);
+    } else failed(dEl, dp.status);
+
+    // ---------- maps
+    const mp = dash.data("patient_map"), maps = document.getElementById("maps");
+    if (mp.status === "ok") {
+      maps.replaceChildren(); legend(document.getElementById("map-legend"), Object.entries(DIAG), "fold 0 test patient (unseen by K-Ont)");
+      ["OnT (5 concepts)", "K-Ont", "Untrained encoder"].forEach(rep => {
+        const c = document.createElement("div"); c.style.minWidth = "0"; const h = document.createElement("h3"); h.textContent = rep === "K-Ont" ? "K-Ont" : rep === "OnT (5 concepts)" ? "OnT (5 concepts)" : "Plain encoder"; c.appendChild(h);
+        const el = document.createElement("div"); el.className = "chart"; el.style.minHeight = "240px"; c.appendChild(el); maps.appendChild(c);
+        const W = el.clientWidth || 280, H = Math.round(W * 0.85); const svg = d3.select(el).append("svg").attr("width", "100%").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+        const rows = mp.data.filter(d => d.representation === rep).map(d => ({ ...d, x: Number(d.x), y: Number(d.y) }));
+        const x = d3.scaleLinear(d3.extent(rows, d => d.x), [8, W - 8]), y = d3.scaleLinear(d3.extent(rows, d => d.y), [H - 8, 8]); const tip = tipper(el);
+        svg.append("rect").attr("x", 0).attr("y", 0).attr("width", W).attr("height", H).attr("fill", "none").attr("stroke", "var(--cds-chart-grid)").attr("rx", 4);
+        svg.append("g").selectAll("circle").data(rows).join("circle").attr("cx", d => x(d.x)).attr("cy", d => y(d.y)).attr("r", 3.5)
+          .attr("fill", d => d.seen_in_training === "No" ? "var(--color-panel)" : DIAG[d.diagnosis]).attr("stroke", d => DIAG[d.diagnosis]).attr("stroke-width", 1.5).attr("fill-opacity", 0.85)
+          .on("mousemove", (ev, d) => showTip(el, tip, ev, [d.patient.replace("_", " "), d.diagnosis, d.seen_in_training === "No" ? "fold 0 test patient" : "training patient"])).on("mouseleave", () => { tip.hidden = true; });
+      });
+    } else failed(maps, mp.status);
+
+    // ---------- checks table
+    const ck = dash.data("checks"), ckEl = document.getElementById("checks-table");
+    if (ck.status === "ok") table(ckEl, ck.data, [{ key: "check" }, { key: "representation" }, { key: "value", num: true }, { key: "chance", num: true }],
+      { value: (v, r) => r.check.startsWith("Distinct") ? v : Number(v).toFixed(1) + "%", chance: (v) => v === "" ? "" : Number(v).toFixed(1) + "%" });
+
+    // ---------- full data
+    legend(document.getElementById("full-legend"), [...FEATS, ...EMBS.slice(0, 0)].map(f => [f, color(f)]));
+    const mr = dash.data("main_results");
+    if (mr.status === "ok") {
+      const auc = mr.data.filter(d => d.metric === "AUC");
+      dotplot(document.getElementById("full-raw"), auc.filter(d => FEATS.includes(d.features)), MODELS, FEATS, "mean_pct", "ROC-AUC %");
+      dotplot(document.getElementById("full-emb"), auc.filter(d => EMBS.includes(d.features)), MODELS, EMBS, "mean_pct", "ROC-AUC %");
+    } else { failed(document.getElementById("full-raw"), mr.status); failed(document.getElementById("full-emb"), mr.status); }
+    const mpd = dash.data("main_paired");
+    if (mpd.status === "ok") table(document.getElementById("paired-table"), mpd.data.filter(d => d.metric === "AUC" && ["Raw + K-Ont vs Raw table", "Raw + K-Ont vs Raw + OnT", "K-Ont only vs OnT only", "Raw + K-Ont vs Raw + plain encoder", "K-Ont only vs Plain encoder only"].includes(d.comparison)),
+      [{ key: "model" }, { key: "comparison" }, { key: "diff_pts", num: true, cls: sigCls }, { key: "wins", num: true }, { key: "losses", num: true }, { key: "p", num: true }], { diff_pts: (v) => signed(Number(v)), p: pFmt });
+
+    // ---------- few labels
+    segButtons(document.getElementById("few-pick"), ["All models", ...MODELS], "model", draw);
+    const fl = window.hrState.model === "All models" ? dash.data("few_avg") : dash.data("fewlabels"), fEl = document.getElementById("few-chart");
+    if (fl.status === "ok") {
+      fEl.replaceChildren(); const rows = (window.hrState.model === "All models" ? fl.data : fl.data.filter(d => d.model === window.hrState.model)).map(d => ({ ...d, p: Number(d.labels_pct), a: Number(d.auc_pct) }));
+      const W = fEl.clientWidth || 320, H = 260; const svg = d3.select(fEl).append("svg").attr("width", "100%").attr("viewBox", `0 0 ${W} ${H}`).attr("height", H);
+      const pts = [10, 20, 50, 100]; const ys = rows.map(d => d.a); const yS = d3.scaleLinear([Math.floor(Math.min(...ys) - 1), Math.ceil(Math.max(...ys) + 1)], [H - 30, 10]);
+      const left = textWidth(svg, "100") + 14; const x = d3.scalePoint(pts, [left + 10, W - 120]);
+      svg.append("g").selectAll("line").data(yS.ticks(5)).join("line").attr("x1", left).attr("x2", W - 110).attr("y1", d => yS(d)).attr("y2", d => yS(d)).attr("stroke", "var(--cds-chart-grid)");
+      const ay = svg.append("g").attr("transform", `translate(${left},0)`).call(d3.axisLeft(yS).ticks(5).tickSize(0)); axisStyle(ay); ay.select("path").remove();
+      const ax = svg.append("g").attr("transform", `translate(0,${H - 30})`).call(d3.axisBottom(x).tickFormat(d => d + "%")); axisStyle(ax);
+      const tip = tipper(fEl); const ends = [];
+      FEATS.forEach(f => { const r = rows.filter(d => d.features === f).sort((a, b) => a.p - b.p); if (!r.length) return;
+        svg.append("path").attr("d", d3.line().x(d => x(d.p)).y(d => yS(d.a))(r)).attr("fill", "none").attr("stroke", color(f)).attr("stroke-width", f === "Raw + K-Ont" ? 2.5 : 2).attr("stroke-linecap", "round").attr("stroke-linejoin", "round");
+        svg.append("g").selectAll("circle").data(r).join("circle").attr("cx", d => x(d.p)).attr("cy", d => yS(d.a)).attr("r", 4).attr("fill", color(f)).attr("stroke", "var(--color-panel)").attr("stroke-width", 2)
+          .on("mousemove", (ev, d) => showTip(fEl, tip, ev, [`${d.p}% of labels`, `${f}: ${d.a.toFixed(1)}`])).on("mouseleave", () => { tip.hidden = true; });
+        ends.push({ f, y: yS(r[r.length - 1].a) }); });
+      ends.sort((a, b) => a.y - b.y); for (let i = 1; i < ends.length; i++) ends[i].y = Math.max(ends[i].y, ends[i - 1].y + 13);
+      ends.forEach(e => svg.append("text").attr("x", W - 112).attr("y", e.y).attr("dominant-baseline", "middle").attr("fill", "var(--color-fg-muted)").style("font-size", "var(--cds-font-size-caption)").text(e.f.replace("Raw + ", "+ ")));
+      legend(document.getElementById("few-legend"), FEATS.map(f => [f, color(f)]));
+    } else failed(fEl, fl.status);
+    const fp = dash.data("fewlabels_paired");
+    if (fp.status === "ok") { const m = window.hrState.model; table(document.getElementById("few-table"),
+      fp.data.filter(d => (m === "All models" || d.model === m) && ["Raw + K-Ont vs Raw table", "Raw + K-Ont vs Raw + OnT"].includes(d.comparison)).sort((a, b) => a.labels_pct - b.labels_pct || MODELS.indexOf(a.model) - MODELS.indexOf(b.model)),
+      [{ key: "labels_pct", num: true }, { key: "model" }, { key: "comparison" }, { key: "auc_diff_pts", num: true, cls: sigCls }, { key: "wins", num: true }, { key: "losses", num: true }, { key: "p", num: true }], { auc_diff_pts: (v) => signed(Number(v)), p: pFmt }); }
+
+    // ---------- missing
+    const ms = dash.data("missing"), mBox = document.getElementById("missing-charts");
+    if (ms.status === "ok") { mBox.replaceChildren(); ["hide cp+thal", "hide cp+thal+ca"].forEach(sc => { const c = document.createElement("div"); c.className = "card"; c.setAttribute("data-source", "missing");
+        const h = document.createElement("h3"); h.textContent = sc === "hide cp+thal" ? "Chest pain and thallium hidden" : "Chest pain, thallium and vessels hidden"; c.appendChild(h);
+        const lg = document.createElement("div"); lg.className = "legend"; c.appendChild(lg); legend(lg, FEATS.map(f => [f, color(f)]));
+        const el = document.createElement("div"); el.className = "chart"; c.appendChild(el); mBox.appendChild(c);
+        dotplot(el, ms.data.filter(d => d.scenario === sc), MODELS, FEATS, "auc_pct", "ROC-AUC %"); }); } else failed(mBox, ms.status);
+    const mpp = dash.data("missing_paired");
+    if (mpp.status === "ok") table(document.getElementById("missing-table"), mpp.data.filter(d => ["Raw + K-Ont vs Raw table", "Raw + K-Ont vs Raw + OnT"].includes(d.comparison)),
+      [{ key: "scenario" }, { key: "model" }, { key: "comparison" }, { key: "auc_diff_pts", num: true, cls: sigCls }, { key: "wins", num: true }, { key: "losses", num: true }, { key: "p", num: true }], { auc_diff_pts: (v) => signed(Number(v)), p: pFmt });
+  }
+  dash.onData(draw);
+})();
+</script>
