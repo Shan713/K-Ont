@@ -1786,3 +1786,32 @@ the prompt does not have is *steering* -- asking for a requirement (family, role
 compliance, which is what worked in Task A (+27 points framework compliance from a KG analogue). Next:
 condition on the target concept (e.g. the olivine / cathode concept vectors) and measure whether the
 generated structures follow it.
+
+## Step 38 — Strong K-Ont injection (analogue crystal vector, deep adapters, guidance): v1 failed, v2 fixed, still no significant gain (2026-10-15)
+
+`abox/kg_condition2.py`. Condition = K-Ont embedding of a KG analogue's crystal (train: same-prototype
+neighbour; test: retrieved from composition only, 79/85 targets), injected as an 8-token prefix + an
+adapter before every block, with classifier-free guidance (15% condition dropout). Same 85 held-out
+targets, seeds and scoring as Step 37, plus framework compliance (fit_anonymous with the analogue).
+
+**v1 broke generation**: the crystal sentence ends with the analogue's elements ("Sites: 28 (Li:4, P:4,
+O:16, Fe:4)") so the model copied them (composition 46.6% at w=2), and zero-init ungated adapters at
+lr 1e-3 destabilised training (val loss 0.29 -> 1.48 after epoch 1).
+**v2**: framework-only vectors (Sites line anonymised, `export_embeddings.py` `crystal_anon`), tanh-gated
+adapters starting closed, lr 3e-4, w = 1 / 1.5. Val loss 0.267 (const 0.269, Step 37 kg 0.253).
+
+| 85 targets, 16 samples | base | no K-Ont | Step 37 prefix | text SG seed | v1 w=1 | **v2 w=1** | v2 w=1.5 | v2 shuffled w=1.5 |
+|---|---|---|---|---|---|---|---|---|
+| right composition | 96.1 | 93.9 | 92.8 | 83.5 | 87.5 | **94.6** | 93.7 | 92.4 |
+| true structure | 39.3 | 41.9 | 42.5 | 36.7 | 29.2 | **43.0** | 40.3 | 38.8 |
+| keeps analogue framework | 32.6 | 37.4 | 36.8 | **41.5** | 28.5 | 37.3 | 35.0 | 33.8 |
+
+v2 w=1 vs no K-Ont: true structure +1.1 [-2.1, +4.3], compliance -0.1 [-3.4, +2.9] -> **fails the pre-set
+rule**. At matched guidance (w=1.5), correct vs shuffled analogue: +1.5 [-0.4, +3.5] / +1.2 [-0.5, +3.1],
+not significant. v2 repairs v1 (+13.8 true structure) and is the best K-Ont arm, but the embedding route
+adds nothing significant over plain fine-tuning; text seeding with the analogue's space group gives the
+most compliance at a large cost in composition (-11 vs v2).
+**Why**: an analogue only helps when it is the right one (Task A: 10/10 when its SG is right, 1/12 when
+not), and composition-only retrieval is right for under half the targets, so gains and losses cancel.
+The lever is retrieval: K-Ont embeddings to pick the analogue, measured first by how often the chosen
+analogue's space group / framework is the true one.

@@ -36,6 +36,19 @@ from ont.model import OntologyTransformer  # noqa: E402
 from phase5_checks import STRUCT_LINES  # noqa: E402
 
 
+def anonymise_sites(sentence):
+    """'Sites: 28 (Li:4, P:4, O:16, Fe:4)' -> 'Sites: 28 (A:4, B:4, C:4, D:16)': the site pattern of the
+    framework without its chemistry, so a vector of an analogue crystal cannot pass on its elements."""
+    out = []
+    for line in sentence.split("\n"):
+        if line.startswith("Sites:") and "(" in line:
+            head, body = line.split("(", 1)
+            counts = sorted(int(x.split(":")[1]) for x in body.rstrip(")").split(", "))
+            line = head + "(" + ", ".join(f"{chr(65 + i)}:{n}" for i, n in enumerate(counts)) + ")"
+        out.append(line)
+    return "\n".join(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--run", required=True)
@@ -63,7 +76,9 @@ def main():
     cond_sents = ["\n".join(l for l in vm[m].split("\n") if not l.startswith(STRUCT_LINES)) for m in mats]
     crys, els = sorted(vc), sorted(ve)
     arrays = {"material_cond": enc(cond_sents), "material_full": enc([vm[m] for m in mats]),
-              "crystal": enc([vc[c] for c in crys]), "element": enc([ve[e] for e in els]), "concept": enc(concepts)}
+              "crystal": enc([vc[c] for c in crys]), "element": enc([ve[e] for e in els]), "concept": enc(concepts),
+              # framework only: the Sites line with element symbols replaced by A, B, C... (Step 38)
+              "crystal_anon": enc([anonymise_sites(vc[c]) for c in crys])}
     out_arr = {}
     for k, v in arrays.items():
         out_arr[k] = v.cpu().numpy()
