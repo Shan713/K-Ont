@@ -1,0 +1,458 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/heart_ontology"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/heart_ontology">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Abstract"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Agent"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Asymptomatic"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AtypicalAngina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ChestPain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Downsloping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Entity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Female"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#FixedDefect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Flat"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Gender"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#HeartRate"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#LeftVentricularHypertrophy"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Male"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#NonAnginalPain"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Normal"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Object"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Patient"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PhysicalObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Quality"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#ReseversableDefect"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#RestingElectrocardiographicResults"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SlopePeakExerciseSTSegment"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#SocialObject"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#TypicalAngina"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Upsloping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#WaveAbnormality"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasChestPain"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasGender"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAge"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasBloodPressure"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasExerciseInducedAngina"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasFastingBloodSugarGreaterThan120"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasMajorVesselsColoredByFlourosopy"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasMaximumHeartRateAchieved"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSTDepressionInducedByExercise"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSerumCholestoral"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Agent"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Asymptomatic"/>
+        <Class IRI="#ChestPain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#AtypicalAngina"/>
+        <Class IRI="#ChestPain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ChestPain"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Downsloping"/>
+        <Class IRI="#SlopePeakExerciseSTSegment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Entity"/>
+        <Class abbreviatedIRI="owl:Thing"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Female"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#FixedDefect"/>
+        <Class IRI="#HeartRate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Flat"/>
+        <Class IRI="#SlopePeakExerciseSTSegment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Gender"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#HeartRate"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#LeftVentricularHypertrophy"/>
+        <Class IRI="#RestingElectrocardiographicResults"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Male"/>
+        <Class IRI="#Gender"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#NonAnginalPain"/>
+        <Class IRI="#ChestPain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Normal"/>
+        <Class IRI="#HeartRate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Normal"/>
+        <Class IRI="#RestingElectrocardiographicResults"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Object"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Patient"/>
+        <Class IRI="#Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Person"/>
+        <Class IRI="#Agent"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PhysicalObject"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Quality"/>
+        <Class IRI="#Entity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#ReseversableDefect"/>
+        <Class IRI="#HeartRate"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#RestingElectrocardiographicResults"/>
+        <Class IRI="#Quality"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SlopePeakExerciseSTSegment"/>
+        <Class IRI="#Abstract"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#SocialObject"/>
+        <Class IRI="#Object"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#TypicalAngina"/>
+        <Class IRI="#ChestPain"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Upsloping"/>
+        <Class IRI="#SlopePeakExerciseSTSegment"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#WaveAbnormality"/>
+        <Class IRI="#RestingElectrocardiographicResults"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Abstract"/>
+        <Class IRI="#Object"/>
+        <Class IRI="#Quality"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Agent"/>
+        <Class IRI="#PhysicalObject"/>
+        <Class IRI="#SocialObject"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Asymptomatic"/>
+        <Class IRI="#AtypicalAngina"/>
+        <Class IRI="#NonAnginalPain"/>
+        <Class IRI="#TypicalAngina"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Downsloping"/>
+        <Class IRI="#Flat"/>
+        <Class IRI="#Upsloping"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Female"/>
+        <Class IRI="#Male"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#FixedDefect"/>
+        <Class IRI="#Normal"/>
+        <Class IRI="#ReseversableDefect"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#LeftVentricularHypertrophy"/>
+        <Class IRI="#Normal"/>
+        <Class IRI="#WaveAbnormality"/>
+    </DisjointClasses>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasChestPain"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#hasGender"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasChestPain"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasGender"/>
+        <Class IRI="#Person"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasChestPain"/>
+        <Class IRI="#ChestPain"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasGender"/>
+        <Class IRI="#Gender"/>
+    </ObjectPropertyRange>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasAge"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasBloodPressure"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasExerciseInducedAngina"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasFastingBloodSugarGreaterThan120"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasMajorVesselsColoredByFlourosopy"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasMaximumHeartRateAchieved"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasSTDepressionInducedByExercise"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <SubDataPropertyOf>
+        <DataProperty IRI="#hasSerumCholestoral"/>
+        <DataProperty abbreviatedIRI="owl:topDataProperty"/>
+    </SubDataPropertyOf>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAge"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasBloodPressure"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasExerciseInducedAngina"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasFastingBloodSugarGreaterThan120"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasMajorVesselsColoredByFlourosopy"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasMaximumHeartRateAchieved"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSTDepressionInducedByExercise"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSerumCholestoral"/>
+        <Class IRI="#Person"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAge"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasBloodPressure"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasExerciseInducedAngina"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasFastingBloodSugarGreaterThan120"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasMajorVesselsColoredByFlourosopy"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasMaximumHeartRateAchieved"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSTDepressionInducedByExercise"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSerumCholestoral"/>
+        <Datatype abbreviatedIRI="xsd:float"/>
+    </DataPropertyRange>
+    <Declaration>
+<Class IRI="#DiseaseStatus"/>
+    </Declaration>
+    <Declaration>
+<Class IRI="#HeartDisease"/>
+    </Declaration>
+    <Declaration>
+<Class IRI="#NoHeartDisease"/>
+    </Declaration>
+    <SubClassOf>
+<Class IRI="#HeartDisease"/>
+        <Class IRI="#DiseaseStatus"/>
+    </SubClassOf>
+    <SubClassOf>
+<Class IRI="#NoHeartDisease"/>
+        <Class IRI="#DiseaseStatus"/>
+    </SubClassOf>
+    <DisjointClasses>
+<Class IRI="#HeartDisease"/>
+        <Class IRI="#NoHeartDisease"/>
+    </DisjointClasses>
+    <Declaration>
+<ObjectProperty IRI="#hasRestingElectrocardiographicResult"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+<ObjectProperty IRI="#hasRestingElectrocardiographicResult"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+<ObjectProperty IRI="#hasRestingElectrocardiographicResult"/>
+        <Class IRI="#RestingElectrocardiographicResults"/>
+    </ObjectPropertyRange>
+    <Declaration>
+<ObjectProperty IRI="#hasSlopePeakExerciseSTSegment"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+<ObjectProperty IRI="#hasSlopePeakExerciseSTSegment"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+<ObjectProperty IRI="#hasSlopePeakExerciseSTSegment"/>
+        <Class IRI="#SlopePeakExerciseSTSegment"/>
+    </ObjectPropertyRange>
+    <Declaration>
+<ObjectProperty IRI="#hasThalliumScanResult"/>
+    </Declaration>
+    <ObjectPropertyDomain>
+<ObjectProperty IRI="#hasThalliumScanResult"/>
+        <Class IRI="#Patient"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+<ObjectProperty IRI="#hasThalliumScanResult"/>
+        <Class IRI="#HeartRate"/>
+    </ObjectPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.6.2018-09-06T00:27:41Z) https://github.com/owlcs/owlapi -->
+

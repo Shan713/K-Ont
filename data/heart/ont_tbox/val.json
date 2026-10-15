@@ -1,0 +1,28 @@
+{
+    "query_sentences": {
+        "nf1": [
+            {
+                "name": "non anginal pain"
+            },
+            {
+                "name": "resting electrocardiographic results"
+            },
+            {
+                "name": "left ventricular hypertrophy"
+            }
+        ],
+        "nf2": [],
+        "nf3": [],
+        "nf4": []
+    },
+    "answer_ids": {
+        "nf1": [
+            4,
+            23,
+            25
+        ],
+        "nf2": [],
+        "nf3": [],
+        "nf4": []
+    }
+}
