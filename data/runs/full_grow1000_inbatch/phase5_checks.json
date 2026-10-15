@@ -173,6 +173,209 @@
     }
    }
   },
+  "G_belongsToElectrode": {
+   "train": {
+    "n": 420,
+    "majority_class": "PositiveElectrode",
+    "majority_baseline_acc": 0.9,
+    "chance_balanced_acc": 0.5,
+    "as_is": {
+     "acc": 0.6095,
+     "balanced_acc": 0.7831,
+     "recall_per_class": {
+      "NegativeElectrode": 1.0,
+      "PositiveElectrode": 0.5661
+     },
+     "MRR": 0.8048
+    },
+    "labels_removed": {
+     "acc": 0.6429,
+     "balanced_acc": 0.6111,
+     "recall_per_class": {
+      "NegativeElectrode": 0.5714,
+      "PositiveElectrode": 0.6508
+     },
+     "MRR": 0.8214
+    }
+   },
+   "test": {
+    "n": 95,
+    "majority_class": "PositiveElectrode",
+    "majority_baseline_acc": 0.8421,
+    "chance_balanced_acc": 0.5,
+    "as_is": {
+     "acc": 0.6316,
+     "balanced_acc": 0.7812,
+     "recall_per_class": {
+      "NegativeElectrode": 1.0,
+      "PositiveElectrode": 0.5625
+     },
+     "MRR": 0.8158
+    },
+    "labels_removed": {
+     "acc": 0.7053,
+     "balanced_acc": 0.6625,
+     "recall_per_class": {
+      "NegativeElectrode": 0.6,
+      "PositiveElectrode": 0.725
+     },
+     "MRR": 0.8526
+    }
+   }
+  },
+  "H_hasStructureFamily": {
+   "train": {
+    "n": 351,
+    "majority_class": "NASICONStructure",
+    "majority_baseline_acc": 0.4872,
+    "chance_balanced_acc": 0.1111,
+    "as_is": {
+     "acc": 0.5812,
+     "balanced_acc": 0.7079,
+     "recall_per_class": {
+      "ArgyroditeStructure": 0.25,
+      "GarnetStructure": 1.0,
+      "LGPSTypeStructure": 1.0,
+      "LayeredOxideStructure": 1.0,
+      "NASICONStructure": 0.2047,
+      "OlivineStructure": 0.9167,
+      "PerovskiteStructure": 1.0,
+      "RockSaltStructure": 1.0,
+      "SpinelStructure": 0.0
+     },
+     "MRR": 0.7219
+    },
+    "labels_removed": {
+     "acc": 0.2934,
+     "balanced_acc": 0.1111,
+     "recall_per_class": {
+      "ArgyroditeStructure": 0.0,
+      "GarnetStructure": 0.0,
+      "LGPSTypeStructure": 0.0,
+      "LayeredOxideStructure": 1.0,
+      "NASICONStructure": 0.0,
+      "OlivineStructure": 0.0,
+      "PerovskiteStructure": 0.0,
+      "RockSaltStructure": 0.0,
+      "SpinelStructure": 0.0
+     },
+     "MRR": 0.4209
+    }
+   },
+   "test": {
+    "n": 85,
+    "majority_class": "NASICONStructure",
+    "majority_baseline_acc": 0.4706,
+    "chance_balanced_acc": 0.1111,
+    "as_is": {
+     "acc": 0.6118,
+     "balanced_acc": 0.6562,
+     "recall_per_class": {
+      "ArgyroditeStructure": 0.0,
+      "GarnetStructure": 1.0,
+      "LayeredOxideStructure": 1.0,
+      "NASICONStructure": 0.25,
+      "OlivineStructure": 1.0,
+      "PerovskiteStructure": 1.0,
+      "RockSaltStructure": 1.0,
+      "SpinelStructure": 0.0
+     },
+     "MRR": 0.7449
+    },
+    "labels_removed": {
+     "acc": 0.3176,
+     "balanced_acc": 0.125,
+     "recall_per_class": {
+      "ArgyroditeStructure": 0.0,
+      "GarnetStructure": 0.0,
+      "LayeredOxideStructure": 1.0,
+      "NASICONStructure": 0.0,
+      "OlivineStructure": 0.0,
+      "PerovskiteStructure": 0.0,
+      "RockSaltStructure": 0.0,
+      "SpinelStructure": 0.0
+     },
+     "MRR": 0.4428
+    }
+   }
+  },
+  "I_hierarchy": {
+   "tbox_axioms": {
+    "n": 16,
+    "MRR": 0.2808,
+    "H@1": 0.125,
+    "H@10": 0.75,
+    "median_rank": 6.0,
+    "random_MRR": 0.1678,
+    "wrong_top1": [
+     [
+      "spinel structure",
+      "oxide structure family",
+      "structure family"
+     ],
+     [
+      "oxide structure family",
+      "structure family",
+      "layered oxide structure"
+     ],
+     [
+      "garnet structure",
+      "oxide structure family",
+      "crystal structure"
+     ],
+     [
+      "olivine structure",
+      "polyanion structure family",
+      "crystal structure"
+     ],
+     [
+      "sulfide structure family",
+      "structure family",
+      "oxide structure family"
+     ],
+     [
+      "perovskite structure",
+      "oxide structure family",
+      "crystal structure"
+     ],
+     [
+      "NASICON structure",
+      "polyanion structure family",
+      "crystal structure"
+     ],
+     [
+      "argyrodite structure",
+      "sulfide structure family",
+      "structure family"
+     ],
+     [
+      "electrolyte role",
+      "battery role",
+      "negative electrode role"
+     ],
+     [
+      "positive electrode role",
+      "battery role",
+      "negative electrode role"
+     ]
+    ]
+   },
+   "label_individuals": {
+    "n": 13,
+    "MRR": 0.9615,
+    "H@1": 0.9231,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "random_MRR": 0.1678,
+    "wrong_top1": [
+     [
+      "Battery role: separator",
+      "separator role",
+      "battery role"
+     ]
+    ]
+   }
+  },
   "D_crowding": {
    "material_pairwise_median": 9.186,
    "material_pairwise_p5": 6.337,
@@ -412,6 +615,169 @@
       "median_rank": 2.0
      }
     }
+   }
+  },
+  "G_belongsToElectrode": {
+   "train": {
+    "n": 420,
+    "majority_class": "PositiveElectrode",
+    "majority_baseline_acc": 0.9,
+    "chance_balanced_acc": 0.5,
+    "as_is": {
+     "acc": 1.0,
+     "balanced_acc": 1.0,
+     "recall_per_class": {
+      "NegativeElectrode": 1.0,
+      "PositiveElectrode": 1.0
+     },
+     "MRR": 1.0
+    },
+    "labels_removed": {
+     "acc": 0.9333,
+     "balanced_acc": 0.6666,
+     "recall_per_class": {
+      "NegativeElectrode": 0.3333,
+      "PositiveElectrode": 1.0
+     },
+     "MRR": 0.9667
+    }
+   },
+   "test": {
+    "n": 95,
+    "majority_class": "PositiveElectrode",
+    "majority_baseline_acc": 0.8421,
+    "chance_balanced_acc": 0.5,
+    "as_is": {
+     "acc": 1.0,
+     "balanced_acc": 1.0,
+     "recall_per_class": {
+      "NegativeElectrode": 1.0,
+      "PositiveElectrode": 1.0
+     },
+     "MRR": 1.0
+    },
+    "labels_removed": {
+     "acc": 0.8526,
+     "balanced_acc": 0.5333,
+     "recall_per_class": {
+      "NegativeElectrode": 0.0667,
+      "PositiveElectrode": 1.0
+     },
+     "MRR": 0.9263
+    }
+   }
+  },
+  "H_hasStructureFamily": {
+   "train": {
+    "n": 351,
+    "majority_class": "NASICONStructure",
+    "majority_baseline_acc": 0.4872,
+    "chance_balanced_acc": 0.1111,
+    "as_is": {
+     "acc": 1.0,
+     "balanced_acc": 1.0,
+     "recall_per_class": {
+      "ArgyroditeStructure": 1.0,
+      "GarnetStructure": 1.0,
+      "LGPSTypeStructure": 1.0,
+      "LayeredOxideStructure": 1.0,
+      "NASICONStructure": 1.0,
+      "OlivineStructure": 1.0,
+      "PerovskiteStructure": 1.0,
+      "RockSaltStructure": 1.0,
+      "SpinelStructure": 1.0
+     },
+     "MRR": 1.0
+    },
+    "labels_removed": {
+     "acc": 0.51,
+     "balanced_acc": 0.3299,
+     "recall_per_class": {
+      "ArgyroditeStructure": 0.0,
+      "GarnetStructure": 0.2609,
+      "LGPSTypeStructure": 0.0,
+      "LayeredOxideStructure": 0.2816,
+      "NASICONStructure": 0.7719,
+      "OlivineStructure": 0.0833,
+      "PerovskiteStructure": 0.0,
+      "RockSaltStructure": 1.0,
+      "SpinelStructure": 0.5714
+     },
+     "MRR": 0.6899
+    }
+   },
+   "test": {
+    "n": 85,
+    "majority_class": "NASICONStructure",
+    "majority_baseline_acc": 0.4706,
+    "chance_balanced_acc": 0.1111,
+    "as_is": {
+     "acc": 1.0,
+     "balanced_acc": 1.0,
+     "recall_per_class": {
+      "ArgyroditeStructure": 1.0,
+      "GarnetStructure": 1.0,
+      "LayeredOxideStructure": 1.0,
+      "NASICONStructure": 1.0,
+      "OlivineStructure": 1.0,
+      "PerovskiteStructure": 1.0,
+      "RockSaltStructure": 1.0,
+      "SpinelStructure": 1.0
+     },
+     "MRR": 1.0
+    },
+    "labels_removed": {
+     "acc": 0.4353,
+     "balanced_acc": 0.2638,
+     "recall_per_class": {
+      "ArgyroditeStructure": 0.0,
+      "GarnetStructure": 0.2,
+      "LayeredOxideStructure": 0.1852,
+      "NASICONStructure": 0.725,
+      "OlivineStructure": 0.0,
+      "PerovskiteStructure": 0.0,
+      "RockSaltStructure": 1.0,
+      "SpinelStructure": 0.0
+     },
+     "MRR": 0.6509
+    }
+   }
+  },
+  "I_hierarchy": {
+   "tbox_axioms": {
+    "n": 16,
+    "MRR": 0.9688,
+    "H@1": 0.9375,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "random_MRR": 0.1678,
+    "wrong_top1": [
+     [
+      "polyanion structure family",
+      "structure family",
+      "NASICON structure"
+     ]
+    ]
+   },
+   "label_individuals": {
+    "n": 13,
+    "MRR": 0.9231,
+    "H@1": 0.8462,
+    "H@10": 1.0,
+    "median_rank": 1.0,
+    "random_MRR": 0.1678,
+    "wrong_top1": [
+     [
+      "Structure family: rock salt",
+      "rock salt structure",
+      "oxide structure family"
+     ],
+     [
+      "Battery role: positive electrode (cathod",
+      "positive electrode role",
+      "substance"
+     ]
+    ]
    }
   },
   "D_crowding": {
