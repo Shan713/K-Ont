@@ -32,6 +32,8 @@ Arms (w = 1, plain conditional sampling):
   cf_gate    K-Ont ranker's analogue if its score >= 0.5, else zero vector
   cf_mix     half the samples from the ranker's 1st analogue, half from its 2nd
   cf_oracle  a candidate with the true space group (ceiling, uses the answer -- not a method)
+  cfbase_rr, cfbase_rand  the same, with a generator trained on PLAIN-encoder framework vectors
+             (export_base_crystal.py): is it K-Ont's vectors, or any encoding of the framework?
 Scored per sample: right composition, true structure (StructureMatcher fit to the reference), framework
 compliance with the arm's analogue (fit_anonymous). Paired bootstrap over targets.
 Acceptance, fixed before the results: cf_rr - const on true-structure share, 95% CI low > 0; and
@@ -72,7 +74,8 @@ CF = os.path.join(DATA, "kg_cf.json.gz")
 RERANK = os.path.join(DATA, "kg_rerank.json")
 KONT_RANKER, NOKONT_RANKER = "prompt+kg+ft_kont", "prompt+kg"
 GEN = os.path.join(DATA, "kgcond3_gen")
-ALL_ARMS = "const,cf_rr,cf_rrnok,cf_comp,cf_rand,cf_none,cf_gate,cf_oracle,cf_mix"
+ALL_ARMS = "const,cf_rr,cf_rrnok,cf_comp,cf_rand,cf_none,cf_gate,cf_oracle,cf_mix,cfbase_rr,cfbase_rand"
+BASE_EXPORT = "grow5000_v2_base"  # plain-encoder framework vectors (export_base_crystal.py): the K-Ont control
 
 
 # ---------------------------------------------------------------- 1 counterfactual rows
@@ -139,7 +142,7 @@ def real_analogues(pool, rows):
 def stage_train(a):
     torch.manual_seed(a.seed)
     tok, dev = gen.CIFTokenizer(), "cuda"
-    vecs = k2.crystal_vectors(a.export, "crystal_anon")
+    vecs = k2.crystal_vectors(BASE_EXPORT if a.arm == "cfbase" else a.export, "crystal_anon")
     pool, rows = kg_pool.load()
     ra = real_analogues(pool, rows)
     dim = next(iter(vecs.values())).shape[0]
@@ -149,7 +152,7 @@ def stage_train(a):
     data = {s: [(ra[i], e, True) for i in pool[f"seen_{s}"] for e in [enc(rows[i]["cif"])] if len(e) <= lim]
             for s in ("train", "val")}
     cf = {"train": [], "val": []}
-    if a.arm == "cf":
+    if a.arm in ("cf", "cfbase"):
         val_ids = set(pool["seen_val"])
         for r in json.load(gzip.open(CF, "rt", encoding="utf-8")):
             e = enc(r["cif"])
@@ -288,6 +291,7 @@ def eval_targets(pool, rows):
 def stage_eval(a):
     tok, dev = gen.CIFTokenizer(), "cuda"
     vecs = k2.crystal_vectors(a.export, "crystal_anon")
+    bvecs = k2.crystal_vectors(BASE_EXPORT, "crystal_anon") if os.path.exists(os.path.join(k1.EXPORT, BASE_EXPORT)) else None
     dim = next(iter(vecs.values())).shape[0]
     pool, rows = kg_pool.load()
     targets = eval_targets(pool, rows)
@@ -301,11 +305,13 @@ def stage_eval(a):
         out = os.path.join(DATA, f"kgcond3_eval_{arm}.json")
         if os.path.exists(out):
             continue
-        plan = analogue_plan(arm, targets, rows, pool, a.samples, a.seed)
+        base = arm.startswith("cfbase_")  # same analogues as the cf_ arm, plain-encoder vectors and model
+        plan = analogue_plan(arm.replace("cfbase_", "cf_"), targets, rows, pool, a.samples, a.seed)
+        vv = bvecs if base else vecs
         gdir = os.path.join(GEN, arm)
         if not os.path.exists(os.path.join(gdir, "_done")):
             m = k2.Deep(gen.load_model(dev, "crystallm_v1_small"), dim, a.prefix_len, gated=True).to(dev)
-            m.load_state_dict(torch.load(os.path.join(DATA, f"kgcond3_{'const' if arm == 'const' else 'cf'}.pt"), map_location=dev))
+            m.load_state_dict(torch.load(os.path.join(DATA, f"kgcond3_{'const' if arm == 'const' else 'cfbase' if base else 'cf'}.pt"), map_location=dev))
             m.eval()
             t0 = time.time()
             for bi, b in enumerate(batches):
@@ -314,7 +320,7 @@ def stage_eval(a):
                 for t in b:
                     for c in plan[t["id"]][0]:
                         prompts.append(gen.prompt_for(t["cell"]))
-                        vs.append(vecs[c] if c else torch.zeros(dim))
+                        vs.append(vv[c] if c else torch.zeros(dim))
                 cifs = sample_group(m, tok, prompts, vs, dev)
                 for j, t in enumerate(b):
                     os.makedirs(os.path.join(gdir, t["id"]), exist_ok=True)
@@ -358,7 +364,8 @@ def stage_report(a):
     rng = random.Random(0)
     rep = {"arms": arms, "acceptance": "cf_rr - const strict CI low > 0; cf_rr - cf_rand complies CI low > 0"}
     pairs = [("cf_rr", "const"), ("cf_rr", "cf_rand"), ("cf_rr", "cf_rrnok"), ("cf_rr", "cf_comp"), ("cf_rr", "cf_none"),
-             ("cf_gate", "const"), ("cf_mix", "const"), ("cf_mix", "cf_rr"), ("cf_none", "const"), ("cf_oracle", "const")]
+             ("cf_gate", "const"), ("cf_mix", "const"), ("cf_mix", "cf_rr"), ("cf_none", "const"), ("cf_oracle", "const"),
+             ("cf_rr", "cfbase_rr"), ("cfbase_rr", "const"), ("cfbase_rr", "cfbase_rand")]
     for name, sel in (("all", ids), ("old79", sorted(old79))):
         boots = [[rng.choice(sel) for _ in sel] for _ in range(10000)]
         r = {"n": len(sel), "means": {x: {k: round(100 * sum(data[x][i][k] for i in sel) / len(sel), 1) for k in keys} for x in arms},
@@ -380,7 +387,7 @@ def stage_report(a):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", required=True, choices=["cf", "train", "eval", "report"])
-    ap.add_argument("--arm", default="cf", choices=["cf", "const"])
+    ap.add_argument("--arm", default="cf", choices=["cf", "const", "cfbase"])
     ap.add_argument("--arms", default=ALL_ARMS)
     ap.add_argument("--export", default="grow5000_v2")
     ap.add_argument("--prefix-len", type=int, default=8)
