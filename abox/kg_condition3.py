@@ -188,9 +188,8 @@ def stage_train(a):
         return sum(ls) / len(ls)
 
     out = os.path.join(DATA, f"kgcond3_{a.arm}.pt")
-    crit = lambda: val_loss(data["val"]) + (val_loss(cf["val"]) if cf["val"] else 0)
-    best, t0 = crit(), time.time()
     log = [{"epoch": 0, "val_real": val_loss(data["val"]), "val_cf": val_loss(cf["val"])}]
+    best, t0 = log[0]["val_real"] + (log[0]["val_cf"] if cf["val"] else 0), time.time()
     torch.save(model.state_dict(), out)
     print(f"{a.arm}: {len(data['train'])} real + {len(cf['train'])} counterfactual train rows; {log[0]}", flush=True)
     for ep in range(1, a.epochs + 1):
