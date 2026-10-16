@@ -34,7 +34,14 @@ DATA = os.path.join(HERE, "data", "crystallm")
 INITS = {"kont": os.path.join(HERE, "data", "runs", "full_grow5000_v2", "final"), "base": "Hui97/OnT-MiniLM-L12-galen"}
 
 
-def target_text(full):
+MINIMAL = ("Material:", "Type:", "Formula:", "Chemical system:", "Sites:")
+
+
+def target_text(full, minimal=False):
+    """structure-free target sentence; minimal (Step 44, novel compositions): only what a new composition
+    has -- name, type, formula, chemical system and the prompt's cell (Sites line), no computed properties"""
+    if minimal:
+        return "\n".join(l for l in full.split("\n") if l.startswith(MINIMAL))
     return "\n".join(l for l in full.split("\n") if not l.startswith(STRUCT_LINES) or l.startswith("Sites:"))
 
 
@@ -46,6 +53,14 @@ def main():
     ap.add_argument("--cands", type=int, default=12)
     ap.add_argument("--lr", type=float, default=2e-5)
     ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--frac", type=float, default=1.0, help="learning curve: share of training targets used")
+    ap.add_argument("--tag", default="", help="output suffix (learning curve runs)")
+    ap.add_argument("--retain", type=float, default=0.0,
+                    help="Step 43: weight of a retention loss keeping the start model's embeddings of KG/ontology "
+                         "sentences (MSE to the frozen start model), so K-Ont learns the analogy without forgetting")
+    ap.add_argument("--minimal", action="store_true", help="Step 44: composition-only target sentences")
+    ap.add_argument("--extra", default=None, help="Step 44: also score these targets (novel_pool.json)")
+    ap.add_argument("--save", default=None, help="save the fine-tuned encoder here (Step 43 ability checks)")
     a = ap.parse_args()
     random.seed(a.seed)
     torch.manual_seed(a.seed)
@@ -61,6 +76,8 @@ def main():
         pos = [c for c in cs if c["space_group"] == t["space_group"]]
         if pos and len(pos) < len(cs):
             tr.append((t, cs))
+    if a.frac < 1:
+        tr = random.Random(a.seed).sample(tr, max(1, round(a.frac * len(tr))))
     print(f"{a.init}: {len(tr)} training targets (K-Ont-seen, mixed candidates)", flush=True)
 
     dev = "cuda"
@@ -79,6 +96,28 @@ def main():
             e = model(f)["sentence_embedding"]
         return F.normalize(e.float(), dim=-1)
 
+    def raw(texts):
+        f = model.tokenize(texts)
+        f = {k: v.to(dev) if torch.is_tensor(v) else v for k, v in f.items()}
+        with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+            return model(f)["sentence_embedding"].float()
+
+    retain = None
+    if a.retain > 0:  # frozen start-model embeddings of the sentences K-Ont was trained on
+        ab = os.path.join(HERE, "data", "battgpt_abox_grow_5000_v2")
+        sents = list(full.values())
+        sents += list(json.load(open(os.path.join(ab, "verbalizations_crystals_full.json"), encoding="utf-8")).values())
+        sents += list(json.load(open(os.path.join(ab, "verbalizations_elements.json"), encoding="utf-8")).values())
+        cn = os.path.join(INITS[a.init], "..", "data", "concept_names.json")
+        if os.path.exists(cn):
+            sents += list(json.load(open(cn)).values())
+        model.eval()
+        with torch.no_grad():
+            teach = torch.cat([raw(sents[i:i + 64]) for i in range(0, len(sents), 64)])
+        model.train()
+        retain = (sents, teach)
+        print(f"retention set: {len(sents)} sentences, weight {a.retain}", flush=True)
+
     t0, step = time.time(), 0
     for ep in range(a.epochs):
         random.shuffle(tr)
@@ -91,7 +130,7 @@ def main():
                 neg = [c for c in cs if c["space_group"] != t["space_group"]]
                 k = min(len(pos), max(1, a.cands // 3))
                 pick = random.sample(pos, k) + random.sample(neg, min(len(neg), a.cands - k))
-                texts_t.append(target_text(full[t["id"]]))
+                texts_t.append(target_text(full[t["id"]], a.minimal))
                 groups.append((len(texts_c), [c["space_group"] == t["space_group"] for c in pick]))
                 texts_c += [full[c["id"]] for c in pick]
             et, ec = emb(texts_t), emb(texts_c)
@@ -101,6 +140,9 @@ def main():
                 lab = torch.tensor(lab, device=dev)
                 loss = loss + torch.logsumexp(s, 0) - torch.logsumexp(s[lab], 0)
             loss = loss / len(groups)
+            if retain is not None:
+                idx = random.sample(range(len(retain[0])), 16)
+                loss = loss + a.retain * F.mse_loss(raw([retain[0][j] for j in idx]), retain[1][idx]) / retain[1][idx].pow(2).mean()
             opt.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
@@ -113,6 +155,8 @@ def main():
         print(f"{a.init} epoch {ep + 1}: mean loss {tot / ((len(tr) + a.targets_per_step - 1) // a.targets_per_step):.3f}", flush=True)
 
     model.eval()
+    if a.save:
+        model.save(a.save)
     scores = {}
     targets = [byid[i] for i in pool["targets"]]
     need_c = sorted({c["id"] for t in targets for c in cands_of(t)})
@@ -123,10 +167,20 @@ def main():
             ec.update(zip(need_c[i:i + 64], e))
         for i in range(0, len(targets), 64):
             b = targets[i:i + 64]
-            e = emb([target_text(full[t["id"]]) for t in b])
+            e = emb([target_text(full[t["id"]], a.minimal) for t in b])
             for t, v in zip(b, e):
                 scores[t["id"]] = {c["id"]: float(ec[c["id"]] @ v) for c in cands_of(t)}
-    json.dump(scores, open(os.path.join(DATA, f"kg_ft_scores_{a.init}.json"), "w"))
+        if a.extra:  # Step 44: novel compositions, {id: {"text": minimal sentence, "candidates": [pool ids]}}
+            ex = json.load(open(a.extra))
+            need = sorted({c for v in ex.values() for c in v["candidates"]} - set(ec))
+            for i in range(0, len(need), 64):
+                ec.update(zip(need[i:i + 64], emb([full[c] for c in need[i:i + 64]])))
+            ids = sorted(ex)
+            for i in range(0, len(ids), 64):
+                e = emb([ex[k]["text"] for k in ids[i:i + 64]])
+                for k, v in zip(ids[i:i + 64], e):
+                    scores[k] = {c: float(ec[c] @ v) for c in ex[k]["candidates"]}
+    json.dump(scores, open(os.path.join(DATA, f"kg_ft_scores_{a.init}{a.tag}.json"), "w"))
     print(f"{a.init}: scored {len(scores)} unseen targets ({(time.time() - t0) / 60:.1f} min)", flush=True)
 
 

@@ -20,7 +20,8 @@ anonymous formula, different formula):
 Model: gradient-boosted trees, pointwise "same space group" label, pick = top score per target.
 Candidates come from the K-Ont-seen pool (kg_pool.py); training and evaluation only on the 902 materials
 K-Ont never saw (grouped 5-fold cross-fitting, so every prediction is out-of-fold); the 79 Step 37-38
-generation targets are reported separately. Also writes each method's top 3 with scores (generation).
+generation targets are reported separately. Also writes each method's top 3 with scores (generation),
+and top 8 to kg_rerank_top8.json (template generator).
 Metric: pick has the true space group / same framework (fit_anonymous), bootstrap CI vs composition.
 
     .venv-crystallm/Scripts/python.exe abox/kg_rerank.py
@@ -160,7 +161,7 @@ def main():
     rng = np.random.RandomState(0)
     fold_of = dict(zip(tlist, rng.permutation(len(tlist)) % 5))
     folds = np.array([fold_of[t] for t in tid])
-    picks, top3 = {}, {}
+    picks, top3, top8 = {}, {}, {}
     for name, groups in GROUPS.items():
         if groups is None:
             score = np.array([m[4] for m in meta])
@@ -181,6 +182,7 @@ def main():
         for t in ranked:
             ranked[t].sort(key=lambda x: -x[0])
         top3[name] = {t: [(c, s_) for s_, c, _ in v[:3]] for t, v in ranked.items()}
+        top8[name] = {t: [(c, s_) for s_, c, _ in v[:8]] for t, v in ranked.items()}
         picks[name] = {t: (v[0][1], v[0][2], v[0][0]) for t, v in ranked.items()}
         print(f"{name}: SG {100 * np.mean([v[1] for v in picks[name].values()]):.1f}", flush=True)
 
@@ -223,6 +225,7 @@ def main():
                 diff = {t: g(a_, t) - g(b_, t) for t in tset}
                 bs = sorted(100 * sum(diff[t] for t in b) / len(b) for b in B)
                 rep[subset][f"{a_} - {b_} ({key})"] = [round(100 * np.mean(list(diff.values())), 1), round(bs[250], 1), round(bs[9749], 1)]
+    json.dump(top8, open(os.path.join(DATA, "kg_rerank_top8.json"), "w"))  # Step 41 template generator
     json.dump({"report": rep, "picks": {n: {t: list(p) + [fr[(t, p[0])]] for t, p in d.items()} for n, d in picks.items()},
                "top3": top3},
               open(OUT, "w"), indent=1)
