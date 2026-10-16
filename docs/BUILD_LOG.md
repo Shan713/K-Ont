@@ -1840,3 +1840,76 @@ ceiling (any candidate right 73-80%) leaves room, but K-Ont's material vectors d
 **Conclusion**: retrieval is not the lever either. Across Steps 37-39 K-Ont's embeddings add no
 significant gain to structure generation; K-Ont's value stays where Steps 34-36 measured it (typing,
 roles, families, TBox) and in representation (heart check).
+
+## Step 40 — K-Ont injection the generator must follow: it steers, but cannot beat plain fine-tuning (2026-10-16)
+
+`abox/kg_pool.py`, `abox/kg_rerank.py`, `abox/kg_retriever_ft.py`, `abox/kg_condition3.py`.
+**Diagnosis of Step 38**: K-Ont's framework vectors separate polymorphs (crystal_anon, within a formula
+type: cosine 0.996 same space group vs 0.77 different; nearest neighbour right 86%), but the generator
+ignored them: CrystaLLM was pre-trained on Materials Project, so on KG materials it already knows the
+answer, and v2's composition-retrieved training analogues taught it to distrust the vector.
+**Split** (`kg_pool.py`): generators and retrievers train only on the 3,730 KG materials K-Ont saw; analogue
+pool = the same; evaluation on all **902** K-Ont-unseen KG materials with a candidate (vs 79 before).
+**Retrieval** (`kg_rerank.py`, gradient-boosted ranker, 5-fold out-of-fold on the 902; `kg_retriever_ft.py`,
+encoder fine-tuned on "candidate shares the target's space group", listwise, K-Ont-seen data only):
+
+| ranker, 902 targets | right SG | right framework |
+|---|---|---|
+| composition rule (Step 38) | 52.7 | 51.3 |
+| prompt features (pool popularity, Z) | 59.1 | 53.3 |
+| + KG facts | 62.3 | 57.1 |
+| + raw K-Ont cosines (Step 39 vectors) | 62.4 | 56.8 |
+| + fine-tuned K-Ont retriever | **66.1** | **60.9** |
+| + fine-tuned plain-encoder retriever | 67.3 | 61.5 |
+
+Fine-tuned retriever adds +3.8 [1.8, 5.9] over KG facts; K-Ont init vs plain init: -1.2 [-2.9, +0.4].
+**Generator**: 6,453 counterfactual CIFs (each training composition substituted into a pool framework of a
+different space group, written like the corpus; 60/60 right composition, 59/60 the analogue's SG) +
+clean real rows (same-prototype neighbour or own framework vector); gated Deep model, 3 epochs. Val loss
+real 0.258 (plain fine-tune 0.267), counterfactual 0.432 -> 0.227. 8 samples, same seeds:
+
+| 902 targets | true structure | found@8 | follows analogue | composition |
+|---|---|---|---|---|
+| plain fine-tune (const) | **47.5** | **68.3** | 44.4 | 97.0 |
+| cf model, no vector | 39.5 | 60.9 | 38.8 | 96.4 |
+| cf, K-Ont-ranker analogue (cf_rr) | 44.1 | 58.9 | 50.9 | 95.7 |
+| cf, ranker without K-Ont | 42.2 | 55.0 | 52.1 | 96.0 |
+| cf, composition-rule analogue | 38.5 | 53.3 | 41.0 | 92.6 |
+| cf, random candidate | 22.7 | 36.8 | 24.3 | 90.4 |
+| cf, gated (score >= 0.5) | 44.3 | 60.2 | 49.3 | 96.3 |
+| cf, half top-1 / half top-2 | 43.3 | 60.6 | 50.6 | 95.8 |
+| cf, true-SG analogue (ceiling) | 49.6 | 65.6 | 48.4 | 95.8 |
+| plain-encoder vectors, K-Ont-ranker analogue | 44.9 | 56.8 | 53.6 | 94.2 |
+
+Pre-set acceptance: cf_rr - const true structure -3.4 [-5.2, -1.6] -> **FAILS**; cf_rr - cf_rand compliance
++26.6 [23.7, 29.5] (true structure +21.4) -> **passes: the K-Ont vector steers the structure**.
+Post hoc (designed after cf_none): K-Ont model when the ranker is confident, plain model otherwise:
+-1.2 [-2.8, +0.4] at the pre-set 0.5; even on confident targets K-Ont 53.0 vs plain 54.4.
+**Why**: the ceiling. With the TRUE framework the conditioned generator reaches 49.6 vs 47.5 -- on Materials
+Project materials CrystaLLM already recalls the structure wherever an analogue would be right, so
+conditioning it can add at most ~2 points; following a wrong analogue costs more. Plain-encoder framework
+vectors steer as well as K-Ont's (44.9 vs 44.1; polymorph separation 88.5% vs 86.1%): the steering comes
+from encoding the framework sentence, not from K-Ont's training.
+
+## Step 41 — K-Ont-guided template generator: beats fine-tuned CrystaLLM (2026-10-16)
+
+`abox/kg_template_gen.py`: no neural decoder. The ranker's top-k pool frameworks; the target's elements
+placed on their sites (Step 40 substitution, lattice scaled by atomic radii, unrelaxed); right = matches
+the reference (StructureMatcher 0.2 / 0.3 / 5). Same 902 targets and tolerances as Step 40.
+
+| found@k | 1 | 2 | 3 | 5 | 8 |
+|---|---|---|---|---|---|
+| CrystaLLM fine-tuned (Step 40 const) | 48.3 | 57.0 | 61.2 | 65.2 | 68.3 |
+| template, composition rule | 51.3 | 53.7 | 55.8 | 57.6 | 60.8 |
+| template, ranker without K-Ont | 56.3 | 62.1 | 63.2 | 66.4 | 68.4 |
+| **template, K-Ont ranker** | **60.5** | **64.9** | **66.9** | **69.4** | **71.4** |
+| template, plain-encoder ranker | 60.5 | 65.4 | 67.6 | 71.3 | 72.7 |
+
+K-Ont template - CrystaLLM: @1 +12.2 [9.0, 15.4], @3 +5.7 [2.5, 8.8], @8 +3.1 [0.1, 6.0]; vs the
+composition-rule template +9 to +12; vs the ranker without K-Ont +3 to +4 (all CI > 0); vs the plain-
+encoder ranker 0.0 @1, -1.9 [-3.1, -0.7] @5. **Matched budget of 8** (k templates + 8-k CrystaLLM samples):
+3 + 5 = 77.3 vs CrystaLLM x8 68.3, +9.0 [6.9, 11.1] (composition-rule templates +6.5): the two get
+different materials right.
+**Reading**: KG-trained retrieval + templates is the way the KG beats CrystaLLM on known structures --
+not conditioning CrystaLLM (Step 40 ceiling). The gain comes from the KG-trained retriever; starting it from
+K-Ont's weights rather than the plain encoder adds nothing at full data (Step 42 tests scarce data).
