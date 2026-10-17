@@ -1931,3 +1931,24 @@ K-Ont-unseen targets; template = top-1 substituted framework matches the referen
 K-Ont's starting point is better only at 5% (space group significant), worse at 10-25%, equal from 50%.
 K-Ont is steadier across seeds (template per seed within 1.6 points at every fraction; the plain start has
 outliers: 49.2 at 10%, 51.6 at 50%). Not a consistent K-Ont advantage for this task.
+
+## Step 43 — One K-Ont model for the ontology AND crystal retrieval: works with a retention loss (2026-10-17)
+
+`abox/kont_framework.py`: K-Ont (Step 36) fine-tuned on the KG relation "this material's framework is that
+pool material's" (Step 40 retriever objective), packaged as a K-Ont run (fine-tuned encoder + original role
+model, wrapper and concept names) and put through the same `phase5_checks` as K-Ont; retrieval scored as
+the template generator's top-1/3 (retriever alone, 902 K-Ont-unseen targets).
+
+| | K-Ont (Step 36) | + retrieval objective | + retrieval + retention (MSE to K-Ont's embeddings of all 10,108 KG/ontology sentences, weight 1) |
+|---|---|---|---|
+| material typing H@1 | 1.000 | **0.0004** | 0.999 |
+| crystal typing H@1 | 0.997 | 0.769 | 1.000 |
+| role, no label line (held-out) | 1.000 | 0.944 | 1.000 |
+| family, no label line (held-out) | 0.988 | 0.954 | 1.000 |
+| TBox MRR / H@1 | 0.969 / 0.938 | 0.969 / 0.938 | 1.000 / 1.000 |
+| template found@1 / @3 | -- | 57.8 / 68.4 | 55.0 / 66.5 |
+
+Retrieval-only fine-tuning forgets K-Ont's typing (materials collapse); with retention, one model keeps every
+Step 36 criterion (all >= 0.999) and retrieves frameworks at -2.5 [-4.9, -0.2] (@1) / -1.9 [-3.4, -0.4] (@3)
+vs the specialist retriever. This is the K-Ont-specific result: a single hyperbolic ontology + KG encoder
+that both reasons over the ontology and guides crystal generation.
