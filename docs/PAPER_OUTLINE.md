@@ -52,7 +52,7 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 | template, KG ranker w/o K-Ont | 56.3 | 63.2 | 68.4 |
 | **template, K-Ont ranker** | **60.5** | **66.9** | **71.4** |
 | template, plain-encoder ranker (control) | 60.5 | 67.6 | 72.7 |
-| K-Ont template, CHGNet-relaxed | **[pending]** | **[pending]** | – |
+| K-Ont template, CHGNet-relaxed | 60.8 | 67.3 | – |
 | 3 templates + 5 CrystaLLM (budget 8) | | | **77.3** (+9.0 [6.9, 11.1]) |
 
 **Table 5 — Novel cathode compositions (Step 44, not in Materials Project).** Lowest CHGNet energy per composition, K-Ont templates vs CrystaLLM-large's best of 10 relaxed samples; win/tie/loss (5 meV/atom band) **[pending]**.
@@ -71,7 +71,7 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 All scripts in `abox/` (kg_pool, kg_retriever_ft, kg_rerank, kg_template_gen, kg_condition3, kg_learning_curve, kont_framework, novel_template); BUILD_LOG Steps 36–44; seeds and splits fixed; pre-set acceptance criteria stated before results.
 
 ## Still to do before submission
-1. Fill Tables 4–5 pending numbers (runs in progress).
+1. Fill Table 5 pending numbers (novel-composition run in progress).
 2. DFT check of a few top novel candidates (optional, strengthens Table 5).
 3. Target venue choice (e.g. a materials-informatics journal such as *npj Comput. Mater.* / *Digital Discovery*, or an ML-for-science workshop) — the guide's call.
 4. Figures: KG pipeline, K-Ont geometry (Poincaré disc), template generator diagram, learning curve, per-method bars.

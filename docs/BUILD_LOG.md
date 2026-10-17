@@ -1912,6 +1912,9 @@ composition-rule template +9 to +12; vs the ranker without K-Ont +3 to +4 (all C
 encoder ranker 0.0 @1, -1.9 [-3.1, -0.7] @5. **Matched budget of 8** (k templates + 8-k CrystaLLM samples):
 3 + 5 = 77.3 vs CrystaLLM x8 68.3, +9.0 [6.9, 11.1] (composition-rule templates +6.5): the two get
 different materials right.
+**CHGNet relaxation** of the K-Ont ranker's top 3 (fmax 0.1, 300 steps, cell free; 2,611 relaxations,
+crash-tolerant pool `abox/robust_pool.py`, no worker lost): found@1 60.8, @2 65.3, @3 67.3 vs 60.5 / 64.9 /
+66.9 unrelaxed -- substitution already lands in the right basin; the unrelaxed comparison stands.
 **Reading**: KG-trained retrieval + templates is the way the KG beats CrystaLLM on known structures --
 not conditioning CrystaLLM (Step 40 ceiling). The gain comes from the KG-trained retriever; starting it from
 K-Ont's weights rather than the plain encoder adds nothing at full data (Step 42 tests scarce data).
