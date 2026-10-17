@@ -68,6 +68,8 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 
 **Table 6 — Injection into CrystaLLM (Step 40), the negative result.** plain fine-tune 47.5; K-Ont-steered 44.1; random analogue 22.7; true analogue (ceiling) 49.6; plain-encoder vectors 44.9. The vector steers (+21.4 vs random) but the ceiling is +2.1: CrystaLLM recalls Materials Project structures, so conditioning can't add much; retrieval + templates is the effective route.
 
+**Table 7 — Injection without memorisation (Step 45).** CrystaLLM-architecture GPT pre-trained from scratch on 300k CrystaLLM training CIFs with every evaluation composition removed; same arms. Plain 20.6, K-Ont-ranked analogue 22.1 (**+1.5 [+0.5, +2.5], passes**), true analogue 23.3 (ceiling +2.7), no vector 17.4, random 11.1. K-Ont injection helps causally once memorisation is removed, but the vector channel is narrow; templates reach 60.5%.
+
 ## 5 Discussion / limitations
 - KG labels are rule-based; the KG pipeline is verified by faculty but not expert-curated.
 - Retrieval gains come from KG-trained retrieval; K-Ont's pre-training helps only at very low data.

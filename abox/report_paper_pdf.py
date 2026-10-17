@@ -56,8 +56,8 @@ def table(head, rows, num_from=1):
     return f"<table><thead><tr>{h}</tr></thead><tbody>{b}</tbody></table>"
 
 
-def arm_stats(arm):
-    m = J(f"kgcond3_eval_{arm}.json")
+def arm_stats(arm, tag=""):
+    m = J(f"kgcond3{tag}_eval_{arm}.json")
     S = [s for t in m for s in t["samples"]]
     n = len(S)
     return {"strict": 100 * sum(bool(s.get("strict")) for s in S) / n,
@@ -124,6 +124,25 @@ def fig_injection(st):
     ax.set_xlabel("generated samples with the true structure (%)")
     ax.grid(axis="x", color=GRID, lw=0.8)
     ax.set_title("Injecting framework vectors into CrystaLLM (dashed: plain fine-tune)", loc="left")
+    return svg(fig)
+
+
+def fig_scratch(ss, sc):
+    order = [("const", "plain fine-tune (no K-Ont)", COL["crystallm"]), ("cf_oracle", "true analogue (ceiling)", "#9aa3ad"),
+             ("cf_rr", "K-Ont vector, K-Ont-ranked analogue", COL["kont"]), ("cf_rrnok", "K-Ont vector, ranker w/o K-Ont", COL["kont"]),
+             ("cf_none", "K-Ont model, no vector", "#c9ced6"), ("cf_rand", "K-Ont vector, random analogue", COL["neg"])]
+    fig, ax = plt.subplots(figsize=(6.6, 2.3))
+    w = 0.38
+    for i, (a, lab, c) in enumerate(order):
+        for j, (st, alpha, name) in enumerate(((sc, 0.45, "CrystaLLM base"), (ss, 1.0, "scratch base"))):
+            v = st[a]["strict"]
+            ax.barh(i + (j - 0.5) * w, v, w * 0.9, color=c, alpha=alpha)
+            ax.text(v + 0.6, i + (j - 0.5) * w, f"{v:.1f}", va="center", fontsize=7, color=INK)
+    ax.set_yticks(range(len(order)), [o[1] for o in order])
+    ax.invert_yaxis()
+    ax.set_xlabel("generated samples with the true structure (%) — pale: CrystaLLM base (Step 40), solid: from-scratch base (Step 45)")
+    ax.grid(axis="x", color=GRID, lw=0.8)
+    ax.set_title("Same injection, generator that has / has not seen the answers", loc="left")
     return svg(fig)
 
 
@@ -211,6 +230,8 @@ def main():
     c3 = J("kgcond3_report.json")["all"]["paired"]
     st = {a: arm_stats(a) for a in ("const", "cf_rr", "cf_rrnok", "cf_comp", "cf_rand", "cf_none", "cf_gate", "cf_oracle", "cf_mix",
                                     "cfbase_rr", "cfbase_rand")}
+    ss = {a: arm_stats(a, "_scratch") for a in ("const", "cf_rr", "cf_rrnok", "cf_rand", "cf_none", "cf_oracle")}
+    sp = J("kgcond3_scratch_report.json")["all"]["paired"]
     lc = J("kg_learning_curve.json")
     fw = J("kont_framework.json")
     nv = J("novel_template.json")
@@ -306,7 +327,7 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 
 <section class="cover">
   <div>
-    <div class="kicker">K-Ont research · results for the paper · BUILD_LOG Steps 36–44</div>
+    <div class="kicker">K-Ont research · results for the paper · BUILD_LOG Steps 36–45</div>
     <h1>K-Ont: one ontology + knowledge-graph encoder that reasons over the ontology and guides crystal generation</h1>
     <p style="font-size:11pt;color:{MUTED};max-width:155mm">What we built, every experiment that tests it, and an honest reading of what the results do and do not support — for going through the results and deciding the paper.</p>
   </div>
@@ -320,7 +341,7 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
     </div>
     <ul>
       <li><b>Works:</b> K-Ont learns the battery ontology and KG (typing, roles, families, hierarchy at 98.8–100%) and beats OnT as a representation on heart disease; one K-Ont model can do ontology reasoning and crystal-framework retrieval together; K-Ont-guided templates beat CrystaLLM on known materials and complement it on new ones.</li>
-      <li><b>Does not work:</b> injecting K-Ont embeddings into CrystaLLM. The vector steers the structure, but CrystaLLM already recalls Materials Project crystals, so even the true framework adds only ~2 points.</li>
+      <li><b>Works only narrowly:</b> injecting K-Ont embeddings into a crystal LLM. On CrystaLLM it cannot beat fine-tuning (CrystaLLM already recalls Materials Project crystals); on a GPT pre-trained from scratch without the test compositions it does (+1.5 points, significant), but even the true framework adds under 3 points — retrieval plus direct construction is the effective route.</li>
       <li><b>Caveats to state in the paper:</b> a retriever started from the plain encoder does about as well as one started from K-Ont (K-Ont helps only at 5% data); KG labels are rule-based; new-material energies are CHGNet, not DFT.</li>
     </ul>
   </div>
@@ -340,6 +361,12 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 {t_inj}
 {t_inj_d}
 <div class="box neg"><b>Reading.</b> The vector really steers the structure: with a random analogue the true-structure share halves (22.7% vs 44.1%). But it never beats plain fine-tuning (−3.4, significant). The ceiling explains why: given the <i>true</i> framework, the model reaches only 49.6% vs 47.5% — wherever an analogue would be right, CrystaLLM already recalls the answer. Plain-encoder vectors steer just as well, so this steering is not specific to K-Ont. This is a negative result with its cause measured, and it points to using K-Ont outside the generator.</div>
+
+<h2 class="pb">2b Injection without memorisation: a from-scratch GPT (Step 45)</h2>
+<p>To remove memorisation, a model with CrystaLLM-small's architecture (25M parameters) was pre-trained <b>from scratch</b> on 300,000 crystal files from CrystaLLM's own training set with every structure of every evaluation composition removed (all held-out KG materials and the novel cathodes), on this laptop (169 minutes). The same Step 40 arms were then fine-tuned from it and evaluated on the same 902 materials.</p>
+<div class="fig">{fig_scratch(ss, st)}</div>
+{table(["paired difference, scratch base [95% CI]", "true structure", "found within 8", "follows analogue"], [[n, *[ci([sp[k][m]["diff"], *sp[k][m]["ci95"]]) for m in ("strict", "found", "complies")]] for k, n in (("cf_rr - const", "K-Ont-ranked analogue − plain fine-tune"), ("cf_rr - cf_rand", "K-Ont-ranked analogue − random analogue"), ("cf_rr - cf_none", "K-Ont-ranked analogue − same model, no vector"), ("cf_rr - cf_rrnok", "K-Ont ranker − ranker without K-Ont"), ("cf_oracle - const", "true analogue (ceiling) − plain fine-tune"))])}
+<div class="box ok"><b>Reading.</b> Without memorisation the baseline falls from 47.5% to {ss["const"]["strict"]:.1f}%, and K-Ont injection now <b>beats plain fine-tuning</b> ({ci([sp["cf_rr - const"]["strict"]["diff"], *sp["cf_rr - const"]["strict"]["ci95"]])}): the pre-set criterion that failed on CrystaLLM passes. But the channel is narrow: even the true framework adds only {sg(sp["cf_oracle - const"]["strict"]["diff"])} points, because a 384-number vector says <i>which</i> framework while the model must still write every coordinate itself. On the same materials, templates that place the atoms directly from the KG framework are right {tg["prompt+kg+ft_kont"]["found@1"]:.1f}% of the time at the first attempt — the effective way to use K-Ont is retrieval plus direct construction.</div>
 
 <h2 class="pb">3 K-Ont-guided template generation (Steps 40–41)</h2>
 <div class="fig">{fig_pipeline()}</div>

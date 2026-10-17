@@ -1980,3 +1980,33 @@ K-Ont - plain-encoder templates: 26 lower / 156 tie / 18 higher, -1.3 [-4.1, +1.
 templates, no neural decoder, match a large crystal LLM's best of ten on new compositions; adding them to
 CrystaLLM finds a lower-energy structure for 17% of compositions and never a worse one. CHGNet energies, not
 DFT.
+
+## Step 45 — Injection without memorisation: a from-scratch GPT; K-Ont now helps, but the channel is narrow (2026-10-18)
+
+`abox/scratch_gpt.py` (+ `abox/safe_pickle.py`), `abox/kg_condition3.py --base scratch_small --tag _scratch`.
+CrystaLLM's training split (`cifs_v1_train.pkl.gz`, Zenodo 10642388, 286.2 MB, md5 54f695b7..., read with a
+plain-data-only unpickler) minus every CIF of the 1,004 reduced formulas of all K-Ont-unseen KG materials and
+the 200 novel compositions (406 removed of 320,000 scanned) -> 300,000 train / 5,000 val CIFs, 101M tokens.
+CrystaLLM-small architecture (25.4M) pre-trained from scratch: 24,661 steps of 16x1024, 4 epochs, 169 min on the
+4060 (37.6k tokens/s), val loss 0.220. Step 40's arms fine-tuned from it (same data, seeds, 902 targets x 8):
+fine-tune val loss real 0.332 (plain) vs 0.318 (K-Ont; gap 0.014 vs 0.009 on CrystaLLM), adapter gates opened
+to |0.11| (stayed ~0 on CrystaLLM).
+
+| scratch base, 902 targets | true structure | found@8 | follows analogue | composition |
+|---|---|---|---|---|
+| plain fine-tune | 20.6 | 32.5 | 21.9 | 79.3 |
+| **K-Ont, K-Ont-ranked analogue** | **22.1** | 31.8 | 25.9 | 79.6 |
+| K-Ont, ranker without K-Ont | 21.7 | 31.0 | 27.7 | 80.3 |
+| K-Ont, true analogue (ceiling) | 23.3 | 33.6 | 24.5 | 79.8 |
+| K-Ont model, no vector | 17.4 | 28.0 | 18.5 | 80.5 |
+| K-Ont, random analogue | 11.1 | 17.0 | 14.0 | 69.9 |
+
+K-Ont - plain true structure **+1.5 [+0.5, +2.5] -> the Step 40 pre-set criterion PASSES** on a generator that
+cannot recall the answers (it failed on CrystaLLM, -3.4); vs random +11.0 [9.2, 12.8]; vs no vector +4.7
+[3.7, 5.8]; K-Ont ranker vs ranker without K-Ont +0.4 [-0.2, +0.9] (n.s.); found@8 -0.7 [-2.5, +1.2] (n.s.).
+**Ceiling +2.7 [1.8, 3.7]**: even with the true framework the 25M model follows the analogue in ~25% of
+samples -- a 384-d vector says WHICH framework, but the model must still write every coordinate. Removing
+memorisation lowers the baseline from 47.5 to 20.6 but does not widen the injection channel. Same 902
+materials: K-Ont-guided templates place the atoms directly, 60.5% right at one attempt. **Conclusion for the
+paper**: K-Ont knowledge injected into a crystal LLM helps causally but narrowly; the effective use of K-Ont is
+retrieval + direct construction (Steps 41, 44).
