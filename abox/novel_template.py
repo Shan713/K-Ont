@@ -64,7 +64,7 @@ def _init(threads):
     torch.set_num_threads(threads)
     from chgnet.model import CHGNet, StructOptimizer
     _M = CHGNet.load(verbose=False)
-    _OPT = StructOptimizer(model=_M, use_device="cpu")
+    _OPT = StructOptimizer(model=_M, use_device=os.environ.get("CHGNET_DEVICE", "cpu"))  # GPU when it is free
 
 
 def _relax(args):
