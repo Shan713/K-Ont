@@ -76,8 +76,14 @@ def main():
     if relax:
         rp = sorted({(t, c) for t in targets for c, _ in top["prompt+kg+ft_kont"][t][:RELAX_K]})
         print(f"relaxing {len(rp)} candidates", flush=True)
-        with ProcessPoolExecutor(4, initializer=_init, initargs=(1,)) as ex:
-            okr = dict(ex.map(_job, [(rows[t], rows[c], True) for t, c in rp], chunksize=4))
+        from robust_pool import robust_map  # resumable: a dead worker (memory / native crash) no longer loses the run
+        cache_p = os.path.join(DATA, "kg_template_relax_cache.json")
+        okr = {tuple(k.split("|")): v for k, v in json.load(open(cache_p)).items()} if os.path.exists(cache_p) else {}
+        todo = [(rows[t], rows[c], True) for t, c in rp if (t, c) not in okr]
+        print(f"{len(todo)} not yet relaxed", flush=True)
+        save = lambda r: json.dump({f"{t}|{c}": v for (t, c), v in {**okr, **r}.items()}, open(cache_p, "w"))
+        okr.update(robust_map(_job, todo, 3, save, initializer=_init, initargs=(1,), failed=False,
+                              key_of=lambda j: (j[0]["id"], j[1]["id"]), log=lambda m: print(m, flush=True)))
     found = {r: {k: {t: float(any(ok[(t, c)] for c, _ in top[r][t][:k])) for t in targets} for k in KS} for r in RANKERS}
     cl = {m["id"]: m["samples"] for m in json.load(open(os.path.join(DATA, "kgcond3_eval_const.json")))}
     found["CrystaLLM fine-tuned"] = {k: {t: float(any(s.get("strict") for s in cl[t][:k])) for t in targets} for k in KS}

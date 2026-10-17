@@ -102,13 +102,13 @@ def stage_relax(a):
     cache = json.load(open(OUT))["energies"] if os.path.exists(OUT) else {}
     jobs = sorted({(nid, c) for nid, m in plan.items() for cs in m.values() for c in cs} - {tuple(k.split("|")) for k in cache})
     print(f"{len(jobs)} relaxations", flush=True)
-    with ProcessPoolExecutor(a.workers, initializer=_init, initargs=(1,)) as ex:
-        for n_done, ((nid, c), e) in enumerate(ex.map(_relax, [((nid, c), novel[nid]["formula"], rows[c]["formula"], rows[c]["cif"])
-                                                               for nid, c in jobs], chunksize=2)):
-            cache[f"{nid}|{c}"] = e
-            if (n_done + 1) % 50 == 0:
-                print(f"  {n_done + 1}/{len(jobs)}", flush=True)
-                json.dump({"energies": cache}, open(OUT, "w"))
+    from robust_pool import robust_map  # resumable: a dead worker no longer loses the run
+
+    def save(r):
+        cache.update({f"{nid}|{c}": e for (nid, c), e in r.items()})
+        json.dump({"energies": cache}, open(OUT, "w"))
+    save(robust_map(_relax, [((nid, c), novel[nid]["formula"], rows[c]["formula"], rows[c]["cif"]) for nid, c in jobs],
+                    a.workers, save, initializer=_init, initargs=(1,), log=lambda m: print(m, flush=True)))
     crystallm = {}
     for f in ("000", "050", "100", "150"):
         for mrec in json.load(open(os.path.join(DATA, f"novel_chgnet_{f}.json")))["materials"]:
