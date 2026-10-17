@@ -1,6 +1,6 @@
 # Paper outline (draft) — K-Ont: one hyperbolic ontology + knowledge-graph encoder that reasons over the ontology and guides crystal generation
 
-Status: draft from BUILD_LOG Steps 36–44 (2026-10-17). Numbers marked **[pending]** come from runs still in progress.
+Status: draft from BUILD_LOG Steps 36–44 (2026-10-17). All tables filled.
 
 ## Claim (what the evidence supports)
 
@@ -55,7 +55,14 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 | K-Ont template, CHGNet-relaxed | 60.8 | 67.3 | – |
 | 3 templates + 5 CrystaLLM (budget 8) | | | **77.3** (+9.0 [6.9, 11.1]) |
 
-**Table 5 — Novel cathode compositions (Step 44, not in Materials Project).** Lowest CHGNet energy per composition, K-Ont templates vs CrystaLLM-large's best of 10 relaxed samples; win/tie/loss (5 meV/atom band) **[pending]**.
+**Table 5 — Novel cathode compositions (Step 44, not in Materials Project).** Lowest CHGNet energy per composition vs CrystaLLM-large's best of 10 relaxed samples (5 meV/atom tie band), 199 compositions.
+
+| method − CrystaLLM-large | lower | tie | higher | mean [95% CI], meV/atom |
+|---|---|---|---|---|
+| K-Ont templates, top 3 | 34 | 126 | 39 | +1.3 [−4.1, +6.4] |
+| plain-encoder templates, top 3 | 34 | 113 | 52 | +2.9 [−2.6, +8.0] |
+| parent's framework (1) | 25 | 145 | 25 | −2.8 [−7.7, +1.5] |
+| **K-Ont top 3 + CrystaLLM** | **34** | 165 | **0** | **−7.5 [−11.8, −4.0]** |
 
 **Figure — Learning curve (Step 42).** K-Ont vs plain start, 5–100% data, 3 seeds: K-Ont better at 5% (SG +3.4 [0.5, 6.3]), worse at 10–25% (−2.5), equal from 50%; K-Ont steadier across seeds.
 
@@ -71,7 +78,7 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 All scripts in `abox/` (kg_pool, kg_retriever_ft, kg_rerank, kg_template_gen, kg_condition3, kg_learning_curve, kont_framework, novel_template); BUILD_LOG Steps 36–44; seeds and splits fixed; pre-set acceptance criteria stated before results.
 
 ## Still to do before submission
-1. Fill Table 5 pending numbers (novel-composition run in progress).
-2. DFT check of a few top novel candidates (optional, strengthens Table 5).
+1. DFT on the 34 compositions where the K-Ont template beat CrystaLLM (strongest evidence for Table 5).
+2. A second ontology benchmark from the OnT paper (TBox quality not lost).
 3. Target venue choice (e.g. a materials-informatics journal such as *npj Comput. Mater.* / *Digital Discovery*, or an ML-for-science workshop) — the guide's call.
 4. Figures: KG pipeline, K-Ont geometry (Poincaré disc), template generator diagram, learning curve, per-method bars.

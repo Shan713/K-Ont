@@ -1957,3 +1957,26 @@ Retrieval-only fine-tuning forgets K-Ont's typing (materials collapse); with ret
 Step 36 criterion (all >= 0.999) and retrieves frameworks at -2.5 [-4.9, -0.2] (@1) / -1.9 [-3.4, -0.4] (@3)
 vs the specialist retriever. This is the K-Ont-specific result: a single hyperbolic ontology + KG encoder
 that both reasons over the ontology and guides crystal generation.
+
+## Step 44 — Novel cathodes: K-Ont templates match CrystaLLM-large, and together they beat it (2026-10-17)
+
+`abox/novel_template.py`: the 200 novel compositions of Step 28 (KG cathode substitution children, not in
+Materials Project), no reference structure, so compared by energy per composition: the lowest CHGNet energy
+after relaxation (same fmax 0.1 / 300 steps / predict_structure as `novel_chgnet.py`). Retrievers trained on
+composition-only target sentences (`kg_retriever_ft.py --minimal`: name, formula, chemical system, cell -- a
+new composition has no computed properties), scoring the novel compositions against the K-Ont-seen pool;
+876 relaxations, no worker lost. CrystaLLM-large: best of up to 10 relaxed samples (5 composition prompt
++ 5 parent-space-group prompt), 199 compositions.
+
+| method - CrystaLLM-large best (5 meV/atom tie band) | lower | tie | higher | mean [95% CI], meV/atom |
+|---|---|---|---|---|
+| K-Ont templates, top 3 | 34 | 126 | 39 | +1.3 [-4.1, +6.4] |
+| plain-encoder templates, top 3 | 34 | 113 | 52 | +2.9 [-2.6, +8.0] |
+| parent's framework (1 candidate) | 25 | 145 | 25 | -2.8 [-7.7, +1.5] |
+| **K-Ont top 3 + CrystaLLM** | **34** | 165 | **0** | **-7.5 [-11.8, -4.0]** |
+
+K-Ont - plain-encoder templates: 26 lower / 156 tie / 18 higher, -1.3 [-4.1, +1.6]; K-Ont - parent: +4.2
+[+1.2, +7.9] (the parent is how each composition was made: a strong hand-made baseline). Three retrieved
+templates, no neural decoder, match a large crystal LLM's best of ten on new compositions; adding them to
+CrystaLLM finds a lower-energy structure for 17% of compositions and never a worse one. CHGNet energies, not
+DFT.
