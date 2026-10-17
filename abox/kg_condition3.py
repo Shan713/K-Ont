@@ -146,7 +146,7 @@ def stage_train(a):
     pool, rows = kg_pool.load()
     ra = real_analogues(pool, rows)
     dim = next(iter(vecs.values())).shape[0]
-    model = k2.Deep(gen.load_model(dev, "crystallm_v1_small"), dim, a.prefix_len, gated=True).to(dev).train()
+    model = k2.Deep(gen.load_model(dev, a.base), dim, a.prefix_len, gated=True).to(dev).train()
     lim = model.gpt.config.block_size - a.prefix_len + 1
     enc = lambda cif: k1.encode(tok, cif)
     data = {s: [(ra[i], e, True) for i in pool[f"seen_{s}"] for e in [enc(rows[i]["cif"])] if len(e) <= lim]
@@ -190,7 +190,7 @@ def stage_train(a):
         model.train()
         return sum(ls) / len(ls)
 
-    out = os.path.join(DATA, f"kgcond3_{a.arm}.pt")
+    out = os.path.join(DATA, f"kgcond3{a.tag}_{a.arm}.pt")
     log = [{"epoch": 0, "val_real": val_loss(data["val"]), "val_cf": val_loss(cf["val"])}]
     best, t0 = log[0]["val_real"] + (log[0]["val_cf"] if cf["val"] else 0), time.time()
     torch.save(model.state_dict(), out)
@@ -212,7 +212,7 @@ def stage_train(a):
         if c < best:
             best = c
             torch.save(model.state_dict(), out)
-    json.dump(log, open(os.path.join(DATA, f"kgcond3_{a.arm}_log.json"), "w"), indent=1)
+    json.dump(log, open(os.path.join(DATA, f"kgcond3{a.tag}_{a.arm}_log.json"), "w"), indent=1)
 
 
 # ---------------------------------------------------------------- 3 evaluation
@@ -302,16 +302,16 @@ def stage_eval(a):
     batches = [g[i:i + per] for _, g in sorted(groups.items()) for i in range(0, len(g), per)]
     print(f"{len(targets)} targets in {len(batches)} batches", flush=True)
     for arm in a.arms.split(","):
-        out = os.path.join(DATA, f"kgcond3_eval_{arm}.json")
+        out = os.path.join(DATA, f"kgcond3{a.tag}_eval_{arm}.json")
         if os.path.exists(out):
             continue
         base = arm.startswith("cfbase_")  # same analogues as the cf_ arm, plain-encoder vectors and model
         plan = analogue_plan(arm.replace("cfbase_", "cf_"), targets, rows, pool, a.samples, a.seed)
         vv = bvecs if base else vecs
-        gdir = os.path.join(GEN, arm)
+        gdir = os.path.join(GEN + a.tag, arm)
         if not os.path.exists(os.path.join(gdir, "_done")):
-            m = k2.Deep(gen.load_model(dev, "crystallm_v1_small"), dim, a.prefix_len, gated=True).to(dev)
-            m.load_state_dict(torch.load(os.path.join(DATA, f"kgcond3_{'const' if arm == 'const' else 'cfbase' if base else 'cf'}.pt"), map_location=dev))
+            m = k2.Deep(gen.load_model(dev, a.base), dim, a.prefix_len, gated=True).to(dev)
+            m.load_state_dict(torch.load(os.path.join(DATA, f"kgcond3{a.tag}_{'const' if arm == 'const' else 'cfbase' if base else 'cf'}.pt"), map_location=dev))
             m.eval()
             t0 = time.time()
             for bi, b in enumerate(batches):
@@ -355,8 +355,8 @@ def gen_formula(t):
 
 # ---------------------------------------------------------------- 4 report
 def stage_report(a):
-    arms = [x for x in ALL_ARMS.split(",") if os.path.exists(os.path.join(DATA, f"kgcond3_eval_{x}.json"))]
-    data = {x: {m["id"]: k2.per_comp(m) for m in json.load(open(os.path.join(DATA, f"kgcond3_eval_{x}.json")))} for x in arms}
+    arms = [x for x in ALL_ARMS.split(",") if os.path.exists(os.path.join(DATA, f"kgcond3{a.tag}_eval_{x}.json"))]
+    data = {x: {m["id"]: k2.per_comp(m) for m in json.load(open(os.path.join(DATA, f"kgcond3{a.tag}_eval_{x}.json")))} for x in arms}
     ids = sorted(set.intersection(*(set(d) for d in data.values())))
     pool, rows = kg_pool.load()
     old79 = {r["id"] for r in k1.corpus("test")} & set(ids)
@@ -380,7 +380,7 @@ def stage_report(a):
                               "better": sum(v > 0 for v in diff.values()), "worse": sum(v < 0 for v in diff.values())}
                 r["paired"][f"{p} - {q}"] = row
         rep[name] = r
-    json.dump(rep, open(os.path.join(DATA, "kgcond3_report.json"), "w"), indent=1)
+    json.dump(rep, open(os.path.join(DATA, f"kgcond3{a.tag}_report.json"), "w"), indent=1)
     print(json.dumps({k: v for k, v in rep.items()}, indent=1))
 
 
@@ -390,6 +390,9 @@ def main():
     ap.add_argument("--arm", default="cf", choices=["cf", "const", "cfbase"])
     ap.add_argument("--arms", default=ALL_ARMS)
     ap.add_argument("--export", default="grow5000_v2")
+    ap.add_argument("--base", default="crystallm_v1_small",
+                    help="Step 45: scratch_small = the GPT pre-trained without the evaluation compositions")
+    ap.add_argument("--tag", default="", help="Step 45: output-name suffix, e.g. _scratch")
     ap.add_argument("--prefix-len", type=int, default=8)
     ap.add_argument("--p-drop", type=float, default=0.15)
     ap.add_argument("--cf-per-material", type=int, default=2)
