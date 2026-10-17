@@ -1913,3 +1913,21 @@ different materials right.
 **Reading**: KG-trained retrieval + templates is the way the KG beats CrystaLLM on known structures --
 not conditioning CrystaLLM (Step 40 ceiling). The gain comes from the KG-trained retriever; starting it from
 K-Ont's weights rather than the plain encoder adds nothing at full data (Step 42 tests scarce data).
+
+## Step 42 — Retriever learning curve: K-Ont's weights help only with very little KG supervision (2026-10-17)
+
+`abox/kg_learning_curve.py`: `kg_retriever_ft.py` from K-Ont vs from the plain OnT encoder, on 5-100% of the
+2,790 training targets, 3 seeds, the same subset per (fraction, seed) for both; retriever alone, 902
+K-Ont-unseen targets; template = top-1 substituted framework matches the reference (unrelaxed).
+
+| training targets | K-Ont: SG / template | plain: SG / template | K-Ont - plain, template [95% CI] |
+|---|---|---|---|
+| 5% (140) | 52.4 / 49.7 | 49.0 / 47.2 | +2.5 [-0.4, +5.5] (SG +3.4 [+0.5, +6.3]) |
+| 10% | 53.5 / 51.0 | 56.3 / 53.7 | -2.6 [-4.8, -0.4] |
+| 25% | 57.4 / 54.8 | 59.6 / 57.1 | -2.4 [-4.3, -0.4] |
+| 50% | 58.2 / 55.8 | 58.5 / 55.9 | -0.1 [-2.0, +1.9] |
+| 100% | 60.5 / 57.9 | 61.7 / 58.9 | -0.9 [-2.5, +0.8] |
+
+K-Ont's starting point is better only at 5% (space group significant), worse at 10-25%, equal from 50%.
+K-Ont is steadier across seeds (template per seed within 1.6 points at every fraction; the plain start has
+outliers: 49.2 at 10%, 51.6 at 50%). Not a consistent K-Ont advantage for this task.

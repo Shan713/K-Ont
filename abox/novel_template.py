@@ -138,7 +138,7 @@ def stage_relax(a):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", required=True, choices=["pool", "relax"])
-    ap.add_argument("--workers", type=int, default=4)
+    ap.add_argument("--workers", type=int, default=3)
     a = ap.parse_args()
     {"pool": stage_pool, "relax": stage_relax}[a.stage](a)
 
