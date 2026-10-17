@@ -1880,6 +1880,7 @@ real 0.258 (plain fine-tune 0.267), counterfactual 0.432 -> 0.227. 8 samples, sa
 | cf, half top-1 / half top-2 | 43.3 | 60.6 | 50.6 | 95.8 |
 | cf, true-SG analogue (ceiling) | 49.6 | 65.6 | 48.4 | 95.8 |
 | plain-encoder vectors, K-Ont-ranker analogue | 44.9 | 56.8 | 53.6 | 94.2 |
+| plain-encoder vectors, random candidate | 16.4 | 22.3 | 27.1 | 77.4 |
 
 Pre-set acceptance: cf_rr - const true structure -3.4 [-5.2, -1.6] -> **FAILS**; cf_rr - cf_rand compliance
 +26.6 [23.7, 29.5] (true structure +21.4) -> **passes: the K-Ont vector steers the structure**.
@@ -1888,7 +1889,8 @@ Post hoc (designed after cf_none): K-Ont model when the ranker is confident, pla
 **Why**: the ceiling. With the TRUE framework the conditioned generator reaches 49.6 vs 47.5 -- on Materials
 Project materials CrystaLLM already recalls the structure wherever an analogue would be right, so
 conditioning it can add at most ~2 points; following a wrong analogue costs more. Plain-encoder framework
-vectors steer as well as K-Ont's (44.9 vs 44.1; polymorph separation 88.5% vs 86.1%): the steering comes
+vectors steer as well as K-Ont's (44.9 vs 44.1, K-Ont - plain -0.8 [-1.7, +0.1]; retrieved vs random
++28.5 vs +21.4; polymorph separation 88.5% vs 86.1%): the steering comes
 from encoding the framework sentence, not from K-Ont's training.
 
 ## Step 41 — K-Ont-guided template generator: beats fine-tuned CrystaLLM (2026-10-16)
