@@ -31,11 +31,16 @@ import sys
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(HERE, "abox"))
 SRC = os.path.join(HERE, "data", "battgpt_merged_grow_5000_v2_full")
-DST = os.path.join(HERE, "data", "battgpt_merged_grow_5000_v3fw_full")
-RUN = os.path.join(HERE, "data", "runs", "full_grow5000_v3fw")
 DATA = os.path.join(HERE, "data", "crystallm")
 ROLE = "has the framework of"
-SCORES = os.path.join(DATA, "kg_ft_scores_kont_v3fw.json")
+# v3fw (Step 46): framework rows, in-batch (random) negatives only.
+# v4hn (Step 51): the same rows + a per-row HARD negative ("hard_neg": a pool candidate of the same formula
+# type but another space group), contrasted inside K-Ont's own existential loss (OnT patch
+# patches/ont_exist_hard_negatives.patch) -- Step 46 showed random in-batch negatives are too easy.
+VARIANT = os.environ.get("KONT_VARIANT", "v3fw")
+DST = os.path.join(HERE, "data", f"battgpt_merged_grow_5000_{VARIANT}_full")
+RUN = os.path.join(HERE, "data", "runs", f"full_grow5000_{VARIANT}")
+SCORES = os.path.join(DATA, f"kg_ft_scores_kont_{VARIANT}.json")
 
 
 def full_sentences():
@@ -54,11 +59,19 @@ def stage_data(a):
     new = []
     for i in pool["seen_train"]:
         same = [c for c in pool["candidates"][i] if rows[c]["space_group"] == rows[i]["space_group"]]
+        other = [c for c in pool["candidates"][i] if rows[c]["space_group"] != rows[i]["space_group"]]
         for c in rng.sample(same, min(a.per_material, len(same))):
-            new.append({"Concept": target_text(full[i]), "role": ROLE, "con": full[c]})
-    with open(os.path.join(DST, "train_exist.jsonl"), "a", encoding="utf-8") as f:
-        for r in new:
-            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+            r = {"Concept": target_text(full[i]), "role": ROLE, "con": full[c]}
+            if VARIANT != "v3fw":
+                r["hard_neg"] = full[rng.choice(other)] if other else ""
+            new.append(r)
+    path = os.path.join(DST, "train_exist.jsonl")
+    old = [json.loads(l) for l in open(path, encoding="utf-8") if l.strip()]
+    with open(path, "w", encoding="utf-8") as f:  # rewritten whole: every row gets the same keys (Dataset schema)
+        for r in old + new:
+            if VARIANT != "v3fw":
+                r.setdefault("hard_neg", "")
+            f.write(json.dumps(r) + "\n")
     roles = json.load(open(os.path.join(DST, "role_names.json")))
     if ROLE not in roles.values():
         roles[str(len(roles))] = ROLE
@@ -66,7 +79,7 @@ def stage_data(a):
     s = json.load(open(os.path.join(DST, "merge_summary.json")))
     s.update({"step46_framework_rows": len(new), "step46_role": ROLE, "n_merged_exist": s["n_merged_exist"] + len(new)})
     json.dump(s, open(os.path.join(DST, "merge_summary.json"), "w"), indent=1)
-    print(f"{len(new)} '{ROLE}' rows from {len(pool['seen_train'])} seen training materials -> {DST}")
+    print(f"{VARIANT}: {len(new)} '{ROLE}' rows ({sum(bool(r.get('hard_neg')) for r in new)} with a hard negative) from {len(pool['seen_train'])} seen training materials -> {DST}")
 
 
 def stage_score(a):
@@ -104,7 +117,8 @@ def stage_eval(a):
     from kg_template_gen import _job
     pool, rows = kg_pool.load()
     targets = pool["targets"]
-    files = {"K-Ont v3, native framework relation": SCORES,
+    files = {f"K-Ont {VARIANT}, native framework relation": SCORES,
+             "K-Ont v3, native framework relation (Step 46)": os.path.join(DATA, "kg_ft_scores_kont_v3fw.json"),
              "K-Ont + retrieval fine-tune (Step 40)": os.path.join(DATA, "kg_ft_scores_kont.json"),
              "plain encoder + retrieval fine-tune (Step 40)": os.path.join(DATA, "kg_ft_scores_base.json"),
              "K-Ont + fine-tune + retention (Step 43)": os.path.join(DATA, "kg_ft_scores_kont_fw_retain.json"),
@@ -128,19 +142,19 @@ def stage_eval(a):
                **{f"found@{k}": {t: float(any(cache[f"{t}|{c}"] for c in d[t][:k])) for t in targets} for k in (1, 3)}}
            for n, d in top.items()}
     rep = {"retrieval": {n: {k: round(100 * sum(v.values()) / len(targets), 1) for k, v in p.items()} for n, p in per.items()}}
-    ref = "K-Ont v3, native framework relation"
+    ref = f"K-Ont {VARIANT}, native framework relation"
     for n in per:
         if n != ref:
             for k in ("sg", "found@1", "found@3"):
                 d = {t: per[ref][k][t] - per[n][k][t] for t in targets}
                 bs = sorted(100 * sum(d[t] for t in b) / len(b) for b in B)
-                rep["retrieval"][f"v3 - {n} ({k})"] = [round(100 * sum(d.values()) / len(targets), 1), round(bs[125], 1), round(bs[4874], 1)]
+                rep["retrieval"][f"{VARIANT} - {n} ({k})"] = [round(100 * sum(d.values()) / len(targets), 1), round(bs[125], 1), round(bs[4874], 1)]
     p5 = os.path.join(RUN, "phase5_checks.json")
     if os.path.exists(p5):
         import kont_framework as kf
         rep["checks"] = {"K-Ont v2 (Step 36)": kf.headline(os.path.join(HERE, "data", "runs", "full_grow5000_v2", "phase5_checks.json")),
-                         "K-Ont v3 (native framework relation)": kf.headline(p5)}
-    json.dump(rep, open(os.path.join(DATA, "kont_v3fw.json"), "w"), indent=1)
+                         f"K-Ont {VARIANT} (native framework relation)": kf.headline(p5)}
+    json.dump(rep, open(os.path.join(DATA, f"kont_{VARIANT}.json"), "w"), indent=1)
     print(json.dumps(rep, indent=1))
 
 

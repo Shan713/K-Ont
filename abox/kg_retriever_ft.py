@@ -60,6 +60,8 @@ def main():
                          "sentences (MSE to the frozen start model), so K-Ont learns the analogy without forgetting")
     ap.add_argument("--minimal", action="store_true", help="Step 44: composition-only target sentences")
     ap.add_argument("--extra", default=None, help="Step 44: also score these targets (novel_pool.json)")
+    ap.add_argument("--retain-galen", type=int, default=0,
+                    help="Step 52: also keep this many GALEN concept names at the original OnT-galen embeddings")
     ap.add_argument("--save", default=None, help="save the fine-tuned encoder here (Step 43 ability checks)")
     a = ap.parse_args()
     random.seed(a.seed)
@@ -114,6 +116,21 @@ def main():
         model.eval()
         with torch.no_grad():
             teach = torch.cat([raw(sents[i:i + 64]) for i in range(0, len(sents), 64)])
+        if a.retain_galen:  # Step 52: GALEN concept names, target = the ORIGINAL OnT-galen model's embeddings
+            gn = json.load(open(os.path.join(HERE, "data", "ont_bench", "extracted", "GALEN_OnT", "concept_names.json"), encoding="utf-8"))
+            gs = list(gn.values()) if isinstance(gn, dict) else list(gn)
+            gs = random.Random(a.seed).sample(gs, min(a.retain_galen, len(gs)))
+            ref = HierarchyTransformer.from_pretrained(INITS["base"]).to(dev).eval()
+            with torch.no_grad():
+                gt = []
+                for i in range(0, len(gs), 64):
+                    f = ref.tokenize(gs[i:i + 64])
+                    f = {k: v.to(dev) if torch.is_tensor(v) else v for k, v in f.items()}
+                    with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+                        gt.append(ref(f)["sentence_embedding"].float())
+            del ref
+            sents, teach = sents + gs, torch.cat([teach] + gt)
+            print(f"  + {len(gs)} GALEN concept names kept at OnT-galen's embeddings", flush=True)
         model.train()
         retain = (sents, teach)
         print(f"retention set: {len(sents)} sentences, weight {a.retain}", flush=True)

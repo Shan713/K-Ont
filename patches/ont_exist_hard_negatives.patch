@@ -1,0 +1,33 @@
+diff --git a/ont/losses/logical_loss.py b/ont/losses/logical_loss.py
+--- a/ont/losses/logical_loss.py
++++ b/ont/losses/logical_loss.py
+@@ -82,6 +82,9 @@
+         roles = [self.role_prompt + item["role"] for item in batch]
+         cons = [item["con"] for item in batch]
+         self._last_exist_rows = (list(roles), list(cons))
++        # K-Ont (BUILD_LOG.md Step 51): optional per-row hard negative filler ("hard_neg"), e.g. a candidate of
++        # the same formula type but another space group for "has the framework of". Absent/empty = no change.
++        self._last_exist_hard = [(item.get("hard_neg") or "") if isinstance(item, dict) else "" for item in batch]
+ 
+         return [
+             self.model.hit_model.tokenizer(concepts, return_tensors="pt", padding=True, truncation=True).to(self.device),
+@@ -150,6 +153,19 @@
+                     # another row's ∃r.D_j; the centripetal part is already applied above.
+                     exist_loss = exist_loss + self.hit_loss.cluster_weight * self.hit_loss.cluster_loss(
+                         sentence_emb[rows], composed_emb[rows], composed_emb[neg])
++                # K-Ont Step 51: hard negatives -- C_i must sit nearer ∃r.D_i than ∃r.H_i, where H_i is the row's
++                # own "hard_neg" filler (same role, deliberately confusable). Same clustering term as above.
++                hard = getattr(self, "_last_exist_hard", None) or []
++                hrows = [i for i, h in enumerate(hard) if h]
++                if hrows:
++                    roles_h = [self._last_exist_rows[0][i] for i in hrows]
++                    tok = self.model.hit_model.tokenizer
++                    hard_rot = self.model.existence_emb([
++                        tok(roles_h, return_tensors="pt", padding=True, truncation=True).to(self.device),
++                        tok([hard[i] for i in hrows], return_tensors="pt", padding=True, truncation=True).to(self.device)])
++                    exist_loss = exist_loss + self.hit_loss.cluster_weight * self.hit_loss.cluster_loss(
++                        sentence_emb[hrows], composed_emb[hrows], hard_rot)
++                    self.in_batch_stats["rows_with_hard_negative"] = self.in_batch_stats.get("rows_with_hard_negative", 0) + len(hrows)
+         elif self.existence_loss_kind == "pair":
+             exist_loss = self.model.pair_loss_existence(sentence_exists)
+         elif self.existence_loss_kind == "dist":

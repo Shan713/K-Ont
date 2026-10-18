@@ -13,7 +13,12 @@ cd OnT
 git apply ../patches/ont_pipeline_device_fix.patch
 git apply ../patches/ont_gpu_training_fixes.patch
 git apply ../patches/ont_exist_inbatch_negatives.patch
+git apply ../patches/ont_exist_hard_negatives.patch
 ```
+
+`ont_exist_hard_negatives.patch` (Step 51): optional per-row `hard_neg` filler on exist rows, contrasted with the
+same clustering term as the in-batch negatives (only active with `exist_in_batch_negatives`, only for rows that
+carry a non-empty `hard_neg`; data without the field trains exactly as before).
 
 All three were checked (BUILD_LOG.md Steps 15 and 17) to apply cleanly, in this order, to upstream
 `82ef384` ("Release ontology-transformer 0.1.7") and reproduce the patched files exactly. Each patch

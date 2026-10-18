@@ -25,7 +25,9 @@ HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(HERE, "abox"))
 SRC = os.path.join(HERE, "data", "runs", "full_grow5000_v2")
 DATA = os.path.join(HERE, "data", "crystallm")
-VARIANTS = {"fw_plain": 0.0, "fw_retain": 1.0}
+VARIANTS = {"fw_plain": [], "fw_retain": ["--retain", "1.0"],
+            # Step 52: + 20,000 GALEN concept names kept at the original OnT-galen embeddings (GALEN forgetting, Step 49)
+            "fw_retain_galen": ["--retain", "1.0", "--retain-galen", "20000"]}
 
 
 def run_dir(v):
@@ -33,12 +35,12 @@ def run_dir(v):
 
 
 def stage_train(a):
-    for v, w in VARIANTS.items():
+    for v, extra in VARIANTS.items():
         d = run_dir(v)
         if os.path.exists(os.path.join(DATA, f"kg_ft_scores_kont_{v}.json")):
             continue
         cmd = [sys.executable, "-u", os.path.join(HERE, "abox", "kg_retriever_ft.py"), "--init", "kont", "--tag", f"_{v}",
-               "--save", os.path.join(d, "final")] + (["--retain", str(w)] if w else [])
+               "--save", os.path.join(d, "final")] + extra
         subprocess.run(cmd, check=True)
         for f in ("role_model.pt", "wrapper_config.json"):  # the K-Ont parts the encoder fine-tune does not touch
             shutil.copy(os.path.join(SRC, "final", f), os.path.join(d, "final", f))
