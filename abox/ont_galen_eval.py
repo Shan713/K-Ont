@@ -48,7 +48,8 @@ MODELS = {"OnT-galen (published)": "Hui97/OnT-MiniLM-L12-galen",
           "K-Ont v3 native (Step 46)": os.path.join(HERE, "data", "runs", "full_grow5000_v3fw", "final"),
           "K-Ont v4 native + hard negatives (Step 51)": os.path.join(HERE, "data", "runs", "full_grow5000_v4hn", "final"),
           "K-Ont + retention incl. GALEN (Step 52)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen", "final"),
-          "K-Ont + balanced retention incl. GALEN (Step 52b)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_bal", "final")}
+          "K-Ont + balanced retention incl. GALEN (Step 52b)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_bal", "final"),
+          "K-Ont + GALEN + anchor retention (Step 52c)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_anchor", "final")}
 TASKS = {"prediction": "GALEN_OnT", "inference": "GALEN_OnT_inference"}
 
 

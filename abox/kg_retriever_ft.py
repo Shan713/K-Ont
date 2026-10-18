@@ -62,6 +62,8 @@ def main():
     ap.add_argument("--extra", default=None, help="Step 44: also score these targets (novel_pool.json)")
     ap.add_argument("--retain-galen", type=int, default=0,
                     help="Step 52: also keep this many GALEN concept names at the original OnT-galen embeddings")
+    ap.add_argument("--retain-anchors", action="store_true",
+                    help="Step 52c: also keep K-Ont's relation names and role/family label phrases, every step")
     ap.add_argument("--retain-balanced", action="store_true",
                     help="Step 52b: GALEN retention as its own 16-sentence term per step, alongside the KG's")
     ap.add_argument("--save", default=None, help="save the fine-tuned encoder here (Step 43 ability checks)")
@@ -106,7 +108,7 @@ def main():
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             return model(f)["sentence_embedding"].float()
 
-    retain, retain_g = None, None
+    retain, retain_g, retain_a = None, None, None
     if a.retain > 0:  # frozen start-model embeddings of the sentences K-Ont was trained on
         ab = os.path.join(HERE, "data", "battgpt_abox_grow_5000_v2")
         sents = list(full.values())
@@ -133,6 +135,16 @@ def main():
             del ref
             if a.retain_balanced:  # Step 52b: separate GALEN term, so 20k GALEN sentences cannot crowd out the KG's
                 retain_g = (gs, torch.cat(gt))
+            if a.retain_anchors:  # Step 52c: K-Ont's relation names and role/family label sentences, EVERY step --
+                # GALEN retention pulls short phrases toward OnT-galen, and these drive K-Ont's role rotations
+                from phase5_checks import ROLE_SENT, FAMILY_READABLE, FAMILY_CLASS
+                rn = json.load(open(os.path.join(INITS[a.init], "..", "data", "role_names.json")))
+                anchors = sorted(set(rn.values()) | set(ROLE_SENT.values()) | set(FAMILY_CLASS.values())
+                                 | {f"Structure family: {v}" for v in FAMILY_READABLE.values()})
+                model.eval()
+                with torch.no_grad():
+                    retain_a = (anchors, raw(anchors))
+                print(f"  + {len(anchors)} relation/label anchor phrases kept every step", flush=True)
             else:
                 sents, teach = sents + gs, torch.cat([teach] + gt)
             print(f"  + {len(gs)} GALEN concept names kept at OnT-galen's embeddings", flush=True)
@@ -162,9 +174,9 @@ def main():
                 lab = torch.tensor(lab, device=dev)
                 loss = loss + torch.logsumexp(s, 0) - torch.logsumexp(s[lab], 0)
             loss = loss / len(groups)
-            for rs in (retain, retain_g):
+            for rs in (retain, retain_g, retain_a):
                 if rs is not None:
-                    idx = random.sample(range(len(rs[0])), 16)
+                    idx = random.sample(range(len(rs[0])), min(16, len(rs[0])))
                     loss = loss + a.retain * F.mse_loss(raw([rs[0][j] for j in idx]), rs[1][idx]) / rs[1][idx].pow(2).mean()
             opt.zero_grad(set_to_none=True)
             loss.backward()

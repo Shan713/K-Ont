@@ -29,7 +29,9 @@ VARIANTS = {"fw_plain": [], "fw_retain": ["--retain", "1.0"],
             # Step 52: + 20,000 GALEN concept names kept at the original OnT-galen embeddings (GALEN forgetting, Step 49)
             "fw_retain_galen": ["--retain", "1.0", "--retain-galen", "20000"],
             # Step 52b: the same, GALEN as a separate balanced term (Step 52 lost battery roles/families)
-            "fw_retain_galen_bal": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced"]}
+            "fw_retain_galen_bal": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced"],
+            # Step 52c: + K-Ont's relation names and role/family label phrases retained every step
+            "fw_retain_galen_anchor": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced", "--retain-anchors"]}
 
 
 def run_dir(v):
