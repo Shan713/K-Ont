@@ -20,6 +20,25 @@ sys.path.insert(0, os.path.join(HERE, "OnT"))
 import torch  # noqa: E402
 from ont.evaluation.evaluator import OnTEvaluator  # noqa: E402
 from ont.model import OntologyTransformer  # noqa: E402
+import ont.evaluation.evaluator as _ev  # noqa: E402
+
+
+class _Rows:
+    """stand-in for datasets.Dataset.from_list(...)[column]: the installed `datasets` returns a Column object
+    there, which OnTEvaluator then hands to the tokenizer (needs list[str]); this returns a plain list"""
+
+    def __init__(self, rows):
+        self.rows = rows
+
+    def __getitem__(self, col):
+        return [r[col] for r in self.rows]
+
+    @staticmethod
+    def from_list(rows):
+        return _Rows(rows)
+
+
+_ev.Dataset = _Rows  # only the evaluator module's reference; OnT's code is unchanged
 
 BENCH = os.path.join(HERE, "data", "ont_bench", "extracted")
 OUT = os.path.join(HERE, "data", "ont_bench", "galen_results.json")
@@ -28,6 +47,13 @@ MODELS = {"OnT-galen (published)": "Hui97/OnT-MiniLM-L12-galen",
           "K-Ont + retention (Step 43)": os.path.join(HERE, "data", "runs", "kont_fw_retain", "final"),
           "K-Ont v3 native (Step 46)": os.path.join(HERE, "data", "runs", "full_grow5000_v3fw", "final")}
 TASKS = {"prediction": "GALEN_OnT", "inference": "GALEN_OnT_inference"}
+
+
+def fill(q):
+    """OnTEvaluator tokenizes nf3/nf4 'role'/'con' even in sentence mode, where they are not used; entries
+    without them would crash the tokenizer, so missing fields become empty strings (scores unaffected)"""
+    return {k: [{**x, "role": x.get("role") or "", "con": x.get("con") or ""} if k in ("nf3", "nf4") else x for x in v]
+            for k, v in q.items()}
 
 
 def load(task):
@@ -49,11 +75,11 @@ def main():
                 continue
             m = OntologyTransformer.from_pretrained(path)
             m.hit_model.eval()
-            ve = OnTEvaluator(m, val["query_sentences"], val["answer_ids"], names, batch_size=64)
+            ve = OnTEvaluator(m, fill(val["query_sentences"]), val["answer_ids"], names, batch_size=64)
             with torch.no_grad():
                 ve(model=m.hit_model, epoch="validation")
                 lam = float(ve.best_centri_weight)
-                te = OnTEvaluator(m, test["query_sentences"], test["answer_ids"], names, batch_size=64)
+                te = OnTEvaluator(m, fill(test["query_sentences"]), test["answer_ids"], names, batch_size=64)
                 te(model=m.hit_model, best_centri_weight=lam, inference_mode="sentence")
             rows = {k: {c: (float(v) if not isinstance(v, str) else v) for c, v in r.items()} for k, r in te.results.iterrows()}
             res[key] = {"lambda": lam, "results": rows}

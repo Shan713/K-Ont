@@ -2050,3 +2050,24 @@ v3 keeps every ontology ability but retrieves frameworks worse: K-Ont's objectiv
 random in-batch rows (easy), the retrieval fine-tune with candidates of the SAME formula type (the hard
 distinction needed). **Design finding**: give K-Ont a new relational skill by a hard-negative fine-tune with
 retention (Step 43), not by adding rows to its native objective.
+
+## Step 49 — GALEN (the OnT paper's benchmark): K-Ont keeps prediction, loses some inference (2026-10-18)
+
+`abox/ont_galen_eval.py`. OnT authors' data (Zenodo 17314434, CC-BY-4.0, GALEN_predict.zip / GALEN_inference.zip,
+md5-checked, plain JSON, in gitignored `data/ont_bench/`). OnT's own evaluator (sentence mode): lambda chosen on
+the task's val.json, test axioms ranked against all 35,501 GALEN concepts. Installed `datasets` returns a Column
+object where OnTEvaluator expects a list; the script substitutes a plain-list shim for the evaluator module only.
+
+| | prediction H@1 / H@10 / MRR / AUC (8,618 test axioms) | inference H@10 / MRR / AUC |
+|---|---|---|
+| OnT-galen (published; K-Ont's starting point) | 0.255 / 0.499 / 0.339 / 0.978 | 0.055 / 0.022 / 0.973 |
+| K-Ont v2 (Step 36) | 0.261 / 0.481 / 0.335 / 0.952 | 0.025 / 0.011 / 0.918 |
+| K-Ont + framework + retention (Step 43) | 0.255 / 0.486 / 0.333 / 0.955 | 0.023 / 0.010 / 0.934 |
+| K-Ont v3 native (Step 46) | 0.254 / 0.473 / 0.327 / 0.954 | 0.023 / 0.010 / 0.906 |
+
+Prediction: every K-Ont keeps OnT's ranking (MRR within 0.004-0.012, H@1 equal); AUC -0.025, from nf3
+(existential) axioms (0.961 -> 0.903-0.912). Inference (all nf1, hard even for OnT): MRR and H@10 roughly halve,
+AUC -0.04 to -0.07 -- learning the battery KG costs part of GALEN's deductive ranking. H@1 = 0 on nf1 for every
+model, OnT included (likely an evaluator artefact on nf1, e.g. the query concept ranking itself first); compare
+on MRR / H@10 / AUC. **Reading**: K-Ont extends OnT to a new KG without losing its original ontology's prediction
+quality; a GALEN replay term (as Step 43's retention, on GALEN sentences) would be the fix for inference.
