@@ -2010,3 +2010,23 @@ memorisation lowers the baseline from 47.5 to 20.6 but does not widen the inject
 materials: K-Ont-guided templates place the atoms directly, 60.5% right at one attempt. **Conclusion for the
 paper**: K-Ont knowledge injected into a crystal LLM helps causally but narrowly; the effective use of K-Ont is
 retrieval + direct construction (Steps 41, 44).
+
+## Step 47 — Against the standard substitution method (Hautier et al.); oxidation-aware placement adds nothing (2026-10-18)
+
+`abox/kg_substitution.py`: pymatgen's data-mined substitution model (SubstitutionProbability, Hautier et al.
+2011) with oxidation states from `Composition.oxi_state_guesses` (77% of targets; others probability 0, ties
+by composition similarity). #1: rank the same KG pool frameworks by the most probable stoichiometry-preserving
+substitution instead of K-Ont; #3: place elements by that most probable mapping instead of Step 41's order.
+
+| found@k, 902 targets | 1 | 2 | 3 | 5 | 8 |
+|---|---|---|---|---|---|
+| **K-Ont ranker** (Step 41 placement) | **60.5** | **64.9** | 66.9 | 69.4 | 71.4 |
+| K-Ont ranker, Hautier placement | 60.4 | 65.0 | 67.0 | 69.5 | 71.7 |
+| Hautier substitution probability | 52.1 | 60.3 | 64.5 | 68.1 | 70.1 |
+| Hautier, Hautier placement | 52.8 | 60.9 | 65.0 | 68.3 | 70.2 |
+| composition rule | 51.3 | 53.7 | 55.8 | 57.6 | 60.8 |
+
+K-Ont - Hautier: **+8.4 [5.5, 11.2] @1**, +4.5 [2.0, 7.0] @2, +2.3 [0.0, 4.7] @3, +1.3 [-0.8, 3.4] @5, +1.3
+[-0.6, 3.1] @8. Placement: +0.1 at every k (Step 41's order already puts elements on the right sites).
+**Reading**: the standard substitution method is a strong baseline once several frameworks are tried, but
+K-Ont picks the right framework first far more often -- the answer to "isn't this just substitution?".
