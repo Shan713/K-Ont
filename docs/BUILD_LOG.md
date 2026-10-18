@@ -2071,3 +2071,25 @@ AUC -0.04 to -0.07 -- learning the battery KG costs part of GALEN's deductive ra
 model, OnT included (likely an evaluator artefact on nf1, e.g. the query concept ranking itself first); compare
 on MRR / H@10 / AUC. **Reading**: K-Ont extends OnT to a new KG without losing its original ontology's prediction
 quality; a GALEN replay term (as Step 43's retention, on GALEN sentences) would be the fix for inference.
+
+## Step 50 — Independent check of the 34 novel cathodes: K-Ont template lower above hull in 32/34 (2026-10-18)
+
+The DFT hand-off zip (`abox/novel_dft_export.py`; the 34 Step 44 compositions where the best K-Ont template was
+> 5 meV/atom below CrystaLLM-large's best by CHGNet) was computed by a teammate: energy above the convex hull of
+both structures per composition (`data/crystallm/teammate_ehull/*.csv`, summary `data/crystallm/teammate_ehull.json`).
+**Method to be confirmed with the teammate** (DFT functional/settings, or another potential) before the paper.
+
+| 34 novel compositions | K-Ont template | CrystaLLM-large |
+|---|---|---|
+| lower e_above_hull | **32** (1 tie within 0.5 meV) | 1 (LiTiOF3, by 3 meV) |
+| median e_above_hull | **0.025 eV/atom** | 0.088 eV/atom |
+| <= 0 (on/below hull) | **3** | 1 |
+| <= 25 meV/atom | **17** | 5 |
+| <= 50 meV/atom (plausibly stable) | **23** | 13 |
+| <= 100 meV/atom | 27 | 19 |
+
+K-Ont - CrystaLLM: median -24.7 meV/atom; mean -41.5 [-54.6, -29.4] excluding LiCo2BiO4, which is ~4 eV/atom above
+hull for BOTH structures (physically implausible: broken structure or calculation; to recheck). **Caveat:** these 34
+were selected because CHGNet favoured the template, so this confirms the CHGNet ranking independently rather than
+measuring all 200: an unbiased claim needs the 39 compositions where CrystaLLM won under CHGNet and a sample of the
+126 ties (and, for K-Ont-specificity, the plain-encoder templates).

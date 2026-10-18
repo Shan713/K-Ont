@@ -64,6 +64,8 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 | parent's framework (1) | 25 | 145 | 25 | −2.8 [−7.7, +1.5] |
 | **K-Ont top 3 + CrystaLLM** | **34** | 165 | **0** | **−7.5 [−11.8, −4.0]** |
 
+**Table 5b — Independent energy-above-hull check (Step 50; method to be confirmed).** The 34 compositions where CHGNet favoured the K-Ont template: K-Ont template lower e_hull in 32/34; median 0.025 vs 0.088 eV/atom; within 50 meV/atom 23 vs 13; on/below hull 3 vs 1. Selected by CHGNet, so it confirms the ranking; the unbiased set (CrystaLLM-won + ties) is pending.
+
 **Figure — Learning curve (Step 42).** K-Ont vs plain start, 5–100% data, 3 seeds: K-Ont better at 5% (SG +3.4 [0.5, 6.3]), worse at 10–25% (−2.5), equal from 50%; K-Ont steadier across seeds.
 
 **Table 6 — Injection into CrystaLLM (Step 40), the negative result.** plain fine-tune 47.5; K-Ont-steered 44.1; random analogue 22.7; true analogue (ceiling) 49.6; plain-encoder vectors 44.9. The vector steers (+21.4 vs random) but the ceiling is +2.1: CrystaLLM recalls Materials Project structures, so conditioning can't add much; retrieval + templates is the effective route.
