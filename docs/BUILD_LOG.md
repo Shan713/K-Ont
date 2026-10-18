@@ -2093,3 +2093,26 @@ hull for BOTH structures (physically implausible: broken structure or calculatio
 were selected because CHGNet favoured the template, so this confirms the CHGNet ranking independently rather than
 measuring all 200: an unbiased claim needs the 39 compositions where CrystaLLM won under CHGNet and a sample of the
 126 ties (and, for K-Ont-specificity, the plain-encoder templates).
+
+## Step 48 — One answer per material: K-Ont templates + CrystaLLM, picked by CHGNet, beat CrystaLLM alone (2026-10-18)
+
+`abox/kg_pipeline_select.py --subset 300 --steps 40`: a random 300 of the 902 K-Ont-unseen targets (seed 0; all
+902 x 11 candidates would take ~15 h at ~10 relaxations/min on the laptop CPU). Candidates: the K-Ont ranker's
+top 3 templates + CrystaLLM's samples (Step 40 plain fine-tune); each relaxed 40 steps with CHGNet (fmax 0.1, cell
+free); the pick = lowest energy per atom; right = matches the reference (before or after relaxation). 3,267
+relaxations, crash-tolerant pool, no worker lost; per-steps cache `data/crystallm/kg_pipeline_energies_s40.json`.
+
+| one answer per material (300) | right |
+|---|---|
+| CrystaLLM x8, lowest energy | 63.7 |
+| CrystaLLM x5, lowest energy | 63.7 |
+| K-Ont template top-1, no physics | 61.7 |
+| K-Ont templates x3, lowest energy | 61.7 |
+| **3 K-Ont templates + 5 CrystaLLM, lowest energy** | **69.3** |
+| oracle: any of those 8 right | 79.3 |
+| oracle: any of CrystaLLM x8 right | 71.7 |
+
+Pipeline - CrystaLLM x8 (same budget, same selection) **+5.7 [+1.3, +9.7]**; pipeline - template top-1 +7.7
+[+3.3, +12.3]; template top-1 - CrystaLLM x8 lowest energy -2.0 [-7.7, +3.7] (n.s.). Energy selection lifts
+CrystaLLM from 48.3 (first sample, Step 41) to ~64, so templates alone no longer beat it; the gain is in combining:
+K-Ont templates add frameworks CrystaLLM does not produce, and CHGNet picks among them.

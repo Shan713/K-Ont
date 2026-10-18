@@ -55,6 +55,8 @@ OnT / HiT (hyperbolic ontology embeddings); KG embeddings (TransE, box/hyperboli
 | K-Ont template, CHGNet-relaxed | 60.8 | 67.3 | – |
 | 3 templates + 5 CrystaLLM (budget 8) | | | **77.3** (+9.0 [6.9, 11.1]) |
 
+**Table 4b — One committed answer per material (Step 48, random 300 of the 902).** CHGNet lowest-energy pick: CrystaLLM x8 63.7, K-Ont template top-1 61.7, **3 K-Ont templates + 5 CrystaLLM 69.3 (+5.7 [+1.3, +9.7] vs CrystaLLM x8)**; any-of-8 ceiling 79.3.
+
 **Table 5 — Novel cathode compositions (Step 44, not in Materials Project).** Lowest CHGNet energy per composition vs CrystaLLM-large's best of 10 relaxed samples (5 meV/atom tie band), 199 compositions.
 
 | method − CrystaLLM-large | lower | tie | higher | mean [95% CI], meV/atom |
