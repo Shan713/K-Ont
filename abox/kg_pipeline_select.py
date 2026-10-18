@@ -9,7 +9,7 @@ targets: candidates = the K-Ont ranker's top 3 templates (Step 41 substitution) 
   K-Ont template top-1               the ranker's first choice, no physics
   3 templates + 5 CrystaLLM, lowest energy   (the pipeline)
   oracle: any of the 8 right         (ceiling of selection)
-Crash-tolerant and resumable (robust_pool); energies cached in data/crystallm/kg_pipeline_energies.json.
+--subset 300 --steps 40: a random 300 of the 902 (seed 0), 40 relaxation steps (laptop time). Crash-tolerant and resumable (robust_pool); energies cached in data/crystallm/kg_pipeline_energies.json.
 
     .venv-crystallm/Scripts/python.exe abox/kg_pipeline_select.py [--workers 2 --steps 60]
 """
@@ -71,12 +71,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--workers", type=int, default=2)
     ap.add_argument("--steps", type=int, default=60)
+    ap.add_argument("--subset", type=int, default=0, help="evaluate a random subset of targets (seed 0); 0 = all 902")
     a = ap.parse_args()
     import kg_pool
     import phaseC_generate as gen
     from robust_pool import robust_map
     pool, rows = kg_pool.load()
     targets = pool["targets"]
+    if a.subset:  # ~10 relaxations/min on the laptop CPU: all 902 x 11 candidates would take ~15 h
+        targets = sorted(random.Random(0).sample(targets, a.subset))
     top8 = json.load(open(os.path.join(DATA, "kg_rerank_top8.json")))["prompt+kg+ft_kont"]
     tinfo = {t: {"formula": rows[t]["formula"], "ref": gen.reference_from_text(rows[t]["cif"]).as_dict()} for t in targets}
     jobs = []
@@ -88,13 +91,14 @@ def main():
     for k in range(5, 8):  # CrystaLLM x8 needs samples 5-7 too
         for t in targets:
             jobs.append((f"{t}|C|{k}", "crystallm", tinfo[t], os.path.join(GEN, t, f"s_{k}.cif")))
-    cache = json.load(open(CACHE)) if os.path.exists(CACHE) else {}
+    cache_p = CACHE.replace(".json", f"_s{a.steps}.json")  # one cache per relaxation length: never mix
+    cache = json.load(open(cache_p)) if os.path.exists(cache_p) else {}
     todo = [j for j in jobs if j[0] not in cache]
     print(f"{len(jobs)} candidates, {len(todo)} to relax ({a.steps} steps)", flush=True)
 
     def save(r):
         cache.update(r)
-        json.dump(cache, open(CACHE, "w"))
+        json.dump(cache, open(cache_p, "w"))
     if todo:
         robust_map(_relax, todo, a.workers, save, initializer=_init, initargs=(1, a.steps), chunk=96,
                    log=lambda m: print(m, flush=True))
@@ -121,12 +125,12 @@ def main():
         d = {t: arms[x][t] - arms[y][t] for t in targets}
         bs = sorted(100 * sum(d[t] for t in b) / len(b) for b in B)
         return [round(100 * sum(d.values()) / len(targets), 1), round(bs[125], 1), round(bs[4874], 1)]
-    rep = {"n": len(targets), "relax_steps": a.steps,
+    rep = {"n": len(targets), "subset_of_902": bool(a.subset), "relax_steps": a.steps,
            "right_single_pick": {k: round(100 * sum(v.values()) / len(targets), 1) for k, v in arms.items()},
            "pipeline - CrystaLLM x8 lowest energy": diff("3 templates + 5 CrystaLLM, lowest energy (pipeline)", "CrystaLLM x8, lowest energy"),
            "pipeline - K-Ont template top-1": diff("3 templates + 5 CrystaLLM, lowest energy (pipeline)", "K-Ont template top-1 (no physics)"),
            "K-Ont template top-1 - CrystaLLM x8 lowest energy": diff("K-Ont template top-1 (no physics)", "CrystaLLM x8, lowest energy")}
-    json.dump({"report": rep}, open(OUT, "w"), indent=1)
+    json.dump({"report": rep}, open(OUT.replace(".json", f"_n{len(targets)}_s{a.steps}.json"), "w"), indent=1)
     print(json.dumps(rep, indent=1))
 
 
