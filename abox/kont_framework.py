@@ -27,7 +27,9 @@ SRC = os.path.join(HERE, "data", "runs", "full_grow5000_v2")
 DATA = os.path.join(HERE, "data", "crystallm")
 VARIANTS = {"fw_plain": [], "fw_retain": ["--retain", "1.0"],
             # Step 52: + 20,000 GALEN concept names kept at the original OnT-galen embeddings (GALEN forgetting, Step 49)
-            "fw_retain_galen": ["--retain", "1.0", "--retain-galen", "20000"]}
+            "fw_retain_galen": ["--retain", "1.0", "--retain-galen", "20000"],
+            # Step 52b: the same, GALEN as a separate balanced term (Step 52 lost battery roles/families)
+            "fw_retain_galen_bal": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced"]}
 
 
 def run_dir(v):

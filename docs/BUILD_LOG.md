@@ -2116,3 +2116,37 @@ Pipeline - CrystaLLM x8 (same budget, same selection) **+5.7 [+1.3, +9.7]**; pip
 [+3.3, +12.3]; template top-1 - CrystaLLM x8 lowest energy -2.0 [-7.7, +3.7] (n.s.). Energy selection lifts
 CrystaLLM from 48.3 (first sample, Step 41) to ~64, so templates alone no longer beat it; the gain is in combining:
 K-Ont templates add frameworks CrystaLLM does not produce, and CHGNet picks among them.
+
+## Step 51 — Hard negatives inside K-Ont's own loss: retrieval up, typing destroyed (2026-10-19)
+
+`patches/ont_exist_hard_negatives.patch` (OnT `logical_loss.py`: an optional per-row `hard_neg` filler on exist
+rows, contrasted with the same clustering term as the in-batch negatives; data without the field trains as
+before) + `KONT_VARIANT=v4hn abox/kont_v3fw.py`: the Step 46 framework rows, 4,780 of them with a hard negative
+(a pool candidate of the same formula type, another space group). `train_ont.py` exactly as Step 36 (203 min).
+
+| | material / crystal typing | role / family (held-out) | TBox MRR | template @1 / @3 | right SG @1 |
+|---|---|---|---|---|---|
+| K-Ont v3, native, random negatives (Step 46) | 0.999 / 0.992 | 1.000 / 0.988 | 0.969 | 50.4 / 65.2 | 53.9 |
+| **K-Ont v4, native + hard negatives** | **0.090 / 0.001** | 0.990 / 0.977 | 0.969 | **54.4** / 65.7 | **58.5** |
+| K-Ont + fine-tune + retention (Step 43) | 0.999 / 1.000 | 1.000 / 1.000 | 1.000 | 55.0 / 66.5 | 57.2 |
+
+v4 - v3: @1 +4.0 [+1.4, +6.7], SG +4.7 [+1.9, +7.4] -- hard negatives teach the framework relation (v4 = Step 43,
+-0.6 [-2.9, +2.0]) -- but material and crystal TYPING collapse: the hard-negative term moves material sentences
+away from the class region. GALEN prediction MRR 0.324 / AUC 0.960, inference 0.008 / 0.896. **Reading**: inside
+the native objective the hard negatives need a counterweight (lower weight, or type-row replay); as run, the
+Step 43 recipe (fine-tune + retention) remains the way to add the relation.
+
+## Step 52 — Retention including GALEN: GALEN restored, battery roles/families lost (2026-10-19)
+
+`abox/kont_framework.py` variant `fw_retain_galen`: Step 43's fine-tune with the retention set extended by 20,000
+GALEN concept names held at the ORIGINAL OnT-galen embeddings (`kg_retriever_ft.py --retain-galen 20000`).
+
+| | GALEN prediction MRR / AUC | GALEN inference MRR / AUC | material / crystal typing | role / family | template @1 |
+|---|---|---|---|---|---|
+| OnT-galen (published) | 0.339 / 0.978 | 0.022 / 0.973 | | | |
+| K-Ont + retention (Step 43) | 0.333 / 0.955 | 0.010 / 0.934 | 0.999 / 1.000 | 1.000 / 1.000 | 55.0 |
+| **+ GALEN in the retention set** | **0.341 / 0.976** | **0.016 / 0.961** | 0.964 / 0.986 | **0.025 / 0.000** | 55.5 |
+
+GALEN is fully restored on prediction and largely on inference, retrieval is unchanged, but the battery role and
+family label checks collapse. Likely cause: the retention batch samples 16 of 30k sentences, two thirds GALEN, so the
+KG's class/individual embeddings drift. Step 52b re-runs it with GALEN as a separate, balanced 16-sentence term.

@@ -62,6 +62,8 @@ def main():
     ap.add_argument("--extra", default=None, help="Step 44: also score these targets (novel_pool.json)")
     ap.add_argument("--retain-galen", type=int, default=0,
                     help="Step 52: also keep this many GALEN concept names at the original OnT-galen embeddings")
+    ap.add_argument("--retain-balanced", action="store_true",
+                    help="Step 52b: GALEN retention as its own 16-sentence term per step, alongside the KG's")
     ap.add_argument("--save", default=None, help="save the fine-tuned encoder here (Step 43 ability checks)")
     a = ap.parse_args()
     random.seed(a.seed)
@@ -104,7 +106,7 @@ def main():
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             return model(f)["sentence_embedding"].float()
 
-    retain = None
+    retain, retain_g = None, None
     if a.retain > 0:  # frozen start-model embeddings of the sentences K-Ont was trained on
         ab = os.path.join(HERE, "data", "battgpt_abox_grow_5000_v2")
         sents = list(full.values())
@@ -129,7 +131,10 @@ def main():
                     with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
                         gt.append(ref(f)["sentence_embedding"].float())
             del ref
-            sents, teach = sents + gs, torch.cat([teach] + gt)
+            if a.retain_balanced:  # Step 52b: separate GALEN term, so 20k GALEN sentences cannot crowd out the KG's
+                retain_g = (gs, torch.cat(gt))
+            else:
+                sents, teach = sents + gs, torch.cat([teach] + gt)
             print(f"  + {len(gs)} GALEN concept names kept at OnT-galen's embeddings", flush=True)
         model.train()
         retain = (sents, teach)
@@ -157,9 +162,10 @@ def main():
                 lab = torch.tensor(lab, device=dev)
                 loss = loss + torch.logsumexp(s, 0) - torch.logsumexp(s[lab], 0)
             loss = loss / len(groups)
-            if retain is not None:
-                idx = random.sample(range(len(retain[0])), 16)
-                loss = loss + a.retain * F.mse_loss(raw([retain[0][j] for j in idx]), retain[1][idx]) / retain[1][idx].pow(2).mean()
+            for rs in (retain, retain_g):
+                if rs is not None:
+                    idx = random.sample(range(len(rs[0])), 16)
+                    loss = loss + a.retain * F.mse_loss(raw([rs[0][j] for j in idx]), rs[1][idx]) / rs[1][idx].pow(2).mean()
             opt.zero_grad(set_to_none=True)
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
