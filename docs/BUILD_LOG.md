@@ -2030,3 +2030,23 @@ K-Ont - Hautier: **+8.4 [5.5, 11.2] @1**, +4.5 [2.0, 7.0] @2, +2.3 [0.0, 4.7] @3
 [-0.6, 3.1] @8. Placement: +0.1 at every k (Step 41's order already puts elements on the right sites).
 **Reading**: the standard substitution method is a strong baseline once several frameworks are tried, but
 K-Ont picks the right framework first far more often -- the answer to "isn't this just substitution?".
+
+## Step 46 — The framework relation trained natively in K-Ont: abilities kept, retrieval weaker (2026-10-18)
+
+`abox/kont_v3fw.py`: Step 36's merged data + 5,045 exist rows {structure-free sentence of a K-Ont-seen
+training material, "has the framework of", full sentence of a same-space-group pool material} ->
+`train_ont.py` exactly as Step 36 (full, galen, in-batch negatives, batch 32, 3 epochs; 6,876 steps, 154 min).
+Retrieval scored with K-Ont's own existential score (role rotation, as phase5 hasStructure).
+
+| | material / crystal typing | role / family (held-out, no label) | TBox MRR | template @1 / @3 |
+|---|---|---|---|---|
+| K-Ont v2 (Step 36) | 1.000 / 0.997 | 1.000 / 0.988 | 0.969 | -- |
+| **K-Ont v3, native relation** | 0.999 / 0.992 | 1.000 / 0.988 | 0.969 | 50.4 / 65.2 |
+| K-Ont + fine-tune + retention (Step 43) | 0.999 / 1.000 | 1.000 / 1.000 | 1.000 | 55.0 / 66.5 |
+| K-Ont + retrieval fine-tune (Step 40) | (forgets) | | | 57.5 / 68.4 |
+
+v3 - Step 43: @1 -4.5 [-6.9, -2.2], @3 -1.3 [-3.3, +0.8]; v3 - Step 40 K-Ont retriever @1 -7.1 [-9.6, -4.4].
+v3 keeps every ontology ability but retrieves frameworks worse: K-Ont's objective contrasts each row with
+random in-batch rows (easy), the retrieval fine-tune with candidates of the SAME formula type (the hard
+distinction needed). **Design finding**: give K-Ont a new relational skill by a hard-negative fine-tune with
+retention (Step 43), not by adding rows to its native objective.
