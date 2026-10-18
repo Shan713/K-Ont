@@ -2150,3 +2150,27 @@ GALEN concept names held at the ORIGINAL OnT-galen embeddings (`kg_retriever_ft.
 GALEN is fully restored on prediction and largely on inference, retrieval is unchanged, but the battery role and
 family label checks collapse. Likely cause: the retention batch samples 16 of 30k sentences, two thirds GALEN, so the
 KG's class/individual embeddings drift. Step 52b re-runs it with GALEN as a separate, balanced 16-sentence term.
+
+## Step 52b/c — One K-Ont that keeps GALEN, the battery ontology and KG, and retrieves crystal frameworks (2026-10-19)
+
+52b (`fw_retain_galen_bal`): GALEN retention as its own 16-sentence term per step: GALEN fully restored (prediction
+MRR 0.339 / AUC 0.977, inference 0.017 / 0.963) but battery role 0.008 / family 0.000 still collapsed -- so the cause
+was not the GALEN proportion. The role/family checks score through K-Ont's role rotation, which embeds short
+phrases ("belongs to electrode", "Battery role: positive electrode (cathode)", family names) that are in no
+retention set; GALEN retention pulls short phrases toward OnT-galen's geometry. 52c (`fw_retain_galen_anchor`,
+`kg_retriever_ft.py --retain-anchors`): the 23 relation names and role/family label phrases retained EVERY step.
+
+| | material / crystal typing | role / family (held-out) | TBox MRR | template @1 / @3 | GALEN pred. MRR / AUC | GALEN inf. MRR / AUC |
+|---|---|---|---|---|---|---|
+| OnT-galen (published) | -- | -- | -- | -- | 0.339 / 0.978 | 0.022 / 0.973 |
+| K-Ont v2 (Step 36) | 1.000 / 0.997 | 1.000 / 0.988 | 0.969 | -- | 0.335 / 0.952 | 0.011 / 0.918 |
+| K-Ont + retention (Step 43) | 0.999 / 1.000 | 1.000 / 1.000 | 1.000 | 55.0 / 66.5 | 0.333 / 0.955 | 0.010 / 0.934 |
+| + GALEN retention (Step 52) | 0.964 / 0.986 | 0.025 / 0.000 | 0.938 | 55.5 / 67.0 | 0.341 / 0.976 | 0.016 / 0.961 |
+| + balanced (52b) | 0.988 / 0.983 | 0.008 / 0.000 | 0.938 | 54.3 / 67.0 | 0.339 / 0.977 | 0.017 / 0.963 |
+| **+ anchors (52c)** | 0.946 / **1.000** | **1.000 / 0.988** | **0.969** | **54.8 / 66.1** | **0.334 / 0.975** | **0.014 / 0.951** |
+
+52c keeps every battery check (material typing 0.946, the one small loss), crystal retrieval (= Step 43; -2.8
+[-5.0, -0.6] vs the specialist retriever), GALEN prediction at OnT's level and recovers a third of the GALEN
+inference loss. **The K-Ont result for the paper**: a single hyperbolic encoder for the original ontology (GALEN),
+a new domain ontology + KG (battery), and KG-guided crystal retrieval. Design finding: retention must cover the
+relation phrases that drive the role rotations, not only the entity sentences.
