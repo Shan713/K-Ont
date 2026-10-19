@@ -2206,3 +2206,35 @@ Step 53 controls (`--ranker plain|hautier --samples 1`, the same seeding with te
 seeded top-1 x1 / top-3 x1 = K-Ont 45.9 / 53.2, plain-encoder retriever 47.3 / 55.4, Hautier substitution probability
 39.6 / 50.7. As for the templates themselves (Steps 41, 47): KG-trained retrievers choose better seeds than the
 standard substitution method; K-Ont and the plain encoder trained the same way are level.
+
+## Step 54 — Ontology ablation: without its TBox axioms K-Ont loses type reasoning, not retrieval (2026-10-19)
+
+`abox/kont_ablation.py`: Step 36's data minus every TBox row (10,962 class-hierarchy type rows, 303 existential
+axiom rows); KG typing rows (62,355) and relation rows (5,740) kept. `train_ont.py` exactly as Step 36. Then the
+Step 52c one-model recipe from it (`kont_framework.py` variant `fw_anchor_notbox`, `--init kont_notbox`).
+
+| | material / crystal typing | role / family (held-out) | TBox MRR / H@1 | template @1 / @3 | GALEN pred. MRR / AUC | GALEN inf. MRR / AUC |
+|---|---|---|---|---|---|---|
+| K-Ont v2 (with TBox) | **1.000 / 0.997** | 1.000 / 0.988 | **0.969 / 0.938** | -- | 0.335 / 0.952 | 0.011 / 0.918 |
+| **K-Ont without TBox axioms** | 0.641 / 0.639 | 1.000 / 0.977 | 0.313 / 0.188 | -- | 0.339 / 0.960 | 0.010 / 0.941 |
+| one-model recipe (52c) from K-Ont | 0.946 / 1.000 | 1.000 / 0.988 | 0.969 | 54.8 / 66.1 | 0.334 / 0.975 | 0.014 / 0.951 |
+| one-model recipe from no-TBox K-Ont | 0.025 / 0.835 | 1.000 / 0.988 | 0.403 | 55.3 / 66.7 | 0.343 / 0.977 | 0.018 / 0.962 |
+
+**Reading**: the ontology's axioms are what give K-Ont its type reasoning -- material and crystal typing fall from
+~100% to 64% without them (and to 2.5% / 84% after the one-model fine-tune), the hierarchy from 0.97 to 0.31. Battery
+role and structure family come from the KG's relation rows and survive. Crystal-framework retrieval and GALEN do not
+depend on the battery TBox. So: the Ont in K-Ont = typing and hierarchy reasoning; the KG = roles, families and
+retrieval.
+
+## Step 55 — The one-model recipe (52c) is stable across seeds (2026-10-19)
+
+`kont_framework.py` variants `fw_retain_galen_anchor_s1/_s2` (`--seed 1/2`), same evaluations.
+
+| 52c, seed | material / crystal typing | role / family | TBox MRR | template @1 / @3 | GALEN pred. MRR / AUC | GALEN inf. MRR / AUC |
+|---|---|---|---|---|---|---|
+| 0 | 0.946 / 1.000 | 1.000 / 0.988 | 0.969 | 54.8 / 66.1 | 0.334 / 0.975 | 0.014 / 0.951 |
+| 1 | 0.916 / 1.000 | 0.992 / 0.988 | 0.969 | 54.2 / 66.3 | 0.337 / 0.976 | 0.014 / 0.946 |
+| 2 | 0.929 / 1.000 | 1.000 / 0.988 | 0.969 | 54.5 / 67.2 | 0.339 / 0.976 | 0.014 / 0.949 |
+
+Every K-Ont criterion holds on all three seeds; material typing 0.92-0.95 is the one consistent small cost;
+retrieval 54.5 +- 0.3 at @1, -3.0 +- 0.3 vs the specialist retriever.
