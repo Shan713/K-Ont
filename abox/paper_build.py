@@ -247,8 +247,10 @@ UL(["**Rule-based labels.** The KG's roles and families are rule-assigned; very 
     "ablation shows are necessary) and keeps the original ontology.",
     "**Memorisation.** Known-material benchmarks favour generators pre-trained on the same database; the from-"
     "scratch control and the novel-composition test address this, the latter only energetically.",
-    "**Template coverage.** Templates cannot produce frameworks absent from the KG (15% of targets have no correct "
-    "candidate); a larger KG is being built.",
+    "**Template coverage.** Templates cannot produce frameworks absent from the KG. Extending the KG with 5,267 "
+    "further Materials Project materials (built in memory-safe chunks) raises the share of targets with a correct "
+    "candidate from 85.6% to 90.9% and found@3 / found@8 by +3.4 [1.7, 5.2] / +3.4 [1.9, 5.1], with no retraining; "
+    "the first pick does not improve.",
     "**Scope.** One crystal KG; costs of the one-model recipe are material typing (0.92-0.95) and part of GALEN "
     "inference."])
 

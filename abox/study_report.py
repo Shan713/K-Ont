@@ -156,10 +156,10 @@ def main():
       "Retrained K-Ont with the ontology rules removed (keeping all KG facts).",
       "Material and crystal typing fell from ~100% to 64%, the hierarchy score from 0.97 to 0.31; battery roles, families and template retrieval stayed.",
       "The 'Ont' in K-Ont is what gives it type reasoning. The KG facts give roles, families and retrieval.")}
-{step("E5. A bigger KG (Step 56, running)",
-      "Building ~5,900 more materials in memory-safe chunks on the laptop, to give the template generator more moulds (today 15% of materials have no correct template available).",
-      "In progress — results will be added when the build finishes.",
-      "Expected to raise the ceiling of the template approach; measured on the same 902 materials with the same K-Ont model.", "mid")}
+{step("E5. A bigger KG (Step 56)",
+      "Built 5,901 more Materials Project materials on the laptop in 3 memory-safe chunks (all validated), of which 5,267 became usable templates, and re-ran the template test on the same 902 materials with the same K-Ont model (no retraining).",
+      "Materials with a correct template available: 85.6% → 90.9%. Found within 3 tries: 66.1% → 69.5% (+3.4, significant); within 8 tries: 72.6% → 76.1% (+3.4, significant). The first try did not change (54.8% → 54.9%).",
+      "More knowledge in the KG directly means more crystals can be built correctly. The first guess doesn't improve because more candidates also means more look-alikes to choose between.")}
 
 <h2 class="pb">Part 3 — How to read the results, in one table</h2>
 <table>
@@ -181,7 +181,7 @@ def main():
 <li><b>K-Ont vs a plain encoder:</b> for choosing templates alone, an ordinary encoder trained on the same KG relation does as well. K-Ont's distinct value is doing it in the same model as the ontology reasoning.</li>
 <li><b>Known materials:</b> most tests use Materials Project materials, which favours generators that memorised them; the new-cathode test addresses this only with energies.</li>
 <li><b>Energies, not experiments:</b> stability comes from CHGNet and the teammate's calculation (method to be confirmed), not from synthesis in a lab.</li>
-<li><b>Templates cannot invent new frameworks:</b> they only reuse frameworks already in the KG — hence the bigger KG (E5).</li>
+<li><b>Templates cannot invent new frameworks:</b> they only reuse frameworks already in the KG; the bigger KG (E5) raised coverage from 85.6% to 90.9%, but about 9% of materials still have no correct template.</li>
 <li><b>One crystal domain:</b> all crystal experiments use one battery KG; the heart-disease study is a second domain only for the representation part.</li>
 <li><b>Small costs in the one-model version:</b> material typing 92–95% and part of GALEN's hardest task.</li>
 </ul>
