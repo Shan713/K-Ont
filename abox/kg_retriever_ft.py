@@ -31,7 +31,9 @@ from ont.hit import HierarchyTransformer  # noqa: E402
 from phase5_checks import STRUCT_LINES  # noqa: E402
 
 DATA = os.path.join(HERE, "data", "crystallm")
-INITS = {"kont": os.path.join(HERE, "data", "runs", "full_grow5000_v2", "final"), "base": "Hui97/OnT-MiniLM-L12-galen"}
+INITS = {"kont": os.path.join(HERE, "data", "runs", "full_grow5000_v2", "final"), "base": "Hui97/OnT-MiniLM-L12-galen",
+         # Step 54 ablation: K-Ont trained without its TBox axioms
+         "kont_notbox": os.path.join(HERE, "data", "runs", "full_grow5000_notbox", "final")}
 
 
 MINIMAL = ("Material:", "Type:", "Formula:", "Chemical system:", "Sites:")

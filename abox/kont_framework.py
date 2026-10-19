@@ -31,7 +31,13 @@ VARIANTS = {"fw_plain": [], "fw_retain": ["--retain", "1.0"],
             # Step 52b: the same, GALEN as a separate balanced term (Step 52 lost battery roles/families)
             "fw_retain_galen_bal": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced"],
             # Step 52c: + K-Ont's relation names and role/family label phrases retained every step
-            "fw_retain_galen_anchor": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced", "--retain-anchors"]}
+            "fw_retain_galen_anchor": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced", "--retain-anchors"],
+            # Step 55: the 52c recipe with two more seeds (stability of the one-model result)
+            "fw_retain_galen_anchor_s1": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced", "--retain-anchors", "--seed", "1"],
+            "fw_retain_galen_anchor_s2": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced", "--retain-anchors", "--seed", "2"],
+            # Step 54: the 52c recipe from K-Ont trained WITHOUT its TBox axioms (ontology ablation)
+            "fw_anchor_notbox": ["--retain", "1.0", "--retain-galen", "20000", "--retain-balanced", "--retain-anchors", "--init", "kont_notbox"]}
+SOURCE = {"fw_anchor_notbox": os.path.join(HERE, "data", "runs", "full_grow5000_notbox")}  # default: SRC (K-Ont v2)
 
 
 def run_dir(v):
@@ -46,10 +52,11 @@ def stage_train(a):
         cmd = [sys.executable, "-u", os.path.join(HERE, "abox", "kg_retriever_ft.py"), "--init", "kont", "--tag", f"_{v}",
                "--save", os.path.join(d, "final")] + extra
         subprocess.run(cmd, check=True)
+        src = SOURCE.get(v, SRC)
         for f in ("role_model.pt", "wrapper_config.json"):  # the K-Ont parts the encoder fine-tune does not touch
-            shutil.copy(os.path.join(SRC, "final", f), os.path.join(d, "final", f))
-        shutil.copytree(os.path.join(SRC, "data"), os.path.join(d, "data"), dirs_exist_ok=True)
-        shutil.copy(os.path.join(SRC, "step_times.json"), d)
+            shutil.copy(os.path.join(src, "final", f), os.path.join(d, "final", f))
+        shutil.copytree(os.path.join(src, "data"), os.path.join(d, "data"), dirs_exist_ok=True)
+        shutil.copy(os.path.join(src, "step_times.json"), d)
 
 
 def stage_checks(a):

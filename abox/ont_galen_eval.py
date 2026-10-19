@@ -49,7 +49,11 @@ MODELS = {"OnT-galen (published)": "Hui97/OnT-MiniLM-L12-galen",
           "K-Ont v4 native + hard negatives (Step 51)": os.path.join(HERE, "data", "runs", "full_grow5000_v4hn", "final"),
           "K-Ont + retention incl. GALEN (Step 52)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen", "final"),
           "K-Ont + balanced retention incl. GALEN (Step 52b)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_bal", "final"),
-          "K-Ont + GALEN + anchor retention (Step 52c)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_anchor", "final")}
+          "K-Ont + GALEN + anchor retention (Step 52c)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_anchor", "final"),
+          "52c seed 1 (Step 55)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_anchor_s1", "final"),
+          "52c seed 2 (Step 55)": os.path.join(HERE, "data", "runs", "kont_fw_retain_galen_anchor_s2", "final"),
+          "K-Ont without TBox axioms (Step 54)": os.path.join(HERE, "data", "runs", "full_grow5000_notbox", "final"),
+          "no-TBox K-Ont + 52c recipe (Step 54)": os.path.join(HERE, "data", "runs", "kont_fw_anchor_notbox", "final")}
 TASKS = {"prediction": "GALEN_OnT", "inference": "GALEN_OnT_inference"}
 
 
