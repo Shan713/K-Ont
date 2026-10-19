@@ -2238,3 +2238,26 @@ retrieval.
 
 Every K-Ont criterion holds on all three seeds; material typing 0.92-0.95 is the one consistent small cost;
 retrieval 54.5 +- 0.3 at @1, -3.0 +- 0.3 vs the specialist retriever.
+
+## Step 56 — A bigger KG on the laptop, in chunks: more templates, +3.4 structures found at k=3 and 8 (2026-10-19)
+
+`abox/kg_extend.py` + battGPT `scripts/populate_kg_ont.py --ids-file` (new, opt-in; not committed in battGPT): the
+battGPT --grow candidate cache minus the 5,000 KG's materials (4,033) minus every evaluation composition (1,004
+reduced formulas) = 5,901 new Materials Project materials, built in 3 chunks of <= 2,000 (2.6 M / 2.7 M / 2.4 M
+triples, validation 0 errors each, ~45 min per chunk at ~47 materials/min), extracted and verbalised one chunk at a
+time (the whole 10,900-material KG would need ~22 GB to extract; the laptop has 15.7 GB), converted to pool rows:
+5,267 usable (512 too long for the context, 122 do not rebuild). `abox/kg_ext_eval.py`: same 902 targets, same
+retriever (the one-model K-Ont-52c), candidate pools 5,000 KG vs extended.
+
+| 902 targets | 5,000 KG | extended KG | extended - 5,000 [95% CI] |
+|---|---|---|---|
+| mean candidates per target | 160.4 | 261.1 | |
+| some candidate has the true space group | 85.6 | **90.9** | +5.3 |
+| K-Ont-52c template found@1 | 54.8 | 54.9 | +0.1 [-1.7, +1.8] |
+| found@3 | 66.1 | **69.5** | **+3.4 [+1.7, +5.2]** |
+| found@8 | 72.6 | **76.1** | **+3.4 [+1.9, +5.1]** |
+| composition rule found@1 / @3 / @8 | 51.3 / 64.1 / 71.4 | 52.8 / 66.5 / 75.4 | +1.4 / +2.4 / +4.0 |
+
+A bigger KG closes a third of the coverage gap and lets templates find more structures within a few attempts;
+the first pick does not improve (more candidates are also more look-alikes). K-Ont stays ahead of the composition
+rule on the extended pool (@3 69.5 vs 66.5). No K-Ont retraining was needed: the new materials only enter the pool.
