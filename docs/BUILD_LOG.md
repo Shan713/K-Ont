@@ -2174,3 +2174,30 @@ retention set; GALEN retention pulls short phrases toward OnT-galen's geometry. 
 inference loss. **The K-Ont result for the paper**: a single hyperbolic encoder for the original ontology (GALEN),
 a new domain ontology + KG (battery), and KG-guided crystal retrieval. Design finding: retention must cover the
 relation phrases that drive the role rotations, not only the entity sentences.
+
+## Step 53 — K-Ont knowledge as a hard prompt (template-seeded CrystaLLM): worse than the template itself (2026-10-19)
+
+`abox/kg_seeded.py`. Not soft prompting (Steps 37-45 fed learned K-Ont vectors as virtual tokens): here K-Ont
+RETRIEVES the template and its CIF header goes in as plain text (retrieval-augmented hard prompt). For each of
+the K-Ont ranker's top 3 templates, the target's elements in the template's framework, written in CrystaLLM's
+layout; the prompt = everything up to `_cell_formula_units_Z` (atom-type block, space group, cell lengths and
+angles, volume, Z); CrystaLLM (Step 40 plain fine-tune) writes the symmetry operators and atom sites, 3 samples
+per template. 902 K-Ont-unseen targets; seeded CIFs 99.4% valid, 97.1% right composition.
+
+| found, 902 targets | |
+|---|---|
+| K-Ont template top-1 (atoms placed directly) | **60.5** |
+| CrystaLLM x1 (composition prompt) | 48.3 |
+| **seeded with top-1 template x1** | 45.9 |
+| seeded with top-1 template x3 | 51.8 |
+| seeded with top-3 templates x1 | 53.2 (templates top-3: 66.9) |
+| seeded top-3 x3 (9 samples) | 58.1 |
+| budget 8: templates x3 + CrystaLLM x5 (Step 41) | **77.3** |
+| budget 8: templates x3 + seeded top-3 x1 + CrystaLLM x2 | 74.6 |
+
+Seeded top-1 - template top-1 -14.6 [-17.1, -12.4]; seeded top-1 - CrystaLLM x1 -2.4 [-5.3, +0.3]; budget-8 mix with
+seeded samples - templates + CrystaLLM -2.7 [-3.9, -1.7]. With the right space group and cell, choosing the atom
+coordinates is still where CrystaLLM goes wrong, and the template already has them. **Conclusion across Steps
+37-45 and 53**: K-Ont knowledge pushed INTO a crystal LLM -- as a vector or as text -- adds little; the effective
+design keeps them apart: K-Ont chooses templates that are built directly, CrystaLLM generates independently,
+and a physics check picks (Step 48, +5.7 over CrystaLLM at the same budget).
