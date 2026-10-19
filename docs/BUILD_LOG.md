@@ -2201,3 +2201,8 @@ coordinates is still where CrystaLLM goes wrong, and the template already has th
 37-45 and 53**: K-Ont knowledge pushed INTO a crystal LLM -- as a vector or as text -- adds little; the effective
 design keeps them apart: K-Ont chooses templates that are built directly, CrystaLLM generates independently,
 and a physics check picks (Step 48, +5.7 over CrystaLLM at the same budget).
+
+Step 53 controls (`--ranker plain|hautier --samples 1`, the same seeding with templates chosen without K-Ont):
+seeded top-1 x1 / top-3 x1 = K-Ont 45.9 / 53.2, plain-encoder retriever 47.3 / 55.4, Hautier substitution probability
+39.6 / 50.7. As for the templates themselves (Steps 41, 47): KG-trained retrievers choose better seeds than the
+standard substitution method; K-Ont and the plain encoder trained the same way are level.
