@@ -289,6 +289,66 @@ def main():
         for lab, d in (("K-Ont templates, top 3", nvc["kont3"]), ("plain-encoder templates, top 3", nvc["base3"]),
                        ("parent's framework (1 candidate)", nvc["parent"]), ("<b>K-Ont top 3 + CrystaLLM</b>", nvc["kont3 + CrystaLLM"]))])
 
+    # ---- Steps 46-55
+    import sys as _sys
+    _sys.path.insert(0, os.path.join(HERE, "abox"))
+    import kont_framework as kf
+    hz = J("kg_substitution.json")["report"]
+    hf = {k.replace("·", "|"): v for k, v in hz["found"].items()}
+    t_haut = table(["found within k attempts (%), 902 materials", "k=1", "k=2", "k=3", "k=5", "k=8"], [
+        [lab, *[f'{hf[key][f"@{k}"]:.1f}' for k in (1, 2, 3, 5, 8)]] for key, lab in (
+            ("K-Ont ranker | order placement", "<b>K-Ont ranker</b>"),
+            ("Hautier substitution probability | order placement", "Hautier substitution probability (standard method)"),
+            ("Hautier substitution probability | hautier placement", "Hautier, with Hautier's own element placement"),
+            ("composition rule | order placement", "composition rule"),
+            ("K-Ont ranker | hautier placement", "K-Ont ranker, oxidation-aware placement"))]
+        + [["<b>K-Ont − Hautier</b> [95% CI]", *[ci(hz[f"K-Ont ranker - Hautier ranker (order placement) @{k}"]) for k in (1, 2, 3, 5, 8)]]])
+    ps = J("kg_pipeline_select_n300_s40.json")["report"]
+    pr = ps["right_single_pick"]
+    t_pipe = table(["one committed answer per material (CHGNet lowest energy)", "right"], [
+        ["CrystaLLM, best of 8 samples", f'{pr["CrystaLLM x8, lowest energy"]:.1f}'],
+        ["K-Ont template top-1 (no physics)", f'{pr["K-Ont template top-1 (no physics)"]:.1f}'],
+        ["<b>3 K-Ont templates + 5 CrystaLLM samples</b>", f'<b>{pr["3 templates + 5 CrystaLLM, lowest energy (pipeline)"]:.1f}</b>'],
+        ["ceiling: any of those 8 right", f'{pr["oracle: any of 3 templates + 5 CrystaLLM"]:.1f}'],
+        ["pipeline − CrystaLLM x8 [95% CI]", ci(ps["pipeline - CrystaLLM x8 lowest energy"])]])
+    se = {r: J(f"kgseed_eval{'' if r == 'kont' else '_' + r}.json")["report"]["found"] for r in ("kont", "plain", "hautier")}
+    sk = J("kgseed_eval.json")["report"]
+    t_seed = table(["902 materials, right structure", "found (%)"], [
+        ["K-Ont template top-1 (atoms placed directly)", f'{tg["prompt+kg+ft_kont"]["found@1"]:.1f}'],
+        ["CrystaLLM, composition prompt, 1 sample", f'{tg["CrystaLLM fine-tuned"]["found@1"]:.1f}'],
+        ["<b>CrystaLLM seeded with the K-Ont top-1 template's header, 1 sample</b>", f'<b>{se["kont"]["seeded: top-1 template x1"]:.1f}</b>'],
+        ["seeded with the top-3 K-Ont templates, 1 sample each", f'{se["kont"]["seeded: top-3 templates x1"]:.1f}'],
+        ["  same, templates from the plain-encoder retriever", f'{se["plain"]["seeded: top-3 templates x1"]:.1f}'],
+        ["  same, templates from Hautier substitution", f'{se["hautier"]["seeded: top-3 templates x1"]:.1f}'],
+        ["seeded top-1 − template top-1 [95% CI]", ci(sk["seeded top-1 x1 - template top-1"])]])
+    eh = J("teammate_ehull.json")
+    t_ehull = table(["34 novel compositions (teammate's calculation)", "K-Ont template", "CrystaLLM-large"], [
+        ["lower energy above hull", f'<b>{eh["kont_lower"]}</b>', f'{eh["crystallm_lower"]} (+{eh["tie_0.5meV"]} tie)'],
+        ["median energy above hull (eV/atom)", f'<b>{eh["median_ehull"]["kont"]:.3f}</b>', f'{eh["median_ehull"]["crystallm"]:.3f}'],
+        *[[f"e<sub>hull</sub> {k} (eV/atom ×1000)", str(v["kont"]), str(v["crystallm"])] for k, v in eh["thresholds"].items()]])
+    gr = json.load(open(os.path.join(HERE, "data", "ont_bench", "galen_results.json")))
+    gal = lambda task, m: gr[f"{task} | {m}"]["results"]["sentence_combined"]
+    fwj = J("kont_framework.json")
+    runs = {"K-Ont v2 (Step 36)": (kf.headline(os.path.join(HERE, "data", "runs", "full_grow5000_v2", "phase5_checks.json")), None, "K-Ont v2 (Step 36)"),
+            "+ framework fine-tune + retention (43)": (fwj["checks"]["fw_retain"], fwj["template"]["fw_retain"], "K-Ont + retention (Step 43)"),
+            "native relation, random negatives (46)": (J("kont_v3fw.json")["checks"]["K-Ont v3 (native framework relation)"], J("kont_v3fw.json")["retrieval"]["K-Ont v3, native framework relation"], "K-Ont v3 native (Step 46)"),
+            "native relation + hard negatives (51)": (J("kont_v4hn.json")["checks"]["K-Ont v4hn (native framework relation)"], J("kont_v4hn.json")["retrieval"]["K-Ont v4hn, native framework relation"], "K-Ont v4 native + hard negatives (Step 51)"),
+            "43 + GALEN retention (52)": (fwj["checks"]["fw_retain_galen"], fwj["template"]["fw_retain_galen"], "K-Ont + retention incl. GALEN (Step 52)"),
+            "<b>43 + GALEN + anchor retention (52c)</b>": (fwj["checks"]["fw_retain_galen_anchor"], fwj["template"]["fw_retain_galen_anchor"], "K-Ont + GALEN + anchor retention (Step 52c)"),
+            "  52c, seed 1 (55)": (fwj["checks"]["fw_retain_galen_anchor_s1"], fwj["template"]["fw_retain_galen_anchor_s1"], "52c seed 1 (Step 55)"),
+            "  52c, seed 2 (55)": (fwj["checks"]["fw_retain_galen_anchor_s2"], fwj["template"]["fw_retain_galen_anchor_s2"], "52c seed 2 (Step 55)"),
+            "K-Ont WITHOUT ontology axioms (54)": (kf.headline(os.path.join(HERE, "data", "runs", "full_grow5000_notbox", "phase5_checks.json")), None, "K-Ont without TBox axioms (Step 54)"),
+            "  no-axiom K-Ont + 52c recipe (54)": (fwj["checks"]["fw_anchor_notbox"], fwj["template"]["fw_anchor_notbox"], "no-TBox K-Ont + 52c recipe (Step 54)")}
+    f1 = lambda tm: (f'{tm.get("found@1", 0):.1f}' if tm else "–")
+    t_one = table(["model", "material / crystal typing", "role / family (held-out)", "TBox MRR", "crystal retrieval @1",
+                   "GALEN pred. MRR / AUC", "GALEN inf. MRR / AUC"],
+                  [["OnT-galen (published)", "–", "–", "–", "–", f'{gal("prediction", "OnT-galen (published)")["MRR"]:.3f} / {gal("prediction", "OnT-galen (published)")["AUC"]:.3f}',
+                    f'{gal("inference", "OnT-galen (published)")["MRR"]:.3f} / {gal("inference", "OnT-galen (published)")["AUC"]:.3f}']]
+                  + [[n, f'{c["material typing H@1"]:.3f} / {c["crystal typing H@1"]:.3f}',
+                      f'{c["role, no label line (test)"]:.3f} / {c["family, no label line (test)"]:.3f}', f'{c["TBox MRR"]:.3f}', f1(tm),
+                      f'{gal("prediction", g)["MRR"]:.3f} / {gal("prediction", g)["AUC"]:.3f}',
+                      f'{gal("inference", g)["MRR"]:.3f} / {gal("inference", g)["AUC"]:.3f}'] for n, (c, tm, g) in runs.items()], num_from=1)
+
     doc = f"""<!doctype html><html><head><meta charset="utf-8"><title>K-Ont paper results</title>
 <style>
 @page {{ size: A4; margin: 16mm 15mm 16mm 15mm; }}
@@ -327,7 +387,7 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 
 <section class="cover">
   <div>
-    <div class="kicker">K-Ont research · results for the paper · BUILD_LOG Steps 36–45</div>
+    <div class="kicker">K-Ont research · results for the paper · BUILD_LOG Steps 36–55</div>
     <h1>K-Ont: one ontology + knowledge-graph encoder that reasons over the ontology and guides crystal generation</h1>
     <p style="font-size:11pt;color:{MUTED};max-width:155mm">What we built, every experiment that tests it, and an honest reading of what the results do and do not support — for going through the results and deciding the paper.</p>
   </div>
@@ -336,16 +396,17 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
     <div class="tiles">
       <div class="tile"><div class="n">{sg(k1[0])}</div><div class="t">points: K-Ont-guided templates vs fine-tuned CrystaLLM, right structure at the first attempt (902 held-out materials; CI {sg(k1[1])} to {sg(k1[2])})</div></div>
       <div class="tile"><div class="n">{hyb["found@8"]:.1f}%</div><div class="t">right structure within 8 attempts, 3 K-Ont templates + 5 CrystaLLM samples, vs {tg["CrystaLLM fine-tuned"]["found@8"]:.1f}% for CrystaLLM alone</div></div>
-      <div class="tile"><div class="n">≥99.9%</div><div class="t">every K-Ont ontology check kept by the single model that also retrieves crystal frameworks (retention loss)</div></div>
-      <div class="tile"><div class="n">{nvc["kont3 + CrystaLLM"]["win"]} / 0</div><div class="t">new cathode compositions where adding K-Ont templates found a lower / higher energy structure than CrystaLLM-large alone (of {nvc["kont3 + CrystaLLM"]["n"]})</div></div>
+      <div class="tile"><div class="n">{sg(ps["pipeline - CrystaLLM x8 lowest energy"][0])}</div><div class="t">points: one committed answer per material, K-Ont templates + CrystaLLM vs CrystaLLM alone, same budget and physics check (CI {sg(ps["pipeline - CrystaLLM x8 lowest energy"][1])} to {sg(ps["pipeline - CrystaLLM x8 lowest energy"][2])})</div></div>
+      <div class="tile"><div class="n">{eh["kont_lower"]} / {eh["n"]}</div><div class="t">new cathodes where the teammate's independent calculation puts the K-Ont template lower above the hull than CrystaLLM-large's structure</div></div>
     </div>
     <ul>
-      <li><b>Works:</b> K-Ont learns the battery ontology and KG (typing, roles, families, hierarchy at 98.8–100%) and beats OnT as a representation on heart disease; one K-Ont model can do ontology reasoning and crystal-framework retrieval together; K-Ont-guided templates beat CrystaLLM on known materials and complement it on new ones.</li>
-      <li><b>Works only narrowly:</b> injecting K-Ont embeddings into a crystal LLM. On CrystaLLM it cannot beat fine-tuning (CrystaLLM already recalls Materials Project crystals); on a GPT pre-trained from scratch without the test compositions it does (+1.5 points, significant), but even the true framework adds under 3 points — retrieval plus direct construction is the effective route.</li>
-      <li><b>Caveats to state in the paper:</b> a retriever started from the plain encoder does about as well as one started from K-Ont (K-Ont helps only at 5% data); KG labels are rule-based; new-material energies are CHGNet, not DFT.</li>
+      <li><b>Works:</b> K-Ont learns the battery ontology and KG (typing, roles, families, hierarchy at 98.8–100%), beats OnT as a representation on heart disease, and keeps OnT's own GALEN benchmark. <b>One K-Ont model</b> (Step 52c, stable over 3 seeds) does battery-ontology reasoning, GALEN and crystal-framework retrieval together. K-Ont-guided templates beat CrystaLLM and the standard substitution method on known materials, and complement CrystaLLM on new ones (confirmed independently for 32/34).</li>
+      <li><b>The ontology matters for reasoning:</b> without its axioms K-Ont types materials and crystals correctly only 64% of the time instead of ~100%, and loses the hierarchy (Step 54).</li>
+      <li><b>Works only narrowly:</b> pushing K-Ont knowledge INTO a crystal LLM — as a vector (soft prompt) or as the template's text (hard prompt). Even perfect knowledge adds under 3 points; the effective design keeps K-Ont retrieval, direct construction and the LLM separate and lets a physics check choose.</li>
+      <li><b>Caveats to state in the paper:</b> for template choice alone, a plain encoder trained on the same KG relation is as good as K-Ont (K-Ont's value is doing it in the same model as the reasoning); KG labels are rule-based; the teammate's method (DFT or potential) is to be confirmed, and those 34 were selected by CHGNet.</li>
     </ul>
   </div>
-  <p class="small">K-Ont repository, docs/BUILD_LOG.md Steps 36–44 and docs/PAPER_OUTLINE.md. All numbers are read from the experiments' result files. 95% intervals are paired bootstrap over materials.</p>
+  <p class="small">K-Ont repository, docs/BUILD_LOG.md Steps 36–55 and docs/PAPER_OUTLINE.md. All numbers are read from the experiments' result files. 95% intervals are paired bootstrap over materials.</p>
 </section>
 
 <h2>1 What K-Ont is, and how it is tested</h2>
@@ -368,6 +429,11 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 {table(["paired difference, scratch base [95% CI]", "true structure", "found within 8", "follows analogue"], [[n, *[ci([sp[k][m]["diff"], *sp[k][m]["ci95"]]) for m in ("strict", "found", "complies")]] for k, n in (("cf_rr - const", "K-Ont-ranked analogue − plain fine-tune"), ("cf_rr - cf_rand", "K-Ont-ranked analogue − random analogue"), ("cf_rr - cf_none", "K-Ont-ranked analogue − same model, no vector"), ("cf_rr - cf_rrnok", "K-Ont ranker − ranker without K-Ont"), ("cf_oracle - const", "true analogue (ceiling) − plain fine-tune"))])}
 <div class="box ok"><b>Reading.</b> Without memorisation the baseline falls from 47.5% to {ss["const"]["strict"]:.1f}%, and K-Ont injection now <b>beats plain fine-tuning</b> ({ci([sp["cf_rr - const"]["strict"]["diff"], *sp["cf_rr - const"]["strict"]["ci95"]])}): the pre-set criterion that failed on CrystaLLM passes. But the channel is narrow: even the true framework adds only {sg(sp["cf_oracle - const"]["strict"]["diff"])} points, because a 384-number vector says <i>which</i> framework while the model must still write every coordinate itself. On the same materials, templates that place the atoms directly from the KG framework are right {tg["prompt+kg+ft_kont"]["found@1"]:.1f}% of the time at the first attempt — the effective way to use K-Ont is retrieval plus direct construction.</div>
 
+<h2>2c Knowledge as text: template-seeded prompts (Step 53)</h2>
+<p>Steps 37–45 fed K-Ont <i>vectors</i> in as virtual tokens (soft prompting). Here K-Ont instead <b>retrieves</b> a template and its crystal-file header — space group, cell lengths and angles, volume, Z — goes into CrystaLLM's prompt as plain text (a retrieval-augmented hard prompt); CrystaLLM then writes the atom positions.</p>
+{t_seed}
+<div class="box neg"><b>Reading.</b> The seeded files are valid ({sk["seeded_samples_valid"]:.1f}%) with the right composition ({sk["seeded_samples_right_composition"]:.1f}%), yet CrystaLLM gets the structure right <i>less</i> often than the template it was given ({ci(sk["seeded top-1 x1 - template top-1"])}): with the right cell, choosing the coordinates is still where it fails, and the template already has them. Together with Sections 2–2b: K-Ont knowledge pushed <i>into</i> a crystal LLM — as a vector or as text — adds little; the effective design keeps them apart (Section 3c).</div>
+
 <h2 class="pb">3 K-Ont-guided template generation (Steps 40–41)</h2>
 <div class="fig">{fig_pipeline()}</div>
 <p>No neural decoder: K-Ont ranks the KG materials of the same formula type by how likely they share the target's framework, and the target's elements are placed on the top frameworks' sites. The ranker combines simple features (how common each framework is, cell size), the KG's facts, and a <b>K-Ont retriever</b> fine-tuned on one new KG relation: "this material has that material's framework".</p>
@@ -378,6 +444,16 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 {t_tmpl_d}
 <div class="fig">{fig_hybrid(tg)}</div>
 <div class="box ok"><b>Reading.</b> Three things are significant: K-Ont-guided templates beat fine-tuned CrystaLLM at every budget ({sg(k1[0])} points at one attempt); they beat templates chosen without the KG-trained retriever (+3 to +4) and by composition alone (+9 to +12); and combined with CrystaLLM at the same budget of 8 they reach {hyb["found@8"]:.1f}% vs {tg["CrystaLLM fine-tuned"]["found@8"]:.1f}% ({ci(hyb["vs CrystaLLM x8"])}) because the two get different materials right. CHGNet relaxation hardly changes the template result ({tgr["K-Ont template, CHGNet-relaxed"]["found@1"]:.1f}% vs {tg["prompt+kg+ft_kont"]["found@1"]:.1f}% at one attempt). <b>Caveat:</b> the same retriever started from the plain encoder does as well (equal at k=1, slightly better at k≥5) — the gain comes from KG-trained retrieval, not from K-Ont's starting weights.</div>
+
+<h2>3b Against the standard substitution method (Step 47)</h2>
+<p>Reviewers will ask whether this is just element substitution (Hautier et al. 2011). pymatgen's data-mined substitution-probability model ranks the same KG frameworks; everything else is identical.</p>
+{t_haut}
+<div class="box ok"><b>Reading.</b> K-Ont picks the right framework first far more often than the standard method ({ci(hz["K-Ont ranker - Hautier ranker (order placement) @1"])} at one attempt, {ci(hz["K-Ont ranker - Hautier ranker (order placement) @2"])} at two); with five or more attempts the standard method catches up. Placing elements by oxidation state instead of our order changes nothing — the atoms already land on the right sites.</div>
+
+<h2>3c One committed answer per material (Step 48)</h2>
+<p>For a random 300 of the 902 materials, the K-Ont ranker's 3 templates and 5 CrystaLLM samples are each relaxed briefly with CHGNet and the lowest-energy structure is the answer — compared with CrystaLLM choosing among its own 8 samples the same way.</p>
+{t_pipe}
+<div class="box ok"><b>Reading.</b> At the same budget and with the same physics check, the combined system is right {pr["3 templates + 5 CrystaLLM, lowest energy (pipeline)"]:.1f}% of the time vs {pr["CrystaLLM x8, lowest energy"]:.1f}% for CrystaLLM alone ({ci(ps["pipeline - CrystaLLM x8 lowest energy"])}). Once CrystaLLM can also choose by energy, the template alone is no longer better than it ({ci(ps["K-Ont template top-1 - CrystaLLM x8 lowest energy"])}); the gain is in combining: K-Ont adds frameworks CrystaLLM does not produce.</div>
 
 <h2 class="pb">4 Does K-Ont's own training help? (Steps 42–43)</h2>
 <div class="two">
@@ -390,27 +466,40 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 {t_fw}
 <div class="box"><b>Reading.</b> K-Ont's starting weights help only with very little data (5%: right space group +3.4, significant), are slightly worse at 10–25% and equal from 50%; K-Ont runs are steadier across seeds. The K-Ont-specific result is the second one: trained on the new relation alone, K-Ont <i>forgets</i> its ontology (material typing collapses to 0.04%); with the retention loss, <b>one model keeps every ontology check at ≥99.9% and retrieves crystal frameworks</b>, at a small cost (template right @1 {fw["template"]["fw_retain"]["found@1"]:.1f}% vs {fw["template"]["K-Ont retriever (Step 40)"]["found@1"]:.1f}% for the specialist retriever).</div>
 
+<h2 class="pb">4b One K-Ont for GALEN, the battery ontology + KG, and crystals (Steps 46, 49, 51, 52, 55)</h2>
+<p>Step 43's model retrieves frameworks without forgetting the battery KG, but learning batteries cost K-Ont part of OnT's original ontology (GALEN, the OnT paper's benchmark: Step 49). Variants tried: the framework relation trained natively in K-Ont's own loss (Step 46) and with hard negatives (51); retention extended to GALEN concepts (52), and with K-Ont's relation names and role/family label phrases kept every step (52c), repeated over three seeds (55).</p>
+{t_one}
+<div class="box ok"><b>Reading.</b> Native training keeps the ontology but retrieves less well (46); hard negatives fix retrieval but destroy typing (51); GALEN retention restores GALEN but breaks battery roles and families until the relation phrases are protected too (52 → 52c). <b>52c is one model that keeps every battery check, retrieves crystal frameworks, and is back at OnT's level on GALEN prediction</b>, on all three seeds; the costs are material typing 0.92–0.95 and part of GALEN's (hard) inference ranking.</div>
+<h3>4c Does the ontology matter? (Step 54)</h3>
+<p>K-Ont retrained with every TBox axiom removed (the class hierarchy and existential restrictions); the KG's typing and relation rows kept. Rows "K-Ont WITHOUT ontology axioms" in the table above.</p>
+<div class="box ok"><b>Reading.</b> The ontology's axioms are what give K-Ont its type reasoning: without them materials and crystals are typed correctly 64% of the time instead of ~100%, and the hierarchy score falls from 0.97 to 0.31. Battery roles and structure families come from the KG's relation rows and survive; crystal retrieval and GALEN do not depend on the battery ontology.</div>
+
 <h2 class="pb">5 New cathode compositions (Step 44)</h2>
 <p>The real use: compositions that do not exist in Materials Project. 200 new cathodes were made earlier (Step 28) by swapping elements in KG cathodes. No true structure exists, so methods are compared by the <b>lowest energy</b> they reach for each composition after CHGNet relaxation (lower = a more stable, more plausible structure; same settings for all). CrystaLLM-large had 10 relaxed samples per composition; the templates get 3. Because a new composition has no computed properties, the K-Ont retriever here reads only formula, chemical system and cell.</p>
 <div class="fig">{fig_novel(nv)}</div>
 {t_nv}
 <div class="box ok"><b>Reading.</b> Three K-Ont templates, with no neural generator, are statistically level with CrystaLLM-large's best of ten ({sg(nvc["kont3"]["mean_delta_meV"])} meV/atom, CI {sg(nvc["kont3"]["ci95_meV"][0])} to {sg(nvc["kont3"]["ci95_meV"][1])}). Adding them to CrystaLLM finds a lower-energy structure for {nvc["kont3 + CrystaLLM"]["win"]} of {nvc["kont3 + CrystaLLM"]["n"]} compositions (17%) and a worse one for none ({sg(nvc["kont3 + CrystaLLM"]["mean_delta_meV"])} meV/atom, CI {sg(nvc["kont3 + CrystaLLM"]["ci95_meV"][0])} to {sg(nvc["kont3 + CrystaLLM"]["ci95_meV"][1])}). <b>Caveats:</b> the parent's own framework — how each composition was made — is a strong hand-made baseline, slightly better than K-Ont's top 3 ({sg(nvr["kont3 - parent"]["mean_delta_meV"])} meV/atom, CI {sg(nvr["kont3 - parent"]["ci95_meV"][0])} to {sg(nvr["kont3 - parent"]["ci95_meV"][1])}); K-Ont vs plain-encoder templates is not significant; energies are CHGNet, not DFT.</div>
 
+<h3>5b Independent check by a teammate (Step 50)</h3>
+<p>The 34 compositions where CHGNet put the K-Ont template more than 5 meV/atom below CrystaLLM-large were handed over as CIFs; the teammate computed energy above the convex hull for both structures of each.</p>
+{t_ehull}
+<div class="box ok"><b>Reading.</b> The K-Ont template is lower above the hull in {eh["kont_lower"]} of {eh["n"]}; {eh["thresholds"]["<= 50 meV"]["kont"]} vs {eh["thresholds"]["<= 50 meV"]["crystallm"]} are within 50 meV/atom (plausibly stable). <b>To confirm before the paper:</b> the calculation method (DFT functional or another potential); LiCo<sub>2</sub>BiO<sub>4</sub> is ~4 eV/atom above the hull for both structures (implausible, to recheck); and these 34 were chosen because CHGNet favoured the template, so an unbiased claim needs the other compositions too.</div>
+
 <h2 class="pb">6 Is it paper-worthy? An honest assessment</h2>
 <h3>Strengths</h3>
 <ul>
 <li><b>Method:</b> K-Ont extends a published hyperbolic ontology encoder (OnT) from classes to KG individuals and relations — concrete and reusable.</li>
 <li><b>Two domains:</b> battery KG (98.8–100% on typing, roles, families, hierarchy) and heart disease (beats OnT).</li>
-<li><b>A K-Ont-specific result:</b> one model for ontology reasoning and crystal retrieval without forgetting (Step 43), with the ablation showing why retention is needed.</li>
-<li><b>A practical win over a strong baseline:</b> K-Ont-guided templates beat fine-tuned CrystaLLM on 902 held-out materials and complement CrystaLLM-large on new compositions.</li>
+<li><b>K-Ont-specific results:</b> one model for GALEN, the battery ontology + KG and crystal retrieval (52c, stable over seeds); the ontology ablation shows the axioms are what give type reasoning (54); K-Ont keeps OnT's GALEN benchmark (49).</li>
+<li><b>Practical wins over strong baselines:</b> K-Ont-guided templates beat fine-tuned CrystaLLM and the standard substitution method on 902 held-out materials; combined with CrystaLLM they give a single answer that is right more often (+5.7); on new cathodes an independent calculation agrees in 32/34.</li>
 <li><b>Rigour:</b> leak-free splits, acceptance criteria fixed before results, random / plain-encoder / true-answer controls, bootstrap intervals; the injection negative result has its cause measured.</li>
 </ul>
 <h3>What a reviewer will push on</h3>
 <ul>
-<li>Is it K-Ont, or KG-trained retrieval? A plain-encoder retriever does as well; K-Ont helps only at very low data. Defence: one model does both jobs (Step 43).</li>
+<li>Is it K-Ont, or KG-trained retrieval? A plain-encoder retriever chooses templates as well. Defence: the same K-Ont model also does the ontology reasoning and GALEN (52c), which a retrieval-only encoder forgets (Step 43), and the ontology is what gives that reasoning (54).</li>
 <li>KG labels are rule-based, which inflates near-100% typing and family scores.</li>
 <li>Known-material benchmarks favour memorising generators; the new-material test uses CHGNet, not DFT.</li>
-<li>Substitution-based structure prediction is established (Hautier et al.); the novelty is ontology/KG-guided selection.</li>
+<li>Substitution-based structure prediction is established (Hautier et al.); answered directly: K-Ont's choice beats Hautier's at the first attempt (+8.4, Step 47).</li>
 <li>One crystal domain and one KG.</li>
 </ul>
 <h3>Venues</h3>
@@ -421,9 +510,8 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 </ul>
 <h3>What would raise it most</h3>
 <ul>
-<li>DFT on the {nvc["kont3 + CrystaLLM"]["win"]} new compositions where the K-Ont template beat CrystaLLM.</li>
-<li>A second KG for the crystal part, or a label subset checked by faculty.</li>
-<li>A standard ontology benchmark from the OnT paper, to show K-Ont keeps TBox quality.</li>
+<li>Confirm the teammate's method and extend the check to the compositions where CrystaLLM won (unbiased).</li>
+<li>A bigger KG (more templates; needs the workstation's memory), a second KG for the crystal part, or a label subset checked by faculty.</li>
 </ul>
 
 <h2>Appendix: reproducibility</h2>
@@ -435,6 +523,12 @@ ul {{ margin: 0 0 6pt 14pt; padding: 0; }} li {{ margin-bottom: 3pt; }}
 .venv-crystallm/Scripts/python.exe abox/kg_learning_curve.py --stage run | eval         # Step 42
 .venv/Scripts/python.exe abox/kont_framework.py --stage train | checks; ... --stage eval  # Step 43
 .venv-crystallm/Scripts/python.exe abox/novel_template.py --stage pool | relax          # Step 44
+.venv-crystallm/Scripts/python.exe abox/kg_substitution.py                             # Step 47
+.venv-crystallm/Scripts/python.exe abox/kg_pipeline_select.py --subset 300 --steps 40   # Step 48
+.venv/Scripts/python.exe abox/ont_galen_eval.py                                         # Steps 49, 52, 54, 55
+KONT_VARIANT=v4hn .venv/Scripts/python.exe abox/kont_v3fw.py --stage data|score|eval    # Steps 46, 51
+.venv/Scripts/python.exe abox/kont_ablation.py; train_ont.py ...                        # Step 54
+.venv-crystallm/Scripts/python.exe abox/kg_seeded.py --stage gen|score [--ranker ...]   # Step 53
 .venv-crystallm/Scripts/python.exe abox/report_paper_pdf.py                             # this report</pre>
 <p class="small">Matching: pymatgen StructureMatcher (ltol 0.2, stol 0.3, angle 5°). Relaxation: CHGNet 0.3.0, fmax 0.1 eV/Å, 300 steps, cell free. Bootstrap: 5,000–10,000 resamples over materials. Results: data/crystallm/*.json.</p>
 </body></html>"""
