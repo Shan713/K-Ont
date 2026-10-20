@@ -24,28 +24,27 @@ CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 
 TITLE = ("K-Ont: Hyperbolic Embeddings of Ontologies and Their Knowledge-Graph Individuals, "
          "with Application to Ontology-Guided Crystal Structure Generation")
-AUTHORS = ["Dr. Gowtham Ramesh", "Shantharam P", "Sarvesha Nandhakumar", "Akshay KS", "RD Tarun", "S Ajeth"]
+AUTHORS = ["Gowtham Ramesh", "Shantharam P", "Sarvesha Nandhakumar", "Akshay KS", "RD Tarun", "S Ajeth"]
 AFFIL = "Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India"
 KEYWORDS = ["ontology embedding", "knowledge graph", "hyperbolic embedding", "crystal structure generation",
             "battery materials", "retrieval-augmented generation"]
 
 ABSTRACT = (
     "Ontology embedding models place the concepts of an ontology in a geometric space where subsumption becomes "
-    "measurable, but they do not represent the individuals of a knowledge graph (KG) that instantiate those "
-    "concepts. We present **K-Ont**, an extension of the hyperbolic ontology encoder OnT to KG individuals: every "
-    "material, crystal and element of a 5,000-material battery KG is verbalised and trained jointly with the "
-    "ontology's axioms, typing facts and relation facts in a Poincar\u00e9 ball. On 1,018 held-out materials K-Ont "
-    "types materials and crystals at 99.7-100%, predicts battery role (100% vs 84% majority) and structure family "
-    "(98.8% vs 47%), and keeps OnT's quality on the GALEN benchmark; an ablation shows the ontology's axioms are "
-    "what give type reasoning (64% without them). With a retention objective that protects KG sentences, original "
-    "ontology concepts and relation phrases, a single K-Ont model additionally retrieves crystal frameworks for "
-    "unseen compositions, stably across seeds. Used as a template retriever for crystal structure generation, "
-    "K-Ont recovers the reference structure at the first attempt for 60.5% of 902 held-out materials versus 48.3% "
-    "for a fine-tuned CrystaLLM and 52.1% for data-mined substitution; combined with CrystaLLM and a CHGNet "
-    "energy check it commits to a single answer that is right 69.3% vs 63.7% of the time. On 200 novel cathode "
-    "compositions, an independent energy-above-hull calculation ranks the K-Ont template below the CrystaLLM "
-    "structure in 32 of the 34 cases tested. In contrast, injecting K-Ont knowledge into the language model -- as "
-    "a soft prompt or a retrieved hard prompt -- adds at most 1.5 points, with a measured ceiling below 3 points.")
+    "measurable, but they do not represent the individuals of a knowledge graph (KG). We present **K-Ont**, which "
+    "extends the hyperbolic ontology encoder OnT to KG individuals: the materials, crystals and elements of a "
+    "5,000-material battery KG are verbalised and trained jointly with the ontology's axioms and facts in a "
+    "Poincaré ball. On 1,018 held-out materials K-Ont types materials and crystals at 99.7-100% and predicts "
+    "battery role and structure family well above majority baselines, while matching OnT on GALEN axiom prediction; "
+    "without the ontology's axioms typing falls to 64%. A retention objective lets a single K-Ont model also retrieve "
+    "crystal frameworks for unseen compositions. Used as a template retriever, it recovers the reference structure at "
+    "the first attempt for 60.5% of 902 held-out materials, versus 48.3% for a fine-tuned CrystaLLM and 52.1% for "
+    "data-mined substitution; a plain encoder trained on the same KG relation does equally well, so the gain comes "
+    "from KG retrieval, which K-Ont adds to the ontology model. Combined with CrystaLLM and a CHGNet energy check, the "
+    "system commits to a single answer that is right 69.3% vs 63.7% of the time. On 199 novel cathode compositions, "
+    "templates give CrystaLLM-large a lower-energy structure for 34 and a higher one for none, and an independent "
+    "energy-above-hull calculation confirms 32 of the 34. Injecting the same knowledge into the language model, as a "
+    "soft or hard prompt, adds at most 1.5 points.")
 
 # ---------------------------------------------------------------- the paper body (one source for LaTeX and HTML)
 # block kinds: ("sec", title) ("sub", title) ("p", text) ("ul", [items]) ("eq", latex, plain) ("table", dict) ("fig", dict)
@@ -74,8 +73,8 @@ UL(["**K-Ont**, an extension of OnT to KG individuals: individuals are verbalise
     "second (medical) domain, including an ontology ablation and a retention objective that lets **one** K-Ont "
     "model hold the original ontology, a new domain ontology and KG, and a crystal-retrieval skill (Sec. V-A, V-B).",
     "**K-Ont-guided template generation**: K-Ont retrieves known crystal frameworks for a target composition, which "
-    "are built directly by element substitution; it outperforms a fine-tuned crystal language model and the "
-    "standard data-mined substitution method, and complements the language model on novel cathodes (Sec. V-C, V-E).",
+    "are built directly by element substitution; at the first attempt it outperforms a fine-tuned crystal "
+    "language model and the standard data-mined substitution method, and complements the language model on novel cathodes (Sec. V-C, V-E).",
     "A controlled negative result: injecting the same knowledge *into* a crystal language model, as a soft prompt "
     "or as a retrieved hard prompt, yields at most a small gain, and we measure why (Sec. V-D)."])
 
@@ -84,9 +83,12 @@ P("**Ontology and KG embeddings.** Translational KG embeddings [@bordes2013trans
   "entities but not the logical structure of an ontology. Poincar\u00e9 embeddings [@nickel2017poincare] showed "
   "that hyperbolic space suits hierarchies; HiT [@he2024hit] re-trains a sentence encoder [@reimers2019sbert, "
   "@wang2020minilm] so that its outputs live in a Poincar\u00e9 ball and encode subsumption, and OnT [@yang2025ont] "
-  "extends this to EL ontologies with role rotations for existential restrictions, evaluated on GO, GALEN and "
-  "ANATOMY. Ontology preprocessing commonly relies on DeepOnto [@he2024deeponto]. None of these embed ABox "
-  "individuals, which is the gap K-Ont addresses.")
+  "extends this to EL ontologies with role rotations for existential restrictions, evaluated on several real-world "
+  "ontologies including GALEN, GO and ANATOMY. Geometric EL embeddings [@kulmanov2019elem, @jackermeier2024box2el] and OWL2Vec$^*$ [@chen2021owl2vec] "
+  "also handle individuals, but as graph nodes or symbols rather than through a language model over their "
+  "descriptions, so an unseen individual cannot be embedded from its text. Ontology preprocessing commonly relies "
+  "on DeepOnto [@he2024deeponto]. The language-model encoders HiT and OnT embed concepts only; embedding KG "
+  "individuals in the same model is the gap K-Ont addresses.")
 P("**Crystal structure generation.** Diffusion and variational models [@xie2022cdvae, @jiao2023diffcsp, "
   "@zeni2025mattergen] and autoregressive language models over CIF text [@antunes2024crystallm] generate "
   "structures from compositions or properties. Substitution-based prediction reuses known prototypes; Hautier et "
@@ -148,18 +150,18 @@ P("K-Ont is trained on 3,982 KG materials and evaluated on 1,018 held-out materi
   "0.2, site tol. 0.3, angle 5\u00b0); we report found@$k$. Novel compositions (200 cathode substitution children not "
   "in Materials Project, charge-balanced with SMACT [@davies2019smact]) are compared by the lowest CHGNet energy "
   "after relaxation. Differences are paired over materials with 95% bootstrap intervals [@efron1994bootstrap]; "
-  "pass criteria for the injection experiments were fixed before the runs. Everything ran on one laptop RTX 4060 "
-  "(8 GB).")
+  "pass criteria for the injection experiments were fixed before the runs. All models were trained and evaluated on one "
+  "laptop GPU (RTX 4060, 8 GB).")
 
 S("Results")
 SS("K-Ont learns the ontology and the KG")
 B.append(("table", {"label": "tab:checks", "caption": "K-Ont on 1,018 held-out materials (H@1; MRR for the hierarchy). "
           "Role/family: label lines removed from the sentence; majority-class baselines 84% / 47%.",
           "head": ["Model", "Mat. typing", "Cryst. typing", "Role", "Family", "TBox MRR"],
-          "rows": [["OnT-galen (untrained on KG)", "0.000", "1.000", "0.67", "0.30", "0.28"],
-                   ["**K-Ont**", "**1.000**", "**0.997**", "**1.000**", "**0.988**", "**0.969**"],
-                   ["K-Ont without TBox axioms", "0.641", "0.639", "1.000", "0.977", "0.313"],
-                   ["K-Ont-52c (one model, 3 seeds)", "0.92-0.95", "1.000", "0.99-1.00", "0.988", "0.969"]]}))
+          "rows": [["OnT-galen (untrained on KG)", "0.000", "**1.000**", "0.67", "0.30", "0.28"],
+                   ["**K-Ont**", "**1.000**", "0.997", "**1.000**", "**0.988**", "**0.969**"],
+                   ["K-Ont without TBox axioms", "0.641", "0.639", "**1.000**", "0.977", "0.313"],
+                   ["K-Ont-52c (one model, 3 seeds)", "0.92-0.95", "**1.000**", "0.99-1.00", "**0.988**", "**0.969**"]]}))
 P("K-Ont generalises its typing and both ontology relations to unseen materials (Table~\\ref{tab:checks}). Removing "
   "the ontology's TBox axioms (keeping all KG facts) drops material and crystal typing to 64% and the hierarchy "
   "MRR from 0.97 to 0.31, while roles and families, which come from relation facts, survive: the ontology is what "
@@ -167,29 +169,29 @@ P("K-Ont generalises its typing and both ontology relations to unseen materials 
   "partly reflect learning those rules. On a second domain (303 patients of the UCI heart-disease data "
   "[@detrano1989heart] verbalised as KG individuals), K-Ont patient embeddings outperformed OnT's by +2.2 AUC on "
   "average over five classifiers (four significant) and by +4.3 when three columns were missing.")
-B.append(("fig", {"label": "fig:checks", "file": "kont_checks.png", "wide": True, "caption": "(a) K-Ont on held-out materials, without the ontology's TBox axioms, and the one-model K-Ont-52c. (b) GALEN mean reciprocal rank for OnT and K-Ont variants (inference MRR scaled x10)."}))
+B.append(("fig", {"label": "fig:checks", "file": "kont_checks.png", "wide": True, "caption": "(a) K-Ont on held-out materials, without the ontology's TBox axioms, and the one-model K-Ont-52c. (b) GALEN mean reciprocal rank for OnT and K-Ont variants (inference MRR scaled $\\times$10)."}))
 P("Fig.~\\ref{fig:checks}(a) shows the same comparison graphically: removing the axioms hits typing and the hierarchy, not roles and families.")
 SS("One model for GALEN, the battery KG and crystal retrieval")
 B.append(("table", {"label": "tab:galen", "caption": "GALEN (OnT benchmark) and crystal retrieval. Pred./inf. = "
           "prediction / inference test sets, MRR and AUC; retrieval = template found@1 on 902 held-out materials.",
           "head": ["Model", "Pred. MRR / AUC", "Inf. MRR / AUC", "Retr. @1"],
-          "rows": [["OnT-galen [@yang2025ont]", "0.339 / 0.978", "0.022 / 0.973", "--"],
+          "rows": [["OnT-galen [@yang2025ont]", "0.339 / **0.978**", "**0.022 / 0.973**", "--"],
                    ["K-Ont", "0.335 / 0.952", "0.011 / 0.918", "--"],
                    ["+ framework, KG retention", "0.333 / 0.955", "0.010 / 0.934", "55.0"],
-                   ["+ GALEN retention", "0.341 / 0.976", "0.016 / 0.961", "55.5$^\\dagger$"],
-                   ["**K-Ont-52c** (+ anchors)", "**0.334-0.339 / 0.975**", "**0.014 / 0.95**", "**54.2-54.8**"],
+                   ["+ GALEN retention", "**0.341** / 0.976", "0.016 / 0.961", "**55.5**$^\\dagger$"],
+                   ["**K-Ont-52c** (+ anchors)", "0.334-0.339 / 0.975", "0.014 / 0.95", "54.2-54.8"],
                    ["native relation, hard neg.", "0.324 / 0.960", "0.008 / 0.896", "54.4$^\\ddagger$"]]}))
 P("Learning the battery KG costs part of OnT's GALEN inference ranking (Table~\\ref{tab:galen}). Retaining KG "
   "sentences alone keeps the battery checks; adding GALEN concepts restores GALEN but ($\\dagger$) collapses the "
   "role/family checks (0.025 / 0.000) until the relation phrases are retained as well. K-Ont-52c keeps every "
-  "battery check of Table~\\ref{tab:checks}, matches OnT on GALEN prediction, recovers a third of the inference "
-  "loss, and retrieves frameworks, on three seeds. Training the relation natively inside K-Ont's objective with "
+  "battery check of Table~\\ref{tab:checks}, matches OnT on GALEN prediction, recovers about a quarter of the "
+  "inference loss, and retrieves frameworks, on three seeds. Training the relation natively inside K-Ont's objective with "
   "hard negatives ($\\ddagger$) matches the retrieval but collapses typing (0.09 / 0.001), so a separate fine-tune "
   "with retention is the better recipe.")
 SS("Template generation versus language-model generation")
 B.append(("fig", {"label": "fig:foundk", "file": "foundk.png", "caption": "Structures recovered within $k$ "
-          "attempts on 902 held-out materials: K-Ont-guided templates vs a fine-tuned CrystaLLM, a KG ranker without "
-          "K-Ont, Hautier substitution and a composition rule."}))
+          "attempts on 902 held-out materials: K-Ont-guided templates vs a fine-tuned CrystaLLM, "
+          "Hautier substitution and a composition rule."}))
 B.append(("table", {"label": "tab:found", "caption": "Found@k (%) on 902 held-out materials, and single-answer "
           "accuracy (CHGNet lowest energy among 8 candidates, random 300 materials).",
           "head": ["Method", "@1", "@3", "@8"],
@@ -197,15 +199,15 @@ B.append(("table", {"label": "tab:found", "caption": "Found@k (%) on 902 held-ou
                    ["Template, composition rule", "51.3", "55.8", "60.8"],
                    ["Template, Hautier [@hautier2011]", "52.1", "64.5", "70.1"],
                    ["Template, KG ranker w/o K-Ont", "56.3", "63.2", "68.4"],
-                   ["**Template, K-Ont ranker**", "**60.5**", "**66.9**", "**71.4**"],
-                   ["Template, plain-encoder ranker", "60.5", "67.6", "72.7"],
+                   ["**Template, K-Ont ranker**", "**60.5**", "66.9", "71.4"],
+                   ["Template, plain-encoder ranker", "**60.5**", "67.6", "72.7"],
                    ["3 templates + 5 CrystaLLM", "--", "--", "**77.3**"],
-                   ["Single answer: CrystaLLM x8", "63.7", "", ""],
+                   ["Single answer: CrystaLLM, 8 samples", "63.7", "", ""],
                    ["Single answer: 3 templ. + 5 CrystaLLM", "**69.3**", "", ""]]}))
 P("K-Ont-guided templates recover the reference structure at the first attempt +12.2 points [9.0, 15.4] more "
   "often than the fine-tuned CrystaLLM, +8.4 [5.5, 11.2] more than Hautier substitution and +9.2 more than the "
   "composition rule (Fig.~\\ref{fig:foundk}, Table~\\ref{tab:found}); CHGNet relaxation of the templates changes this by "
-  "+0.3. Hautier's method catches up from five attempts. The two generators get different materials right: "
+  "+0.3. From five attempts Hautier substitution comes within about 1.3 points. The two generators get different materials right: "
   "three templates plus five CrystaLLM samples reach 77.3% versus 68.3% for eight samples [+6.9, +11.1]. When one "
   "answer must be chosen by CHGNet energy, the combined pool is right 69.3% versus 63.7% for CrystaLLM choosing "
   "among its own eight samples (+5.7 [1.3, 9.7]); with this physics selection the template alone (61.7%) no longer "
@@ -217,7 +219,7 @@ B.append(("fig", {"label": "fig:lc", "file": "learning_curve.png", "caption": "R
 P("Fig.~\\ref{fig:system}(a) summarises the single-answer system and Fig.~\\ref{fig:system}(b) the effect of a larger KG: extending the pool with 5,267 further materials raises the share of targets with a correct candidate from 85.6% to 90.9% and found@3 / found@8 by +3.4 [1.7, 5.2] / +3.4 [1.9, 5.1], without retraining K-Ont; the first pick does not change.")
 SS("Injecting K-Ont knowledge into the language model")
 B.append(("table", {"label": "tab:inj", "caption": "True-structure share (%) of generated samples, 902 held-out "
-          "materials x 8 samples. Ceiling: the analogue with the true framework.",
+          "materials $\\times$ 8 samples. Ceiling: the analogue with the true framework.",
           "head": ["Arm", "CrystaLLM", "From-scratch GPT"],
           "rows": [["Plain fine-tune (no K-Ont)", "**47.5**", "20.6"],
                    ["Soft prompt, K-Ont-ranked analogue", "44.1", "**22.1**"],
@@ -255,11 +257,11 @@ UL(["**Rule-based labels.** The KG's roles and families are rule-assigned; very 
     "is as good; K-Ont's contribution is a single model that also reasons over the ontology (whose axioms the "
     "ablation shows are necessary) and keeps the original ontology.",
     "**Memorisation.** Known-material benchmarks favour generators pre-trained on the same database; the from-"
-    "scratch control and the novel-composition test address this, the latter only energetically.",
-    "**Template coverage.** Templates cannot produce frameworks absent from the KG. Extending the KG with 5,267 "
-    "further Materials Project materials (built in memory-safe chunks) raises the share of targets with a correct "
-    "candidate from 85.6% to 90.9% and found@3 / found@8 by +3.4 [1.7, 5.2] / +3.4 [1.9, 5.1], with no retraining; "
-    "the first pick does not improve.",
+    "scratch control and the novel-composition test address this, the latter only energetically (no synthesis "
+    "or electrochemical validation).",
+    "**Template coverage.** Templates cannot produce frameworks absent from the KG; a larger KG raises coverage and "
+    "found@3/@8 without retraining (Fig.~\\ref{fig:system}b) but not the first pick, and about 9% of targets still "
+    "have no correct candidate.",
     "**Scope.** One crystal KG; costs of the one-model recipe are material typing (0.92-0.95) and part of GALEN "
     "inference."])
 
@@ -267,7 +269,7 @@ S("Conclusion")
 P("K-Ont extends hyperbolic ontology embeddings from concepts to knowledge-graph individuals. It learns a battery "
   "ontology and KG, keeps its original ontology, and -- with a retention objective covering KG sentences, original "
   "concepts and relation phrases -- holds a crystal-retrieval skill in the same model. As a template retriever it "
-  "outperforms a fine-tuned crystal language model and data-mined substitution, and it complements the language "
+  "outperforms a fine-tuned crystal language model and data-mined substitution at the first attempt, and it complements the language "
   "model on novel cathodes, whereas injecting the same knowledge into the language model helps little. Future work: "
   "larger and expert-curated KGs, DFT validation at scale, and generators that edit retrieved templates rather "
   "than write structures from scratch.")
@@ -275,7 +277,10 @@ P("K-Ont extends hyperbolic ontology embeddings from concepts to knowledge-graph
 BIB = r"""
 @inproceedings{nickel2017poincare, author={Nickel, Maximilian and Kiela, Douwe}, title={Poincar{\'e} Embeddings for Learning Hierarchical Representations}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2017}}
 @inproceedings{he2024hit, author={He, Yuan and Yuan, Zhangdie and Chen, Jiaoyan and Horrocks, Ian}, title={Language Models as Hierarchy Encoders}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2024}}
-@misc{yang2025ont, author={Yang, Hui and Chen, Jiaoyan and others}, title={Language Models as Ontology Encoders}, howpublished={arXiv preprint}, year={2025}, note={TODO: verify full author list and arXiv id}}
+@inproceedings{yang2025ont, author={Yang, Hui and Chen, Jiaoyan and He, Yuan and Gao, Yongsheng and Horrocks, Ian}, title={Language Models as Ontology Encoders}, booktitle={The Semantic Web -- ISWC 2025}, series={Lecture Notes in Computer Science}, volume={16140}, pages={443--461}, publisher={Springer}, year={2025}, doi={10.1007/978-3-032-09527-5_24}}
+@inproceedings{kulmanov2019elem, author={Kulmanov, Maxat and Liu-Wei, Wang and Yan, Yuan and Hoehndorf, Robert}, title={{EL} Embeddings: Geometric Construction of Models for the Description Logic {EL}++}, booktitle={Proc. IJCAI}, pages={6103--6109}, year={2019}, doi={10.24963/ijcai.2019/845}}
+@inproceedings{jackermeier2024box2el, author={Jackermeier, Mathias and Chen, Jiaoyan and Horrocks, Ian}, title={Dual Box Embeddings for the Description Logic {EL}++}, booktitle={Proc. ACM Web Conference (WWW)}, year={2024}, doi={10.1145/3589334.3645648}}
+@article{chen2021owl2vec, author={Chen, Jiaoyan and Hu, Pan and Jimenez-Ruiz, Ernesto and Holter, Ole Magnus and Antonyrajah, Denvar and Horrocks, Ian}, title={{OWL2Vec*}: Embedding of {OWL} Ontologies}, journal={Machine Learning}, volume={110}, number={7}, pages={1813--1845}, year={2021}, doi={10.1007/s10994-021-05997-6}}
 @inproceedings{bordes2013transe, author={Bordes, Antoine and Usunier, Nicolas and Garcia-Duran, Alberto and Weston, Jason and Yakhnenko, Oksana}, title={Translating Embeddings for Modeling Multi-relational Data}, booktitle={Advances in Neural Information Processing Systems (NeurIPS)}, year={2013}}
 @article{antunes2024crystallm, author={Antunes, Luis M. and Butler, Keith T. and Grau-Crespo, Ricardo}, title={Crystal Structure Generation with Autoregressive Large Language Modeling}, journal={Nature Communications}, volume={15}, pages={10570}, year={2024}}
 @inproceedings{xie2022cdvae, author={Xie, Tian and Fu, Xiang and Ganea, Octavian-Eugen and Barzilay, Regina and Jaakkola, Tommi}, title={Crystal Diffusion Variational Autoencoder for Periodic Material Generation}, booktitle={International Conference on Learning Representations (ICLR)}, year={2022}}
@@ -292,8 +297,8 @@ BIB = r"""
 @inproceedings{lester2021prompt, author={Lester, Brian and Al-Rfou, Rami and Constant, Noah}, title={The Power of Scale for Parameter-Efficient Prompt Tuning}, booktitle={Proc. EMNLP}, year={2021}}
 @inproceedings{li2021prefix, author={Li, Xiang Lisa and Liang, Percy}, title={Prefix-Tuning: Optimizing Continuous Prompts for Generation}, booktitle={Proc. ACL-IJCNLP}, year={2021}}
 @article{kirkpatrick2017ewc, author={Kirkpatrick, James and others}, title={Overcoming Catastrophic Forgetting in Neural Networks}, journal={Proceedings of the National Academy of Sciences}, volume={114}, number={13}, pages={3521--3526}, year={2017}}
-@article{clark2022battinfo, author={Clark, Simon and others}, title={Toward a Unified Description of Battery Data}, journal={Advanced Energy Materials}, volume={12}, number={17}, pages={2102702}, year={2022}}
-@article{he2024deeponto, author={He, Yuan and Chen, Jiaoyan and Dong, Hang and Horrocks, Ian and Allocca, Carlo and Kim, Taehun and Sapkota, Brahmananda}, title={{DeepOnto}: A Python Package for Ontology Engineering with Deep Learning}, journal={Semantic Web}, volume={15}, number={5}, year={2024}}
+@article{clark2022battinfo, author={Clark, Simon and others}, title={Toward a Unified Description of Battery Data}, journal={Advanced Energy Materials}, volume={12}, number={17}, pages={2102702}, year={2022}, doi={10.1002/aenm.202102702}}
+@article{he2024deeponto, author={He, Yuan and Chen, Jiaoyan and Dong, Hang and Horrocks, Ian and Allocca, Carlo and Kim, Taehun and Sapkota, Brahmananda}, title={{DeepOnto}: A Python Package for Ontology Engineering with Deep Learning}, journal={Semantic Web}, volume={15}, number={5}, pages={1991--2004}, year={2024}}
 @article{detrano1989heart, author={Detrano, Robert and others}, title={International Application of a New Probability Algorithm for the Diagnosis of Coronary Artery Disease}, journal={American Journal of Cardiology}, volume={64}, number={5}, pages={304--310}, year={1989}}
 @book{efron1994bootstrap, author={Efron, Bradley and Tibshirani, Robert J.}, title={An Introduction to the Bootstrap}, publisher={Chapman and Hall/CRC}, year={1994}}
 """
@@ -595,7 +600,7 @@ def html_inline(t, cites):
     t = re.sub(r"(?<![\\\w])\*(?!\s)(.+?)\*", r"<i>\1</i>", t)
     rep = {r"$\le$": "\u2264", r"$^\dagger$": "\u2020", r"$^\ddagger$": "\u2021", r"$^*$": "*", r"$\sqsubseteq \exists$": "\u2291 \u2203",
            r"$\sqsubseteq$": "\u2291", r"$\exists r.D$": "\u2203r.D", r"$\mathbb{B}_c$": "\U0001D539<sub>c</sub>", r"$k=1$": "k = 1",
-           r"$k$": "<i>k</i>", r"$Z$": "<i>Z</i>", r"$E_{hull}$": "E<sub>hull</sub>", "LiCo$_2$BiO$_4$": "LiCo<sub>2</sub>BiO<sub>4</sub>", r"$d_c$": "d<sub>c</sub>",
+           r"$k$": "<i>k</i>", r"$\times$": "×", r"$Z$": "<i>Z</i>", r"$E_{hull}$": "E<sub>hull</sub>", "LiCo$_2$BiO$_4$": "LiCo<sub>2</sub>BiO<sub>4</sub>", r"$d_c$": "d<sub>c</sub>",
            r"$\lVert\cdot\rVert_c$": "\u2016\u00b7\u2016<sub>c</sub>", r"$x$": "<i>x</i>", r"$f(x)$": "<i>f</i>(<i>x</i>)",
            r"$C \sqsubseteq D$": "C \u2291 D", r"$r$": "<i>r</i>", r"$f(D)$": "<i>f</i>(D)", r"$\exists$": "\u2203"}
     for a, b in rep.items():
@@ -693,9 +698,24 @@ def to_html():
     def fmt(k):
         e = bib.get(k, "")
         g = lambda f: (re.search(f + r"=\{(.+?)\}(?:,|\}$)", e) or [None, ""])[1]
-        au = g("author").replace(" and ", ", ").replace("{", "").replace("}", "")
-        venue = g("journal") or g("booktitle") or g("howpublished") or g("publisher")
-        return f'{html.escape(au)}, \u201c{html.escape(g("title").replace("{", "").replace("}", "").replace(chr(92) + chr(39) + "e", chr(233)))},\u201d <i>{html.escape(venue)}</i>, {g("year")}.'
+        names = []
+        for a in g("author").replace("{", "").replace("}", "").split(" and "):
+            if a == "others":
+                names.append("et al.")
+                continue
+            last, _, first = a.partition(", ")
+            names.append(" ".join(w[0] + "." for w in first.replace("-", " ").split()) + " " + last if first else last)
+        if names[-1] == "et al.":
+            au = names[0] + " et al."
+        elif len(names) > 1:
+            au = ", ".join(names[:-1]) + (", and " if len(names) > 2 else " and ") + names[-1]
+        else:
+            au = names[0]
+        venue = (g("journal") or g("booktitle") or g("howpublished") or g("publisher")).replace("--", "–")
+        extra = "".join(x for x in (f", vol. {g('volume')}" if g("volume") else "", f", no. {g('number')}" if g("number") else "",
+                                     f", pp. {g('pages').replace('--', chr(8211))}" if "--" in g("pages") else
+                                     (f", Art. no. {g('pages')}" if g("pages") else "")))
+        return f'{html.escape(au)}, \u201c{html.escape(g("title").replace("{", "").replace("}", "").replace(chr(92) + chr(39) + "e", chr(233)))},\u201d <i>{html.escape(venue)}</i>{html.escape(extra)}, {g("year")}.'
     parts.append("<h2>REFERENCES</h2><ol class='refs'>" + "".join(f"<li>{fmt(k)}</li>" for k in cites) + "</ol>")
     parts.append("</div>")
     css = """

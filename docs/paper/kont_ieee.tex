@@ -10,7 +10,7 @@
 \begin{document}
 \title{K-Ont: Hyperbolic Embeddings of Ontologies and Their Knowledge-Graph Individuals, with Application to Ontology-Guided Crystal Structure Generation}
 \author{
-\IEEEauthorblockN{Dr. Gowtham Ramesh}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
+\IEEEauthorblockN{Gowtham Ramesh}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
 \IEEEauthorblockN{Shantharam P}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
 \IEEEauthorblockN{Sarvesha Nandhakumar}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
 \IEEEauthorblockN{Akshay KS}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
@@ -19,7 +19,7 @@
 }
 \maketitle
 \begin{abstract}
-Ontology embedding models place the concepts of an ontology in a geometric space where subsumption becomes measurable, but they do not represent the individuals of a knowledge graph (KG) that instantiate those concepts. We present \textbf{K-Ont}, an extension of the hyperbolic ontology encoder OnT to KG individuals: every material, crystal and element of a 5,000-material battery KG is verbalised and trained jointly with the ontology's axioms, typing facts and relation facts in a Poincar\'e ball. On 1,018 held-out materials K-Ont types materials and crystals at 99.7--100\%, predicts battery role (100\% vs 84\% majority) and structure family (98.8\% vs 47\%), and keeps OnT's quality on the GALEN benchmark; an ablation shows the ontology's axioms are what give type reasoning (64\% without them). With a retention objective that protects KG sentences, original ontology concepts and relation phrases, a single K-Ont model additionally retrieves crystal frameworks for unseen compositions, stably across seeds. Used as a template retriever for crystal structure generation, K-Ont recovers the reference structure at the first attempt for 60.5\% of 902 held-out materials versus 48.3\% for a fine-tuned CrystaLLM and 52.1\% for data-mined substitution; combined with CrystaLLM and a CHGNet energy check it commits to a single answer that is right 69.3\% vs 63.7\% of the time. On 200 novel cathode compositions, an independent energy-above-hull calculation ranks the K-Ont template below the CrystaLLM structure in 32 of the 34 cases tested. In contrast, injecting K-Ont knowledge into the language model --- as a soft prompt or a retrieved hard prompt --- adds at most 1.5 points, with a measured ceiling below 3 points.
+Ontology embedding models place the concepts of an ontology in a geometric space where subsumption becomes measurable, but they do not represent the individuals of a knowledge graph (KG). We present \textbf{K-Ont}, which extends the hyperbolic ontology encoder OnT to KG individuals: the materials, crystals and elements of a 5,000-material battery KG are verbalised and trained jointly with the ontology's axioms and facts in a Poincar\'e ball. On 1,018 held-out materials K-Ont types materials and crystals at 99.7--100\% and predicts battery role and structure family well above majority baselines, while matching OnT on GALEN axiom prediction; without the ontology's axioms typing falls to 64\%. A retention objective lets a single K-Ont model also retrieve crystal frameworks for unseen compositions. Used as a template retriever, it recovers the reference structure at the first attempt for 60.5\% of 902 held-out materials, versus 48.3\% for a fine-tuned CrystaLLM and 52.1\% for data-mined substitution; a plain encoder trained on the same KG relation does equally well, so the gain comes from KG retrieval, which K-Ont adds to the ontology model. Combined with CrystaLLM and a CHGNet energy check, the system commits to a single answer that is right 69.3\% vs 63.7\% of the time. On 199 novel cathode compositions, templates give CrystaLLM-large a lower-energy structure for 34 and a higher one for none, and an independent energy-above-hull calculation confirms 32 of the 34. Injecting the same knowledge into the language model, as a soft or hard prompt, adds at most 1.5 points.
 \end{abstract}
 \begin{IEEEkeywords}
 ontology embedding, knowledge graph, hyperbolic embedding, crystal structure generation, battery materials, retrieval-augmented generation
@@ -34,11 +34,11 @@ This paper makes four contributions:
 \begin{itemize}
 \item \textbf{K-Ont}, an extension of OnT to KG individuals: individuals are verbalised and trained jointly with the ontology's axioms, typing facts and relation facts in one hyperbolic space (Sec. III).
 \item An evaluation on a 5,000-material battery KG with held-out materials, on OnT's GALEN benchmark, and on a second (medical) domain, including an ontology ablation and a retention objective that lets \textbf{one} K-Ont model hold the original ontology, a new domain ontology and KG, and a crystal-retrieval skill (Sec. V-A, V-B).
-\item \textbf{K-Ont-guided template generation}: K-Ont retrieves known crystal frameworks for a target composition, which are built directly by element substitution; it outperforms a fine-tuned crystal language model and the standard data-mined substitution method, and complements the language model on novel cathodes (Sec. V-C, V-E).
+\item \textbf{K-Ont-guided template generation}: K-Ont retrieves known crystal frameworks for a target composition, which are built directly by element substitution; at the first attempt it outperforms a fine-tuned crystal language model and the standard data-mined substitution method, and complements the language model on novel cathodes (Sec. V-C, V-E).
 \item A controlled negative result: injecting the same knowledge \emph{into} a crystal language model, as a soft prompt or as a retrieved hard prompt, yields at most a small gain, and we measure why (Sec. V-D).
 \end{itemize}
 \section{Related Work}
-\textbf{Ontology and KG embeddings.} Translational KG embeddings~\cite{bordes2013transe} model relations between entities but not the logical structure of an ontology. Poincar\'e embeddings~\cite{nickel2017poincare} showed that hyperbolic space suits hierarchies; HiT~\cite{he2024hit} re-trains a sentence encoder~\cite{reimers2019sbert,wang2020minilm} so that its outputs live in a Poincar\'e ball and encode subsumption, and OnT~\cite{yang2025ont} extends this to EL ontologies with role rotations for existential restrictions, evaluated on GO, GALEN and ANATOMY. Ontology preprocessing commonly relies on DeepOnto~\cite{he2024deeponto}. None of these embed ABox individuals, which is the gap K-Ont addresses.
+\textbf{Ontology and KG embeddings.} Translational KG embeddings~\cite{bordes2013transe} model relations between entities but not the logical structure of an ontology. Poincar\'e embeddings~\cite{nickel2017poincare} showed that hyperbolic space suits hierarchies; HiT~\cite{he2024hit} re-trains a sentence encoder~\cite{reimers2019sbert,wang2020minilm} so that its outputs live in a Poincar\'e ball and encode subsumption, and OnT~\cite{yang2025ont} extends this to EL ontologies with role rotations for existential restrictions, evaluated on several real-world ontologies including GALEN, GO and ANATOMY. Geometric EL embeddings~\cite{kulmanov2019elem,jackermeier2024box2el} and OWL2Vec$^*$~\cite{chen2021owl2vec} also handle individuals, but as graph nodes or symbols rather than through a language model over their descriptions, so an unseen individual cannot be embedded from its text. Ontology preprocessing commonly relies on DeepOnto~\cite{he2024deeponto}. The language-model encoders HiT and OnT embed concepts only; embedding KG individuals in the same model is the gap K-Ont addresses.
 
 \textbf{Crystal structure generation.} Diffusion and variational models~\cite{xie2022cdvae,jiao2023diffcsp,zeni2025mattergen} and autoregressive language models over CIF text~\cite{antunes2024crystallm} generate structures from compositions or properties. Substitution-based prediction reuses known prototypes; Hautier et al.~\cite{hautier2011} learn ion-substitution probabilities from data and remain a strong, widely used baseline. Retrieval-augmented generation~\cite{lewis2020rag} and prompt or prefix tuning~\cite{lester2021prompt,li2021prefix} are the two standard ways to condition a language model on external knowledge; we test both.
 
@@ -70,7 +70,7 @@ For a target composition, candidates are KG materials with the same anonymous fo
 For comparison we condition CrystaLLM-small~\cite{antunes2024crystallm} on the same knowledge: (a) a \textbf{soft prompt} --- the K-Ont embedding of the retrieved template's framework as 8 prefix tokens plus gated per-layer adapters~\cite{li2021prefix}, trained with 6,453 counterfactual structures (a training composition placed in a different framework) so that the vector must be read; and (b) a \textbf{hard prompt} --- the retrieved template's CIF header (space group, cell, volume, $Z$) as the prompt, from which the model writes the atom sites~\cite{lewis2020rag}.
 
 \section{Experimental Setup}
-K-Ont is trained on 3,982 KG materials and evaluated on 1,018 held-out materials (polymorph groups kept on one side). All crystal experiments use the 902 held-out materials that have at least one same-formula-type candidate; candidates, retrievers, rankers and generators see only K-Ont's training materials. A material's structure is \emph{recovered} when a candidate matches the reference under pymatgen's StructureMatcher (length tol. 0.2, site tol. 0.3, angle 5$^\circ$); we report found@$k$. Novel compositions (200 cathode substitution children not in Materials Project, charge-balanced with SMACT~\cite{davies2019smact}) are compared by the lowest CHGNet energy after relaxation. Differences are paired over materials with 95\% bootstrap intervals~\cite{efron1994bootstrap}; pass criteria for the injection experiments were fixed before the runs. Everything ran on one laptop RTX 4060 (8 GB).
+K-Ont is trained on 3,982 KG materials and evaluated on 1,018 held-out materials (polymorph groups kept on one side). All crystal experiments use the 902 held-out materials that have at least one same-formula-type candidate; candidates, retrievers, rankers and generators see only K-Ont's training materials. A material's structure is \emph{recovered} when a candidate matches the reference under pymatgen's StructureMatcher (length tol. 0.2, site tol. 0.3, angle 5$^\circ$); we report found@$k$. Novel compositions (200 cathode substitution children not in Materials Project, charge-balanced with SMACT~\cite{davies2019smact}) are compared by the lowest CHGNet energy after relaxation. Differences are paired over materials with 95\% bootstrap intervals~\cite{efron1994bootstrap}; pass criteria for the injection experiments were fixed before the runs. All models were trained and evaluated on one laptop GPU (RTX 4060, 8 GB).
 
 \section{Results}
 \subsection{K-Ont learns the ontology and the KG}
@@ -84,10 +84,10 @@ K-Ont is trained on 3,982 KG materials and evaluated on 1,018 held-out materials
 \toprule
 Model & Mat. typing & Cryst. typing & Role & Family & TBox MRR \\
 \midrule
-OnT-galen (untrained on KG) & 0.000 & 1.000 & 0.67 & 0.30 & 0.28 \\
-\textbf{K-Ont} & \textbf{1.000} & \textbf{0.997} & \textbf{1.000} & \textbf{0.988} & \textbf{0.969} \\
-K-Ont without TBox axioms & 0.641 & 0.639 & 1.000 & 0.977 & 0.313 \\
-K-Ont-52c (one model, 3 seeds) & 0.92--0.95 & 1.000 & 0.99--1.00 & 0.988 & 0.969 \\
+OnT-galen (untrained on KG) & 0.000 & \textbf{1.000} & 0.67 & 0.30 & 0.28 \\
+\textbf{K-Ont} & \textbf{1.000} & 0.997 & \textbf{1.000} & \textbf{0.988} & \textbf{0.969} \\
+K-Ont without TBox axioms & 0.641 & 0.639 & \textbf{1.000} & 0.977 & 0.313 \\
+K-Ont-52c (one model, 3 seeds) & 0.92--0.95 & \textbf{1.000} & 0.99--1.00 & \textbf{0.988} & \textbf{0.969} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -96,7 +96,7 @@ K-Ont generalises its typing and both ontology relations to unseen materials (Ta
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{figs/kont_checks.png}
-\caption{(a) K-Ont on held-out materials, without the ontology's TBox axioms, and the one-model K-Ont-52c. (b) GALEN mean reciprocal rank for OnT and K-Ont variants (inference MRR scaled x10).}
+\caption{(a) K-Ont on held-out materials, without the ontology's TBox axioms, and the one-model K-Ont-52c. (b) GALEN mean reciprocal rank for OnT and K-Ont variants (inference MRR scaled $\times$10).}
 \label{fig:checks}
 \end{figure*}
 Fig.~\ref{fig:checks}(a) shows the same comparison graphically: removing the axioms hits typing and the hierarchy, not roles and families.
@@ -112,22 +112,22 @@ Fig.~\ref{fig:checks}(a) shows the same comparison graphically: removing the axi
 \toprule
 Model & Pred. MRR / AUC & Inf. MRR / AUC & Retr. @1 \\
 \midrule
-OnT-galen~\cite{yang2025ont} & 0.339 / 0.978 & 0.022 / 0.973 & -- \\
+OnT-galen~\cite{yang2025ont} & 0.339 / \textbf{0.978} & \textbf{0.022 / 0.973} & -- \\
 K-Ont & 0.335 / 0.952 & 0.011 / 0.918 & -- \\
 + framework, KG retention & 0.333 / 0.955 & 0.010 / 0.934 & 55.0 \\
-+ GALEN retention & 0.341 / 0.976 & 0.016 / 0.961 & 55.5$^\dagger$ \\
-\textbf{K-Ont-52c} (+ anchors) & \textbf{0.334--0.339 / 0.975} & \textbf{0.014 / 0.95} & \textbf{54.2--54.8} \\
++ GALEN retention & \textbf{0.341} / 0.976 & 0.016 / 0.961 & \textbf{55.5}$^\dagger$ \\
+\textbf{K-Ont-52c} (+ anchors) & 0.334--0.339 / 0.975 & 0.014 / 0.95 & 54.2--54.8 \\
 native relation, hard neg. & 0.324 / 0.960 & 0.008 / 0.896 & 54.4$^\ddagger$ \\
 \bottomrule
 \end{tabular}
 \end{table}
-Learning the battery KG costs part of OnT's GALEN inference ranking (Table~\ref{tab:galen}). Retaining KG sentences alone keeps the battery checks; adding GALEN concepts restores GALEN but ($\dagger$) collapses the role/family checks (0.025 / 0.000) until the relation phrases are retained as well. K-Ont-52c keeps every battery check of Table~\ref{tab:checks}, matches OnT on GALEN prediction, recovers a third of the inference loss, and retrieves frameworks, on three seeds. Training the relation natively inside K-Ont's objective with hard negatives ($\ddagger$) matches the retrieval but collapses typing (0.09 / 0.001), so a separate fine-tune with retention is the better recipe.
+Learning the battery KG costs part of OnT's GALEN inference ranking (Table~\ref{tab:galen}). Retaining KG sentences alone keeps the battery checks; adding GALEN concepts restores GALEN but ($\dagger$) collapses the role/family checks (0.025 / 0.000) until the relation phrases are retained as well. K-Ont-52c keeps every battery check of Table~\ref{tab:checks}, matches OnT on GALEN prediction, recovers about a quarter of the inference loss, and retrieves frameworks, on three seeds. Training the relation natively inside K-Ont's objective with hard negatives ($\ddagger$) matches the retrieval but collapses typing (0.09 / 0.001), so a separate fine-tune with retention is the better recipe.
 
 \subsection{Template generation versus language-model generation}
 \begin{figure}[t]
 \centering
 \includegraphics[width=\columnwidth]{figs/foundk.png}
-\caption{Structures recovered within $k$ attempts on 902 held-out materials: K-Ont-guided templates vs a fine-tuned CrystaLLM, a KG ranker without K-Ont, Hautier substitution and a composition rule.}
+\caption{Structures recovered within $k$ attempts on 902 held-out materials: K-Ont-guided templates vs a fine-tuned CrystaLLM, Hautier substitution and a composition rule.}
 \label{fig:foundk}
 \end{figure}
 \begin{table}[t]
@@ -144,15 +144,15 @@ CrystaLLM, fine-tuned~\cite{antunes2024crystallm} & 48.3 & 61.2 & 68.3 \\
 Template, composition rule & 51.3 & 55.8 & 60.8 \\
 Template, Hautier~\cite{hautier2011} & 52.1 & 64.5 & 70.1 \\
 Template, KG ranker w/o K-Ont & 56.3 & 63.2 & 68.4 \\
-\textbf{Template, K-Ont ranker} & \textbf{60.5} & \textbf{66.9} & \textbf{71.4} \\
-Template, plain-encoder ranker & 60.5 & 67.6 & 72.7 \\
+\textbf{Template, K-Ont ranker} & \textbf{60.5} & 66.9 & 71.4 \\
+Template, plain-encoder ranker & \textbf{60.5} & 67.6 & 72.7 \\
 3 templates + 5 CrystaLLM & -- & -- & \textbf{77.3} \\
-Single answer: CrystaLLM x8 & 63.7 &  &  \\
+Single answer: CrystaLLM, 8 samples & 63.7 &  &  \\
 Single answer: 3 templ. + 5 CrystaLLM & \textbf{69.3} &  &  \\
 \bottomrule
 \end{tabular}
 \end{table}
-K-Ont-guided templates recover the reference structure at the first attempt +12.2 points [9.0, 15.4] more often than the fine-tuned CrystaLLM, +8.4 [5.5, 11.2] more than Hautier substitution and +9.2 more than the composition rule (Fig.~\ref{fig:foundk}, Table~\ref{tab:found}); CHGNet relaxation of the templates changes this by +0.3. Hautier's method catches up from five attempts. The two generators get different materials right: three templates plus five CrystaLLM samples reach 77.3\% versus 68.3\% for eight samples [+6.9, +11.1]. When one answer must be chosen by CHGNet energy, the combined pool is right 69.3\% versus 63.7\% for CrystaLLM choosing among its own eight samples (+5.7 [1.3, 9.7]); with this physics selection the template alone (61.7\%) no longer beats CrystaLLM. For template choice itself, a plain encoder fine-tuned on the same KG relation is as good as K-Ont (60.5 vs 60.5 at $k=1$); K-Ont's starting weights help only with 5\% of the training data (+3.4 on the space group; Fig.~\ref{fig:lc}). The distinct value of K-Ont is doing this within the same model as the ontology reasoning.
+K-Ont-guided templates recover the reference structure at the first attempt +12.2 points [9.0, 15.4] more often than the fine-tuned CrystaLLM, +8.4 [5.5, 11.2] more than Hautier substitution and +9.2 more than the composition rule (Fig.~\ref{fig:foundk}, Table~\ref{tab:found}); CHGNet relaxation of the templates changes this by +0.3. From five attempts Hautier substitution comes within about 1.3 points. The two generators get different materials right: three templates plus five CrystaLLM samples reach 77.3\% versus 68.3\% for eight samples [+6.9, +11.1]. When one answer must be chosen by CHGNet energy, the combined pool is right 69.3\% versus 63.7\% for CrystaLLM choosing among its own eight samples (+5.7 [1.3, 9.7]); with this physics selection the template alone (61.7\%) no longer beats CrystaLLM. For template choice itself, a plain encoder fine-tuned on the same KG relation is as good as K-Ont (60.5 vs 60.5 at $k=1$); K-Ont's starting weights help only with 5\% of the training data (+3.4 on the space group; Fig.~\ref{fig:lc}). The distinct value of K-Ont is doing this within the same model as the ontology reasoning.
 
 \begin{figure*}[t]
 \centering
@@ -171,7 +171,7 @@ Fig.~\ref{fig:system}(a) summarises the single-answer system and Fig.~\ref{fig:s
 \subsection{Injecting K-Ont knowledge into the language model}
 \begin{table}[t]
 \centering
-\caption{True-structure share (\%) of generated samples, 902 held-out materials x 8 samples. Ceiling: the analogue with the true framework.}
+\caption{True-structure share (\%) of generated samples, 902 held-out materials $\times$ 8 samples. Ceiling: the analogue with the true framework.}
 \label{tab:inj}
 \footnotesize
 \setlength{\tabcolsep}{3pt}
@@ -224,12 +224,12 @@ On compositions with no reference structure, three K-Ont templates are statistic
 \begin{itemize}
 \item \textbf{Rule-based labels.} The KG's roles and families are rule-assigned; very high scores partly reflect the rules.
 \item \textbf{K-Ont versus a plain encoder.} For template choice alone, a plain encoder trained on the same KG relation is as good; K-Ont's contribution is a single model that also reasons over the ontology (whose axioms the ablation shows are necessary) and keeps the original ontology.
-\item \textbf{Memorisation.} Known-material benchmarks favour generators pre-trained on the same database; the from-scratch control and the novel-composition test address this, the latter only energetically.
-\item \textbf{Template coverage.} Templates cannot produce frameworks absent from the KG. Extending the KG with 5,267 further Materials Project materials (built in memory-safe chunks) raises the share of targets with a correct candidate from 85.6\% to 90.9\% and found@3 / found@8 by +3.4 [1.7, 5.2] / +3.4 [1.9, 5.1], with no retraining; the first pick does not improve.
+\item \textbf{Memorisation.} Known-material benchmarks favour generators pre-trained on the same database; the from-scratch control and the novel-composition test address this, the latter only energetically (no synthesis or electrochemical validation).
+\item \textbf{Template coverage.} Templates cannot produce frameworks absent from the KG; a larger KG raises coverage and found@3/@8 without retraining (Fig.~\ref{fig:system}b) but not the first pick, and about 9\% of targets still have no correct candidate.
 \item \textbf{Scope.} One crystal KG; costs of the one-model recipe are material typing (0.92--0.95) and part of GALEN inference.
 \end{itemize}
 \section{Conclusion}
-K-Ont extends hyperbolic ontology embeddings from concepts to knowledge-graph individuals. It learns a battery ontology and KG, keeps its original ontology, and --- with a retention objective covering KG sentences, original concepts and relation phrases --- holds a crystal-retrieval skill in the same model. As a template retriever it outperforms a fine-tuned crystal language model and data-mined substitution, and it complements the language model on novel cathodes, whereas injecting the same knowledge into the language model helps little. Future work: larger and expert-curated KGs, DFT validation at scale, and generators that edit retrieved templates rather than write structures from scratch.
+K-Ont extends hyperbolic ontology embeddings from concepts to knowledge-graph individuals. It learns a battery ontology and KG, keeps its original ontology, and --- with a retention objective covering KG sentences, original concepts and relation phrases --- holds a crystal-retrieval skill in the same model. As a template retriever it outperforms a fine-tuned crystal language model and data-mined substitution at the first attempt, and it complements the language model on novel cathodes, whereas injecting the same knowledge into the language model helps little. Future work: larger and expert-curated KGs, DFT validation at scale, and generators that edit retrieved templates rather than write structures from scratch.
 
 \bibliographystyle{IEEEtran}
 \bibliography{refs}
