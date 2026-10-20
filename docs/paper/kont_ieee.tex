@@ -10,12 +10,12 @@
 \begin{document}
 \title{K-Ont: Hyperbolic Embeddings of Ontologies and Their Knowledge-Graph Individuals, with Application to Ontology-Guided Crystal Structure Generation}
 \author{
-\IEEEauthorblockN{Dr. Gowtham Ramesh}\IEEEauthorblockA{[Department], [Institution], [City], [Country]\\ [email]} \and
-\IEEEauthorblockN{Shantharam P}\IEEEauthorblockA{[Department], [Institution], [City], [Country]\\ [email]} \and
-\IEEEauthorblockN{Sarvesha Nandhakumar}\IEEEauthorblockA{[Department], [Institution], [City], [Country]\\ [email]} \and
-\IEEEauthorblockN{Akshay KS}\IEEEauthorblockA{[Department], [Institution], [City], [Country]\\ [email]} \and
-\IEEEauthorblockN{RD Tarun}\IEEEauthorblockA{[Department], [Institution], [City], [Country]\\ [email]} \and
-\IEEEauthorblockN{S Ajeth}\IEEEauthorblockA{[Department], [Institution], [City], [Country]\\ [email]}
+\IEEEauthorblockN{Dr. Gowtham Ramesh}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
+\IEEEauthorblockN{Shantharam P}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
+\IEEEauthorblockN{Sarvesha Nandhakumar}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
+\IEEEauthorblockN{Akshay KS}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
+\IEEEauthorblockN{RD Tarun}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]} \and
+\IEEEauthorblockN{S Ajeth}\IEEEauthorblockA{Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India\\ [email]}
 }
 \maketitle
 \begin{abstract}
@@ -43,6 +43,14 @@ This paper makes four contributions:
 \textbf{Crystal structure generation.} Diffusion and variational models~\cite{xie2022cdvae,jiao2023diffcsp,zeni2025mattergen} and autoregressive language models over CIF text~\cite{antunes2024crystallm} generate structures from compositions or properties. Substitution-based prediction reuses known prototypes; Hautier et al.~\cite{hautier2011} learn ion-substitution probabilities from data and remain a strong, widely used baseline. Retrieval-augmented generation~\cite{lewis2020rag} and prompt or prefix tuning~\cite{lester2021prompt,li2021prefix} are the two standard ways to condition a language model on external knowledge; we test both.
 
 \section{Method}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/overview.png}
+\caption{Overview. K-Ont embeds the battery ontology and the KG's individuals in one hyperbolic space; for a new composition it ranks KG frameworks, whose sites receive the target's elements (templates); templates and language-model samples are relaxed with CHGNet and the lowest-energy structure is the answer.}
+\label{fig:overview}
+\end{figure*}
+Fig.~\ref{fig:overview} summarises the approach: a battery KG and its ontology are embedded by K-Ont (Sec. III-B, III-C), which then guides crystal structure generation by retrieving templates (Sec. III-D).
+
 \subsection{Battery knowledge graph}
 The KG was built with the battGPT pipeline from Materials Project data~\cite{jain2013mp} and pymatgen analysis~\cite{ong2013pymatgen}: 5,000 Li/Na materials ($\le$0.15 eV/atom above hull, $\le$40 sites, 2--5 elements, 527 polymorph groups), 5.6 M triples, linked to a battery ontology with structure families (e.g. olivine, NASICON, layered oxide) and electrode roles. Each material has a crystal, its elements, properties (band gap, formation energy, hull distance, moduli, magnetisation), and relations \emph{has structure}, \emph{has structure family} and \emph{belongs to electrode}. Structure-family and role labels are assigned by rules over composition and space group.
 
@@ -84,6 +92,14 @@ K-Ont-52c (one model, 3 seeds) & 0.92--0.95 & 1.000 & 0.99--1.00 & 0.988 & 0.969
 \end{tabular}
 \end{table}
 K-Ont generalises its typing and both ontology relations to unseen materials (Table~\ref{tab:checks}). Removing the ontology's TBox axioms (keeping all KG facts) drops material and crystal typing to 64\% and the hierarchy MRR from 0.97 to 0.31, while roles and families, which come from relation facts, survive: the ontology is what gives K-Ont its type reasoning. Because the KG's role and family labels are rule-based, near-perfect scores partly reflect learning those rules. On a second domain (303 patients of the UCI heart-disease data~\cite{detrano1989heart} verbalised as KG individuals), K-Ont patient embeddings outperformed OnT's by +2.2 AUC on average over five classifiers (four significant) and by +4.3 when three columns were missing.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/kont_checks.png}
+\caption{(a) K-Ont on held-out materials, without the ontology's TBox axioms, and the one-model K-Ont-52c. (b) GALEN mean reciprocal rank for OnT and K-Ont variants (inference MRR scaled x10).}
+\label{fig:checks}
+\end{figure*}
+Fig.~\ref{fig:checks}(a) shows the same comparison graphically: removing the axioms hits typing and the hierarchy, not roles and families.
 
 \subsection{One model for GALEN, the battery KG and crystal retrieval}
 \begin{table}[t]
@@ -136,7 +152,21 @@ Single answer: 3 templ. + 5 CrystaLLM & \textbf{69.3} &  &  \\
 \bottomrule
 \end{tabular}
 \end{table}
-K-Ont-guided templates recover the reference structure at the first attempt +12.2 points [9.0, 15.4] more often than the fine-tuned CrystaLLM, +8.4 [5.5, 11.2] more than Hautier substitution and +9.2 more than the composition rule (Fig.~\ref{fig:foundk}, Table~\ref{tab:found}); CHGNet relaxation of the templates changes this by +0.3. Hautier's method catches up from five attempts. The two generators get different materials right: three templates plus five CrystaLLM samples reach 77.3\% versus 68.3\% for eight samples [+6.9, +11.1]. When one answer must be chosen by CHGNet energy, the combined pool is right 69.3\% versus 63.7\% for CrystaLLM choosing among its own eight samples (+5.7 [1.3, 9.7]); with this physics selection the template alone (61.7\%) no longer beats CrystaLLM. For template choice itself, a plain encoder fine-tuned on the same KG relation is as good as K-Ont (60.5 vs 60.5 at $k=1$); K-Ont's starting weights help only with 5\% of the training data (+3.4 on the space group). The distinct value of K-Ont is doing this within the same model as the ontology reasoning.
+K-Ont-guided templates recover the reference structure at the first attempt +12.2 points [9.0, 15.4] more often than the fine-tuned CrystaLLM, +8.4 [5.5, 11.2] more than Hautier substitution and +9.2 more than the composition rule (Fig.~\ref{fig:foundk}, Table~\ref{tab:found}); CHGNet relaxation of the templates changes this by +0.3. Hautier's method catches up from five attempts. The two generators get different materials right: three templates plus five CrystaLLM samples reach 77.3\% versus 68.3\% for eight samples [+6.9, +11.1]. When one answer must be chosen by CHGNet energy, the combined pool is right 69.3\% versus 63.7\% for CrystaLLM choosing among its own eight samples (+5.7 [1.3, 9.7]); with this physics selection the template alone (61.7\%) no longer beats CrystaLLM. For template choice itself, a plain encoder fine-tuned on the same KG relation is as good as K-Ont (60.5 vs 60.5 at $k=1$); K-Ont's starting weights help only with 5\% of the training data (+3.4 on the space group; Fig.~\ref{fig:lc}). The distinct value of K-Ont is doing this within the same model as the ontology reasoning.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figs/system.png}
+\caption{(a) One committed answer per material (CHGNet lowest energy among 8 candidates, random 300 of the 902 targets). (b) The same K-Ont-52c retriever with the 5,000-material KG and with 5,267 further KG materials: structures found within k attempts, and targets for which some candidate has the true space group.}
+\label{fig:system}
+\end{figure*}
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/learning_curve.png}
+\caption{Retriever learning curve: template found@1 when the retriever is fine-tuned from K-Ont or from the plain encoder on 5--100\% of the KG examples (lines: mean, dots: 3 seeds).}
+\label{fig:lc}
+\end{figure}
+Fig.~\ref{fig:system}(a) summarises the single-answer system and Fig.~\ref{fig:system}(b) the effect of a larger KG: extending the pool with 5,267 further materials raises the share of targets with a correct candidate from 85.6\% to 90.9\% and found@3 / found@8 by +3.4 [1.7, 5.2] / +3.4 [1.9, 5.1], without retraining K-Ont; the first pick does not change.
 
 \subsection{Injecting K-Ont knowledge into the language model}
 \begin{table}[t]
@@ -157,8 +187,14 @@ Hard prompt (template CIF header) & 45.9$^*$ & -- \\
 \bottomrule
 \end{tabular}
 \end{table}
-A K-Ont soft prompt clearly steers the generated framework (random vs retrieved analogue: -21.4 points), but on CrystaLLM it never beats plain fine-tuning, and even the true analogue adds only +2.1: CrystaLLM was pre-trained on Materials Project and recalls these structures (Table~\ref{tab:inj}). We therefore pre-trained a 25 M-parameter GPT with CrystaLLM's architecture from scratch on 300,000 CrystaLLM training structures with every evaluation composition removed. Without memorisation the soft prompt helps (+1.5 [0.5, 2.5]), but the ceiling stays at +2.7: the vector identifies the framework while the model still writes every coordinate. A hard prompt with the retrieved template's header ($^*$found@1) is worse than using the template itself (60.5\%). Knowledge is most useful outside the generator.
+A K-Ont soft prompt clearly steers the generated framework (random vs retrieved analogue: -21.4 points), but on CrystaLLM it never beats plain fine-tuning, and even the true analogue adds only +2.1: CrystaLLM was pre-trained on Materials Project and recalls these structures (Table~\ref{tab:inj}). We therefore pre-trained a 25 M-parameter GPT with CrystaLLM's architecture from scratch on 300,000 CrystaLLM training structures with every evaluation composition removed. Without memorisation the soft prompt helps (+1.5 [0.5, 2.5]), but the ceiling stays at +2.7: the vector identifies the framework while the model still writes every coordinate. A hard prompt with the retrieved template's header ($^*$found@1) is worse than using the template itself (60.5\%). Knowledge is most useful outside the generator (Fig.~\ref{fig:inj}).
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/injection.png}
+\caption{Injecting K-Ont knowledge as a soft prompt: true-structure share of generated samples for a model that has seen Materials Project (CrystaLLM) and one pre-trained from scratch without the evaluation compositions.}
+\label{fig:inj}
+\end{figure}
 \subsection{Novel cathode compositions}
 \begin{table}[t]
 \centering
@@ -176,8 +212,14 @@ Independent $E_{hull}$, K-Ont template & \textbf{32} & 1 & 1 \\
 \bottomrule
 \end{tabular}
 \end{table}
-On compositions with no reference structure, three K-Ont templates are statistically level with CrystaLLM-large's best of ten (+1.3 meV/atom [-4.1, 6.4]); adding them to CrystaLLM finds a lower-energy structure for 34 of 199 compositions and a higher one for none (-7.5 meV/atom [-11.8, -4.0]) (Table~\ref{tab:novel}). An independent energy-above-hull calculation [TODO: method, e.g. DFT functional and settings] of those 34 places the template lower in 32; median 0.025 vs 0.088 eV/atom, with 23 vs 13 within 50 meV/atom of the hull. These 34 were selected by CHGNet, so this confirms the ranking rather than an unbiased rate.
+On compositions with no reference structure, three K-Ont templates are statistically level with CrystaLLM-large's best of ten (+1.3 meV/atom [-4.1, 6.4]); adding them to CrystaLLM finds a lower-energy structure for 34 of 199 compositions and a higher one for none (-7.5 meV/atom [-11.8, -4.0]) (Table~\ref{tab:novel}). An independent energy-above-hull calculation [TODO: method, e.g. DFT functional and settings] of those 34 places the template lower in 32; median 0.025 vs 0.088 eV/atom, with 23 vs 13 within 50 meV/atom of the hull (Fig.~\ref{fig:ehull}). These 34 were selected by CHGNet, so this confirms the ranking rather than an unbiased rate.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{figs/novel_ehull.png}
+\caption{Independent energy above hull of the K-Ont template vs the CrystaLLM-large structure for the same novel composition (33 of 34; LiCo$_2$BiO$_4$, about 4 eV/atom for both, omitted). Points below the diagonal: the template is more stable.}
+\label{fig:ehull}
+\end{figure}
 \section{Discussion and Limitations}
 \begin{itemize}
 \item \textbf{Rule-based labels.} The KG's roles and families are rule-assigned; very high scores partly reflect the rules.

@@ -25,7 +25,7 @@ CHROME = r"C:\Program Files\Google\Chrome\Application\chrome.exe"
 TITLE = ("K-Ont: Hyperbolic Embeddings of Ontologies and Their Knowledge-Graph Individuals, "
          "with Application to Ontology-Guided Crystal Structure Generation")
 AUTHORS = ["Dr. Gowtham Ramesh", "Shantharam P", "Sarvesha Nandhakumar", "Akshay KS", "RD Tarun", "S Ajeth"]
-AFFIL = "[Department], [Institution], [City], [Country]"  # TODO: fill in before submission
+AFFIL = "Dept. of Computer Science and Engineering, Amrita Vishwa Vidyapeetham, Coimbatore, India"
 KEYWORDS = ["ontology embedding", "knowledge graph", "hyperbolic embedding", "crystal structure generation",
             "battery materials", "retrieval-augmented generation"]
 
@@ -95,6 +95,8 @@ P("**Crystal structure generation.** Diffusion and variational models [@xie2022c
   "are the two standard ways to condition a language model on external knowledge; we test both.")
 
 S("Method")
+B.append(("fig", {"label": "fig:overview", "file": "overview.png", "wide": True, "caption": "Overview. K-Ont embeds the battery ontology and the KG's individuals in one hyperbolic space; for a new composition it ranks KG frameworks, whose sites receive the target's elements (templates); templates and language-model samples are relaxed with CHGNet and the lowest-energy structure is the answer."}))
+P("Fig.~\\ref{fig:overview} summarises the approach: a battery KG and its ontology are embedded by K-Ont (Sec. III-B, III-C), which then guides crystal structure generation by retrieving templates (Sec. III-D).")
 SS("Battery knowledge graph")
 P("The KG was built with the battGPT pipeline from Materials Project data [@jain2013mp] and pymatgen analysis "
   "[@ong2013pymatgen]: 5,000 Li/Na materials ($\\le$0.15 eV/atom above hull, $\\le$40 sites, 2-5 elements, 527 "
@@ -165,6 +167,8 @@ P("K-Ont generalises its typing and both ontology relations to unseen materials 
   "partly reflect learning those rules. On a second domain (303 patients of the UCI heart-disease data "
   "[@detrano1989heart] verbalised as KG individuals), K-Ont patient embeddings outperformed OnT's by +2.2 AUC on "
   "average over five classifiers (four significant) and by +4.3 when three columns were missing.")
+B.append(("fig", {"label": "fig:checks", "file": "kont_checks.png", "wide": True, "caption": "(a) K-Ont on held-out materials, without the ontology's TBox axioms, and the one-model K-Ont-52c. (b) GALEN mean reciprocal rank for OnT and K-Ont variants (inference MRR scaled x10)."}))
+P("Fig.~\\ref{fig:checks}(a) shows the same comparison graphically: removing the axioms hits typing and the hierarchy, not roles and families.")
 SS("One model for GALEN, the battery KG and crystal retrieval")
 B.append(("table", {"label": "tab:galen", "caption": "GALEN (OnT benchmark) and crystal retrieval. Pred./inf. = "
           "prediction / inference test sets, MRR and AUC; retrieval = template found@1 on 902 held-out materials.",
@@ -207,7 +211,10 @@ P("K-Ont-guided templates recover the reference structure at the first attempt +
   "among its own eight samples (+5.7 [1.3, 9.7]); with this physics selection the template alone (61.7%) no longer "
   "beats CrystaLLM. For template choice itself, a plain encoder fine-tuned on the same KG relation is as good as "
   "K-Ont (60.5 vs 60.5 at $k=1$); K-Ont's starting weights help only with 5% of the training data (+3.4 on the "
-  "space group). The distinct value of K-Ont is doing this within the same model as the ontology reasoning.")
+  "space group; Fig.~\\ref{fig:lc}). The distinct value of K-Ont is doing this within the same model as the ontology reasoning.")
+B.append(("fig", {"label": "fig:system", "file": "system.png", "wide": True, "caption": "(a) One committed answer per material (CHGNet lowest energy among 8 candidates, random 300 of the 902 targets). (b) The same K-Ont-52c retriever with the 5,000-material KG and with 5,267 further KG materials: structures found within k attempts, and targets for which some candidate has the true space group."}))
+B.append(("fig", {"label": "fig:lc", "file": "learning_curve.png", "caption": "Retriever learning curve: template found@1 when the retriever is fine-tuned from K-Ont or from the plain encoder on 5-100% of the KG examples (lines: mean, dots: 3 seeds)."}))
+P("Fig.~\\ref{fig:system}(a) summarises the single-answer system and Fig.~\\ref{fig:system}(b) the effect of a larger KG: extending the pool with 5,267 further materials raises the share of targets with a correct candidate from 85.6% to 90.9% and found@3 / found@8 by +3.4 [1.7, 5.2] / +3.4 [1.9, 5.1], without retraining K-Ont; the first pick does not change.")
 SS("Injecting K-Ont knowledge into the language model")
 B.append(("table", {"label": "tab:inj", "caption": "True-structure share (%) of generated samples, 902 held-out "
           "materials x 8 samples. Ceiling: the analogue with the true framework.",
@@ -224,7 +231,8 @@ P("A K-Ont soft prompt clearly steers the generated framework (random vs retriev
   "evaluation composition removed. Without memorisation the soft prompt helps (+1.5 [0.5, 2.5]), but the ceiling "
   "stays at +2.7: the vector identifies the framework while the model still writes every coordinate. A hard prompt "
   "with the retrieved template's header ($^*$found@1) is worse than using the template itself (60.5%). Knowledge "
-  "is most useful outside the generator.")
+  "is most useful outside the generator (Fig.~\\ref{fig:inj}).")
+B.append(("fig", {"label": "fig:inj", "file": "injection.png", "caption": "Injecting K-Ont knowledge as a soft prompt: true-structure share of generated samples for a model that has seen Materials Project (CrystaLLM) and one pre-trained from scratch without the evaluation compositions."}))
 SS("Novel cathode compositions")
 B.append(("table", {"label": "tab:novel", "caption": "Novel cathodes (not in Materials Project). Top: lowest CHGNet "
           "energy per composition vs CrystaLLM-large's best of 10 (199 compositions, 5 meV/atom tie band). Bottom: "
@@ -237,9 +245,10 @@ P("On compositions with no reference structure, three K-Ont templates are statis
   "best of ten (+1.3 meV/atom [-4.1, 6.4]); adding them to CrystaLLM finds a lower-energy structure for 34 of 199 "
   "compositions and a higher one for none (-7.5 meV/atom [-11.8, -4.0]) (Table~\\ref{tab:novel}). An independent "
   "energy-above-hull calculation [TODO: method, e.g. DFT functional and settings] of those 34 places the template "
-  "lower in 32; median 0.025 vs 0.088 eV/atom, with 23 vs 13 within 50 meV/atom of the hull. These 34 were selected "
+  "lower in 32; median 0.025 vs 0.088 eV/atom, with 23 vs 13 within 50 meV/atom of the hull (Fig.~\\ref{fig:ehull}). These 34 were selected "
   "by CHGNet, so this confirms the ranking rather than an unbiased rate.")
 
+B.append(("fig", {"label": "fig:ehull", "file": "novel_ehull.png", "caption": "Independent energy above hull of the K-Ont template vs the CrystaLLM-large structure for the same novel composition (33 of 34; LiCo$_2$BiO$_4$, about 4 eV/atom for both, omitted). Points below the diagonal: the template is more stable."}))
 S("Discussion and Limitations")
 UL(["**Rule-based labels.** The KG's roles and families are rule-assigned; very high scores partly reflect the rules.",
     "**K-Ont versus a plain encoder.** For template choice alone, a plain encoder trained on the same KG relation "
@@ -312,6 +321,180 @@ def figures():
     ax.legend(frameon=False, fontsize=6.6, loc="lower right")
     fig.savefig(os.path.join(FIGS, "foundk.png"), dpi=300, bbox_inches="tight")
     plt.close(fig)
+    more_figures()
+
+
+ORANGE, PURPLE, BLUE, GREEN, GREY, RED = "#d9762b", "#6c5ba7", "#3b6fb6", "#4b9b6e", "#8a8f98", "#b23b2a"
+
+
+def _save(fig, name):
+    fig.savefig(os.path.join(FIGS, name), dpi=300, bbox_inches="tight")
+    plt.close(fig)
+
+
+def _bars(ax, labels, vals, colors, fmt="{:.1f}", rot=0, ylim=None):
+    xs = range(len(vals))
+    ax.bar(xs, vals, color=colors, width=0.7)
+    for x, v in zip(xs, vals):
+        ax.text(x, v + (ylim[1] - ylim[0]) * 0.015 if ylim else v, fmt.format(v), ha="center", va="bottom", fontsize=6.4)
+    ax.set_xticks(list(xs), labels, rotation=rot, ha="right" if rot else "center", fontsize=6.6)
+    if ylim:
+        ax.set_ylim(*ylim)
+    ax.grid(axis="y", color="#e3e6ea", lw=0.6)
+    ax.set_axisbelow(True)
+
+
+def more_figures():
+    import csv
+    import json
+    from matplotlib.patches import FancyBboxPatch
+    import kont_framework as kf
+    D = os.path.join(HERE, "data", "crystallm")
+    J = lambda n: json.load(open(os.path.join(D, n)))
+
+    # Fig: system overview (wide)
+    fig, ax = plt.subplots(figsize=(7.1, 1.9))
+    ax.axis("off")
+    ax.set_xlim(-0.1, 12.1)
+    ax.set_ylim(0, 3.2)
+    boxes = [(0.0, 1.15, 2.0, "Battery KG\n5,000 materials\n+ battery ontology", "#eef1f5"),
+             (2.5, 1.15, 2.2, "K-Ont\nhyperbolic encoder of\nconcepts + individuals", "#fbe9dc"),
+             (5.2, 2.05, 2.1, "rank KG frameworks\nfor the composition", "#fbe9dc"),
+             (7.75, 2.05, 2.0, "templates: place\nthe target's elements", "#eef1f5"),
+             (5.2, 0.15, 2.1, "CrystaLLM samples\n(language model)", "#ece9f5"),
+             (10.15, 1.15, 1.85, "CHGNet relaxation\nlowest energy\n= one answer", "#e6f2ec")]
+    for x, y, w, t, c in boxes:
+        ax.add_patch(FancyBboxPatch((x, y), w, 0.95, boxstyle="round,pad=0.02,rounding_size=0.08", fc=c, ec="#9aa3ad", lw=0.8))
+        ax.text(x + w / 2, y + 0.475, t, ha="center", va="center", fontsize=5.8)
+    arr = dict(arrowstyle="->", color="#5b6472", lw=0.9)
+    for a_, b_ in (((2.0, 1.62), (2.5, 1.62)), ((4.7, 1.85), (5.2, 2.35)), ((7.3, 2.52), (7.75, 2.52)),
+                   ((9.75, 2.35), (10.15, 1.9)), ((7.3, 0.62), (10.15, 1.35))):
+        ax.annotate("", b_, a_, arrowprops=arr)
+    ax.text(5.2, 3.05, "input: composition (formula + cell) of a new material", fontsize=6.2, style="italic", color="#5b6472")
+    ax.annotate("", (5.6, 1.12), (5.6, 2.03), arrowprops=dict(arrowstyle="<-", color="#9aa3ad", lw=0.6, ls="--"))
+    ax.text(5.75, 1.55, "same composition", fontsize=5.6, color="#9aa3ad")
+    _save(fig, "overview.png")
+
+    # Fig: K-Ont knowledge (a) battery checks incl. ablation (b) GALEN
+    fw = J("kont_framework.json")
+    chk = {"K-Ont": kf.headline(os.path.join(HERE, "data", "runs", "full_grow5000_v2", "phase5_checks.json")),
+           "K-Ont w/o TBox axioms": kf.headline(os.path.join(HERE, "data", "runs", "full_grow5000_notbox", "phase5_checks.json")),
+           "K-Ont-52c (one model)": fw["checks"]["fw_retain_galen_anchor"]}
+    keys = [("material typing H@1", "material\ntyping"), ("crystal typing H@1", "crystal\ntyping"),
+            ("role, no label line (test)", "battery\nrole"), ("family, no label line (test)", "structure\nfamily"),
+            ("TBox MRR", "hierarchy\n(TBox MRR)")]
+    gr = json.load(open(os.path.join(HERE, "data", "ont_bench", "galen_results.json")))
+    gm = [("OnT-galen (published)", "OnT"), ("K-Ont v2 (Step 36)", "K-Ont"), ("K-Ont + retention (Step 43)", "+KG ret."),
+          ("K-Ont + retention incl. GALEN (Step 52)", "+GALEN ret."), ("K-Ont + GALEN + anchor retention (Step 52c)", "52c")]
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.1, 2.2), gridspec_kw={"width_ratios": [1.45, 1]})
+    w = 0.26
+    for j, (name, c) in enumerate(zip(chk, (ORANGE, GREY, BLUE))):
+        a1.bar([i + (j - 1) * w for i in range(len(keys))], [100 * chk[name][k] for k, _ in keys], w * 0.92, color=c, label=name)
+    a1.set_xticks(range(len(keys)), [l for _, l in keys], fontsize=6.4)
+    a1.set_ylim(0, 108)
+    a1.set_ylabel("held-out score (%)")
+    a1.legend(frameon=False, fontsize=6.2, loc="lower left", ncol=3, bbox_to_anchor=(0, 1.0))
+    a1.grid(axis="y", color="#e3e6ea", lw=0.6)
+    a1.set_axisbelow(True)
+    a1.set_title("(a) battery ontology + KG", fontsize=7.5, loc="left", pad=14)
+    x = range(len(gm))
+    pm = [gr[f"prediction | {k}"]["results"]["sentence_combined"]["MRR"] for k, _ in gm]
+    im = [gr[f"inference | {k}"]["results"]["sentence_combined"]["MRR"] * 10 for k, _ in gm]
+    a2.bar([i - 0.18 for i in x], pm, 0.34, color=PURPLE, label="prediction MRR")
+    a2.bar([i + 0.18 for i in x], im, 0.34, color=GREEN, label="inference MRR ×10")
+    a2.set_xticks(list(x), [l for _, l in gm], fontsize=6.2, rotation=25, ha="right")
+    a2.legend(frameon=False, fontsize=6.2, loc="lower left", ncol=2, bbox_to_anchor=(0, 1.0))
+    a2.grid(axis="y", color="#e3e6ea", lw=0.6)
+    a2.set_axisbelow(True)
+    a2.set_title("(b) GALEN (OnT benchmark)", fontsize=7.5, loc="left", pad=14)
+    fig.tight_layout()
+    _save(fig, "kont_checks.png")
+
+    # Fig: practical system (a) one committed answer (b) bigger KG
+    ps = J("kg_pipeline_select_n300_s40.json")["report"]["right_single_pick"]
+    ext = J("kg_ext_eval.json")
+    fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.1, 2.15))
+    _bars(a1, ["CrystaLLM\nbest of 8", "K-Ont\ntemplate top-1", "3 templates +\n5 CrystaLLM", "any of 8\n(ceiling)"],
+          [ps["CrystaLLM x8, lowest energy"], ps["K-Ont template top-1 (no physics)"],
+           ps["3 templates + 5 CrystaLLM, lowest energy (pipeline)"], ps["oracle: any of 3 templates + 5 CrystaLLM"]],
+          [PURPLE, ORANGE, ORANGE, "#c9ced6"], ylim=(50, 85))
+    a1.set_ylabel("one answer right (%)")
+    a1.set_title("(a) one answer per material (CHGNet pick)", fontsize=7.5, loc="left")
+    f5, fe = ext["found"]["K-Ont (52c) · 5,000 KG"], ext["found"]["K-Ont (52c) · extended KG"]
+    xs = range(4)
+    v5 = [f5["@1"], f5["@3"], f5["@8"], ext["5,000 KG"]["oracle_true_space_group"]]
+    ve = [fe["@1"], fe["@3"], fe["@8"], ext["extended KG"]["oracle_true_space_group"]]
+    a2.bar([i - 0.18 for i in xs], v5, 0.34, color=GREY, label="5,000-material KG")
+    a2.bar([i + 0.18 for i in xs], ve, 0.34, color=ORANGE, label="+5,267 materials")
+    for i, (p, q) in enumerate(zip(v5, ve)):
+        a2.text(i + 0.18, q + 0.6, f"{q:.1f}", ha="center", fontsize=6.2)
+    a2.set_xticks(list(xs), ["found@1", "found@3", "found@8", "right template\navailable"], fontsize=6.6)
+    a2.set_ylim(45, 97)
+    a2.legend(frameon=False, fontsize=6.2, loc="upper left")
+    a2.grid(axis="y", color="#e3e6ea", lw=0.6)
+    a2.set_axisbelow(True)
+    a2.set_title("(b) a bigger KG (same K-Ont, 902 targets)", fontsize=7.5, loc="left")
+    fig.tight_layout()
+    _save(fig, "system.png")
+
+    # Fig: injection, CrystaLLM vs from-scratch GPT
+    def arm(a, tag=""):
+        m = J(f"kgcond3{tag}_eval_{a}.json")
+        S = [s for t in m for s in t["samples"]]
+        return 100 * sum(bool(s.get("strict")) for s in S) / len(S)
+    arms = [("const", "plain\nfine-tune"), ("cf_rr", "K-Ont\nanalogue"), ("cf_oracle", "true\nanalogue"), ("cf_rand", "random\nanalogue")]
+    fig, ax = plt.subplots(figsize=(3.4, 2.1))
+    xs = range(len(arms))
+    c1 = [arm(a) for a, _ in arms]
+    c2 = [arm(a, "_scratch") for a, _ in arms]
+    ax.bar([i - 0.19 for i in xs], c1, 0.36, color=PURPLE, label="CrystaLLM (pre-trained on MP)")
+    ax.bar([i + 0.19 for i in xs], c2, 0.36, color=GREEN, label="GPT from scratch (no test comp.)")
+    for i, (p, q) in enumerate(zip(c1, c2)):
+        ax.text(i - 0.19, p + 0.6, f"{p:.1f}", ha="center", fontsize=5.8)
+        ax.text(i + 0.19, q + 0.6, f"{q:.1f}", ha="center", fontsize=5.8)
+    ax.set_xticks(list(xs), [l for _, l in arms], fontsize=6.6)
+    ax.set_ylabel("true-structure samples (%)")
+    ax.set_ylim(0, 66)
+    ax.legend(frameon=False, fontsize=6, loc="upper left", ncol=1)
+    ax.grid(axis="y", color="#e3e6ea", lw=0.6)
+    ax.set_axisbelow(True)
+    _save(fig, "injection.png")
+
+    # Fig: learning curve
+    lc = J("kg_learning_curve.json")
+    fr = [0.05, 0.1, 0.25, 0.5, 1.0]
+    fig, ax = plt.subplots(figsize=(3.4, 2.0))
+    for key, lab, c in (("kont", "K-Ont start", ORANGE), ("base", "plain-encoder start", GREEN)):
+        for f in fr:
+            ps_ = lc["fractions"][str(f)][key]["per_seed_template"]
+            ax.scatter([f * 100] * len(ps_), ps_, s=7, color=c, alpha=0.45)
+        ax.plot([f * 100 for f in fr], [lc["fractions"][str(f)][key]["template"] for f in fr], color=c, marker="o", ms=3, lw=1.6, label=lab)
+    ax.set_xscale("log")
+    ax.set_xticks([5, 10, 25, 50, 100], ["5%", "10%", "25%", "50%", "100%"])
+    ax.set_xlabel("retriever training data")
+    ax.set_ylabel("template found@1 (%)")
+    ax.legend(frameon=False, fontsize=6.4, loc="lower right")
+    ax.grid(axis="y", color="#e3e6ea", lw=0.6)
+    _save(fig, "learning_curve.png")
+
+    # Fig: novel cathodes, independent e_hull per composition
+    T = os.path.join(D, "teammate_ehull")
+    k = {r["formula"]: float(r["ehull_eV_per_atom"]) for r in csv.DictReader(open(os.path.join(T, "kont_formula_ehull_novel.csv")))}
+    c = {r["formula"]: float(r["ehull_eV_per_atom"]) for r in csv.DictReader(open(os.path.join(T, "crystallm_formula_ehull_novel.csv")))}
+    F = [f for f in k if f in c and max(k[f], c[f]) < 1.0]  # LiCo2BiO4 (~4 eV/atom for both) left out: implausible, to recheck
+    fig, ax = plt.subplots(figsize=(3.4, 2.6))
+    ax.scatter([1000 * c[f] for f in F], [1000 * k[f] for f in F], s=12, color=ORANGE, edgecolor="white", lw=0.4, zorder=3)
+    lim = (-20, 240)
+    ax.plot(lim, lim, color=GREY, lw=0.8, ls="--")
+    ax.axhspan(-20, 50, color="#e6f2ec", zorder=0)
+    ax.text(236, 30, "plausibly stable\n(\u2264 50 meV/atom)", fontsize=6, color="#1f7a4d", ha="right", va="center")
+    ax.text(236, 68, "below the diagonal:\nK-Ont template more stable", fontsize=6, color="#5b6472", ha="right", va="center")
+    ax.set_xlim(*lim)
+    ax.set_ylim(*lim)
+    ax.set_xlabel("CrystaLLM-large structure, $E_{hull}$ (meV/atom)")
+    ax.set_ylabel("K-Ont template, $E_{hull}$ (meV/atom)")
+    ax.grid(color="#eef0f2", lw=0.5)
+    _save(fig, "novel_ehull.png")
 
 
 # ---------------------------------------------------------------- renderers
@@ -345,7 +528,7 @@ def html_inline(t, cites):
     t = re.sub(r"(?<![\\\w])\*(?!\s)(.+?)\*", r"<i>\1</i>", t)
     rep = {r"$\le$": "\u2264", r"$^\dagger$": "\u2020", r"$^\ddagger$": "\u2021", r"$^*$": "*", r"$\sqsubseteq \exists$": "\u2291 \u2203",
            r"$\sqsubseteq$": "\u2291", r"$\exists r.D$": "\u2203r.D", r"$\mathbb{B}_c$": "\U0001D539<sub>c</sub>", r"$k=1$": "k = 1",
-           r"$k$": "<i>k</i>", r"$Z$": "<i>Z</i>", r"$E_{hull}$": "E<sub>hull</sub>", r"$d_c$": "d<sub>c</sub>",
+           r"$k$": "<i>k</i>", r"$Z$": "<i>Z</i>", r"$E_{hull}$": "E<sub>hull</sub>", "LiCo$_2$BiO$_4$": "LiCo<sub>2</sub>BiO<sub>4</sub>", r"$d_c$": "d<sub>c</sub>",
            r"$\lVert\cdot\rVert_c$": "\u2016\u00b7\u2016<sub>c</sub>", r"$x$": "<i>x</i>", r"$f(x)$": "<i>f</i>(<i>x</i>)",
            r"$C \sqsubseteq D$": "C \u2291 D", r"$r$": "<i>r</i>", r"$f(D)$": "<i>f</i>(D)", r"$\exists$": "\u2203"}
     for a, b in rep.items():
@@ -353,7 +536,8 @@ def html_inline(t, cites):
     labels = [x[1]["label"] for x in B if x[0] == "table"]
     roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII"]
     t = re.sub(r"Table~\\ref\{([^}]+)\}", lambda m: "Table " + roman[labels.index(m.group(1))], t)
-    t = t.replace("Fig.~\\ref{fig:foundk}", "Fig. 1")
+    flabels = [x[1]["label"] for x in B if x[0] == "fig"]
+    t = re.sub(r"Fig\.~\\ref\{([^}]+)\}", lambda m: "Fig. " + str(flabels.index(m.group(1)) + 1), t)
     t = t.replace("($\\dagger$)", "(†)").replace("($\\ddagger$)", "(‡)")
     t = t.replace(" -- ", " — ").replace("--", "–")
     t = t.replace("~", "\u00a0")
@@ -394,8 +578,10 @@ def to_tex():
             out += [r"\bottomrule", r"\end{tabular}", r"\end{table}"]
         elif kind == "fig":
             f = rest[0]
-            out += [r"\begin{figure}[t]", r"\centering", r"\includegraphics[width=\columnwidth]{figs/" + f["file"] + "}",
-                    r"\caption{" + tex_inline(f["caption"]) + "}", r"\label{" + f["label"] + "}", r"\end{figure}"]
+            env = "figure*" if f.get("wide") else "figure"
+            width = r"\textwidth" if f.get("wide") else r"\columnwidth"
+            out += [r"\begin{" + env + "}[t]", r"\centering", r"\includegraphics[width=" + width + "]{figs/" + f["file"] + "}",
+                    r"\caption{" + tex_inline(f["caption"]) + "}", r"\label{" + f["label"] + "}", r"\end{" + env + "}"]
     out += [r"\bibliographystyle{IEEEtran}", r"\bibliography{refs}", r"\end{document}"]
     return "\n".join(out)
 
@@ -432,7 +618,9 @@ def to_html():
         elif kind == "fig":
             f = rest[0]
             b64 = base64.b64encode(open(os.path.join(FIGS, f["file"]), "rb").read()).decode()
-            parts.append(f'<div class="fig"><img src="data:image/png;base64,{b64}"><div class="fcap">Fig. 1. {html_inline(f["caption"], cites)}</div></div>')
+            fign = [x[1]["label"] for x in B if x[0] == "fig"].index(f["label"]) + 1
+            cls = "fig wide" if f.get("wide") else "fig"
+            parts.append(f'<div class="{cls}"><img src="data:image/png;base64,{b64}"><div class="fcap">Fig. {fign}. {html_inline(f["caption"], cites)}</div></div>')
     bib = {m.group(1): m.group(0) for m in re.finditer(r"@\w+\{(\w+),.*?\}\s*$", BIB, re.M)}
 
     def fmt(k):
@@ -462,6 +650,7 @@ table { border-collapse: collapse; width: 100%; font-size: 7.6pt; border-top: 1p
 th { border-bottom: 0.5px solid #000; font-weight: normal; padding: 1.5pt 2pt; } td { padding: 1.2pt 2pt; text-align: center; }
 td:first-child, th:first-child { text-align: left; }
 .fig { break-inside: avoid; margin: 6pt 0; } .fig img { width: 100%; } .fcap { font-size: 8pt; }
+.fig.wide { column-span: all; margin: 8pt 0 10pt; }
 .refs { font-size: 8pt; padding-left: 14pt; } .refs li { margin-bottom: 2pt; }
 """
     return f'<!doctype html><html><head><meta charset="utf-8"><title>K-Ont IEEE draft</title><style>{css}</style></head><body>{"".join(parts)}</body></html>'
