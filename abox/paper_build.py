@@ -307,7 +307,12 @@ def figures():
     hz = json.load(open(os.path.join(HERE, "data", "crystallm", "kg_substitution.json")))["report"]["found"]
     haut = [v for k, v in hz.items() if k.startswith("Hautier") and "order" in k][0]
     ks = [1, 2, 3, 5, 8]
-    plt.rcParams.update({"font.family": "DejaVu Serif", "font.size": 8, "axes.spines.top": False, "axes.spines.right": False})
+    plt.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Arial", "DejaVu Sans"], "mathtext.fontset": "dejavusans",
+                         "font.size": 7.5, "axes.spines.top": False, "axes.spines.right": False,
+                         "axes.edgecolor": "#6b7380", "axes.linewidth": 0.6, "axes.labelcolor": "#2b2f36",
+                         "xtick.color": "#6b7380", "ytick.color": "#6b7380", "xtick.labelcolor": "#2b2f36", "ytick.labelcolor": "#2b2f36",
+                         "xtick.major.width": 0.6, "ytick.major.width": 0.6, "xtick.major.size": 2.5, "ytick.major.size": 2.5,
+                         "legend.handlelength": 1.2, "legend.handleheight": 0.8, "text.color": "#2b2f36"})
     fig, ax = plt.subplots(figsize=(3.4, 2.3))
     for lab, ys, c, mk in (("CrystaLLM (fine-tuned)", [tg["CrystaLLM fine-tuned"][f"found@{k}"] for k in ks], "#6c5ba7", "o"),
                            ("Hautier substitution", [haut[f"@{k}"] for k in ks], "#3b6fb6", "^"),
@@ -352,27 +357,88 @@ def more_figures():
     D = os.path.join(HERE, "data", "crystallm")
     J = lambda n: json.load(open(os.path.join(D, n)))
 
-    # Fig: system overview (wide)
-    fig, ax = plt.subplots(figsize=(7.1, 1.9))
+    # Fig: system overview (wide) -- three stages, cards with a coloured accent, orthogonal arrows
+    from matplotlib.patches import Circle, Rectangle
+    INK, MUTED, LINE = "#2b2f36", "#6b7380", "#c3c9d1"
+    fig, ax = plt.subplots(figsize=(7.1, 2.56))
+    ax.set_xlim(0, 100)
+    ax.set_ylim(2.5, 36)
+    ax.set_aspect("equal")
     ax.axis("off")
-    ax.set_xlim(-0.1, 12.1)
-    ax.set_ylim(0, 3.2)
-    boxes = [(0.0, 1.15, 2.0, "Battery KG\n5,000 materials\n+ battery ontology", "#eef1f5"),
-             (2.5, 1.15, 2.2, "K-Ont\nhyperbolic encoder of\nconcepts + individuals", "#fbe9dc"),
-             (5.2, 2.05, 2.1, "rank KG frameworks\nfor the composition", "#fbe9dc"),
-             (7.75, 2.05, 2.0, "templates: place\nthe target's elements", "#eef1f5"),
-             (5.2, 0.15, 2.1, "CrystaLLM samples\n(language model)", "#ece9f5"),
-             (10.15, 1.15, 1.85, "CHGNet relaxation\nlowest energy\n= one answer", "#e6f2ec")]
-    for x, y, w, t, c in boxes:
-        ax.add_patch(FancyBboxPatch((x, y), w, 0.95, boxstyle="round,pad=0.02,rounding_size=0.08", fc=c, ec="#9aa3ad", lw=0.8))
-        ax.text(x + w / 2, y + 0.475, t, ha="center", va="center", fontsize=5.8)
-    arr = dict(arrowstyle="->", color="#5b6472", lw=0.9)
-    for a_, b_ in (((2.0, 1.62), (2.5, 1.62)), ((4.7, 1.85), (5.2, 2.35)), ((7.3, 2.52), (7.75, 2.52)),
-                   ((9.75, 2.35), (10.15, 1.9)), ((7.3, 0.62), (10.15, 1.35))):
-        ax.annotate("", b_, a_, arrowprops=arr)
-    ax.text(5.2, 3.05, "input: composition (formula + cell) of a new material", fontsize=6.2, style="italic", color="#5b6472")
-    ax.annotate("", (5.6, 1.12), (5.6, 2.03), arrowprops=dict(arrowstyle="<-", color="#9aa3ad", lw=0.6, ls="--"))
-    ax.text(5.75, 1.55, "same composition", fontsize=5.6, color="#9aa3ad")
+
+    def panel(x0, x1, n, title):
+        ax.add_patch(FancyBboxPatch((x0, 3.5), x1 - x0, 27.5, boxstyle="round,pad=0,rounding_size=1.2", fc="#f5f6f8", ec="none"))
+        ax.add_patch(Circle((x0 + 1.6, 33.4), 1.15, fc=INK, ec="none"))
+        ax.text(x0 + 1.6, 33.35, str(n), ha="center", va="center", color="white", fontsize=5.8, fontweight="bold")
+        ax.text(x0 + 3.4, 33.4, title, ha="left", va="center", fontsize=6.6, fontweight="bold", color=INK)
+
+    def card(x, y, w, h, title, sub, accent):
+        ax.add_patch(FancyBboxPatch((x, y), w, h, boxstyle="round,pad=0,rounding_size=0.7", fc="white", ec=LINE, lw=0.6))
+        ax.add_patch(Rectangle((x, y + 0.6), 0.75, h - 1.2, fc=accent, ec="none"))
+        fit(ax.text(x + 1.9, y + h * 0.64, title, ha="left", va="center", fontsize=5.6, fontweight="bold", color=INK), w - 2.6)
+        fit(ax.text(x + 1.9, y + h * 0.30, sub, ha="left", va="center", fontsize=4.8, color=MUTED), w - 2.6)
+
+    def fit(t, width):  # shrink a label until it fits its card (data units)
+        rd = fig.canvas.get_renderer()
+        while True:
+            bb = t.get_window_extent(rd).transformed(ax.transData.inverted())
+            if bb.width <= width or t.get_fontsize() <= 4.2:
+                return
+            t.set_fontsize(t.get_fontsize() - 0.1)
+
+    def arrow(*pts, color=INK, ls="-"):
+        for (x0, y0), (x1, y1) in zip(pts[:-2], pts[1:-1]):
+            ax.plot([x0, x1], [y0, y1], color=color, lw=0.8, ls=ls, solid_capstyle="butt")
+        ax.annotate("", pts[-1], pts[-2], arrowprops=dict(arrowstyle="-|>", mutation_scale=6.5, color=color, lw=0.8, ls=ls,
+                                                          shrinkA=0, shrinkB=0))
+
+    panel(1, 31, 1, "Knowledge encoding (offline)")
+    panel(33, 80, 2, "Candidate generation (per query)")
+    panel(81.5, 99.5, 3, "Selection")
+
+    # stage 1: ontology + KG -> K-Ont (Poincare ball with an embedded hierarchy)
+    card(2.5, 19.5, 15.5, 7, "Battery ontology", "TBox: concepts, axioms", BLUE)
+    card(2.5, 6, 15.5, 7, "Battery KG", "ABox: 5,000 materials", BLUE)
+    cx, cy, r = 25, 16.25, 4.0
+    ax.add_patch(Circle((cx, cy), r, fc="#fdf1e7", ec=ORANGE, lw=0.9))
+    import math
+    for k, ang in enumerate((90, 210, 330)):
+        x1, y1 = cx + 1.8 * math.cos(math.radians(ang)), cy + 1.8 * math.sin(math.radians(ang))
+        ax.plot([cx, x1], [cy, y1], color=ORANGE, lw=0.6, alpha=0.8)
+        for d in (-24, 24):
+            x2, y2 = cx + 3.1 * math.cos(math.radians(ang + d)), cy + 3.1 * math.sin(math.radians(ang + d))
+            ax.plot([x1, x2], [y1, y2], color=ORANGE, lw=0.5, alpha=0.7)
+            ax.add_patch(Circle((x2, y2), 0.32, fc=ORANGE, ec="none", alpha=0.75))
+        ax.add_patch(Circle((x1, y1), 0.45, fc=ORANGE, ec="none"))
+    ax.add_patch(Circle((cx, cy), 0.6, fc="#a8541a", ec="none"))
+    ax.text(cx, 9.4, "K-Ont encoder", ha="center", va="center", fontsize=5.6, fontweight="bold", color=INK)
+    ax.text(cx, 7.5, "Poincaré ball", ha="center", va="center", fontsize=4.8, color=MUTED)
+    for yy in (23, 9.5):
+        dx, dy = 18.1 - cx, yy - cy
+        n = math.hypot(dx, dy)
+        arrow((18.1, yy), (cx + dx / n * (r + 0.3), cy + dy / n * (r + 0.3)))
+
+    # stage 2: query -> ranked KG frameworks -> templates ; query -> CrystaLLM
+    ax.add_patch(FancyBboxPatch((34, 12.75), 7.5, 8, boxstyle="round,pad=0,rounding_size=0.7", fc=INK, ec="none"))
+    ax.text(37.75, 18.6, "Query", ha="center", va="center", fontsize=5.6, fontweight="bold", color="white")
+    ax.text(37.75, 15.4, "composition\n+ cell", ha="center", va="center", fontsize=4.6, color="#d5d9df", linespacing=1.15)
+    card(44, 19.5, 16, 7, "Rank KG frameworks", "same anonymous formula", ORANGE)
+    card(62.5, 19.5, 16, 7, "Templates ×3", "elements substituted", ORANGE)
+    card(44, 6, 34.5, 7, "CrystaLLM samples ×5", "fine-tuned crystal language model (no K-Ont)", PURPLE)
+    ax.plot([41, 42.25], [16.75, 16.75], color=INK, lw=0.8)
+    ax.plot([42.25, 42.25], [9.5, 23], color=INK, lw=0.8)
+    arrow((42.25, 23), (44, 23))
+    arrow((42.25, 9.5), (44, 9.5))
+    arrow((60, 23), (62.5, 23))
+    arrow((cx, cy + r), (cx, 29), (52, 29), (52, 26.5), color=ORANGE)
+    ax.text(38.5, 29.6, "K-Ont similarity", ha="center", va="bottom", fontsize=4.8, color=ORANGE, style="italic")
+
+    # stage 3: CHGNet relaxation -> lowest energy
+    card(83, 19.5, 15, 7, "CHGNet relaxation", "all 8 candidates", GREEN)
+    card(83, 6, 15, 7, "Lowest energy", "one predicted structure", GREEN)
+    arrow((78.5, 24.5), (83, 24.5))
+    arrow((78.5, 9.5), (80.75, 9.5), (80.75, 21.5), (83, 21.5))
+    arrow((90.5, 19.5), (90.5, 13))
     _save(fig, "overview.png")
 
     # Fig: K-Ont knowledge (a) battery checks incl. ablation (b) GALEN
@@ -384,8 +450,8 @@ def more_figures():
             ("role, no label line (test)", "battery\nrole"), ("family, no label line (test)", "structure\nfamily"),
             ("TBox MRR", "hierarchy\n(TBox MRR)")]
     gr = json.load(open(os.path.join(HERE, "data", "ont_bench", "galen_results.json")))
-    gm = [("OnT-galen (published)", "OnT"), ("K-Ont v2 (Step 36)", "K-Ont"), ("K-Ont + retention (Step 43)", "+KG ret."),
-          ("K-Ont + retention incl. GALEN (Step 52)", "+GALEN ret."), ("K-Ont + GALEN + anchor retention (Step 52c)", "52c")]
+    gm = [("OnT-galen (published)", "OnT"), ("K-Ont v2 (Step 36)", "K-Ont"), ("K-Ont + retention (Step 43)", "+KG\nretention"),
+          ("K-Ont + retention incl. GALEN (Step 52)", "+GALEN\nretention"), ("K-Ont + GALEN + anchor retention (Step 52c)", "K-Ont-52c\n(one model)")]
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.1, 2.2), gridspec_kw={"width_ratios": [1.45, 1]})
     w = 0.26
     for j, (name, c) in enumerate(zip(chk, (ORANGE, GREY, BLUE))):
@@ -396,17 +462,17 @@ def more_figures():
     a1.legend(frameon=False, fontsize=6.2, loc="lower left", ncol=3, bbox_to_anchor=(0, 1.0))
     a1.grid(axis="y", color="#e3e6ea", lw=0.6)
     a1.set_axisbelow(True)
-    a1.set_title("(a) battery ontology + KG", fontsize=7.5, loc="left", pad=14)
+    a1.set_title("(a) battery ontology + KG", fontsize=7.2, fontweight="bold", loc="left", pad=14)
     x = range(len(gm))
     pm = [gr[f"prediction | {k}"]["results"]["sentence_combined"]["MRR"] for k, _ in gm]
     im = [gr[f"inference | {k}"]["results"]["sentence_combined"]["MRR"] * 10 for k, _ in gm]
     a2.bar([i - 0.18 for i in x], pm, 0.34, color=PURPLE, label="prediction MRR")
     a2.bar([i + 0.18 for i in x], im, 0.34, color=GREEN, label="inference MRR ×10")
-    a2.set_xticks(list(x), [l for _, l in gm], fontsize=6.2, rotation=25, ha="right")
+    a2.set_xticks(list(x), [l for _, l in gm], fontsize=6.0)
     a2.legend(frameon=False, fontsize=6.2, loc="lower left", ncol=2, bbox_to_anchor=(0, 1.0))
     a2.grid(axis="y", color="#e3e6ea", lw=0.6)
     a2.set_axisbelow(True)
-    a2.set_title("(b) GALEN (OnT benchmark)", fontsize=7.5, loc="left", pad=14)
+    a2.set_title("(b) GALEN (OnT benchmark)", fontsize=7.2, fontweight="bold", loc="left", pad=14)
     fig.tight_layout()
     _save(fig, "kont_checks.png")
 
@@ -419,7 +485,7 @@ def more_figures():
            ps["3 templates + 5 CrystaLLM, lowest energy (pipeline)"], ps["oracle: any of 3 templates + 5 CrystaLLM"]],
           [PURPLE, ORANGE, ORANGE, "#c9ced6"], ylim=(50, 85))
     a1.set_ylabel("one answer right (%)")
-    a1.set_title("(a) one answer per material (CHGNet pick)", fontsize=7.5, loc="left")
+    a1.set_title("(a) one answer per material (CHGNet pick)", fontsize=7.2, fontweight="bold", loc="left")
     f5, fe = ext["found"]["K-Ont (52c) · 5,000 KG"], ext["found"]["K-Ont (52c) · extended KG"]
     xs = range(4)
     v5 = [f5["@1"], f5["@3"], f5["@8"], ext["5,000 KG"]["oracle_true_space_group"]]
@@ -433,7 +499,7 @@ def more_figures():
     a2.legend(frameon=False, fontsize=6.2, loc="upper left")
     a2.grid(axis="y", color="#e3e6ea", lw=0.6)
     a2.set_axisbelow(True)
-    a2.set_title("(b) a bigger KG (same K-Ont, 902 targets)", fontsize=7.5, loc="left")
+    a2.set_title("(b) a bigger KG (same K-Ont, 902 targets)", fontsize=7.2, fontweight="bold", loc="left")
     fig.tight_layout()
     _save(fig, "system.png")
 
@@ -471,6 +537,7 @@ def more_figures():
         ax.plot([f * 100 for f in fr], [lc["fractions"][str(f)][key]["template"] for f in fr], color=c, marker="o", ms=3, lw=1.6, label=lab)
     ax.set_xscale("log")
     ax.set_xticks([5, 10, 25, 50, 100], ["5%", "10%", "25%", "50%", "100%"])
+    ax.minorticks_off()
     ax.set_xlabel("retriever training data")
     ax.set_ylabel("template found@1 (%)")
     ax.legend(frameon=False, fontsize=6.4, loc="lower right")
