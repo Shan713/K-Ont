@@ -33,3 +33,5 @@ is a diff *on top of* the one before it — apply them in order.
 The MPS out-of-memory noted after the first patch is now understood (Step 15): it was activation
 memory from ~200-token ABox sentences, not an MPS bug. `gradient_checkpointing=True` should fix it
 on a Mac too, but that hasn't been tested there.
+
+- `ont_max_seq_env.patch`: OnT loader reads `ONT_MAX_SEQ` (default 256, unchanged). Set to 512 only by `malware/kont_malware.py`, whose file sentences run to ~330 tokens.

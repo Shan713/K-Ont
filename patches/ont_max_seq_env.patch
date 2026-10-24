@@ -1,0 +1,21 @@
+diff --git a/ont/hit.py b/ont/hit.py
+index aa1de0a..cd4d5c8 100644
+--- a/ont/hit.py
++++ b/ont/hit.py
+@@ -3,6 +3,7 @@ from __future__ import annotations
+ import contextlib
+ import io
+ import logging
++import os
+ from collections.abc import Iterable
+ 
+ import torch
+@@ -66,7 +67,7 @@ class HierarchyTransformer(SentenceTransformer):
+         except Exception:
+             # Load from huggingface transformers library (suppress noisy LOAD REPORT)
+             with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+-                transformer = Transformer(model_name_or_path, max_seq_length=256, model_args={"revision": revision})
++                transformer = Transformer(model_name_or_path, max_seq_length=int(os.environ.get("ONT_MAX_SEQ", 256)), model_args={"revision": revision})
+             pooling = Pooling(
+                 word_embedding_dimension=transformer.get_word_embedding_dimension(), pooling_mode=pooling_mode
+             )
