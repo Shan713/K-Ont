@@ -325,6 +325,29 @@ def stage_generate(a):
     json.dump(res, open(out_p, "w"))
 
 
+def stop_at_composition(cif):
+    """The editor (trained without an end-of-structure marker) keeps writing atom sites after the cell is full:
+    keep the atom-site rows until their multiplicities add up exactly to the data_ line's cell composition."""
+    from pymatgen.core import Composition
+    lines = cif.splitlines()
+    want = Composition(re.search(r"^data_(\S+)", cif, re.M).group(1)).as_dict()
+    have, out = {}, []
+    for line in lines:
+        f = line.split()
+        if len(f) == 7 and f[2].isdigit() and f[0] in want:
+            have[f[0]] = have.get(f[0], 0) + int(f[2])
+            if have[f[0]] > want[f[0]]:
+                return None
+            out.append(line)
+            if all(abs(have.get(e, 0) - n) < 1e-6 for e, n in want.items()):
+                return "\n".join(out) + "\n"
+        elif len(f) == 7 and f[2].isdigit():
+            return None
+        else:
+            out.append(line)
+    return None
+
+
 def _match(job):
     t, ref_cif, cifs = job
     import phaseC_generate as gen
@@ -335,7 +358,12 @@ def _match(job):
     out = []
     for c in cifs:
         try:
-            s = Structure.from_str(gen.postprocess(c), fmt="cif")
+            c = stop_at_composition(c)
+            if c is None:
+                out.append([False, False])
+                continue
+            # the editor writes the indented layout of CrystaLLM's training CIFs: collapse it, as reference_from_text
+            s = gen.reference_from_text(c)
             ok = s.composition.reduced_formula == ref.composition.reduced_formula
             out.append([True, bool(ok and sm.fit(s, ref))])
         except Exception:

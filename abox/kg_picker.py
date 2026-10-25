@@ -127,8 +127,59 @@ def _refine(job):
 
 
 def stage_refine(a):
-    """Near-ties: every DISTINCT structure within --window meV/atom of a target's lowest 40-step energy is
-    relaxed again, longer and tighter (--steps, --fmax); copies (same structure, unrelaxed) share the result."""
+    """MatterSim re-pick (the force field of the oxidation-state MatterGen pipeline): every DISTINCT candidate
+    structure of a target within --window meV/atom of its lowest CHGNet 40-step energy (default: all of them) is
+    relaxed with MatterSim on the GPU (abox/mattersim_relax.py, run in .venv-mattersim; --steps, --fmax);
+    copies (same structure, unrelaxed) share the result. "right" is re-matched on the MatterSim-relaxed
+    structure (or the unrelaxed one, as Step 48)."""
+    import subprocess
+    import kg_pool
+    import phaseC_generate as gen
+    from pymatgen.analysis.structure_matcher import StructureMatcher
+    pool, rows = kg_pool.load()
+    F = json.load(open(FEATS))
+    top8 = json.load(open(os.path.join(DATA, "kg_rerank_top8.json")))["prompt+kg+ft_kont"]
+    cands = candidates(sorted(F), top8)
+    sm = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
+    groups, jobs = {}, []
+    for t in sorted(F):
+        ok = {k: r for k, r in F[t].items() if r["energy"] is not None and "sg" in r}
+        if not ok:
+            continue
+        e0 = min(r["energy"] for r in ok.values())
+        near = [c for c in cands[t] if c[0] in ok and 1000 * (ok[c[0]]["energy"] - e0) <= a.window]
+        ref = gen.reference_from_text(rows[t]["cif"]).as_dict()
+        reps = []
+        for key, kind, rank, score, c in near:
+            payload = rows[c] if kind == "T" else os.path.join(GEN, t, f"s_{rank}.cif")
+            try:
+                s = build(kind, rows[t]["formula"], payload)
+            except Exception:
+                continue
+            for rk, rs in reps:
+                if sm.fit(s, rs):
+                    groups[key] = rk
+                    break
+            else:
+                reps.append((key, s))
+                groups[key] = key
+                jobs.append({"key": key, "structure": s.as_dict(), "ref": ref})
+    jobs_p = os.path.join(DATA, "kg_picker_ms_jobs.json")
+    json.dump(jobs, open(jobs_p, "w"))
+    cache_p = os.path.join(DATA, f"kg_picker_ms_s{a.steps}.json")
+    print(f"{len(groups)} candidates, {len(jobs)} distinct structures -> MatterSim", flush=True)
+    py = os.path.join(HERE, ".venv-mattersim", "Scripts", "python.exe")
+    subprocess.run([py, "-u", os.path.join(HERE, "abox", "mattersim_relax.py"), jobs_p, cache_p,
+                    "--steps", str(a.steps), "--fmax", str(a.fmax)], check=True)
+    cache = json.load(open(cache_p))
+    json.dump({"model": "MatterSim-v1.0.0-1M", "groups": groups, "energy": {k: v and v[0] for k, v in cache.items()},
+               "right": {k: v and v[1] for k, v in cache.items()}, "window_meV": a.window, "steps": a.steps,
+               "fmax": a.fmax}, open(os.path.join(DATA, "kg_picker_refine.json"), "w"))
+    print("MatterSim energies:", sum(v is not None for v in cache.values()))
+
+
+def stage_refine_chgnet(a):
+    """(superseded by the MatterSim re-pick) near-ties re-relaxed with CHGNet, longer and tighter."""
     import kg_pool
     from pymatgen.analysis.structure_matcher import StructureMatcher
     from robust_pool import robust_map
@@ -224,10 +275,16 @@ def stage_eval(a):
             near = [k for k in keys if k in R["groups"] and R["energy"].get(R["groups"][k]) is not None]
             if near:
                 k = min(near, key=lambda k: (R["energy"][R["groups"][k]], R["groups"][k] != k))
-                got[t] = float(F[t][R["groups"][k]]["right"])
+                rep = R["groups"][k]
+                got[t] = float(R.get("right", {}).get(rep, F[t][rep]["right"]) or 0)
             else:
                 got[t] = arms["energy (Step 48)"][t]
-        arms[f"refined energy (near-ties, {R['steps']} steps)"] = got
+        arms[f"{R.get('model', 'CHGNet')} pick ({R['steps']} steps, window {R['window_meV']:g} meV)"] = got
+        oracle = {}
+        for t in targets:  # ceiling with MatterSim-relaxed matching
+            reps = {R["groups"][k] for k in M[t][0] if k in R["groups"]}
+            oracle[t] = float(any(R.get("right", {}).get(r) for r in reps)) if reps else 0.0
+        arms[f"oracle, {R.get('model', 'CHGNet')}-relaxed (any right)"] = oracle
     learners = {"learned picker (gradient boosting)": lambda: HistGradientBoostingClassifier(max_depth=3, learning_rate=0.05,
                                                                                                max_iter=200, random_state=0),
                 "learned picker (logistic)": lambda: make_pipeline(StandardScaler(), LogisticRegression(max_iter=5000))}
@@ -253,7 +310,7 @@ def stage_eval(a):
     rep = {"n_targets": len(targets), "cv": f"grouped 5-fold over targets x {a.repeats} repeats",
            "right_single_pick": {k: round(100 * sum(v.values()) / len(targets), 1) for k, v in arms.items()}}
     for k in arms:
-        if k not in ("energy (Step 48)", "oracle (any right)"):
+        if k != "energy (Step 48)" and not k.startswith("oracle"):
             rep[f"{k} - energy"] = diff(k, "energy (Step 48)")
     json.dump({"report": rep}, open(OUT, "w"), indent=1)
     print(json.dumps(rep, indent=1))
@@ -263,7 +320,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", required=True, choices=["feats", "refine", "eval"])
     ap.add_argument("--repeats", type=int, default=5)
-    ap.add_argument("--window", type=float, default=25.0, help="meV/atom above the lowest 40-step energy")
+    ap.add_argument("--window", type=float, default=1e9, help="meV/atom above the lowest CHGNet 40-step energy (default: all)")
     ap.add_argument("--steps", type=int, default=500)
     ap.add_argument("--fmax", type=float, default=0.05)
     ap.add_argument("--workers", type=int, default=3)

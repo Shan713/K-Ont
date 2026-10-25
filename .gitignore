@@ -129,3 +129,4 @@ export_package/
 /data/ont_bench/
 /data/kg_ext/
 data/malware/
+.venv-mattersim/
