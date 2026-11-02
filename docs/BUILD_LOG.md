@@ -2261,3 +2261,170 @@ retriever (the one-model K-Ont-52c), candidate pools 5,000 KG vs extended.
 A bigger KG closes a third of the coverage gap and lets templates find more structures within a few attempts;
 the first pick does not improve (more candidates are also more look-alikes). K-Ont stays ahead of the composition
 rule on the extended pool (@3 69.5 vs 66.5). No K-Ont retraining was needed: the new materials only enter the pool.
+
+## Step 57 — A learned picker over the 8 candidates: no significant gain; misses are near-ties (2026-10-24)
+
+`abox/kg_picker.py`, Step 48's 300 targets and CHGNet energies. Features per candidate: energy (relative, rank),
+consensus (other candidates with the same structure), space-group agreement, source, K-Ont ranker score, crystal
+system, sites, density. Gradient boosting / logistic regression, grouped 5-fold CV over targets × 5 repeats.
+
+| one answer right (300) | % |
+|---|---|
+| CHGNet energy (Step 48) | 69.3 |
+| most-agreed structure, ties by energy | 67.7 |
+| learned picker, gradient boosting | 70.5 (+1.2 [-1.5, +3.9]) |
+| learned picker, logistic | 69.9 |
+| any of 8 right (ceiling) | 79.3 |
+
+Of the 30 targets the energy pick loses, the right candidate is within 10 meV/atom of the picked one in 17 and within
+25 meV in 24: below what a 40-step CHGNet relaxation resolves. A MatterSim re-pick is implemented
+(`abox/mattersim_relax.py`, `kg_picker.py --stage refine`) but MatterSim has no Windows build (no compiler, no WSL).
+
+## Step 57b — Third domain, PE malware: K-Ont adds nothing over a complete table of KG facts (2026-10-25)
+
+`malware/kont_malware.py`, orbis-security pe-malware-ontology example (1,000 PE files, 500 malware), the heart
+protocol (5 classifiers, stratified 5-fold × 2, Wilcoxon). Encoder context raised to 512 tokens for all encoders
+(opt-in `ONT_MAX_SEQ`, `patches/ont_max_seq_env.patch`; 90 % of file sentences exceed 256 tokens otherwise).
+Raw KG facts as a table: AUC 0.908–0.947. raw + K-Ont vs raw + OnT: +0.001 to +0.004 (significant only for the MLP);
+K-Ont alone vs untrained encoder +0.02–0.03 (4/5 significant); K-Ont alone vs OnT concept groups −0.004 to −0.034.
+Lesson: KG training improves the embedding, but a predictor gains only when its input lacks the graph's information.
+
+## Step 58 — Template editor: CrystaLLM that rewrites a K-Ont template; fails its criterion (2026-10-25)
+
+`abox/template_editor.py`, design `docs/TEMPLATE_EDITOR.md`. ~118 k (compact template draft → true CIF) pairs from
+CrystaLLM's training split (evaluation compositions removed), half nearest-formula, half random same-formula
+templates; fine-tuned from CrystaLLM-small and from the Step 45 scratch GPT (2 epochs each). Two scoring bugs fixed
+before reading results: the editor never learned to stop (no end marker in training) → cut at the cell composition;
+it writes CrystaLLM's indented CIF layout → whitespace collapsed as `reference_from_text`.
+
+| 902 targets | @1 | @8 |
+|---|---|---|
+| K-Ont template | 60.5 | 71.4 |
+| editor from CrystaLLM-small | 22.1 | 33.9 |
+| editor from scratch GPT | 11.4 | 18.7 |
+
+Where the template was right (479), the editor kept it right in 137; where wrong, it fixed 62. As extra candidates:
+3 templates + 3 CrystaLLM + 2 editor 75.7 % any-of-8 vs 77.1 % for 3 + 5. Pre-set criterion (beat the template at @1)
+fails.
+
+## Step 59 — Oxidation-state aware site assignment: no gain (2026-10-26)
+
+`abox/kg_os_template.py`: template oxidation states by bond valence (BVAnalyzer) on its real structure; target by
+pymatgen's charge-balanced guesses (top 5); every stoichiometry-preserving element mapping scored by sign mismatch,
+charge difference and ionic-radius mismatch; ties keep the old rule; cell scaled by atomic or ionic radii. Same 902
+targets and K-Ont top-8, both rules built by the same code (a first run compared against an incomplete Step 41 cache
+and showed a spurious +7.2; corrected).
+
+| found@k | @1 | @3 | @8 |
+|---|---|---|---|
+| Step 41 rule (amount, then electronegativity) | 60.5 | 66.9 | 71.4 |
+| oxidation-state aware | 60.3 | 67.0 | 71.7 |
+| difference [95% CI] | -0.2 [-0.7, +0.2] | +0.1 [0.0, +0.3] | +0.3 [0.0, +0.8] |
+
+556 of 6,553 placements change (59 right before, 58 after). Ionic and atomic cell scaling give identical matches
+(StructureMatcher rescales volume). The simple rule is already chemically consistent.
+
+## Step 60 — K-Ont as a checker of CrystaLLM samples: small gain without physics only (2026-10-26)
+
+`abox/kont_checker.py`: each of the 8 `const` samples gets its structure lines written into the target's KG
+description; K-Ont-52c scores it against the target's structure-free description (its trained relation).
+
+| re-ordering CrystaLLM's samples (902) | @1 | vs CrystaLLM order |
+|---|---|---|
+| CrystaLLM order | 48.3 | |
+| K-Ont checker | 50.7 | +2.3 [-0.1, +4.8] |
+| untrained-encoder checker | 47.7 | -0.7 |
+| space-group rule (K-Ont template's SG first) | 51.9 | +3.5 [+1.7, +5.4] |
+
+With CHGNet: among the checker's top 4 62.7 vs all 8 63.7 (n.s.). Knowledge can steer which sample comes first; a
+physics pick remains the better selector.
+
+## Step 61 — Staged pipeline with provenance and a stage-wise ablation (2026-10-26)
+
+`abox/kont_pipeline.py` (stages validate / ablation / report). Validation for every candidate before relaxation:
+composition, no clash (pair distance ≥ 0.6 × sum of atomic radii), volume per atom 0.4–4 × the mean atomic volume.
+
+| 300 targets, one answer | right | any candidate right | vs CrystaLLM x8 + CHGNet |
+|---|---|---|---|
+| A CrystaLLM first sample | 47.3 | 47.3 | -16.3 |
+| B CrystaLLM x8 + CHGNet | 63.7 | 71.7 | — |
+| C + K-Ont retrieval (3 templates + 5 CrystaLLM) | 69.3 | 79.3 | +5.7 [1.3, 9.7] |
+| D + validation filter | 69.3 | 79.3 | +5.7 |
+| E + knowledge tie-break within 5 meV/atom | 70.0 | 79.3 | +6.3 [2.0, 10.7] |
+| E' + knowledge tie-break within 10 meV/atom | 70.7 | 79.3 | +7.0 [2.3, 11.3] |
+| K-Ont template top-1 alone | 61.7 | 61.7 | -2.0 |
+
+Validation rejected 288 of 2,367 candidates (260 clashes) — 11 of them right (the volume check is strict for some
+chemistries). `--stage report --target <mp-id>` writes a ranked candidate table with provenance
+(`data/crystallm/kont_pipeline_reports/`).
+
+## Step 62 — Is the hyperbolic space meaningful? Geometry checks + Poincaré maps (2026-11-02)
+
+The guide asked to *see* K-Ont's hyperbolic space and verify that individuals sit in it with the right meaning.
+`abox/hyperbolic_proof.py` (checks, `.venv`) + `abox/hyperbolic_plots.py` (figures, `.venv-crystallm`) ->
+`data/hyperbolic_proof/`. K-Ont = the 5,000-material v2 run (Step 36; no family or role line in any sentence);
+control = the model it started from, OnT-MiniLM-L12-galen. Ball radius 19.6 (c = 0.0026); "d0" = hyperbolic
+distance from the origin; everything held-out unless stated.
+
+| Check | Before (OnT-galen) | **K-Ont** |
+|---|---|---|
+| TBox axioms with the child farther from the centre than its parent | 12 / 16 | **16 / 16** |
+| Spearman, ontology depth vs d0 (trees + individuals) | 0.67 | **0.81** |
+| Typing, top class by OnT's score: materials / crystals / elements | 0.0 / 1.0 / 0.98 | **1.0 / 0.997 / 1.0** |
+| Crystal → own family, plain distance to the 9 family classes (86 held-out; majority 0.47) | 0.30 | **0.95** |
+| Crystal → own family, via the learned "has structure family" rotation | — | **0.988** (balanced 0.997) |
+| Material → own role (396 held-out; majority 0.84): plain distance / rotation | 0.57 / — | **0.89 / 1.00** |
+| 10 nearest labelled crystals share the family (chance 0.33) | 0.85 | **0.95** |
+| 10 nearest labelled materials share the role (chance 0.71) | 0.87 | **1.00** |
+| Concept trees: Spearman(shortest path, hyperbolic distance), 88 pairs | 0.43 | **0.83** |
+| Concept trees: MAP of rebuilding the 16 subclass edges from distances (random 0.24) | 0.40 | **0.94** |
+
+Median d0: tree roots (structure family, battery role) 11.5–11.8 → families / roles 14.3 → leaf families 16.7 →
+elements 18.5, materials 18.8, crystals 19.0. In the base model materials (13.1–15.0) overlap the leaf families
+(12.4–13.9) and the family / role level (12.4–14.1), and type classes sit at the very centre; K-Ont puts every
+individual (min 18.1) outside every class (max 16.9). Caveat: "individual farther than its type" also holds for the base model (it is not discriminative); the
+TBox order, depth correlation, branch and graph checks are.
+
+Maps (`fig_poincare_disk.png` true scale, `fig_poincare_zoom.png` radius axis 10–20): each point keeps its exact d0;
+only the angles are fitted so 2-D hyperbolic distances match the model's pairwise distances (2,948 points: all
+classes, elements, family-labelled crystals, role-labelled materials, 600 unlabelled materials). Pairwise distance
+Spearman 0.82 (base 0.72), but 10-NN preserved in 2-D only 3% — the map is an illustration; the table is the proof.
+In the K-Ont map cathodes and anodes lie on separate arcs and each family has its own sector at the rim, beneath its
+class; in the base map everything sits in one clump. Also `fig_depth.png` (d0 per level) and
+`fig_family_confusion.png` (86 held-out crystals, one NASICON → olivine error).
+
+## Step 63 — 30k generation: P1 formulas for the 31 Li-oxide systems + P8 CrystaLLM pilot (2026-11-02)
+
+Goal: 30,000 CIFs (generation only; relaxation and screening are not ours) over the 31 systems Li + 1–5 of
+{Al, Fe, Mn, Ni, V} + O. The full run will be on the workstation.
+
+**P1** `abox/gen30k_compositions.py` -> `data/gen30k/compositions.json`. Formulas in lowest terms with every element of
+the system, ≤ 30 atoms per formula unit, Li ≤ 8, other metals ≤ 8 / 6 / 4 (ternary / quaternary / larger), Li 15–75%
+of the cations, and charge balance with O²⁻ and Li⁺, Al³⁺, Fe²⁺/³⁺, Mn²⁺/³⁺/⁴⁺, Ni²⁺/³⁺, V³⁺/⁴⁺/⁵⁺ (mixed valence
+allowed). Each tagged with its anonymous formula, the number of the 10,267 pool materials that share it, and how many
+of those are oxides with O on the same-count site. Up to 150 per system, oxide-template formulas first, then fewer
+atoms, Li fraction near 0.42. `--stage mp-flag` (battGPT venv) tags formulas already in Materials Project.
+
+| Systems | valid formulas | selected | with an oxide template | already in MP |
+|---|---|---|---|---|
+| 5 ternary | 17–217 each | 563 | 301 | 111 |
+| 10 quaternary | 404–1,054 | 1,500 | 1,458 | 118 |
+| 10 quinary | 1,042–1,947 | 1,500 | 1,500 | 0 |
+| 5 senary | 3,095–4,563 | 750 | **0** | 0 |
+| 1 septenary | 5,390 | 150 | **0** | 0 |
+
+4,463 formulas -> ~6.7 CIFs per formula for 30k. Li-Al-O has only 17 valid formulas (Al is fixed at 3+), so its
+quota needs many structures per formula. Senary and septenary have no template at all: P3 (mixed-site templates)
+is required for them to get any template-based structures.
+
+**P8 pilot** `abox/gen30k_pilot.py` (KG fine-tuned CrystaLLM `const`, 10 formulas × 8 samples per system,
+prompt = formula × Z, Z ∈ {1, 2, 4} with ≤ 40 atoms; laptop RTX 4060):
+
+| System | parsed | right composition | + no clash < 0.5 Å | unique valid / formula | s / sample | valid unique CIFs / h |
+|---|---|---|---|---|---|---|
+| Li-Fe-O | 76/80 | 71 | 69 | 5.5 | 0.31 | ~8,000 |
+| Li-Al-Fe-Mn-Ni-O | 71/80 | 58 | 51 | 5.0 | 0.48 | ~4,700 |
+
+CrystaLLM is cheap: even all 30k from CrystaLLM would be ~4–7 GPU-hours on the laptop. The run's cost is in the
+templates' substitution and the duplicate check, not in sampling. Next: P2 (template lookup for new formulas with the
+composition-only K-Ont retriever), P3 (mixed-site templates), P4–P7.
