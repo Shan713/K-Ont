@@ -2527,3 +2527,23 @@ Materials Project flag: 265 of the 7,985 formulas already have an MP entry (1,82
 81% knowledge-guided (24,259), 19% CrystaLLM. Mixed-site cells are mostly P1 because a few metals ordered on a
 supercell break the host symmetry, as expected before relaxation. Relaxation / screening is downstream (not ours).
 Whole run on the laptop: P2 7.5 min, P3 5.2 min, P4 ≈ 1.5 h, P6 2 × 17 min, P7 ≈ 15 min.
+
+## Step 67 — 30k set: bond-length check finds the P5 check too lax (2026-11-06)
+
+P5 only rejected atoms < 0.5 Å apart. Checked afterwards against real data: in the 451 Materials Project Li–M–O oxides
+of the pool, the shortest cation–O bond is ≥ 1.71 Å in 95% (1st percentile 1.62), O–O ≥ 2.52 Å, cation–cation ≥ 2.43 Å.
+Floors cation–O 1.70, O–O 2.30, cation–cation 2.30 Å: real structures pass 92.5%.
+
+| Source | CIFs | Pass | Pass after ≤ 10% isotropic stretch | Median stretch needed |
+|---|---|---|---|---|
+| Mixed-site template | 14,443 | **92.7%** | 100% | 0.91 |
+| K-Ont template | 9,816 | 28.8% | 50.7% | 1.10 |
+| CrystaLLM (small, fine-tuned) | 5,811 | **2.0%** | 4.3% | 1.56 |
+| All | 30,070 | 54.3% | 65.4% | 0.97 |
+
+By system size: ternaries 12.8% (mostly CrystaLLM), quaternary 56.8%, quinary 55.6%, senary 80.4%, septenary 94.0%.
+Mixed-site structures look like real ones (host Li and O positions kept, only metals swapped). Templates fail when the
+framework comes from other chemistry (short B–O / P–O-type bonds kept after substitution; atomic-volume scaling is
+isotropic and cannot fix local bonds). CrystaLLM-small writes overlapping coordinates for these new compositions (median
+closest pair 1.22 Å, Li–O). The earlier held-out accuracy (Step 47) did not show this because StructureMatcher
+normalises volume. The release (Step 66) is not fit to hand over as is; per-CIF results in data/gen30k/bondcheck.json.
