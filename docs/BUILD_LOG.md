@@ -2428,3 +2428,102 @@ prompt = formula × Z, Z ∈ {1, 2, 4} with ≤ 40 atoms; laptop RTX 4060):
 CrystaLLM is cheap: even all 30k from CrystaLLM would be ~4–7 GPU-hours on the laptop. The run's cost is in the
 templates' substitution and the duplicate check, not in sampling. Next: P2 (template lookup for new formulas with the
 composition-only K-Ont retriever), P3 (mixed-site templates), P4–P7.
+
+## Step 64 — 30k generation P2: K-Ont-ranked templates for the P1 formulas (2026-11-06)
+
+`abox/gen30k_templates.py` (stages cands / score / build) -> `data/gen30k/templates/<system>/*.cif` +
+`templates_manifest.json`.
+
+- **Candidates**: the 10,267-material pool (all 5,000 KG + 5,267 MP extension); same anonymous formula with O on the
+  same-count site ("oxide templates"), else any same-pattern template (flagged `non_oxide`). 3,338 of the 4,463 P1
+  formulas have one (3,226 oxide, 112 non-oxide); 61,969 (formula, template) pairs. None for the 900 senary /
+  septenary formulas -> P3.
+- **Ranker**: composition-only query (name, formula, chemical system, cell sites; Step 44 form) against each
+  template's full sentence. Two retrievers trained for this (`kg_retriever_ft.py --minimal --save`, 9 min / 6 min):
+
+  | composition-only retriever | top-1 template has the true space group (902 test materials) |
+  |---|---|
+  | one-model recipe with retention (52c flags) `data/runs/kont_fw_minimal` | 56.2% |
+  | **K-Ont, no retention** `data/runs/kont_fw_minimal_plain` (used) | **61.1%** |
+  | Step 44 minimal retriever (not saved) | 61.4% |
+
+  Retention costs ~5 points here, as in Step 52 (57.0 vs 60.9); for generation the better ranker is used.
+- **Build**: Steps 41 / 61 substitution in K-Ont order (top 12 scored), until 5 distinct valid templates per formula:
+  right composition, O on O sites, no atoms < 0.5 Å apart, not a StructureMatcher duplicate. 7.5 min, one process.
+
+**10,166 template CIFs** (3.0 per formula); rejected only as duplicates (6,901). Per system: ternary 41 (Li-Al-O) –
+289; quaternary 399 – 556; quinary 385 – 445; senary / septenary 0.
+
+## Step 65 — 30k generation P3: mixed-site templates, backtested (2026-11-06)
+
+Design: `docs/GEN30K_P3_MIXED_SITE.md`; code `abox/gen30k_mixed.py` (stages hosts / backtest / plan / score / build).
+A host is a known single-metal Li–M–O oxide; its cell is enlarged (most compact Hermite-normal-form supercells) and the
+system's metals are spread over its metal sites, Li and O fixed. Orderings ranked by Ewald energy with one average
+oxidation state per element; E = qᵀFq with F computed once per supercell from unit charges (checked equal to pymatgen's
+`EwaldSummation` on a NiMn LiCoO₂ supercell: −462.5858 both); 32–64 random starts + greedy pair swaps.
+
+**Hosts**: 254 (E_hull ≤ 0.05, primitive ≤ 24 atoms, lowest energy per formula + space group); ratios LiMO₂ 34,
+Li₂MO₃ 25, Li₂MO₂ 14, LiM₂O₄ 13, LiM₃O₄ 12, Li₇M₅O₁₂ 11 …
+
+**Backtest** (acceptance fixed before: Ewald > random at k = 3). The pool's known multi-metal Li–M–O oxides
+(≤ 48 atoms) with a same Li : M : O host: 771, 657 scored. Each rebuilt from its 5 lowest-energy same-ratio hosts,
+3 supercell shapes, 10 orderings; right = StructureMatcher 0.2 / 0.3 / 5° vs the known structure, unrelaxed.
+3 workers, 43 min.
+
+| found@k (657 known oxides) | Ewald-ranked | random ordering | Ewald − random [95% CI] |
+|---|---|---|---|
+| 1 | **15.2** | 6.4 | **+8.8 [6.2, 11.3]** |
+| 3 | **18.9** | 11.4 | **+7.5 [5.2, 9.9]** |
+| 10 | 21.5 | 20.1 | +1.4 [−0.6, 3.5] |
+| any candidate | 24.5 | 26.0 | |
+
+Accepted. The electrostatic ranking puts the real ordering first 2.4× as often as chance; with enough candidates random
+catches up (same candidate space), so the ranking matters for the few kept per formula. Ceiling ~25%: the rest of the
+known multi-metal oxides are not an ordering of any same-ratio single-metal host in the pool.
+
+**Generation**: host-first formulas for the 26 systems with ≥ 2 metals — every split of a host supercell's metal sites
+(≤ 48 atoms, every metal ≥ 1) that charge-balances; most even split first, round-robin over host ratios, ≤ 200 per
+system (137 – 9,662 possible) → 5,074 formulas. P2's composition-only K-Ont retriever ranks the 213 hosts that can
+carry them; build = top 2 hosts × 3 lowest-Ewald distinct orderings (3 workers, 5.2 min).
+
+**15,334 mixed-site CIFs**: senary / septenary 692 – 978 per system (none before), quinary 474 – 821, quaternary
+287 – 732. With P2: ~25,500 structures before CrystaLLM; ternaries (Li-Al-O 41, Li-Ni-O 158, Li-Fe-O 162, Li-V-O 257,
+Li-Mn-O 289) are left for CrystaLLM (P4).
+
+## Step 66 — 30k generation P4–P7: CrystaLLM top-up, selection, release (2026-11-06)
+
+Code: `abox/gen30k_crystallm.py` (P4 + P5 checks), `abox/gen30k_package.py` (P6 select / mpflag, P7 release).
+
+**P4 CrystaLLM** (KG fine-tuned small model `kgcond3_const.pt`, zero conditioning vector, as in the P8 pilot) fills
+each system to 970 after P2 + P3: rounds of 8 samples per formula, Z rotating over 1 / 2 / 4 (≤ 40 atoms), batches of
+24 equal-length prompts (64 runs out of memory on the 8 GB laptop GPU). P5 on every sample: parses, right reduced
+formula, no atoms < 0.5 Å apart, not a StructureMatcher (0.2 / 0.3 / 5°) duplicate of any template, mixed-site
+template or earlier sample of the formula. 20,464 samples → 5,814 kept (28%); no system short. Ternaries need the most
+(Li-Al-O: 17 formulas, 24 rounds, 2,368 samples for 929); 10 quaternary-or-larger systems needed none.
+
+**P6 select**: per system ≤ 970; within a formula the knowledge sources are interleaved best-first (template rank,
+host rank × Ewald rank), CrystaLLM after; formulas round-robin. P2 and P3 had never been compared with each other:
+87 template / mixed-site duplicates removed (0–15 per system), leaving 12 systems 2–15 short, topped up by a second
+CrystaLLM pass (target 970 + duplicates) and reselected. Space groups: SpacegroupAnalyzer, symprec 0.1, unrelaxed.
+Materials Project flag: 265 of the 7,985 formulas already have an MP entry (1,822 CIFs); the rest are new compositions.
+
+**Release** (`data/gen30k/release/`, not committed: 30,070 CIFs, `manifest.csv`, `README.txt`; zips per system +
+`G025_gen30k_all.zip`, 25 MB): **30,070 CIFs, exactly 970 in each of the 31 systems**, 7,985 formulas, 115 space groups.
+
+| Source | CIFs | Median atoms | P1 share |
+|---|---|---|---|
+| K-Ont template (P2) | 9,816 | 32 | 11% |
+| Mixed-site template (P3) | 14,443 | 32 | 65% |
+| CrystaLLM (P4) | 5,811 | 20 | 17% |
+
+| Elements | Templates | Mixed-site | CrystaLLM |
+|---|---|---|---|
+| 3 (5 systems) | 907 | — | 3,943 |
+| 4 (10) | 4,883 | 3,768 | 1,049 |
+| 5 (10) | 4,026 | 5,527 | 147 |
+| 6 (5) | — | 4,178 | 672 |
+| 7 (1) | — | 970 | — |
+
+81% knowledge-guided (24,259), 19% CrystaLLM. Mixed-site cells are mostly P1 because a few metals ordered on a
+supercell break the host symmetry, as expected before relaxation. Relaxation / screening is downstream (not ours).
+Whole run on the laptop: P2 7.5 min, P3 5.2 min, P4 ≈ 1.5 h, P6 2 × 17 min, P7 ≈ 15 min.
