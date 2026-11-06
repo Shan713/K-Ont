@@ -11,8 +11,10 @@ For every selected formula of data/gen30k/compositions.json:
          cosine between the query and each candidate's full sentence; top --keep kept per formula.
   build  element substitution exactly as Steps 41 / 61 (elements matched by amount then electronegativity, cell
          scaled by atomic volume, no relaxation), in score order until --per-formula distinct structures pass:
-         right reduced composition, O on the template's O sites, no two atoms closer than 0.5 A, and not a
-         duplicate of an earlier template for the formula (StructureMatcher 0.2 / 0.3 / 5 deg).
+         right reduced composition, O on the template's O sites, shortest bonds above the floors of real Li-M-O
+         oxides after at most a 10% isotropic stretch (gen30k_compositions.physical, Step 67; was: no atoms
+         < 0.5 A apart, far too lax), and not a duplicate of an earlier template for the formula
+         (StructureMatcher 0.2 / 0.3 / 5 deg).
          -> data/gen30k/templates/<system>/<formula>__t<k>__<template id>.cif  + templates_manifest.json
 
     .venv-crystallm/Scripts/python.exe abox/gen30k_templates.py --stage cands
@@ -144,9 +146,9 @@ def substitute(target, cand_formula, cand_cif):
 
 
 def stage_build(a):
-    import numpy as np
     from pymatgen.analysis.structure_matcher import StructureMatcher
     from pymatgen.io.cif import CifWriter
+    from gen30k_compositions import physical
     rows = pool_rows()
     d = json.load(open(CANDS))["formulas"]
     sc = json.load(open(SCORES))["scores"]
@@ -166,8 +168,9 @@ def stage_build(a):
             if v["kind"] == "oxide" and mapping.get("O") != "O":
                 reasons["O not on O sites"] = reasons.get("O not on O sites", 0) + 1
                 continue
-            if len(s) > 1 and (s.distance_matrix + 10 * np.eye(len(s))).min() < 0.5:
-                reasons["clash < 0.5 A"] = reasons.get("clash < 0.5 A", 0) + 1
+            s, stretch = physical(s)  # Step 67: bond floors from real Li-M-O oxides, <= 10% stretch
+            if s is None:
+                reasons["bonds too short"] = reasons.get("bonds too short", 0) + 1
                 continue
             if any(sm.fit(s, q) for q in kept):
                 reasons["duplicate"] = reasons.get("duplicate", 0) + 1
@@ -180,7 +183,7 @@ def stage_build(a):
             man.append({"file": f"templates/{v['system']}/{fn}", "system": v["system"], "formula": v["formula"],
                         "source": "kont_template", "template_id": cid, "template_formula": r["formula"],
                         "template_space_group": r.get("space_group"), "kont_rank": rank, "kont_score": round(score, 4),
-                        "template_kind": v["kind"], "mapping": mapping, "n_atoms": len(s)})
+                        "template_kind": v["kind"], "mapping": mapping, "cell_stretch": stretch, "n_atoms": len(s)})
         if (n + 1) % 250 == 0:
             print(f"{n + 1}/{len(sc)} formulas, {len(man)} templates ({(time.time() - t0) / 60:.1f} min)", flush=True)
     per_sys = {}
@@ -195,7 +198,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--stage", required=True, choices=["cands", "score", "build"])
     ap.add_argument("--model", default=MODEL)
-    ap.add_argument("--keep", type=int, default=12, help="score: candidates kept per formula, in K-Ont order")
+    ap.add_argument("--keep", type=int, default=30, help="score: candidates kept per formula, in K-Ont order")
     ap.add_argument("--per-formula", type=int, default=5, help="build: distinct valid templates per formula")
     a = ap.parse_args()
     {"cands": stage_cands, "score": stage_score, "build": stage_build}[a.stage](a)

@@ -9,12 +9,14 @@ by atomic volume as in P2. No relaxation.
 
   hosts     pool -> data/gen30k/mixed_hosts.json (lowest-energy per reduced formula + space group, E_hull <= 0.05,
             primitive cell <= 24 atoms)
-  plan      host-first formulas for every system with >= 2 metals: per host and supercell multiplicity (<= 48 atoms),
-            every split of the metal sites among the system's metals (each >= 1) that charge-balances; per system
-            --per-system formulas, most even split first, round-robin over host Li : M : O ratios
+  plan      host-first formulas for every system: per host and supercell multiplicity (<= 48 atoms), every split of
+            the metal sites among the system's metals (each >= 1) that charge-balances; per system --per-system
+            formulas, most even split first, round-robin over host Li : M : O ratios. Ternary systems (one metal,
+            Step 67): the host's metal is replaced by the system's metal, primitive cell only ("host_substitution")
   score     (OnT venv) P2's composition-only K-Ont retriever ranks the hosts that can carry each formula
-  build     per formula, the top --hosts hosts by K-Ont, most compact supercell, --k lowest-Ewald distinct orderings
-            -> data/gen30k/mixed/<system>/*.cif + mixed_manifest.json
+  build     per formula, the top --hosts hosts by K-Ont (every host for ternaries), most compact supercell, --k
+            lowest-Ewald distinct orderings that pass the bond floors of real Li-M-O oxides after at most a 10%
+            stretch (gen30k_compositions.physical, Step 67) -> data/gen30k/mixed/<system>/*.cif + mixed_manifest.json
   backtest  rebuild the pool's known multi-metal Li-M-O oxides (<= 48 atoms) from single-metal hosts with the same
             Li : M : O ratio: found@k of Ewald-ranked orderings vs random orderings on the same host supercells
             (StructureMatcher 0.2 / 0.3 / 5 deg, unrelaxed). Acceptance, fixed before the run: Ewald > random at k = 3.
@@ -25,7 +27,7 @@ by atomic volume as in P2. No relaxation.
     .venv-crystallm/Scripts/python.exe abox/gen30k_mixed.py --stage backtest [--limit N] [--workers 3]
     .venv-crystallm/Scripts/python.exe abox/gen30k_mixed.py --stage plan
     .venv/Scripts/python.exe           abox/gen30k_mixed.py --stage score
-    .venv-crystallm/Scripts/python.exe abox/gen30k_mixed.py --stage build --hosts 2 --k 3 --workers 3
+    .venv-crystallm/Scripts/python.exe abox/gen30k_mixed.py --stage build --hosts 3 --k 3 --workers 3
 """
 import argparse
 import itertools
@@ -316,7 +318,7 @@ def stage_plan(a):
     from collections import defaultdict
     from pymatgen.core import Composition, Structure
     hosts = json.load(open(HOSTS))
-    systems = [s for s in json.load(open(os.path.join(OUT, "compositions.json")))["systems"] if s.count("-") >= 3]
+    systems = list(json.load(open(os.path.join(OUT, "compositions.json")))["systems"])
     plan = {}
     for sysname in systems:
         metals = [e for e in sysname.split("-") if e not in ("Li", "O")]
@@ -326,7 +328,7 @@ def stage_plan(a):
             h.setdefault("n_li", round(Structure.from_str(h["cif"], fmt="cif").composition["Li"]))
             for m in range(1, 9):
                 n_at, n_m = h["n_atoms"] * m, h["n_metal_sites"] * m
-                if n_at > a.max_atoms:
+                if n_at > a.max_atoms or (k == 1 and m > 1):  # one metal: a supercell adds nothing
                     break
                 if n_m < k:
                     continue
@@ -405,21 +407,29 @@ def _build_one(args):
     from pymatgen.analysis.structure_matcher import StructureMatcher
     from pymatgen.core import Structure
     from pymatgen.io.cif import CifWriter
+    from gen30k_compositions import physical
     hosts = {h["id"]: h for h in json.load(open(HOSTS))}
     sm = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
     rng = random.Random(seed)
     rows, kept = [], []
     ranked = sorted({o["host"] for o in opts}, key=lambda h: -sc[h])
-    for hr, h in enumerate(ranked[:n_hosts], 1):
+    single = len(opts[0]["counts"]) == 1
+    for hr, h in enumerate(ranked if single else ranked[:n_hosts], 1):
         o = min([o for o in opts if o["host"] == h], key=lambda o: (o["evenness"], o["n_atoms"]))
         prim = Structure.from_str(hosts[h]["cif"], fmt="cif")
         shapes = supercells(prim, o["mult"], n_shapes=1)
         if not shapes:
             continue
         M, scell = shapes[0]
-        cands = order(scell, o["counts"], n_ord, rng, starts=a_starts(len(o["counts"])))
-        cands = dedup([(e, scale_volume(s, scell)) for e, s in cands], n_ord, sm)
-        for k, (e, s) in enumerate(cands, 1):
+        cands = order(scell, o["counts"], n_ord, rng, starts=a_starts(len(o["counts"])), random_only=single)
+        cands = [(e, *physical(scale_volume(s, scell))) for e, s in cands]
+        good = []
+        for e, s, x in cands:
+            if s is not None and not any(sm.fit(s, q) for _, q, _ in good):
+                good.append((e, s, x))
+            if len(good) >= n_ord:
+                break
+        for k, (e, s, x) in enumerate(good, 1):
             if any(sm.fit(s, q) for q in kept):
                 continue
             kept.append(s)
@@ -427,10 +437,11 @@ def _build_one(args):
             os.makedirs(sub, exist_ok=True)
             fn = f"{f}__h{hr}_o{k}__{h}.cif"
             CifWriter(s).write_file(os.path.join(sub, fn))
-            rows.append({"file": f"mixed/{sysname}/{fn}", "system": sysname, "formula": f, "source": "mixed_site_template",
+            rows.append({"file": f"mixed/{sysname}/{fn}", "system": sysname, "formula": f,
+                         "source": "host_substitution" if single else "mixed_site_template",
                          "host_id": h, "host_formula": hosts[h]["formula"], "host_space_group": hosts[h]["space_group"],
                          "kont_host_rank": hr, "kont_score": round(sc[h], 4), "supercell": M, "ewald_rank": k,
-                         "ewald_energy": e, "metal_counts": o["counts"], "n_atoms": len(s)})
+                         "ewald_energy": e, "metal_counts": o["counts"], "cell_stretch": x, "n_atoms": len(s)})
     return rows
 
 
@@ -440,9 +451,13 @@ def a_starts(k):
 
 def stage_build(a):
     plan, sc = json.load(open(PLAN)), json.load(open(MSCORES))
+    only = set(a.systems.split(",")) if a.systems else None
     jobs = [(s, f, opts, sc[f"{s}|{f}"], a.hosts, a.k, n) for n, (s, p) in enumerate(sorted(plan.items()))
-            for f, opts in sorted(p.items())]
+            for f, opts in sorted(p.items()) if not only or s in only]
     rows, t0 = [], time.time()
+    man = os.path.join(OUT, "mixed_manifest.json")
+    if only and os.path.exists(man):  # rebuild only these systems, keep the rest of the manifest
+        rows = [r for r in json.load(open(man))["rows"] if r["system"] not in only]
     from concurrent.futures import ProcessPoolExecutor
     with ProcessPoolExecutor(a.workers) as ex:
         for n, r in enumerate(ex.map(_build_one, jobs, chunksize=4)):
@@ -452,7 +467,7 @@ def stage_build(a):
     per_sys = {}
     for x in rows:
         per_sys[x["system"]] = per_sys.get(x["system"], 0) + 1
-    json.dump({"per_system": per_sys, "rows": rows}, open(os.path.join(OUT, "mixed_manifest.json"), "w"), indent=1)
+    json.dump({"per_system": per_sys, "rows": rows}, open(man, "w"), indent=1)
     print(json.dumps({"mixed_cifs": len(rows), "per_system": per_sys}, indent=1))
 
 
@@ -467,6 +482,7 @@ def main():
     ap.add_argument("--hosts", type=int, default=5, help="backtest: hosts tried per target")
     ap.add_argument("--k", type=int, default=10, help="orderings kept per host supercell")
     ap.add_argument("--limit", type=int, default=0)
+    ap.add_argument("--systems", default="", help="build: only these systems (comma list), merged into the manifest")
     ap.add_argument("--workers", type=int, default=1)
     a = ap.parse_args()
     {"hosts": stage_hosts, "backtest": stage_backtest, "plan": stage_plan, "score": stage_score, "build": stage_build}[a.stage](a)

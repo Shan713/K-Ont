@@ -1,6 +1,8 @@
 """30k generation, P6 + P7: per-system quota, cross-source duplicate check, release folders and manifest (Step 66).
 
-Sources (manifests written by P2 / P3 / P4): K-Ont templates, mixed-site templates, CrystaLLM samples.
+Sources (manifests written by P2 / P3 / P4): K-Ont templates, mixed-site templates and host substitutions; CrystaLLM
+samples only with --crystallm (Step 67: 2% of CrystaLLM-small's samples clear the bond floors of real Li-M-O oxides,
+so they are left out; systems may stay under --target, the ternaries in practice).
   select  (crystallm venv) per system, at most --target CIFs. Within a formula the order interleaves the knowledge
           sources best-first (template rank 1, mixed host-1 ordering 1, template rank 2, mixed next, ...), and formulas
           are taken round-robin, so every formula is represented before any formula gets its 2nd structure; CrystaLLM
@@ -36,9 +38,9 @@ REL = os.path.join(OUT, "release")
 SYSTEM_ORDER = None  # filled from compositions.json (ternary -> septenary)
 
 
-def load_rows():
+def load_rows(crystallm=False):
     rows = []
-    for name in ("templates_manifest.json", "mixed_manifest.json", "crystallm_manifest.json"):
+    for name in ("templates_manifest.json", "mixed_manifest.json") + (("crystallm_manifest.json",) if crystallm else ()):
         p = os.path.join(OUT, name)
         if os.path.exists(p):
             rows += json.load(open(p))["rows"]
@@ -49,7 +51,7 @@ def within_formula_order(r):
     """knowledge sources interleaved best-first, CrystaLLM after them"""
     if r["source"] == "kont_template":
         return (0, 2 * int(r["file"].split("__t")[1].split("__")[0]) - 1)
-    if r["source"] == "mixed_site_template":
+    if r["source"] in ("mixed_site_template", "host_substitution"):
         return (0, 2 * ((r["kont_host_rank"] - 1) * 3 + r["ewald_rank"]))
     return (1, r["round"] * 100 + r["sample"])
 
@@ -70,7 +72,7 @@ def stage_select(a):
     from pymatgen.core import Structure
     sm = StructureMatcher(ltol=0.2, stol=0.3, angle_tol=5)
     by_sys = defaultdict(lambda: defaultdict(list))
-    for r in load_rows():
+    for r in load_rows(a.crystallm):
         by_sys[r["system"]][r["formula"]].append(r)
     systems = list(json.load(open(os.path.join(OUT, "compositions.json")))["systems"])
     selected, report, t0 = [], {}, time.time()
@@ -108,7 +110,7 @@ def stage_select(a):
             r["space_group"], r["space_group_number"] = sym, num
     tot = defaultdict(int)
     for v in report.values():
-        for k in ("selected", "kont_template", "mixed_site_template", "crystallm"):
+        for k in ("selected", "kont_template", "mixed_site_template", "host_substitution", "crystallm"):
             tot[k] += v.get(k, 0)
     json.dump({"target_per_system": a.target, "report": report, "total": tot, "rows": selected}, open(SEL, "w"), indent=1)
     print(json.dumps(dict(tot)))
@@ -131,7 +133,7 @@ def stage_mpflag(a):
 
 COLUMNS = ["id", "system", "n_elements", "formula", "formula_in_materials_project", "source", "space_group",
            "space_group_number", "n_atoms", "kont_rank", "kont_score", "template_id", "template_formula",
-           "template_space_group", "template_kind", "host_id", "host_formula", "host_space_group", "ewald_rank",
+           "template_space_group", "template_kind", "cell_stretch", "host_id", "host_formula", "host_space_group", "ewald_rank",
            "supercell", "metal_counts", "crystallm_model", "crystallm_z", "path"]
 
 
@@ -157,7 +159,8 @@ def stage_release(a):
                      "n_atoms": n_atoms, "kont_rank": r.get("kont_rank", r.get("kont_host_rank")),
                      "kont_score": r.get("kont_score"), "template_id": r.get("template_id"),
                      "template_formula": r.get("template_formula"), "template_space_group": r.get("template_space_group"),
-                     "template_kind": r.get("template_kind"), "host_id": r.get("host_id"), "host_formula": r.get("host_formula"),
+                     "template_kind": r.get("template_kind"),
+                     "cell_stretch": r.get("cell_stretch"), "host_id": r.get("host_id"), "host_formula": r.get("host_formula"),
                      "host_space_group": r.get("host_space_group"), "ewald_rank": r.get("ewald_rank"),
                      "supercell": json.dumps(r["supercell"]) if r.get("supercell") else "",
                      "metal_counts": json.dumps(r["metal_counts"]) if r.get("metal_counts") else "",
@@ -170,17 +173,22 @@ def stage_release(a):
     readme = f"""G025 knowledge-guided Li-oxide structures (K-Ont template generation)
 
 {len(rows)} CIFs over {len(count)} chemical systems: Li + 1-5 of Al, Fe, Mn, Ni, V + O; at most {d['target_per_system']} per system.
-Generated, NOT relaxed: positions come from known frameworks (templates) or from CrystaLLM. Relax before any use.
+Generated, NOT relaxed: every structure is a known Materials Project / KG framework with substituted or reordered
+metals; no generative-model coordinates. Relax before any use.
 
 Sources (column `source`):
   kont_template        {tot.get('kont_template', 0):6d}  a known framework from the KG / Materials Project pool, chosen by the
                                 K-Ont retriever for the formula, with the new elements substituted; cell scaled by atomic volume
   mixed_site_template  {tot.get('mixed_site_template', 0):6d}  a known single-metal Li oxide framework, enlarged, with the system's metals
                                 ordered on its metal sites by lowest Ewald energy; host chosen by K-Ont
-  crystallm            {tot.get('crystallm', 0):6d}  CrystaLLM (small, fine-tuned on the battery KG) sampled for the formula
+  host_substitution    {tot.get('host_substitution', 0):6d}  (ternary systems) a known single-metal Li oxide with its metal replaced by the
+                                system's metal; cell scaled by atomic volume
 
-Checks on every CIF: right composition, no two atoms closer than 0.5 A, no duplicate of the same formula
-(StructureMatcher ltol 0.2, stol 0.3, angle 5). Space groups: SpacegroupAnalyzer, symprec 0.1, on the unrelaxed cell.
+Checks on every CIF: right composition; shortest bonds at least cation-O 1.70 A, O-O 2.30 A, cation-cation 2.30 A
+(floors from the 451 Materials Project Li-M-O oxides of our pool, which pass 92.5%), after at most a 10% isotropic
+stretch of the cell (column cell_stretch, 1.0 = none); no duplicate of the same formula
+(StructureMatcher ltol 0.2, stol 0.3, angle 5). Ternary systems have fewer than {d['target_per_system']} CIFs: only
+structures that pass these checks are included. Space groups: SpacegroupAnalyzer, symprec 0.1, on the unrelaxed cell.
 Oxidation states assumed for charge balance: Li+ Al3+ Fe2+/3+ Mn2+/3+/4+ Ni2+/3+ V3+/4+/5+ O2-.
 manifest.csv: one row per CIF, with provenance (template / host Materials Project id, K-Ont rank, Ewald rank).
 """
@@ -204,6 +212,7 @@ def main():
     ap.add_argument("--stage", required=True, choices=["select", "mpflag", "release"])
     ap.add_argument("--target", type=int, default=970)
     ap.add_argument("--workers", type=int, default=3)
+    ap.add_argument("--crystallm", action="store_true", help="select: include CrystaLLM samples (off since Step 67)")
     a = ap.parse_args()
     {"select": stage_select, "mpflag": stage_mpflag, "release": stage_release}[a.stage](a)
 

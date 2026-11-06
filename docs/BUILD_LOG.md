@@ -2547,3 +2547,38 @@ framework comes from other chemistry (short B–O / P–O-type bonds kept after 
 isotropic and cannot fix local bonds). CrystaLLM-small writes overlapping coordinates for these new compositions (median
 closest pair 1.22 Å, Li–O). The earlier held-out accuracy (Step 47) did not show this because StructureMatcher
 normalises volume. The release (Step 66) is not fit to hand over as is; per-CIF results in data/gen30k/bondcheck.json.
+
+## Step 68 — 30k set v2: bond-checked refill without CrystaLLM (2026-11-07)
+
+Fix for Step 67. One shared check, `gen30k_compositions.physical`: shortest cation–O ≥ 1.70 Å, O–O ≥ 2.30 Å,
+cation–cation ≥ 2.30 Å (the real-oxide floors of Step 67), after at most a 10% isotropic stretch of the cell (the
+atomic-volume estimate is that rough; local distortions are not fixed by it). Applied inside every build, recorded per
+CIF as `cell_stretch`. CrystaLLM-small dropped (2% pass). v1 outputs kept in `data/gen30k/_v1/`.
+
+- **P2 templates**: K-Ont candidates kept per formula 12 → 30; 5,919 pass (12,435 rejected for short bonds, 5,334 duplicates).
+- **P3 mixed-site**: 400 formulas per system (was 200), top 3 hosts (was 2) × 3 orderings; 38,484 pass.
+  Li-Al-Fe-O and Li-Al-Ni-O (few charge-balanced ratios with Al³⁺) rebuilt with 10 hosts × 4 orderings → 1,067 / 1,061.
+- **Ternaries, host substitution** (new): every single-metal Li–M′–O host whose ratio charge-balances with the
+  system's metal, M′ → M, primitive cell, volume scaled; 317 built.
+- **P6/P7**: same selection (knowledge sources interleaved best-first, round-robin over formulas, cross-source dedup).
+
+**Release v2: 26,193 CIFs**; 970 in each of the 26 systems with ≥ 2 metals; ternaries below quota (accepted):
+Li-Al-O 50, Li-Ni-O 166, Li-Fe-O 168, Li-V-O 279, Li-Mn-O 310. 10,675 formulas, 103 space groups; 286 formulas
+(1,170 CIFs) already in Materials Project. Re-check of the released set: **100% pass** the floors (real MP oxides 92.5%).
+
+| Source | CIFs | Median atoms | P1 share | Stretched |
+|---|---|---|---|---|
+| Mixed-site template | 21,375 | 38 | 64% | 7% |
+| K-Ont template | 4,595 | 28 | 14% | 46% |
+| Host substitution | 223 | 12 | 5% | 6% |
+
+| Elements | Templates | Mixed-site | Host subst. |
+|---|---|---|---|
+| 3 (5 systems) | 750 | — | 223 |
+| 4 (10) | 2,978 | 6,722 | — |
+| 5 (10) | 867 | 8,833 | — |
+| 6 (5) | — | 4,850 | — |
+| 7 (1) | — | 970 | — |
+
+Every CIF now comes from a real framework (no generative-model coordinates). Times: template score + build ≈ 25 min,
+mixed score + build 18.5 + 3 min, select ≈ 17 min, release ≈ 15 min.

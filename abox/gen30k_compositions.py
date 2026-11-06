@@ -76,6 +76,35 @@ def oxide_key(comp):
     return f"{comp.anonymized_formula}|O{red['O']:g}"
 
 
+
+# Step 67: shortest bonds in the 451 Materials Project Li-M-O oxides of the pool (cation-O >= 1.71 A in 95%,
+# O-O >= 2.52, cation-cation >= 2.43); with these floors 92.5% of the real structures pass
+FLOORS = {"cation-O": 1.70, "O-O": 2.30, "cation-cation": 2.30}
+
+
+def physical(s, max_stretch=1.10):
+    """(structure, stretch) when every shortest bond clears FLOORS, after an isotropic stretch of the cell of at most
+    max_stretch (lengths) if needed; (None, needed stretch) otherwise. Unrelaxed cells are scaled by atomic volume
+    only, so a few % is within that estimate's error; local distortions (B-O / P-O-like frameworks) are not."""
+    import numpy as np
+    d = s.distance_matrix + 99 * np.eye(len(s))
+    o = np.array([sp.symbol == "O" for sp in s.species])
+    c = ~o
+    need = 0.0
+    if c.any() and o.any():
+        need = max(need, FLOORS["cation-O"] / d[np.ix_(c, o)].min())
+    if o.sum() > 1:
+        need = max(need, FLOORS["O-O"] / d[np.ix_(o, o)].min())
+    if c.sum() > 1:
+        need = max(need, FLOORS["cation-cation"] / d[np.ix_(c, c)].min())
+    if need <= 1.0:
+        return s, 1.0
+    if need > max_stretch:
+        return None, round(need, 3)
+    s = s.copy()
+    s.scale_lattice(s.volume * (need * 1.001) ** 3)
+    return s, round(need * 1.001, 3)
+
 def formula_str(counts):
     return "".join(f"{e}{'' if n == 1 else n}" for e, n in counts.items())
 
